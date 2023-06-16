@@ -1,33 +1,33 @@
-import type { Labels } from "../model/Labels";
+import type { Keys, Values } from "../model/Labels";
 import { kockaDobas, parseKocka, type KockaDobas } from "./Kocka";
 
 export interface Value {
     type: 'value';
-    name?: typeof Labels.keys[number];
+    name?: Values;
     roll?: KockaDobas | number;
 }
 
 export interface LevelSum {
     type: 'levelsum';
-    name?: typeof Labels.keys[number];
+    name?: Values;
     arg: Expression;
 }
 
 export interface MultiOp {
     type: 'add' | 'mul' | 'max' | 'min';
-    name?: typeof Labels.keys[number];
+    name?: Values;
     args: Array<Expression>;
 }
 
 export interface BinaryOp {
-    type: 'div';
-    name?: typeof Labels.keys[number];
+    type: 'div' | 'sub';
+    name?: Values;
     args: [Expression, Expression];
 }
 
 export type Operation = MultiOp | BinaryOp;
 
-export type Expression = Value | Operation | LevelSum;
+export type Expression = Value | Operation | LevelSum | number;
 
 export type EvalExpression = Expression & { result: number };
 
@@ -53,11 +53,14 @@ const evaluateValue = (values?: number | Array<number>, roll?: KockaDobas | numb
     } else if (roll !== undefined) {
         return typeof roll === 'object' ? kockaDobas(roll).osszeg : roll;
     } else {
-        throw new Error('missing value');
+        return 0;
     }
 }
 
-const evaluate = (expr: Expression, values: Partial<Record<typeof Labels.keys[number], number | Array<number>>>, level?: number): EvalExpression => {
+const evaluate = (expr: Expression, values: Partial<Record<Values, number | Array<number>>>, level?: number): EvalExpression => {
+    if (typeof expr === 'number') {
+        return { type: 'value', roll: expr, result: expr };
+    }
     if (expr.type === 'value') {
         const result = evaluateValue(expr.name ? values[expr.name] : undefined, expr.roll, level);
         return { ...expr, result };
@@ -72,6 +75,10 @@ const evaluate = (expr: Expression, values: Partial<Record<typeof Labels.keys[nu
         const nom = evaluate(expr.args[0], values, level);
         const div = evaluate(expr.args[1], values, level);
         return { type: 'div', args: [nom, div], result: nom.result / div.result, name: expr.name };
+    } else if (expr.type === 'sub') {
+        const first = evaluate(expr.args[0], values, level);
+        const second = evaluate(expr.args[1], values, level);
+        return { type: 'sub', args: [first, second], result: first.result - second.result, name: expr.name };
     } else {
         const args = expr.args.map(arg => evaluate(arg, values, level));
         const result = calculateMultiOpResult(expr.type, args);
@@ -84,15 +91,20 @@ const evaluate = (expr: Expression, values: Partial<Record<typeof Labels.keys[nu
     }
 }
 
-export const Expression = {
-    evaluate,
-    constant: (value: number | string | KockaDobas, name?: typeof Labels.keys[number]): Value => ({ type: 'value', name, roll: typeof value === 'object' || typeof value === 'number' ? value : parseKocka(String(value)) }),
-    value: (name: typeof Labels.keys[number], roll?: KockaDobas | string): Value => ({ type: 'value', name, roll: roll === undefined ? undefined : typeof roll === 'string' ? parseKocka(roll) : roll }),
+export const E = {
+    evaluate: (expr: Expression, values: Partial<Record<Values, number | Array<number>>>): EvalExpression => {
+        const ret = evaluate(expr, values);
+        ret.result = Math.round(ret.result);
+        return ret;
+    },
+    constant: (value: number | string | KockaDobas, name?: Values): Value => ({ type: 'value', name, roll: typeof value === 'object' || typeof value === 'number' ? value : parseKocka(String(value)) }),
+    value: (name: Values, roll?: KockaDobas | string): Value => ({ type: 'value', name, roll: roll === undefined ? undefined : typeof roll === 'string' ? parseKocka(roll) : roll }),
     mul: (...args: Array<Expression>): MultiOp => ({ type: 'mul', args }),
     add: (...args: Array<Expression>): MultiOp => ({ type: 'add', args }),
     level: (arg: Expression): LevelSum => ({ type: 'levelsum', arg }),
     max: (...args: Array<Expression>): MultiOp => ({ type: 'max', args }),
     min: (...args: Array<Expression>): MultiOp => ({ type: 'min', args }),
-    div: (denominator: Expression, divisor: Expression) => ({ type: 'div', args: [denominator, divisor] }),
-    name: (name: typeof Labels.keys[number], expr: Expression): Expression => ({ ...expr, name })
+    div: (denominator: Expression, divisor: Expression): BinaryOp => ({ type: 'div', args: [denominator, divisor] }),
+    sub: (minuend: Expression, subtrahend: Expression): BinaryOp => ({ type: 'sub', args: [minuend, subtrahend] }),
+    name: (name: Values, expr: Exclude<Expression, number>): Expression => ({ ...expr, name })
 };

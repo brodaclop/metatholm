@@ -1,20 +1,24 @@
 <script lang="ts">
-	import type { EvalExpression, Expression } from '../../logic/Expression';
+	import type { EvalExpression, E, Expression } from '../../logic/Expression';
 	import { _ } from 'svelte-i18n';
 	import ValueWidget from './ValueWidget.svelte';
 
 	export let expr: EvalExpression | Expression;
 
-	let result = 'result' in expr ? expr.result : undefined;
+	let result = typeof expr === 'number' ? expr : 'result' in expr ? expr.result : undefined;
 </script>
 
-{#if expr.type === 'value'}
+{#if typeof expr === 'number'}
+	<ValueWidget expr={undefined} {result} />
+{:else if expr.type === 'value'}
 	<ValueWidget {expr} {result} />
 {:else if expr.name}
 	<!-- dropdown display -->
 	<details>
 		<summary>
-			{$_(expr.name)}
+			<span class="label">
+				{$_(expr.name)}
+			</span>
 			{#if 'result' in expr && expr.result !== undefined}
 				<i>({expr.result})</i>
 			{/if}
@@ -26,6 +30,8 @@
 	<span class="inline">
 		{#if expr.type === 'div'}
 			<svelte:self expr={expr.args[0]} /> / <svelte:self expr={expr.args[1]} />
+		{:else if expr.type === 'sub'}
+			<svelte:self expr={expr.args[0]} /> - <svelte:self expr={expr.args[1]} />
 		{:else if expr.type === 'levelsum'}
 			<svelte:self expr={expr.arg} /> / {$_('character:level')}
 		{:else if expr.type === 'add' || expr.type === 'mul'}
@@ -57,6 +63,10 @@
 	.operator,
 	details {
 		vertical-align: top;
+	}
+
+	.label {
+		font-weight: bold;
 	}
 
 	summary::marker {

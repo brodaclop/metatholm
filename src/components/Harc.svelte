@@ -1,9 +1,16 @@
 <script lang="ts">
+	import { E } from '../logic/Expression';
+	import { WEAPON_ATK } from '../model/Rules';
+
 	let hardness = 3;
 
 	const calc = (base: number, skill: number, mult: number) => {
-		const ret = Math.max(1, (base * (30 + 3 * Math.max(0, skill - 1) * mult)) / 30);
-		return Math.round(ret * (skill === 0 ? 1 : 2));
+		const ret = E.evaluate(WEAPON_ATK, {
+			'weapon:attack': base,
+			'weapon:skill': Math.max(1, skill),
+			'weapon:difficulty': mult
+		}).result;
+		return Math.round(ret * (skill === 0 ? 0.5 : 1));
 	};
 </script>
 

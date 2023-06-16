@@ -1,0 +1,1 @@
+export type Ability = 'ability:build' | 'ability:presence' | 'ability:activity' | 'ability:magic';

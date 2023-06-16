@@ -4,15 +4,12 @@ export interface KockaDobas {
     darab: number;
     kocka: number;
     plusz: number;
-    eldobNagy?: number;
-    eldobKicsi?: number;
     ijasz?: boolean;
 }
 
 export interface DobasEredmeny {
     kocka: Array<number>;
     plusz: number;
-    eldobottak: Array<number>;
     max: number;
     osszeg: number;
 }
@@ -43,38 +40,15 @@ export const kockaDobas = (d: Partial<KockaDobas>): DobasEredmeny => {
         darab: 0,
         kocka: 0,
         plusz: 0,
-        eldobKicsi: 0,
-        eldobNagy: 0,
         ...d
     };
     const dobasok = kockak(dobas.darab, dobas.kocka, dobas.ijasz ?? false);
-    const eldobando: Array<number> = [];
-    if ((dobas.eldobNagy ?? 0) > 0) {
-        eldobando.push(...[...dobasok].sort((a, b) => b - a).slice(0, dobas.eldobNagy));
-    }
-    if ((dobas.eldobKicsi ?? 0) > 0) {
-        eldobando.push(...[...dobasok].sort((a, b) => a - b).slice(0, dobas.eldobKicsi));
-    }
-    const eldobottak: Array<number> = [];
-    dobasok.forEach((k, idx) => {
-        if (eldobando.includes(k)) {
-            eldobottak.push(idx);
-            eldobando.splice(eldobando.indexOf(k), 1);
-        }
-    });
-
-    let osszeg = dobas.plusz;
-    dobasok.forEach((k, idx) => {
-        if (!eldobottak.includes(idx)) {
-            osszeg += k;
-        }
-    });
+    const osszeg = dobasok.reduce((acc, curr) => acc + curr, dobas.plusz);
 
     return {
         kocka: dobasok,
         plusz: dobas.plusz,
         max: dobas.kocka,
-        eldobottak,
         osszeg
     };
 }
@@ -98,7 +72,5 @@ export const parseKocka = (str: string): KockaDobas => {
         kocka: Number(res?.groups?.die ?? 0),
         plusz: Number(res?.groups?.plus ?? 0),
         ijasz: !!res?.groups?.ijasz,
-        eldobKicsi: 0,
-        eldobNagy: 0
     }
 };

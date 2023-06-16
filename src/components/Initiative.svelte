@@ -1,6 +1,22 @@
 <script lang="ts">
+	import { E } from '../logic/Expression';
+	import { ATTACK_AP } from '../model/Rules';
+
 	let hardness = 3;
 	let base = 10;
+
+	// $: initiative = Array(11)
+	// 	.fill(undefined)
+	// 	.map((_, skill) => {
+	// 		const bottom = 2 * (10 - base);
+	// 		if (skill === 0) {
+	// 			const value = bottom * 1.5;
+	// 			return Math.max(1, Math.round(value));
+	// 		} else {
+	// 			const value = (2 * (10 - base) * (54 - (1 + hardness) * (skill - 1))) / 54;
+	// 			return Math.max(1, Math.round(value));
+	// 		}
+	// 	});
 
 	$: initiative = Array(11)
 		.fill(undefined)
@@ -10,7 +26,11 @@
 				const value = bottom * 1.5;
 				return Math.max(1, Math.round(value));
 			} else {
-				const value = bottom - (bottom * (1 + hardness) * (skill - 1)) / 54;
+				const value = E.evaluate(ATTACK_AP, {
+					'weapon:skill': skill,
+					'weapon:ap': base,
+					'weapon:difficulty': hardness
+				}).result;
 				return Math.max(1, Math.round(value));
 			}
 		});
