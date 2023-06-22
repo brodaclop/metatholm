@@ -1,20 +1,13 @@
 import type { Ability } from "./Abilities";
-import type { CharacterClasses } from "./CharacterClass";
+import type { ActionRoll, ActionVariant } from "./Action";
+import type { CharacterClass } from "./CharacterClass";
+import type { ExpressionNames } from "./Rules";
 import type { Skill } from "./Skills";
-
-export const ActionKeys = [
-    'action:title',
-    'action:ap',
-    'action:roll',
-    'action:damage',
-
-    'action:disarm',
-    'action:defence'
-] as const;
+import type { Species } from "./Species";
 
 
 export const Keys = [
-    ...ActionKeys,
+    'action:title',
     'character:level',
     'character:abilities',
     'character:skills',
@@ -26,14 +19,7 @@ export const Keys = [
     'character:mp',
     'character:class',
 
-    'expr:pp_base',
-    'expr:pp_per_level',
-    'expr:pp_total',
-    'expr:pp_roll',
 
-    'spell:effective_skill',
-    'spell:level',
-    'spell:focus_skill',
     'spell:fire_bolt',
 
     'weapon:ap',
@@ -47,21 +33,23 @@ export const Keys = [
 
 export type LabelCollection = Record<Values, string>;
 
-export type Values = typeof Keys[number] | Skill | Ability;
+export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Labels = CharacterClasses;
-export const Labels_en: Record<Labels | Values, string> = {
+type Valueless = CharacterClass | ActionVariant | ActionRoll | Species;
+export const Labels_en: Record<Valueless | Values, string> = {
     'ability:build': 'Build',
     'ability:presence': 'Presence',
     'ability:activity': 'Activity',
     'ability:magic': 'Magic',
 
     'action:title': 'Actions',
+    'action.attack': 'Attack',
     'action:disarm': 'Disarm',
     'action:ap': 'Action Points',
     'action:roll': 'Roll',
     'action:damage': 'Damage',
     'action:defence': 'Defence',
+    'action:cast': 'Cast',
 
     'character:name': 'Name',
     'character:class': 'Class',
@@ -87,6 +75,10 @@ export const Labels_en: Record<Labels | Values, string> = {
     'expr:pp_per_level': 'Level Pain Tolerance',
     'expr:pp_total': 'Pain Tolerance Total',
     'expr:pp_roll': 'Pain Tolerance Roll',
+    'expr:effective_spell_skill': 'Effective Skill',
+    'expr:spell_level': 'Spell Level',
+    'expr:spell_focus_skill': 'Focus skill',
+    'expr:spell_speed': 'Spell speed',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -96,9 +88,9 @@ export const Labels_en: Record<Labels | Values, string> = {
     'skill:magic_force': 'Magic Force',
     'skill:focus_elemental': 'Elemental Focus',
 
-    'spell:effective_skill': 'Effective Skill',
-    'spell:level': 'Spell Level',
-    'spell:focus_skill': 'Focus skill',
+    'species:elf': 'Elf',
+    'species:orc': 'Orc',
+
     'spell:fire_bolt': 'Fire Bolt',
 
     'weapon:ap': 'Weapon AP',
@@ -111,16 +103,18 @@ export const Labels_en: Record<Labels | Values, string> = {
 
 };
 
-export const Labels_hu: Record<Labels | Values, string> = {
+export const Labels_hu: Record<Valueless | Values, string> = {
     'ability:build': 'Testalkat',
     'ability:presence': 'Jelenlét',
     'ability:activity': 'Aktivitás',
     'ability:magic': 'Mágia',
 
     'action:title': 'Akciók',
+    'action.attack': 'Támadás',
     'action:ap': 'Akció pont',
     'action:roll': 'Dobás',
     'action:damage': 'Sebzés',
+    'action:cast': 'Varázslás',
 
     'action:disarm': 'Lefegyverzés',
     'action:defence': 'Védekezés',
@@ -150,10 +144,14 @@ export const Labels_hu: Record<Labels | Values, string> = {
     'expr:pp_per_level': 'Szintenkénti Fájdalomtűrés',
     'expr:pp_total': 'Fájdalomtűrés',
     'expr:pp_roll': 'Fájdalomtűrés Dobás',
+    'expr:effective_spell_skill': 'Hatásos Képzettség',
+    'expr:spell_level': 'Varázslat Szintje',
+    'expr:spell_focus_skill': 'Fókusz képzettség',
+    'expr:spell_speed': 'Varázslat sebessége',
 
-    'spell:effective_skill': 'Hatásos Képzettség',
-    'spell:level': 'Varázslat Szintje',
-    'spell:focus_skill': 'Fókusz képzettség',
+    'species:elf': 'Elf',
+    'species:orc': 'Ork',
+
     'spell:fire_bolt': 'Tűznyíl',
 
     'skill:endurance': 'Állóképesség',

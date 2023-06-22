@@ -1,25 +1,32 @@
 <script lang="ts">
-	import type { Action } from '../../model/Karakter';
 	import { _ } from 'svelte-i18n';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
 	import Box from './Box.svelte';
 	import ExpressionWidget from '../expression/ExpressionWidget.svelte';
+	import type { Action } from '../../model/Action';
 
 	export let action: Action;
 </script>
 
-<Box background={'#ffeeff'}>
-	<span slot="title">
-		<span class="title">{$_(action.name)}</span>
-		{#if action.subtitle}
-			<span>/</span>
-			<span class="subtitle">
-				{$_(action.subtitle)}
-			</span>
-		{/if}
-	</span>
+<Box background={'#ffeeff'} title={$_(action.name)}>
 	<div>
-		{#if action.ap}
+		{#each Object.entries(action.variants) as [key, variant]}
+			<Box background="#ffffff" title={$_(key)}>
+				{#each variant as roll}
+					<div class="row">
+						<span class="label">{$_(roll.name)}</span>
+						<span>
+							{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
+								<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
+							{:else}
+								<ExpressionWidget expr={roll.roll} />
+							{/if}
+						</span>
+					</div>
+				{/each}
+			</Box>
+		{/each}
+		<!-- {#if action.ap}
 			<div class="row">
 				<span class="label">{$_('action:ap')}</span>
 				<ExpressionTooltip expr={action.ap} />
@@ -34,7 +41,7 @@
 				<span class="label">{$_('action:damage')}</span>
 				<ExpressionWidget expr={action.damage} />
 			</div>
-		{/if}
+		{/if} -->
 	</div>
 </Box>
 

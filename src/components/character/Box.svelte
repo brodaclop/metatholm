@@ -35,7 +35,8 @@
 
 	h2,
 	h3,
-	h4 {
+	h4,
+	h5 {
 		font-size: large;
 		text-align: center;
 		font-weight: bold;

@@ -1,12 +1,14 @@
-import { E, type EvalExpression, type Expression } from "../logic/Expression";
+import { E, type EvalExpression } from "../logic/Expression";
 import type { Entity } from "./Entity";
-import type { ActionKeys } from "./Labels";
 import { TOTAL_EP, TOTAL_FP, ATTACK_AP, WEAPON_ATK, WEAPON_DISARM, WEAPON_DEF, MAGIC_EFFECTIVE_SKILL } from "./Rules";
 import type { Weapon } from "./Weapon";
-import { unwrapFunctionStore, format } from 'svelte-i18n';
-import type { Spell } from "./Spell";
+import { getSpellInfo, type SpellInfo } from "./Spell";
 import { getSkillInfo, type Skill } from "./Skills";
 import type { Ability } from "./Abilities";
+import type { Action } from "./Action";
+import { CharacterClass } from "./CharacterClass";
+import { v4 } from "uuid";
+import { Species } from "./Species";
 
 
 export interface Level {
@@ -16,6 +18,8 @@ export interface Level {
 
 export interface Character extends Entity {
     abilities: Record<Ability, number>;
+    class: CharacterClass;
+    species: Species;
     levels: Array<Level>;
     current: {
         fp: number;
@@ -24,23 +28,24 @@ export interface Character extends Entity {
     }
 }
 
+export interface CharacterInfo extends Entity {
+    class: CharacterClass;
+    species: Species;
+    level: number;
+}
+
+export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'class' | 'species'>;
+
 export interface CalculatedCharacter {
     skills: Partial<Record<Skill, number>>;
     fp: EvalExpression;
     ep: EvalExpression;
     actions: Array<Action>;
     weapons: Array<Weapon>;
-    spells: Array<Spell>;
+    spells: Array<SpellInfo>;
 }
 
-export interface Action {
-    name: string;
-    subtitle?: typeof ActionKeys[number];
-    ap?: EvalExpression;
-    roll: EvalExpression;
-    rollString?: string;
-    damage?: Expression;
-}
+
 
 const merge = <T extends string>(acc: Partial<Record<T, number>>, add: Partial<Record<T, number>>): Partial<Record<T, number>> => {
     Object.entries(add).forEach(([key, value]) => {
@@ -81,16 +86,11 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         damage: 3
     });
 
-    const spells: Array<Spell> = [
-        {
-            name: 'spell:fire_bolt',
-            speed: 8,
-            level: 1,
-            skill: 'skill:focus_elemental'
-        }
+    const spells: Array<SpellInfo> = [
+        getSpellInfo('spell:fire_bolt')
     ];
 
-    const actions: Array<Action> = weapons.flatMap(w => {
+    const actions: Array<Action> = weapons.map(w => {
         const skill = skills[w.skill];
         const difficulty = getSkillInfo(w.skill).difficulty;
         const ap = E.evaluate(ATTACK_AP, {
@@ -113,43 +113,68 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
             'weapon:difficulty': difficulty,
             'weapon:skill': skill
         });
-        return [
-            {
-                name: w.name,
-                ap,
-                roll: attack,
-                rollString: `1d100 + ${attack.result}`,
-                damage: E.constant(`${w.damage}d6!`)
-            },
-            {
-                name: w.name,
-                subtitle: 'action:disarm',
-                ap: E.evaluate(ATTACK_AP, {
-                    'weapon:ap': w.speed,
-                    'weapon:difficulty': difficulty,
-                    'weapon:skill': skill
-                }),
-                roll: disarm,
-                rollString: `1d100 + ${disarm.result}`,
-            },
-            {
-                name: w.name,
-                subtitle: 'action:defence',
-                roll: defence,
-                rollString: `1d100 + ${defence.result}`,
+        const ret: Action = {
+            name: w.name,
+            variants: {
+                'action.attack': [
+                    {
+                        name: 'action:ap',
+                        roll: ap,
+                    },
+                    {
+                        name: 'action:roll',
+                        roll: attack,
+                        rollString: `1d100 + ${attack.result}`,
+                    },
+                    {
+                        name: 'action:damage',
+                        roll: E.constant(`${w.damage}d6!`)
+                    }
+                ],
+                'action:disarm': [
+                    {
+                        name: 'action:ap',
+                        roll: ap,
+                    },
+                    {
+                        name: 'action:roll',
+                        roll: disarm,
+                        rollString: `1d100 + ${disarm.result}`,
+                    },
+                ],
+                'action:defence': [
+                    {
+                        name: 'action:roll',
+                        roll: defence,
+                        rollString: `1d100 + ${defence.result}`,
+                    },
+                ]
             }
-
-        ]
+        };
+        return ret;
     });
 
-    actions.push(...spells.map(s => ({
-        name: s.name,
-        subtitle: `skill:${s.skill}` as any,
-        ap: E.evaluate(E.constant(s.speed), {}),
-        roll: E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'spell:level': s.level, 'spell:focus_skill': skills[s.skill] }),
-        rollString: `${E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'spell:level': s.level, 'spell:focus_skill': skills[s.skill] }).result}d10!`,
-    })));
-
+    actions.push(...spells.map(s => {
+        const ap = E.evaluate(E.sub(20, E.value('expr:spell_speed')), { 'expr:spell_speed': s.speed });
+        const roll = E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'expr:spell_level': s.level, 'expr:spell_focus_skill': skills[s.skill] });
+        const ret: Action = {
+            name: s.name,
+            variants: {
+                'action:cast': [
+                    {
+                        name: 'action:ap',
+                        roll: ap,
+                    },
+                    {
+                        name: 'action:roll',
+                        roll,
+                        rollString: `${roll.result}d10!`
+                    }
+                ]
+            }
+        };
+        return ret;
+    }));
 
     return {
         skills,
@@ -165,3 +190,28 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         })
     }
 };
+
+
+export const createCharacter = (template: CharacterTemplate): Character => {
+    const speciesInfo = Species.get(template.species);
+    const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (speciesInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
+
+    const level: Level = {
+        fpRoll: 10,
+        skills: CharacterClass.get(template.class).skills
+    };
+
+    return {
+        name: template.name,
+        id: v4(),
+        class: template.class,
+        species: template.species,
+        abilities,
+        levels: [level],
+        current: {
+            ep: 0,
+            fp: 0,
+            mp: 0
+        }
+    };
+}

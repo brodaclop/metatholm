@@ -24,12 +24,14 @@
 			<Skills skills={calculatedCharacter.skills} />
 		</Box>
 		<Box title={$_('character:points')} background={'#eeffff'}>
-			<Points {character} {calculatedCharacter} />
+			<Points bind:character {calculatedCharacter} />
 		</Box>
 		<Box title={$_('action:title')} background="#ffffee">
-			{#each calculatedCharacter.actions as action}
-				<ActionCard {action} />
-			{/each}
+			<div>
+				{#each calculatedCharacter.actions as action}
+					<ActionCard {action} />
+				{/each}
+			</div>
 		</Box>
 	</div>
 </Box>

@@ -13,7 +13,7 @@
 	<div class="row">
 		<span class="label">{$_('character:fp')}</span>
 		<span class="value">
-			<span>{character.current.fp}</span>
+			<span><input type="number" bind:value={character.current.fp} /></span>
 			<span>/</span>
 			<span>
 				<ExpressionTooltip expr={calculatedCharacter.fp} />

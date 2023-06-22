@@ -1,11 +1,12 @@
+import { createList } from "./InfoList";
 import type { Skill } from "./Skills";
 
-export interface CharacterClass {
-    name: CharacterClasses;
+export interface CharacterClassInfo {
+    name: CharacterClass;
     skills: Partial<Record<Skill, number>>;
 }
 
-export type CharacterClasses =
+export type CharacterClass =
     'class:bruiser' |
     'class:sneak' |
     'class:hedge_wizard' |
@@ -15,7 +16,7 @@ export type CharacterClasses =
     'class:charmer' |
     'class:witch';
 
-export const Classes: Record<CharacterClasses, Omit<CharacterClass, 'name'>> = {
+export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> = {
     'class:assassin': {
         skills: {
             'skill:knives': 3,
@@ -43,3 +44,5 @@ export const Classes: Record<CharacterClasses, Omit<CharacterClass, 'name'>> = {
         skills: {}
     },
 };
+
+export const CharacterClass = createList(Classes);

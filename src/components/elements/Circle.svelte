@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let status: 'empty' | 'half' | 'full';
+	export let status: 'empty' | 'half' | 'full' | 'almost-empty';
 	export let value: string = '';
 </script>
 
-<span class={status}>
+<span class={status} on:click on:keypress>
 	{#if value}{value}{/if}
 </span>
 
@@ -28,6 +28,10 @@
 
 	.half {
 		background-color: lightgray;
+	}
+
+	.almost-empty {
+		background-color: firebrick;
 	}
 
 	.full {

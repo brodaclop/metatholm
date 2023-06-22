@@ -32,7 +32,6 @@ export type Expression = Value | Operation | LevelSum | number;
 export type EvalExpression = Expression & { result: number };
 
 const calculateMultiOpResult = (type: MultiOp['type'], args: Array<EvalExpression>): number => {
-    console.log('type', type);
     switch (type) {
         case 'max': return Math.max(...args.map(a => a.result));
         case 'min': return Math.min(...args.map(a => a.result));
