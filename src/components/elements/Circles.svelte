@@ -1,53 +1,63 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Circle from './Circle.svelte';
+	import FaMinus from 'svelte-icons/fa/FaMinus.svelte';
+	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
 
-	export let value: number = 0;
-	export let modifier: number = 0;
-	export let max: number;
+	export let value: number;
+	export let newValue: number | undefined;
 	export let name: string;
+	export let subName: string = '';
+	export let max: number;
 	export let editable: boolean = false;
 
-	$: modified = value + (modifier ?? 0);
+	$: _newValue = newValue ?? value;
 
-	const plus = () => (value = Math.min(max, value + 1));
-	const minus = () => (value = Math.max(0, value - 1));
+	export let plus: () => void;
+	export let minus: () => void;
 </script>
 
-<div>
-	<span class="name">{$_(name)}</span>
-	<span class="score">
+<tr>
+	<td class="name"
+		>{$_(name)}
+		{#if subName}<i>({$_(subName)})</i>{/if}</td
+	>
+	<td class="score">
 		{#if editable}
-			<Circle status={value === 0 ? 'half' : 'empty'} value=" -" on:click={minus} />
+			<Circle status={_newValue === 0 ? 'half' : 'empty'} on:click={minus}>
+				<FaMinus slot="value" />
+			</Circle>
 		{/if}
 		{#each Array(max) as _, i}
-			{#if i < Math.min(value, modified)}
+			{#if i < Math.min(value, _newValue)}
 				<Circle status="full" />
-			{:else if i < Math.max(value, modified)}
-				{#if modified < value}
-					<Circle status="almost-empty" />
+			{:else if i < Math.max(value, _newValue)}
+				{#if _newValue < value}
+					<Circle status="reduced" />
 				{:else}
-					<Circle status="half" />
+					<Circle status="increased" />
 				{/if}
 			{:else}
 				<Circle status="empty" />
 			{/if}
 		{/each}
 		{#if editable}
-			<Circle status={value === max ? 'half' : 'empty'} value=" +" on:click={plus} />
+			<Circle status={_newValue === max ? 'half' : 'empty'} on:click={plus}>
+				<FaPlus slot="value" />
+			</Circle>
 		{/if}
-	</span>
-</div>
+	</td>
+	{#if $$slots.extra}
+		<td class="extra">
+			<slot name="extra" />
+		</td>
+	{/if}
+</tr>
 
 <style>
-	div {
-		display: flex;
-		flex-wrap: nowrap;
-	}
-
 	.name {
-		flex-basis: 50%;
 		font-weight: bold;
+		white-space: nowrap;
 	}
 
 	.score {

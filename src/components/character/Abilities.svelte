@@ -1,15 +1,19 @@
 <script lang="ts">
 	import type { Ability } from '../../model/Abilities';
-	import { keys } from '../../model/InfoList';
+	import { entries, keys } from '../../model/InfoList';
 	import type { Character } from '../../model/Karakter';
+	import CircleGroup from '../elements/CircleGroup.svelte';
 	import Circles from '../elements/Circles.svelte';
 
 	export let abilities: Character['abilities'];
 	export let modifiers: Partial<Record<Ability, number>> = {};
 </script>
 
-<div>
-	{#each keys(abilities) as key}
-		<Circles bind:value={abilities[key]} max={10} name={key} modifier={modifiers[key]} />
-	{/each}
-</div>
+<CircleGroup
+	rows={keys(abilities)}
+	values={abilities}
+	max={10}
+	newValues={Object.fromEntries(
+		entries(abilities).map(([key, value]) => [key, abilities[key] + (modifiers[key] ?? 0)])
+	)}
+/>

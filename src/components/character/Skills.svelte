@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { keys } from '../../model/InfoList';
 	import type { Level } from '../../model/Karakter';
-	import Circles from '../elements/Circles.svelte';
+	import { Skill } from '../../model/Skills';
+	import CircleGroup from '../elements/CircleGroup.svelte';
 
 	export let skills: Level['skills'];
 </script>
 
-<div>
-	{#each Object.entries(skills) as [key, value]}
-		<Circles bind:value max={10} name={key} />
-	{/each}
-</div>
+<CircleGroup
+	rows={keys(skills).map((s) => ({ name: s, subName: Skill.get(s).type }))}
+	values={skills}
+	max={10}
+/>

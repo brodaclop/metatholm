@@ -7,6 +7,7 @@
 	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import Points from './Points.svelte';
 	import ActionCard from './ActionCard.svelte';
+	import SkillEditor from './SkillEditor.svelte';
 
 	export let character: Character;
 

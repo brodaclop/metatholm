@@ -20,28 +20,41 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
     'class:assassin': {
         skills: {
             'skill:knives': 3,
+            "skill:magic_force": 1
         }
     },
     'class:bruiser': {
-        skills: {}
+        skills: {
+            "skill:strength": 3
+        }
     },
     'class:charmer': {
-        skills: {}
+        skills: {
+            "skill:magic_force": 2
+        }
     },
     'class:hedge_wizard': {
-        skills: {}
+        skills: {
+            "skill:magic_force": 3
+        }
     },
     'class:sneak': {
         skills: {}
     },
     'class:tinker': {
-        skills: {}
+        skills: {
+            "skill:magic_force": 2
+        }
     },
     'class:vagabond': {
-        skills: {}
+        skills: {
+            "skill:magic_force": 1
+        }
     },
     'class:witch': {
-        skills: {}
+        skills: {
+            "skill:magic_force": 3
+        }
     },
 };
 

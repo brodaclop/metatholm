@@ -2,13 +2,14 @@ import { E, type EvalExpression } from "../logic/Expression";
 import type { Entity } from "./Entity";
 import { TOTAL_EP, TOTAL_FP, ATTACK_AP, WEAPON_ATK, WEAPON_DISARM, WEAPON_DEF, MAGIC_EFFECTIVE_SKILL } from "./Rules";
 import type { Weapon } from "./Weapon";
-import { getSpellInfo, type SpellInfo } from "./Spell";
-import { getSkillInfo, type Skill } from "./Skills";
 import type { Ability } from "./Abilities";
 import type { Action } from "./Action";
 import { CharacterClass } from "./CharacterClass";
 import { v4 } from "uuid";
 import { Species } from "./Species";
+import { Skill } from "./Skills";
+import { Spell, type SpellInfo } from "./Spell";
+import { entries } from "./InfoList";
 
 
 export interface Level {
@@ -25,6 +26,7 @@ export interface Character extends Entity {
         fp: number;
         ep: number;
         mp: number;
+        kp: number;
     }
 }
 
@@ -86,13 +88,11 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         damage: 3
     });
 
-    const spells: Array<SpellInfo> = [
-        getSpellInfo('spell:fire_bolt')
-    ];
+    const spells: Array<SpellInfo> = entries(skills).flatMap(([key, value]) => Spell.available(key, value));
 
     const actions: Array<Action> = weapons.map(w => {
         const skill = skills[w.skill];
-        const difficulty = getSkillInfo(w.skill).difficulty;
+        const difficulty = Skill.get(w.skill).difficulty;
         const ap = E.evaluate(ATTACK_AP, {
             'weapon:ap': w.speed,
             'weapon:difficulty': difficulty,
@@ -211,7 +211,8 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         current: {
             ep: 0,
             fp: 0,
-            mp: 0
+            mp: 0,
+            kp: 20
         }
     };
 }
