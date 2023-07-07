@@ -26,9 +26,11 @@
 
 	let currentCharacter: string;
 
-	$: if (currentCharacter) {
-		goto(`/character/${currentCharacter}`);
-	}
+	$: switchCharacter = () => {
+		if (currentCharacter) {
+			goto(`/character/${currentCharacter}`);
+		}
+	};
 
 	$: lang && locale.set(lang.value);
 </script>
@@ -38,7 +40,8 @@
 		<ul>
 			<li>Logo</li>
 			<li>
-				<select bind:value={currentCharacter}>
+				<select bind:value={currentCharacter} on:change={switchCharacter}>
+					<option value="">Select character</option>
 					{#each data.characters as character}
 						<option value={character.id}
 							>{character.name} ({$_(character.species)}
@@ -49,6 +52,7 @@
 				</select>
 			</li>
 			<li><a href="/create">Create</a></li>
+			<li><a href="/simulator">Simulator</a></li>
 			<li>
 				<Select
 					bind:value={lang}

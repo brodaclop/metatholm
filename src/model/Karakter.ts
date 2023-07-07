@@ -22,6 +22,9 @@ export interface Character extends Entity {
     class: CharacterClass;
     species: Species;
     levels: Array<Level>;
+    inventory: {
+        weapons: Array<Weapon>;
+    };
     current: {
         fp: number;
         ep: number;
@@ -64,7 +67,7 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
     const level = character.levels.length;
     const { abilities } = character;
     const skills = calculateSkills(character);
-    const weapons: Array<Weapon> = [];
+    const weapons: Array<Weapon> = [...character.inventory.weapons];
     if (skills['skill:brawling']) {
         weapons.push({
             id: '1',
@@ -73,20 +76,10 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
             speed: abilities['ability:activity'],
             attack: abilities['ability:build'],
             defence: abilities['ability:build'],
-            range: 1,
+            reach: 1,
             damage: Math.max(1, Math.floor((skills['skill:strength'] ?? 0) / 2))
         });
     }
-    weapons.push({
-        id: '2',
-        name: 'Dzsambia',
-        skill: 'skill:knives',
-        speed: 5,
-        attack: 8,
-        defence: 3,
-        range: 1,
-        damage: 3
-    });
 
     const spells: Array<SpellInfo> = entries(skills).flatMap(([key, value]) => Spell.available(key, value));
 
@@ -94,32 +87,39 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         const skill = skills[w.skill];
         const difficulty = Skill.get(w.skill).difficulty;
         const ap = E.evaluate(ATTACK_AP, {
-            'weapon:ap': w.speed,
+            'weapon:speed': w.speed,
             'weapon:difficulty': difficulty,
             'weapon:skill': skill,
         });
         const attack = E.evaluate(WEAPON_ATK, {
             'weapon:attack': w.attack,
             'weapon:difficulty': difficulty,
-            'weapon:skill': skill
+            'weapon:skill': skill,
+            'weapon:reach': w.reach
+
         });
         const disarm = E.evaluate(WEAPON_DISARM, {
             'weapon:attack': w.attack,
             'weapon:difficulty': difficulty,
-            'weapon:skill': skill
+            'weapon:skill': skill,
+            'weapon:reach': w.reach
+
         });
         const defence = E.evaluate(WEAPON_DEF, {
             'weapon:defence': w.defence,
             'weapon:difficulty': difficulty,
-            'weapon:skill': skill
+            'weapon:skill': skill,
+            'weapon:reach': w.reach
+
         });
         const ret: Action = {
             name: w.name,
             variants: {
-                'action.attack': [
+                'action:attack': [
                     {
                         name: 'action:ap',
                         roll: ap,
+                        rollString: String(ap.result)
                     },
                     {
                         name: 'action:roll',
@@ -127,8 +127,9 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
                         rollString: `1d100 + ${attack.result}`,
                     },
                     {
-                        name: 'action:damage',
-                        roll: E.constant(`${w.damage}d6!`)
+                        name: 'label:damage',
+                        roll: E.constant(`${w.damage}d6!`),
+                        rollString: `${w.damage}d6!`
                     }
                 ],
                 'action:disarm': [
@@ -207,6 +208,20 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         class: template.class,
         species: template.species,
         abilities,
+        inventory: {
+            weapons: [
+                {
+                    id: '2',
+                    name: 'Dzsambia',
+                    skill: 'skill:knives',
+                    speed: 5,
+                    attack: 8,
+                    defence: 3,
+                    reach: 1,
+                    damage: 3
+                }
+            ]
+        },
         levels: [level],
         current: {
             ep: 0,

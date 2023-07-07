@@ -38,7 +38,7 @@
 		</div>
 		{#if action.damage}
 			<div class="row">
-				<span class="label">{$_('action:damage')}</span>
+				<span class="label">{$_('label:damage')}</span>
 				<ExpressionWidget expr={action.damage} />
 			</div>
 		{/if} -->

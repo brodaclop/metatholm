@@ -46,7 +46,7 @@
 	<Box title="Create new character" background="#ddffdd">
 		<Box title="Main" background="#ddddff">
 			<label>
-				{$_('character:name')}
+				{$_('label:name')}
 				<input type="text" bind:value={name} />
 			</label>
 			<label>

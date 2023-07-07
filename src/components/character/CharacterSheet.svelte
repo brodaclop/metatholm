@@ -7,9 +7,10 @@
 	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import Points from './Points.svelte';
 	import ActionCard from './ActionCard.svelte';
-	import SkillEditor from './SkillEditor.svelte';
+	import Weapons from './Weapons.svelte';
 
 	export let character: Character;
+	export let deleteCharacter: () => void;
 
 	$: calculatedCharacter = calculateCharacter(character);
 </script>
@@ -34,7 +35,11 @@
 				{/each}
 			</div>
 		</Box>
+		<Box background="#eeeeee" title={$_('character:weapons')}>
+			<Weapons bind:character />
+		</Box>
 	</div>
+	<button on:click={deleteCharacter}>Delete</button>
 </Box>
 
 <style>

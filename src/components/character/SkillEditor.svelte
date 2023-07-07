@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { _ } from 'svelte-i18n';
+	import { _, unwrapFunctionStore } from 'svelte-i18n';
 	import { E } from '../../logic/Expression';
-	import { entries } from '../../model/InfoList';
+	import { entries, group } from '../../model/InfoList';
 	import type { CalculatedCharacter, Character, Level } from '../../model/Karakter';
 	import { SKILL_KP } from '../../model/Rules';
 	import { Skill, type SkillInfo } from '../../model/Skills';
@@ -16,6 +16,15 @@
 	export let character: Character;
 	export let calculatedCharacter: CalculatedCharacter;
 	export let admin = false;
+
+	let abilityLabels: Record<string, string> = {};
+
+	_.subscribe((mf) => {
+		abilityLabels['ability:build'] = mf('ability:build');
+		abilityLabels['ability:presence'] = mf('ability:presence');
+		abilityLabels['ability:activity'] = mf('ability:activity');
+		abilityLabels['ability:magic'] = mf('ability:magic');
+	});
 
 	let changes: Partial<Record<Skill, number>> = {};
 	$: if (character) {
@@ -33,12 +42,16 @@
 		const skill: SkillInfo = Skill.get(name);
 		if (sums[name] < 10) {
 			if (!admin) {
+				const ability =
+					skill.ability === 'skill_type:general'
+						? 10
+						: skill.positive
+						? character.abilities[skill.ability]
+						: 10 - character.abilities[skill.ability];
 				const kpDeduction = E.evaluate(SKILL_KP, {
 					'expr:skill_level': sums[skill.name] + 1,
 					'expr:skill_difficulty': skill.difficulty,
-					'expr:skill_ability': skill.positive
-						? character.abilities[skill.ability]
-						: 10 - character.abilities[skill.ability]
+					'expr:skill_ability': ability
 				}).result;
 				if (kpDeduction <= remainingKp) {
 					changes[name] = (changes[name] ?? 0) + 1;
@@ -54,12 +67,16 @@
 		const skill: SkillInfo = Skill.get(name);
 		if (sums[name] > 0 && (admin || (changes[name] ?? 0) >= 1)) {
 			if (!admin) {
+				const ability =
+					skill.ability === 'skill_type:general'
+						? 10
+						: skill.positive
+						? character.abilities[skill.ability]
+						: 10 - character.abilities[skill.ability];
 				const kpRebate = E.evaluate(SKILL_KP, {
 					'expr:skill_level': sums[skill.name],
 					'expr:skill_difficulty': skill.difficulty,
-					'expr:skill_ability': skill.positive
-						? character.abilities[skill.ability]
-						: 10 - character.abilities[skill.ability]
+					'expr:skill_ability': ability
 				}).result;
 				changes[name] = (changes[name] ?? 0) - 1;
 				remainingKp += kpRebate;
@@ -89,9 +106,12 @@
 				E.evaluate(SKILL_KP, {
 					'expr:skill_level': sums[skill.name] + 1,
 					'expr:skill_difficulty': skill.difficulty,
-					'expr:skill_ability': skill.positive
-						? character.abilities[skill.ability]
-						: 10 - character.abilities[skill.ability]
+					'expr:skill_ability':
+						skill.ability === 'skill_type:general'
+							? 10
+							: skill.positive
+							? character.abilities[skill.ability]
+							: 10 - character.abilities[skill.ability]
 				})
 			];
 		})
@@ -108,30 +128,36 @@
 		}
 	}}
 >
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="content" on:click|stopPropagation>
 		<Box title={$_('character:skills')} background={'#eeffee'}>
 			<div>
 				<div class="scrollable">
-					<CircleGroup
-						rows={Skill.list().map((s) => ({ name: s.name, subName: s.ability }))}
-						values={calculatedCharacter.skills}
-						newValues={sums}
-						max={10}
-						editable
-						{plus}
-						{minus}
-					>
-						<span slot="extra" let:key>
-							{#if !admin}
-								<ExpressionTooltip expr={kpNeeded[key]} />
-							{/if}
-						</span>
-					</CircleGroup>
+					{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
+						<h3>{$_(type)}</h3>
+						<CircleGroup
+							rows={skillList.map((s) => ({
+								name: s.name,
+								subName: (s.positive ? '+' : '-') + abilityLabels[s.ability]
+							}))}
+							values={calculatedCharacter.skills}
+							newValues={sums}
+							max={10}
+							editable
+							{plus}
+							{minus}
+						>
+							<span slot="extra" let:key>
+								{#if !admin}
+									<ExpressionTooltip expr={kpNeeded[key]} />
+								{/if}
+							</span>
+						</CircleGroup>
+					{/each}
 				</div>
-				<div>
-					<span>{$_('character:kp')}</span>
-					<span>{remainingKp}</span>
-					<button on:click={submit}>Submit</button>
+				<div class="footer">
+					<span>{$_('character:kp')}: {remainingKp}</span>
+					<button on:click={submit}>OK</button>
 				</div>
 			</div>
 		</Box>
@@ -139,8 +165,13 @@
 </dialog>
 
 <style>
+	.footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	dialog {
-		max-width: 32em;
+		max-width: fit-content;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
@@ -174,6 +205,10 @@
 
 	.scrollable {
 		overflow-y: scroll;
-		max-height: 10em;
+		max-height: 50vh;
+	}
+
+	h3 {
+		text-decoration: underline;
 	}
 </style>

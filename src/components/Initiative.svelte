@@ -28,7 +28,7 @@
 			} else {
 				const value = E.evaluate(ATTACK_AP, {
 					'weapon:skill': skill,
-					'weapon:ap': base,
+					'weapon:speed': base,
 					'weapon:difficulty': hardness
 				}).result;
 				return Math.max(1, Math.round(value));

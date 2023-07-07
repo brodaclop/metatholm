@@ -5,7 +5,7 @@ export interface Weapon extends Entity {
     attack: number;
     defence: number;
     speed: number;
-    range: number;
+    reach: number;
     damage: number;
     skill: Skill;
 }

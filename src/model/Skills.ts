@@ -1,13 +1,19 @@
 import type { Ability } from "./Abilities";
 import { createList } from "./InfoList";
 
-export interface SkillInfo {
+export type SkillInfo = {
     readonly name: Skill;
     readonly difficulty: 1 | 2 | 3;
     readonly ability: Ability;
     readonly positive: boolean;
     readonly type: SkillType;
-}
+} | {
+    readonly name: Skill;
+    difficulty: 2,
+    ability: 'skill_type:general',
+    positive: true,
+    type: SkillType
+};
 
 export const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
     "skill:endurance": {
@@ -112,6 +118,12 @@ export const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:combat'
     },
+    'skill:swords': {
+        difficulty: 3,
+        ability: 'ability:activity',
+        positive: false,
+        type: 'skill_type:combat'
+    },
     'skill:alchemy': {
         difficulty: 3,
         ability: 'ability:activity',
@@ -120,6 +132,12 @@ export const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
     },
     'skill:bows': {
         difficulty: 2,
+        ability: 'ability:activity',
+        positive: false,
+        type: 'skill_type:combat'
+    },
+    'skill:crossbows': {
+        difficulty: 1,
         ability: 'ability:activity',
         positive: false,
         type: 'skill_type:combat'
@@ -226,9 +244,40 @@ export const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:focus',
     },
+    'skill:history': {
+        difficulty: 2,
+        ability: 'skill_type:general',
+        positive: true,
+        type: 'skill_type:knowledge'
+    },
+    'skill:geography': {
+        difficulty: 2,
+        ability: 'skill_type:general',
+        positive: true,
+        type: 'skill_type:knowledge'
+    },
+    'skill:architecture': {
+        difficulty: 2,
+        ability: 'skill_type:general',
+        positive: true,
+        type: 'skill_type:knowledge'
+    },
+    'skill:law': {
+        difficulty: 2,
+        ability: 'skill_type:general',
+        positive: true,
+        type: 'skill_type:knowledge'
+    },
+    'skill:etiquette': {
+        difficulty: 2,
+        ability: 'skill_type:general',
+        positive: true,
+        type: 'skill_type:knowledge'
+    },
 };
 
-export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge';
+export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge' | 'skill_type:general';
+
 export type Skill = 'skill:endurance' |
     'skill:pain_threshold' |
     'skill:knives' |
@@ -246,8 +295,10 @@ export type Skill = 'skill:endurance' |
     'skill:throwing' |
     'skill:reactions' |
     'skill:martial_arts' |
+    'skill:swords' |
     'skill:alchemy' |
     'skill:bows' |
+    'skill:crossbows' |
     'skill:balance' |
     'skill:medicine' |
     'skill:personal_charm' |
@@ -264,9 +315,12 @@ export type Skill = 'skill:endurance' |
     'skill:spacetime_focus' |
     'skill:nature_focus' |
     'skill:spirit_focus' |
-    'skill:shadow_focus'
-
-
+    'skill:shadow_focus' |
+    'skill:history' |
+    'skill:geography' |
+    'skill:architecture' |
+    'skill:law' |
+    'skill:etiquette'
     ;
 
 export const Skill = createList(SkillInfos);

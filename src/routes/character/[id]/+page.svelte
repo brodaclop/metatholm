@@ -9,7 +9,6 @@
 	}
 
 	$: if (changes >= 2) {
-		console.log('saving');
 		const body: FormData = new FormData();
 		body.set('character', JSON.stringify(data.character));
 		changes = 0;
@@ -21,6 +20,19 @@
 			}
 		}).then(() => invalidate('db:characterlist'));
 	}
+
+	const deleteCharacter = () => {
+		const body: FormData = new FormData();
+		body.set('character', JSON.stringify(data.character));
+		changes = 0;
+		fetch('?/deleteCharacter', {
+			method: 'POST',
+			body,
+			headers: {
+				'x-sveltekit-action': 'true'
+			}
+		}).then(() => invalidate('db:characterlist'));
+	};
 
 	import CharacterSheet from '../../../components/character/CharacterSheet.svelte';
 	import { invalidate } from '$app/navigation';
@@ -67,7 +79,7 @@
 </script>
 
 <div>
-	<CharacterSheet bind:character={data.character} />
+	<CharacterSheet bind:character={data.character} {deleteCharacter} />
 </div>
 
 <!-- 

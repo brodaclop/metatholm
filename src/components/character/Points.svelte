@@ -4,7 +4,8 @@
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
 	import { E } from '../../logic/Expression';
 	import SkillEditor from './SkillEditor.svelte';
-
+	import GiOpenBook from 'svelte-icons/gi/GiOpenBook.svelte';
+	import IconButton from '../elements/IconButton.svelte';
 	export let character: Character;
 
 	export let calculatedCharacter: CalculatedCharacter;
@@ -65,7 +66,11 @@
 				</td>
 				<td>
 					<span><input type="number" bind:value={character.current.kp} /></span>
-					<span><button on:click={() => (showModal = true)}>Learn</button></span>
+					<span
+						><IconButton title="label:learn" on:click={() => (showModal = true)}
+							><GiOpenBook /></IconButton
+						></span
+					>
 				</td>
 			</tr>
 		</tbody>

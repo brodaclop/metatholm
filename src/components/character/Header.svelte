@@ -5,5 +5,5 @@
 	export let character: Character;
 </script>
 
-{$_('character:name')}
+{$_('label:name')}
 <input type="text" bind:value={character.name} />
