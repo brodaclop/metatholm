@@ -5,6 +5,8 @@
 	import { goto } from '$app/navigation';
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
+	import { page } from '$app/stores';
+
 	export let data: PageData;
 
 	const LANGUAGES = [
@@ -12,9 +14,7 @@
 		{ value: 'hu', label: Hu }
 	];
 
-	const initLang = getLocaleFromNavigator()?.substring(0, 2);
-
-	let lang = LANGUAGES.find((l) => l.value === initLang);
+	let lang = LANGUAGES[0];
 
 	register('en', async () => Labels_en);
 	register('hu', async () => Labels_hu);
@@ -24,13 +24,24 @@
 		initialLocale: lang?.value
 	});
 
-	let currentCharacter: string;
+	let currentCharacter: string = '';
+	let lastPath: string = '';
 
-	$: switchCharacter = () => {
-		if (currentCharacter) {
-			goto(`/character/${currentCharacter}`);
+	$: {
+		if (lastPath !== $page.url.pathname) {
+			const paths = $page.url.pathname.split('/');
+			const penultimate = paths.at(-2);
+			const last = paths.at(-1);
+			if (penultimate === 'character' && last) {
+				currentCharacter = last;
+			} else {
+				currentCharacter = '';
+			}
 		}
-	};
+		lastPath = $page.url.pathname;
+	}
+
+	$: switchCharacter = () => goto(currentCharacter ? `/character/${currentCharacter}` : '/');
 
 	$: lang && locale.set(lang.value);
 </script>
@@ -45,7 +56,7 @@
 					{#each data.characters as character}
 						<option value={character.id}
 							>{character.name} ({$_(character.species)}
-							{$_(character.class)} / {$_('character:level')}
+							{$_(character.background)} / {$_('character:level')}
 							{character.level})</option
 						>
 					{/each}

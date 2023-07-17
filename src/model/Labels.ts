@@ -1,6 +1,6 @@
 import type { Ability } from "./Abilities";
 import type { ActionRoll, ActionVariant } from "./Action";
-import type { CharacterClass } from "./CharacterClass";
+import type { Background } from "./Background";
 import type { ExpressionNames } from "./Rules";
 import type { Skill, SkillType } from "./Skills";
 import type { Species } from "./Species";
@@ -11,7 +11,11 @@ type GenericLabels = 'label:name' |
     'label:learn' |
     'label:edit' |
     'label:delete' |
-    'label:new'
+    'label:new' |
+    'label:create_character' |
+    'label:character' |
+    'label:species' |
+    'label:background'
     ;
 
 export const Keys = [
@@ -25,7 +29,6 @@ export const Keys = [
     'character:fp',
     'character:mp',
     'character:kp',
-    'character:class',
     'character:weapons',
 
     'weapon:speed',
@@ -39,14 +42,13 @@ export const Keys = [
     'label:difficulty:2',
     'label:difficulty:3',
 
-    'weapons:brawling'
 ] as const;
 
 export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = CharacterClass | ActionVariant | ActionRoll | Species | Spell | SkillType | GenericLabels;
+type Valueless = Background | ActionVariant | ActionRoll | Species | Spell | SkillType | GenericLabels;
 
 export type Labels = Valueless | Values;
 export const Labels_en: Record<Labels, string> = {
@@ -65,7 +67,6 @@ export const Labels_en: Record<Labels, string> = {
     'action:cast': 'Cast',
 
     'label:name': 'Name',
-    'character:class': 'Class',
     'character:abilities': 'Abilities',
     'character:skills': 'Skills',
     'character:info': 'Info',
@@ -77,14 +78,14 @@ export const Labels_en: Record<Labels, string> = {
     'character:kp': 'Skill Points',
     'character:weapons': 'Weapons',
 
-    'class:bruiser': 'Bruiser',
-    'class:sneak': 'Sneak',
-    'class:hedge_wizard': 'Hedge Wizard',
-    'class:tinker': 'Tinker',
-    'class:assassin': 'Assassin',
-    'class:vagabond': 'Vagabond',
-    'class:charmer': 'Charmer',
-    'class:witch': 'Witch',
+    'background:bruiser': 'Bruiser',
+    'background:sneak': 'Sneak',
+    'background:hedge_wizard': 'Hedge Wizard',
+    'background:tinker': 'Tinker',
+    'background:assassin': 'Assassin',
+    'background:vagabond': 'Vagabond',
+    'background:charmer': 'Charmer',
+    'background:witch': 'Witch',
 
     'expr:pp_base': 'Pain Tolerance Base',
     'expr:pp_per_level': 'Level Pain Tolerance',
@@ -106,6 +107,11 @@ export const Labels_en: Record<Labels, string> = {
     'label:edit': 'Edit',
     'label:delete': 'Delete',
     'label:new': 'New',
+    'label:character': 'Character',
+    'label:create_character': 'Create Character',
+    'label:species': 'Species',
+    'label:background': 'Background',
+
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
     'skill:brawling': 'Brawling',
@@ -159,6 +165,8 @@ export const Labels_en: Record<Labels, string> = {
 
     'species:elf': 'Elf',
     'species:orc': 'Orc',
+    'species:gnome': 'Gnome',
+    'species:dwarf': 'Dwarf',
 
     'spell:fire_bolt': 'Fire Bolt',
     'spell:lightning_strike': 'Lightning Strike',
@@ -169,8 +177,6 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:attack': 'Attack',
     'weapon:defence': 'Defence',
     'weapon:reach': 'Reach',
-
-    'weapons:brawling': 'Brawling',
 
 };
 
@@ -200,17 +206,16 @@ export const Labels_hu: Record<Labels, string> = {
     'character:ep': 'Életerő',
     'character:mp': 'Mágia Kapacitás',
     'character:kp': 'Képzettség Pont',
-    'character:class': 'Kaszt',
     'character:weapons': 'Fegyverek',
 
-    'class:bruiser': 'Balhés',
-    'class:sneak': 'Sunyi',
-    'class:hedge_wizard': 'Sufnimágus',
-    'class:tinker': 'Ezermester',
-    'class:assassin': 'Orgyilkos',
-    'class:vagabond': 'Kóborló',
-    'class:charmer': 'Bájgúnár',
-    'class:witch': 'Vajákos',
+    'background:bruiser': 'Balhés',
+    'background:sneak': 'Sunyi',
+    'background:hedge_wizard': 'Sufnimágus',
+    'background:tinker': 'Ezermester',
+    'background:assassin': 'Orgyilkos',
+    'background:vagabond': 'Kóborló',
+    'background:charmer': 'Bájgúnár',
+    'background:witch': 'Vajákos',
 
     'expr:pp_base': 'Fájdalomtűrés Alap',
     'expr:pp_per_level': 'Szintenkénti Fájdalomtűrés',
@@ -231,12 +236,18 @@ export const Labels_hu: Record<Labels, string> = {
     'label:edit': 'Szerkeszt',
     'label:delete': 'Töröl',
     'label:new': 'Új',
+    'label:character': 'Karakter',
+    'label:create_character': 'Új karakter',
+    'label:species': 'Faj',
+    'label:background': 'Háttér',
 
 
     'label:weapon': 'Fegyver',
 
     'species:elf': 'Elf',
     'species:orc': 'Ork',
+    'species:gnome': 'Gnóm',
+    'species:dwarf': 'Törp',
 
     'spell:fire_bolt': 'Tűznyíl',
     'spell:lightning_strike': 'Lightning Strike',
@@ -302,8 +313,6 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:attack': 'Támadás',
     'weapon:defence': 'Védekezés',
     'weapon:reach': 'Ütőtáv',
-    'weapons:brawling': 'Bunyó',
-
 };
 
 export type Language = 'en' | 'hu';

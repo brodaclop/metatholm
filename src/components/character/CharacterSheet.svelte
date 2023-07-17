@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Header from './Header.svelte';
 	import Box from './Box.svelte';
 	import Abilities from './Abilities.svelte';
 	import Skills from './Skills.svelte';
@@ -8,6 +7,7 @@
 	import Points from './Points.svelte';
 	import ActionCard from './ActionCard.svelte';
 	import Weapons from './Weapons.svelte';
+	import MainBox from './MainBox.svelte';
 
 	export let character: Character;
 	export let deleteCharacter: () => void;
@@ -15,9 +15,9 @@
 	$: calculatedCharacter = calculateCharacter(character);
 </script>
 
-<Box background={'#ffeeee'}>
-	<Header slot="title" bind:character />
+<Box background={'#ffeeee'} title={character.name}>
 	<div>
+		<MainBox bind:character />
 		<Box title={$_('character:abilities')} background={'#eeeeff'}>
 			<Abilities bind:abilities={character.abilities} />
 		</Box>

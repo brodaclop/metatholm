@@ -41,7 +41,7 @@
 	// let character: Character = {
 	// 	id: '1',
 	// 	name: 'Teszt Kar',
-	// 	class: 'class:assassin',
+	// 	background: 'background:assassin',
 	// 	species: 'species:elf',
 	// 	abilities: {
 	// 		'ability:build': 3,

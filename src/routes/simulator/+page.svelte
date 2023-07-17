@@ -100,7 +100,7 @@
 						{#each data.characters as character}
 							<option value={character}
 								>{character.name} ({$_(character.species)}
-								{$_(character.class)} / {$_('character:level')}
+								{$_(character.background)} / {$_('character:level')}
 								{character.levels.length})</option
 							>
 						{/each}

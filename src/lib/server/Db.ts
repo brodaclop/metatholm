@@ -18,7 +18,7 @@ export const loadAllCharacters = (): Array<Character> => {
 
 export const saveCharacter = (char: Character) => {
     const stmt = db.prepare('insert into CHARACTERS(id, info, payload) VALUES ($id, $info, $payload) on conflict(id) do update set payload=$payload, info=$info');
-    const info: CharacterInfo = { class: char.class, species: char.species, id: char.id, name: char.name, level: char.levels.length };
+    const info: CharacterInfo = { background: char.background, species: char.species, id: char.id, name: char.name, level: char.levels.length };
     stmt.run({ id: char.id, info: JSON.stringify(info), payload: JSON.stringify(char) });
 }
 

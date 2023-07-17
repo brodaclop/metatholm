@@ -4,7 +4,7 @@ import { TOTAL_EP, TOTAL_FP, ATTACK_AP, WEAPON_ATK, WEAPON_DISARM, WEAPON_DEF, M
 import type { Weapon } from "./Weapon";
 import type { Ability } from "./Abilities";
 import type { Action } from "./Action";
-import { CharacterClass } from "./CharacterClass";
+import { Background } from "./Background";
 import { v4 } from "uuid";
 import { Species } from "./Species";
 import { Skill } from "./Skills";
@@ -19,7 +19,7 @@ export interface Level {
 
 export interface Character extends Entity {
     abilities: Record<Ability, number>;
-    class: CharacterClass;
+    background: Background;
     species: Species;
     levels: Array<Level>;
     inventory: {
@@ -34,12 +34,12 @@ export interface Character extends Entity {
 }
 
 export interface CharacterInfo extends Entity {
-    class: CharacterClass;
+    background: Background;
     species: Species;
     level: number;
 }
 
-export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'class' | 'species'>;
+export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'species'>;
 
 export interface CalculatedCharacter {
     skills: Partial<Record<Skill, number>>;
@@ -63,119 +63,155 @@ const merge = <T extends string>(acc: Partial<Record<T, number>>, add: Partial<R
 
 const calculateSkills = (character: Character): Partial<Record<Skill, number>> => character.levels.reduce((acc, curr) => merge(acc, curr.skills), {} as Partial<Record<Skill, number>>)
 
+const calculateSpellAction = (skills: Partial<Record<Skill, number>>, spell: SpellInfo): Action => {
+    const ap = E.evaluate(E.sub(20, E.value('expr:spell_speed')), { 'expr:spell_speed': spell.speed });
+    const roll = E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'expr:spell_level': spell.level, 'expr:spell_focus_skill': skills[spell.skill] });
+    return {
+        name: spell.name,
+        variants: {
+            'action:cast': [
+                {
+                    name: 'action:ap',
+                    roll: ap,
+                },
+                {
+                    name: 'action:roll',
+                    roll,
+                    rollString: `${roll.result}d10!`
+                }
+            ]
+        }
+    };
+};
+
+const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => {
+    const skill = skills[weapon.skill];
+    const difficulty = Skill.get(weapon.skill).difficulty;
+    const ap = E.evaluate(ATTACK_AP, {
+        'weapon:speed': weapon.speed,
+        'weapon:difficulty': difficulty,
+        'weapon:skill': skill,
+    });
+    const attack = E.evaluate(WEAPON_ATK, {
+        'weapon:attack': weapon.attack,
+        'weapon:difficulty': difficulty,
+        'weapon:skill': skill,
+        'weapon:reach': weapon.reach
+
+    });
+    const disarm = E.evaluate(WEAPON_DISARM, {
+        'weapon:attack': weapon.attack,
+        'weapon:difficulty': difficulty,
+        'weapon:skill': skill,
+        'weapon:reach': weapon.reach
+
+    });
+    const defence = E.evaluate(WEAPON_DEF, {
+        'weapon:defence': weapon.defence,
+        'weapon:difficulty': difficulty,
+        'weapon:skill': skill,
+        'weapon:reach': weapon.reach
+
+    });
+    return {
+        name: weapon.name,
+        variants: {
+            'action:attack': [
+                {
+                    name: 'action:ap',
+                    roll: ap,
+                    rollString: String(ap.result)
+                },
+                {
+                    name: 'action:roll',
+                    roll: attack,
+                    rollString: `1d100 + ${attack.result}`,
+                },
+                {
+                    name: 'label:damage',
+                    roll: E.constant(`${weapon.damage}d5!`),
+                    rollString: `${weapon.damage}d5!`
+                }
+            ],
+            'action:disarm': [
+                {
+                    name: 'action:ap',
+                    roll: ap,
+                },
+                {
+                    name: 'action:roll',
+                    roll: disarm,
+                    rollString: `1d100 + ${disarm.result}`,
+                },
+            ],
+            'action:defence': [
+                {
+                    name: 'action:roll',
+                    roll: defence,
+                    rollString: `1d100 + ${defence.result}`,
+                },
+            ]
+        }
+    };
+};
+
+const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
+    const ret: Array<Weapon> = [];
+    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
+
+    if (skills['skill:brawling']) {
+        ret.push({
+            id: 'skill:brawling',
+            name: 'skill:brawling',
+            skill: 'skill:brawling',
+            speed: 2,
+            attack: fraction('skill:strength', 2),
+            defence: 1,
+            reach: 1,
+            damage: fraction('skill:strength', 1)
+        });
+    }
+    if (skills['skill:fistfighting']) {
+        ret.push({
+            id: 'skill:fistfighting',
+            name: 'skill:fistfighting',
+            skill: 'skill:fistfighting',
+            speed: fraction('skill:reactions', 1),
+            attack: 5,
+            defence: fraction('skill:reactions', 1),
+            reach: 1,
+            damage: fraction('skill:reactions', 2)
+        });
+    }
+    if (skills['skill:martial_arts']) {
+        ret.push({
+            id: 'skill:martial_arts',
+            name: 'skill:martial_arts',
+            skill: 'skill:martial_arts',
+            speed: fraction('skill:balance', 1),
+            attack: fraction('skill:balance', 1),
+            defence: fraction('skill:balance', 2),
+            reach: 1,
+            damage: fraction('skill:balance', 1)
+        });
+    }
+    return ret;
+}
+
+
 export const calculateCharacter = (character: Character): CalculatedCharacter => {
     const level = character.levels.length;
     const { abilities } = character;
     const skills = calculateSkills(character);
-    const weapons: Array<Weapon> = [...character.inventory.weapons];
-    if (skills['skill:brawling']) {
-        weapons.push({
-            id: '1',
-            name: 'weapons:brawling',
-            skill: 'skill:brawling',
-            speed: abilities['ability:activity'],
-            attack: abilities['ability:build'],
-            defence: abilities['ability:build'],
-            reach: 1,
-            damage: Math.max(1, Math.floor((skills['skill:strength'] ?? 0) / 2))
-        });
-    }
+    const weapons: Array<Weapon> = [...character.inventory.weapons, ...calculateUnarmed(skills)];
+
 
     const spells: Array<SpellInfo> = entries(skills).flatMap(([key, value]) => Spell.available(key, value));
 
-    const actions: Array<Action> = weapons.map(w => {
-        const skill = skills[w.skill];
-        const difficulty = Skill.get(w.skill).difficulty;
-        const ap = E.evaluate(ATTACK_AP, {
-            'weapon:speed': w.speed,
-            'weapon:difficulty': difficulty,
-            'weapon:skill': skill,
-        });
-        const attack = E.evaluate(WEAPON_ATK, {
-            'weapon:attack': w.attack,
-            'weapon:difficulty': difficulty,
-            'weapon:skill': skill,
-            'weapon:reach': w.reach
-
-        });
-        const disarm = E.evaluate(WEAPON_DISARM, {
-            'weapon:attack': w.attack,
-            'weapon:difficulty': difficulty,
-            'weapon:skill': skill,
-            'weapon:reach': w.reach
-
-        });
-        const defence = E.evaluate(WEAPON_DEF, {
-            'weapon:defence': w.defence,
-            'weapon:difficulty': difficulty,
-            'weapon:skill': skill,
-            'weapon:reach': w.reach
-
-        });
-        const ret: Action = {
-            name: w.name,
-            variants: {
-                'action:attack': [
-                    {
-                        name: 'action:ap',
-                        roll: ap,
-                        rollString: String(ap.result)
-                    },
-                    {
-                        name: 'action:roll',
-                        roll: attack,
-                        rollString: `1d100 + ${attack.result}`,
-                    },
-                    {
-                        name: 'label:damage',
-                        roll: E.constant(`${w.damage}d6!`),
-                        rollString: `${w.damage}d6!`
-                    }
-                ],
-                'action:disarm': [
-                    {
-                        name: 'action:ap',
-                        roll: ap,
-                    },
-                    {
-                        name: 'action:roll',
-                        roll: disarm,
-                        rollString: `1d100 + ${disarm.result}`,
-                    },
-                ],
-                'action:defence': [
-                    {
-                        name: 'action:roll',
-                        roll: defence,
-                        rollString: `1d100 + ${defence.result}`,
-                    },
-                ]
-            }
-        };
-        return ret;
-    });
-
-    actions.push(...spells.map(s => {
-        const ap = E.evaluate(E.sub(20, E.value('expr:spell_speed')), { 'expr:spell_speed': s.speed });
-        const roll = E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'expr:spell_level': s.level, 'expr:spell_focus_skill': skills[s.skill] });
-        const ret: Action = {
-            name: s.name,
-            variants: {
-                'action:cast': [
-                    {
-                        name: 'action:ap',
-                        roll: ap,
-                    },
-                    {
-                        name: 'action:roll',
-                        roll,
-                        rollString: `${roll.result}d10!`
-                    }
-                ]
-            }
-        };
-        return ret;
-    }));
+    const actions: Array<Action> = [
+        ...weapons.map(w => calculateWeaponAction(skills, w)),
+        ...spells.map(s => calculateSpellAction(skills, s))
+    ];
 
     return {
         skills,
@@ -199,13 +235,13 @@ export const createCharacter = (template: CharacterTemplate): Character => {
 
     const level: Level = {
         fpRoll: 10,
-        skills: CharacterClass.get(template.class).skills
+        skills: Background.get(template.background).skills
     };
 
     return {
         name: template.name,
         id: v4(),
-        class: template.class,
+        background: template.background,
         species: template.species,
         abilities,
         inventory: {

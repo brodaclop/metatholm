@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { CharacterClass } from '../../model/CharacterClass';
+	import { Background } from '../../model/Background';
 	import {
 		createCharacter,
 		type CharacterTemplate,
@@ -21,78 +21,67 @@
 		'ability:presence': 0,
 		'ability:magic': 0
 	};
-	let characterClass: CharacterClass;
+	let background: Background;
 	let species: Species;
+	let rolled = false;
 
-	$: console.log('species', species);
 	const speciesList = Species.list();
-	const classList = CharacterClass.list();
+	const backgroundList = Background.list();
 
 	const roll = () => {
-		const abilityRoll = parseKocka('1d6+1');
+		const abilityRoll = parseKocka('1d5+1');
 		abilities['ability:build'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:activity'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:presence'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:magic'] = kockaDobas(abilityRoll).osszeg;
+		rolled = true;
 	};
 
 	$: calculatedCharacter =
-		species && characterClass
-			? calculateCharacter(createCharacter({ name, species, class: characterClass, abilities }))
+		species && background
+			? calculateCharacter(createCharacter({ name, species, background, abilities }))
 			: undefined;
 </script>
 
-<div>
-	<Box title="Create new character" background="#ddffdd">
-		<Box title="Main" background="#ddddff">
-			<label>
-				{$_('label:name')}
-				<input type="text" bind:value={name} />
-			</label>
-			<label>
-				Species:
-				<select bind:value={species}>
-					{#each speciesList as s}
-						<option value={s.name}>{$_(s.name)}</option>
-					{/each}
-				</select>
-			</label>
-			<label>
-				Class:
-				<select bind:value={characterClass}>
-					{#each classList as s}
-						<option value={s.name}>{$_(s.name)}</option>
-					{/each}
-				</select>
-			</label>
-			<button on:click={roll}>Roll</button>
-			<form
-				method="post"
-				action="?/saveCharacter"
-				use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-					formData.set(
-						'character',
-						JSON.stringify(createCharacter({ name, species, class: characterClass, abilities }))
-					);
-				}}
-			>
-				<button disabled={!species || !characterClass}>Create</button>
-			</form>
-		</Box>
-	</Box>
-	<div>
-		<!-- {#each keys(abilities) as ability}
-			<div>
+<Box title={$_('label:create_character')} background="#ddffdd">
+	<div class="character-sheet">
+		<Box title={$_('label:character')} background="#ddddff">
+			<div class="character-box">
 				<label>
-					{$_(ability)}
-					<input type="number" bind:value={abilities[ability]} />
-					{#if species}
-						{@const info = Species.get(species)}
-						{info.abilities[ability] ?? ''}
-					{/if}
+					{$_('label:name')}
+					<input type="text" bind:value={name} />
 				</label>
+				<label>
+					{$_('label:species')}
+					<select bind:value={species}>
+						{#each speciesList as s}
+							<option value={s.name}>{$_(s.name)}</option>
+						{/each}
+					</select>
+				</label>
+				<label>
+					{$_('label:background')}
+					<select bind:value={background}>
+						{#each backgroundList as s}
+							<option value={s.name}>{$_(s.name)}</option>
+						{/each}
+					</select>
+				</label>
+				<form
+					method="post"
+					action="?/saveCharacter"
+					use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+						formData.set(
+							'character',
+							JSON.stringify(createCharacter({ name, species, background, abilities }))
+						);
+					}}
+				>
+					<button type="button" on:click={roll}>Roll</button>
+					<button disabled={!name || !species || !background || !rolled}>Create</button>
+				</form>
 			</div>
-		{/each} -->
+		</Box>
 		<Box title={$_('character:abilities')} background="#ffdddd">
 			<Abilities
 				bind:abilities
@@ -105,4 +94,18 @@
 			{/if}
 		</Box>
 	</div>
-</div>
+</Box>
+
+<style>
+	.character-box {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.character-sheet {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: start;
+	}
+</style>

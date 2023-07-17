@@ -1,23 +1,23 @@
 import { createList } from "./InfoList";
 import type { Skill } from "./Skills";
 
-export interface CharacterClassInfo {
-    name: CharacterClass;
+export interface BackgroundInfo {
+    name: Background;
     skills: Partial<Record<Skill, number>>;
 }
 
-export type CharacterClass =
-    'class:bruiser' |
-    'class:sneak' |
-    'class:hedge_wizard' |
-    'class:tinker' |
-    'class:assassin' |
-    'class:vagabond' |
-    'class:charmer' |
-    'class:witch';
+export type Background =
+    'background:bruiser' |
+    'background:sneak' |
+    'background:hedge_wizard' |
+    'background:tinker' |
+    'background:assassin' |
+    'background:vagabond' |
+    'background:charmer' |
+    'background:witch';
 
-export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> = {
-    'class:assassin': {
+const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
+    'background:assassin': {
         skills: {
             'skill:knives': 3,
             "skill:magic_force": 1,
@@ -28,7 +28,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:shadow_focus': 3
         }
     },
-    'class:bruiser': {
+    'background:bruiser': {
         skills: {
             "skill:strength": 3,
             'skill:brawling': 3,
@@ -38,7 +38,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:pain_threshold': 3
         }
     },
-    'class:charmer': {
+    'background:charmer': {
         skills: {
             "skill:magic_force": 2,
             'skill:personal_charm': 3,
@@ -49,7 +49,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:swords': 1
         }
     },
-    'class:hedge_wizard': {
+    'background:hedge_wizard': {
         skills: {
             "skill:magic_force": 3,
             'skill:focus_elemental': 3,
@@ -59,7 +59,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:reasoning': 2
         }
     },
-    'class:sneak': {
+    'background:sneak': {
         skills: {
             'skill:knives': 2,
             'skill:swords': 1,
@@ -70,7 +70,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:bamboozling': 2
         }
     },
-    'class:tinker': {
+    'background:tinker': {
         skills: {
             "skill:magic_force": 2,
             'skill:life_focus': 2,
@@ -80,7 +80,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:spacetime_focus': 3,
         }
     },
-    'class:vagabond': {
+    'background:vagabond': {
         skills: {
             "skill:magic_force": 1,
             'skill:nature_focus': 3,
@@ -91,7 +91,7 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
             'skill:hiding': 1,
         }
     },
-    'class:witch': {
+    'background:witch': {
         skills: {
             "skill:magic_force": 3,
             'skill:life_focus': 3,
@@ -104,4 +104,4 @@ export const Classes: Record<CharacterClass, Omit<CharacterClassInfo, 'name'>> =
     },
 };
 
-export const CharacterClass = createList(Classes);
+export const Background = createList(Backgrounds);
