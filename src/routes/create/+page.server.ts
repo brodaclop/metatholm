@@ -1,5 +1,5 @@
 import { saveCharacter } from '$lib/server/Db';
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
     saveCharacter: async ({ request, locals }) => {
@@ -8,7 +8,7 @@ export const actions: Actions = {
         if (characterString) {
             const character = JSON.parse(characterString.toString());
             saveCharacter(character);
-            return { success: true };
+            throw redirect(303, `/character/${character.id}`);
         } else {
             fail(400);
         }
