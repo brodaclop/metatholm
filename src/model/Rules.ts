@@ -2,6 +2,32 @@ import { E, type Expression } from "../logic/Expression";
 
 export type ExpressionNames = 'expr:pp_base' | 'expr:pp_per_level' | 'expr:pp_total' | 'expr:pp_roll' | 'expr:effective_spell_skill' | 'expr:spell_level' | 'expr:spell_focus_skill' | 'expr:spell_speed' | 'expr:skill_level' | 'expr:skill_ability' | 'expr:skill_difficulty';
 
+export type RuleLabels = 'rule:skills' | 'rule:exploded_dice';
+
+export const RuleDescriptions_en: Record<RuleLabels, string> = {
+    'rule:skills': `Skills represent a character's learned knowledge.
+
+    Skill
+
+    \`SkillRolls\``,
+    'rule:exploded_dice': `When rolling **exploded dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too.
+
+If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploded dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.
+
+\`ExplodedDice|{"roll": "3d10!"}\``
+}
+
+export const RuleDescriptions_hu: Record<RuleLabels, string> = {
+    'rule:skills': `A képzettségek a karakter tanult képességeit jellemzik.
+    \`SkillRolls\``,
+    'rule:exploded_dice': `When rolling **exploded dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too.
+
+    If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploded dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.`
+}
+
+
+
+
 export const TOTAL_EP: Expression = E.add(E.constant(9), E.value('character:level'));
 export const FP_ALAP: Expression = E.name('expr:pp_base', E.add(E.constant(20), E.value('ability:build'), E.value('ability:presence')));
 export const FP_PER_SZINT: Expression = E.name('expr:pp_per_level', E.add(E.constant(10), E.constant('1d10', 'expr:pp_roll'), E.value('skill:endurance'), E.value('skill:pain_threshold')));

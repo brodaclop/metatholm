@@ -1,7 +1,7 @@
 import type { Ability } from "./Abilities";
 import type { ActionRoll, ActionVariant } from "./Action";
 import type { Background } from "./Background";
-import type { ExpressionNames } from "./Rules";
+import type { ExpressionNames, RuleLabels } from "./Rules";
 import type { Skill, SkillType } from "./Skills";
 import type { Species } from "./Species";
 import type { Spell } from "./Spell";
@@ -15,7 +15,12 @@ type GenericLabels = 'label:name' |
     'label:create_character' |
     'label:character' |
     'label:species' |
-    'label:background'
+    'label:background' |
+    'label:skill' |
+    'label:difficulty' |
+    'label:ability' |
+    'label:type' |
+    'label:rule'
     ;
 
 export const Keys = [
@@ -48,7 +53,7 @@ export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = Background | ActionVariant | ActionRoll | Species | Spell | SkillType | GenericLabels;
+type Valueless = Background | ActionVariant | ActionRoll | Species | Spell | SkillType | GenericLabels | RuleLabels;
 
 export type Labels = Valueless | Values;
 export const Labels_en: Record<Labels, string> = {
@@ -111,6 +116,14 @@ export const Labels_en: Record<Labels, string> = {
     'label:create_character': 'Create Character',
     'label:species': 'Species',
     'label:background': 'Background',
+    'label:skill': 'Skill',
+    'label:difficulty': 'Difficulty',
+    'label:ability': 'Ability',
+    'label:type': 'Type',
+    'label:rule': 'Rule',
+
+    'rule:skills': 'Skills',
+    'rule:exploded_dice': 'Exploded dice',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -240,9 +253,16 @@ export const Labels_hu: Record<Labels, string> = {
     'label:create_character': 'Új karakter',
     'label:species': 'Faj',
     'label:background': 'Háttér',
-
+    'label:skill': 'Képzettség',
+    'label:difficulty': 'Nehézség',
+    'label:ability': 'Tulajdonság',
+    'label:type': 'Típus',
 
     'label:weapon': 'Fegyver',
+    'label:rule': 'Szabály',
+
+    'rule:skills': 'Képzettségek',
+    'rule:exploded_dice': 'Robbantott kockadobás',
 
     'species:elf': 'Elf',
     'species:orc': 'Ork',
@@ -314,6 +334,8 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:defence': 'Védekezés',
     'weapon:reach': 'Ütőtáv',
 };
+
+export const convertToDescription = <T extends string>(ob: Record<T, string>): Record<string, string> => Object.fromEntries(Object.entries(ob).map(([key, value]) => ([`description:${key}`, value as string])));
 
 export type Language = 'en' | 'hu';
 

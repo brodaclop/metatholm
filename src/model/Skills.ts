@@ -15,7 +15,7 @@ export type SkillInfo = {
     type: SkillType
 };
 
-export const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
+const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
     "skill:endurance": {
         difficulty: 2,
         ability: 'ability:build',

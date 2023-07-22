@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { _, getLocaleFromNavigator, isLoading, register, init, locale } from 'svelte-i18n';
-	import { Labels_en, Labels_hu } from '../model/Labels';
+	import { _, getLocaleFromNavigator, isLoading, init, locale, addMessages } from 'svelte-i18n';
+	import { Labels_en, Labels_hu, convertToDescription } from '../model/Labels';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
+	import { RuleDescriptions_en, RuleDescriptions_hu } from '../model/Rules';
 
 	export let data: PageData;
 
@@ -16,8 +17,11 @@
 
 	let lang = LANGUAGES[0];
 
-	register('en', async () => Labels_en);
-	register('hu', async () => Labels_hu);
+	addMessages('en', Labels_en);
+	addMessages('hu', Labels_hu);
+
+	addMessages('en', convertToDescription(RuleDescriptions_en));
+	addMessages('hu', convertToDescription(RuleDescriptions_hu));
 
 	init({
 		fallbackLocale: 'en',
