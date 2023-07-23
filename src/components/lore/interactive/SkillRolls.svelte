@@ -18,6 +18,8 @@
 		'check_difficulty:80': 'Lehetetlen'
 	});
 
+	const ROLLS = 100000;
+
 	const CHECK_LEVELS: Array<string> = ['5', '10', '20', '40', '80'];
 
 	const roll = (skill: number, count: number): Record<(typeof CHECK_LEVELS)[number], number> => {
@@ -42,12 +44,16 @@
 
 	const results: Array<Record<(typeof CHECK_LEVELS)[number], number>> = Array(11)
 		.fill(undefined)
-		.map((_, i) => roll(i, 10000));
+		.map((_, i) => roll(i, ROLLS));
 </script>
 
 <table>
-	<caption>{$_('label:skill')}</caption>
+	<caption>{$_('label:skill_check_success_probabilities')}</caption>
 	<thead>
+		<tr>
+			<th />
+			<th colspan={CHECK_LEVELS.length}>{$_('label:difficulty')}</th>
+		</tr>
 		<tr>
 			<th>{$_('expr:skill_level')}</th>
 			{#each CHECK_LEVELS as level}
@@ -60,9 +66,30 @@
 			<tr>
 				<th>{i}</th>
 				{#each Object.values(result) as value}
-					<td>{value / 100}%</td>
+					<td>{Number(((value * 100) / ROLLS).toFixed(2))}%</td>
 				{/each}
 			</tr>
 		{/each}
 	</tbody>
 </table>
+
+<style>
+	table {
+		border-collapse: collapse;
+	}
+
+	td,
+	th {
+		padding-right: 0.25em;
+	}
+
+	table tbody th,
+	table thead tr th:first-child {
+		background-color: aliceblue;
+	}
+
+	table tbody td,
+	table thead tr th:not(:first-child) {
+		background-color: antiquewhite;
+	}
+</style>

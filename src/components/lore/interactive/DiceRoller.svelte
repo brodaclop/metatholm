@@ -9,6 +9,7 @@
 	Chart.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 	export let roll = '1d10!';
+	let lastRoll: string;
 	const tries = 100000;
 
 	let data: any;
@@ -42,6 +43,7 @@
 	};
 
 	const contest = (sumMode: boolean) => {
+		lastRoll = roll;
 		const firstKocka = parseKocka(roll);
 		const rolls: Map<number, number> = new Map<number, number>();
 		avg = 0;
@@ -69,12 +71,34 @@
 	};
 </script>
 
-<Box background="peach" title={$_('rule:exploded_dice')}>
-	<div>
-		Roll: <input type="test" bind:value={roll} />
+<Box background="peach" title={$_('label:dice_roller')}>
+	<div class="rollInputs">
+		<div>
+			{$_('label:roll')}: <input type="test" bind:value={roll} />
+		</div>
+		<div>
+			<button on:click={() => contest(true)}>{$_('label:at_least')}</button>
+			<button on:click={() => contest(false)}>{$_('label:exactly')}</button>
+		</div>
 	</div>
-	<button on:click={() => contest(true)}>At least</button>
-	<button on:click={() => contest(false)}>Exactly</button>
-	<Bar {data} />
-	<div>Average: {avg}</div>
+	<Bar
+		{data}
+		options={{
+			plugins: {
+				title: {
+					display: true,
+					text: $_('label:roll') + ':' + lastRoll + ' / ' + $_('label:average') + ':' + avg
+				},
+				legend: {
+					display: false
+				}
+			}
+		}}
+	/>
 </Box>
+
+<style>
+	.rollInputs {
+		text-align: center;
+	}
+</style>

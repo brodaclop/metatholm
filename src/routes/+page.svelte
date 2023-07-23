@@ -6,7 +6,7 @@
 
 <div>
 	<!-- <Contest /> -->
-	<RuleLore rule="rule:exploded_dice" />
+	<RuleLore id="rule:exploding_dice" />
 	<!-- <SkillLore
 		skill="skill:martial_arts"
 		value={3}

@@ -2,27 +2,57 @@ import { E, type Expression } from "../logic/Expression";
 
 export type ExpressionNames = 'expr:pp_base' | 'expr:pp_per_level' | 'expr:pp_total' | 'expr:pp_roll' | 'expr:effective_spell_skill' | 'expr:spell_level' | 'expr:spell_focus_skill' | 'expr:spell_speed' | 'expr:skill_level' | 'expr:skill_ability' | 'expr:skill_difficulty';
 
-export type RuleLabels = 'rule:skills' | 'rule:exploded_dice';
+export type RuleLabels = 'rule:skills' | 'rule:exploding_dice';
 
 export const RuleDescriptions_en: Record<RuleLabels, string> = {
-    'rule:skills': `Skills represent a character's learned knowledge.
+    'rule:skills': `
 
-    Skill
+## What is a skill?
 
-    \`SkillRolls\``,
-    'rule:exploded_dice': `When rolling **exploded dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too.
+Skills represent a character's learned knowledge. Unlike [abilities](rule:abilities), which stay largely fixed throughout your lifetime, skills can be learnt/trained for. The level of training a character has is called their **skill level**. 
 
-If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploded dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.
+| Skill level | Description | Notes |
+| :------------|:-|:-|
+| 0 | Unskilled/Untrained | You can attempt only the simplest of tasks, and even then failure is more likely than success. |
+| 1-2 | Beginner/Apprentice | You are familiar with the basics of the field, albeit probably more instinctively than consciously. |
+| 3-4 | Skilled/Journeyman | You can make a living out of using your skill, if it's the kind of thing people pay for. You can converse about your field and are a reliable judge of others' skill level. |
+| 5-6 | Expert/Master | You are an accepted expert of your field. You are now also capable of training others in this skill. |
+| 7-8 | Grandmaster | You are a known authority, masters of the field will recognise your work and defer to you. |
+| 9-10 | Living legend | Your name is known by all serious practitioners of this skill, and will be remembered for centuries. |
 
-\`ExplodedDice|{"roll": "3d10!"}\``
+## Skill checks
+
+In most cases, using a skill requires a skill check. Skill checks are rolled with [exploding dice](rule:exploding_dice), for which you will use as many d10s as your skill level. If you're unskilled, you can roll a single d5 instead.
+
+Your skill check is considered successful if your dice total reaches or exceeds the target number, which depends on the difficulty of the task. Typical target numbers for the various difficulties are as follows:
+
+| Difficulty | Typical target |
+| :- | :- |
+| Easy | 5 |
+| Average | 10 |
+| Hard | 20 |
+| Legendary | 40 |
+| Impossible | 80 |
+
+It's worth noting that the difficulty of a task is not solely determined by the nature of the task itself, circumstances can play a decisive part. Sure, any sailor can tie a reef knot. It's an easy task. But doing so with one hand, in the middle of a raging storm? Suddenly that "easy" task has become a lot harder.
+
+The table below shows how likely you are to succeed a skill check, given your skill level and the task's difficulty.
+
+\`SkillRolls\``,
+    'rule:exploding_dice': `When rolling **exploding dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too. 
+
+If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploding dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.
+
+\`DiceRoller|{"roll": "3d10!"}\``
 }
 
 export const RuleDescriptions_hu: Record<RuleLabels, string> = {
     'rule:skills': `A képzettségek a karakter tanult képességeit jellemzik.
     \`SkillRolls\``,
-    'rule:exploded_dice': `When rolling **exploded dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too.
+    'rule:exploding_dice': `A **robbantott kockák** dobásánál a hagyományos módon dobunk egy vagy több kockával, és összeadjuk az eredményt. De ha bármelyik kocka a lehető legnagyobb értéket mutatja, azt a kockát újradobjuk, és ennek is hozzáadjuk az eredményét az összeghez. 
 
-    If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploded dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.`
+Ha az újradobás eredménye is maximális, ismét újradobunk és így tovább. A robbantott kockadobást a játékban a **!** karakterrel jelöljük, tehát például a **3d10!** annyit tesz, hogy 10 oldalú kockával dobunk háromszor, újradobva minden 10-est.
+\`DiceRoller|{"roll": "3d10!"}\``
 }
 
 

@@ -20,7 +20,13 @@ type GenericLabels = 'label:name' |
     'label:difficulty' |
     'label:ability' |
     'label:type' |
-    'label:rule'
+    'label:rule' |
+    'label:dice_roller' |
+    'label:average' |
+    'label:at_least' |
+    'label:exactly' |
+    'label:roll' |
+    'label:skill_check_success_probabilities'
     ;
 
 export const Keys = [
@@ -121,9 +127,15 @@ export const Labels_en: Record<Labels, string> = {
     'label:ability': 'Ability',
     'label:type': 'Type',
     'label:rule': 'Rule',
+    'label:dice_roller': 'Dice Roller',
+    'label:average': 'Average',
+    'label:at_least': 'Result is at Least...',
+    'label:exactly': 'Result is exactly...',
+    'label:roll': 'Roll',
+    'label:skill_check_success_probabilities': 'Skill check success probabilities',
 
     'rule:skills': 'Skills',
-    'rule:exploded_dice': 'Exploded dice',
+    'rule:exploding_dice': 'Exploding dice',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -257,12 +269,18 @@ export const Labels_hu: Record<Labels, string> = {
     'label:difficulty': 'Nehézség',
     'label:ability': 'Tulajdonság',
     'label:type': 'Típus',
+    'label:dice_roller': 'Kocka Szimulátor',
+    'label:average': 'Átlag',
+    'label:at_least': 'Az eredmény legalább...',
+    'label:exactly': 'Az eredmény pontosan...',
+    'label:roll': 'Dobás',
+    'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',
 
     'rule:skills': 'Képzettségek',
-    'rule:exploded_dice': 'Robbantott kockadobás',
+    'rule:exploding_dice': 'Robbantott kockadobás',
 
     'species:elf': 'Elf',
     'species:orc': 'Ork',
