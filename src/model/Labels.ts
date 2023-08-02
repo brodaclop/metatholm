@@ -70,11 +70,13 @@ export const Labels_en: Record<Labels, string> = {
 
     'action:title': 'Actions',
     'action:attack': 'Attack',
+    'action:attack-cq': 'Attack (Close Quarters)',
     'action:disarm': 'Disarm',
     'action:ap': 'Action Points',
     'action:roll': 'Roll',
     'label:damage': 'Damage',
-    'action:defence': 'Defence',
+    'action:defend': 'Defend',
+    'action:defend-cq': 'Defend (Close Quarters)',
     'action:cast': 'Cast',
 
     'label:name': 'Name',
@@ -213,13 +215,15 @@ export const Labels_hu: Record<Labels, string> = {
 
     'action:title': 'Akciók',
     'action:attack': 'Támadás',
+    'action:attack-cq': 'Támadás (Belharc)',
     'action:ap': 'Akció pont',
     'action:roll': 'Dobás',
     'label:damage': 'Sebzés',
     'action:cast': 'Varázslás',
 
     'action:disarm': 'Lefegyverzés',
-    'action:defence': 'Védekezés',
+    'action:defend': 'Védekezés',
+    'action:defend-cq': 'Védekezés (Belharc)',
 
     'label:name': 'Név',
     'character:abilities': 'Tulajdonságok',

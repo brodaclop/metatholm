@@ -10,6 +10,8 @@ import { Species } from "./Species";
 import { Skill } from "./Skills";
 import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
+import { calculateWeaponAction } from "./calculations/WeaponAction";
+import { calculateSpellAction } from "./calculations/SpellAction";
 
 
 export interface Level {
@@ -63,97 +65,6 @@ const merge = <T extends string>(acc: Partial<Record<T, number>>, add: Partial<R
 
 const calculateSkills = (character: Character): Partial<Record<Skill, number>> => character.levels.reduce((acc, curr) => merge(acc, curr.skills), {} as Partial<Record<Skill, number>>)
 
-const calculateSpellAction = (skills: Partial<Record<Skill, number>>, spell: SpellInfo): Action => {
-    const ap = E.evaluate(E.sub(20, E.value('expr:spell_speed')), { 'expr:spell_speed': spell.speed });
-    const roll = E.evaluate(MAGIC_EFFECTIVE_SKILL, { 'expr:spell_level': spell.level, 'expr:spell_focus_skill': skills[spell.skill] });
-    return {
-        name: spell.name,
-        variants: {
-            'action:cast': [
-                {
-                    name: 'action:ap',
-                    roll: ap,
-                },
-                {
-                    name: 'action:roll',
-                    roll,
-                    rollString: `${roll.result}d10!`
-                }
-            ]
-        }
-    };
-};
-
-const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => {
-    const skill = skills[weapon.skill];
-    const difficulty = Skill.get(weapon.skill).difficulty;
-    const ap = E.evaluate(ATTACK_AP, {
-        'weapon:speed': weapon.speed,
-        'weapon:difficulty': difficulty,
-        'weapon:skill': skill,
-    });
-    const attack = E.evaluate(WEAPON_ATK, {
-        'weapon:attack': weapon.attack,
-        'weapon:difficulty': difficulty,
-        'weapon:skill': skill,
-        'weapon:reach': weapon.reach
-
-    });
-    const disarm = E.evaluate(WEAPON_DISARM, {
-        'weapon:attack': weapon.attack,
-        'weapon:difficulty': difficulty,
-        'weapon:skill': skill,
-        'weapon:reach': weapon.reach
-
-    });
-    const defence = E.evaluate(WEAPON_DEF, {
-        'weapon:defence': weapon.defence,
-        'weapon:difficulty': difficulty,
-        'weapon:skill': skill,
-        'weapon:reach': weapon.reach
-
-    });
-    return {
-        name: weapon.name,
-        variants: {
-            'action:attack': [
-                {
-                    name: 'action:ap',
-                    roll: ap,
-                    rollString: String(ap.result)
-                },
-                {
-                    name: 'action:roll',
-                    roll: attack,
-                    rollString: `1d100 + ${attack.result}`,
-                },
-                {
-                    name: 'label:damage',
-                    roll: E.constant(`${weapon.damage}d5!`),
-                    rollString: `${weapon.damage}d5!`
-                }
-            ],
-            'action:disarm': [
-                {
-                    name: 'action:ap',
-                    roll: ap,
-                },
-                {
-                    name: 'action:roll',
-                    roll: disarm,
-                    rollString: `1d100 + ${disarm.result}`,
-                },
-            ],
-            'action:defence': [
-                {
-                    name: 'action:roll',
-                    roll: defence,
-                    rollString: `1d100 + ${defence.result}`,
-                },
-            ]
-        }
-    };
-};
 
 const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
     const ret: Array<Weapon> = [];
@@ -167,7 +78,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             speed: 2,
             attack: fraction('skill:strength', 2),
             defence: 1,
-            reach: 1,
+            reach: 0,
             damage: fraction('skill:strength', 1)
         });
     }
@@ -179,7 +90,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             speed: fraction('skill:reactions', 1),
             attack: 5,
             defence: fraction('skill:reactions', 1),
-            reach: 1,
+            reach: 0,
             damage: fraction('skill:reactions', 2)
         });
     }
@@ -191,7 +102,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             speed: fraction('skill:balance', 1),
             attack: fraction('skill:balance', 1),
             defence: fraction('skill:balance', 2),
-            reach: 1,
+            reach: 0,
             damage: fraction('skill:balance', 1)
         });
     }

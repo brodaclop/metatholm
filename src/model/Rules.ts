@@ -38,12 +38,33 @@ It's worth noting that the difficulty of a task is not solely determined by the 
 
 The table below shows how likely you are to succeed a skill check, given your skill level and the task's difficulty.
 
-\`SkillRolls\``,
+\`SkillRolls\`
+
+## Skill training
+
+Learning a skill requires the dedication of time and effort. In the game the amount of it available for a character is expressed as **skill points**. Skill points are gained when the character gains a new level and can be spent to learn a new skill or improve a known skill.
+
+How many points are required to train a skill to the next level depends on the following factors:
+
+1. **The current skill level.** The more you know, the harder it is to improve on it.
+2. **The skill's difficulty.** Some skills are simply harder to learn than others.
+3. **The character's abilities.** Most skills are easier to learn if one of your abilities is particularly high or low. Training with heavy weapons for example comes much more easily to someone who is naturally heavy set than to someone with a slight physique.
+
+\`SkillTraining\`
+
+`,
     'rule:exploding_dice': `When rolling **exploding dice** we roll the dice like normal and add up the numbers but whenever a die rolls a maximum, it is rerolled and the new value is added to the total too. 
 
 If the reroll is a maximum too, we repeat the process, and so on. The symbol for exploding dice used in this game is **!**, so **3d10!** means roll a 10 sided die 3 times, and reroll the ones that roll a 10.
 
-\`DiceRoller|{"roll": "3d10!"}\``
+\`DiceRoller|{"roll": "3d10!"}\`
+
+
+
+
+`
+
+
 }
 
 export const RuleDescriptions_hu: Record<RuleLabels, string> = {
@@ -67,6 +88,6 @@ export const ATTACK_AP: Expression = E.max(1, E.div(E.mul(2, E.sub(10, E.value('
 //Math.max(1, (base * (30 + 3 * (skill - 1) * mult)) / 30);
 export const WEAPON_ATK: Expression = E.max(1, E.add(E.value('weapon:reach'), E.div(E.mul(E.value('weapon:attack'), E.add(30, E.mul(3, E.sub(E.value('weapon:skill'), 1), E.value('weapon:difficulty')))), 15)));
 export const WEAPON_DISARM: Expression = E.max(1, E.div(E.mul(E.value('weapon:attack'), E.add(30, E.mul(3, E.max(0, E.sub(E.value('weapon:skill'), 3)), E.value('weapon:difficulty')))), 15))
-export const WEAPON_DEF: Expression = E.max(1, E.div(E.mul(E.value('weapon:defence'), E.add(30, E.mul(3, E.sub(E.value('weapon:skill'), 1), E.value('weapon:difficulty')))), 15))
+export const WEAPON_DEF: Expression = E.max(1, E.add(E.value('weapon:reach'), E.div(E.mul(E.value('weapon:defence'), E.add(30, E.mul(3, E.sub(E.value('weapon:skill'), 1), E.value('weapon:difficulty')))), 15)))
 export const MAGIC_EFFECTIVE_SKILL: Expression = E.name('expr:effective_spell_skill', E.sub(E.add(E.value('expr:spell_focus_skill'), 1), E.value('expr:spell_level')));
 export const SKILL_KP: Expression = E.mul(E.value('expr:skill_level'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(4, E.value('expr:skill_difficulty')))), 33));

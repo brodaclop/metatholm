@@ -49,7 +49,7 @@
 			.variants['action:attack'];
 		const defenceAction = calculatedCharacters[1 - idx].actions.find(
 			(a) => a.name === actions[1 - idx]
-		)!.variants['action:defence'];
+		)!.variants['action:defend'];
 		const apRoll = attackAction!.find((r) => r.name === 'action:ap');
 		const attackRoll = attackAction!.find((r) => r.name === 'action:roll');
 		const damageRoll = attackAction!.find((r) => r.name === 'label:damage');
@@ -130,7 +130,7 @@
 			<div>
 				{characters[i].name}:
 				<select bind:value={actions[i]}>
-					{#each calculatedCharacters[i].actions.filter((a) => a.variants['action:attack'] && a.variants['action:defence']) as a}
+					{#each calculatedCharacters[i].actions.filter((a) => a.variants['action:attack'] && a.variants['action:defend']) as a}
 						<option value={a.name}>{$_(a.name)}</option>
 					{/each}
 				</select>
