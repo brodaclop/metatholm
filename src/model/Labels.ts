@@ -3,7 +3,7 @@ import type { ActionRoll, ActionVariant } from "./Action";
 import type { Background } from "./Background";
 import type { ExpressionNames, RuleLabels } from "./Rules";
 import type { Skill, SkillType } from "./Skills";
-import type { Species } from "./Species";
+import type { Ancestry } from "./Ancestry";
 import type { Spell } from "./Spell";
 
 type GenericLabels = 'label:name' |
@@ -14,7 +14,7 @@ type GenericLabels = 'label:name' |
     'label:new' |
     'label:create_character' |
     'label:character' |
-    'label:species' |
+    'label:ancestry' |
     'label:background' |
     'label:skill' |
     'label:difficulty' |
@@ -59,7 +59,7 @@ export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = Background | ActionVariant | ActionRoll | Species | Spell | SkillType | GenericLabels | RuleLabels;
+type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels;
 
 export type Labels = Valueless | Values;
 export const Labels_en: Record<Labels, string> = {
@@ -122,7 +122,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:new': 'New',
     'label:character': 'Character',
     'label:create_character': 'Create Character',
-    'label:species': 'Species',
+    'label:ancestry': 'Ancestry',
     'label:background': 'Background',
     'label:skill': 'Skill',
     'label:difficulty': 'Difficulty',
@@ -190,10 +190,14 @@ export const Labels_en: Record<Labels, string> = {
     'skill_type:knowledge': 'Knowledge',
     'skill_type:general': 'General',
 
-    'species:elf': 'Elf',
-    'species:orc': 'Orc',
-    'species:gnome': 'Gnome',
-    'species:dwarf': 'Dwarf',
+    'ancestry:elf': 'Elven',
+    'ancestry:orc': 'Orcish',
+    'ancestry:gnome': 'Gnomish',
+    'ancestry:dwarf': 'Dwarvish',
+    'ancestry:almarem': 'Almarem',
+    'ancestry:godora': 'Godora',
+    'ancestry:ilar': 'Ilar',
+    'ancestry:kalovin': 'Kalovin',
 
     'spell:fire_bolt': 'Fire Bolt',
     'spell:lightning_strike': 'Lightning Strike',
@@ -267,7 +271,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:new': 'Új',
     'label:character': 'Karakter',
     'label:create_character': 'Új karakter',
-    'label:species': 'Faj',
+    'label:ancestry': 'Származás',
     'label:background': 'Háttér',
     'label:skill': 'Képzettség',
     'label:difficulty': 'Nehézség',
@@ -286,10 +290,14 @@ export const Labels_hu: Record<Labels, string> = {
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
 
-    'species:elf': 'Elf',
-    'species:orc': 'Ork',
-    'species:gnome': 'Gnóm',
-    'species:dwarf': 'Törp',
+    'ancestry:elf': 'Elf',
+    'ancestry:orc': 'Ork',
+    'ancestry:gnome': 'Gnóm',
+    'ancestry:dwarf': 'Törp',
+    'ancestry:almarem': 'Almarem',
+    'ancestry:godora': 'Godora',
+    'ancestry:ilar': 'Ilar',
+    'ancestry:kalovin': 'Kalovin',
 
     'spell:fire_bolt': 'Tűznyíl',
     'spell:lightning_strike': 'Lightning Strike',

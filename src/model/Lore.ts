@@ -10,6 +10,7 @@ import build_en from '$lib/lore/ability/build_en.md?raw';
 import activity_en from '$lib/lore/ability/activity_en.md?raw';
 import presence_en from '$lib/lore/ability/presence_en.md?raw';
 import magic_en from '$lib/lore/ability/magic_en.md?raw';
+import ancestry_en from '$lib/lore/character/ancestry_en.md?raw';
 
 
 const Lore: Record<string, Record<string, string>> = {
@@ -23,7 +24,8 @@ const Lore: Record<string, Record<string, string>> = {
         'ability:build': build_en,
         'ability:activity': activity_en,
         'ability:presence': presence_en,
-        'ability:magic': magic_en
+        'ability:magic': magic_en,
+        'character:ancestry': ancestry_en
     }
 }
 

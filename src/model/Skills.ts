@@ -146,7 +146,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         difficulty: 1,
         ability: 'ability:activity',
         positive: false,
-        type: 'skill_type:combat'
+        type: 'skill_type:basic'
     },
     'skill:medicine': {
         difficulty: 2,

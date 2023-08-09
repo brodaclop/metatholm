@@ -6,7 +6,7 @@ import type { Ability } from "./Abilities";
 import type { Action } from "./Action";
 import { Background } from "./Background";
 import { v4 } from "uuid";
-import { Species } from "./Species";
+import { Ancestry } from "./Ancestry";
 import { Skill } from "./Skills";
 import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
@@ -22,7 +22,7 @@ export interface Level {
 export interface Character extends Entity {
     abilities: Record<Ability, number>;
     background: Background;
-    species: Species;
+    ancestry: Ancestry;
     levels: Array<Level>;
     inventory: {
         weapons: Array<Weapon>;
@@ -37,11 +37,11 @@ export interface Character extends Entity {
 
 export interface CharacterInfo extends Entity {
     background: Background;
-    species: Species;
+    ancestry: Ancestry;
     level: number;
 }
 
-export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'species'>;
+export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;
 
 export interface CalculatedCharacter {
     skills: Partial<Record<Skill, number>>;
@@ -75,11 +75,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             id: 'skill:brawling',
             name: 'skill:brawling',
             skill: 'skill:brawling',
-            speed: 2,
+            speed: fraction('skill:strength', 2),
             attack: fraction('skill:strength', 2),
-            defence: 1,
+            defence: fraction('skill:strength', 2),
             reach: 0,
-            damage: fraction('skill:strength', 1)
+            damage: fraction('skill:strength', 2)
         });
     }
     if (skills['skill:fistfighting']) {
@@ -88,8 +88,8 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             name: 'skill:fistfighting',
             skill: 'skill:fistfighting',
             speed: fraction('skill:reactions', 1),
-            attack: 5,
-            defence: fraction('skill:reactions', 1),
+            attack: fraction('skill:reactions', 2),
+            defence: fraction('skill:reactions', 2),
             reach: 0,
             damage: fraction('skill:reactions', 2)
         });
@@ -101,9 +101,9 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             skill: 'skill:martial_arts',
             speed: fraction('skill:balance', 1),
             attack: fraction('skill:balance', 1),
-            defence: fraction('skill:balance', 2),
+            defence: fraction('skill:balance', 1),
             reach: 0,
-            damage: fraction('skill:balance', 1)
+            damage: fraction('skill:balance', 2)
         });
     }
     return ret;
@@ -141,8 +141,8 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
 
 
 export const createCharacter = (template: CharacterTemplate): Character => {
-    const speciesInfo = Species.get(template.species);
-    const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (speciesInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
+    const ancestryInfo = Ancestry.get(template.ancestry);
+    const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (ancestryInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
 
     const level: Level = {
         fpRoll: 10,
@@ -153,7 +153,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         name: template.name,
         id: v4(),
         background: template.background,
-        species: template.species,
+        ancestry: template.ancestry,
         abilities,
         inventory: {
             weapons: [

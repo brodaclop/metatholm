@@ -6,7 +6,7 @@
 		type CharacterTemplate,
 		calculateCharacter
 	} from '../../model/Karakter';
-	import { Species } from '../../model/Species';
+	import { Ancestry } from '../../model/Ancestry';
 	import { keys } from '../../model/InfoList';
 	import Box from '../../components/character/Box.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
@@ -22,10 +22,10 @@
 		'ability:magic': 0
 	};
 	let background: Background;
-	let species: Species;
+	let ancestry: Ancestry;
 	let rolled = false;
 
-	const speciesList = Species.list();
+	const ancestryList = Ancestry.list();
 	const backgroundList = Background.list();
 
 	const roll = () => {
@@ -38,8 +38,8 @@
 	};
 
 	$: calculatedCharacter =
-		species && background
-			? calculateCharacter(createCharacter({ name, species, background, abilities }))
+		ancestry && background
+			? calculateCharacter(createCharacter({ name, ancestry, background, abilities }))
 			: undefined;
 </script>
 
@@ -52,9 +52,9 @@
 					<input type="text" bind:value={name} />
 				</label>
 				<label>
-					{$_('label:species')}
-					<select bind:value={species}>
-						{#each speciesList as s}
+					{$_('label:ancestry')}
+					<select bind:value={ancestry}>
+						{#each ancestryList as s}
 							<option value={s.name}>{$_(s.name)}</option>
 						{/each}
 					</select>
@@ -73,19 +73,19 @@
 					use:enhance={({ formElement, formData, action, cancel, submitter }) => {
 						formData.set(
 							'character',
-							JSON.stringify(createCharacter({ name, species, background, abilities }))
+							JSON.stringify(createCharacter({ name, ancestry, background, abilities }))
 						);
 					}}
 				>
 					<button type="button" on:click={roll}>Roll</button>
-					<button disabled={!name || !species || !background || !rolled}>Create</button>
+					<button disabled={!name || !ancestry || !background || !rolled}>Create</button>
 				</form>
 			</div>
 		</Box>
 		<Box title={$_('character:abilities')} background="#ffdddd">
 			<Abilities
 				bind:abilities
-				modifiers={species !== undefined ? Species.get(species).abilities : undefined}
+				modifiers={ancestry !== undefined ? Ancestry.get(ancestry).abilities : undefined}
 			/>
 		</Box>
 		<Box title={$_('character:skills')} background="#ffddff">

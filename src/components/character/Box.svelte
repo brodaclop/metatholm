@@ -6,7 +6,8 @@
 	setContext('level', Math.min(level + 1, 5));
 </script>
 
-<article style:background-color={background}>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<article style:background-color={background} on:mouseenter on:mouseleave on:click>
 	<header>
 		{#if level === 1}
 			<h2>{title ?? ''} <slot name="title" /></h2>

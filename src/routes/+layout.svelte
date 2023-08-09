@@ -59,7 +59,7 @@
 					<option value="">Select character</option>
 					{#each data.characters as character}
 						<option value={character.id}
-							>{character.name} ({$_(character.species)}
+							>{character.name} ({$_(character.ancestry)}
 							{$_(character.background)} / {$_('character:level')}
 							{character.level})</option
 						>

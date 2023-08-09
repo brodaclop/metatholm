@@ -13,8 +13,8 @@
 			<td><input type="text" bind:value={character.name} /></td>
 		</tr>
 		<tr>
-			<th>{$_('label:species')}</th>
-			<td>{$_(character.species)}</td>
+			<th>{$_('label:ancestry')}</th>
+			<td>{$_(character.ancestry)}</td>
 		</tr>
 		<tr>
 			<th>{$_('label:background')}</th>
