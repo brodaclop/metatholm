@@ -42,7 +42,7 @@
 	// 	id: '1',
 	// 	name: 'Teszt Kar',
 	// 	background: 'background:assassin',
-	// 	ancestry: 'ancestry:elf',
+	// 	ancestry: 'ancestry:elven',
 	// 	abilities: {
 	// 		'ability:build': 3,
 	// 		'ability:activity': 5,

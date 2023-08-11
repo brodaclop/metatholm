@@ -3,6 +3,8 @@
 	import DiceRoller from '../interactive/DiceRoller.svelte';
 	import SkillTraining from '../interactive/SkillTraining.svelte';
 	import SkillListForAbilities from '../interactive/SkillListForAbilities.svelte';
+	import Ancestries from '../interactive/Ancestries.svelte';
+	import AncestryInfo from '../interactive/AncestryInfo.svelte';
 
 	export let raw: string;
 
@@ -10,7 +12,9 @@
 		SkillRolls: SkillRolls,
 		DiceRoller: DiceRoller,
 		SkillTraining: SkillTraining,
-		SkillListForAbilities: SkillListForAbilities
+		SkillListForAbilities: SkillListForAbilities,
+		Ancestries: Ancestries,
+		AncestryInfo: AncestryInfo
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

@@ -3,7 +3,6 @@
 	import { entries, keys } from '../../model/InfoList';
 	import type { Character } from '../../model/Karakter';
 	import CircleGroup from '../elements/CircleGroup.svelte';
-	import Circles from '../elements/Circles.svelte';
 
 	export let abilities: Character['abilities'];
 	export let modifiers: Partial<Record<Ability, number>> = {};
