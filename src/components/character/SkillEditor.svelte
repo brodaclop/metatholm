@@ -135,24 +135,30 @@
 				<div class="scrollable">
 					{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
 						<h3>{$_(type)}</h3>
-						<CircleGroup
-							rows={skillList.map((s) => ({
-								name: s.name,
-								subName: (s.positive ? '+' : '-') + abilityLabels[s.ability]
-							}))}
-							values={calculatedCharacter.skills}
-							newValues={sums}
-							max={10}
-							editable
-							{plus}
-							{minus}
-						>
-							<span slot="extra" let:key>
-								{#if !admin}
-									<ExpressionTooltip expr={kpNeeded[key]} />
-								{/if}
-							</span>
-						</CircleGroup>
+						{#each entries(group( skillList, (s) => String(s.difficulty) )) as [difficulty, skillList2]}
+							<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
+							<CircleGroup
+								rows={skillList2.map((s) => ({
+									name: s.name,
+									subName:
+										s.ability === 'skill_type:general'
+											? 'skill_type:general'
+											: (s.positive ? '+' : '-') + abilityLabels[s.ability]
+								}))}
+								values={calculatedCharacter.skills}
+								newValues={sums}
+								max={10}
+								editable
+								{plus}
+								{minus}
+							>
+								<span slot="extra" let:key>
+									{#if !admin}
+										<ExpressionTooltip expr={kpNeeded[key]} />
+									{/if}
+								</span>
+							</CircleGroup>
+						{/each}
 					{/each}
 				</div>
 				<div class="footer">

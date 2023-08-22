@@ -5,8 +5,18 @@
 	import { lore } from '../../model/Lore';
 
 	export let id: string;
+	let file: string = '';
+	let notFound: boolean = false;
 
-	$: file = lore(id, $locale);
+	$: lore(id, $locale)
+		.then((res) => {
+			file = res;
+			notFound = false;
+		})
+		.catch((e) => {
+			notFound = true;
+			file = '';
+		});
 
 	$: [title, ...textLines] = file?.split('\n') ?? [];
 
@@ -21,6 +31,8 @@
 
 		<MarkdownText {text} />
 	</Box>
-{:else}
+{:else if notFound}
 	<span>Lore not found</span>
+{:else}
+	<span>Loading...</span>
 {/if}

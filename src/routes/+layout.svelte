@@ -6,7 +6,6 @@
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
-	import { RuleDescriptions_en, RuleDescriptions_hu } from '../model/Rules';
 
 	export let data: PageData;
 
@@ -19,9 +18,6 @@
 
 	addMessages('en', Labels_en);
 	addMessages('hu', Labels_hu);
-
-	addMessages('en', convertToDescription(RuleDescriptions_en));
-	addMessages('hu', convertToDescription(RuleDescriptions_hu));
 
 	init({
 		fallbackLocale: 'en',

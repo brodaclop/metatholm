@@ -173,7 +173,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         type: 'skill_type:basic'
     },
     'skill:reasoning': {
-        difficulty: 2,
+        difficulty: 1,
         ability: 'ability:presence',
         positive: false,
         type: 'skill_type:knowledge'
@@ -191,7 +191,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         type: 'skill_type:knowledge'
     },
     'skill:bushcraft': {
-        difficulty: 2,
+        difficulty: 1,
         ability: 'ability:presence',
         positive: false,
         type: 'skill_type:knowledge'

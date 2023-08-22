@@ -2,7 +2,7 @@
 
 ## What is a skill?
 
-Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike [abilities](rule:abilities), which stay largely fixed throughout your lifetime, skills can be learnt/trained for. The level of training a character has is called their **skill level**. 
+Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike [abilities](character:abilities), which stay largely fixed throughout your lifetime, skills can be learnt/trained for. The level of training a character has is called their **skill level**. 
 
 | Skill level | Description | Notes |
 | :------------|:-|:-|

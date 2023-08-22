@@ -12,6 +12,8 @@
 		}).result;
 		return Math.round(ret * (skill === 0 ? 0.5 : 1));
 	};
+
+	const MAX_BASE = 20;
 </script>
 
 <h1>Izé</h1>
@@ -24,7 +26,7 @@
 	<thead>
 		<tr>
 			<th>Skill/Base</th>
-			{#each Array(10) as _, base (base)}
+			{#each Array(MAX_BASE) as _, base (base)}
 				<th>{base + 1}</th>
 			{/each}
 		</tr>
@@ -33,7 +35,7 @@
 		{#each Array(11) as _, skill (skill)}
 			<tr>
 				<th>{skill}</th>
-				{#each Array(10) as _, base (base)}
+				{#each Array(MAX_BASE) as _, base (base)}
 					<td>{calc(base + 1, skill, hardness)}</td>
 				{/each}
 			</tr>

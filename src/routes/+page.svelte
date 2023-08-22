@@ -1,7 +1,9 @@
 <script lang="ts">
+	import Harc from '../components/Harc.svelte';
 </script>
 
 <div>
+	<Harc />
 	<!-- <Contest /> -->
 	<!-- <SkillLore
 		skill="skill:martial_arts"
