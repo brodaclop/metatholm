@@ -6,6 +6,7 @@
 	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
+	import { WEAPON_ACTIONS } from "../../model/calculations/WeaponAction";
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -25,7 +26,8 @@
 		defence: 0,
 		reach: 0,
 		speed: 0,
-		skill: 'skill:knives'
+		skill: 'skill:knives',
+		actions: {}
 	};
 
 	let weaponInitialised: boolean = false;
@@ -36,7 +38,6 @@
 
 	$: {
 		if (showModal && !weaponInitialised) {
-			console.log('setting editedweapon');
 			editedWeapon = weapon
 				? { ...weapon }
 				: {
@@ -47,7 +48,8 @@
 						defence: 0,
 						reach: 0,
 						speed: 0,
-						skill: 'skill:knives'
+						skill: 'skill:knives',
+						actions: {}
 				  };
 			weaponInitialised = true;
 		}
@@ -110,6 +112,32 @@
 								{/each}
 							</select></td
 						>
+					</tr>
+					<tr>
+						<th>{$_('action:title')}</th>
+						<td>
+							<table>
+								<tbody>
+									{#each WEAPON_ACTIONS as action}
+									<tr>
+										<th>{$_(action)}</th>
+										<td>
+											<input type="number" disabled={!(action in editedWeapon.actions)} bind:value={editedWeapon.actions[action]}/>
+											<input type="checkbox" checked={action in editedWeapon.actions} on:change={e => {
+												if (action in editedWeapon.actions) {
+													delete editedWeapon.actions[action];
+													editedWeapon = editedWeapon;
+												} else {
+													editedWeapon.actions[action] = 0;
+												}
+											}}/>
+										</td>
+									</tr>
+								{/each}
+		
+								</tbody>								
+							</table>
+					</td>
 					</tr>
 				</tbody>
 				<caption><button on:click={submit}>OK</button></caption>

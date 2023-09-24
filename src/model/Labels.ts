@@ -78,6 +78,7 @@ export const Labels_en: Record<Labels, string> = {
     'action:defend': 'Defend',
     'action:defend-cq': 'Defend (Close Quarters)',
     'action:cast': 'Cast',
+    'action:counter': 'Counter',
 
     'label:name': 'Name',
     'character:abilities': 'Abilities',
@@ -228,6 +229,7 @@ export const Labels_hu: Record<Labels, string> = {
     'action:disarm': 'Lefegyverzés',
     'action:defend': 'Védekezés',
     'action:defend-cq': 'Védekezés (Belharc)',
+    'action:counter': 'Ellentámadás',
 
     'label:name': 'Név',
     'character:abilities': 'Tulajdonságok',

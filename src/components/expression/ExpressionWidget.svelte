@@ -1,9 +1,10 @@
 <script lang="ts">
-	import type { EvalExpression, E, Expression } from '../../logic/Expression';
+	import type { EvalExpression, E, Expression, Operation } from '../../logic/Expression';
 	import { _ } from 'svelte-i18n';
 	import ValueWidget from './ValueWidget.svelte';
 
 	export let expr: EvalExpression | Expression;
+	export let parentType: Operation['type'] | undefined;
 
 	let result = typeof expr === 'number' ? expr : 'result' in expr ? expr.result : undefined;
 </script>
@@ -29,24 +30,28 @@
 	<!-- inline display -->
 	<span class="inline">
 		{#if expr.type === 'div'}
-			<svelte:self expr={expr.args[0]} /> / <svelte:self expr={expr.args[1]} />
+			<svelte:self parentType={expr.type} expr={expr.args[0]} /> / <svelte:self  parentType={expr.type} expr={expr.args[1]} />
 		{:else if expr.type === 'sub'}
-			<svelte:self expr={expr.args[0]} /> - <svelte:self expr={expr.args[1]} />
+			{#if parentType === 'div' || parentType === 'mul'}({/if}
+			<svelte:self parentType={expr.type} expr={expr.args[0]} /> - <svelte:self parentType={expr.type} expr={expr.args[1]} />
+			{#if parentType === 'div' || parentType === 'mul'}){/if}
 		{:else if expr.type === 'levelsum'}
 			<svelte:self expr={expr.arg} /> / {$_('character:level')}
 		{:else if expr.type === 'add' || expr.type === 'mul'}
+			{#if expr.type === 'add' && (parentType === 'div' || parentType === 'mul')}({/if}
 			{#each expr.args as arg, i}
-				<svelte:self expr={arg} />
+				<svelte:self parentType={expr.type} expr={arg} />
 				{#if i < expr.args.length - 1}
-					<span class="operator">{expr.type === 'add' ? '+' : '*'}</span>
+					<span class="operator">{expr.type === 'add' ? '+ ' : '* '}</span>
 				{/if}
 			{/each}
+			{#if expr.type === 'add' && (parentType === 'div' || parentType === 'mul')}){/if}
 		{:else if expr.type === 'max' || expr.type === 'min'}
 			{expr.type}(
 			{#each expr.args as arg, i}
-				<svelte:self expr={arg} />
+				<svelte:self parentType={expr.type} expr={arg} />
 				{#if i < expr.args.length - 1}
-					<span class="operator">,</span>
+					<span class="operator">,&nbsp;</span>
 				{/if}
 			{/each}
 			)

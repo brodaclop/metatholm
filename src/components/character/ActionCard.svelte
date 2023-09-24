@@ -14,13 +14,13 @@
 </script>
 
 <Box background={'#ffeeff'} title={$_(action.name)}>
-	{#each entries(action.variants) as [key, variant]}
+	{#each action.variants as variant}
 		<Box
-			background={current === key ? 'lightgray' : 'white'}
-			title={$_(key)}
+			background={current === variant.name ? 'lightgray' : 'white'}
+			title={$_(variant.name)}
 			on:mouseenter={() => {
-				if (isSelectable(key)) {
-					current = key;
+				if (isSelectable(variant.name)) {
+					current = variant.name;
 				}
 			}}
 			on:mouseleave={() => (current = undefined)}
@@ -31,7 +31,7 @@
 				}
 			}}
 		>
-			{#each variant as roll}
+			{#each variant.rolls as roll}
 				<div class="row">
 					<span class="label">{$_(roll.name)}</span>
 					<span>

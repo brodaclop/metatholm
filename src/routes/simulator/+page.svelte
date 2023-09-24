@@ -70,14 +70,14 @@
 
 	const hit = (idx: 0 | 1, variant: ActionVariant) => {
 		const attackAction = calculatedCharacters[idx].actions.find((a) => a.name === actions[idx])!
-			.variants[variant];
+			.variants.find(v => v.name === variant);
 		const defenceAction = calculatedCharacters[1 - idx].actions.find(
 			(a) => a.name === actions[1 - idx]
-		)!.variants['action:defend'];
-		const apRoll = attackAction!.find((r) => r.name === 'action:ap');
-		const attackRoll = attackAction!.find((r) => r.name === 'action:roll');
-		const damageRoll = attackAction!.find((r) => r.name === 'label:damage');
-		const defenceRoll = defenceAction!.find((r) => r.name === 'action:roll');
+		)!.variants.find(v => v.name === 'action:defend');
+		const apRoll = attackAction!.rolls.find((r) => r.name === 'action:ap');
+		const attackRoll = attackAction!.rolls.find((r) => r.name === 'action:roll');
+		const damageRoll = attackAction!.rolls.find((r) => r.name === 'label:damage');
+		const defenceRoll = defenceAction!.rolls.find((r) => r.name === 'action:roll');
 		const attackResult = kockaDobas(parseKocka(attackRoll!.rollString as string)).osszeg;
 		message(
 			`Attacks with ${actions[idx]}: ${attackRoll!.rollString} = ${attackResult}`,

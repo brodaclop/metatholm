@@ -1,17 +1,17 @@
 import { E, type EvalExpression } from "../logic/Expression";
 import type { Entity } from "./Entity";
-import { TOTAL_EP, TOTAL_FP, ATTACK_AP, WEAPON_ATK, WEAPON_DISARM, WEAPON_DEF, MAGIC_EFFECTIVE_SKILL } from "./Rules";
+import { TOTAL_EP, TOTAL_FP } from "./Rules";
 import type { Weapon } from "./Weapon";
 import type { Ability } from "./Abilities";
 import type { Action } from "./Action";
 import { Background } from "./Background";
 import { v4 } from "uuid";
 import { Ancestry } from "./Ancestry";
-import { Skill } from "./Skills";
 import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
 import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
+import type { Skill } from "./Skills";
 
 
 export interface Level {
@@ -79,7 +79,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             attack: fraction('skill:strength', 2),
             defence: fraction('skill:strength', 2),
             reach: 0,
-            damage: fraction('skill:strength', 2)
+            damage: fraction('skill:strength', 2),
+            actions: {
+                'action:attack-cq': 1,
+                'action:defend-cq': 1,
+            }
         });
     }
     if (skills['skill:fistfighting']) {
@@ -91,7 +95,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             attack: fraction('skill:reactions', 2),
             defence: fraction('skill:reactions', 2),
             reach: 0,
-            damage: fraction('skill:reactions', 2)
+            damage: fraction('skill:reactions', 2),
+            actions: {
+                'action:attack-cq': 2,
+                'action:defend-cq': 2,
+            }
         });
     }
     if (skills['skill:martial_arts']) {
@@ -103,7 +111,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             attack: fraction('skill:balance', 1),
             defence: fraction('skill:balance', 1),
             reach: 0,
-            damage: fraction('skill:balance', 2)
+            damage: fraction('skill:balance', 2),
+            actions: {
+                'action:attack-cq': 3,
+                'action:defend-cq': 3,
+            }
         });
     }
     return ret;
@@ -156,18 +168,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         ancestry: template.ancestry,
         abilities,
         inventory: {
-            weapons: [
-                {
-                    id: '2',
-                    name: 'Dzsambia',
-                    skill: 'skill:knives',
-                    speed: 5,
-                    attack: 8,
-                    defence: 3,
-                    reach: 1,
-                    damage: 3
-                }
-            ]
+            weapons: []
         },
         levels: [level],
         current: {
