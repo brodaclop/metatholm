@@ -10,7 +10,7 @@
 			'weapon:skill': Math.max(1, skill),
 			'weapon:difficulty': mult
 		}).result;
-		return Math.round(ret * (skill === 0 ? 0.5 : 1));
+		return Math.round(ret * (skill === 0 ? 0 : 1));
 	};
 
 	const MAX_BASE = 20;

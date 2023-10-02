@@ -64,10 +64,6 @@
 		padding-right: 0.5em;
 	}
 
-	.subtitle {
-		font-style: italic;
-	}
-
 	span:not(.label) {
 		flex-basis: 10%;
 	}

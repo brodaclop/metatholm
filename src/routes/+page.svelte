@@ -1,10 +1,11 @@
 <script lang="ts">
+	import Contest from '../components/Contest.svelte';
 	import Harc from '../components/Harc.svelte';
 </script>
 
 <div>
 	<Harc />
-	<!-- <Contest /> -->
+	<Contest />
 	<!-- <SkillLore
 		skill="skill:martial_arts"
 		value={3}

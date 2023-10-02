@@ -6,9 +6,9 @@
 
 	Chart.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-	let first = '1d2!';
-	let second = '0d0';
-	let tries = 1000;
+	let first = '1d100';
+	let second = '1d100';
+	let tries = 100000;
 
 	let wins = 0;
 	let ties = 0;
