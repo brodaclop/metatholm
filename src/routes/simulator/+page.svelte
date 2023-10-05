@@ -7,22 +7,22 @@
 	} from '../../model/Karakter';
 	import type { PageData } from './$types';
 	import Box from '../../components/character/Box.svelte';
-	import Skills from '../../components/character/Skills.svelte';
-	import Points from '../../components/character/Points.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
-	import Weapons from '../../components/character/Weapons.svelte';
 	import ActionCard from '../../components/character/ActionCard.svelte';
-	import type { ActionVariant } from '../../model/Action';
+	import CharacterSelector from '../../components/simulator/CharacterSelector.svelte';
+	import CharacterLife from '../../components/simulator/CharacterLife.svelte';
+	import WeaponSelector from '../../components/simulator/WeaponSelector.svelte';
+	import {
+		ActionDistances,
+		type ActionDistance,
+		type ActionVariant,
+		type Action
+	} from '../../model/Action';
 	import type { EvalExpression } from '../../logic/Expression';
 
 	const AP_ROLL = parseKocka('1d10+10');
 
 	export let data: PageData;
-
-	interface HistoryRecord {
-		align: 'left' | 'right' | 'center';
-		text: string;
-	}
 
 	let selectedCharacters: [Character, Character] = [null, null] as unknown as [
 		Character,
@@ -31,207 +31,174 @@
 
 	let characters: [Character, Character] = [null, null] as unknown as [Character, Character];
 
-	let calculatedCharacters: [CalculatedCharacter, CalculatedCharacter];
-
-	$: calculatedCharacters = characters.map((c) =>
-		c ? calculateCharacter(c) : undefined
-	) as unknown as [CalculatedCharacter, CalculatedCharacter];
-
-	let combatRunning = false;
-	let turn: number = 1;
+	let weapons: [
+		[number | undefined, number | undefined],
+		[number | undefined, number | undefined]
+	] = [
+		[undefined, undefined],
+		[undefined, undefined]
+	];
 	let ap: [number, number] = [0, 0];
-	let actions: [string, string] = ['', ''];
-	let history: Array<HistoryRecord> = [];
-	let historyTag: HTMLDivElement;
+	let turn = 0;
+	let attacker: 0 | 1 = 0;
+	let attack: { action: Action; variant: ActionVariant } | undefined;
+	let defence: { action: Action; variant: ActionVariant } | undefined;
+	let range: ActionDistance = 'close-quarters';
+	let nextStep: { idx: 0 | 1; select: 'attack' | 'defend' } = { idx: 0, select: 'attack' };
 
-	const message = (text: string, align: HistoryRecord['align'] = 'center') => {
-		history.push({ align, text });
-		history = history;
-	};
+	let attackResult: number | undefined;
+	let defenceResult: number | undefined;
+	let damageResult: number | undefined;
+
+	$: combatRunning = characters?.every((c) => c?.current.fp > 0 && c?.current.ep > 0);
 
 	const startCombat = () => {
-		if (selectedCharacters.every((sc) => !!sc)) {
-			combatRunning = true;
-			history = [];
-			turn = 0;
-			characters[0] = JSON.parse(JSON.stringify(selectedCharacters[0]));
-			characters[1] = JSON.parse(JSON.stringify(selectedCharacters[1]));
-			message('Start combat');
-			startTurn();
-		}
+		characters = selectedCharacters.map((c) => JSON.parse(JSON.stringify(c))) as [
+			Character,
+			Character
+		];
+		nextTurn();
 	};
 
-	const startTurn = () => {
+	const nextTurn = () => {
 		turn++;
 		ap[0] = kockaDobas(AP_ROLL).osszeg;
 		ap[1] = kockaDobas(AP_ROLL).osszeg;
-		message(`===== TURN ${turn} =====`);
+		startAttack();
 	};
 
-	const hit = (idx: 0 | 1, variant: ActionVariant) => {
-		const attackAction = calculatedCharacters[idx].actions.find((a) => a.name === actions[idx])!
-			.variants.find(v => v.name === variant);
-		const defenceAction = calculatedCharacters[1 - idx].actions.find(
-			(a) => a.name === actions[1 - idx]
-		)!.variants.find(v => v.name === 'action:defend');
+	const startAttack = () => {
+		attacker = ap[0] >= ap[1] ? 0 : 1;
+		if (Math.max(ap[0], ap[1]) <= 0) {
+			nextTurn();
+		} else {
+			attack = undefined;
+			defence = undefined;
+			nextStep = { idx: attacker, select: 'attack' };
+		}
+	};
+
+	const select = (action: Action, variant: ActionVariant) => {
+		if (nextStep.select === 'attack') {
+			attack = { action, variant };
+			nextStep = { idx: (1 - nextStep.idx) as 0 | 1, select: 'defend' };
+		} else {
+			defence = { action, variant };
+			hit();
+		}
+	};
+
+	const hit = () => {
+		const attackAction = attack!.action.variants.find((v) => v.name === attack!.variant);
+		const defenceAction = defence!.action.variants.find((v) => v.name === defence!.variant);
 		const apRoll = attackAction!.rolls.find((r) => r.name === 'action:ap');
 		const attackRoll = attackAction!.rolls.find((r) => r.name === 'action:roll');
 		const damageRoll = attackAction!.rolls.find((r) => r.name === 'label:damage');
 		const defenceRoll = defenceAction!.rolls.find((r) => r.name === 'action:roll');
-		const attackResult = kockaDobas(parseKocka(attackRoll!.rollString as string)).osszeg;
-		message(
-			`Attacks with ${actions[idx]}: ${attackRoll!.rollString} = ${attackResult}`,
-			idx === 0 ? 'left' : 'right'
+		attackResult = kockaDobas(parseKocka(attackRoll!.rollString as string)).osszeg;
+		console.info(
+			`Player ${attacker + 1} Attacks with ${attack!.action.name}: ${
+				attackRoll!.rollString
+			} = ${attackResult}`
 		);
-		const defenceResult = kockaDobas(parseKocka(defenceRoll!.rollString as string)).osszeg;
-		message(
-			`Defends with ${actions[1 - idx]}: ${defenceRoll!.rollString} = ${defenceResult}\n`,
-			idx === 1 ? 'left' : 'right'
+		defenceResult = kockaDobas(parseKocka(defenceRoll!.rollString as string)).osszeg;
+		console.info(
+			`Player ${2 - attacker} defends with ${defence!.action.name}: ${
+				defenceRoll!.rollString
+			} = ${defenceResult}`
 		);
 		if (attackResult > defenceResult) {
-			const damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
-			message(`Damage ${damageRoll!.rollString} = ${damageResult}`, idx === 0 ? 'left' : 'right');
-			characters[1 - idx].current.fp -= damageResult;
-			characters[1 - idx].current.ep -= Math.floor(damageResult / 10);
+			damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
+			console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
+			characters[1 - attacker].current.fp -= damageResult;
+			characters[1 - attacker].current.ep -= Math.floor(damageResult / 10);
+		} else {
+			damageResult = undefined;
 		}
 
-		ap[idx] -= (apRoll!.roll as EvalExpression).result;
+		ap[attacker] -= (apRoll!.roll as EvalExpression).result;
+		startAttack();
 	};
-
-	$: if (history && historyTag) {
-		historyTag.scrollTo({ top: historyTag.clientHeight });
-	}
 </script>
 
 <Box background="#ffffee" title="Characters">
 	<div class="characterSelector">
 		{#each [0, 1] as idx}
-			{@const calculatedCharacter = selectedCharacters[idx]
-				? calculateCharacter(selectedCharacters[idx])
-				: undefined}
-			<Box background="#ffeeff">
-				<div slot="title">
-					<h3>{`Player ${idx + 1}`}</h3>
-					<select bind:value={selectedCharacters[idx]}>
-						{#each data.characters as character}
-							<option value={character}
-								>{character.name} ({$_(character.ancestry)}
-								{$_(character.background)} / {$_('character:level')}
-								{character.levels.length})</option
-							>
-						{/each}
-					</select>
-				</div>
-				{#if selectedCharacters[idx] !== null && calculatedCharacter}
-					<Skills skills={calculatedCharacter.skills} />
-					<Points bind:character={selectedCharacters[idx]} {calculatedCharacter} />
-					<Box background="#eeeeee" title={$_('character:weapons')}>
-						<Weapons bind:character={selectedCharacters[idx]} />
-					</Box>
-				{/if}
-			</Box>
+			<CharacterSelector
+				{idx}
+				bind:selectedCharacter={selectedCharacters[idx]}
+				characters={data.characters}
+			/>
 		{/each}
 	</div>
-	{#if !combatRunning && selectedCharacters.every((sc) => !!sc)}
+	{#if selectedCharacters.every((sc) => !!sc) && !combatRunning}
 		<div style:text-align="center">
 			<button on:click={startCombat}>Start Combat</button>
 		</div>
 	{/if}
 </Box>
 
-{#if combatRunning}
-	<Box background="#eeffee" title="Combat">
-		{@const initiative = Math.max(ap[0], ap[1])}
-		{@const current = ap[0] >= ap[1] ? 0 : 1}
-		{@const oneIsDead = characters.some((c) => c.current.fp <= 0 || c.current.ep <= 0)}
-		<div class="characterSelector">
-			<div style:order={1}>
-				<Box background={'aqua'} title={`Turn ${turn}`}>
-					<div style:text-align="center" style:margin-bottom="1em">
-						{current === 0 ? '<-- ' : '-->'}
+<Box background="#eeffee" title="Combat">
+	<div class="characterSelector">
+		<div style:order={1}>
+			{#if turn > 0}
+				<Box background="#eeeeff">
+					<div slot="title">
+						Turn: {turn}
 					</div>
-					<div style:text-align="center" style:margin-bottom="1em">
-						{#if oneIsDead}
-							<button disabled={selectedCharacters.some((sc) => !sc)} on:click={startCombat}
-								>Restart Combat</button
-							>
-						{:else if initiative <= 0}
-							<div style:text-align="center">
-								<button on:click={startTurn}>Next turn</button>
+					<div>
+						{#if attackResult && defenceResult}
+							<div>Player {attacker + 1} attacks for {attackResult}</div>
+							<div>Player {2 - attacker} defends for {defenceResult}</div>
+							<div>
+								{#if damageResult}
+									Damage: {damageResult} FP / {Math.floor(damageResult / 10)} EP
+								{:else}
+									MISS!
+								{/if}
 							</div>
 						{/if}
 					</div>
-					<div class="history" bind:this={historyTag}>
-						{#each history as message}
-							<div class={message.align}>{message.text}</div>
+				</Box>
+			{/if}
+		</div>
+		{#each [0, 1] as idx}
+			<div style:order={idx * 2}>
+				{#if characters[idx]}
+					{@const calculatedCharacter = calculateCharacter(characters[idx])}
+					<CharacterLife character={characters[idx]} ap={ap[idx]} />
+					<WeaponSelector
+						{calculatedCharacter}
+						active
+						bind:left={weapons[idx][0]}
+						bind:right={weapons[idx][1]}
+					/>
+					<div class="actions">
+						{#each [0, 1] as handIdx}
+							{#if weapons[idx][handIdx] !== undefined}
+								{@const weaponIdx = weapons[idx][handIdx] ?? 0}
+								{@const action = calculatedCharacter.actions.find(
+									(a) => a.name === calculatedCharacter.weapons[weaponIdx].name
+								)}
+								{#if action}
+									<ActionCard
+										{action}
+										isSelectable={(variant) =>
+											combatRunning &&
+											nextStep.idx === idx &&
+											ActionDistances[variant] === range &&
+											variant.includes(nextStep.select)}
+										select={(variant) => select(action, variant)}
+									/>
+								{/if}
+							{/if}
 						{/each}
 					</div>
-				</Box>
+				{/if}
 			</div>
-			{#each [0, 1] as idx}
-				{@const action = calculatedCharacters[idx].actions.find((a) => a.name === actions[idx])}
-				{@const isDead = characters[idx].current.fp <= 0 || characters[idx].current.ep <= 0}
-				<div style:order={idx * 2}>
-					<Box background="cornsilk">
-						<div class="bignumber-container">
-							<div class="bignumber">
-								{ap[idx]}
-							</div>
-							<div class="caption">Action points</div>
-						</div>
-						<div class="bignumber-container">
-							<div class="bignumber">
-								{characters[idx].current.fp}
-							</div>
-							<div class="caption">{$_('character:fp')}</div>
-						</div>
-						<div class="bignumber-container">
-							<div class="bignumber">
-								{characters[idx].current.ep}
-							</div>
-							<div class="caption">{$_('character:ep')}</div>
-						</div>
-					</Box>
-					<Box background={idx === current && ap[idx] > 0 && !isDead ? 'cornsilk' : 'grey'}>
-						<div class="bignumber-container">
-							<div class="bignumber">Weapon</div>
-							<div class="caption">
-								<select bind:value={actions[idx]}>
-									{#each calculatedCharacters[idx].actions.filter((a) => a.variants['action:attack'] && a.variants['action:defend']) as a}
-										<option value={a.name}>{$_(a.name)}</option>
-									{/each}
-								</select>
-							</div>
-						</div>
-						<!-- <div class="bignumber-container">
-							<div class="bignumber">
-								<button
-									on:click={() => {
-										characters[idx].current.fp = calculatedCharacters[idx].fp.result;
-										characters[idx].current.ep = calculatedCharacters[idx].ep.result;
-									}}>Reset life</button
-								>
-							</div>
-						</div> -->
-						<div>
-							{#if action}
-								<ActionCard
-									{action}
-									isSelectable={(variant) =>
-										idx === current &&
-										initiative > 0 &&
-										!isDead &&
-										(variant === 'action:attack' || variant === 'action:attack-cq')}
-									select={(variant) => hit(current, variant)}
-								/>
-							{/if}
-						</div>
-					</Box>
-				</div>
-			{/each}
-		</div>
-	</Box>
-{/if}
+		{/each}
+	</div>
+</Box>
 
 <style>
 	.characterSelector {
@@ -239,45 +206,8 @@
 		justify-content: space-around;
 	}
 
-	.history {
+	.actions {
 		display: flex;
-		flex-direction: column;
-		max-height: 30em;
-		overflow-y: scroll;
-	}
-
-	.history > * {
-		border: 1px solid black;
-		border-radius: 0.5em;
-		background-color: aliceblue;
-		padding-left: 1em;
-		padding-right: 1em;
-		margin-bottom: 0.2em;
-	}
-
-	.history .left {
-		align-self: flex-start;
-		text-align: left;
-		max-width: 70%;
-	}
-
-	.history .right {
-		align-self: flex-end;
-		text-align: right;
-		max-width: 70%;
-	}
-
-	.history .center {
-		align-self: stretch;
-		text-align: center;
-	}
-
-	.bignumber-container {
-		text-align: center;
-	}
-
-	.bignumber {
-		font-size: x-large;
-		font-weight: bold;
+		flex-direction: row;
 	}
 </style>

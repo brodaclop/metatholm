@@ -15,11 +15,12 @@
 
 <Box background={'#ffeeff'} title={$_(action.name)}>
 	{#each action.variants as variant}
+		{@const selectable = isSelectable(variant.name)}
 		<Box
-			background={current === variant.name ? 'lightgray' : 'white'}
+			background={!selectable ? 'lightgray' : current === variant.name ? 'aquamarine' : 'white'}
 			title={$_(variant.name)}
 			on:mouseenter={() => {
-				if (isSelectable(variant.name)) {
+				if (selectable) {
 					current = variant.name;
 				}
 			}}

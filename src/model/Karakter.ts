@@ -80,6 +80,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             defence: fraction('skill:strength', 2),
             reach: 0,
             damage: fraction('skill:strength', 2),
+            hands: 1,
             actions: {
                 'action:attack-cq': 1,
                 'action:defend-cq': 1,
@@ -96,6 +97,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             defence: fraction('skill:reactions', 2),
             reach: 0,
             damage: fraction('skill:reactions', 2),
+            hands: 1,
             actions: {
                 'action:attack-cq': 2,
                 'action:defend-cq': 2,
@@ -112,6 +114,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             defence: fraction('skill:balance', 1),
             reach: 0,
             damage: fraction('skill:balance', 2),
+            hands: 1,
             actions: {
                 'action:attack-cq': 3,
                 'action:defend-cq': 3,

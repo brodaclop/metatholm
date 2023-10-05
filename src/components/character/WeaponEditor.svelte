@@ -6,7 +6,7 @@
 	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_ACTIONS } from "../../model/calculations/WeaponAction";
+	import { WEAPON_ACTIONS } from '../../model/calculations/WeaponAction';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -104,6 +104,15 @@
 						<td><input type="number" min="0" max="10" bind:value={editedWeapon.reach} /></td>
 					</tr>
 					<tr>
+						<th>{$_('weapon:hands')}</th>
+						<td
+							><select bind:value={editedWeapon.hands}>
+								{#each [0.5, 1, 1.5, 2] as s}
+									<option value={s}>{s}</option>
+								{/each}
+							</select></td
+						>
+					</tr><tr>
 						<th>{$_('weapon:skill')}</th>
 						<td
 							><select bind:value={editedWeapon.skill}>
@@ -119,25 +128,32 @@
 							<table>
 								<tbody>
 									{#each WEAPON_ACTIONS as action}
-									<tr>
-										<th>{$_(action)}</th>
-										<td>
-											<input type="number" disabled={!(action in editedWeapon.actions)} bind:value={editedWeapon.actions[action]}/>
-											<input type="checkbox" checked={action in editedWeapon.actions} on:change={e => {
-												if (action in editedWeapon.actions) {
-													delete editedWeapon.actions[action];
-													editedWeapon = editedWeapon;
-												} else {
-													editedWeapon.actions[action] = 0;
-												}
-											}}/>
-										</td>
-									</tr>
-								{/each}
-		
-								</tbody>								
+										<tr>
+											<th>{$_(action)}</th>
+											<td>
+												<input
+													type="number"
+													disabled={!(action in editedWeapon.actions)}
+													bind:value={editedWeapon.actions[action]}
+												/>
+												<input
+													type="checkbox"
+													checked={action in editedWeapon.actions}
+													on:change={(e) => {
+														if (action in editedWeapon.actions) {
+															delete editedWeapon.actions[action];
+															editedWeapon = editedWeapon;
+														} else {
+															editedWeapon.actions[action] = 0;
+														}
+													}}
+												/>
+											</td>
+										</tr>
+									{/each}
+								</tbody>
 							</table>
-					</td>
+						</td>
 					</tr>
 				</tbody>
 				<caption><button on:click={submit}>OK</button></caption>

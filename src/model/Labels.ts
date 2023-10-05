@@ -48,6 +48,7 @@ export const Keys = [
     'weapon:reach',
     'weapon:attack',
     'weapon:defence',
+    'weapon:hands',
 
     'label:difficulty:1',
     'label:difficulty:2',
@@ -208,6 +209,7 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:skill': 'Skill',
     'weapon:attack': 'Attack',
     'weapon:defence': 'Defence',
+    'weapon:hands': 'Hands',
     'weapon:reach': 'Reach',
 
 };
@@ -363,6 +365,7 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:difficulty': 'Nehézség',
     'weapon:skill': 'Képzettség',
     'weapon:attack': 'Támadás',
+    'weapon:hands': 'Kéz',
     'weapon:defence': 'Védekezés',
     'weapon:reach': 'Ütőtáv',
 };

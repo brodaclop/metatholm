@@ -4,7 +4,7 @@
 	import ValueWidget from './ValueWidget.svelte';
 
 	export let expr: EvalExpression | Expression;
-	export let parentType: Operation['type'] | undefined;
+	export let parentType: Operation['type'] | undefined = undefined;
 
 	let result = typeof expr === 'number' ? expr : 'result' in expr ? expr.result : undefined;
 </script>
@@ -30,10 +30,16 @@
 	<!-- inline display -->
 	<span class="inline">
 		{#if expr.type === 'div'}
-			<svelte:self parentType={expr.type} expr={expr.args[0]} /> / <svelte:self  parentType={expr.type} expr={expr.args[1]} />
+			<svelte:self parentType={expr.type} expr={expr.args[0]} /> / <svelte:self
+				parentType={expr.type}
+				expr={expr.args[1]}
+			/>
 		{:else if expr.type === 'sub'}
 			{#if parentType === 'div' || parentType === 'mul'}({/if}
-			<svelte:self parentType={expr.type} expr={expr.args[0]} /> - <svelte:self parentType={expr.type} expr={expr.args[1]} />
+			<svelte:self parentType={expr.type} expr={expr.args[0]} /> - <svelte:self
+				parentType={expr.type}
+				expr={expr.args[1]}
+			/>
 			{#if parentType === 'div' || parentType === 'mul'}){/if}
 		{:else if expr.type === 'levelsum'}
 			<svelte:self expr={expr.arg} /> / {$_('character:level')}
