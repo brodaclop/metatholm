@@ -1,8 +1,9 @@
 import { loadAllCharacters } from "$lib/server/Db";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, platform }) => {
     return {
-        characters: loadAllCharacters()
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        characters: loadAllCharacters(platform!)
     };
 }

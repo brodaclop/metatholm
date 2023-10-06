@@ -2,26 +2,27 @@ import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
 import { fail, type Actions } from '@sveltejs/kit';
 
-declare const platform: App.Platform;
 
 export const actions: Actions = {
-    saveCharacter: async ({ request, locals }) => {
+    saveCharacter: async ({ request, platform }) => {
         const formData = await request.formData();
         const characterString = formData.get('character');
         if (characterString) {
             const character = JSON.parse(characterString.toString());
-            saveCharacter(platform, character);
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            saveCharacter(platform!, character);
             return { success: true };
         } else {
             fail(400);
         }
     },
-    deleteCharacter: async ({ request, locals }) => {
+    deleteCharacter: async ({ request, platform }) => {
         const formData = await request.formData();
         const characterString = formData.get('character');
         if (characterString) {
             const character = JSON.parse(characterString.toString());
-            deleteCharacter(character);
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            deleteCharacter(platform!, character);
             return { success: true };
         } else {
             fail(400);
@@ -30,8 +31,8 @@ export const actions: Actions = {
 
 }
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, platform }) => {
     return {
-        character: loadCharacter(params.id)
+        character: loadCharacter(platform, params.id)
     };
 }
