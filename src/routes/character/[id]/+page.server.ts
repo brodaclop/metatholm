@@ -2,13 +2,15 @@ import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
 import { fail, type Actions } from '@sveltejs/kit';
 
+declare const platform: App.Platform;
+
 export const actions: Actions = {
     saveCharacter: async ({ request, locals }) => {
         const formData = await request.formData();
         const characterString = formData.get('character');
         if (characterString) {
             const character = JSON.parse(characterString.toString());
-            saveCharacter(character);
+            saveCharacter(platform, character);
             return { success: true };
         } else {
             fail(400);

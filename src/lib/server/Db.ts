@@ -1,13 +1,18 @@
-//import Database from "better-sqlite3";
+import type { KVNamespace } from "@cloudflare/workers-types";
 import type { Character, CharacterInfo } from "../../model/Karakter";
 
-//const db = new Database('./data/db');
 
-//db.exec('create table if not exists CHARACTERS (id primary key, info, payload)');
-export const listCharacters = (): Array<CharacterInfo> => {
-    // const stmt = db.prepare('select info from CHARACTERS');
-    // const rows = stmt.all();
-    // return rows.map(row => JSON.parse((row as any).info ?? '{}'));
+declare const platform: App.Platform;
+
+export const listCharacters = async (): Promise<Array<CharacterInfo>> => {
+    const ids = (await platform.env.CHARACTER_DB.list()).keys;
+    console.log('ids', ids);
+    // return ids.map(idString => {
+    //     const [id, name, background, ancestry, level] = idString.name.split(':');
+    //     return {
+    //         id, name, background, ancestry, level: Number(level)
+    //     } as CharacterInfo;
+    // });
     return [];
 }
 
@@ -18,7 +23,14 @@ export const loadAllCharacters = (): Array<Character> => {
     return [];
 }
 
-export const saveCharacter = (char: Character) => {
+export const saveCharacter = async (char: Character) => {
+
+    //TODO: escape : from name
+    const id = `${char.id}:${char.name}:${char.background}:${char.ancestry}:${char.levels.length}`;
+    const value = JSON.stringify(char);
+    console.log('saving character', char);
+    await platform.env.CHARACTER_DB.put(id, value);
+
     // const stmt = db.prepare('insert into CHARACTERS(id, info, payload) VALUES ($id, $info, $payload) on conflict(id) do update set payload=$payload, info=$info');
     // const info: CharacterInfo = { background: char.background, ancestry: char.ancestry, id: char.id, name: char.name, level: char.levels.length };
     // stmt.run({ id: char.id, info: JSON.stringify(info), payload: JSON.stringify(char) });
