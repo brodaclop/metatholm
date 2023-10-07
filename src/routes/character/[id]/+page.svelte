@@ -1,43 +1,45 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import CharacterSheet from '../../../components/character/CharacterSheet.svelte';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
+	import type { Character } from '../../../model/Karakter';
 
 	export let data: PageData;
-	let changes = 0;
 
-	$: if (data.character) {
-		changes = changes + 1;
-	}
-
-	$: if (changes >= 2) {
+	const saveCharacter = (character: Character) => {
 		const body: FormData = new FormData();
-		body.set('character', JSON.stringify(data.character));
-		changes = 0;
+		const toSave = JSON.stringify(character);
+		body.set('character', toSave);
 		fetch('?/saveCharacter', {
 			method: 'POST',
 			body,
 			headers: {
 				'x-sveltekit-action': 'true'
 			}
-		}).then(() => invalidate('db:characterlist'));
-	}
+		})
+			.then(() => invalidate('db:characterlist'))
+			.then(() => invalidateAll());
+	};
 
 	const deleteCharacter = () => {
 		const body: FormData = new FormData();
 		body.set('character', JSON.stringify(data.character));
-		changes = 0;
 		fetch('?/deleteCharacter', {
 			method: 'POST',
 			body,
 			headers: {
 				'x-sveltekit-action': 'true'
 			}
-		}).then(() => invalidate('db:characterlist'));
+		})
+			.then(() => invalidate('db:characterlist'))
+			.then(() => goto('/'));
 	};
-
-	import CharacterSheet from '../../../components/character/CharacterSheet.svelte';
-	import { invalidate } from '$app/navigation';
 </script>
 
 <div>
-	<CharacterSheet bind:character={data.character} {deleteCharacter} />
+	{#if data.character}
+		<CharacterSheet initialCharacter={data.character} {deleteCharacter} {saveCharacter} />
+	{:else}
+		Loading...
+	{/if}
 </div>

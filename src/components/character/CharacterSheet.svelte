@@ -9,8 +9,18 @@
 	import Weapons from './Weapons.svelte';
 	import MainBox from './MainBox.svelte';
 
-	export let character: Character;
+	export let initialCharacter: Character;
 	export let deleteCharacter: () => void;
+	export let saveCharacter: (char: Character) => void;
+
+	let character: Character;
+
+	$: if (!character) {
+		console.log('setting character', initialCharacter);
+		character = JSON.parse(JSON.stringify(initialCharacter));
+	}
+
+	$: changed = character && JSON.stringify(initialCharacter) !== JSON.stringify(character);
 
 	$: calculatedCharacter = calculateCharacter(character);
 </script>
@@ -39,6 +49,7 @@
 			<Weapons bind:character />
 		</Box>
 	</div>
+	<button disabled={!changed} on:click={() => saveCharacter(character)}>Save</button>
 	<button on:click={deleteCharacter}>Delete</button>
 </Box>
 
