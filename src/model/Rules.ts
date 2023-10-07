@@ -17,8 +17,8 @@ Ha az újradobás eredménye is maximális, ismét újradobunk és így tovább.
 
 
 export const TOTAL_EP: Expression = E.add(E.constant(9), E.value('character:level'));
-export const FP_ALAP: Expression = E.name('expr:pp_base', E.add(20, E.value('ability:build'), E.value('ability:presence')));
-export const FP_PER_SZINT: Expression = E.name('expr:pp_per_level', E.add(10, E.constant('1d10', 'expr:pp_roll'), E.value('skill:endurance'), E.value('skill:pain_threshold')));
+export const FP_ALAP: Expression = E.constant(30, 'expr:pp_base');
+export const FP_PER_SZINT: Expression = E.name('expr:pp_per_level', E.add(10, E.constant('2d10', 'expr:pp_roll'), E.mul(2, E.value('skill:endurance')), E.mul(E.value('skill:pain_threshold'), 2)));
 export const TOTAL_FP: Expression = E.name('expr:pp_total', E.add(FP_ALAP, E.level(FP_PER_SZINT)));
 
 export const ATTACK_AP: Expression = E.max(1, E.div(E.mul(2, E.sub(10, E.value('weapon:speed')), E.sub(54, E.mul(E.add(1, E.value('weapon:difficulty')), E.sub(E.value('weapon:skill'), 1)))), 54));

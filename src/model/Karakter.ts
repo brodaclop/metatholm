@@ -160,7 +160,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
     const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (ancestryInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
 
     const level: Level = {
-        fpRoll: 10,
+        fpRoll: 20,
         skills: Background.get(template.background).skills
     };
 
