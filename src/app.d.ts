@@ -8,10 +8,10 @@ declare global {
 			env: {
 				CHARACTER_DB: KVNamespace;
 			}
-			context: {
-				waitUntil(promise: Promise<unknown>): void;
-			};
-			caches: CacheStorage & { default: Cache }
+			// context: {
+			// 	waitUntil(promise: Promise<unknown>): void;
+			// };
+			// caches: CacheStorage & { default: Cache }
 		}
 
 		// interface Error {}

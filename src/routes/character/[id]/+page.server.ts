@@ -1,6 +1,6 @@
 import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 
 
 export const actions: Actions = {
@@ -23,7 +23,7 @@ export const actions: Actions = {
             const character = JSON.parse(characterString.toString());
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             deleteCharacter(platform!, character);
-            return { success: true };
+            throw redirect(303, `/`);
         } else {
             fail(400);
         }
@@ -33,6 +33,7 @@ export const actions: Actions = {
 
 export const load: PageServerLoad = async ({ params, platform }) => {
     return {
-        character: loadCharacter(platform, params.id)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        character: loadCharacter(platform!, params.id)
     };
 }
