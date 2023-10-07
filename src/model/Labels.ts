@@ -26,7 +26,8 @@ type GenericLabels = 'label:name' |
     'label:at_least' |
     'label:exactly' |
     'label:roll' |
-    'label:skill_check_success_probabilities'
+    'label:skill_check_success_probabilities' |
+    'label:main'
     ;
 
 export const Keys = [
@@ -137,6 +138,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:exactly': 'Result is exactly...',
     'label:roll': 'Roll',
     'label:skill_check_success_probabilities': 'Skill check success probabilities',
+    'label:main': 'Lore',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -287,6 +289,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:exactly': 'Az eredmény pontosan...',
     'label:roll': 'Dobás',
     'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
+    'label:main': 'Kódex',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

@@ -64,6 +64,7 @@
 			</li>
 			<li><a href="/create">Create</a></li>
 			<li><a href="/simulator">Simulator</a></li>
+			<li><a href="/lore/main">Lore</a></li>
 			<li>
 				<Select
 					bind:value={lang}

@@ -1,4 +1,4 @@
-## Learning skills
+# Learning skills
 
 Learning a skill requires the dedication of time and effort. In the game the amount of it available for a character is expressed as **skill points**. Skill points are gained when the character gains a new level and can be spent to learn a new skill or improve a known skill.
 

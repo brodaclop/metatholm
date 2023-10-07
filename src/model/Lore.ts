@@ -1,5 +1,8 @@
+import { entries } from "./InfoList";
+
 const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
     en: {
+        'main': import('$lib/lore/main_en.md?raw'),
         'character:skills': import('$lib/lore/character/skills_en.md?raw'),
         'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_en.md?raw'),
         'rule:learning_skills': import('$lib/lore/rule/learning_skills_en.md?raw'),
@@ -36,6 +39,16 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
     }
 }
 
-
 export const lore = async (id: string, lang: string | null | undefined): Promise<string> => (await Lore[lang ?? 'en'][id]).default;
+
+export const loreCategoryList = async (category: string, lang: string | null | undefined): Promise<Array<{ id: string, title: string }>> => {
+    const lorePromises: Array<[string, Promise<string>]> = entries(Lore[lang ?? 'en'])
+        .filter(([key]) => key.split(':')[0] === category)
+        .map(([key, value]) => ([key, value.then(v => v.default)]));
+    const ret: Array<{ id: string, title: string }> = [];
+    for (const entry of lorePromises) {
+        ret.push({ id: entry[0], title: (await entry[1]).split('\n')[0] })
+    }
+    return ret;
+}
 
