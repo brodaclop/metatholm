@@ -8,6 +8,8 @@
 	import ActionCard from './ActionCard.svelte';
 	import Weapons from './Weapons.svelte';
 	import MainBox from './MainBox.svelte';
+	import { onDestroy, onMount } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
 
 	export let initialCharacter: Character;
 	export let deleteCharacter: () => void;
@@ -23,6 +25,14 @@
 	$: changed = character && JSON.stringify(initialCharacter) !== JSON.stringify(character);
 
 	$: calculatedCharacter = calculateCharacter(character);
+
+	beforeNavigate(({ cancel }) => {
+		if (changed) {
+			if (!confirm('Save changes to character?')) {
+				cancel();
+			}
+		}
+	});
 </script>
 
 <Box background={'#ffeeee'} title={character.name}>
