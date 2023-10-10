@@ -11,17 +11,18 @@ const ROLLS: Partial<Record<ActionVariant, Expression>> = {
     'action:counter': WEAPON_ATK,
     'action:disarm': WEAPON_DISARM,
     'action:defend': WEAPON_DEF,
-    'action:defend-cq': WEAPON_DEF
+    'action:defend-cq': WEAPON_DEF,
+    'action:close-in': WEAPON_DEF,
 };
 
 const APS: Partial<Record<ActionVariant, Expression>> = {
     'action:attack': ATTACK_AP,
     'action:attack-cq': ATTACK_AP,
     'action:disarm': ATTACK_AP,
-    'action:counter': E.constant(0)
+    'action:close-in': ATTACK_AP,
 };
 
-export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter'];
+export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter', 'action:close-in'];
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,
@@ -29,14 +30,14 @@ export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, we
 });
 
 const ReachMultipliers: Record<ActionDistance, number> = {
-    'close-quarters': -1,
-    'in-range': 1,
+    'close-quarters': -2,
+    'in-range': 2,
     'out-of-range': 0
 };
 
 const calculateSkill = (characterSkill?: number, actionModifier = 0): number => {
     if (characterSkill) {
-        return characterSkill + actionModifier ?? 0;
+        return actionModifier + (characterSkill ?? 0);
     } else {
         return Math.min(0, actionModifier)
     }

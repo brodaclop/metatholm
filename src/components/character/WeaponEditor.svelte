@@ -26,6 +26,7 @@
 		defence: 0,
 		reach: 0,
 		speed: 0,
+		hands: 1,
 		skill: 'skill:knives',
 		actions: {}
 	};
@@ -48,6 +49,7 @@
 						defence: 0,
 						reach: 0,
 						speed: 0,
+						hands: 1,
 						skill: 'skill:knives',
 						actions: {}
 				  };
@@ -61,6 +63,7 @@
 	};
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
 	on:close={() => {
@@ -75,6 +78,7 @@
 	}}
 >
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
 		<Box title={$_('label:weapon')} background={'#eeffee'}>
 			<table>

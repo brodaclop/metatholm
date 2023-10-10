@@ -16,7 +16,8 @@
 		ActionDistances,
 		type ActionDistance,
 		type ActionVariant,
-		type Action
+		type Action,
+		ActionTypes
 	} from '../../model/Action';
 	import type { EvalExpression } from '../../logic/Expression';
 
@@ -43,12 +44,16 @@
 	let attacker: 0 | 1 = 0;
 	let attack: { action: Action; variant: ActionVariant } | undefined;
 	let defence: { action: Action; variant: ActionVariant } | undefined;
-	let range: ActionDistance = 'close-quarters';
-	let nextStep: { idx: 0 | 1; select: 'attack' | 'defend' } = { idx: 0, select: 'attack' };
+	let range: ActionDistance = 'in-range';
+	let nextStep: { idx: 0 | 1; select: 'attack' | 'defend' | 'counter' } = {
+		idx: 0,
+		select: 'attack'
+	};
 
 	let attackResult: number | undefined;
 	let defenceResult: number | undefined;
 	let damageResult: number | undefined;
+	let attackSucceeded: boolean;
 
 	$: combatRunning = characters?.every((c) => c?.current.fp > 0 && c?.current.ep > 0);
 
@@ -81,7 +86,10 @@
 	const select = (action: Action, variant: ActionVariant) => {
 		if (nextStep.select === 'attack') {
 			attack = { action, variant };
-			nextStep = { idx: (1 - nextStep.idx) as 0 | 1, select: 'defend' };
+			nextStep = {
+				idx: (1 - nextStep.idx) as 0 | 1,
+				select: variant === 'action:close-in' ? 'counter' : 'defend'
+			};
 		} else {
 			defence = { action, variant };
 			hit();
@@ -108,11 +116,17 @@
 			} = ${defenceResult}`
 		);
 		if (attackResult > defenceResult) {
-			damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
-			console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
-			characters[1 - attacker].current.fp -= damageResult;
-			characters[1 - attacker].current.ep -= Math.floor(damageResult / 10);
+			attackSucceeded = true;
+			if (attackAction?.name === 'action:close-in') {
+				range = 'close-quarters';
+			} else {
+				damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
+				console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
+				characters[1 - attacker].current.fp -= damageResult;
+				characters[1 - attacker].current.ep -= Math.floor(damageResult / 10);
+			}
 		} else {
+			attackSucceeded = false;
 			damageResult = undefined;
 		}
 
@@ -146,13 +160,16 @@
 					<div slot="title">
 						Turn: {turn}
 					</div>
+					<div>Range: {range}</div>
 					<div>
 						{#if attackResult && defenceResult}
 							<div>Player {attacker + 1} attacks for {attackResult}</div>
 							<div>Player {2 - attacker} defends for {defenceResult}</div>
 							<div>
-								{#if damageResult}
-									Damage: {damageResult} FP / {Math.floor(damageResult / 10)} EP
+								{#if attackSucceeded}
+									{#if damageResult}
+										Damage: {damageResult} FP / {Math.floor(damageResult / 10)} EP
+									{/if}
 								{:else}
 									MISS!
 								{/if}
@@ -187,7 +204,7 @@
 											combatRunning &&
 											nextStep.idx === idx &&
 											ActionDistances[variant] === range &&
-											variant.includes(nextStep.select)}
+											ActionTypes[variant] === nextStep.select}
 										select={(variant) => select(action, variant)}
 									/>
 								{/if}
