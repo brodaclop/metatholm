@@ -118,6 +118,7 @@
 	);
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
@@ -129,11 +130,12 @@
 	}}
 >
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
 		<Box title={$_('character:skills')} background={'#eeffee'}>
-			<div>
-				<div class="scrollable">
-					{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
+			<div class="scrollable type-container">
+				{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
+					<div>
 						<h3>{$_(type)}</h3>
 						{#each entries(group( skillList, (s) => String(s.difficulty) )) as [difficulty, skillList2]}
 							<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
@@ -159,12 +161,12 @@
 								</span>
 							</CircleGroup>
 						{/each}
-					{/each}
-				</div>
-				<div class="footer">
-					<span>{$_('character:kp')}: {remainingKp}</span>
-					<button on:click={submit}>OK</button>
-				</div>
+					</div>
+				{/each}
+			</div>
+			<div class="footer">
+				<span>{$_('character:kp')}: {remainingKp}</span>
+				<button on:click={submit}>OK</button>
 			</div>
 		</Box>
 	</div>
@@ -216,5 +218,19 @@
 
 	h3 {
 		text-decoration: underline;
+	}
+
+	.type-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	.type-container > div {
+		border-radius: 0.2rem;
+		border: 1px solid black;
+		margin: 0.2rem;
+		padding: 0.2rem;
 	}
 </style>

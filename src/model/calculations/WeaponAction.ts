@@ -13,6 +13,8 @@ const ROLLS: Partial<Record<ActionVariant, Expression>> = {
     'action:defend': WEAPON_DEF,
     'action:defend-cq': WEAPON_DEF,
     'action:close-in': WEAPON_DEF,
+    'action:disengage': WEAPON_DEF,
+    'action:keep-close': WEAPON_ATK
 };
 
 const APS: Partial<Record<ActionVariant, Expression>> = {
@@ -20,9 +22,10 @@ const APS: Partial<Record<ActionVariant, Expression>> = {
     'action:attack-cq': ATTACK_AP,
     'action:disarm': ATTACK_AP,
     'action:close-in': ATTACK_AP,
+    'action:disengage': ATTACK_AP,
 };
 
-export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter', 'action:close-in'];
+export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter', 'action:close-in', 'action:disengage', 'action:keep-close'];
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,

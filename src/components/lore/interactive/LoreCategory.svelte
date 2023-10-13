@@ -9,7 +9,8 @@
 	{#await loreCategoryList(category, $locale)}
 		Loading...
 	{:then list}
-		{#each list as lc}
+		{@const sortedList = list.sort((a, z) => a.title.localeCompare(z.title))}
+		{#each sortedList as lc}
 			<li><a href="/lore/{lc.id}">{lc.title.replace(/#/g, '')}</a></li>
 		{/each}
 	{/await}

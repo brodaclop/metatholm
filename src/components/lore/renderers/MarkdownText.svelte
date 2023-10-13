@@ -12,6 +12,7 @@
 	source={text}
 	renderers={{
 		codespan: ActiveElementRenderer,
+		code: ActiveElementRenderer,
 		link: LinkRenderer,
 		tablerow: TableRow,
 		table: Table

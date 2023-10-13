@@ -5,6 +5,7 @@
 	import { SKILL_KP } from '../../../model/Rules';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
+
 	export let skill: Skill | undefined = undefined;
 
 	$: skillInfo = skill ? Skill.get(skill) : undefined;

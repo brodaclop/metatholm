@@ -88,7 +88,8 @@
 			attack = { action, variant };
 			nextStep = {
 				idx: (1 - nextStep.idx) as 0 | 1,
-				select: variant === 'action:close-in' ? 'counter' : 'defend'
+				select:
+					variant === 'action:close-in' || variant === 'action:disengage' ? 'counter' : 'defend'
 			};
 		} else {
 			defence = { action, variant };
@@ -119,6 +120,8 @@
 			attackSucceeded = true;
 			if (attackAction?.name === 'action:close-in') {
 				range = 'close-quarters';
+			} else if (attackAction?.name === 'action:disengage') {
+				range = 'in-range';
 			} else {
 				damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
 				console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);

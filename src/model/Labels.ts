@@ -82,6 +82,8 @@ export const Labels_en: Record<Labels, string> = {
     'action:cast': 'Cast',
     'action:counter': 'Counter',
     'action:close-in': 'Close in',
+    'action:disengage': 'Disengage',
+    'action:keep-close': 'Keep close',
 
     'label:name': 'Name',
     'character:abilities': 'Abilities',
@@ -236,6 +238,8 @@ export const Labels_hu: Record<Labels, string> = {
     'action:defend-cq': 'Védekezés (Belharc)',
     'action:counter': 'Ellentámadás',
     'action:close-in': 'Közelkerülés',
+    'action:disengage': 'Eltávolodás',
+    'action:keep-close': 'Közeltartás',
 
     'label:name': 'Név',
     'character:abilities': 'Tulajdonságok',
