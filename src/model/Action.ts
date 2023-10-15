@@ -1,9 +1,11 @@
 import type { EvalExpression, Expression } from "../logic/Expression";
 
-export type ActionVariant = 'action:attack' | 'action:disarm' | 'action:defend' | 'action:cast' | 'action:attack-cq' | 'action:defend-cq' | 'action:counter' | 'action:close-in' | 'action:disengage' | 'action:keep-close';
+export type ActionVariant = 'action:attack' | 'action:disarm' | 'action:defend' | 'action:cast' | 'action:attack-cq' | 'action:defend-cq' | 'action:counter' | 'action:close-in' | 'action:disengage' | 'action:keep-close' | 'action:attack-range' | 'action:defend-range';
 export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
 
 export type ActionDistance = 'out-of-range' | 'in-range' | 'close-quarters';
+
+export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter', 'action:close-in', 'action:disengage', 'action:keep-close', 'action:attack-range', 'action:defend-range'];
 
 export const ActionTypes: Partial<Record<ActionVariant, 'attack' | 'defend' | 'counter'>> = {
     'action:close-in': 'attack',
@@ -15,6 +17,8 @@ export const ActionTypes: Partial<Record<ActionVariant, 'attack' | 'defend' | 'c
     'action:counter': 'counter',
     'action:disengage': 'attack',
     'action:keep-close': 'counter',
+    'action:attack-range': 'attack',
+    'action:defend-range': 'defend',
 };
 
 export const ActionDistances: Record<ActionVariant, ActionDistance> = {
@@ -27,7 +31,9 @@ export const ActionDistances: Record<ActionVariant, ActionDistance> = {
     'action:cast': 'in-range',
     'action:counter': 'in-range',
     "action:disengage": 'close-quarters',
-    'action:keep-close': 'close-quarters'
+    'action:keep-close': 'close-quarters',
+    'action:attack-range': 'out-of-range',
+    'action:defend-range': 'out-of-range',
 };
 
 export interface ActionVariantInfo {

@@ -6,7 +6,8 @@
 	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_ACTIONS } from '../../model/calculations/WeaponAction';
+	import { WEAPON_ACTIONS } from '../../model/Action';
+	import { WEAPON_LIST } from '../../model/WeaponList';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -61,6 +62,15 @@
 		dispatch('submit', editedWeapon);
 		dialog.close();
 	};
+
+	let template: Weapon | null = null;
+
+	const templateSelected = () => {
+		if (template) {
+			editedWeapon = JSON.parse(JSON.stringify(template));
+			template = null;
+		}
+	};
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -86,6 +96,14 @@
 					<tr>
 						<th>{$_('label:name')}</th>
 						<td><input type="text" bind:value={editedWeapon.name} /></td>
+						<td rowspan="5">
+							<select bind:value={template} on:change={templateSelected}>
+								<option value={null}>Select template</option>
+								{#each WEAPON_LIST as tw}
+									<option value={tw}>{tw.name}</option>
+								{/each}
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:speed')}</th>
@@ -128,7 +146,7 @@
 					</tr>
 					<tr>
 						<th>{$_('action:title')}</th>
-						<td>
+						<td colspan="2">
 							<table>
 								<tbody>
 									{#each WEAPON_ACTIONS as action}

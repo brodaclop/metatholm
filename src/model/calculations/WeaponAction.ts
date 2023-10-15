@@ -25,8 +25,6 @@ const APS: Partial<Record<ActionVariant, Expression>> = {
     'action:disengage': ATTACK_AP,
 };
 
-export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:counter', 'action:close-in', 'action:disengage', 'action:keep-close'];
-
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,
     variants: keys(weapon.actions).map(v => calculateVariant(v, skills, weapon))
