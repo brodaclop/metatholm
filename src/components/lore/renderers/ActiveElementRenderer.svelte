@@ -6,6 +6,7 @@
 	import Ancestries from '../interactive/Ancestries.svelte';
 	import AncestryInfo from '../interactive/AncestryInfo.svelte';
 	import LoreCategory from '../interactive/LoreCategory.svelte';
+	import BackgroundSkillList from '../interactive/BackgroundSkillList.svelte';
 
 	export let raw: string;
 
@@ -16,7 +17,8 @@
 		SkillListForAbilities: SkillListForAbilities,
 		Ancestries: Ancestries,
 		AncestryInfo: AncestryInfo,
-		LoreCategory: LoreCategory
+		LoreCategory: LoreCategory,
+		BackgroundSkillList: BackgroundSkillList
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

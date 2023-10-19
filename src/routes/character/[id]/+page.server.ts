@@ -1,4 +1,4 @@
-import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
+import { deleteCharacter, loadCharacter, saveCharacter, wipe } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
 
@@ -28,12 +28,13 @@ export const actions: Actions = {
             fail(400);
         }
     }
-
 }
 
 export const load: PageServerLoad = async ({ params, platform }) => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const character = await loadCharacter(platform!, params.id);
+    console.log('loaded', character);
     return {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        character: loadCharacter(platform!, params.id)
+        character
     };
 }

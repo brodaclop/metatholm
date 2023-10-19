@@ -10,6 +10,8 @@
 	export let selectedCharacter: Character | null;
 	export let characters: Array<Character>;
 
+	console.log('characters', characters);
+
 	$: calculatedCharacter =
 		selectedCharacter !== null ? calculateCharacter(selectedCharacter) : null;
 </script>

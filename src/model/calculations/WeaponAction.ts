@@ -8,10 +8,12 @@ import type { Weapon } from "../Weapon";
 const ROLLS: Partial<Record<ActionVariant, Expression>> = {
     'action:attack': WEAPON_ATK,
     'action:attack-cq': WEAPON_ATK,
+    'action:attack-range': WEAPON_ATK,
     'action:counter': WEAPON_ATK,
     'action:disarm': WEAPON_DISARM,
     'action:defend': WEAPON_DEF,
     'action:defend-cq': WEAPON_DEF,
+    'action:defend-range': WEAPON_DEF,
     'action:close-in': WEAPON_DEF,
     'action:disengage': WEAPON_DEF,
     'action:keep-close': WEAPON_ATK
@@ -20,6 +22,7 @@ const ROLLS: Partial<Record<ActionVariant, Expression>> = {
 const APS: Partial<Record<ActionVariant, Expression>> = {
     'action:attack': ATTACK_AP,
     'action:attack-cq': ATTACK_AP,
+    'action:attack-range': ATTACK_AP,
     'action:disarm': ATTACK_AP,
     'action:close-in': ATTACK_AP,
     'action:disengage': ATTACK_AP,
@@ -63,6 +66,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
     if (ap) {
         rolls.push(apRoll(E.evaluate(ap, args)));
     }
+    console.log('roll', name, roll);
     rolls.push(d100roll(E.evaluate(roll, args)));
     if (damage) {
         rolls.push(damageRoll(damage));

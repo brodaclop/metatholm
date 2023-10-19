@@ -94,9 +94,7 @@
 			<table>
 				<tbody>
 					<tr>
-						<th>{$_('label:name')}</th>
-						<td><input type="text" bind:value={editedWeapon.name} /></td>
-						<td rowspan="5">
+						<td colspan="2">
 							<select bind:value={template} on:change={templateSelected}>
 								<option value={null}>Select template</option>
 								{#each WEAPON_LIST as tw}
@@ -104,6 +102,10 @@
 								{/each}
 							</select>
 						</td>
+					</tr>
+					<tr>
+						<th>{$_('label:name')}</th>
+						<td><input type="text" bind:value={editedWeapon.name} /></td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:speed')}</th>

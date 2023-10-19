@@ -6,6 +6,7 @@
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
+	import { enhance } from '$app/forms';
 
 	export let data: PageData;
 
@@ -65,6 +66,7 @@
 			<li><a href="/create">Create</a></li>
 			<li><a href="/simulator">Simulator</a></li>
 			<li><a href="/lore/main">Lore</a></li>
+			<li><form method="POST" action="/wipedb" use:enhance><button>Wipe</button></form></li>
 			<li>
 				<Select
 					bind:value={lang}

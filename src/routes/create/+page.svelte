@@ -13,6 +13,7 @@
 	import Abilities from '../../components/character/Abilities.svelte';
 	import Skills from '../../components/character/Skills.svelte';
 	import { enhance } from '$app/forms';
+	import Lore from '../../components/lore/Lore.svelte';
 
 	let name: string;
 	let abilities: CharacterTemplate['abilities'] = {
@@ -94,9 +95,30 @@
 			{/if}
 		</Box>
 	</div>
+	<div class="lore">
+		<div>
+			{#if ancestry}
+				<Lore id={ancestry} />
+			{/if}
+		</div>
+		<div>
+			{#if background}
+				<Lore id={background} />
+			{/if}
+		</div>
+	</div>
 </Box>
 
 <style>
+	.lore {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.lore > div {
+		flex-basis: 50%;
+	}
+
 	.character-box {
 		display: flex;
 		flex-direction: column;

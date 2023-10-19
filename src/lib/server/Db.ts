@@ -35,7 +35,12 @@ export const deleteCharacter = async (platform: App.Platform, char: Pick<Charact
     await platform.env.CHARACTER_DB.delete(char.id);
 }
 
+export const wipe = async (platform: App.Platform) => {
+    const list = await listCharacters(platform);
+    await Promise.all(list.map(c => deleteCharacter(platform, c)));
+}
+
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
-    console.log('loading', id);
+    console.log('loading', id, await platform.env.CHARACTER_DB.get(id));
     return await platform.env.CHARACTER_DB.get(id, { type: 'json' }) as Character;
 }

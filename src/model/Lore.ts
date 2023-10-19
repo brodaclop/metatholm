@@ -61,6 +61,14 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'skill:etiquette': import('$lib/lore/skill/etiquette_en.md?raw'),
         'skill:alchemy': import('$lib/lore/skill/alchemy_en.md?raw'),
         'skill:enchantment': import('$lib/lore/skill/enchantment_en.md?raw'),
+        'background:assassin': import('$lib/lore/background/assassin_en.md?raw'),
+        'background:bruiser': import('$lib/lore/background/bruiser_en.md?raw'),
+        'background:sneak': import('$lib/lore/background/sneak_en.md?raw'),
+        'background:hedge_wizard': import('$lib/lore/background/hedge_wizard_en.md?raw'),
+        'background:tinker': import('$lib/lore/background/tinker_en.md?raw'),
+        'background:vagabond': import('$lib/lore/background/vagabond_en.md?raw'),
+        'background:charmer': import('$lib/lore/background/charmer_en.md?raw'),
+        'background:witch': import('$lib/lore/background/witch_en.md?raw'),
     }
 }
 

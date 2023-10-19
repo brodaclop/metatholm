@@ -82,6 +82,12 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:movement'
     },
+    'skill:shields': {
+        difficulty: 2,
+        ability: 'ability:build',
+        positive: false,
+        type: 'skill_type:combat'
+    },
     'skill:fistfighting': {
         difficulty: 2,
         ability: 'ability:activity',
@@ -287,6 +293,7 @@ export type Skill = 'skill:endurance' |
     'skill:focus_elemental' |
     'skill:polearms' |
     'skill:maces' |
+    'skill:shields' |
     'skill:stalking' |
     'skill:climbing' |
     'skill:fistfighting' |

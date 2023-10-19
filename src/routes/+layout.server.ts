@@ -1,6 +1,8 @@
 import { listCharacters } from '../lib/server/Db';
 import type { LayoutServerLoad } from './$types';
 
+
+
 export const load: LayoutServerLoad = async ({ depends, platform }) => {
     depends('db:characterlist');
     return {

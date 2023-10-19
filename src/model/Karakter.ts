@@ -178,7 +178,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
             ep: 0,
             fp: 0,
             mp: 0,
-            kp: 20
+            kp: 30
         }
     };
 }
