@@ -10,8 +10,6 @@
 	export let selectedCharacter: Character | null;
 	export let characters: Array<Character>;
 
-	console.log('characters', characters);
-
 	$: calculatedCharacter =
 		selectedCharacter !== null ? calculateCharacter(selectedCharacter) : null;
 </script>
@@ -30,7 +28,7 @@
 		</select>
 	</div>
 	{#if selectedCharacter !== null && calculatedCharacter}
-		<Skills skills={calculatedCharacter.skills} />
+		<Skills skills={selectedCharacter.skills} />
 		<Points bind:character={selectedCharacter} {calculatedCharacter} />
 		<Box background="#eeeeee" title={$_('character:weapons')}>
 			<Weapons bind:character={selectedCharacter} />

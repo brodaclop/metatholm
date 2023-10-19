@@ -66,7 +66,6 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
     if (ap) {
         rolls.push(apRoll(E.evaluate(ap, args)));
     }
-    console.log('roll', name, roll);
     rolls.push(d100roll(E.evaluate(roll, args)));
     if (damage) {
         rolls.push(damageRoll(damage));

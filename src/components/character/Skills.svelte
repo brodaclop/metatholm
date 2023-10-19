@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { keys } from '../../model/InfoList';
-	import type { Level } from '../../model/Karakter';
+	import type { Character, Level } from '../../model/Karakter';
 	import { Skill } from '../../model/Skills';
 	import CircleGroup from '../elements/CircleGroup.svelte';
 
-	export let skills: Level['skills'];
+	export let skills: Character['skills'];
 </script>
 
 <CircleGroup

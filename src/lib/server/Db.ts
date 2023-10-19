@@ -18,7 +18,6 @@ export const loadAllCharacters = async (platform: App.Platform): Promise<Array<C
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character) => {
-    console.log('saving', char.id);
     const value = JSON.stringify(char);
     await platform.env.CHARACTER_DB.put(char.id, value, {
         metadata: {
@@ -31,7 +30,6 @@ export const saveCharacter = async (platform: App.Platform, char: Character) => 
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>) => {
-    console.log('deleting', char?.id);
     await platform.env.CHARACTER_DB.delete(char.id);
 }
 
@@ -41,6 +39,5 @@ export const wipe = async (platform: App.Platform) => {
 }
 
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
-    console.log('loading', id, await platform.env.CHARACTER_DB.get(id));
     return await platform.env.CHARACTER_DB.get(id, { type: 'json' }) as Character;
 }

@@ -9,8 +9,6 @@
 	export let background: Background;
 
 	$: info = Background.get(background);
-
-	$: console.log('info', info);
 </script>
 
 <Box title={$_('character:skills')} background="#ffddff">

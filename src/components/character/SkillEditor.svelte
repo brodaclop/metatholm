@@ -32,10 +32,7 @@
 	}
 	$: remainingKp = character.current.kp;
 	$: sums = Object.fromEntries(
-		Skill.list().map((s) => [
-			s.name,
-			(calculatedCharacter.skills[s.name] ?? 0) + (changes[s.name] ?? 0)
-		])
+		Skill.list().map((s) => [s.name, (character.skills[s.name] ?? 0) + (changes[s.name] ?? 0)])
 	);
 
 	const plus = (name: Skill) => {
@@ -87,11 +84,10 @@
 	};
 
 	const submit = () => {
-		const levelIdx = character.levels.length - 1;
 		entries(changes).forEach(([key, value]) => {
-			character.levels[levelIdx].skills[key] = (calculatedCharacter.skills[key] ?? 0) + value;
-			if (character.levels[levelIdx].skills[key] == 0) {
-				delete character.levels[levelIdx].skills[key];
+			character.skills[key] = (character.skills[key] ?? 0) + value;
+			if (character.skills[key] == 0) {
+				delete character.skills[key];
 			}
 		});
 		character.current.kp = remainingKp;
@@ -147,7 +143,7 @@
 											? 'skill_type:general'
 											: (s.positive ? '+' : '-') + abilityLabels[s.ability]
 								}))}
-								values={calculatedCharacter.skills}
+								values={character.skills}
 								newValues={sums}
 								max={10}
 								editable

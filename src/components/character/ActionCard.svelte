@@ -11,10 +11,12 @@
 	export let select: (variant: ActionVariant) => void = () => {};
 
 	let current: ActionVariant | undefined = undefined;
+
+	$: sorted = [...action.variants].sort((a, z) => a.name.localeCompare(z.name));
 </script>
 
 <Box background={'#ffeeff'} title={$_(action.name)}>
-	{#each action.variants as variant}
+	{#each sorted as variant}
 		{@const selectable = isSelectable(variant.name)}
 		<Box
 			background={!selectable ? 'lightgray' : current === variant.name ? 'aquamarine' : 'white'}

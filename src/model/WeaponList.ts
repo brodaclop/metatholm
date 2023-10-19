@@ -75,6 +75,28 @@ export const WEAPON_LIST: Array<Omit<Weapon, 'id'>> = [
             'action:attack-range': 0,
         }
     },
+    {
+        name: 'Mace',
+        attack: 6,
+        damage: 4,
+        defence: 1,
+        hands: 1,
+        reach: 2,
+        skill: 'skill:maces',
+        speed: 4,
+        actions: {
+            "action:attack": 0,
+            "action:attack-cq": -1,
+            "action:close-in": -2,
+            "action:defend-cq": -2,
+            "action:defend": 0,
+            "action:disarm": -2,
+            "action:counter": -1,
+            "action:disengage": -1,
+            "action:keep-close": -1,
+            'action:attack-range': -4,
+        }
+    },
 
 
 ]

@@ -33,7 +33,6 @@ export const actions: Actions = {
 export const load: PageServerLoad = async ({ params, platform }) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const character = await loadCharacter(platform!, params.id);
-    console.log('loaded', character);
     return {
         character
     };

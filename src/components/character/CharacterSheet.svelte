@@ -18,7 +18,6 @@
 	let character: Character;
 
 	$: if (!character) {
-		console.log('setting character', initialCharacter);
 		character = JSON.parse(JSON.stringify(initialCharacter));
 	}
 
@@ -43,7 +42,7 @@
 		</Box>
 
 		<Box title={$_('character:skills')} background={'#eeffee'}>
-			<Skills skills={calculatedCharacter.skills} />
+			<Skills skills={character.skills} />
 		</Box>
 		<Box title={$_('character:points')} background={'#eeffff'}>
 			<Points bind:character {calculatedCharacter} />

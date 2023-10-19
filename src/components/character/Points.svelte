@@ -54,7 +54,7 @@
 					<span>
 						<ExpressionTooltip
 							expr={E.evaluate(E.value('skill:magic_force'), {
-								...calculatedCharacter.skills
+								...character.skills
 							})}
 						/>
 					</span>

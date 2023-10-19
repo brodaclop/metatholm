@@ -7,7 +7,6 @@
 		calculateCharacter
 	} from '../../model/Karakter';
 	import { Ancestry } from '../../model/Ancestry';
-	import { keys } from '../../model/InfoList';
 	import Box from '../../components/character/Box.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import Abilities from '../../components/character/Abilities.svelte';
@@ -38,10 +37,8 @@
 		rolled = true;
 	};
 
-	$: calculatedCharacter =
-		ancestry && background
-			? calculateCharacter(createCharacter({ name, ancestry, background, abilities }))
-			: undefined;
+	$: character =
+		ancestry && background ? createCharacter({ name, ancestry, background, abilities }) : undefined;
 </script>
 
 <Box title={$_('label:create_character')} background="#ddffdd">
@@ -90,8 +87,8 @@
 			/>
 		</Box>
 		<Box title={$_('character:skills')} background="#ffddff">
-			{#if calculatedCharacter}
-				<Skills skills={calculatedCharacter.skills} />
+			{#if character}
+				<Skills skills={character.skills} />
 			{/if}
 		</Box>
 	</div>

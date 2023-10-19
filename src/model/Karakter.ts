@@ -15,7 +15,6 @@ import type { Skill } from "./Skills";
 
 
 export interface Level {
-    skills: Partial<Record<Skill, number>>;
     fpRoll: number;
 }
 
@@ -24,6 +23,7 @@ export interface Character extends Entity {
     background: Background;
     ancestry: Ancestry;
     levels: Array<Level>;
+    skills: Partial<Record<Skill, number>>;
     inventory: {
         weapons: Array<Weapon>;
     };
@@ -44,7 +44,6 @@ export interface CharacterInfo extends Entity {
 export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;
 
 export interface CalculatedCharacter {
-    skills: Partial<Record<Skill, number>>;
     fp: EvalExpression;
     ep: EvalExpression;
     actions: Array<Action>;
@@ -62,8 +61,6 @@ const merge = <T extends string>(acc: Partial<Record<T, number>>, add: Partial<R
     });
     return acc;
 };
-
-const calculateSkills = (character: Character): Partial<Record<Skill, number>> => character.levels.reduce((acc, curr) => merge(acc, curr.skills), {} as Partial<Record<Skill, number>>)
 
 
 const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
@@ -127,8 +124,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
 
 export const calculateCharacter = (character: Character): CalculatedCharacter => {
     const level = character.levels.length;
-    const { abilities } = character;
-    const skills = calculateSkills(character);
+    const { abilities, skills } = character;
     const weapons: Array<Weapon> = [...character.inventory.weapons, ...calculateUnarmed(skills)];
 
 
@@ -140,7 +136,6 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
     ];
 
     return {
-        skills,
         spells,
         weapons,
         actions,
@@ -161,12 +156,12 @@ export const createCharacter = (template: CharacterTemplate): Character => {
 
     const level: Level = {
         fpRoll: 20,
-        skills: Background.get(template.background).skills
     };
 
     return {
         name: template.name,
         id: v4(),
+        skills: Background.get(template.background).skills,
         background: template.background,
         ancestry: template.ancestry,
         abilities,
