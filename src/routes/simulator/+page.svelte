@@ -203,6 +203,7 @@
 								{#if action}
 									<ActionCard
 										{action}
+										distance={range}
 										isSelectable={(variant) =>
 											combatRunning &&
 											nextStep.idx === idx &&
@@ -228,6 +229,6 @@
 
 	.actions {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 	}
 </style>

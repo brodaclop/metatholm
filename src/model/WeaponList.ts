@@ -91,12 +91,10 @@ export const WEAPON_LIST: Array<Omit<Weapon, 'id'>> = [
             "action:defend-cq": -2,
             "action:defend": 0,
             "action:disarm": -2,
-            "action:counter": -1,
+            "action:keep-away": -1,
             "action:disengage": -1,
             "action:keep-close": -1,
             'action:attack-range': -4,
         }
     },
-
-
 ]

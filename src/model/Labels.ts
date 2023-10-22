@@ -27,7 +27,10 @@ type GenericLabels = 'label:name' |
     'label:exactly' |
     'label:roll' |
     'label:skill_check_success_probabilities' |
-    'label:main'
+    'label:main' |
+    'label:close-quarters' |
+    'label:in-range' |
+    'label:out-of-range'
     ;
 
 export const Keys = [
@@ -80,7 +83,7 @@ export const Labels_en: Record<Labels, string> = {
     'action:defend': 'Defend',
     'action:defend-cq': 'Defend (Close Quarters)',
     'action:cast': 'Cast',
-    'action:counter': 'Counter',
+    'action:keep-away': 'Keep away',
     'action:close-in': 'Close in',
     'action:disengage': 'Disengage',
     'action:keep-close': 'Keep close',
@@ -144,6 +147,9 @@ export const Labels_en: Record<Labels, string> = {
     'label:roll': 'Roll',
     'label:skill_check_success_probabilities': 'Skill check success probabilities',
     'label:main': 'Lore',
+    'label:close-quarters': 'Close Quarters',
+    'label:in-range': 'In Measure',
+    'label:out-of-range': 'Out Of Measure',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -239,7 +245,7 @@ export const Labels_hu: Record<Labels, string> = {
     'action:disarm': 'Lefegyverzés',
     'action:defend': 'Védekezés',
     'action:defend-cq': 'Védekezés (Belharc)',
-    'action:counter': 'Ellentámadás',
+    'action:keep-away': 'Távoltartás',
     'action:close-in': 'Közelkerülés',
     'action:disengage': 'Eltávolodás',
     'action:keep-close': 'Közeltartás',
@@ -301,6 +307,9 @@ export const Labels_hu: Record<Labels, string> = {
     'label:roll': 'Dobás',
     'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
     'label:main': 'Kódex',
+    'label:close-quarters': 'Belharc',
+    'label:in-range': 'Közelharc',
+    'label:out-of-range': 'Távol',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

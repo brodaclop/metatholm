@@ -39,5 +39,22 @@ export const wipe = async (platform: App.Platform) => {
 }
 
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
-    return await platform.env.CHARACTER_DB.get(id, { type: 'json' }) as Character;
+    return upgrade(await platform.env.CHARACTER_DB.get(id, { type: 'json' }) as Character);
+}
+
+const upgrade = (character: Character): Character => {
+    // changed action:counter to action:keep-away
+    character.inventory.weapons.forEach(w => {
+        if ('action:counter' in w.actions) {
+            w.actions['action:keep-away'] = w.actions['action:counter'] as number;
+            delete w.actions['action:counter'];
+        }
+    });
+    // temporarily removed action:disarm
+    character.inventory.weapons.forEach(w => {
+        if ('action:disarm' in w.actions) {
+            delete w.actions['action:disarm'];
+        }
+    });
+    return character;
 }

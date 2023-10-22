@@ -47,15 +47,15 @@
 		<Box title={$_('character:points')} background={'#eeffff'}>
 			<Points bind:character {calculatedCharacter} />
 		</Box>
+		<Box background="#eeeeee" title={$_('character:weapons')}>
+			<Weapons bind:character />
+		</Box>
 		<Box title={$_('action:title')} background="#ffffee">
 			<div>
 				{#each calculatedCharacter.actions as action}
 					<ActionCard {action} />
 				{/each}
 			</div>
-		</Box>
-		<Box background="#eeeeee" title={$_('character:weapons')}>
-			<Weapons bind:character />
 		</Box>
 	</div>
 	<button disabled={!changed} on:click={() => saveCharacter(character)}>Save</button>
