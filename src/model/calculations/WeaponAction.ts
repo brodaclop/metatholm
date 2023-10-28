@@ -1,7 +1,7 @@
 import { E, type EvalExpression, type Expression } from "../../logic/Expression";
-import { ActionDistances, type Action, type ActionDistance, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
+import { ACTION_VARIANT_PROPERTIES, type Action, type ActionDistance, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
 import { keys } from "../InfoList";
-import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF, WEAPON_DISARM } from "../Rules";
+import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
 import { Skill } from "../Skills";
 import type { Weapon } from "../Weapon";
 
@@ -61,7 +61,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         'weapon:defence': weapon.defence,
         'weapon:difficulty': difficulty,
         'weapon:skill': skill,
-        'weapon:reach': ReachMultipliers[ActionDistances[name]] * weapon.reach,
+        'weapon:reach': ReachMultipliers[ACTION_VARIANT_PROPERTIES[name].distance] * weapon.reach,
     };
     if (ap) {
         rolls.push(apRoll(E.evaluate(ap, args)));

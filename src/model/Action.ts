@@ -5,39 +5,91 @@ export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
 
 export type ActionDistance = 'out-of-range' | 'in-range' | 'close-quarters';
 
-export const WEAPON_ACTIONS: Array<ActionVariant> = ['action:attack', 'action:attack-cq', 'action:defend', 'action:defend-cq', 'action:disarm', 'action:keep-away', 'action:close-in', 'action:disengage', 'action:keep-close', 'action:attack-range', 'action:defend-range'];
+export type ActionType = 'initial' | 'reaction';
 
-export const ActionTypes: Partial<Record<ActionVariant, 'attack' | 'defend' | 'counter'>> = {
-    'action:close-in': 'attack',
-    'action:attack': 'attack',
-    'action:attack-cq': 'attack',
-    'action:disarm': 'attack',
-    'action:defend': 'defend',
-    'action:defend-cq': 'defend',
-    'action:keep-away': 'counter',
-    'action:disengage': 'attack',
-    'action:keep-close': 'counter',
-    'action:attack-range': 'attack',
-    'action:defend-range': 'defend',
-    'action:step-in': 'attack',
-    'action:step-out': 'attack',
-};
+export interface ActionVariantProperties {
+    type: ActionType;
+    reactionTo?: Array<ActionVariant>;
+    weapon: boolean;
+    distance: ActionDistance;
+}
 
-export const ActionDistances: Record<ActionVariant, ActionDistance> = {
-    'action:close-in': 'in-range',
-    'action:attack': 'in-range',
-    'action:defend': 'in-range',
-    'action:attack-cq': 'close-quarters',
-    'action:defend-cq': 'close-quarters',
-    'action:disarm': 'in-range',
-    'action:cast': 'in-range',
-    'action:keep-away': 'in-range',
-    "action:disengage": 'close-quarters',
-    'action:keep-close': 'close-quarters',
-    'action:attack-range': 'out-of-range',
-    'action:defend-range': 'out-of-range',
-    'action:step-in': 'out-of-range',
-    'action:step-out': 'in-range'
+export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantProperties> = {
+    'action:close-in': {
+        type: 'initial',
+        weapon: true,
+        distance: 'in-range'
+    },
+    'action:attack': {
+        type: 'initial',
+        weapon: true,
+        distance: 'in-range'
+    },
+    'action:attack-cq': {
+        type: 'initial',
+        weapon: true,
+        distance: 'close-quarters'
+    },
+    'action:attack-range': {
+        type: 'initial',
+        weapon: true,
+        distance: 'out-of-range'
+    },
+    'action:disengage': {
+        type: 'initial',
+        weapon: true,
+        distance: 'close-quarters'
+    },
+    'action:step-in': {
+        type: 'initial',
+        weapon: true,
+        distance: 'out-of-range'
+    },
+    'action:step-out': {
+        type: 'initial',
+        weapon: true,
+        distance: 'in-range'
+    },
+    'action:disarm': {
+        type: 'initial',
+        weapon: true,
+        distance: 'close-quarters'
+    },
+    'action:defend': {
+        type: 'reaction',
+        weapon: true,
+        distance: 'in-range',
+        reactionTo: ['action:attack']
+    },
+    'action:defend-cq': {
+        type: 'reaction',
+        weapon: true,
+        distance: 'close-quarters',
+        reactionTo: ['action:attack-cq']
+    },
+    'action:defend-range': {
+        type: 'reaction',
+        weapon: true,
+        distance: 'out-of-range',
+        reactionTo: ['action:attack-range']
+    },
+    'action:keep-close': {
+        type: 'reaction',
+        weapon: true,
+        distance: 'close-quarters',
+        reactionTo: ['action:disengage']
+    },
+    'action:keep-away': {
+        type: 'reaction',
+        weapon: true,
+        distance: 'in-range',
+        reactionTo: ['action:close-in']
+    },
+    'action:cast': {
+        type: 'initial',
+        weapon: false,
+        distance: 'in-range'
+    },
 };
 
 export interface ActionVariantInfo {

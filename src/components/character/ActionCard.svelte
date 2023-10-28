@@ -4,10 +4,10 @@
 	import Box from './Box.svelte';
 	import ExpressionWidget from '../expression/ExpressionWidget.svelte';
 	import {
-		ActionDistances,
 		type Action,
 		type ActionVariant,
-		type ActionDistance
+		type ActionDistance,
+		ACTION_VARIANT_PROPERTIES
 	} from '../../model/Action';
 	import { entries, group } from '../../model/InfoList';
 
@@ -20,7 +20,7 @@
 
 	$: sorted = group(
 		[...action.variants].sort((a, z) => a.name.localeCompare(z.name)),
-		(v) => ActionDistances[v.name]
+		(v) => ACTION_VARIANT_PROPERTIES[v.name].distance
 	);
 </script>
 

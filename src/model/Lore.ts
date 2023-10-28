@@ -6,6 +6,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'character:skills': import('$lib/lore/character/skills_en.md?raw'),
         'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_en.md?raw'),
         'rule:learning_skills': import('$lib/lore/rule/learning_skills_en.md?raw'),
+        'rule:skill_check': import('$lib/lore/rule/skill_check_en.md?raw'),
         'character:abilities': import('$lib/lore/character/abilities_en.md?raw'),
         'ability:build': import('$lib/lore/ability/build_en.md?raw'),
         'ability:activity': import('$lib/lore/ability/activity_en.md?raw'),

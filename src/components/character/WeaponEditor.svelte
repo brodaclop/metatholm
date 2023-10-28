@@ -6,8 +6,9 @@
 	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_ACTIONS } from '../../model/Action';
 	import { WEAPON_LIST } from '../../model/WeaponList';
+	import { entries } from '../../model/InfoList';
+	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -151,7 +152,9 @@
 						<td colspan="2">
 							<table>
 								<tbody>
-									{#each WEAPON_ACTIONS as action}
+									{#each entries(ACTION_VARIANT_PROPERTIES)
+										.filter(([key, value]) => value.weapon)
+										.map(([key]) => key) as action}
 										<tr>
 											<th>{$_(action)}</th>
 											<td>

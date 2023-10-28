@@ -282,7 +282,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
     },
 };
 
-export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge' | 'skill_type:general';
+export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge';
 
 export type Skill = 'skill:endurance' |
     'skill:pain_threshold' |

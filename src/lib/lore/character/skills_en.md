@@ -13,23 +13,34 @@ Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike
 | 7-8 | Grandmaster | You are a known authority, masters of the field will recognise your work and defer to you. |
 | 9-10 | Living legend | Your name is known by all serious practitioners of this skill, and will be remembered for centuries. |
 
-## Skill checks
+## What kind of skills exist?
 
-In most cases, using a skill requires a skill check. Skill checks are rolled with [exploding dice](rule:exploding_dice), for which you will use as many d10s as your skill level. If you're unskilled, you can roll a single d5 instead.
+Skills fall into one of several categories: **Basic**, **Movement**, **Combat**, **Focus** and **Knowledge**.
 
-Your skill check is considered successful if your dice total reaches or exceeds the target number, which depends on the difficulty of the task. Typical target numbers for the various difficulties are as follows:
+**Basic** skills are fundamental traits that can't really be taught or learnt. They can only really be trained by practising.
 
-| Difficulty | Typical target |
-| :- | :- |
-| Easy | 5 |
-| Average | 10 |
-| Hard | 20 |
-| Legendary | 40 |
-| Impossible | 80 |
+`SkillListByType|{"type": "skill_type:basic"}`
 
-It's worth noting that the difficulty of a task is not solely determined by the nature of the task itself, circumstances can play a decisive part. Sure, any sailor can tie a reef knot. It's an easy task. But doing so with one hand, in the middle of a raging storm? Suddenly that "easy" task has become a lot harder.
+**Movement** skills are very similar to basic skills, except they relate to various forms of movement.
 
-The table below shows how likely you are to succeed a skill check, given your skill level and the task's difficulty.
+`SkillListByType|{"type": "skill_type:movement"}`
 
-`SkillRolls`
+**Combat** skills are used in, you guessed it, combat. Each combat skill represents either a style of fighting or knowledge of a weapon family.
 
+`SkillListByType|{"type": "skill_type:combat"}`
+
+**Focus** skill are the skills used to cast magic spells. Higher skills not only make a character's existing spells more reliable but also give them access to more powerful spells.
+
+`SkillListByType|{"type": "skill_type:focus"}`
+
+**Knowledge** skills rely mainly on lexical knowledge. They usually require a teacher or a book to study, although some can be improved via experimentation too.
+
+`SkillListByType|{"type": "skill_type:knowledge"}`
+
+## How to use skills?
+
+Use of **Combat** skills is mainly governed by specific rules of combat although in certain situations they may also be used like **Knowledge** skills, for example when observing a fight and judging a participant's skill, or determining the value or origin of a weapon.
+
+Similarly, **Focus** skills' main purpose is to cast magic spells, according to the rules of magic, but they also reflect a character's general knowledge about a particular area of magic.
+
+When using any other skill, the main way of utilising them is via [skill checks](rule:skill_check).

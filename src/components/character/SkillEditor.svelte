@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { _, unwrapFunctionStore } from 'svelte-i18n';
+	import { _ } from 'svelte-i18n';
 	import { E } from '../../logic/Expression';
 	import { entries, group } from '../../model/InfoList';
 	import type { CalculatedCharacter, Character, Level } from '../../model/Karakter';
@@ -14,7 +14,6 @@
 
 	$: if (dialog && showModal) dialog.showModal();
 	export let character: Character;
-	export let calculatedCharacter: CalculatedCharacter;
 	export let admin = false;
 
 	let abilityLabels: Record<string, string> = {};

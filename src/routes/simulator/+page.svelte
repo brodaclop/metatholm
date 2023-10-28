@@ -12,14 +12,16 @@
 	import CharacterSelector from '../../components/simulator/CharacterSelector.svelte';
 	import CharacterLife from '../../components/simulator/CharacterLife.svelte';
 	import WeaponSelector from '../../components/simulator/WeaponSelector.svelte';
-	import {
-		ActionDistances,
-		type ActionDistance,
-		type ActionVariant,
-		type Action,
-		ActionTypes
-	} from '../../model/Action';
+
 	import type { EvalExpression } from '../../logic/Expression';
+	import {
+		ACTION_VARIANT_PROPERTIES,
+		type Action,
+		type ActionDistance,
+		type ActionType,
+		type ActionVariant
+	} from '../../model/Action';
+	import { entries } from '../../model/InfoList';
 
 	const AP_ROLL = parseKocka('1d10+10');
 
@@ -45,9 +47,9 @@
 	let attack: { action: Action; variant: ActionVariant } | undefined;
 	let defence: { action: Action; variant: ActionVariant } | undefined;
 	let range: ActionDistance = 'in-range';
-	let nextStep: { idx: 0 | 1; select: 'attack' | 'defend' | 'counter' } = {
+	let nextStep: { idx: 0 | 1; select: ActionType; initial?: ActionVariant } = {
 		idx: 0,
-		select: 'attack'
+		select: 'initial'
 	};
 
 	let attackResult: number | undefined;
@@ -79,7 +81,7 @@
 		} else {
 			attack = undefined;
 			defence = undefined;
-			nextStep = { idx: attacker, select: 'attack' };
+			nextStep = { idx: attacker, select: 'initial' };
 		}
 	};
 
@@ -88,12 +90,12 @@
 			range = 'in-range';
 		} else if (variant === 'action:step-out') {
 			range = 'out-of-range';
-		} else if (nextStep.select === 'attack') {
+		} else if (nextStep.select === 'initial') {
 			attack = { action, variant };
 			nextStep = {
 				idx: (1 - nextStep.idx) as 0 | 1,
-				select:
-					variant === 'action:close-in' || variant === 'action:disengage' ? 'counter' : 'defend'
+				select: 'reaction',
+				initial: variant
 			};
 		} else {
 			defence = { action, variant };
@@ -164,6 +166,14 @@
 			}
 		]
 	};
+
+	const isVariantSelectable = (variant: ActionVariant, idx: number) =>
+		combatRunning &&
+		nextStep.idx === idx &&
+		ACTION_VARIANT_PROPERTIES[variant].distance === range &&
+		ACTION_VARIANT_PROPERTIES[variant].type === nextStep.select &&
+		(!nextStep.initial ||
+			(ACTION_VARIANT_PROPERTIES[variant].reactionTo?.includes(nextStep.initial) ?? true));
 </script>
 
 <Box background="#ffffee" title="Characters">
@@ -232,11 +242,7 @@
 									<ActionCard
 										{action}
 										distance={range}
-										isSelectable={(variant) =>
-											combatRunning &&
-											nextStep.idx === idx &&
-											ActionDistances[variant] === range &&
-											ActionTypes[variant] === nextStep.select}
+										isSelectable={(variant) => isVariantSelectable(variant, idx)}
 										select={(variant) => select(action, variant)}
 									/>
 								{/if}
@@ -245,7 +251,7 @@
 						<ActionCard
 							action={MOVES}
 							distance={range}
-							isSelectable={() => true}
+							isSelectable={(variant) => isVariantSelectable(variant, idx)}
 							select={(variant) => select(MOVES, variant)}
 						/>
 					</div>
