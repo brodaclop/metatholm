@@ -8,10 +8,19 @@
 
 `LoreCategory|{"category": "character"}`
 
-## Ability
+## Ancestries
+
+`LoreCategory|{"category": "ancestry"}`
+
+## Backgrounds
+
+`LoreCategory|{"category": "ancestry"}`
+
+
+## Abilities
 
 `LoreCategory|{"category": "ability"}`
 
-## Skill
+## Skills
 
 `LoreCategory|{"category": "skill"}`

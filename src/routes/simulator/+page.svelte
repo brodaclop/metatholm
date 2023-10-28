@@ -84,7 +84,11 @@
 	};
 
 	const select = (action: Action, variant: ActionVariant) => {
-		if (nextStep.select === 'attack') {
+		if (variant === 'action:step-in') {
+			range = 'in-range';
+		} else if (variant === 'action:step-out') {
+			range = 'out-of-range';
+		} else if (nextStep.select === 'attack') {
 			attack = { action, variant };
 			nextStep = {
 				idx: (1 - nextStep.idx) as 0 | 1,
@@ -135,6 +139,30 @@
 
 		ap[attacker] -= (apRoll!.roll as EvalExpression).result;
 		startAttack();
+	};
+
+	const MOVES: Action = {
+		name: 'action:move',
+		variants: [
+			{
+				name: 'action:step-in',
+				rolls: [
+					{
+						name: 'action:ap',
+						roll: 0
+					}
+				]
+			},
+			{
+				name: 'action:step-out',
+				rolls: [
+					{
+						name: 'action:ap',
+						roll: 0
+					}
+				]
+			}
+		]
 	};
 </script>
 
@@ -214,6 +242,12 @@
 								{/if}
 							{/if}
 						{/each}
+						<ActionCard
+							action={MOVES}
+							distance={range}
+							isSelectable={() => true}
+							select={(variant) => select(MOVES, variant)}
+						/>
 					</div>
 				{/if}
 			</div>
