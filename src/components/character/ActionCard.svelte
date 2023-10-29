@@ -10,66 +10,80 @@
 		ACTION_VARIANT_PROPERTIES
 	} from '../../model/Action';
 	import { entries, group } from '../../model/InfoList';
+	import GiShieldReflect from 'svelte-icons/gi/GiShieldReflect.svelte';
+	import GiSpinningSword from 'svelte-icons/gi/GiSpinningSword.svelte';
 
-	export let action: Action;
-	export let isSelectable: (variant: ActionVariant) => boolean = () => false;
+	export let action: Action | undefined = undefined;
+	export let isSelectable: ((variant: ActionVariant) => boolean) | undefined = undefined;
 	export let select: (variant: ActionVariant) => void = () => {};
 	export let distance: ActionDistance | undefined = undefined;
 
 	let current: ActionVariant | undefined = undefined;
 
 	$: sorted = group(
-		[...action.variants].sort((a, z) => a.name.localeCompare(z.name)),
+		[...(action?.variants ?? [])].sort((a, z) => a.name.localeCompare(z.name)),
 		(v) => ACTION_VARIANT_PROPERTIES[v.name].distance
 	);
 </script>
 
-<Box background={'#ffeeff'} title={$_(action.name)}>
-	{#each entries(sorted) as [currentDistance, variants]}
-		<div class="distances">
+<Box background={'#ffeeff'}>
+	<slot name="title" slot="title"
+		>{#if action}{$_(action.name)}{/if}</slot
+	>
+	<div class="distances">
+		{#each entries(sorted) as [currentDistance, variants]}
 			{#if distance === undefined || distance === currentDistance}
 				<div class="title">
 					<Box background="#eedddd" title={$_(`label:${currentDistance}`)} />
-				</div>
-				{#each variants as variant}
-					{@const selectable = isSelectable(variant.name)}
-					<Box
-						background={!selectable
-							? 'lightgray'
-							: current === variant.name
-							? 'aquamarine'
-							: 'white'}
-						title={$_(variant.name)}
-						on:mouseenter={() => {
-							if (selectable) {
-								current = variant.name;
-							}
-						}}
-						on:mouseleave={() => (current = undefined)}
-						on:click={() => {
-							if (current) {
-								select(current);
-								current = undefined;
-							}
-						}}
-					>
-						{#each variant.rolls as roll}
-							<div class="row">
-								<span class="label">{$_(roll.name)}</span>
-								<span>
-									{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
-										<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
+					{#each variants as variant}
+						{@const selectable = isSelectable?.(variant.name)}
+						<Box
+							background={isSelectable && !selectable
+								? 'lightgray'
+								: current === variant.name
+								? 'aquamarine'
+								: 'white'}
+							on:mouseenter={() => {
+								if (selectable) {
+									current = variant.name;
+								}
+							}}
+							on:mouseleave={() => (current = undefined)}
+							on:click={() => {
+								if (current) {
+									select(current);
+									current = undefined;
+								}
+							}}
+						>
+							<div slot="title">
+								{$_(variant.name)}
+								<span class="type-icon">
+									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'initial'}
+										<GiSpinningSword />
 									{:else}
-										<ExpressionWidget expr={roll.roll} />
+										<GiShieldReflect />
 									{/if}
 								</span>
 							</div>
-						{/each}
-					</Box>
-				{/each}
+							{#each variant.rolls as roll}
+								<div class="row">
+									<span class="label">{$_(roll.name)}</span>
+									<span>
+										{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
+											<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
+										{:else}
+											<ExpressionWidget expr={roll.roll} />
+										{/if}
+									</span>
+								</div>
+							{/each}
+						</Box>
+					{/each}
+				</div>
 			{/if}
-		</div>
-	{/each}
+		{/each}
+	</div>
 </Box>
 
 <style>
@@ -77,16 +91,11 @@
 		display: flex;
 		flex-wrap: nowrap;
 		flex-direction: row;
-		align-items: flex-start;
-	}
-
-	.distances .title {
-		flex-basis: 20%;
-		align-self: center;
 	}
 
 	.row {
 		display: flex;
+		flex-direction: row;
 		flex-wrap: nowrap;
 	}
 
@@ -103,5 +112,11 @@
 
 	span:not(.label) {
 		flex-basis: 10%;
+	}
+
+	.type-icon {
+		height: 1em;
+		display: inline-block;
+		vertical-align: text-bottom;
 	}
 </style>

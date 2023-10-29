@@ -30,7 +30,8 @@ type GenericLabels = 'label:name' |
     'label:main' |
     'label:close-quarters' |
     'label:in-range' |
-    'label:out-of-range'
+    'label:out-of-range' |
+    'action:move'
     ;
 
 export const Keys = [
@@ -89,6 +90,9 @@ export const Labels_en: Record<Labels, string> = {
     'action:keep-close': 'Keep close',
     'action:attack-range': 'Attack (Ranged)',
     'action:defend-range': 'Defend (Ranged)',
+    'action:move': 'Movement',
+    'action:step-in': 'Step In',
+    'action:step-out': 'Step Out',
 
     'label:name': 'Name',
     'character:abilities': 'Abilities',
@@ -204,7 +208,6 @@ export const Labels_en: Record<Labels, string> = {
     'skill_type:focus': 'Focus',
     'skill_type:movement': 'Movement',
     'skill_type:knowledge': 'Knowledge',
-    'skill_type:general': 'General',
 
     'ancestry:elven': 'Elven',
     'ancestry:orcish': 'Orcish',
@@ -251,6 +254,9 @@ export const Labels_hu: Record<Labels, string> = {
     'action:keep-close': 'Közeltartás',
     'action:attack-range': 'Támadás (Távolról)',
     'action:defend-range': 'Védekezés (Távolról)',
+    'action:move': 'Mozgás',
+    'action:step-in': 'Belépés',
+    'action:step-out': 'Kilépés',
 
     'label:name': 'Név',
     'character:abilities': 'Tulajdonságok',
@@ -380,7 +386,6 @@ export const Labels_hu: Record<Labels, string> = {
     'skill_type:focus': 'Fókusz',
     'skill_type:movement': 'Mozgás',
     'skill_type:knowledge': 'Tudás',
-    'skill_type:general': 'Általános',
 
 
 

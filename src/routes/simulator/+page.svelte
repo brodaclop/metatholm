@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import {
-		calculateCharacter,
-		type CalculatedCharacter,
-		type Character
-	} from '../../model/Karakter';
+	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import type { PageData } from './$types';
 	import Box from '../../components/character/Box.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import ActionCard from '../../components/character/ActionCard.svelte';
 	import CharacterSelector from '../../components/simulator/CharacterSelector.svelte';
 	import CharacterLife from '../../components/simulator/CharacterLife.svelte';
-	import WeaponSelector from '../../components/simulator/WeaponSelector.svelte';
 
 	import type { EvalExpression } from '../../logic/Expression';
 	import {
@@ -21,7 +16,8 @@
 		type ActionType,
 		type ActionVariant
 	} from '../../model/Action';
-	import { entries } from '../../model/InfoList';
+
+	//TODO: action variant for not opposing attack
 
 	const AP_ROLL = parseKocka('1d10+10');
 
@@ -167,13 +163,18 @@
 		]
 	};
 
-	const isVariantSelectable = (variant: ActionVariant, idx: number) =>
-		combatRunning &&
-		nextStep.idx === idx &&
-		ACTION_VARIANT_PROPERTIES[variant].distance === range &&
-		ACTION_VARIANT_PROPERTIES[variant].type === nextStep.select &&
-		(!nextStep.initial ||
-			(ACTION_VARIANT_PROPERTIES[variant].reactionTo?.includes(nextStep.initial) ?? true));
+	const isVariantSelectable = (
+		variant: ActionVariant,
+		type: ActionType,
+		initial?: ActionVariant
+	) => {
+		return (
+			combatRunning &&
+			ACTION_VARIANT_PROPERTIES[variant].distance === range &&
+			ACTION_VARIANT_PROPERTIES[variant].type === type &&
+			(!initial || (ACTION_VARIANT_PROPERTIES[variant].reactionTo?.includes(initial) ?? true))
+		);
+	};
 </script>
 
 <Box background="#ffffee" title="Characters">
@@ -225,35 +226,44 @@
 				{#if characters[idx]}
 					{@const calculatedCharacter = calculateCharacter(characters[idx])}
 					<CharacterLife character={characters[idx]} ap={ap[idx]} />
-					<WeaponSelector
-						{calculatedCharacter}
-						active
-						bind:left={weapons[idx][0]}
-						bind:right={weapons[idx][1]}
-					/>
 					<div class="actions">
 						{#each [0, 1] as handIdx}
-							{#if weapons[idx][handIdx] !== undefined}
-								{@const weaponIdx = weapons[idx][handIdx] ?? 0}
-								{@const action = calculatedCharacter.actions.find(
-									(a) => a.name === calculatedCharacter.weapons[weaponIdx].name
-								)}
-								{#if action}
-									<ActionCard
-										{action}
-										distance={range}
-										isSelectable={(variant) => isVariantSelectable(variant, idx)}
-										select={(variant) => select(action, variant)}
-									/>
-								{/if}
-							{/if}
+							{@const action =
+								weapons[idx][handIdx] !== undefined
+									? calculatedCharacter.actions.find(
+											(a) => a.name === calculatedCharacter.weapons[weapons[idx][handIdx] ?? 0].name
+									  )
+									: undefined}
+							<div style:order={handIdx * 2}>
+								<ActionCard
+									{action}
+									distance={range}
+									isSelectable={(variant) =>
+										!!action &&
+										nextStep.idx === idx &&
+										isVariantSelectable(variant, nextStep.select, nextStep.initial)}
+									select={(variant) => action && select(action, variant)}
+								>
+									<div slot="title">
+										<select bind:value={weapons[idx][handIdx]}>
+											{#each calculatedCharacter.weapons as weapon, idx}
+												<option value={idx}>{$_(weapon.name)}</option>
+											{/each}
+										</select>
+									</div>
+								</ActionCard>
+							</div>
 						{/each}
-						<ActionCard
-							action={MOVES}
-							distance={range}
-							isSelectable={(variant) => isVariantSelectable(variant, idx)}
-							select={(variant) => select(MOVES, variant)}
-						/>
+						<div style:order={1}>
+							<ActionCard
+								action={MOVES}
+								distance={range}
+								isSelectable={(variant) =>
+									nextStep.idx === idx &&
+									isVariantSelectable(variant, nextStep.select, nextStep.initial)}
+								select={(variant) => select(MOVES, variant)}
+							/>
+						</div>
 					</div>
 				{/if}
 			</div>
@@ -269,6 +279,6 @@
 
 	.actions {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 	}
 </style>

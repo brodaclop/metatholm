@@ -7,18 +7,19 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article style:background-color={background} on:mouseenter on:mouseleave on:click>
 	<header>
 		{#if level === 1}
-			<h2>{title ?? ''} <slot name="title" /></h2>
+			<h2><slot name="title">{title ?? ''}</slot></h2>
 		{:else if level === 2}
-			<h3>{title ?? ''} <slot name="title" /></h3>
+			<h3><slot name="title">{title ?? ''}</slot></h3>
 		{:else if level === 3}
-			<h4>{title ?? ''} <slot name="title" /></h4>
+			<h4><slot name="title">{title ?? ''}</slot></h4>
 		{:else if level === 4}
-			<h5>{title ?? ''} <slot name="title" /></h5>
+			<h5><slot name="title">{title ?? ''}</slot></h5>
 		{:else if level === 5}
-			<h6>{title ?? ''} <slot name="title" /></h6>
+			<h6><slot name="title">{title ?? ''}</slot></h6>
 		{/if}
 	</header>
 	<slot />
@@ -32,6 +33,7 @@
 		border-color: gray;
 		padding: 0.5em;
 		margin: 0.5em;
+		filter: drop-shadow(0.2em 0.2em 0.2em #00000080);
 	}
 
 	h2,
