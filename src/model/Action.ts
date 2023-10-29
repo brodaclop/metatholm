@@ -1,6 +1,6 @@
 import type { EvalExpression, Expression } from "../logic/Expression";
 
-export type ActionVariant = 'action:attack' | 'action:disarm' | 'action:defend' | 'action:cast' | 'action:attack-cq' | 'action:defend-cq' | 'action:keep-away' | 'action:close-in' | 'action:disengage' | 'action:keep-close' | 'action:attack-range' | 'action:defend-range' | 'action:step-in' | 'action:step-out';
+export type ActionVariant = 'action:attack' | 'action:disarm' | 'action:defend' | 'action:cast' | 'action:attack-cq' | 'action:defend-cq' | 'action:keep-away' | 'action:close-in' | 'action:disengage' | 'action:keep-close' | 'action:attack-range' | 'action:defend-range' | 'action:step-in' | 'action:step-out' | 'action:do-nothing';
 export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
 
 export type ActionDistance = 'out-of-range' | 'in-range' | 'close-quarters';
@@ -11,7 +11,7 @@ export interface ActionVariantProperties {
     type: ActionType;
     reactionTo?: Array<ActionVariant>;
     weapon: boolean;
-    distance: ActionDistance;
+    distance?: ActionDistance;
 }
 
 export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantProperties> = {
@@ -90,6 +90,10 @@ export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantPrope
         weapon: false,
         distance: 'in-range'
     },
+    'action:do-nothing': {
+        type: 'reaction',
+        weapon: false
+    }
 };
 
 export interface ActionVariantInfo {

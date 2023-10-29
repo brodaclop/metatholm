@@ -22,7 +22,7 @@
 
 	$: sorted = group(
 		[...(action?.variants ?? [])].sort((a, z) => a.name.localeCompare(z.name)),
-		(v) => ACTION_VARIANT_PROPERTIES[v.name].distance
+		(v) => ACTION_VARIANT_PROPERTIES[v.name].distance ?? 'any-range'
 	);
 </script>
 
@@ -32,7 +32,7 @@
 	>
 	<div class="distances">
 		{#each entries(sorted) as [currentDistance, variants]}
-			{#if distance === undefined || distance === currentDistance}
+			{#if distance === undefined || distance === currentDistance || currentDistance === 'any-range'}
 				<div class="title">
 					<Box background="#eedddd" title={$_(`label:${currentDistance}`)} />
 					{#each variants as variant}

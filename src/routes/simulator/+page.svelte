@@ -159,6 +159,16 @@
 						roll: 0
 					}
 				]
+			},
+			{
+				name: 'action:do-nothing',
+				rolls: [
+					{
+						name: 'action:roll',
+						roll: 0,
+						rollString: '0'
+					}
+				]
 			}
 		]
 	};
@@ -170,7 +180,7 @@
 	) => {
 		return (
 			combatRunning &&
-			ACTION_VARIANT_PROPERTIES[variant].distance === range &&
+			(ACTION_VARIANT_PROPERTIES[variant].distance ?? range) === range &&
 			ACTION_VARIANT_PROPERTIES[variant].type === type &&
 			(!initial || (ACTION_VARIANT_PROPERTIES[variant].reactionTo?.includes(initial) ?? true))
 		);
@@ -204,7 +214,7 @@
 					</div>
 					<div>Range: {range}</div>
 					<div>
-						{#if attackResult && defenceResult}
+						{#if attackResult !== undefined && defenceResult !== undefined}
 							<div>Player {attacker + 1} attacks for {attackResult}</div>
 							<div>Player {2 - attacker} defends for {defenceResult}</div>
 							<div>
