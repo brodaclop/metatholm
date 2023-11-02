@@ -8,6 +8,8 @@
 	import LoreCategory from '../interactive/LoreCategory.svelte';
 	import BackgroundSkillList from '../interactive/BackgroundSkillList.svelte';
 	import SkillListByType from '../interactive/SkillListByType.svelte';
+	import ActiionInfo from '../interactive/ActiionInfo.svelte';
+	import ActionVariants from '../interactive/ActionVariants.svelte';
 
 	export let raw: string;
 
@@ -20,7 +22,9 @@
 		AncestryInfo: AncestryInfo,
 		LoreCategory: LoreCategory,
 		BackgroundSkillList: BackgroundSkillList,
-		SkillListByType: SkillListByType
+		SkillListByType: SkillListByType,
+		ActionInfo: ActiionInfo,
+		ActionVariants: ActionVariants
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

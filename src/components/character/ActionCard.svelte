@@ -6,7 +6,7 @@
 	import {
 		type Action,
 		type ActionVariant,
-		type ActionDistance,
+		type ActionRange,
 		ACTION_VARIANT_PROPERTIES
 	} from '../../model/Action';
 	import { entries, group } from '../../model/InfoList';
@@ -16,13 +16,13 @@
 	export let action: Action | undefined = undefined;
 	export let isSelectable: ((variant: ActionVariant) => boolean) | undefined = undefined;
 	export let select: (variant: ActionVariant) => void = () => {};
-	export let distance: ActionDistance | undefined = undefined;
+	export let range: ActionRange | undefined = undefined;
 
 	let current: ActionVariant | undefined = undefined;
 
 	$: sorted = group(
 		[...(action?.variants ?? [])].sort((a, z) => a.name.localeCompare(z.name)),
-		(v) => ACTION_VARIANT_PROPERTIES[v.name].distance ?? 'any-range'
+		(v) => ACTION_VARIANT_PROPERTIES[v.name].range ?? 'any-range'
 	);
 </script>
 
@@ -30,9 +30,9 @@
 	<slot name="title" slot="title"
 		>{#if action}{$_(action.name)}{/if}</slot
 	>
-	<div class="distances">
+	<div class="ranges">
 		{#each entries(sorted) as [currentDistance, variants]}
-			{#if distance === undefined || distance === currentDistance || currentDistance === 'any-range'}
+			{#if range === undefined || range === currentDistance || currentDistance === 'any-range'}
 				<div class="title">
 					<Box background="#eedddd" title={$_(`label:${currentDistance}`)} />
 					{#each variants as variant}
@@ -59,7 +59,7 @@
 							<div slot="title">
 								{$_(variant.name)}
 								<span class="type-icon">
-									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'initial'}
+									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
 										<GiSpinningSword />
 									{:else}
 										<GiShieldReflect />
@@ -87,7 +87,7 @@
 </Box>
 
 <style>
-	.distances {
+	.ranges {
 		display: flex;
 		flex-wrap: nowrap;
 		flex-direction: row;

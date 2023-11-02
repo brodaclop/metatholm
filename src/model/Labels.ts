@@ -7,6 +7,7 @@ import type { Ancestry } from "./Ancestry";
 import type { Spell } from "./Spell";
 
 type GenericLabels = 'label:name' |
+    'label:action' |
     'label:weapon' |
     'label:learn' |
     'label:edit' |
@@ -32,6 +33,10 @@ type GenericLabels = 'label:name' |
     'label:in-range' |
     'label:out-of-range' |
     'label:any-range' |
+    'label:range' |
+    'label:counters' |
+    'label:countered-by' |
+    'label:reaction' |
     'action:move'
     ;
 
@@ -129,6 +134,7 @@ export const Labels_en: Record<Labels, string> = {
     'expr:skill_ability': 'Ability',
     'expr:skill_difficulty': 'Difficulty',
 
+    'label:action': 'Action',
     'label:weapon': 'Weapon',
     'label:difficulty:1': 'Easy',
     'label:difficulty:2': 'Average',
@@ -157,6 +163,10 @@ export const Labels_en: Record<Labels, string> = {
     'label:in-range': 'In Measure',
     'label:out-of-range': 'Out Of Measure',
     'label:any-range': 'Any Range',
+    'label:range': 'Range',
+    'label:counters': 'Counters',
+    'label:countered-by': 'Countered by',
+    'label:reaction': 'Reaction',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -295,6 +305,7 @@ export const Labels_hu: Record<Labels, string> = {
     'expr:skill_ability': 'Tulajdonság',
     'expr:skill_difficulty': 'Nehézség',
 
+    'label:action': 'Akció',
     'label:difficulty:1': 'Könnyű',
     'label:difficulty:2': 'Átlagos',
     'label:difficulty:3': 'Nehéz',
@@ -321,6 +332,10 @@ export const Labels_hu: Record<Labels, string> = {
     'label:in-range': 'Közelharc',
     'label:out-of-range': 'Távol',
     'label:any-range': 'Bármely távolság',
+    'label:range': 'Távolság',
+    'label:counters': 'Ennek ál ellen',
+    'label:countered-by': 'Ez ál ellen neki',
+    'label:reaction': 'Reakció',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

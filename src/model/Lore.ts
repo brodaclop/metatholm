@@ -7,6 +7,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_en.md?raw'),
         'rule:learning_skills': import('$lib/lore/rule/learning_skills_en.md?raw'),
         'rule:skill_check': import('$lib/lore/rule/skill_check_en.md?raw'),
+        'rule:combat': import('$lib/lore/rule/combat_en.md?raw'),
         'character:abilities': import('$lib/lore/character/abilities_en.md?raw'),
         'ability:build': import('$lib/lore/ability/build_en.md?raw'),
         'ability:activity': import('$lib/lore/ability/activity_en.md?raw'),
@@ -70,6 +71,13 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'background:vagabond': import('$lib/lore/background/vagabond_en.md?raw'),
         'background:charmer': import('$lib/lore/background/charmer_en.md?raw'),
         'background:witch': import('$lib/lore/background/witch_en.md?raw'),
+        'action:do-nothing': import('$lib/lore/action/do-nothing_en.md?raw'),
+        'action:step-in': import('$lib/lore/action/step-in_en.md?raw'),
+        'action:step-out': import('$lib/lore/action/step-out_en.md?raw'),
+        'action:close-in': import('$lib/lore/action/close-in_en.md?raw'),
+        'action:keep-away': import('$lib/lore/action/keep-away_en.md?raw'),
+        'action:disengage': import('$lib/lore/action/disengage_en.md?raw'),
+        'action:keep-close': import('$lib/lore/action/keep-close_en.md?raw'),
     }
 }
 

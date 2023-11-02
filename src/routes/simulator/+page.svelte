@@ -11,13 +11,12 @@
 	import type { EvalExpression } from '../../logic/Expression';
 	import {
 		ACTION_VARIANT_PROPERTIES,
+		MOVES_ACTION,
 		type Action,
-		type ActionDistance,
+		type ActionRange,
 		type ActionType,
 		type ActionVariant
 	} from '../../model/Action';
-
-	//TODO: action variant for not opposing attack
 
 	const AP_ROLL = parseKocka('1d10+10');
 
@@ -42,10 +41,10 @@
 	let attacker: 0 | 1 = 0;
 	let attack: { action: Action; variant: ActionVariant } | undefined;
 	let defence: { action: Action; variant: ActionVariant } | undefined;
-	let range: ActionDistance = 'in-range';
+	let range: ActionRange = 'in-range';
 	let nextStep: { idx: 0 | 1; select: ActionType; initial?: ActionVariant } = {
 		idx: 0,
-		select: 'initial'
+		select: 'action'
 	};
 
 	let attackResult: number | undefined;
@@ -77,7 +76,7 @@
 		} else {
 			attack = undefined;
 			defence = undefined;
-			nextStep = { idx: attacker, select: 'initial' };
+			nextStep = { idx: attacker, select: 'action' };
 		}
 	};
 
@@ -86,7 +85,7 @@
 			range = 'in-range';
 		} else if (variant === 'action:step-out') {
 			range = 'out-of-range';
-		} else if (nextStep.select === 'initial') {
+		} else if (nextStep.select === 'action') {
 			attack = { action, variant };
 			nextStep = {
 				idx: (1 - nextStep.idx) as 0 | 1,
@@ -139,40 +138,6 @@
 		startAttack();
 	};
 
-	const MOVES: Action = {
-		name: 'action:move',
-		variants: [
-			{
-				name: 'action:step-in',
-				rolls: [
-					{
-						name: 'action:ap',
-						roll: 0
-					}
-				]
-			},
-			{
-				name: 'action:step-out',
-				rolls: [
-					{
-						name: 'action:ap',
-						roll: 0
-					}
-				]
-			},
-			{
-				name: 'action:do-nothing',
-				rolls: [
-					{
-						name: 'action:roll',
-						roll: 0,
-						rollString: '0'
-					}
-				]
-			}
-		]
-	};
-
 	const isVariantSelectable = (
 		variant: ActionVariant,
 		type: ActionType,
@@ -180,7 +145,7 @@
 	) => {
 		return (
 			combatRunning &&
-			(ACTION_VARIANT_PROPERTIES[variant].distance ?? range) === range &&
+			(ACTION_VARIANT_PROPERTIES[variant].range ?? range) === range &&
 			ACTION_VARIANT_PROPERTIES[variant].type === type &&
 			(!initial || (ACTION_VARIANT_PROPERTIES[variant].reactionTo?.includes(initial) ?? true))
 		);
@@ -247,7 +212,7 @@
 							<div style:order={handIdx * 2}>
 								<ActionCard
 									{action}
-									distance={range}
+									{range}
 									isSelectable={(variant) =>
 										!!action &&
 										nextStep.idx === idx &&
@@ -266,12 +231,12 @@
 						{/each}
 						<div style:order={1}>
 							<ActionCard
-								action={MOVES}
-								distance={range}
+								action={MOVES_ACTION}
+								{range}
 								isSelectable={(variant) =>
 									nextStep.idx === idx &&
 									isVariantSelectable(variant, nextStep.select, nextStep.initial)}
-								select={(variant) => select(MOVES, variant)}
+								select={(variant) => select(MOVES_ACTION, variant)}
 							/>
 						</div>
 					</div>
