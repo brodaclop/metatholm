@@ -78,6 +78,12 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'action:keep-away': import('$lib/lore/action/keep-away_en.md?raw'),
         'action:disengage': import('$lib/lore/action/disengage_en.md?raw'),
         'action:keep-close': import('$lib/lore/action/keep-close_en.md?raw'),
+        'action:attack': import('$lib/lore/action/attack_en.md?raw'),
+        'action:attack-cq': import('$lib/lore/action/attack-cq_en.md?raw'),
+        'action:attack-range': import('$lib/lore/action/attack-range_en.md?raw'),
+        'action:defend': import('$lib/lore/action/defend_en.md?raw'),
+        'action:defend-cq': import('$lib/lore/action/defend-cq_en.md?raw'),
+        'action:defend-range': import('$lib/lore/action/defend-range_en.md?raw'),
     }
 }
 

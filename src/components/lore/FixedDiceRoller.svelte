@@ -9,33 +9,28 @@
 		LinearScale,
 		BarController
 	} from 'chart.js/auto';
-	import { kockaDobas, parseKocka } from '../../../logic/Kocka';
+	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import { _ } from 'svelte-i18n';
-	import Box from '../../character/Box.svelte';
+	import Box from '../character/Box.svelte';
 
 	Chart.register(Title, BarController, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-	export let roll = '1d10!';
-	let lastRoll: string = '';
+	export let roll: string;
 	const TRIES = 100000;
-	export let editable: boolean = true;
-
-	let data: any;
-	let avg = 0;
 
 	let chartCanvas: HTMLCanvasElement;
 	let chart: Chart;
 
 	$: config = {
 		type: 'bar',
-		data: data,
+		data: contest(roll),
 		options: {
 			responsive: true,
 			spacing: 2,
 			plugins: {
 				title: {
-					display: true,
-					text: $_('label:roll') + ':' + lastRoll + ' / ' + $_('label:average') + ':' + avg
+					display: false,
+					text: $_('label:roll') + ':' + roll
 				},
 				legend: {
 					display: false
@@ -44,19 +39,18 @@
 		}
 	};
 
-	$: if (!data) {
-		contest(true);
-	}
-
-	$: if (data && chartCanvas) {
+	$: if (config && chartCanvas) {
 		chart?.destroy();
 		const ctx = chartCanvas.getContext('2d');
 		chart = new Chart(ctx!, config);
 	}
 
 	const createData = (rolls: Array<number>, start: number): any => {
-		const colors = rolls.map((_, i) => {
+		const colors = rolls.map((_, i, arr) => {
 			const value = i + start;
+			if (arr[i] >= 50 && arr[i + 1] < 50) {
+				return '#88ff88';
+			}
 			if (value % 20 <= 10) {
 				return '#888888';
 			} else {
@@ -77,11 +71,9 @@
 		};
 	};
 
-	const contest = (sumMode: boolean) => {
-		lastRoll = roll;
-		const firstKocka = parseKocka(roll);
+	const contest = (diceRoll: string) => {
+		const firstKocka = parseKocka(diceRoll);
 		const rolls: Map<number, number> = new Map<number, number>();
-		avg = 0;
 		for (let i = 0; i < TRIES; i++) {
 			const result = kockaDobas(firstKocka).osszeg;
 			rolls.set(result, (rolls.get(result) ?? 0) + 1);
@@ -93,50 +85,16 @@
 		let sum = TRIES;
 		for (let i = minimum; i <= maximum; i++) {
 			const roll = rolls.get(i) ?? 0;
-			avg += roll * i;
-			if (sumMode) {
-				sum -= roll;
-			} else {
-				sum = roll;
-			}
+			sum -= roll;
 			rollArray.push((sum * 100) / TRIES);
 		}
-		avg /= TRIES;
-		data = createData(rollArray, minimum);
+		return createData(rollArray, minimum);
 	};
 </script>
 
-<Box background="peach" title={$_('label:dice_roller')}>
-	<div class="rollInputs">
-		<div>
-			{$_('label:roll')}: <input type="test" bind:value={roll} />
-		</div>
-		<div>
-			<button on:click={() => contest(true)}>{$_('label:at_least')}</button>
-			<button on:click={() => contest(false)}>{$_('label:exactly')}</button>
-		</div>
-	</div>
-
+<Box background="peach" title={$_('label:roll') + ': ' + roll}>
 	<canvas bind:this={chartCanvas} width={800} height={400} />
-
-	<!-- <Bar
-		{data}
-		options={{
-			plugins: {
-				title: {
-					display: true,
-					text: $_('label:roll') + ':' + lastRoll + ' / ' + $_('label:average') + ':' + avg
-				},
-				legend: {
-					display: false
-				}
-			}
-		}}
-	/> -->
 </Box>
 
 <style>
-	.rollInputs {
-		text-align: center;
-	}
 </style>

@@ -5,16 +5,20 @@
 	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
 
 	export let value: number;
-	export let newValue: number | undefined;
+	export let newValue: number | undefined = undefined;
 	export let name: string;
 	export let subName: string = '';
 	export let max: number;
+	export let min: number = 0;
 	export let editable: boolean = false;
+	export let plus: () => void = () => {
+		value = Math.min(max, value + 1);
+	};
+	export let minus: () => void = () => {
+		value = Math.max(min, value - 1);
+	};
 
 	$: _newValue = newValue ?? value;
-
-	export let plus: () => void;
-	export let minus: () => void;
 </script>
 
 <tr>

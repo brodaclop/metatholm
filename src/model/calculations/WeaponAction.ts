@@ -33,9 +33,9 @@ export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, we
     variants: keys(weapon.actions).map(v => calculateVariant(v, skills, weapon))
 });
 
-const ReachMultipliers: Record<ActionRange, number> = {
-    'close-quarters': -2,
-    'in-range': 2,
+export const ReachMultipliers: Record<ActionRange, number> = {
+    'close-quarters': -1,
+    'in-range': 1,
     'out-of-range': 0
 };
 
@@ -61,7 +61,8 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         'weapon:defence': weapon.defence,
         'weapon:difficulty': difficulty,
         'weapon:skill': skill,
-        'weapon:reach': ReachMultipliers[ACTION_VARIANT_PROPERTIES[name].range] * weapon.reach,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        'weapon:reach': ReachMultipliers[ACTION_VARIANT_PROPERTIES[name].range!] * weapon.reach,
     };
     if (ap) {
         rolls.push(apRoll(E.evaluate(ap, args)));

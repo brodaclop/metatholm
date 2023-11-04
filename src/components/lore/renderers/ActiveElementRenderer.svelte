@@ -10,6 +10,9 @@
 	import SkillListByType from '../interactive/SkillListByType.svelte';
 	import ActiionInfo from '../interactive/ActiionInfo.svelte';
 	import ActionVariants from '../interactive/ActionVariants.svelte';
+	import ActionPointCalculator from '../interactive/ActionPointCalculator.svelte';
+	import DamageCalculator from '../interactive/DamageCalculator.svelte';
+	import CombatRollCalculator from '../interactive/CombatRollCalculator.svelte';
 
 	export let raw: string;
 
@@ -24,7 +27,10 @@
 		BackgroundSkillList: BackgroundSkillList,
 		SkillListByType: SkillListByType,
 		ActionInfo: ActiionInfo,
-		ActionVariants: ActionVariants
+		ActionVariants: ActionVariants,
+		ActionPointCalculator: ActionPointCalculator,
+		CombatRollCalculator: CombatRollCalculator,
+		DamageCalculator: DamageCalculator
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);
