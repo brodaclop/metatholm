@@ -69,6 +69,7 @@
 	const templateSelected = () => {
 		if (template) {
 			editedWeapon = JSON.parse(JSON.stringify(template));
+			editedWeapon.id = v4();
 			template = null;
 		}
 	};

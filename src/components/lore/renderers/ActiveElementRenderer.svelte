@@ -13,8 +13,13 @@
 	import ActionPointCalculator from '../interactive/ActionPointCalculator.svelte';
 	import DamageCalculator from '../interactive/DamageCalculator.svelte';
 	import CombatRollCalculator from '../interactive/CombatRollCalculator.svelte';
+	import { Popover } from 'svelte-smooth-popover';
+	import FixedDiceRoller from '../FixedDiceRoller.svelte';
+	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 
 	export let raw: string;
+
+	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]*(\+[0-9]+)?\!?$/;
 
 	const components: Record<string, any> = {
 		SkillRolls: SkillRolls,
@@ -38,6 +43,42 @@
 	$: paramOb = params ? JSON.parse(params) : {};
 </script>
 
-<div>
-	<svelte:component this={components[name]} {...paramOb} />
-</div>
+{#if DICE_ROLL_PATTERN.test(name)}
+	<span class="dice"
+		><span class="icon"><GiRollingDices /></span>{name}<Popover
+			open={false}
+			showOnClick={true}
+			borderRadius={10}
+			caretBg="black"
+			hideOnExternalClick={true}
+		>
+			<div class="popover">
+				<FixedDiceRoller roll={name} />
+			</div>
+		</Popover>
+	</span>
+{:else}
+	<div>
+		<svelte:component this={components[name]} {...paramOb} />
+	</div>
+{/if}
+
+<style>
+	.dice {
+		background-color: bisque;
+		font-weight: bold;
+	}
+
+	.popover {
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 10px;
+		padding: 10px;
+	}
+
+	.icon {
+		height: 1em;
+		display: inline-block;
+		vertical-align: text-bottom;
+	}
+</style>

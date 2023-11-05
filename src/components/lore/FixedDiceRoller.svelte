@@ -84,9 +84,9 @@
 		const rollArray: Array<number> = [];
 		let sum = TRIES;
 		for (let i = minimum; i <= maximum; i++) {
+			rollArray.push((sum * 100) / TRIES);
 			const roll = rolls.get(i) ?? 0;
 			sum -= roll;
-			rollArray.push((sum * 100) / TRIES);
 		}
 		return createData(rollArray, minimum);
 	};

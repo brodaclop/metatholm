@@ -1,6 +1,6 @@
 # Skill check
 
-Skill checks are rolled with [exploding dice](rule:exploding_dice), for which you will use as many d10s as your skill level. If you're unskilled, you can roll a single d5 instead.
+Skill checks are rolled with [exploding dice](rule:exploding_dice), for which you will use as many `d10!`s as your skill level. If you're unskilled, you can roll a single `d5!` instead.
 
 ## Contested
 
