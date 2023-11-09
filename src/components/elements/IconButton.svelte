@@ -4,9 +4,10 @@
 
 	export let title: Labels;
 	export let color: string | undefined = undefined;
+	export let disabled: boolean | undefined = undefined;
 </script>
 
-<button title={$_(title)} on:click style:color><slot /></button>
+<button title={$_(title)} on:click {disabled} style:color><slot /></button>
 
 <style>
 	button {

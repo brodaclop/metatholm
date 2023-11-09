@@ -95,11 +95,12 @@
 			const roll = rolls.get(i) ?? 0;
 			avg += roll * i;
 			if (sumMode) {
+				rollArray.push((sum * 100) / TRIES);
 				sum -= roll;
 			} else {
 				sum = roll;
+				rollArray.push((sum * 100) / TRIES);
 			}
-			rollArray.push((sum * 100) / TRIES);
 		}
 		avg /= TRIES;
 		data = createData(rollArray, minimum);

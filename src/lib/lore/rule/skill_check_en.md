@@ -4,7 +4,7 @@ Skill checks are rolled with [exploding dice](rule:exploding_dice), for which yo
 
 ## Contested
 
-A skill check is considered contested when two or more participants pit their skills against each other. This could be the same skill (for example opposing [Strength](skill:strength) checks during arm wrestling) or different skills (for example one character using [Camouflage](skill:camouflage) to hude from someone, who will have to roll [Spot Hidden](skill:spot_hidden) to spot them). In either case the results of the roll are compared and whoever's is the highest wins the contest. If it's a tie, then everything stays the same, as if the contest didn't happen (so in the arm wrestling neither party wins, in the hiding scenario the character remains hidden).
+A skill check is considered contested when two or more participants pit their skills against each other. This could be the same skill (for example opposing [Strength](skill:strength) checks during arm wrestling) or different skills (for example one character using [Camouflage](skill:camouflage) to hide from someone, who will have to roll [Spot Hidden](skill:spot_hidden) to spot them). In either case the results of the roll are compared and whoever's is the highest wins the contest. If it's a tie, then everything stays the same, as if the contest didn't happen (so in the arm wrestling neither party wins, in the hiding scenario the character remains hidden).
 
 ## Uncontested
 

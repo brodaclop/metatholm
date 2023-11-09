@@ -1,6 +1,13 @@
 import { entries } from "./InfoList";
 
 const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
+    hu: {
+        'main': import('$lib/lore/main_hu.md?raw'),
+        'character:skills': import('$lib/lore/character/skills_hu.md?raw'),
+        'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_hu.md?raw'),
+        'rule:learning_skills': import('$lib/lore/rule/learning_skills_hu.md?raw'),
+        'rule:skill_check': import('$lib/lore/rule/skill_check_hu.md?raw'),
+    },
     en: {
         'main': import('$lib/lore/main_en.md?raw'),
         'character:skills': import('$lib/lore/character/skills_en.md?raw'),

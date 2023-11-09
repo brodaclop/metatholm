@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import CircleGroup from '../../elements/CircleGroup.svelte';
 	import Circles from '../../elements/Circles.svelte';
 	import { ATTACK_AP } from '../../../model/Rules';
 	import { E } from '../../../logic/Expression';
@@ -24,7 +23,7 @@
 		<Circles
 			name="label:difficulty"
 			bind:value={difficulty}
-			subName={String(difficulty)}
+			subName={$_(`label:difficulty:${difficulty}`)}
 			max={3}
 			min={1}
 			editable

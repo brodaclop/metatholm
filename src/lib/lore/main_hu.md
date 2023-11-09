@@ -1,26 +1,26 @@
 # Metatholm
 
-## Rules
+## Szabályok
 
 `LoreCategory|{"category": "rule"}`
 
-## Character
+## Karakter
 
 `LoreCategory|{"category": "character"}`
 
-## Ancestries
+## Származás
 
 `LoreCategory|{"category": "ancestry"}`
 
-## Backgrounds
+## Háttér
 
 `LoreCategory|{"category": "background"}`
 
 
-## Abilities
+## Tulajdonságok
 
 `LoreCategory|{"category": "ability"}`
 
-## Skills
+## Képzettségek
 
 `LoreCategory|{"category": "skill"}`

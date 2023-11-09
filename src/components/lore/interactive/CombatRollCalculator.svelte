@@ -32,7 +32,7 @@
 		<Circles
 			name="label:difficulty"
 			bind:value={difficulty}
-			subName={String(difficulty)}
+			subName={$_(`label:difficulty:${difficulty}`)}
 			max={3}
 			min={1}
 			editable
