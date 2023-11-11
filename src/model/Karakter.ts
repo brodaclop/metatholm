@@ -11,7 +11,9 @@ import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
 import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
-import type { Skill } from "./Skills";
+import { Skill } from "./Skills";
+import type { Armour } from "./Armour";
+import Skills from "../components/character/Skills.svelte";
 
 
 export interface Level {
@@ -26,12 +28,14 @@ export interface Character extends Entity {
     skills: Partial<Record<Skill, number>>;
     inventory: {
         weapons: Array<Weapon>;
+        armours: Array<Armour>;
     };
     current: {
         fp: number;
         ep: number;
         mp: number;
         kp: number;
+        armourWorn?: number;
     }
 }
 
@@ -46,21 +50,11 @@ export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'backgrou
 export interface CalculatedCharacter {
     fp: EvalExpression;
     ep: EvalExpression;
+    skills: Partial<Record<Skill, number>>;
     actions: Array<Action>;
     weapons: Array<Weapon>;
     spells: Array<SpellInfo>;
 }
-
-
-
-const merge = <T extends string>(acc: Partial<Record<T, number>>, add: Partial<Record<T, number>>): Partial<Record<T, number>> => {
-    Object.entries(add).forEach(([key, value]) => {
-        if (acc[key as T] === undefined || ((acc[key as T] as number) < (value as number))) {
-            acc[key as T] = value as number;
-        }
-    });
-    return acc;
-};
 
 
 const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
@@ -72,9 +66,9 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             id: 'skill:brawling',
             name: 'skill:brawling',
             skill: 'skill:brawling',
-            speed: fraction('skill:strength', 2),
-            attack: fraction('skill:strength', 2),
-            defence: fraction('skill:strength', 2),
+            speed: fraction('skill:strength', 1),
+            attack: fraction('skill:strength', 0.5),
+            defence: fraction('skill:strength', 1),
             reach: 0,
             damage: fraction('skill:strength', 2),
             hands: 1,
@@ -90,10 +84,10 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             name: 'skill:fistfighting',
             skill: 'skill:fistfighting',
             speed: fraction('skill:reactions', 1),
-            attack: fraction('skill:reactions', 2),
-            defence: fraction('skill:reactions', 2),
+            attack: fraction('skill:reactions', 0.5),
+            defence: fraction('skill:reactions', 1.5),
             reach: 0,
-            damage: fraction('skill:reactions', 2),
+            damage: fraction('skill:reactions', 1),
             hands: 1,
             actions: {
                 'action:attack-cq': 2,
@@ -107,10 +101,10 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             name: 'skill:martial_arts',
             skill: 'skill:martial_arts',
             speed: fraction('skill:balance', 1),
-            attack: fraction('skill:balance', 1),
-            defence: fraction('skill:balance', 1),
+            attack: fraction('skill:balance', 0.5),
+            defence: fraction('skill:balance', 0.5),
             reach: 0,
-            damage: fraction('skill:balance', 2),
+            damage: fraction('skill:balance', 0.5),
             hands: 1,
             actions: {
                 'action:attack-cq': 3,
@@ -121,12 +115,17 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
     return ret;
 }
 
+const calculateSkills = (character: Character): Partial<Record<Skill, number>> => {
+    const hindrance = character.current.armourWorn !== undefined ? character.inventory.armours[character.current.armourWorn].hindrance : 0;
+    return Object.fromEntries(entries(character.skills).map(([skill, level]) => [skill, Math.max(0, Skill.get(skill).type === 'skill_type:movement' ? level - hindrance : level)]));
+}
 
 export const calculateCharacter = (character: Character): CalculatedCharacter => {
     const level = character.levels.length;
-    const { abilities, skills } = character;
-    const weapons: Array<Weapon> = [...character.inventory.weapons, ...calculateUnarmed(skills)];
+    const { abilities } = character;
+    const skills = calculateSkills(character);
 
+    const weapons: Array<Weapon> = [...character.inventory.weapons, ...calculateUnarmed(skills)];
 
     const spells: Array<SpellInfo> = entries(skills).flatMap(([key, value]) => Spell.available(key, value));
 
@@ -139,6 +138,7 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         spells,
         weapons,
         actions,
+        skills,
         ep: E.evaluate(TOTAL_EP, { 'character:level': level }),
         fp: E.evaluate(TOTAL_FP, {
             'character:level': level,
@@ -166,7 +166,8 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         ancestry: template.ancestry,
         abilities,
         inventory: {
-            weapons: []
+            weapons: [],
+            armours: [],
         },
         levels: [level],
         current: {

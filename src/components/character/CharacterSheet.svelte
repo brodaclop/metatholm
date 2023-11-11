@@ -10,6 +10,7 @@
 	import MainBox from './MainBox.svelte';
 	import { onDestroy, onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
+	import Armours from './Armours.svelte';
 
 	export let initialCharacter: Character;
 	export let deleteCharacter: () => void;
@@ -42,7 +43,7 @@
 		</Box>
 
 		<Box title={$_('character:skills')} background={'#eeffee'}>
-			<Skills skills={character.skills} />
+			<Skills skills={character.skills} modifiedSkills={calculatedCharacter.skills} />
 		</Box>
 		<Box title={$_('character:points')} background={'#eeffff'}>
 			<Points bind:character {calculatedCharacter} />
@@ -50,6 +51,10 @@
 		<Box background="#eeeeee" title={$_('character:weapons')}>
 			<Weapons bind:character />
 		</Box>
+		<Box background="#eeeeee" title={$_('character:armours')}>
+			<Armours bind:character />
+		</Box>
+
 		<Box title={$_('action:title')} background="#ffffee">
 			<div>
 				{#each calculatedCharacter.actions as action}

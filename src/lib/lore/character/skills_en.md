@@ -21,7 +21,7 @@ Skills fall into one of several categories: **Basic**, **Movement**, **Combat**,
 
 `SkillListByType|{"type": "skill_type:basic"}`
 
-**Movement** skills are very similar to basic skills, except they relate to various forms of movement.
+**Movement** skills are very similar to basic skills, except they relate to various forms of movement. The main difference in practice is that the use of these skills can be hindered by wearing armour.
 
 `SkillListByType|{"type": "skill_type:movement"}`
 

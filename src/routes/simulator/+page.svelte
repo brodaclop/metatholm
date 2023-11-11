@@ -15,7 +15,8 @@
 		type Action,
 		type ActionRange,
 		type ActionType,
-		type ActionVariant
+		type ActionVariant,
+		type ActionVariantInfo
 	} from '../../model/Action';
 
 	const AP_ROLL = parseKocka('1d10+10');
@@ -98,12 +99,26 @@
 		}
 	};
 
+	const damage = (attackAction: ActionVariantInfo) => {
+		const damageRoll = attackAction.rolls.find((r) => r.name === 'label:damage');
+		const target = characters[1 - attacker];
+		const dr =
+			target.current.armourWorn !== undefined
+				? target.inventory.armours[target.current.armourWorn].dr
+				: 0;
+
+		damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
+		console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
+		target.current.fp -= Math.max(0, damageResult - dr);
+		target.current.ep -= Math.max(0, Math.floor(damageResult / 10 - dr));
+		characters[1 - attacker] = target;
+	};
+
 	const hit = () => {
 		const attackAction = attack!.action.variants.find((v) => v.name === attack!.variant);
 		const defenceAction = defence!.action.variants.find((v) => v.name === defence!.variant);
 		const apRoll = attackAction!.rolls.find((r) => r.name === 'action:ap');
 		const attackRoll = attackAction!.rolls.find((r) => r.name === 'action:roll');
-		const damageRoll = attackAction!.rolls.find((r) => r.name === 'label:damage');
 		const defenceRoll = defenceAction!.rolls.find((r) => r.name === 'action:roll');
 		attackResult = kockaDobas(parseKocka(attackRoll!.rollString as string)).osszeg;
 		console.info(
@@ -117,6 +132,8 @@
 				defenceRoll!.rollString
 			} = ${defenceResult}`
 		);
+		attackSucceeded = false;
+		damageResult = undefined;
 		if (attackResult > defenceResult) {
 			attackSucceeded = true;
 			if (attackAction?.name === 'action:close-in') {
@@ -124,14 +141,8 @@
 			} else if (attackAction?.name === 'action:disengage') {
 				range = 'in-range';
 			} else {
-				damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
-				console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
-				characters[1 - attacker].current.fp -= damageResult;
-				characters[1 - attacker].current.ep -= Math.floor(damageResult / 10);
+				damage(attackAction!);
 			}
-		} else {
-			attackSucceeded = false;
-			damageResult = undefined;
 		}
 
 		ap[attacker] -= (apRoll!.roll as EvalExpression).result;

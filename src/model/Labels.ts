@@ -5,6 +5,7 @@ import type { ExpressionNames, RuleLabels } from "./Rules";
 import type { Skill, SkillType } from "./Skills";
 import type { Ancestry } from "./Ancestry";
 import type { Spell } from "./Spell";
+import type { ArmourLabels } from "./Armour";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -27,6 +28,7 @@ type GenericLabels = 'label:name' |
     'label:at_least' |
     'label:exactly' |
     'label:roll' |
+    'label:wear' |
     'label:skill_check_success_probabilities' |
     'label:main' |
     'label:close-quarters' |
@@ -37,6 +39,7 @@ type GenericLabels = 'label:name' |
     'label:counters' |
     'label:countered-by' |
     'label:reaction' |
+    'label:armour' |
     'action:move'
     ;
 
@@ -52,6 +55,7 @@ export const Keys = [
     'character:mp',
     'character:kp',
     'character:weapons',
+    'character:armours',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -71,7 +75,7 @@ export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels;
+type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels;
 
 export type Labels = Valueless | Values;
 export const Labels_en: Record<Labels, string> = {
@@ -101,6 +105,9 @@ export const Labels_en: Record<Labels, string> = {
     'action:step-out': 'Step Out',
     'action:do-nothing': 'Do Nothing',
 
+    'armour:dr': 'Damage Reduction',
+    'armour:hindrance': 'Hindrance',
+
     'label:name': 'Name',
     'character:abilities': 'Abilities',
     'character:skills': 'Skills',
@@ -112,6 +119,7 @@ export const Labels_en: Record<Labels, string> = {
     'character:mp': 'Magic Power',
     'character:kp': 'Skill Points',
     'character:weapons': 'Weapons',
+    'character:armours': 'Armours',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -167,6 +175,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:counters': 'Counters',
     'label:countered-by': 'Countered by',
     'label:reaction': 'Reaction',
+    'label:armour': 'Armour',
+    'label:wear': 'Wear',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -272,6 +282,9 @@ export const Labels_hu: Record<Labels, string> = {
     'action:step-out': 'Kilépés',
     'action:do-nothing': 'Semmi',
 
+    'armour:dr': 'Sebzéscsökkentés',
+    'armour:hindrance': 'Akadály',
+
     'label:name': 'Név',
     'character:abilities': 'Tulajdonságok',
     'character:skills': 'Képzettségek',
@@ -283,6 +296,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:mp': 'Mágia Kapacitás',
     'character:kp': 'Képzettség Pont',
     'character:weapons': 'Fegyverek',
+    'character:armours': 'Páncélok',
 
     'background:bruiser': 'Balhés',
     'background:sneak': 'Sunyi',
@@ -336,6 +350,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:counters': 'Ennek ál ellen',
     'label:countered-by': 'Ez ál ellen neki',
     'label:reaction': 'Reakció',
+    'label:armour': 'Páncél',
+    'label:wear': 'Visel',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

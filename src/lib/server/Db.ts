@@ -56,5 +56,7 @@ const upgrade = (character: Character): Character => {
             delete w.actions['action:disarm'];
         }
     });
+    // added armours to inventory
+    character.inventory.armours = character.inventory.armours ?? [];
     return character;
 }

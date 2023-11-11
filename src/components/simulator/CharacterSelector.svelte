@@ -5,6 +5,7 @@
 	import Skills from '../character/Skills.svelte';
 	import Points from '../character/Points.svelte';
 	import Weapons from '../character/Weapons.svelte';
+	import Armours from '../character/Armours.svelte';
 
 	export let idx: number;
 	export let selectedCharacter: Character | null;
@@ -32,6 +33,9 @@
 		<Points bind:character={selectedCharacter} {calculatedCharacter} />
 		<Box background="#eeeeee" title={$_('character:weapons')}>
 			<Weapons bind:character={selectedCharacter} />
+		</Box>
+		<Box background="#eeeeee" title={$_('character:armours')}>
+			<Armours bind:character={selectedCharacter} />
 		</Box>
 	{/if}
 </Box>

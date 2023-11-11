@@ -22,7 +22,7 @@ Az **Alap** képzettségek többnyire egyszerűek, és mint a név is jelzi, ala
 
 `SkillListByType|{"type": "skill_type:basic"}`
 
-A **Mozgás** képzettségek igen hasonlóak az alapképzettségekhez, annyi különbséggel, hogy a helyváltoztatás különböző módjaira vonatkoznak.
+A **Mozgás** képzettségek igen hasonlóak az alapképzettségekhez, annyi különbséggel, hogy a helyváltoztatás különböző módjaira vonatkoznak. A gyakorlatban ez a megkülönböztetés azt jelenti, hogy ezen képzettségek használatát a páncélviselet nehezítheti.
 
 `SkillListByType|{"type": "skill_type:movement"}`
 

@@ -68,8 +68,9 @@
 
 	const templateSelected = () => {
 		if (template) {
+			const id = editedWeapon.id ?? v4();
 			editedWeapon = JSON.parse(JSON.stringify(template));
-			editedWeapon.id = v4();
+			editedWeapon.id = id;
 			template = null;
 		}
 	};
@@ -111,23 +112,23 @@
 					</tr>
 					<tr>
 						<th>{$_('weapon:speed')}</th>
-						<td><input type="number" min="0" max="10" bind:value={editedWeapon.speed} /></td>
+						<td><input type="number" min="0" max="20" bind:value={editedWeapon.speed} /></td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:attack')}</th>
-						<td><input type="number" min="0" max="10" bind:value={editedWeapon.attack} /></td>
+						<td><input type="number" min="0" max="20" bind:value={editedWeapon.attack} /></td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:defence')}</th>
-						<td><input type="number" min="0" max="10" bind:value={editedWeapon.defence} /></td>
+						<td><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></td>
 					</tr>
 					<tr>
 						<th>{$_('label:damage')}</th>
-						<td><input type="number" min="0" max="10" bind:value={editedWeapon.damage} /></td>
+						<td><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:reach')}</th>
-						<td><input type="number" min="0" max="10" bind:value={editedWeapon.reach} /></td>
+						<td><input type="number" min="0" max="20" bind:value={editedWeapon.reach} /></td>
 					</tr>
 					<tr>
 						<th>{$_('weapon:hands')}</th>
