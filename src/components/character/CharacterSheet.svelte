@@ -8,9 +8,11 @@
 	import ActionCard from './ActionCard.svelte';
 	import Weapons from './Weapons.svelte';
 	import MainBox from './MainBox.svelte';
-	import { onDestroy, onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
 	import Armours from './Armours.svelte';
+	import FaSave from 'svelte-icons/fa/FaSave.svelte';
+	import IconButton from '../elements/IconButton.svelte';
+	import DeleteButton from '../elements/DeleteButton.svelte';
 
 	export let initialCharacter: Character;
 	export let deleteCharacter: () => void;
@@ -35,7 +37,14 @@
 	});
 </script>
 
-<Box background={'#ffeeee'} title={character.name}>
+<Box background={'#ffeeee'}>
+	<div slot="title" class="title" class:changed>
+		<IconButton title="label:save" disabled={!changed} on:click={() => saveCharacter(character)}
+			><FaSave /></IconButton
+		>
+		{character.name}
+		<DeleteButton on:click={deleteCharacter} />
+	</div>
 	<div>
 		<MainBox bind:character />
 		<Box title={$_('character:abilities')} background={'#eeeeff'}>
@@ -63,8 +72,6 @@
 			</div>
 		</Box>
 	</div>
-	<button disabled={!changed} on:click={() => saveCharacter(character)}>Save</button>
-	<button on:click={deleteCharacter}>Delete</button>
 </Box>
 
 <style>
@@ -73,5 +80,18 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: start;
+	}
+
+	div.title {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		border-radius: 0.2em;
+		padding-left: 1px;
+		padding-right: 1px;
+	}
+
+	div.changed {
+		background-color: darksalmon;
 	}
 </style>

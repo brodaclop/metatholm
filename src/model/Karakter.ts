@@ -148,16 +148,20 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
     }
 };
 
+export const levelUpCharacter = (character: Character, fpRoll: number): Character => {
+    character.levels.push({ fpRoll });
+    character.current.kp += 30;
+    const calc = calculateCharacter(character);
+    character.current.ep = calc.ep.result;
+    character.current.fp = calc.fp.result;
+    return character;
+}
 
 export const createCharacter = (template: CharacterTemplate): Character => {
     const ancestryInfo = Ancestry.get(template.ancestry);
     const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (ancestryInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
 
-    const level: Level = {
-        fpRoll: 20,
-    };
-
-    return {
+    return levelUpCharacter({
         name: template.name,
         id: v4(),
         skills: Background.get(template.background).skills,
@@ -168,12 +172,12 @@ export const createCharacter = (template: CharacterTemplate): Character => {
             weapons: [],
             armours: [],
         },
-        levels: [level],
+        levels: [],
         current: {
             ep: 0,
             fp: 0,
             mp: 0,
-            kp: 30
+            kp: 0
         }
-    };
+    }, 20);
 }

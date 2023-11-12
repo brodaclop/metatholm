@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { Character } from '../../model/Karakter';
-	import FaEdit from 'svelte-icons/fa/FaEdit.svelte';
-	import FaTrashAlt from 'svelte-icons/fa/FaTrashAlt.svelte';
 	import GiShoulderArmor from 'svelte-icons/gi/GiShoulderArmor.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import GiSwordSmithing from 'svelte-icons/gi/GiSwordSmithing.svelte';
 	import type { Armour } from '../../model/Armour';
 	import ArmourEditor from './ArmourEditor.svelte';
+	import DeleteButton from '../elements/DeleteButton.svelte';
+	import EditButton from '../elements/EditButton.svelte';
 
 	export let character: Character;
 
@@ -64,12 +64,9 @@
 								character.current.armourWorn === idx ? undefined : idx)}
 						><GiShoulderArmor /></IconButton
 					>
-					<IconButton title="label:edit" on:click={() => (editedArmour = armour)}
-						><FaEdit /></IconButton
-					>
-					<IconButton title="label:delete" color="darkred" on:click={() => remove(armour)}
-						><FaTrashAlt /></IconButton
-					></td
+					<EditButton on:click={() => (editedArmour = armour)} />
+
+					<DeleteButton on:click={() => remove(armour)} /></td
 				>
 			</tr>
 		{/each}

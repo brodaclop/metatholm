@@ -8,13 +8,17 @@
 	export let text: string;
 </script>
 
-<SvelteMarkdown
-	source={text}
-	renderers={{
-		codespan: ActiveElementRenderer,
-		code: ActiveElementRenderer,
-		link: LinkRenderer,
-		tablerow: TableRow,
-		table: Table
-	}}
-/>
+{#key Math.random()}
+	<div class="markdown">
+		<SvelteMarkdown
+			source={text}
+			renderers={{
+				codespan: ActiveElementRenderer,
+				code: ActiveElementRenderer,
+				link: LinkRenderer,
+				tablerow: TableRow,
+				table: Table
+			}}
+		/>
+	</div>
+{/key}

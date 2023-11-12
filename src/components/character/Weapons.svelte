@@ -3,10 +3,10 @@
 	import type { Character } from '../../model/Karakter';
 	import WeaponEditor from './WeaponEditor.svelte';
 	import type { Weapon } from '../../model/Weapon';
-	import FaEdit from 'svelte-icons/fa/FaEdit.svelte';
-	import FaTrashAlt from 'svelte-icons/fa/FaTrashAlt.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import GiSwordSmithing from 'svelte-icons/gi/GiSwordSmithing.svelte';
+	import DeleteButton from '../elements/DeleteButton.svelte';
+	import EditButton from '../elements/EditButton.svelte';
 
 	export let character: Character;
 
@@ -50,14 +50,10 @@
 				<td>{weapon.damage}</td>
 				<td>{weapon.reach}</td>
 				<td>{$_(weapon.skill)}</td>
-				<td
-					><IconButton title="label:edit" on:click={() => (editedWeapon = weapon)}
-						><FaEdit /></IconButton
-					>
-					<IconButton title="label:delete" color="darkred" on:click={() => remove(weapon)}
-						><FaTrashAlt /></IconButton
-					></td
-				>
+				<td>
+					<EditButton on:click={() => (editedWeapon = weapon)} />
+					<DeleteButton on:click={() => remove(weapon)} />
+				</td>
 			</tr>
 		{/each}
 	</tbody>

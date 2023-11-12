@@ -40,6 +40,8 @@ type GenericLabels = 'label:name' |
     'label:countered-by' |
     'label:reaction' |
     'label:armour' |
+    'label:levelup' |
+    'label:save' |
     'action:move'
     ;
 
@@ -177,6 +179,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:reaction': 'Reaction',
     'label:armour': 'Armour',
     'label:wear': 'Wear',
+    'label:levelup': 'Level Up',
+    'label:save': 'Save',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -352,6 +356,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:reaction': 'Reakció',
     'label:armour': 'Páncél',
     'label:wear': 'Visel',
+    'label:levelup': 'Szintlépés',
+    'label:save': 'Mentés',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

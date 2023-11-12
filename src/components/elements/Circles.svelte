@@ -21,7 +21,7 @@
 	$: _newValue = newValue ?? value;
 </script>
 
-<tr>
+<tr class="circles">
 	<td class="name"
 		>{$_(name)}
 		{#if subName}<i>({$_(subName)})</i>{/if}</td
