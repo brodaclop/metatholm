@@ -91,6 +91,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'action:defend': import('$lib/lore/action/defend_en.md?raw'),
         'action:defend-cq': import('$lib/lore/action/defend-cq_en.md?raw'),
         'action:defend-range': import('$lib/lore/action/defend-range_en.md?raw'),
+        'character:level': import('$lib/lore/character/level_en.md?raw'),
     }
 }
 

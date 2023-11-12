@@ -13,7 +13,6 @@ import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
 import { Skill } from "./Skills";
 import type { Armour } from "./Armour";
-import Skills from "../components/character/Skills.svelte";
 
 
 export interface Level {
@@ -142,7 +141,7 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         ep: E.evaluate(TOTAL_EP, { 'character:level': level }),
         fp: E.evaluate(TOTAL_FP, {
             'character:level': level,
-            'expr:pp_roll': character.levels.map(l => l.fpRoll),
+            'expr:fp_roll': character.levels.map(l => l.fpRoll),
             ...abilities,
             ...skills
         })

@@ -20,5 +20,9 @@
 			<th>{$_('label:background')}</th>
 			<td>{$_(character.background)}</td>
 		</tr>
+		<tr>
+			<th>{$_('character:level')}</th>
+			<td>{character.levels.length}</td>
+		</tr>
 	</table>
 </Box>

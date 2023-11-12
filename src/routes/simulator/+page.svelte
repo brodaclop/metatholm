@@ -18,6 +18,7 @@
 		type ActionVariant,
 		type ActionVariantInfo
 	} from '../../model/Action';
+	import InfoBox from '../../components/simulator/InfoBox.svelte';
 
 	const AP_ROLL = parseKocka('1d10+10');
 
@@ -50,16 +51,24 @@
 
 	let attackResult: number | undefined;
 	let defenceResult: number | undefined;
-	let damageResult: number | undefined;
+	let rawDamageResult: number | undefined;
+	let modifiedDamage: [number, number] | undefined = undefined;
 	let attackSucceeded: boolean;
 
 	$: combatRunning = characters?.every((c) => c?.current.fp > 0 && c?.current.ep > 0);
+
+	let combatFinished = true;
 
 	const startCombat = () => {
 		characters = selectedCharacters.map((c) => JSON.parse(JSON.stringify(c))) as [
 			Character,
 			Character
 		];
+		combatFinished = false;
+		attackResult = undefined;
+		defenceResult = undefined;
+		rawDamageResult = undefined;
+		modifiedDamage = undefined;
 		nextTurn();
 	};
 
@@ -107,10 +116,14 @@
 				? target.inventory.armours[target.current.armourWorn].dr
 				: 0;
 
-		damageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
-		console.info(`Damage ${damageRoll!.rollString} = ${damageResult}`);
-		target.current.fp -= Math.max(0, damageResult - dr);
-		target.current.ep -= Math.max(0, Math.floor(damageResult / 10 - dr));
+		rawDamageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
+		console.info(`Damage ${damageRoll!.rollString} = ${rawDamageResult}`);
+		modifiedDamage = [
+			Math.max(0, rawDamageResult - dr),
+			Math.max(0, Math.floor(rawDamageResult / 10 - dr))
+		];
+		target.current.fp -= modifiedDamage[0];
+		target.current.ep -= modifiedDamage[1];
 		characters[1 - attacker] = target;
 	};
 
@@ -133,7 +146,8 @@
 			} = ${defenceResult}`
 		);
 		attackSucceeded = false;
-		damageResult = undefined;
+		rawDamageResult = undefined;
+		modifiedDamage = undefined;
 		if (attackResult > defenceResult) {
 			attackSucceeded = true;
 			if (attackAction?.name === 'action:close-in') {
@@ -163,52 +177,72 @@
 	};
 </script>
 
-<Box background="#ffffee" title="Characters">
-	<div class="characterSelector">
-		{#each [0, 1] as idx}
-			<CharacterSelector
-				{idx}
-				bind:selectedCharacter={selectedCharacters[idx]}
-				characters={data.characters}
-			/>
-		{/each}
-	</div>
-	{#if selectedCharacters.every((sc) => !!sc) && !combatRunning}
-		<div style:text-align="center">
-			<button on:click={startCombat}>Start Combat</button>
+{#if combatFinished}
+	<Box background="#ffffee" title="Characters">
+		<div class="characterSelector">
+			{#each [0, 1] as idx}
+				<CharacterSelector
+					{idx}
+					bind:selectedCharacter={selectedCharacters[idx]}
+					characters={data.characters}
+				/>
+			{/each}
 		</div>
-	{/if}
-</Box>
+		{#if selectedCharacters.every((sc) => !!sc) && !combatRunning}
+			<div style:text-align="center">
+				<button on:click={startCombat}>Start Combat</button>
+			</div>
+		{/if}
+	</Box>
+{/if}
 
 <Box background="#eeffee" title="Combat">
+	<div class="turnPanel">
+		{#if !combatFinished}
+			<InfoBox
+				background="#eeeeff"
+				title="Turn: {turn}"
+				lines={[
+					{
+						label: 'Range',
+						value: $_(`label:${range}`)
+					},
+					{
+						label: 'Next move',
+						value: `Player ${attacker + 1}`
+					},
+					{
+						label: 'Last attack',
+						value:
+							attackResult !== undefined && defenceResult !== undefined
+								? `${attackResult} / ${defenceResult} ${attackSucceeded ? 'HIT' : 'MISS'}`
+								: '– / –'
+					},
+					{
+						label: 'Raw damage',
+						value: rawDamageResult
+							? `${rawDamageResult} ${$_('character:fp')} / ${Math.floor(
+									rawDamageResult / 10
+							  )} ${$_('character:ep')}`
+							: '– / –'
+					},
+					{
+						label: 'Actual damage',
+						value: modifiedDamage
+							? `${modifiedDamage[0]} ${$_('character:fp')} / ${modifiedDamage[1]} ${$_(
+									'character:ep'
+							  )}`
+							: '– / –'
+					}
+				]}
+			>
+				<button on:click={() => (combatFinished = true)}>Finish</button>
+			</InfoBox>
+		{/if}
+	</div>
 	<div class="characterSelector">
-		<div style:order={1}>
-			{#if turn > 0}
-				<Box background="#eeeeff">
-					<div slot="title">
-						Turn: {turn}
-					</div>
-					<div>Range: {range}</div>
-					<div>
-						{#if attackResult !== undefined && defenceResult !== undefined}
-							<div>Player {attacker + 1} attacks for {attackResult}</div>
-							<div>Player {2 - attacker} defends for {defenceResult}</div>
-							<div>
-								{#if attackSucceeded}
-									{#if damageResult}
-										Damage: {damageResult} FP / {Math.floor(damageResult / 10)} EP
-									{/if}
-								{:else}
-									MISS!
-								{/if}
-							</div>
-						{/if}
-					</div>
-				</Box>
-			{/if}
-		</div>
 		{#each [0, 1] as idx}
-			<div style:order={idx * 2}>
+			<div style:order={idx * 2} class="playerPanel">
 				{#if characters[idx]}
 					{@const calculatedCharacter = calculateCharacter(characters[idx])}
 					<CharacterLife character={characters[idx]} ap={ap[idx]} />

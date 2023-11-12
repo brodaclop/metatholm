@@ -3,7 +3,7 @@
 </script>
 
 <div>
-	<Harc />
+	<!-- <Harc /> -->
 	<!-- <SkillLore
 		skill="skill:martial_arts"
 		value={3}
