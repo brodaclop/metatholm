@@ -11,14 +11,16 @@
 	import { beforeNavigate } from '$app/navigation';
 	import Armours from './Armours.svelte';
 	import FaSave from 'svelte-icons/fa/FaSave.svelte';
+	import FaSpinner from 'svelte-icons/fa/FaSpinner.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 
 	export let initialCharacter: Character;
 	export let deleteCharacter: () => void;
-	export let saveCharacter: (char: Character) => void;
+	export let saveCharacter: (char: Character) => Promise<void>;
 
 	let character: Character;
+	let saving = false;
 
 	$: if (!character) {
 		character = JSON.parse(JSON.stringify(initialCharacter));
@@ -27,6 +29,12 @@
 	$: changed = character && JSON.stringify(initialCharacter) !== JSON.stringify(character);
 
 	$: calculatedCharacter = calculateCharacter(character);
+
+	const save = async () => {
+		saving = true;
+		await saveCharacter(character);
+		saving = false;
+	};
 
 	beforeNavigate(({ cancel }) => {
 		if (changed) {
@@ -39,9 +47,13 @@
 
 <Box background={'#ffeeee'}>
 	<div slot="title" class="title" class:changed>
-		<IconButton title="label:save" disabled={!changed} on:click={() => saveCharacter(character)}
-			><FaSave /></IconButton
-		>
+		<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
+			{#if saving}
+				<FaSpinner />
+			{:else}
+				<FaSave />
+			{/if}
+		</IconButton>
 		{character.name}
 		<DeleteButton on:click={deleteCharacter} />
 	</div>

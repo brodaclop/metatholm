@@ -10,7 +10,7 @@
 		const body: FormData = new FormData();
 		const toSave = JSON.stringify(character);
 		body.set('character', toSave);
-		fetch('?/saveCharacter', {
+		return fetch('?/saveCharacter', {
 			method: 'POST',
 			body,
 			headers: {
