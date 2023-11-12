@@ -1,9 +1,11 @@
+import type { Ability } from "./Abilities";
 import { createList } from "./InfoList";
 import type { Skill } from "./Skills";
 
 export interface BackgroundInfo {
     name: Background;
     skills: Partial<Record<Skill, number>>;
+    abilities: Partial<Record<Ability, number>>;
 }
 
 export type Background =
@@ -26,6 +28,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:stalking': 2,
             'skill:martial_arts': 1,
             'skill:shadow_focus': 3
+        },
+        abilities: {
+            'ability:presence': -1,
+            'ability:magic': -1
         }
     },
     'background:bruiser': {
@@ -36,6 +42,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:body_focus': 1,
             'skill:magic_force': 1,
             'skill:pain_threshold': 3
+        },
+        abilities: {
+            'ability:build': 1,
+            'ability:magic': -1
         }
     },
     'background:charmer': {
@@ -47,6 +57,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:spirit_focus': 1,
             'skill:crossbows': 3,
             'skill:swords': 1
+        },
+        abilities: {
+            'ability:presence': 1,
+            'ability:activity': 1
         }
     },
     'background:hedge_wizard': {
@@ -57,6 +71,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:maces': 1,
             'skill:spacetime_focus': 3,
             'skill:reasoning': 2
+        },
+        abilities: {
+            'ability:magic': 1,
+            'ability:presence': 1
         }
     },
     'background:sneak': {
@@ -68,6 +86,11 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:stalking': 2,
             'skill:spot_hidden': 2,
             'skill:bamboozling': 2
+        },
+        abilities: {
+            'ability:activity': 1,
+            'ability:build': -1
+
         }
     },
     'background:tinker': {
@@ -78,6 +101,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:alchemy': 3,
             'skill:enchantment': 3,
             'skill:spacetime_focus': 3,
+        },
+        abilities: {
+            'ability:activity': -1,
+            'ability:build': -1
         }
     },
     'background:vagabond': {
@@ -89,6 +116,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:camouflage': 1,
             'skill:spot_hidden': 2,
             'skill:hiding': 1,
+        },
+        abilities: {
+            'ability:presence': -1,
+            'ability:build': 1
         }
     },
     'background:witch': {
@@ -100,6 +131,10 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:knives': 1,
             'skill:personal_charm': 2,
             'skill:nature_focus': 1
+        },
+        abilities: {
+            'ability:magic': 1,
+            'ability:presence': -1,
         }
     },
 };

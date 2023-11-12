@@ -159,12 +159,13 @@ export const levelUpCharacter = (character: Character, fpRoll: number): Characte
 
 export const createCharacter = (template: CharacterTemplate): Character => {
     const ancestryInfo = Ancestry.get(template.ancestry);
-    const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (ancestryInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
+    const backgroundInfo = Background.get(template.background);
+    const abilities: Record<Ability, number> = Object.fromEntries(Object.entries(template.abilities).map(([key, value]) => [key, value + (ancestryInfo.abilities[key as Ability] ?? 0) + (backgroundInfo.abilities[key as Ability] ?? 0)])) as Record<Ability, number>;
 
     return levelUpCharacter({
         name: template.name,
         id: v4(),
-        skills: Background.get(template.background).skills,
+        skills: backgroundInfo.skills,
         background: template.background,
         ancestry: template.ancestry,
         abilities,

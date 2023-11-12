@@ -80,7 +80,6 @@
 					--item-padding="0 0 0 0.2em"
 					--internal-padding="0 0 0 0.2em"
 					--selected-item-padding="0 0.2em 0 0"
-					--list-z-index="1000"
 				>
 					<div slot="item" let:item>
 						<svelte:component this={item.label} />
@@ -115,6 +114,7 @@
 		top: 0;
 		background-color: wheat;
 		padding-bottom: 0.1em;
+		z-index: 1000;
 	}
 
 	nav ul {

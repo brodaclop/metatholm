@@ -13,23 +13,30 @@
 	import Skills from '../../components/character/Skills.svelte';
 	import { enhance } from '$app/forms';
 	import Lore from '../../components/lore/Lore.svelte';
+	import { entries } from '../../model/InfoList';
+	import type { Ability } from '../../model/Abilities';
 
-	let name: string;
-	let abilities: CharacterTemplate['abilities'] = {
+	const nullAbilities = (): Record<Ability, number> => ({
 		'ability:build': 0,
 		'ability:activity': 0,
 		'ability:presence': 0,
 		'ability:magic': 0
-	};
+	});
+
+	let name: string;
+	let abilities: CharacterTemplate['abilities'] = nullAbilities();
 	let background: Background;
 	let ancestry: Ancestry;
 	let rolled = false;
+
+	$: ancestralAbilities = ancestry !== undefined ? Ancestry.get(ancestry).abilities : {};
+	$: backgroundAbilities = background !== undefined ? Background.get(background).abilities : {};
 
 	const ancestryList = Ancestry.list();
 	const backgroundList = Background.list();
 
 	const roll = () => {
-		const abilityRoll = parseKocka('1d5+1');
+		const abilityRoll = parseKocka('1d5+2');
 		abilities['ability:build'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:activity'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:presence'] = kockaDobas(abilityRoll).osszeg;
@@ -39,6 +46,13 @@
 
 	$: character =
 		ancestry && background ? createCharacter({ name, ancestry, background, abilities }) : undefined;
+
+	$: abilityModifiers = Object.fromEntries(
+		entries(nullAbilities()).map(([a, n]) => [
+			a,
+			n + (ancestralAbilities[a] ?? 0) + (backgroundAbilities[a] ?? 0)
+		])
+	);
 </script>
 
 <Box title={$_('label:create_character')} background="#ddffdd">
@@ -81,10 +95,7 @@
 			</div>
 		</Box>
 		<Box title={$_('character:abilities')} background="#ffdddd">
-			<Abilities
-				bind:abilities
-				modifiers={ancestry !== undefined ? Ancestry.get(ancestry).abilities : undefined}
-			/>
+			<Abilities bind:abilities modifiers={abilityModifiers} />
 		</Box>
 		<Box title={$_('character:skills')} background="#ffddff">
 			{#if character}

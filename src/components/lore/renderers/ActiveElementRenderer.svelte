@@ -4,7 +4,7 @@
 	import SkillTraining from '../interactive/SkillTraining.svelte';
 	import SkillListForAbilities from '../interactive/SkillListForAbilities.svelte';
 	import Ancestries from '../interactive/Ancestries.svelte';
-	import AncestryInfo from '../interactive/AncestryInfo.svelte';
+	import AbilitiesList from '../interactive/AbilitiesList.svelte';
 	import LoreCategory from '../interactive/LoreCategory.svelte';
 	import BackgroundSkillList from '../interactive/BackgroundSkillList.svelte';
 	import SkillListByType from '../interactive/SkillListByType.svelte';
@@ -27,7 +27,7 @@
 		SkillTraining: SkillTraining,
 		SkillListForAbilities: SkillListForAbilities,
 		Ancestries: Ancestries,
-		AncestryInfo: AncestryInfo,
+		AbilitiesList: AbilitiesList,
 		LoreCategory: LoreCategory,
 		BackgroundSkillList: BackgroundSkillList,
 		SkillListByType: SkillListByType,

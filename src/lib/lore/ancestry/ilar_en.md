@@ -6,4 +6,4 @@ They're the most widely spread of all the ancestries on the continent but nowher
 
 Common prejudices about them are that they're sneaky, boastful, prone to drink and obsessed with their past glory.
 
-`AncestryInfo|{"ancestry": "ancestry:ilar"}`
+`AbilitiesList|{"ancestry": "ancestry:ilar"}`

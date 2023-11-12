@@ -6,4 +6,4 @@ Nobody knows where gnomes came from but you can find a few in almost every city,
 
 Common prejudices about them are that they're secretive, cowardly, disloyal and obsessed with their past glory.
 
-`AncestryInfo|{"ancestry": "ancestry:gnomish"}`
+`AbilitiesList|{"ancestry": "ancestry:gnomish"}`
