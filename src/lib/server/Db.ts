@@ -1,46 +1,69 @@
 import type { KVNamespace } from "@cloudflare/workers-types";
 import type { Character, CharacterInfo } from "../../model/Karakter";
 
+let initialised = false;
+
+const ensureInit = async (platform: App.Platform) => {
+    if (!initialised) {
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS Characters (' +
+            'id string primary key,' +
+            'user string not null,' +
+            'name string not null,' +
+            'ancestry string not null,' +
+            'background string not null,' +
+            'level integer not null,' +
+            'payload text not null' +
+            ')'
+        );
+        initialised = true;
+    }
+}
 
 export const listCharacters = async (platform: App.Platform): Promise<Array<CharacterInfo>> => {
-    const ids = (await platform.env.CHARACTER_DB.list()).keys;
-    return ids.map(idRec => {
-        const id = idRec.name;
-        const { name, background, ancestry, level } = idRec.metadata as Omit<CharacterInfo, 'id'>;
-        return {
-            id, name, background, ancestry, level: Number(level)
-        } as CharacterInfo;
-    });
+    ensureInit(platform);
+    const stmt = platform.env.D1_DB.prepare('select id, name, background, ancestry, level from Characters');
+    return (await stmt.all()).results.map(({ id, name, background, ancestry, level }) => ({
+        id,
+        name,
+        background,
+        ancestry,
+        level
+    } as CharacterInfo));
 }
 
 export const loadAllCharacters = async (platform: App.Platform): Promise<Array<Character>> => {
-    return Promise.all((await listCharacters(platform)).map(info => loadCharacter(platform, info.id)));
+    ensureInit(platform);
+    const stmt = platform.env.D1_DB.prepare('select payload from Characters');
+    return (await stmt.all()).results.map(({ payload }) => JSON.parse(payload as string));
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character) => {
-    const value = JSON.stringify(char);
-    await platform.env.CHARACTER_DB.put(char.id, value, {
-        metadata: {
-            name: char.name,
-            ancestry: char.ancestry,
-            background: char.background,
-            level: char.levels.length
-        }
-    });
+    ensureInit(platform);
+    const { success } = await platform.env.D1_DB.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET user=?2, name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
+        .bind(char.id, 'global', char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
+        .run();
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>) => {
-    await platform.env.CHARACTER_DB.delete(char.id);
+    ensureInit(platform);
+    const { success } = await platform.env.D1_DB.prepare('delete from Characters where id = ?')
+        .bind(char.id)
+        .run();
 }
 
 export const wipe = async (platform: App.Platform) => {
-    const list = await listCharacters(platform);
-    await Promise.all(list.map(c => deleteCharacter(platform, c)));
+    ensureInit(platform);
+    const { success } = await platform.env.D1_DB.prepare('delete from Characters')
+        .run();
 }
 
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
-    return upgrade(await platform.env.CHARACTER_DB.get(id, { type: 'json' }) as Character);
+    ensureInit(platform);
+    const stmt = platform.env.D1_DB.prepare('select payload from Characters where id = ?').bind(id);
+    return upgrade(JSON.parse((await stmt.first())!.payload as string));
 }
+
 
 const upgrade = (character: Character): Character => {
     // changed action:counter to action:keep-away

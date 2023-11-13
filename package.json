@@ -34,13 +34,15 @@
 		"typescript": "^5.2.2",
 		"vite": "^4.3.0",
 		"vitest": "^0.25.3",
-		"wrangler": "^3.11.0"
+		"wrangler": "3.15.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"chart.js": "^4.4.0",
 		"seedrandom": "^3.0.5",
 		"svelte-easy-popover": "^1.0.0",
+		"miniflare": "^3.20231025.1",
+		"@miniflare/d1": "^2.14.1",
 		"svelte-flags": "^0.4.6",
 		"svelte-i18n": "^3.7.4",
 		"svelte-icons": "^2.1.0",

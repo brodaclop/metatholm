@@ -56,8 +56,7 @@
 								}
 							}}
 						>
-							<div slot="title">
-								{$_(variant.name)}
+							<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
 								<span class="type-icon">
 									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
 										<GiSpinningSword />
@@ -65,6 +64,7 @@
 										<GiShieldReflect />
 									{/if}
 								</span>
+								{$_(variant.name)}
 							</div>
 							{#each variant.rolls as roll}
 								<div class="row">
@@ -118,5 +118,13 @@
 		height: 1em;
 		display: inline-block;
 		vertical-align: text-bottom;
+	}
+
+	.action {
+		color: cornflowerblue;
+	}
+
+	.reaction {
+		color: coral;
 	}
 </style>
