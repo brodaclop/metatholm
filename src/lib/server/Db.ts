@@ -64,6 +64,7 @@ export const wipe = async (platform: App.Platform) => {
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
     ensureInit(platform);
     const stmt = platform.env.D1_DB.prepare('select payload from Characters where id = ?').bind(id);
+    console.log('all characters', await listCharacters(platform));
     return upgrade(JSON.parse((await stmt.first())!.payload as string));
 }
 
