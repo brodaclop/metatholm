@@ -50,7 +50,7 @@ export const saveCharacter = async (platform: App.Platform, char: Character) => 
     }
 
     const loadedChar = loadCharacter(platform, char.id);
-    console.log('loaded', loadedChar);
+    throw error(502, JSON.stringify(loadedChar));
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>) => {
