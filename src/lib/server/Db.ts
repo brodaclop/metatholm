@@ -40,6 +40,7 @@ export const loadAllCharacters = async (platform: App.Platform): Promise<Array<C
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character) => {
+    throw error(404, 'what the hell');
     ensureInit(platform);
     const res = await platform.env.D1_DB.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET user=?2, name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
         .bind(char.id, 'global', char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
