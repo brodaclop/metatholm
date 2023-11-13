@@ -46,7 +46,7 @@ export const saveCharacter = async (platform: App.Platform, char: Character) => 
         .run();
 
     if (!success) {
-        fail(500, error);
+        throw fail(501, error);
     }
 
     const loadedChar = loadCharacter(platform, char.id);
