@@ -9,6 +9,7 @@
 	export let character: Character;
 
 	export let calculatedCharacter: CalculatedCharacter;
+	export let editable = true;
 
 	let showModal = false;
 </script>
@@ -22,7 +23,9 @@
 				</td>
 				<td>
 					<span class="value">
-						<span><input type="number" bind:value={character.current.fp} /></span>
+						<span
+							><input type="number" bind:value={character.current.fp} disabled={!editable} /></span
+						>
 						<span>/</span>
 						<span>
 							<ExpressionTooltip expr={calculatedCharacter.fp} />
@@ -36,7 +39,9 @@
 				</td>
 				<td>
 					<span class="value">
-						<span><input type="number" bind:value={character.current.ep} /></span>
+						<span
+							><input type="number" bind:value={character.current.ep} disabled={!editable} /></span
+						>
 						<span>/</span>
 						<span>
 							<ExpressionTooltip expr={calculatedCharacter.ep} />
@@ -49,7 +54,8 @@
 					<span class="label">{$_('character:mp')}</span>
 				</td>
 				<td>
-					<span><input type="number" bind:value={character.current.mp} /></span>
+					<span><input type="number" bind:value={character.current.mp} disabled={!editable} /></span
+					>
 					<span>/</span>
 					<span>
 						<ExpressionTooltip
@@ -65,10 +71,13 @@
 					<span class="label">{$_('character:kp')}</span>
 				</td>
 				<td>
-					<span><input type="number" bind:value={character.current.kp} /></span>
+					<span><input type="number" bind:value={character.current.kp} disabled={!editable} /></span
+					>
 					<span
-						><IconButton title="label:learn" on:click={() => (showModal = true)}
-							><GiOpenBook /></IconButton
+						><IconButton
+							title="label:learn"
+							disabled={!editable}
+							on:click={() => (showModal = true)}><GiOpenBook /></IconButton
 						></span
 					>
 				</td>

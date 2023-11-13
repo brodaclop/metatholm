@@ -15,6 +15,10 @@
 	import Lore from '../../components/lore/Lore.svelte';
 	import { entries } from '../../model/InfoList';
 	import type { Ability } from '../../model/Abilities';
+	import IconButton from '../../components/elements/IconButton.svelte';
+	import FaSave from 'svelte-icons/fa/FaSave.svelte';
+	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
+	import Points from '../../components/character/Points.svelte';
 
 	const nullAbilities = (): Record<Ability, number> => ({
 		'ability:build': 0,
@@ -53,9 +57,29 @@
 			n + (ancestralAbilities[a] ?? 0) + (backgroundAbilities[a] ?? 0)
 		])
 	);
+
+	$: calculatedCharacter = character ? calculateCharacter(character) : undefined;
 </script>
 
-<Box title={$_('label:create_character')} background="#ddffdd">
+<Box background="#ddffdd">
+	<div slot="title" class="title">
+		<form
+			method="post"
+			action="?/saveCharacter"
+			use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+				formData.set(
+					'character',
+					JSON.stringify(createCharacter({ name, ancestry, background, abilities }))
+				);
+			}}
+		>
+			<IconButton title="label:save" disabled={!name || !ancestry || !background || !rolled}>
+				<FaSave />
+			</IconButton>
+		</form>
+		{$_('label:create_character')}
+		<span />
+	</div>
 	<div class="character-sheet">
 		<Box title={$_('label:character')} background="#ddddff">
 			<div class="character-box">
@@ -79,22 +103,14 @@
 						{/each}
 					</select>
 				</label>
-				<form
-					method="post"
-					action="?/saveCharacter"
-					use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-						formData.set(
-							'character',
-							JSON.stringify(createCharacter({ name, ancestry, background, abilities }))
-						);
-					}}
-				>
-					<button type="button" on:click={roll}>Roll</button>
-					<button disabled={!name || !ancestry || !background || !rolled}>Create</button>
-				</form>
 			</div>
 		</Box>
-		<Box title={$_('character:abilities')} background="#ffdddd">
+		<Box background="#ffdddd">
+			<div slot="title" class="title">
+				<IconButton title="label:roll" on:click={roll}><GiRollingDices /></IconButton>
+				<span>{$_('character:abilities')}</span>
+				<span />
+			</div>
 			<Abilities bind:abilities modifiers={abilityModifiers} />
 		</Box>
 		<Box title={$_('character:skills')} background="#ffddff">
@@ -102,6 +118,11 @@
 				<Skills skills={character.skills} />
 			{/if}
 		</Box>
+		{#if character && calculatedCharacter}
+			<Box title={$_('character:points')} background={'#eeffff'}>
+				<Points editable={false} bind:character {calculatedCharacter} />
+			</Box>
+		{/if}
 	</div>
 	<div class="lore">
 		<div>
@@ -137,5 +158,14 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: start;
+	}
+
+	div.title {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		border-radius: 0.2em;
+		padding-left: 1px;
+		padding-right: 1px;
 	}
 </style>

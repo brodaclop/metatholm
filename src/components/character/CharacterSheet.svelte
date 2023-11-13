@@ -22,7 +22,7 @@
 	let character: Character;
 	let saving = false;
 
-	$: if (!character) {
+	$: if (!character || character.id !== initialCharacter.id) {
 		character = JSON.parse(JSON.stringify(initialCharacter));
 	}
 
