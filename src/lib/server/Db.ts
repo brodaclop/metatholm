@@ -53,12 +53,6 @@ export const deleteCharacter = async (platform: App.Platform, char: Pick<Charact
         .run();
 }
 
-export const wipe = async (platform: App.Platform) => {
-    ensureInit(platform);
-    const { success } = await platform.env.D1_DB.prepare('delete from Characters')
-        .run();
-}
-
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
     ensureInit(platform);
     const stmt = platform.env.D1_DB.prepare('select payload from Characters where id = ?').bind(id);

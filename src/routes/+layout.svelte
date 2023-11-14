@@ -66,7 +66,6 @@
 			<li><a href="/create">Create</a></li>
 			<li><a href="/simulator">Simulator</a></li>
 			<li><a href="/lore/main">Lore</a></li>
-			<li><form method="POST" action="/wipedb" use:enhance><button>Wipe</button></form></li>
 			<li>
 				<Select
 					bind:value={lang}

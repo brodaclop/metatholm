@@ -1,4 +1,4 @@
-import { deleteCharacter, loadCharacter, saveCharacter, wipe } from '$lib/server/Db';
+import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
 
