@@ -9,7 +9,7 @@ export const actions: Actions = {
         if (characterString) {
             const character = JSON.parse(characterString.toString());
             console.log('character', character);
-            saveCharacter(platform!, character);
+            await saveCharacter(platform!, character);
             console.log('saved character');
             throw redirect(303, `/character/${character.id}`);
         } else {

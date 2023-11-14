@@ -40,18 +40,10 @@ export const loadAllCharacters = async (platform: App.Platform): Promise<Array<C
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character) => {
-    throw error(404, 'what the hell');
     ensureInit(platform);
     const res = await platform.env.D1_DB.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET user=?2, name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
         .bind(char.id, 'global', char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
         .run();
-
-    if (!res.success) {
-        throw error(501, res.error);
-    }
-
-    const loadedChar = loadCharacter(platform, char.id);
-    throw error(502, JSON.stringify(loadedChar));
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>) => {
@@ -70,7 +62,6 @@ export const wipe = async (platform: App.Platform) => {
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
     ensureInit(platform);
     const stmt = platform.env.D1_DB.prepare('select payload from Characters where id = ?').bind(id);
-    console.log('all characters', await listCharacters(platform));
     return upgrade(JSON.parse((await stmt.first())!.payload as string));
 }
 

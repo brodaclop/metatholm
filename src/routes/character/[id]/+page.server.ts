@@ -10,7 +10,7 @@ export const actions: Actions = {
         if (characterString) {
             const character = JSON.parse(characterString.toString());
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            saveCharacter(platform!, character);
+            await saveCharacter(platform!, character);
             return { success: true };
         } else {
             fail(400);
@@ -22,7 +22,7 @@ export const actions: Actions = {
         if (characterString) {
             const character = JSON.parse(characterString.toString());
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            deleteCharacter(platform!, character);
+            await deleteCharacter(platform!, character);
             throw redirect(303, `/`);
         } else {
             fail(400);
