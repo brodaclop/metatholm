@@ -76,13 +76,15 @@
 			<Armours bind:character />
 		</Box>
 
-		<Box title={$_('action:title')} background="#ffffee">
-			<div>
-				{#each calculatedCharacter.actions as action}
-					<ActionCard {action} />
-				{/each}
-			</div>
-		</Box>
+		<div class="actionRow">
+			<Box title={$_('action:title')} background="#ffffee">
+				<div>
+					{#each calculatedCharacter.actions as action}
+						<ActionCard {action} />
+					{/each}
+				</div>
+			</Box>
+		</div>
 	</div>
 </Box>
 
@@ -105,5 +107,9 @@
 
 	div.changed {
 		background-color: darksalmon;
+	}
+
+	.actionRow {
+		flex-basis: 100%;
 	}
 </style>

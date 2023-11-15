@@ -72,6 +72,11 @@
 		nextTurn();
 	};
 
+	const finishCombat = () => {
+		combatFinished = true;
+		characters = [null, null] as unknown as [Character, Character];
+	};
+
 	const nextTurn = () => {
 		turn++;
 		ap[0] = kockaDobas(AP_ROLL).osszeg;
@@ -196,9 +201,9 @@
 	</Box>
 {/if}
 
-<Box background="#eeffee" title="Combat">
-	<div class="turnPanel">
-		{#if !combatFinished}
+{#if !combatFinished}
+	<Box background="#eeffee" title="Combat">
+		<div class="turnPanel">
 			<InfoBox
 				background="#eeeeff"
 				title="Turn: {turn}"
@@ -236,60 +241,61 @@
 					}
 				]}
 			>
-				<button on:click={() => (combatFinished = true)}>Finish</button>
+				<button on:click={finishCombat}>Finish</button>
 			</InfoBox>
-		{/if}
-	</div>
-	<div class="characterSelector">
-		{#each [0, 1] as idx}
-			<div style:order={idx * 2} class="playerPanel">
-				{#if characters[idx]}
-					{@const calculatedCharacter = calculateCharacter(characters[idx])}
-					<CharacterLife character={characters[idx]} ap={ap[idx]} />
-					<div class="actions">
-						{#each [0, 1] as handIdx}
-							{@const action =
-								weapons[idx][handIdx] !== undefined
-									? calculatedCharacter.actions.find(
-											(a) => a.name === calculatedCharacter.weapons[weapons[idx][handIdx] ?? 0].name
-									  )
-									: undefined}
-							<div style:order={handIdx * 2}>
+		</div>
+		<div class="characterSelector">
+			{#each [0, 1] as idx}
+				<div style:order={idx * 2} class="playerPanel">
+					{#if characters[idx]}
+						{@const calculatedCharacter = calculateCharacter(characters[idx])}
+						<CharacterLife character={characters[idx]} ap={ap[idx]} />
+						<div class="actions">
+							{#each [0, 1] as handIdx}
+								{@const action =
+									weapons[idx][handIdx] !== undefined
+										? calculatedCharacter.actions.find(
+												(a) =>
+													a.name === calculatedCharacter.weapons[weapons[idx][handIdx] ?? 0].name
+										  )
+										: undefined}
+								<div style:order={handIdx * 2}>
+									<ActionCard
+										{action}
+										{range}
+										isSelectable={(variant) =>
+											!!action &&
+											nextStep.idx === idx &&
+											isVariantSelectable(variant, nextStep.select, nextStep.initial)}
+										select={(variant) => action && select(action, variant)}
+									>
+										<div slot="title">
+											<select bind:value={weapons[idx][handIdx]}>
+												{#each calculatedCharacter.weapons as weapon, idx}
+													<option value={idx}>{$_(weapon.name)}</option>
+												{/each}
+											</select>
+										</div>
+									</ActionCard>
+								</div>
+							{/each}
+							<div style:order={1}>
 								<ActionCard
-									{action}
+									action={MOVES_ACTION}
 									{range}
 									isSelectable={(variant) =>
-										!!action &&
 										nextStep.idx === idx &&
 										isVariantSelectable(variant, nextStep.select, nextStep.initial)}
-									select={(variant) => action && select(action, variant)}
-								>
-									<div slot="title">
-										<select bind:value={weapons[idx][handIdx]}>
-											{#each calculatedCharacter.weapons as weapon, idx}
-												<option value={idx}>{$_(weapon.name)}</option>
-											{/each}
-										</select>
-									</div>
-								</ActionCard>
+									select={(variant) => select(MOVES_ACTION, variant)}
+								/>
 							</div>
-						{/each}
-						<div style:order={1}>
-							<ActionCard
-								action={MOVES_ACTION}
-								{range}
-								isSelectable={(variant) =>
-									nextStep.idx === idx &&
-									isVariantSelectable(variant, nextStep.select, nextStep.initial)}
-								select={(variant) => select(MOVES_ACTION, variant)}
-							/>
 						</div>
-					</div>
-				{/if}
-			</div>
-		{/each}
-	</div>
-</Box>
+					{/if}
+				</div>
+			{/each}
+		</div>
+	</Box>
+{/if}
 
 <style>
 	.characterSelector {

@@ -72,8 +72,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             damage: fraction('skill:strength', 2),
             hands: 1,
             actions: {
-                'action:attack-cq': 1,
-                'action:defend-cq': 1,
+                'action:attack-cq': 0,
+                'action:defend-cq': 0,
+                'action:close-in': -2,
+                'action:disengage': -2,
+                'action:keep-close': 1,
             }
         });
     }
@@ -89,8 +92,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             damage: fraction('skill:reactions', 1),
             hands: 1,
             actions: {
-                'action:attack-cq': 2,
-                'action:defend-cq': 2,
+                'action:attack-cq': 1,
+                'action:defend-cq': 0,
+                'action:close-in': -1,
+                'action:disengage': -1,
+                'action:keep-close': 0,
             }
         });
     }
@@ -106,8 +112,11 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             damage: fraction('skill:balance', 0.5),
             hands: 1,
             actions: {
-                'action:attack-cq': 3,
-                'action:defend-cq': 3,
+                'action:attack-cq': 2,
+                'action:defend-cq': 0,
+                'action:close-in': 1,
+                'action:disengage': 2,
+                'action:keep-close': 0,
             }
         });
     }
