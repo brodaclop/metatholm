@@ -40,7 +40,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
-		<Box title={$_('label:levelup')} background={'#eeffee'}>
+		<Box title="label:levelup" flavour="points">
 			<label>
 				{$_('expr:fp_roll')}
 				<input type="number" min={2} max={20} bind:value={fpRoll} />

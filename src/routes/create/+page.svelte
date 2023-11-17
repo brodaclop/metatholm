@@ -19,6 +19,7 @@
 	import FaSave from 'svelte-icons/fa/FaSave.svelte';
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 	import Points from '../../components/character/Points.svelte';
+	import LoreInfoIcon from '../../components/LoreInfoIcon.svelte';
 
 	const nullAbilities = (): Record<Ability, number> => ({
 		'ability:build': 0,
@@ -61,7 +62,7 @@
 	$: calculatedCharacter = character ? calculateCharacter(character) : undefined;
 </script>
 
-<Box background="#ddffdd">
+<Box flavour="character-sheet">
 	<div slot="title" class="title">
 		<form
 			method="post"
@@ -81,7 +82,7 @@
 		<span />
 	</div>
 	<div class="character-sheet">
-		<Box title={$_('label:character')} background="#ddddff">
+		<Box title="label:character" flavour="character">
 			<div class="character-box">
 				<label>
 					{$_('label:name')}
@@ -105,21 +106,21 @@
 				</label>
 			</div>
 		</Box>
-		<Box background="#ffdddd">
+		<Box flavour="abilities">
 			<div slot="title" class="title">
 				<IconButton title="label:roll" on:click={roll}><GiRollingDices /></IconButton>
 				<span>{$_('character:abilities')}</span>
-				<span />
+				<LoreInfoIcon id="character:abilities" />
 			</div>
 			<Abilities bind:abilities modifiers={abilityModifiers} />
 		</Box>
-		<Box title={$_('character:skills')} background="#ffddff">
+		<Box title="character:skills" flavour="skills">
 			{#if character}
-				<Skills skills={character.skills} />
+				<Skills skills={character.skills} abilities={character.abilities} />
 			{/if}
 		</Box>
 		{#if character && calculatedCharacter}
-			<Box title={$_('character:points')} background={'#eeffff'}>
+			<Box title="character:points" flavour="points">
 				<Points editable={false} bind:character {calculatedCharacter} />
 			</Box>
 		{/if}

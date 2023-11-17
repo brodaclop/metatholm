@@ -8,15 +8,25 @@
 	import FaRegArrowAltCircleUp from 'svelte-icons/fa/FaRegArrowAltCircleUp.svelte';
 	import FaRegArrowAltCircleDown from 'svelte-icons/fa/FaRegArrowAltCircleDown.svelte';
 	import IconButton from '../../elements/IconButton.svelte';
+	import type { Character } from '../../../model/Karakter';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
 	export let skill: Skill | undefined = undefined;
+	export let abilities: Character['abilities'];
 
 	let ability: number = 0;
 	let positive: boolean = true;
 
 	$: skillInfo = skill ? Skill.get(skill) : undefined;
+
+	$: if (skillInfo) {
+		difficulty = skillInfo.difficulty;
+		positive = skillInfo.positive;
+		if (abilities && skillInfo?.ability !== 'skill_type:general') {
+			ability = abilities[skillInfo.ability];
+		}
+	}
 
 	$: isGeneral = skillInfo?.ability === 'skill_type:general';
 

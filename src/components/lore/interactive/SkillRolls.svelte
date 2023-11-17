@@ -48,7 +48,7 @@
 		.map((_, i) => roll(i, ROLLS));
 </script>
 
-<Box background="peach" title={$_('label:skill_check_success_probabilities')}>
+<Box flavour="plain" title={$_('label:skill_check_success_probabilities')}>
 	<table>
 		<thead>
 			<tr>

@@ -92,7 +92,7 @@
 	};
 </script>
 
-<Box background="peach" title={$_('label:roll') + ': ' + roll}>
+<Box flavour="plain" title={$_('label:roll') + ': ' + roll}>
 	<canvas bind:this={chartCanvas} width={800} height={400} />
 </Box>
 

@@ -3,8 +3,13 @@
 	import Box from '../character/Box.svelte';
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore } from '../../model/Lore';
+	import { setContext } from 'svelte';
 
 	export let id: string;
+	export let params: Record<string, unknown> = {};
+
+	setContext('activeElementParams', params);
+
 	let file: string = '';
 	let notFound: boolean = false;
 
@@ -26,7 +31,7 @@
 </script>
 
 {#if file}
-	<Box background="white">
+	<Box flavour="lore">
 		<span slot="title">{$_(`label:${idPrefix}`)}: {title.replace(/#/g, '')}</span>
 
 		<MarkdownText {text} />

@@ -1,25 +1,30 @@
 <script lang="ts">
 	export let title: string = '';
 	import { setContext, getContext } from 'svelte';
-	export let background: string;
+	import { _ } from 'svelte-i18n';
+	import LoreInfoIcon from '../LoreInfoIcon.svelte';
+	import type { BoxFlavour } from '../BoxFlavours';
+
+	export let flavour: BoxFlavour;
+
 	const level: number = getContext('level') ?? 1;
 	setContext('level', Math.min(level + 1, 5));
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<article style:background-color={background} on:mouseenter on:mouseleave on:click>
+<article class={flavour} on:mouseenter on:mouseleave on:click>
 	<header>
 		{#if level === 1}
-			<h2><slot name="title">{title ?? ''}</slot></h2>
+			<h2><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h2>
 		{:else if level === 2}
-			<h3><slot name="title">{title ?? ''}</slot></h3>
+			<h3><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h3>
 		{:else if level === 3}
-			<h4><slot name="title">{title ?? ''}</slot></h4>
+			<h4><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h4>
 		{:else if level === 4}
-			<h5><slot name="title">{title ?? ''}</slot></h5>
+			<h5><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h5>
 		{:else if level === 5}
-			<h6><slot name="title">{title ?? ''}</slot></h6>
+			<h6><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h6>
 		{/if}
 	</header>
 	<slot />
@@ -34,6 +39,66 @@
 		padding: 0.5em;
 		margin: 0.5em;
 		filter: drop-shadow(0.2em 0.2em 0.2em #00000080);
+	}
+
+	article.character-sheet {
+		background-color: #ffeeee;
+	}
+
+	article.character {
+		background-color: #ddddff;
+	}
+
+	article.abilities {
+		background-color: #eeeeff;
+	}
+
+	article.skills {
+		background-color: #eeffee;
+	}
+
+	article.points {
+		background-color: #eeffff;
+	}
+
+	article.inventory {
+		background-color: #eeeeee;
+	}
+
+	article.action-container {
+		background-color: #ffffee;
+	}
+
+	article.action-card {
+		background-color: #ffeeff;
+	}
+
+	article.action-distance {
+		background-color: #eedddd;
+	}
+
+	article.action-variant-selectable {
+		background-color: white;
+	}
+
+	article.action-variant-unselectable {
+		background-color: lightgray;
+	}
+
+	article.action-variant-selected {
+		background-color: aquamarine;
+	}
+
+	article.lore {
+		background-color: white;
+	}
+
+	article.simulator-life {
+		background-color: cornsilk;
+	}
+
+	article.simulator-turns {
+		background-color: #eeeeff;
 	}
 
 	h2,

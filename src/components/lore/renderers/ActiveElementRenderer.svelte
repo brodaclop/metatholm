@@ -16,8 +16,13 @@
 	import { Popover } from 'svelte-smooth-popover';
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
+	import { getContext } from 'svelte';
 
 	export let raw: string;
+
+	const additionalParams = getContext<Record<string, unknown>>('activeElementParams') ?? {};
+
+	console.log('additionalParams', additionalParams);
 
 	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]*(\+[0-9]+)?\!?$/;
 
@@ -40,7 +45,7 @@
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);
 
-	$: paramOb = params ? JSON.parse(params) : {};
+	$: paramOb = { ...additionalParams, ...(params ? JSON.parse(params) : {}) };
 </script>
 
 {#if DICE_ROLL_PATTERN.test(name)}

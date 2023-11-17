@@ -17,7 +17,7 @@
 	).abilities;
 </script>
 
-<Box title={$_('character:abilities')} background={'#eeeeff'}>
+<Box title={$_('character:abilities')} flavour="abilities">
 	<table>
 		<CircleGroup
 			max={10}

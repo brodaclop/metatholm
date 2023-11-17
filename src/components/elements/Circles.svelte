@@ -3,6 +3,7 @@
 	import Circle from './Circle.svelte';
 	import FaMinus from 'svelte-icons/fa/FaMinus.svelte';
 	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
+	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 
 	export let value: number;
 	export let newValue: number | undefined = undefined;
@@ -17,6 +18,7 @@
 	export let minus: () => void = () => {
 		value = Math.max(min, value - 1);
 	};
+	export let loreParams: Record<string, unknown> = {};
 
 	$: _newValue = newValue ?? value;
 </script>
@@ -24,7 +26,8 @@
 <tr class="circles">
 	<td class="name"
 		>{$_(name)}
-		{#if subName}<i>({$_(subName)})</i>{/if}</td
+		{#if subName}<i>({$_(subName)})</i>{/if}
+		<LoreInfoIcon id={name} params={loreParams} /></td
 	>
 	<td class="score">
 		{#if editable}

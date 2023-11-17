@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { Labels } from '../../model/Labels';
 
-	export let title: Labels;
+	export let title: string;
 	export let color: string | undefined = undefined;
 	export let disabled: boolean | undefined = undefined;
 </script>

@@ -8,7 +8,7 @@
 </script>
 
 <InfoBox
-	background="cornsilk"
+	flavour="simulator-life"
 	lines={[
 		{
 			label: 'Action Points',

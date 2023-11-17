@@ -127,7 +127,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
-		<Box title={$_('character:skills')} background={'#eeffee'}>
+		<Box title="character:skills" flavour="skills">
 			<div class="scrollable type-container">
 				{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
 					<div>

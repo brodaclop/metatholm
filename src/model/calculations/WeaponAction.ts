@@ -30,6 +30,7 @@ const APS: Partial<Record<ActionVariant, Expression>> = {
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,
+    weapon,
     variants: keys(weapon.actions).map(v => calculateVariant(v, skills, weapon))
 });
 

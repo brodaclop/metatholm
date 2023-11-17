@@ -45,7 +45,7 @@
 	});
 </script>
 
-<Box background={'#ffeeee'}>
+<Box flavour="character-sheet">
 	<div slot="title" class="title" class:changed>
 		<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
 			{#if saving}
@@ -54,33 +54,37 @@
 				<FaSave />
 			{/if}
 		</IconButton>
-		{character.name}
+		{$_('label:character')}: {character.name}
 		<DeleteButton on:click={deleteCharacter} />
 	</div>
 	<div>
 		<MainBox bind:character />
-		<Box title={$_('character:abilities')} background={'#eeeeff'}>
+		<Box title="character:abilities" flavour="abilities">
 			<Abilities bind:abilities={character.abilities} />
 		</Box>
 
-		<Box title={$_('character:skills')} background={'#eeffee'}>
-			<Skills skills={character.skills} modifiedSkills={calculatedCharacter.skills} />
+		<Box title={'character:skills'} flavour="skills">
+			<Skills
+				skills={character.skills}
+				modifiedSkills={calculatedCharacter.skills}
+				abilities={character.abilities}
+			/>
 		</Box>
-		<Box title={$_('character:points')} background={'#eeffff'}>
+		<Box title="character:points" flavour="points">
 			<Points bind:character {calculatedCharacter} />
 		</Box>
-		<Box background="#eeeeee" title={$_('character:weapons')}>
+		<Box flavour="inventory" title="character:weapons">
 			<Weapons bind:character />
 		</Box>
-		<Box background="#eeeeee" title={$_('character:armours')}>
+		<Box flavour="inventory" title="character:armours">
 			<Armours bind:character />
 		</Box>
 
 		<div class="actionRow">
-			<Box title={$_('action:title')} background="#ffffee">
+			<Box title="action:title" flavour="action-container">
 				<div>
 					{#each calculatedCharacter.actions as action}
-						<ActionCard {action} />
+						<ActionCard {action} skills={calculatedCharacter.skills} />
 					{/each}
 				</div>
 			</Box>

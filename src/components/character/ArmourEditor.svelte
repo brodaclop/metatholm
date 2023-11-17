@@ -81,7 +81,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
-		<Box title={$_('label:armour')} background={'#eeffee'}>
+		<Box title="label:armour" flavour="inventory">
 			<table>
 				<tbody>
 					<tr>

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Box from '../character/Box.svelte';
+	import type { BoxFlavour } from '../BoxFlavours';
 
 	export let lines: Array<{ label: string; value: unknown }>;
-	export let background: string;
+	export let flavour: BoxFlavour;
 	export let title: string | undefined = undefined;
 </script>
 
-<Box {background} {title}>
+<Box {flavour} {title}>
 	{#each lines as line}
 		<div class="bignumber-container">
 			<div class="bignumber">

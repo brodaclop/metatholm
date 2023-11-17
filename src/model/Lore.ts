@@ -98,6 +98,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
     }
 }
 
+export const hasLore = (id: string, lang: string | null | undefined): boolean => id in Lore[lang ?? 'en'];
 export const lore = async (id: string, lang: string | null | undefined): Promise<string> => (await Lore[lang ?? 'en'][id]).default;
 export const loreCategoryList = async (category: string, lang: string | null | undefined): Promise<Array<{ id: string, title: string }>> => {
     const lorePromises: Array<[string, Promise<string>]> = entries(Lore[lang ?? 'en'])

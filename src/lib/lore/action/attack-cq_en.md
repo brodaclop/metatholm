@@ -14,7 +14,7 @@ How many action points this action costs depends on three factors: the **speed**
 
 Attack rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the **attack** property of the weapon, the difficulty of the combat skill used and the skill level of the user. The weapon's reach is then subtracted from this because in close quarters combat a longer reach is a disadvantage.
 
-`CombatRollCalculator|{"range": "close-quarters", "type": "attack"}`
+`CombatRollCalculator|{"variant":"action:attack-cq"}`
 
 ## Damage Roll
 

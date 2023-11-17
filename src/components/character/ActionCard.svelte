@@ -12,11 +12,14 @@
 	import { entries, group } from '../../model/InfoList';
 	import GiShieldReflect from 'svelte-icons/gi/GiShieldReflect.svelte';
 	import GiSpinningSword from 'svelte-icons/gi/GiSpinningSword.svelte';
+	import LoreInfoIcon from '../LoreInfoIcon.svelte';
+	import type { Character } from '../../model/Karakter';
 
 	export let action: Action | undefined = undefined;
 	export let isSelectable: ((variant: ActionVariant) => boolean) | undefined = undefined;
 	export let select: (variant: ActionVariant) => void = () => {};
 	export let range: ActionRange | undefined = undefined;
+	export let skills: Character['skills'] | undefined = undefined;
 
 	let current: ActionVariant | undefined = undefined;
 
@@ -26,7 +29,7 @@
 	);
 </script>
 
-<Box background={'#ffeeff'}>
+<Box flavour="action-card" title={action?.name ?? ''}>
 	<slot name="title" slot="title"
 		>{#if action}{$_(action.name)}{/if}</slot
 	>
@@ -34,15 +37,15 @@
 		{#each entries(sorted) as [currentDistance, variants]}
 			{#if range === undefined || range === currentDistance || currentDistance === 'any-range'}
 				<div class="title">
-					<Box background="#eedddd" title={$_(`label:${currentDistance}`)} />
+					<Box flavour="action-distance" title={`label:${currentDistance}`} />
 					{#each variants as variant}
 						{@const selectable = isSelectable?.(variant.name)}
 						<Box
-							background={isSelectable && !selectable
-								? 'lightgray'
+							flavour={isSelectable && !selectable
+								? 'action-variant-unselectable'
 								: current === variant.name
-								? 'aquamarine'
-								: 'white'}
+								? 'action-variant-selected'
+								: 'action-variant-selectable'}
 							on:mouseenter={() => {
 								if (selectable) {
 									current = variant.name;
@@ -65,6 +68,7 @@
 									{/if}
 								</span>
 								{$_(variant.name)}
+								<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
 							</div>
 							{#each variant.rolls as roll}
 								<div class="row">

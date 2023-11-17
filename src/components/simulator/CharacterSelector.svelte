@@ -15,7 +15,7 @@
 		selectedCharacter !== null ? calculateCharacter(selectedCharacter) : null;
 </script>
 
-<Box background="#ffeeff">
+<Box flavour="character-sheet">
 	<div slot="title">
 		<h3>{`Player ${idx + 1}`}</h3>
 		<select bind:value={selectedCharacter}>
@@ -29,12 +29,16 @@
 		</select>
 	</div>
 	{#if selectedCharacter !== null && calculatedCharacter}
-		<Skills skills={selectedCharacter.skills} />
+		<Skills
+			skills={selectedCharacter.skills}
+			modifiedSkills={calculatedCharacter.skills}
+			abilities={selectedCharacter.abilities}
+		/>
 		<Points bind:character={selectedCharacter} {calculatedCharacter} />
-		<Box background="#eeeeee" title={$_('character:weapons')}>
+		<Box flavour="inventory" title={$_('character:weapons')}>
 			<Weapons bind:character={selectedCharacter} />
 		</Box>
-		<Box background="#eeeeee" title={$_('character:armours')}>
+		<Box flavour="inventory" title={$_('character:armours')}>
 			<Armours bind:character={selectedCharacter} />
 		</Box>
 	{/if}

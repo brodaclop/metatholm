@@ -107,7 +107,7 @@
 	};
 </script>
 
-<Box background="peach" title={$_('label:dice_roller')}>
+<Box flavour="plain" title={$_('label:dice_roller')}>
 	<div class="rollInputs">
 		<div>
 			{$_('label:roll')}: <input type="test" bind:value={roll} />

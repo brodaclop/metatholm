@@ -10,7 +10,7 @@
 	let levellingUp = false;
 </script>
 
-<Box title={$_('label:character')} background="#ddddff">
+<Box title="label:character" flavour="character">
 	<table>
 		<tr>
 			<th>{$_('label:name')}</th>

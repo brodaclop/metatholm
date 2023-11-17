@@ -183,7 +183,7 @@
 </script>
 
 {#if combatFinished}
-	<Box background="#ffffee" title="Characters">
+	<Box flavour="plain" title="Characters">
 		<div class="characterSelector">
 			{#each [0, 1] as idx}
 				<CharacterSelector
@@ -202,10 +202,10 @@
 {/if}
 
 {#if !combatFinished}
-	<Box background="#eeffee" title="Combat">
+	<Box flavour="action-container" title="rule:combat">
 		<div class="turnPanel">
 			<InfoBox
-				background="#eeeeff"
+				flavour="simulator-turns"
 				title="Turn: {turn}"
 				lines={[
 					{

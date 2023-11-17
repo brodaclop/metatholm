@@ -86,7 +86,7 @@
 	</table>
 </div>
 
-<SkillEditor bind:character {calculatedCharacter} bind:showModal />
+<SkillEditor bind:character bind:showModal />
 
 <style>
 	table {

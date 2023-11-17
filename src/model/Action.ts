@@ -1,4 +1,5 @@
 import type { EvalExpression, Expression } from "../logic/Expression";
+import type { Weapon } from "./Weapon";
 
 export type ActionVariant = 'action:attack' | 'action:disarm' | 'action:defend' | 'action:cast' | 'action:attack-cq' | 'action:defend-cq' | 'action:keep-away' | 'action:close-in' | 'action:disengage' | 'action:keep-close' | 'action:attack-range' | 'action:defend-range' | 'action:step-in' | 'action:step-out' | 'action:do-nothing';
 export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
@@ -138,6 +139,7 @@ export interface ActionVariantInfo {
 
 export interface Action {
     name: string;
+    weapon?: Weapon;
     variants: Array<ActionVariantInfo>;
 }
 

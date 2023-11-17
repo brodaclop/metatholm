@@ -10,6 +10,7 @@
 	export let editable: boolean = false;
 	export let plus: (name: T) => void = () => {};
 	export let minus: (name: T) => void = () => {};
+	export let loreParams: Record<string, unknown> = {};
 </script>
 
 <table>
@@ -25,6 +26,7 @@
 				subName={typeof key === 'string' ? '' : key.subName}
 				plus={() => plus(name)}
 				minus={() => minus(name)}
+				{loreParams}
 			>
 				<svelte:fragment slot="extra">
 					<slot name="extra" key={name} />
