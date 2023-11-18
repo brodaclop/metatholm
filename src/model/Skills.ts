@@ -84,6 +84,12 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:movement'
     },
+    'skill:swimming': {
+        difficulty: 1,
+        ability: 'ability:build',
+        positive: true,
+        type: 'skill_type:movement'
+    },
     'skill:shields': {
         difficulty: 2,
         ability: 'ability:build',
@@ -329,7 +335,8 @@ export type Skill = 'skill:endurance' |
     'skill:geography' |
     'skill:architecture' |
     'skill:law' |
-    'skill:etiquette'
+    'skill:etiquette' |
+    'skill:swimming'
     ;
 
 export const Skill = createList(SkillInfos);

@@ -1,6 +1,6 @@
 # Step Out
 
-`ActionInfo|{"action":"action:step-out"}`
+`ActionInfo`
 
 If a character is in measure (i.e. they are in melee range but not in close quarters), using this action allows them to step out, ending melee combat. This action takes no time and can't be countered.
 

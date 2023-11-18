@@ -3,11 +3,11 @@
 	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 	import { entries } from '../../../model/InfoList';
 
-	export let action: ActionVariant;
+	export let id: ActionVariant;
 
-	$: info = ACTION_VARIANT_PROPERTIES[action];
+	$: info = ACTION_VARIANT_PROPERTIES[id];
 	$: counteredBy = entries(ACTION_VARIANT_PROPERTIES)
-		.filter(([key, value]) => value.reactionTo?.includes(action))
+		.filter(([, value]) => value.reactionTo?.includes(id))
 		.map(([key]) => key);
 </script>
 

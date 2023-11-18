@@ -6,4 +6,4 @@ Orcs appear to be split between cities and villages, you'll rarely find an orc i
 
 Common prejudices about them are that they're brutish, primitive, overbearing and obsessed with their past glory.
 
-`AbilitiesList|{"ancestry": "ancestry:orcish"}`
+`AbilitiesList`

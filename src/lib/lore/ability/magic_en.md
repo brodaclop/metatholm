@@ -10,8 +10,8 @@ A character with low **Magic** on the other hand will usually struggle creating 
 
 ### Positive effect
 
-`SkillListForAbilities|{"ability": "ability:magic", "positive": true}`
+`SkillListForAbilities|{"positive": true}`
 
 ### Negative effect
 
-`SkillListForAbilities|{"ability": "ability:magic", "positive": false}`
+`SkillListForAbilities|{"positive": false}`

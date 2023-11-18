@@ -6,4 +6,4 @@ They're most commonly found on the coast of the inner sea, with legends claiming
 
 Common prejudices about them are that they're uncivilised, selfish and obsessed with their past glory.
 
-`AbilitiesList|{"ancestry": "ancestry:godora"}`
+`AbilitiesList`

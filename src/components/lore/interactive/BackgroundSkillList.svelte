@@ -4,9 +4,9 @@
 	import Box from '../../character/Box.svelte';
 	import Skills from '../../character/Skills.svelte';
 
-	export let background: Background;
+	export let id: Background;
 
-	$: info = Background.get(background);
+	$: info = Background.get(id);
 </script>
 
 <Box title={$_('character:skills')} flavour="skills">

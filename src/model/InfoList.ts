@@ -1,10 +1,12 @@
 interface List<K extends string, V extends { name: K }> {
+    has: (name: string | undefined) => name is K;
     get: (name: K) => V;
     list: () => Array<V>;
 }
 
 export const createList = <K extends string, V extends { name: K }>(input: Record<K, Omit<V, 'name'>>): List<K, V> => {
     return {
+        has: (name: string | undefined): name is K => !!(name && input[name as K]),
         get: (name: K) => ({ name, ...input[name] }) as unknown as V,
         list: () => Object.entries(input).map(([name, value]) => ({ name, ...value as Omit<K, 'name'> })) as unknown as Array<V>,
     }

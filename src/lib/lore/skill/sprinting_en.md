@@ -1,5 +1,5 @@
 # Sprinting
 
-`SkillTraining|{"skill":"skill:sprinting"}`
+`SkillTraining`
 
 **Sprinting** is the ancient martial art of running very fast.

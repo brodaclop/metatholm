@@ -8,8 +8,8 @@ A character with low **Build** can be tall and gangly, or short and wiry, both w
 
 ### Positive effect
 
-`SkillListForAbilities|{"ability": "ability:build", "positive": true}`
+`SkillListForAbilities|{"positive": true}`
 
 ### Negative effect
 
-`SkillListForAbilities|{"ability": "ability:build", "positive": false}`
+`SkillListForAbilities|{"positive": false}`

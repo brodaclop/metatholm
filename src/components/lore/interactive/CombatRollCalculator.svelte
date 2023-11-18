@@ -19,16 +19,16 @@
 	let reach = 1;
 	export let weapon: Weapon | undefined = undefined;
 	export let skills: Character['skills'] | undefined = undefined;
-	export let variant: ActionVariant;
+	export let id: ActionVariant;
 
-	$: variantProps = ACTION_VARIANT_PROPERTIES[variant];
+	$: variantProps = ACTION_VARIANT_PROPERTIES[id];
 
-	$: if (weapon) {
+	$: if (weapon && variantProps) {
 		weaponProp = variantProps.type === 'action' ? weapon.attack : weapon.defence;
 		reach = weapon.reach;
 		difficulty = Skill.get(weapon.skill).difficulty;
 		if (skills) {
-			skill = Math.max(0, (skills[weapon.skill] ?? 0) + (weapon.actions[variant] ?? 0));
+			skill = Math.max(0, (skills[weapon.skill] ?? 0) + (weapon.actions[id] ?? 0));
 		}
 	}
 
@@ -78,7 +78,7 @@
 			editable={!weapon}
 		/>
 	</tbody>
-	<caption>{$_(variant)}: {result}</caption>
+	<caption>{$_(id)}: {result}</caption>
 </table>
 
 <style>

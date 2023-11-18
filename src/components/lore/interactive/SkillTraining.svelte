@@ -12,13 +12,13 @@
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
-	export let skill: Skill | undefined = undefined;
+	export let id: Skill | undefined = undefined;
 	export let abilities: Character['abilities'];
 
 	let ability: number = 0;
 	let positive: boolean = true;
 
-	$: skillInfo = skill ? Skill.get(skill) : undefined;
+	$: skillInfo = Skill.has(id) ? Skill.get(id) : undefined;
 
 	$: if (skillInfo) {
 		difficulty = skillInfo.difficulty;
@@ -31,7 +31,7 @@
 	$: isGeneral = skillInfo?.ability === 'skill_type:general';
 
 	const effectiveAbility = (num: number, positive: boolean) =>
-		isGeneral ? 0 : positive ? 10 - num : num;
+		isGeneral ? 10 : positive ? num : 10 - num;
 </script>
 
 <table>
@@ -59,10 +59,10 @@
 					disabled={!!skillInfo || isGeneral}
 					on:click={() => (positive = !positive)}
 				>
-					{#if skillInfo?.positive ?? positive}
-						<FaRegArrowAltCircleDown />
-					{:else}
+					{#if positive}
 						<FaRegArrowAltCircleUp />
+					{:else}
+						<FaRegArrowAltCircleDown />
 					{/if}
 				</IconButton>
 			</Circles>

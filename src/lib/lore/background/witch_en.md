@@ -2,6 +2,6 @@
 
 Midwife, shaman, wise woman. Or wise man. Nobody's ever seen them cast a spell but somehow things always seem to turn out to their advantage.
 
-`AbilitiesList|{"background": "background:witch"}`
+`AbilitiesList`
 
-`BackgroundSkillList|{"background": "background:witch"}`
+`BackgroundSkillList`

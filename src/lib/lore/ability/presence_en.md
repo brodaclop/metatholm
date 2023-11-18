@@ -8,8 +8,8 @@ A character with low **Presence** is easy to miss and hard to remember. They rar
 
 ### Positive effect
 
-`SkillListForAbilities|{"ability": "ability:presence", "positive": true}`
+`SkillListForAbilities|{"positive": true}`
 
 ### Negative effect
 
-`SkillListForAbilities|{"ability": "ability:presence", "positive": false}`
+`SkillListForAbilities|{"positive": false}`

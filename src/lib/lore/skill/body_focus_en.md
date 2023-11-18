@@ -1,5 +1,5 @@
 # Body Focus
 
-`SkillTraining|{"skill":"skill:body_focus"}`
+`SkillTraining`
 
 **Body focus** is the magical discipline of altering the caster's own body.

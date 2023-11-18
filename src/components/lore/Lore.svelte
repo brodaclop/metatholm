@@ -8,7 +8,7 @@
 	export let id: string;
 	export let params: Record<string, unknown> = {};
 
-	setContext('activeElementParams', params);
+	$: setContext('activeElementParams', { ...params, id });
 
 	let file: string = '';
 	let notFound: boolean = false;

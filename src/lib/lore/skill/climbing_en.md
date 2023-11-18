@@ -1,5 +1,5 @@
 # Climbing
 
-`SkillTraining|{"skill":"skill:climbing"}`
+`SkillTraining`
 
 Climbing trees, rocks and walls.

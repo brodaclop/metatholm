@@ -6,4 +6,4 @@ They are said to have come from the deep forests of Metatholm but these days the
 
 Common prejudices about them are that they're wielders of evil magics, haughty, seductive and obsessed with their past glory.
 
-`AbilitiesList|{"ancestry": "ancestry:elven"}`
+`AbilitiesList`

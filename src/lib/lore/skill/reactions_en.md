@@ -1,5 +1,5 @@
 # Reactions
 
-`SkillTraining|{"skill":"skill:reactions"}`
+`SkillTraining`
 
 The **Reactions** skill determines the character's reaction time.

@@ -8,6 +8,7 @@
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
+	// TODO: popover in dialog zIndex
 </script>
 
 {#if hasLore(id, $locale)}

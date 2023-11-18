@@ -6,7 +6,7 @@
 	import type { Character } from '../../../model/Karakter';
 	import type { Weapon } from '../../../model/Weapon';
 	import { Skill } from '../../../model/Skills';
-	import type { ActionVariant } from '../../../model/Action';
+	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 
 	let difficulty: 1 | 2 | 3 = 1;
 	let skill = 1;
@@ -14,13 +14,13 @@
 
 	export let weapon: Weapon | undefined = undefined;
 	export let skills: Character['skills'] | undefined = undefined;
-	export let variant: ActionVariant;
+	export let id: ActionVariant;
 
 	$: if (weapon) {
 		speed = weapon.speed;
 		difficulty = Skill.get(weapon.skill).difficulty;
-		if (skills) {
-			skill = Math.max(0, (skills[weapon.skill] ?? 0) + (weapon.actions[variant] ?? 0));
+		if (skills && ACTION_VARIANT_PROPERTIES[id]) {
+			skill = Math.max(0, (skills[weapon.skill] ?? 0) + (weapon.actions[id] ?? 0));
 		}
 	}
 

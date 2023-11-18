@@ -6,4 +6,4 @@ They can be found in large numbers in most of the major cities of the continent,
 
 Common prejudices about them are that they're stubborn, drunk, greedy and obsessed with their past glory.
 
-`AbilitiesList|{"ancestry": "ancestry:dwarvish"}`
+`AbilitiesList`

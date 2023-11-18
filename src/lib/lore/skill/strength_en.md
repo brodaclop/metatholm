@@ -1,5 +1,5 @@
 # Strength
 
-`SkillTraining|{"skill":"skill:strength"}`
+`SkillTraining`
 
 Literally the **strength** of a character's muscles. Useful when lifting, tearing, carrying things.

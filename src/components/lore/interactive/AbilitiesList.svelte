@@ -6,13 +6,12 @@
 	import { Background } from '../../../model/Background';
 	import CircleGroup from '../../elements/CircleGroup.svelte';
 
-	export let ancestry: Ancestry | undefined = undefined;
-	export let background: Background | undefined = undefined;
+	export let id: Ancestry | Background | undefined = undefined;
 	$: abilities = (
-		ancestry !== undefined
-			? Ancestry.get(ancestry)
-			: background !== undefined
-			? Background.get(background)
+		Ancestry.has(id)
+			? Ancestry.get(id)
+			: Background.has(id)
+			? Background.get(id)
 			: { abilities: {} }
 	).abilities;
 </script>

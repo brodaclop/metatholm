@@ -6,4 +6,4 @@ These days they have settled all over the continent but many believe they origin
 
 Common prejudices about them are that they're untrustworthy, loud, quick to anger and obsessed with their past glory.
 
-`AbilitiesList|{"ancestry": "ancestry:almarem"}`
+`AbilitiesList`

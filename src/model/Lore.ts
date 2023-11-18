@@ -1,5 +1,7 @@
 import { entries } from "./InfoList";
 
+//TODO: lore for hiding
+
 const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
     hu: {
         'main': import('$lib/lore/main_hu.md?raw'),
@@ -70,6 +72,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'skill:etiquette': import('$lib/lore/skill/etiquette_en.md?raw'),
         'skill:alchemy': import('$lib/lore/skill/alchemy_en.md?raw'),
         'skill:enchantment': import('$lib/lore/skill/enchantment_en.md?raw'),
+        'skill:swimming': import('$lib/lore/skill/swimming_en.md?raw'),
         'background:assassin': import('$lib/lore/background/assassin_en.md?raw'),
         'background:bruiser': import('$lib/lore/background/bruiser_en.md?raw'),
         'background:sneak': import('$lib/lore/background/sneak_en.md?raw'),

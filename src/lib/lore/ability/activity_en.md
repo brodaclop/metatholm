@@ -8,8 +8,8 @@ A character with low **Activity** may appear sluggish but maybe they're just bei
 
 ### Positive effect
 
-`SkillListForAbilities|{"ability": "ability:activity", "positive": true}`
+`SkillListForAbilities|{"positive": true}`
 
 ### Negative effect
 
-`SkillListForAbilities|{"ability": "ability:activity", "positive": false}`
+`SkillListForAbilities|{"positive": false}`
