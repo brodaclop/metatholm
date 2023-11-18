@@ -16,15 +16,15 @@
 <article class={flavour} on:mouseenter on:mouseleave on:click>
 	<header>
 		{#if level === 1}
-			<h2><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h2>
+			<h2><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h2>
 		{:else if level === 2}
-			<h3><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h3>
+			<h3><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h3>
 		{:else if level === 3}
-			<h4><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h4>
+			<h4><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h4>
 		{:else if level === 4}
-			<h5><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h5>
+			<h5><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h5>
 		{:else if level === 5}
-			<h6><slot name="title">{$_(title ?? '')}<LoreInfoIcon id={title} /></slot></h6>
+			<h6><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h6>
 		{/if}
 	</header>
 	<slot />
@@ -91,6 +91,7 @@
 
 	article.lore {
 		background-color: white;
+		margin: 0;
 	}
 
 	article.simulator-life {

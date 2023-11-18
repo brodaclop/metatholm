@@ -25,10 +25,9 @@
 
 <tr class="circles">
 	<td class="name"
-		>{$_(name)}
+		><LoreInfoIcon id={name} params={loreParams} />{$_(name)}
 		{#if subName}<i>({$_(subName)})</i>{/if}
-		<LoreInfoIcon id={name} params={loreParams} /></td
-	>
+	</td>
 	<td class="score">
 		{#if editable}
 			<Circle status={_newValue === 0 ? 'half' : 'empty'} on:click={minus}>

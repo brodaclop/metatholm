@@ -89,7 +89,7 @@
 					<input type="text" bind:value={name} />
 				</label>
 				<label>
-					{$_('label:ancestry')}
+					{$_('character:ancestry')}
 					<select bind:value={ancestry}>
 						{#each ancestryList as s}
 							<option value={s.name}>{$_(s.name)}</option>
@@ -97,7 +97,7 @@
 					</select>
 				</label>
 				<label>
-					{$_('label:background')}
+					{$_('character:background')}
 					<select bind:value={background}>
 						{#each backgroundList as s}
 							<option value={s.name}>{$_(s.name)}</option>

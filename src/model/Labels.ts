@@ -16,11 +16,8 @@ type GenericLabels = 'label:name' |
     'label:new' |
     'label:create_character' |
     'label:character' |
-    'label:ancestry' |
-    'label:background' |
-    'label:skill' |
+    'character:skill' |
     'label:difficulty' |
-    'label:ability' |
     'label:type' |
     'label:rule' |
     'label:dice_roller' |
@@ -42,7 +39,8 @@ type GenericLabels = 'label:name' |
     'label:armour' |
     'label:levelup' |
     'label:save' |
-    'action:move'
+    'action:move' |
+    'rule:combat'
     ;
 
 export const Keys = [
@@ -58,6 +56,9 @@ export const Keys = [
     'character:kp',
     'character:weapons',
     'character:armours',
+    'character:ancestry',
+    'character:background',
+    'character:ability',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -122,6 +123,7 @@ export const Labels_en: Record<Labels, string> = {
     'character:kp': 'Skill Points',
     'character:weapons': 'Weapons',
     'character:armours': 'Armours',
+    'character:ancestry': 'Ancestry',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -155,11 +157,10 @@ export const Labels_en: Record<Labels, string> = {
     'label:new': 'New',
     'label:character': 'Character',
     'label:create_character': 'Create Character',
-    'label:ancestry': 'Ancestry',
-    'label:background': 'Background',
-    'label:skill': 'Skill',
+    'character:background': 'Background',
+    'character:skill': 'Skill',
     'label:difficulty': 'Difficulty',
-    'label:ability': 'Ability',
+    'character:ability': 'Ability',
     'label:type': 'Type',
     'label:rule': 'Rule',
     'label:dice_roller': 'Dice Roller',
@@ -184,6 +185,7 @@ export const Labels_en: Record<Labels, string> = {
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
+    'rule:combat': 'Combat',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -301,6 +303,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:kp': 'Képzettség Pont',
     'character:weapons': 'Fegyverek',
     'character:armours': 'Páncélok',
+    'character:ancestry': 'Származás',
 
     'background:bruiser': 'Balhés',
     'background:sneak': 'Sunyi',
@@ -333,11 +336,10 @@ export const Labels_hu: Record<Labels, string> = {
     'label:new': 'Új',
     'label:character': 'Karakter',
     'label:create_character': 'Új karakter',
-    'label:ancestry': 'Származás',
-    'label:background': 'Háttér',
-    'label:skill': 'Képzettség',
+    'character:background': 'Háttér',
+    'character:skill': 'Képzettség',
     'label:difficulty': 'Nehézség',
-    'label:ability': 'Tulajdonság',
+    'character:ability': 'Tulajdonság',
     'label:type': 'Típus',
     'label:dice_roller': 'Kocka Szimulátor',
     'label:average': 'Átlag',
@@ -364,6 +366,7 @@ export const Labels_hu: Record<Labels, string> = {
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
+    'rule:combat': 'Harc',
 
     'ancestry:elven': 'Elf',
     'ancestry:orcish': 'Ork',

@@ -6,6 +6,7 @@
 	import SkillEditor from './SkillEditor.svelte';
 	import GiOpenBook from 'svelte-icons/gi/GiOpenBook.svelte';
 	import IconButton from '../elements/IconButton.svelte';
+	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	export let character: Character;
 
 	export let calculatedCharacter: CalculatedCharacter;
@@ -19,6 +20,7 @@
 		<tbody>
 			<tr>
 				<td>
+					<LoreInfoIcon id="character:fp" />
 					<span class="label">{$_('character:fp')}</span>
 				</td>
 				<td>
@@ -35,6 +37,7 @@
 			</tr>
 			<tr>
 				<td>
+					<LoreInfoIcon id="character:ep" />
 					<span class="label">{$_('character:ep')}</span>
 				</td>
 				<td>
@@ -51,6 +54,7 @@
 			</tr>
 			<tr>
 				<td>
+					<LoreInfoIcon id="character:mp" />
 					<span class="label">{$_('character:mp')}</span>
 				</td>
 				<td>
@@ -68,6 +72,7 @@
 			</tr>
 			<tr>
 				<td>
+					<LoreInfoIcon id="character:kp" />
 					<span class="label">{$_('character:kp')}</span>
 				</td>
 				<td>
@@ -97,7 +102,6 @@
 	.label {
 		white-space: nowrap;
 		font-weight: bold;
-		padding-right: 0.5em;
 	}
 
 	.value {

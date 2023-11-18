@@ -46,7 +46,7 @@
 		/>
 		{#if !isGeneral}
 			<Circles
-				name={skillInfo?.ability ?? 'label:ability'}
+				name={skillInfo?.ability ?? 'character:ability'}
 				bind:value={ability}
 				subName={String(ability)}
 				max={10}
@@ -54,7 +54,7 @@
 				editable={true}
 			>
 				<IconButton
-					title="label:ability"
+					title="character:ability"
 					slot="extra"
 					disabled={!!skillInfo || isGeneral}
 					on:click={() => (positive = !positive)}
@@ -68,7 +68,7 @@
 			</Circles>
 		{:else}
 			<Circles
-				name={skillInfo?.ability ?? 'label:ability'}
+				name={skillInfo?.ability ?? 'character:ability'}
 				value={10}
 				subName={'10'}
 				max={10}

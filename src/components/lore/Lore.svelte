@@ -28,11 +28,20 @@
 	$: text = textLines?.join('\n');
 
 	$: idPrefix = id?.split(':')?.[0];
+
+	const PREFIX_MAPPING: Record<string, string> = {
+		ability: 'character:ability',
+		action: 'label:action',
+		ancestry: 'character:ancestry',
+		background: 'character:background',
+		rule: 'label:rule',
+		skill: 'character:skill'
+	};
 </script>
 
 {#if file}
 	<Box flavour="lore">
-		<span slot="title">{$_(`label:${idPrefix}`)}: {title.replace(/#/g, '')}</span>
+		<span slot="title">{$_(PREFIX_MAPPING[idPrefix])}: {title.replace(/#/g, '')}</span>
 
 		<MarkdownText {text} />
 	</Box>

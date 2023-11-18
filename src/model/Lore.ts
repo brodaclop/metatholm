@@ -51,7 +51,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'skill:magic_force': import('$lib/lore/skill/magic_force_en.md?raw'),
         'skill:crossbows': import('$lib/lore/skill/crossbows_en.md?raw'),
         'skill:bows': import('$lib/lore/skill/bows_en.md?raw'),
-        'skill:throwing_weapons': import('$lib/lore/skill/throwing_weapons_en.md?raw'),
+        'skill:throwing': import('$lib/lore/skill/throwing_en.md?raw'),
         'skill:martial_arts': import('$lib/lore/skill/martial_arts_en.md?raw'),
         'skill:swords': import('$lib/lore/skill/swords_en.md?raw'),
         'skill:elemental_focus': import('$lib/lore/skill/elemental_focus_en.md?raw'),

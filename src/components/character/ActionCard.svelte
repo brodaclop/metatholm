@@ -60,6 +60,7 @@
 							}}
 						>
 							<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
+								<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
 								<span class="type-icon">
 									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
 										<GiSpinningSword />
@@ -68,12 +69,11 @@
 									{/if}
 								</span>
 								{$_(variant.name)}
-								<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
 							</div>
 							{#each variant.rolls as roll}
 								<div class="row">
 									<span class="label">{$_(roll.name)}</span>
-									<span>
+									<span class="value">
 										{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
 											<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
 										{:else}
@@ -112,6 +112,10 @@
 		white-space: nowrap;
 		font-weight: bold;
 		padding-right: 0.5em;
+	}
+
+	.value {
+		text-align: right;
 	}
 
 	span:not(.label) {
