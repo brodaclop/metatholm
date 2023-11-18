@@ -31,6 +31,7 @@
 
 	const PREFIX_MAPPING: Record<string, string> = {
 		ability: 'character:ability',
+		character: 'label:character',
 		action: 'label:action',
 		ancestry: 'character:ancestry',
 		background: 'character:background',
