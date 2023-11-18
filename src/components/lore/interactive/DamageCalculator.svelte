@@ -2,8 +2,15 @@
 	import { _ } from 'svelte-i18n';
 	import Circles from '../../elements/Circles.svelte';
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
+	import type { Weapon } from '../../../model/Weapon';
 
 	let damage = 1;
+
+	export let weapon: Weapon | undefined = undefined;
+
+	$: if (weapon) {
+		damage = weapon.damage;
+	}
 </script>
 
 <table>
@@ -14,7 +21,7 @@
 			subName={String(damage)}
 			max={20}
 			min={1}
-			editable
+			editable={!weapon}
 		/>
 	</tbody>
 	<tbody>

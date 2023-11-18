@@ -54,17 +54,29 @@
 			subName={$_(`label:difficulty:${difficulty}`)}
 			max={3}
 			min={1}
-			editable
+			editable={!weapon}
 		/>
-		<Circles name="weapon:skill" bind:value={skill} subName={String(skill)} max={10} editable />
+		<Circles
+			name="weapon:skill"
+			bind:value={skill}
+			subName={String(skill)}
+			max={10}
+			editable={!skills}
+		/>
 		<Circles
 			name={variantProps.type === 'action' ? 'weapon:attack' : 'weapon:defence'}
 			bind:value={weaponProp}
 			subName={String(weaponProp)}
 			max={20}
-			editable
+			editable={!weapon}
 		/>
-		<Circles name="weapon:reach" bind:value={reach} subName={String(reach)} max={20} editable />
+		<Circles
+			name="weapon:reach"
+			bind:value={reach}
+			subName={String(reach)}
+			max={20}
+			editable={!weapon}
+		/>
 	</tbody>
 	<caption>{$_(variant)}: {result}</caption>
 </table>
