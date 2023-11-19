@@ -17,7 +17,16 @@
 		{ value: 'hu', label: Hu }
 	];
 
-	let lang = LANGUAGES[0];
+	const storedLang = () => {
+		if (browser) {
+			const langKey = window.localStorage.getItem('lang');
+			if (langKey) {
+				return LANGUAGES.find((l) => l.value === langKey);
+			}
+		}
+	};
+
+	let lang = storedLang() ?? LANGUAGES[0];
 
 	addMessages('en', Labels_en);
 	addMessages('hu', Labels_hu);
@@ -30,12 +39,7 @@
 	let currentCharacter: string = '';
 	let lastPath: string = '';
 
-	onMount(() => {
-		const langKey = window.localStorage.getItem('lang');
-		if (langKey) {
-			lang = LANGUAGES.find((l) => l.value === langKey) ?? lang;
-		}
-	});
+	onMount(() => (lang = storedLang() ?? lang));
 
 	$: {
 		if (lastPath !== $page.url.pathname) {
@@ -68,7 +72,7 @@
 			<li>Logo</li>
 			<li>
 				<select bind:value={currentCharacter} on:change={switchCharacter}>
-					<option value="">Select character</option>
+					<option value="">{$_('label:select-character')}</option>
 					{#each data.characters as character}
 						<option value={character.id}
 							>{character.name} ({$_(character.ancestry)}
@@ -78,9 +82,9 @@
 					{/each}
 				</select>
 			</li>
-			<li><a href="/create">Create</a></li>
+			<li><a href="/create">{$_('label:new-character')}</a></li>
 			<li><a href="/simulator">Simulator</a></li>
-			<li><a href="/lore/main">Lore</a></li>
+			<li><a href="/lore/main">{$_('label:lore')}</a></li>
 			<li>
 				<Select
 					bind:value={lang}

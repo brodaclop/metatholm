@@ -4,6 +4,6 @@ The **Kalovin** people are typically tall and muscular, their skin is often quit
 
 Their biggest settlements are in the frozen south, which according to their legends were the earliest settlements on the continent.
 
-Common prejudices about them are that they're aloof and uptight, snobbish and obsessed with their past glory.
+Common prejudices about them are that they're aloof and high-handed, snobbish and obsessed with their past glory.
 
 `AbilitiesList`

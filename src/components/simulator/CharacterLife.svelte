@@ -11,7 +11,7 @@
 	flavour="simulator-life"
 	lines={[
 		{
-			label: 'Action Points',
+			label: 'action:ap',
 			value: ap
 		},
 		{

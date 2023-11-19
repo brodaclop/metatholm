@@ -27,7 +27,7 @@ type GenericLabels = 'label:name' |
     'label:roll' |
     'label:wear' |
     'label:skill_check_success_probabilities' |
-    'label:main' |
+    'label:lore' |
     'label:close-quarters' |
     'label:in-range' |
     'label:out-of-range' |
@@ -40,6 +40,8 @@ type GenericLabels = 'label:name' |
     'label:levelup' |
     'label:save' |
     'action:move' |
+    'label:select-character' |
+    'label:new-character' |
     'rule:combat'
     ;
 
@@ -169,7 +171,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:exactly': 'Result is exactly...',
     'label:roll': 'Roll',
     'label:skill_check_success_probabilities': 'Skill check success probabilities',
-    'label:main': 'Lore',
+    'label:lore': 'Lore',
     'label:close-quarters': 'Close Quarters',
     'label:in-range': 'In Measure',
     'label:out-of-range': 'Out Of Measure',
@@ -182,6 +184,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:wear': 'Wear',
     'label:levelup': 'Level Up',
     'label:save': 'Save',
+    'label:select-character': 'Select character',
+    'label:new-character': 'New character',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -305,6 +309,9 @@ export const Labels_hu: Record<Labels, string> = {
     'character:weapons': 'Fegyverek',
     'character:armours': 'Páncélok',
     'character:ancestry': 'Származás',
+    'character:background': 'Háttér',
+    'character:skill': 'Képzettség',
+    'character:ability': 'Tulajdonság',
 
     'background:bruiser': 'Balhés',
     'background:sneak': 'Sunyi',
@@ -337,10 +344,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:new': 'Új',
     'label:character': 'Karakter',
     'label:create_character': 'Új karakter',
-    'character:background': 'Háttér',
-    'character:skill': 'Képzettség',
     'label:difficulty': 'Nehézség',
-    'character:ability': 'Tulajdonság',
     'label:type': 'Típus',
     'label:dice_roller': 'Kocka Szimulátor',
     'label:average': 'Átlag',
@@ -348,7 +352,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:exactly': 'Az eredmény pontosan...',
     'label:roll': 'Dobás',
     'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
-    'label:main': 'Kódex',
+    'label:lore': 'Kódex',
     'label:close-quarters': 'Belharc',
     'label:in-range': 'Közelharc',
     'label:out-of-range': 'Távol',
@@ -361,6 +365,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:wear': 'Visel',
     'label:levelup': 'Szintlépés',
     'label:save': 'Mentés',
+    'label:select-character': 'Válassz karaktert',
+    'label:new-character': 'Új karakter',
 
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',

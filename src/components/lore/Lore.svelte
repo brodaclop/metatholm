@@ -3,29 +3,33 @@
 	import Box from '../character/Box.svelte';
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore } from '../../model/Lore';
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
 
 	$: setContext('activeElementParams', { ...params, id });
 
-	let file: string = '';
-	let notFound: boolean = false;
+	let loadedLore: Promise<{ title: string; text: string; notFound: boolean }> = Promise.resolve({
+		title: '',
+		text: '',
+		notFound: false
+	});
 
-	$: lore(id, $locale)
-		.then((res) => {
-			file = res;
-			notFound = false;
-		})
-		.catch((e) => {
-			notFound = true;
-			file = '';
-		});
+	const loadLore = (loreId: string, locale: string | null | undefined) => {
+		loadedLore = lore(loreId, locale)
+			.then((res) => {
+				const [title, ...textLines] = res.split('\n') ?? [];
+				return {
+					title,
+					text: textLines.join('\n'),
+					notFound: false
+				};
+			})
+			.catch((e) => ({ notFound: true, text: '', title: '' }));
+	};
 
-	$: [title, ...textLines] = file?.split('\n') ?? [];
-
-	$: text = textLines?.join('\n');
+	$: loadLore(id, $locale);
 
 	$: idPrefix = id?.split(':')?.[0];
 
@@ -37,18 +41,20 @@
 		background: 'character:background',
 		rule: 'label:rule',
 		skill: 'character:skill',
-		main: 'label:main'
+		main: 'label:lore'
 	};
 </script>
 
-{#if file}
-	<Box flavour="lore">
-		<span slot="title">{$_(PREFIX_MAPPING[idPrefix])}: {title.replace(/#/g, '')}</span>
-
-		<MarkdownText {text} />
-	</Box>
-{:else if notFound}
-	<span>Lore not found</span>
-{:else}
+{#await loadedLore}
 	<span>Loading...</span>
-{/if}
+{:then { title, text, notFound }}
+	{#if notFound}
+		<span>Lore not found</span>
+	{:else}
+		<Box flavour="lore">
+			<span slot="title">{$_(PREFIX_MAPPING[idPrefix])}: {title.replace(/#/g, '')}</span>
+
+			<MarkdownText {text} />
+		</Box>
+	{/if}
+{/await}
