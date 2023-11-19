@@ -22,8 +22,6 @@
 
 	const additionalParams = getContext<Record<string, unknown>>('activeElementParams') ?? {};
 
-	console.log('additionalParams', additionalParams);
-
 	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]*(\+[0-9]+)?\!?$/;
 
 	const components: Record<string, any> = {

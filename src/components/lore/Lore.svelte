@@ -36,7 +36,8 @@
 		ancestry: 'character:ancestry',
 		background: 'character:background',
 		rule: 'label:rule',
-		skill: 'character:skill'
+		skill: 'character:skill',
+		main: 'label:main'
 	};
 </script>
 

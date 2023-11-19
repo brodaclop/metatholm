@@ -7,6 +7,8 @@
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 
@@ -28,6 +30,13 @@
 	let currentCharacter: string = '';
 	let lastPath: string = '';
 
+	onMount(() => {
+		const langKey = window.localStorage.getItem('lang');
+		if (langKey) {
+			lang = LANGUAGES.find((l) => l.value === langKey) ?? lang;
+		}
+	});
+
 	$: {
 		if (lastPath !== $page.url.pathname) {
 			const paths = $page.url.pathname.split('/');
@@ -43,6 +52,12 @@
 	}
 
 	$: switchCharacter = () => goto(currentCharacter ? `/character/${currentCharacter}` : '/');
+
+	const langChanged = () => {
+		if (browser) {
+			window.localStorage.setItem('lang', lang.value);
+		}
+	};
 
 	$: lang && locale.set(lang.value);
 </script>
@@ -79,6 +94,7 @@
 					--item-padding="0 0 0 0.2em"
 					--internal-padding="0 0 0 0.2em"
 					--selected-item-padding="0 0.2em 0 0"
+					on:change={langChanged}
 				>
 					<div slot="item" let:item>
 						<svelte:component this={item.label} />
