@@ -1,7 +1,5 @@
 import { entries } from "./InfoList";
 
-//TODO: lore for hiding
-
 const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
     hu: {
         'main': import('$lib/lore/main_hu.md?raw'),
@@ -9,6 +7,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_hu.md?raw'),
         'rule:learning_skills': import('$lib/lore/rule/learning_skills_hu.md?raw'),
         'rule:skill_check': import('$lib/lore/rule/skill_check_hu.md?raw'),
+        'rule:combat': import('$lib/lore/rule/combat_hu.md?raw'),
     },
     en: {
         'main': import('$lib/lore/main_en.md?raw'),
@@ -73,6 +72,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'skill:alchemy': import('$lib/lore/skill/alchemy_en.md?raw'),
         'skill:enchantment': import('$lib/lore/skill/enchantment_en.md?raw'),
         'skill:swimming': import('$lib/lore/skill/swimming_en.md?raw'),
+        'skill:hiding': import('$lib/lore/skill/hiding_en.md?raw'),
         'background:assassin': import('$lib/lore/background/assassin_en.md?raw'),
         'background:bruiser': import('$lib/lore/background/bruiser_en.md?raw'),
         'background:sneak': import('$lib/lore/background/sneak_en.md?raw'),

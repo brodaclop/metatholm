@@ -270,7 +270,7 @@ export const Labels_hu: Record<Labels, string> = {
     'action:title': 'Akciók',
     'action:attack': 'Támadás',
     'action:attack-cq': 'Támadás (Belharc)',
-    'action:ap': 'Akció pont',
+    'action:ap': 'Akciópont',
     'action:roll': 'Dobás',
     'label:damage': 'Sebzés',
     'action:cast': 'Varázslás',
