@@ -73,6 +73,24 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'background:vagabond': import('$lib/lore/background/vagabond_hu.md?raw'),
         'background:charmer': import('$lib/lore/background/charmer_hu.md?raw'),
         'background:witch': import('$lib/lore/background/witch_hu.md?raw'),
+        'action:do-nothing': import('$lib/lore/action/do-nothing_hu.md?raw'),
+        'action:step-in': import('$lib/lore/action/step-in_hu.md?raw'),
+        'action:step-out': import('$lib/lore/action/step-out_hu.md?raw'),
+        'action:close-in': import('$lib/lore/action/close-in_hu.md?raw'),
+        'action:keep-away': import('$lib/lore/action/keep-away_hu.md?raw'),
+        'action:disengage': import('$lib/lore/action/disengage_hu.md?raw'),
+        'action:keep-close': import('$lib/lore/action/keep-close_hu.md?raw'),
+        'action:attack': import('$lib/lore/action/attack_hu.md?raw'),
+        'action:attack-cq': import('$lib/lore/action/attack-cq_hu.md?raw'),
+        'action:attack-range': import('$lib/lore/action/attack-range_hu.md?raw'),
+        'action:defend': import('$lib/lore/action/defend_hu.md?raw'),
+        'action:defend-cq': import('$lib/lore/action/defend-cq_hu.md?raw'),
+        'action:defend-range': import('$lib/lore/action/defend-range_hu.md?raw'),
+        'character:level': import('$lib/lore/character/level_hu.md?raw'),
+        'character:ep': import('$lib/lore/character/ep_hu.md?raw'),
+        'character:fp': import('$lib/lore/character/fp_hu.md?raw'),
+        'character:kp': import('$lib/lore/character/kp_hu.md?raw'),
+        'character:background': import('$lib/lore/character/background_hu.md?raw'),
     },
     en: {
         'main': import('$lib/lore/main_en.md?raw'),
@@ -163,6 +181,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'character:ep': import('$lib/lore/character/ep_en.md?raw'),
         'character:fp': import('$lib/lore/character/fp_en.md?raw'),
         'character:kp': import('$lib/lore/character/kp_en.md?raw'),
+        'character:background': import('$lib/lore/character/background_en.md?raw'),
     }
 }
 
