@@ -54,7 +54,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: true,
         type: 'skill_type:basic',
     },
-    'skill:focus_elemental': {
+    'skill:elemental_focus': {
         difficulty: 3,
         ability: 'ability:magic',
         positive: true,
@@ -298,7 +298,7 @@ export type Skill = 'skill:endurance' |
     'skill:brawling' |
     'skill:strength' |
     'skill:magic_force' |
-    'skill:focus_elemental' |
+    'skill:elemental_focus' |
     'skill:polearms' |
     'skill:maces' |
     'skill:shields' |

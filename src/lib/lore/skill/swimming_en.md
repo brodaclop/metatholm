@@ -2,4 +2,4 @@
 
 `SkillTraining`
 
-Swimming is not a very common skill, except for fisherfolk and those who sail the seas.
+**Swimming** is not a very common skill, except for fisherfolk and those who sail the seas.

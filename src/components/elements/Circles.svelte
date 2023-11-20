@@ -25,7 +25,7 @@
 
 <tr class="circles">
 	<td class="name"
-		><LoreInfoIcon id={name} params={loreParams} />{$_(name)}
+		><LoreInfoIcon id={name} params={{ ...loreParams, level: value }} />{$_(name)}
 		{#if subName}<i>({$_(subName)})</i>{/if}
 	</td>
 	<td class="score">

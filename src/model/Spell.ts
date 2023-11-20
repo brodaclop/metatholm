@@ -15,12 +15,12 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
     'spell:fire_bolt': {
         speed: 8,
         level: 1,
-        skill: 'skill:focus_elemental'
+        skill: 'skill:elemental_focus'
     },
     'spell:lightning_strike': {
         speed: 3,
         level: 2,
-        skill: 'skill:focus_elemental'
+        skill: 'skill:elemental_focus'
     }
 }
 

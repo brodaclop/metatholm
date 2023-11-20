@@ -2,4 +2,4 @@
 
 `SkillTraining`
 
-The **Camouflage** skill determines how well a character can hide themselves, or anyone/anything else from prying eyes.
+The **Camouflage** skill determines how well a character can make themselves, or anyone/anything else look like something else.

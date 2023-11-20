@@ -14,6 +14,7 @@
 
 	export let id: Skill | undefined = undefined;
 	export let abilities: Character['abilities'];
+	export let level: number | undefined = undefined;
 
 	let ability: number = 0;
 	let positive: boolean = true;
@@ -35,6 +36,14 @@
 </script>
 
 <table>
+	<thead>
+		{#if skillInfo}
+			<tr>
+				<th>{$_('label:type')}</th>
+				<td>{$_(skillInfo.type)}</td>
+			</tr>
+		{/if}
+	</thead>
 	<tbody>
 		<Circles
 			name="label:difficulty"
@@ -78,25 +87,25 @@
 		{/if}
 	</tbody>
 </table>
-<table>
+<table class="points">
 	<thead>
 		<tr>
 			<th>{$_('expr:skill_level')}</th>
 			{#each Array(10) as _, skillLevel (skillLevel)}
-				<th>{skillLevel}</th>
+				<th class="header" class:active={skillLevel === level}>{skillLevel}</th>
 			{/each}
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<th>{$_('character:kp')}</th>
-			{#each Array(10) as _, level (level)}
+			{#each Array(10) as _, skillLevel (skillLevel)}
 				{@const kp = E.evaluate(SKILL_KP, {
-					'expr:skill_level': level + 1,
+					'expr:skill_level': skillLevel + 1,
 					'expr:skill_difficulty': difficulty,
 					'expr:skill_ability': effectiveAbility(ability, skillInfo?.positive ?? positive)
 				})}
-				<td>{kp.result}</td>
+				<td class:active={skillLevel === level}>{kp.result}</td>
 			{/each}
 		</tr>
 	</tbody>
@@ -110,15 +119,16 @@
 	td,
 	th {
 		padding-right: 0.25em;
+		text-align: left;
 	}
 
-	table tbody th,
-	table thead tr th:first-child {
+	.active {
 		background-color: aliceblue;
 	}
 
-	table tbody td,
-	table thead tr th:not(:first-child) {
-		background-color: antiquewhite;
+	.points td,
+	.points thead th.header {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 </style>

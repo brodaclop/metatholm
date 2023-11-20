@@ -66,7 +66,7 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
     'background:hedge_wizard': {
         skills: {
             "skill:magic_force": 3,
-            'skill:focus_elemental': 3,
+            'skill:elemental_focus': 3,
             'skill:enchantment': 1,
             'skill:maces': 1,
             'skill:spacetime_focus': 3,
