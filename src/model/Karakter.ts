@@ -139,8 +139,7 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
 
     const actions: Array<Action> = [
         ...weapons.map(w => calculateWeaponAction(skills, w)),
-        // TODO: add spell casting
-        //...spells.map(s => calculateSpellAction(skills, s))
+        ...spells.map(s => calculateSpellAction(skills, s))
     ];
 
     return {

@@ -27,3 +27,5 @@ export const WEAPON_DISARM: Expression = E.max(1, E.div(E.mul(E.value('weapon:at
 export const WEAPON_DEF: Expression = E.add(10, E.add(E.value('weapon:reach'), E.mul(E.value('weapon:skill'), E.value('weapon:difficulty'), 4), E.div(E.mul(E.value('weapon:skill'), E.value('weapon:defence')), E.add(1, E.value('weapon:difficulty')))));
 export const MAGIC_EFFECTIVE_SKILL: Expression = E.name('expr:effective_spell_skill', E.sub(E.add(E.value('expr:spell_focus_skill'), 1), E.value('expr:spell_level')));
 export const SKILL_KP: Expression = E.mul(E.value('expr:skill_level'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(4, E.value('expr:skill_difficulty')))), 33));
+
+export const SPELL_AP: Expression = E.max(4, E.div(E.mul(2, E.sub(20, E.value('expr:spell_speed')), E.sub(54, E.mul(4, E.sub(E.value('expr:spell_focus_skill'), 1)))), 54));

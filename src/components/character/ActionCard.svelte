@@ -14,6 +14,7 @@
 	import GiSpinningSword from 'svelte-icons/gi/GiSpinningSword.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	import type { Character } from '../../model/Karakter';
+	import type { BoxFlavour } from '../BoxFlavours';
 
 	export let action: Action | undefined = undefined;
 	export let isSelectable: ((variant: ActionVariant) => boolean) | undefined = undefined;
@@ -27,11 +28,24 @@
 		[...(action?.variants ?? [])].sort((a, z) => a.name.localeCompare(z.name)),
 		(v) => ACTION_VARIANT_PROPERTIES[v.name].range ?? 'any-range'
 	);
+
+	let flavour: BoxFlavour;
+
+	$: {
+		if (action?.weapon) {
+			flavour = 'action-card-weapon';
+		} else if (action?.spell) {
+			flavour = 'action-card-spell';
+		} else {
+			flavour = 'action-card';
+		}
+	}
 </script>
 
-<Box flavour="action-card" title={action?.name ?? ''}>
+<Box {flavour} title={action?.name ?? ''}>
 	<slot name="title" slot="title"
-		>{#if action}{$_(action.name)}{/if}</slot
+		>{#if action}<LoreInfoIcon id={action.weapon?.skill ?? action.spell ?? action.name} />
+			{$_(action.name)}{/if}</slot
 	>
 	<div class="ranges">
 		{#each entries(sorted) as [currentDistance, variants]}

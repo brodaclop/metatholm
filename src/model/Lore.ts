@@ -182,6 +182,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'character:fp': import('$lib/lore/character/fp_en.md?raw'),
         'character:kp': import('$lib/lore/character/kp_en.md?raw'),
         'character:background': import('$lib/lore/character/background_en.md?raw'),
+        'spell:endure_weather': import('$lib/lore/spell/endure_weather_en.md?raw'),
     }
 }
 

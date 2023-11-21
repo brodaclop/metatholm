@@ -42,6 +42,7 @@ type GenericLabels = 'label:name' |
     'action:move' |
     'label:select-character' |
     'label:new-character' |
+    'label:spell' |
     'rule:combat'
     ;
 
@@ -98,7 +99,6 @@ export const Labels_en: Record<Labels, string> = {
     'label:damage': 'Damage',
     'action:defend': 'Defend',
     'action:defend-cq': 'Defend (Close Quarters)',
-    'action:cast': 'Cast',
     'action:keep-away': 'Keep away',
     'action:close-in': 'Close in',
     'action:disengage': 'Disengage',
@@ -109,6 +109,9 @@ export const Labels_en: Record<Labels, string> = {
     'action:step-in': 'Step In',
     'action:step-out': 'Step Out',
     'action:do-nothing': 'Do Nothing',
+    'action:cast': 'Cast',
+    'action:cast-slow': 'Cast (Slow)',
+    'action:cast-snap': 'Cast (Snapshot)',
 
     'armour:dr': 'Damage Reduction',
     'armour:hindrance': 'Hindrance',
@@ -186,6 +189,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:save': 'Save',
     'label:select-character': 'Select character',
     'label:new-character': 'New character',
+    'label:spell': 'Spell',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -254,6 +258,8 @@ export const Labels_en: Record<Labels, string> = {
 
     'spell:fire_bolt': 'Fire Bolt',
     'spell:lightning_strike': 'Lightning Strike',
+    'spell:suppress_pain': 'Suppress Pain',
+    'spell:endure_weather': 'Endure Weather',
 
     'weapon:speed': 'Speed',
     'weapon:difficulty': 'Difficulty',
@@ -276,8 +282,9 @@ export const Labels_hu: Record<Labels, string> = {
     'action:attack-cq': 'Támadás (Belharc)',
     'action:ap': 'Akciópont',
     'action:roll': 'Dobás',
-    'label:damage': 'Sebzés',
     'action:cast': 'Varázslás',
+    'action:cast-slow': 'Varázslás (Lassú)',
+    'action:cast-snap': 'Varázslás (Csípőből)',
 
     'action:disarm': 'Lefegyverzés',
     'action:defend': 'Védekezés',
@@ -293,10 +300,27 @@ export const Labels_hu: Record<Labels, string> = {
     'action:step-out': 'Kilépés',
     'action:do-nothing': 'Semmi',
 
+    'ancestry:elven': 'Elf',
+    'ancestry:orcish': 'Ork',
+    'ancestry:gnomish': 'Gnóm',
+    'ancestry:dwarvish': 'Törp',
+    'ancestry:almarem': 'Almarem',
+    'ancestry:godora': 'Godora',
+    'ancestry:ilar': 'Ilar',
+    'ancestry:kalovin': 'Kalovin',
+
     'armour:dr': 'Sebzéscsökkentés',
     'armour:hindrance': 'Akadály',
 
-    'label:name': 'Név',
+    'background:bruiser': 'Balhés',
+    'background:sneak': 'Sunyi',
+    'background:hedge_wizard': 'Sufnimágus',
+    'background:tinker': 'Ezermester',
+    'background:assassin': 'Orgyilkos',
+    'background:vagabond': 'Kóborló',
+    'background:charmer': 'Bájgúnár',
+    'background:witch': 'Vajákos',
+
     'character:abilities': 'Tulajdonságok',
     'character:skills': 'Képzettségek',
     'character:info': 'Adatok',
@@ -313,15 +337,6 @@ export const Labels_hu: Record<Labels, string> = {
     'character:skill': 'Képzettség',
     'character:ability': 'Tulajdonság',
 
-    'background:bruiser': 'Balhés',
-    'background:sneak': 'Sunyi',
-    'background:hedge_wizard': 'Sufnimágus',
-    'background:tinker': 'Ezermester',
-    'background:assassin': 'Orgyilkos',
-    'background:vagabond': 'Kóborló',
-    'background:charmer': 'Bájgúnár',
-    'background:witch': 'Vajákos',
-
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',
     'expr:fp_total': 'Fájdalomtűrés',
@@ -335,6 +350,7 @@ export const Labels_hu: Record<Labels, string> = {
     'expr:skill_difficulty': 'Nehézség',
 
     'label:action': 'Akció',
+    'label:damage': 'Sebzés',
     'label:difficulty:1': 'Könnyű',
     'label:difficulty:2': 'Átlagos',
     'label:difficulty:3': 'Nehéz',
@@ -350,6 +366,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:average': 'Átlag',
     'label:at_least': 'Az eredmény legalább...',
     'label:exactly': 'Az eredmény pontosan...',
+    'label:name': 'Név',
     'label:roll': 'Dobás',
     'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
     'label:lore': 'Kódex',
@@ -367,25 +384,13 @@ export const Labels_hu: Record<Labels, string> = {
     'label:save': 'Mentés',
     'label:select-character': 'Válassz karaktert',
     'label:new-character': 'Új karakter',
-
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',
+    'label:spell': 'Varázslat',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
     'rule:combat': 'Harc',
-
-    'ancestry:elven': 'Elf',
-    'ancestry:orcish': 'Ork',
-    'ancestry:gnomish': 'Gnóm',
-    'ancestry:dwarvish': 'Törp',
-    'ancestry:almarem': 'Almarem',
-    'ancestry:godora': 'Godora',
-    'ancestry:ilar': 'Ilar',
-    'ancestry:kalovin': 'Kalovin',
-
-    'spell:fire_bolt': 'Tűznyíl',
-    'spell:lightning_strike': 'Lightning Strike',
 
     'skill:endurance': 'Állóképesség',
     'skill:pain_threshold': 'Fájdalomküszöb',
@@ -433,12 +438,16 @@ export const Labels_hu: Record<Labels, string> = {
     'skill:etiquette': 'Etikett',
     'skill:swimming': 'Úszás',
 
-
     'skill_type:basic': 'Alap',
     'skill_type:combat': 'Harci',
     'skill_type:focus': 'Fókusz',
     'skill_type:movement': 'Mozgás',
     'skill_type:knowledge': 'Tudás',
+
+    'spell:fire_bolt': 'Tűznyíl',
+    'spell:lightning_strike': 'Villámcsapás',
+    'spell:suppress_pain': 'Fájdalom Elnyomása',
+    'spell:endure_weather': 'Időjárás Elviselése',
 
     'weapon:speed': 'Sebesség',
     'weapon:difficulty': 'Nehézség',

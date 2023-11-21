@@ -73,6 +73,14 @@
 		background-color: #ffeeff;
 	}
 
+	article.action-card-spell {
+		background-color: #eeeeff;
+	}
+
+	article.action-card-weapon {
+		background-color: #ffeeee;
+	}
+
 	article.action-distance {
 		background-color: #eedddd;
 	}

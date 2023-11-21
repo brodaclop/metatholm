@@ -41,7 +41,8 @@
 		background: 'character:background',
 		rule: 'label:rule',
 		skill: 'character:skill',
-		main: 'label:lore'
+		main: 'label:lore',
+		spell: 'label:spell'
 	};
 </script>
 
