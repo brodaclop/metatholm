@@ -13,6 +13,7 @@
 	import ActionPointCalculator from '../interactive/ActionPointCalculator.svelte';
 	import DamageCalculator from '../interactive/DamageCalculator.svelte';
 	import CombatRollCalculator from '../interactive/CombatRollCalculator.svelte';
+	import SpellInfo from '../interactive/SpellInfo.svelte';
 	import { Popover } from 'svelte-smooth-popover';
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
@@ -40,7 +41,8 @@
 		ActionPointCalculator: ActionPointCalculator,
 		CombatRollCalculator: CombatRollCalculator,
 		DamageCalculator: DamageCalculator,
-		FocusSpellList: FocusSpellList
+		FocusSpellList: FocusSpellList,
+		SpellInfo: SpellInfo
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);
