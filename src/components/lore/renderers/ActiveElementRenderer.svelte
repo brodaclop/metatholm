@@ -17,6 +17,7 @@
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 	import { getContext } from 'svelte';
+	import FocusSpellList from '../interactive/FocusSpellList.svelte';
 
 	export let raw: string;
 
@@ -38,7 +39,8 @@
 		ActionVariants: ActionVariants,
 		ActionPointCalculator: ActionPointCalculator,
 		CombatRollCalculator: CombatRollCalculator,
-		DamageCalculator: DamageCalculator
+		DamageCalculator: DamageCalculator,
+		FocusSpellList: FocusSpellList
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

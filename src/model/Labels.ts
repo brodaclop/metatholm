@@ -42,8 +42,7 @@ type GenericLabels = 'label:name' |
     'action:move' |
     'label:select-character' |
     'label:new-character' |
-    'label:spell' |
-    'rule:combat'
+    'label:spell'
     ;
 
 export const Keys = [
@@ -62,6 +61,7 @@ export const Keys = [
     'character:ancestry',
     'character:background',
     'character:ability',
+    'character:spells',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -74,6 +74,8 @@ export const Keys = [
     'label:difficulty:1',
     'label:difficulty:2',
     'label:difficulty:3',
+
+    'skill_type:general',
 
 ] as const;
 
@@ -129,6 +131,7 @@ export const Labels_en: Record<Labels, string> = {
     'character:weapons': 'Weapons',
     'character:armours': 'Armours',
     'character:ancestry': 'Ancestry',
+    'character:spells': 'Spells',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -194,6 +197,7 @@ export const Labels_en: Record<Labels, string> = {
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
     'rule:combat': 'Combat',
+    'rule:magic': 'Magic',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -246,6 +250,7 @@ export const Labels_en: Record<Labels, string> = {
     'skill_type:focus': 'Focus',
     'skill_type:movement': 'Movement',
     'skill_type:knowledge': 'Knowledge',
+    'skill_type:general': 'General',
 
     'ancestry:elven': 'Elven',
     'ancestry:orcish': 'Orcish',
@@ -256,10 +261,17 @@ export const Labels_en: Record<Labels, string> = {
     'ancestry:ilar': 'Ilar',
     'ancestry:kalovin': 'Kalovin',
 
-    'spell:fire_bolt': 'Fire Bolt',
-    'spell:lightning_strike': 'Lightning Strike',
+    // 'spell:endure_weather': 'Endure Weather',
+    // 'spell:fire_bolt': 'Fire Bolt',
+    // 'spell:lightning_strike': 'Lightning Strike',
     'spell:suppress_pain': 'Suppress Pain',
-    'spell:endure_weather': 'Endure Weather',
+    'spell:maintain_body_temperature': 'Maintain Body Temperature',
+    'spell:hardened_skin': 'Hardened Skin',
+    'spell:iron_fist': 'Iron Fist',
+    'spell:jump': 'Jump',
+    'spell:shout': 'Shout',
+    'spell:sustenance': 'Sustenance',
+    'spell:convert_life_to_magic': 'Life to Magic',
 
     'weapon:speed': 'Speed',
     'weapon:difficulty': 'Difficulty',
@@ -336,6 +348,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:background': 'Háttér',
     'character:skill': 'Képzettség',
     'character:ability': 'Tulajdonság',
+    'character:spells': 'Varázslatok',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',
@@ -391,6 +404,7 @@ export const Labels_hu: Record<Labels, string> = {
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
     'rule:combat': 'Harc',
+    'rule:magic': 'Mágia',
 
     'skill:endurance': 'Állóképesség',
     'skill:pain_threshold': 'Fájdalomküszöb',
@@ -443,11 +457,19 @@ export const Labels_hu: Record<Labels, string> = {
     'skill_type:focus': 'Fókusz',
     'skill_type:movement': 'Mozgás',
     'skill_type:knowledge': 'Tudás',
+    'skill_type:general': 'Általános',
 
-    'spell:fire_bolt': 'Tűznyíl',
-    'spell:lightning_strike': 'Villámcsapás',
-    'spell:suppress_pain': 'Fájdalom Elnyomása',
-    'spell:endure_weather': 'Időjárás Elviselése',
+    // 'spell:fire_bolt': 'Tűznyíl',
+    // 'spell:lightning_strike': 'Villámcsapás',
+    // 'spell:endure_weather': 'Időjárás Elviselése',
+    'spell:suppress_pain': 'Fájdalom elnyomása',
+    'spell:maintain_body_temperature': 'Testhőmérséklet fenntartása',
+    'spell:hardened_skin': 'Keményített bőr',
+    'spell:iron_fist': 'Vasököl',
+    'spell:jump': 'Ugrás',
+    'spell:shout': 'Kiáltás',
+    'spell:sustenance': 'Önfenntartás',
+    'spell:convert_life_to_magic': 'Életből Mágia',
 
     'weapon:speed': 'Sebesség',
     'weapon:difficulty': 'Nehézség',

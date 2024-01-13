@@ -2,18 +2,7 @@ import { E, type Expression } from "../logic/Expression";
 
 export type ExpressionNames = 'expr:fp_base' | 'expr:fp_per_level' | 'expr:fp_total' | 'expr:fp_roll' | 'expr:effective_spell_skill' | 'expr:spell_level' | 'expr:spell_focus_skill' | 'expr:spell_speed' | 'expr:skill_level' | 'expr:skill_ability' | 'expr:skill_difficulty';
 
-export type RuleLabels = 'rule:skills' | 'rule:exploding_dice';
-
-export const RuleDescriptions_hu: Record<RuleLabels, string> = {
-    'rule:skills': `A képzettségek a karakter tanult képességeit jellemzik.
-    \`SkillRolls\``,
-    'rule:exploding_dice': `A **robbantott kockák** dobásánál a hagyományos módon dobunk egy vagy több kockával, és összeadjuk az eredményt. De ha bármelyik kocka a lehető legnagyobb értéket mutatja, azt a kockát újradobjuk, és ennek is hozzáadjuk az eredményét az összeghez. 
-
-Ha az újradobás eredménye is maximális, ismét újradobunk és így tovább. A robbantott kockadobást a játékban a **!** karakterrel jelöljük, tehát például a **3d10!** annyit tesz, hogy 10 oldalú kockával dobunk háromszor, újradobva minden 10-est.
-\`DiceRoller|{"roll": "3d10!"}\``
-}
-
-
+export type RuleLabels = 'rule:skills' | 'rule:exploding_dice' | 'rule:magic' | 'rule:combat';
 
 
 export const TOTAL_EP: Expression = E.add(E.constant(9), E.value('character:level'));

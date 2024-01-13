@@ -24,3 +24,7 @@
 ## Képzettségek
 
 `LoreCategory|{"category": "skill"}`
+
+## Varázslatok
+
+`LoreCategory|{"category": "spell"}`

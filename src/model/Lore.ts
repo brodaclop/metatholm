@@ -8,6 +8,7 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'rule:learning_skills': import('$lib/lore/rule/learning_skills_hu.md?raw'),
         'rule:skill_check': import('$lib/lore/rule/skill_check_hu.md?raw'),
         'rule:combat': import('$lib/lore/rule/combat_hu.md?raw'),
+        'rule:magic': import('$lib/lore/rule/magic_hu.md?raw'),
         'character:abilities': import('$lib/lore/character/abilities_hu.md?raw'),
         'ability:build': import('$lib/lore/ability/build_hu.md?raw'),
         'ability:activity': import('$lib/lore/ability/activity_hu.md?raw'),
@@ -91,6 +92,14 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'character:fp': import('$lib/lore/character/fp_hu.md?raw'),
         'character:kp': import('$lib/lore/character/kp_hu.md?raw'),
         'character:background': import('$lib/lore/character/background_hu.md?raw'),
+        'spell:suppress_pain': import('$lib/lore/spell/suppress_pain_hu.md?raw'),
+        'spell:maintain_body_temperature': import('$lib/lore/spell/maintain_body_temperature_hu.md?raw'),
+        'spell:hardened_skin': import('$lib/lore/spell/hardened_skin_hu.md?raw'),
+        'spell:shout': import('$lib/lore/spell/shout_hu.md?raw'),
+        'spell:jump': import('$lib/lore/spell/jump_hu.md?raw'),
+        'spell:iron_fist': import('$lib/lore/spell/iron_fist_hu.md?raw'),
+        'spell:sustenance': import('$lib/lore/spell/sustenance_hu.md?raw'),
+        'spell:convert_life_to_magic': import('$lib/lore/spell/convert_life_to_magic_hu.md?raw'),
     },
     en: {
         'main': import('$lib/lore/main_en.md?raw'),
@@ -182,7 +191,6 @@ const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {
         'character:fp': import('$lib/lore/character/fp_en.md?raw'),
         'character:kp': import('$lib/lore/character/kp_en.md?raw'),
         'character:background': import('$lib/lore/character/background_en.md?raw'),
-        'spell:endure_weather': import('$lib/lore/spell/endure_weather_en.md?raw'),
     }
 }
 

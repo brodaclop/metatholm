@@ -1,7 +1,16 @@
 import { createList } from "./InfoList";
 import type { Skill } from "./Skills";
 
-export type Spell = 'spell:fire_bolt' | 'spell:lightning_strike' | 'spell:suppress_pain' | 'spell:endure_weather';
+export type Spell =
+    | 'spell:suppress_pain'
+    | 'spell:maintain_body_temperature'
+    | 'spell:hardened_skin'
+    | 'spell:shout'
+    | 'spell:jump'
+    | 'spell:iron_fist'
+    | 'spell:sustenance'
+    | 'spell:convert_life_to_magic'
+    ;
 
 
 export interface SpellInfo {
@@ -12,26 +21,46 @@ export interface SpellInfo {
 }
 
 const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
-    'spell:fire_bolt': {
-        speed: 8,
-        level: 1,
-        skill: 'skill:elemental_focus',
-    },
-    'spell:lightning_strike': {
-        speed: 3,
-        level: 2,
-        skill: 'skill:elemental_focus',
-    },
     'spell:suppress_pain': {
         speed: 8,
-        level: 1,
+        level: 2,
         skill: 'skill:body_focus',
     },
-    'spell:endure_weather': {
-        speed: 3,
+    'spell:maintain_body_temperature': {
+        speed: 0,
         level: 0,
-        skill: 'skill:body_focus',
-    }
+        skill: 'skill:body_focus'
+    },
+    'spell:hardened_skin': {
+        speed: 10,
+        level: 2,
+        skill: 'skill:body_focus'
+    },
+    'spell:shout': {
+        speed: 10,
+        level: 1,
+        skill: 'skill:body_focus'
+    },
+    'spell:jump': {
+        speed: 10,
+        level: 1,
+        skill: 'skill:body_focus'
+    },
+    'spell:iron_fist': {
+        speed: 3,
+        level: 4,
+        skill: 'skill:body_focus'
+    },
+    'spell:sustenance': {
+        speed: 0,
+        level: 3,
+        skill: 'skill:body_focus'
+    },
+    'spell:convert_life_to_magic': {
+        speed: 5,
+        level: 5,
+        skill: 'skill:body_focus'
+    },
 }
 
 export const Spell = {

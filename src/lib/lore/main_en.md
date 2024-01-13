@@ -24,3 +24,7 @@
 ## Skills
 
 `LoreCategory|{"category": "skill"}`
+
+## Spells
+
+`LoreCategory|{"category": "spell"}`
