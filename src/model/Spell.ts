@@ -16,6 +16,13 @@ export type Spell =
     | 'spell:farsight'
     | 'spell:extinguish_magic'
     | 'spell:borrow_time'
+    | 'spell:lantern'
+    | 'spell:cleaning'
+    | 'spell:sense_poison'
+    | 'spell:call_animals'
+    | 'spell:thicket'
+    | 'spell:shelter'
+    | 'spell:lightning_strike'
     ;
 
 
@@ -112,6 +119,50 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         target: 'touch',
         skill: 'skill:spacetime_focus'
     },
+    'spell:lantern': {
+        speed: 8,
+        level: 0,
+        target: 'touch',
+        skill: 'skill:nature_focus'
+    },
+    'spell:cleaning': {
+        speed: 1,
+        level: 0,
+        target: 'touch',
+        skill: 'skill:nature_focus'
+    },
+    'spell:sense_poison': {
+        speed: 7,
+        level: 1,
+        target: 'self',
+        skill: 'skill:nature_focus'
+    },
+    'spell:call_animals': {
+        speed: 5,
+        level: 1,
+        target: 'self',
+        skill: 'skill:nature_focus'
+    },
+    'spell:thicket': {
+        speed: 5,
+        level: 2,
+        target: 'touch',
+        skill: 'skill:nature_focus'
+    },
+    'spell:shelter': {
+        speed: 5,
+        level: 2,
+        target: 'point',
+        skill: 'skill:nature_focus'
+    },
+    'spell:lightning_strike': {
+        speed: 6,
+        level: 3,
+        target: 'point',
+        skill: 'skill:nature_focus'
+    },
+
+
 
 }
 
