@@ -12,7 +12,8 @@ const all = [
 const langs = { hu: [], en: [] };
 
 all.forEach(f => {
-    const lang = f.name.substring(f.name.lastIndexOf('_') + 1, f.name.indexOf('.md'));
+    const suffixStart = f.name.lastIndexOf('_');
+    const lang = f.name.substring(suffixStart + 1, f.name.indexOf('.md'));
     langs[lang].push(f);
 });
 
@@ -24,7 +25,7 @@ const langDefs = Object.fromEntries(Object.entries(langs).map(([lang, files]) =>
         }
         return ret;
     });
-    return [lang, files.map(f => `\t\t'${f.category}${f.category ? ':' : ''}${f.name}': import('$lib/lore/${f.category}${f.category ? '/' : ''}${f.name}?raw'),`).join('\n')];
+    return [lang, files.map(f => `\t\t'${f.category}${f.category ? ':' : ''}${f.name.substring(0, f.name.lastIndexOf('_'))}': import('$lib/lore/${f.category}${f.category ? '/' : ''}${f.name}?raw'),`).join('\n')];
 }));
 
 const output = 'export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {' +

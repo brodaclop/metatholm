@@ -4,8 +4,9 @@ import type { Background } from "./Background";
 import type { ExpressionNames, RuleLabels } from "./Rules";
 import type { Skill, SkillType } from "./Skills";
 import type { Ancestry } from "./Ancestry";
-import type { Spell } from "./Spell";
+import type { Spell, SpellDurations, SpellTargets } from "./Spell";
 import type { ArmourLabels } from "./Armour";
+import type SpellInfo from "../components/lore/interactive/SpellInfo.svelte";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -42,7 +43,9 @@ type GenericLabels = 'label:name' |
     'action:move' |
     'label:select-character' |
     'label:new-character' |
-    'label:spell'
+    'label:spell' |
+    'label:spell_target' |
+    'label:spell_duration'
     ;
 
 export const Keys = [
@@ -83,7 +86,7 @@ export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels;
+type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations;
 
 export type Labels = Valueless | Values;
 export const Labels_en: Record<Labels, string> = {
@@ -193,6 +196,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:select-character': 'Select character',
     'label:new-character': 'New character',
     'label:spell': 'Spell',
+    'label:spell_target': 'Target',
+    'label:spell_duration': 'Duration',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -285,6 +290,21 @@ export const Labels_en: Record<Labels, string> = {
     'spell:thicket': 'Thicket',
     'spell:shelter': 'Shelter',
     'spell:lightning_strike': 'Lightning Strike',
+    'spell:cloak_of_shadow': 'Clock of Shadows',
+    'spell:shadow_leap': 'Shadow Leap',
+    'spell:whispering_shadows': 'Whispering Shadows',
+    'spell:drain_magic': 'Drain Magic',
+    'spell:darken': 'Darken',
+
+    'spell_duration:instant': 'instant',
+    'spell_duration:round': 'round',
+    'spell_duration:hour': 'hour',
+    'spell_duration:day': 'day',
+
+    'spell_target:self': 'self',
+    'spell_target:touch': 'touch',
+    'spell_target:point': 'point',
+    'spell_target:other': 'other',
 
     'weapon:speed': 'Speed',
     'weapon:difficulty': 'Difficulty',
@@ -413,6 +433,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:weapon': 'Fegyver',
     'label:rule': 'Szabály',
     'label:spell': 'Varázslat',
+    'label:spell_target': 'Célpont',
+    'label:spell_duration': 'Időtartam',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
@@ -496,6 +518,21 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:thicket': 'Burján',
     'spell:shelter': 'Menedék',
     'spell:lightning_strike': 'Villámcsapás',
+    'spell:cloak_of_shadow': 'Árnyékköpeny',
+    'spell:shadow_leap': 'Árnyugrás',
+    'spell:whispering_shadows': 'Suttogó Árnyak',
+    'spell:drain_magic': 'Mágia elszívása',
+    'spell:darken': 'Sötétítés',
+
+    'spell_duration:instant': 'azonnali',
+    'spell_duration:round': 'kör',
+    'spell_duration:hour': 'óra',
+    'spell_duration:day': 'nap',
+
+    'spell_target:self': 'varázsló',
+    'spell_target:touch': 'érintés',
+    'spell_target:point': 'mutatás',
+    'spell_target:other': 'egyéb',
 
     'weapon:speed': 'Sebesség',
     'weapon:difficulty': 'Nehézség',
