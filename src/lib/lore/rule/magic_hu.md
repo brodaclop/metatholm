@@ -14,15 +14,17 @@ Mint említve lett már, a mágia minden élőlényben koncentráltan megtalálh
 
 ## Varázslás
 
-A játékos karakterek által varázslásra felhasználható mágia maximális mennyiségét a karakter [Mágia](ability:magic) tulajdonsága határozza meg, ennyi [Mágia Ponttal](character:mp) rendelkezhet legfeljebb.
+A játékos karakterek által varázslásra felhasználható mágia maximális mennyiségét a karakter [Mágikus erő](skill:magic_force) képzettsége határozza meg, ennyi [Mágia Ponttal](character:mp) rendelkezhet legfeljebb.
 
-De ahhoz, hogy ebből varázslat is lehessen, a karakternek egy vagy több mágikus fókusz képzettséget is kell tanulnia, ez határozza meg, hogy milyen varázslatok állnak rendelkezésére, és mennyire könnyedén tudja azokat létrehozni.
+De ahhoz, hogy ebből varázslat is lehessen, a karakternek egy vagy több mágikus fókusz képzettséget is kell tanulnia, ez határozza meg, hogy milyen varázslatok állnak rendelkezésére, és mennyire könnyedén tudja azokat létrehozni. A tanulható fókuszok az alábbiak:
+
+`SkillListByType|{"type":"skill_type:focus"}`
 
 A varázslás pontos menete ugyanakkor nincs előre meghatározva, ezt minden karakter maga választhatja meg magának. Van, aki csak magába mélyed és mágikus szavakra koncentrál, mások fennhangon kántálnak, esetleg egy szerencsét hozó kavicsot kell szorongassanak a kezükben, ismét mások a kardjuk hegyével rónak rúnákat a levegőbe, a lehetőségeknek csak a képzelet szab határt.
 
 ## Varázslatok
 
-Minden varázslat egy **fókusz** képzettséghez tartozik, ezt a képzettséget kell fejleszteni ahhoz, hogy a varázslatot megismerje a karakter. A varázslatoknak van továbbá egy **szintje** is, ami minél magasabb, annál magasabb kell legyen a **fókusz** képzettség szintje is. Tehát például egy karakter, aki a [Testi fókusz](skill:focus_body) képzettségét 4-es szintre fejlesztette, legfeljebb 3-as szintű varázslatokat tud létrehozni az odatartozó varázslatok közül.
+Minden varázslat egy **fókusz** képzettséghez tartozik, ezt a képzettséget kell fejleszteni ahhoz, hogy a varázslatot megismerje a karakter. A varázslatoknak van továbbá egy **szintje** is, ami minél magasabb, annál magasabb kell legyen a **fókusz** képzettség szintje is. Tehát például egy karakter, aki a [Testi fókusz](skill:body_focus) képzettségét 4-es szintre fejlesztette, legfeljebb 3-as szintű varázslatokat tud létrehozni az odatartozó varázslatok közül.
 
 Ehhez először is el kell döntenie, milyen erősséggel próbálja létrehozni a varázslatot. Hogy az erősség hogy hat a varázslatra, az mindig az adott varázslat leírásából derül ki, de általában a magasabb erősség nagyobb hatást vagy hosszabb időrtartamot jelent, esetleg a kettő kombinációját.
 
