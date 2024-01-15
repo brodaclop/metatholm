@@ -1,4 +1,4 @@
-# Vas0k0l
+# Vasököl
 
 `SpellInfo`
 

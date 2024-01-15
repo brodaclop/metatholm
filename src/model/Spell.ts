@@ -28,6 +28,13 @@ export type Spell =
     | 'spell:whispering_shadows'
     | 'spell:drain_magic'
     | 'spell:darken'
+    | 'spell:light_fire'
+    | 'spell:fire_arrow'
+    | 'spell:extinguish_fire'
+    | 'spell:heat_material'
+    | 'spell:flameball'
+    | 'spell:wall_of_flame'
+    | 'spell:magic_bolt'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -225,9 +232,55 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         duration: 'spell_duration:round',
         skill: 'skill:shadow_focus'
     },
-
-
-
+    'spell:light_fire': {
+        speed: 7,
+        level: 0,
+        target: 'spell_target:point',
+        duration: 'spell_duration:round',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:extinguish_fire': {
+        speed: 9,
+        level: 0,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:fire_arrow': {
+        speed: 10,
+        level: 1,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:heat_material': {
+        speed: 3,
+        level: 2,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:flameball': {
+        speed: 8,
+        level: 3,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:wall_of_flame': {
+        speed: 2,
+        level: 4,
+        target: 'spell_target:point',
+        duration: 'spell_duration:round',
+        skill: 'skill:elemental_focus'
+    },
+    'spell:magic_bolt': {
+        speed: 10,
+        level: 5,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:elemental_focus'
+    },
 }
 
 export const Spell = {

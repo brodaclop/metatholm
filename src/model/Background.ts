@@ -69,7 +69,7 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:elemental_focus': 3,
             'skill:enchantment': 1,
             'skill:maces': 1,
-            'skill:spacetime_focus': 3,
+            'skill:spirit_focus': 3,
             'skill:reasoning': 2
         },
         abilities: {
