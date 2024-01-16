@@ -26,7 +26,7 @@ A varázslás pontos menete ugyanakkor nincs előre meghatározva, ezt minden ka
 
 Minden varázslat egy **fókusz** képzettséghez tartozik, ezt a képzettséget kell fejleszteni ahhoz, hogy a varázslatot megismerje a karakter. A varázslatoknak van továbbá egy **szintje** is, ami minél magasabb, annál magasabb kell legyen a **fókusz** képzettség szintje is. Tehát például egy karakter, aki a [Testi fókusz](skill:body_focus) képzettségét 4-es szintre fejlesztette, legfeljebb 3-as szintű varázslatokat tud létrehozni az odatartozó varázslatok közül.
 
-Ehhez először is el kell döntenie, milyen erősséggel próbálja létrehozni a varázslatot. Hogy az erősség hogy hat a varázslatra, az mindig az adott varázslat leírásából derül ki, de általában a magasabb erősség nagyobb hatást vagy hosszabb időrtartamot jelent, esetleg a kettő kombinációját.
+Ehhez először is el kell döntenie, milyen erősséggel próbálja létrehozni a varázslatot. Hogy az erősség hogy hat a varázslatra, az mindig az adott varázslat leírásából derül ki, de általában a magasabb erősség erősebb hatást, több célpontot vagy hosszabb időrtartamot jelent, esetleg a fentiek kombinációját. (Ilyenkor a varázslat leírásában szerepel az, hogy az adott paraméter "erősíthető".)
 
 Mindezek után a varázsló dob annyi `1d10!`-zel, amennyivel a fókusz képzettsége nagyobb a varázslat szintjénél. Tehát ha pl. a már említett 4-es szintű Testi fókuszú karakter egy 2-es szintű varázslatot próbál létrehozni, akkor a dobás `2d10!` lesz.
 

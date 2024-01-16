@@ -302,6 +302,15 @@ export const Labels_en: Record<Labels, string> = {
     'spell:flameball': 'Flameball',
     'spell:wall_of_flame': 'Wall of Flame',
     'spell:magic_bolt': 'Magic Bolt',
+    'spell:steel_will': 'Steel Will',
+    'spell:message': 'Message',
+    'spell:read_emotions': 'Read Emotions',
+    'spell:commune_with_spirits': 'Commune with Spirits',
+    'spell:write_memories': 'Write Memories',
+    'spell:blunt_senses': 'Blunt Senses',
+    'spell:fool_senses': 'Fool Senses',
+    'spell:spirit_shroud': 'Spirit Shroud',
+
 
     'spell_duration:instant': 'instant',
     'spell_duration:round': 'round',
@@ -537,6 +546,15 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:flameball': 'Lánglabda',
     'spell:wall_of_flame': 'Lángfal',
     'spell:magic_bolt': 'Varázsnyíl',
+    'spell:steel_will': 'Acélos akarat',
+    'spell:message': 'Üzenet',
+    'spell:read_emotions': 'Érzelmek olvasása',
+    'spell:commune_with_spirits': 'Szellemtanács',
+    'spell:write_memories': 'Emlékírás',
+    'spell:blunt_senses': 'Érzéktompítás',
+    'spell:fool_senses': 'Érzékcsalódás',
+    'spell:spirit_shroud': 'Szellemfátyol',
+
 
     'spell_duration:instant': 'azonnali',
     'spell_duration:round': 'kör',

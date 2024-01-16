@@ -16,6 +16,7 @@ export type Spell =
     | 'spell:farsight'
     | 'spell:extinguish_magic'
     | 'spell:borrow_time'
+    | 'spell:telekinesis'
     | 'spell:lantern'
     | 'spell:cleaning'
     | 'spell:sense_poison'
@@ -35,6 +36,14 @@ export type Spell =
     | 'spell:flameball'
     | 'spell:wall_of_flame'
     | 'spell:magic_bolt'
+    | 'spell:steel_will'
+    | 'spell:message'
+    | 'spell:read_emotions'
+    | 'spell:commune_with_spirits'
+    | 'spell:write_memories'
+    | 'spell:blunt_senses'
+    | 'spell:fool_senses'
+    | 'spell:spirit_shroud'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -145,6 +154,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         speed: 9,
         level: 2,
         target: 'spell_target:touch',
+        duration: 'spell_duration:round',
+        skill: 'skill:spacetime_focus'
+    },
+    'spell:telekinesis': {
+        speed: 4,
+        level: 3,
+        target: 'spell_target:point',
         duration: 'spell_duration:round',
         skill: 'skill:spacetime_focus'
     },
@@ -281,6 +297,63 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         duration: 'spell_duration:instant',
         skill: 'skill:elemental_focus'
     },
+    'spell:steel_will': {
+        speed: 7,
+        level: 1,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:round',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:write_memories': {
+        speed: 2,
+        level: 4,
+        target: 'spell_target:other',
+        duration: 'spell_duration:instant',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:read_emotions': {
+        speed: 5,
+        level: 2,
+        target: 'spell_target:other',
+        duration: 'spell_duration:instant',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:blunt_senses': {
+        speed: 6,
+        level: 1,
+        target: 'spell_target:point',
+        duration: 'spell_duration:round',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:message': {
+        speed: 10,
+        level: 0,
+        target: 'spell_target:other',
+        duration: 'spell_duration:round',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:commune_with_spirits': {
+        speed: 0,
+        level: 3,
+        target: 'spell_target:self',
+        duration: 'spell_duration:instant',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:fool_senses': {
+        speed: 4,
+        level: 3,
+        target: 'spell_target:point',
+        duration: 'spell_duration:round',
+        skill: 'skill:spirit_focus'
+    },
+    'spell:spirit_shroud': {
+        speed: 4,
+        level: 4,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:day',
+        skill: 'skill:spirit_focus'
+    },
+
 }
 
 export const Spell = {
