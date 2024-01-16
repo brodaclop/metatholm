@@ -1,6 +1,6 @@
 # Pain tolerance
 
-**Pain tolerance** points are a measure of how much pain a character can take. The maximum pain tolerance of a character depends on their level, their [Pain Threshold](skill:pain_threshold) skill and their [Endurance](skill:endurance) skill. On top of this, on every level except the first, the result of a `2d10` roll is added. (On the first level the character is automatically awarded 20 points instead.)
+**Pain tolerance** points **(PTP)** are a measure of how much pain a character can take. The maximum pain tolerance of a character depends on their level, their [Pain Threshold](skill:pain_threshold) skill and their [Endurance](skill:endurance) skill. On top of this, on every level except the first, the result of a `2d10` roll is added. (On the first level the character is automatically awarded 20 points instead.)
 
 Whenever a character sustains damage, it is subtracted from their pain tolerance, and if it reaches 0, the character passes out from the pain, strain, bleeding or exhaustion.
 

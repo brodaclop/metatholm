@@ -14,6 +14,6 @@ Természetes tűzeknél az alábbi táblázatot lehet alkalmazni:
 | Jelzőtűz | 4 |
 | Kovácskemence/Égő ház | 5 |
 
-Természetesen az erősség meg is osztható több célpont között, és így több tüzet is ki lehet egyszerre oltani.
+Természetesen az erősség meg is osztható több célpont között, így több kisebb tüzet is ki lehet egyszerre oltani.
 
-Miután a varázsló rámutat a célpontra, a lángok szinte azonnal lelohadnak, és az őket tápláló anyag is lehűl annyira, hogy a lángok nem tudnak egy erősebb széllökéstől visszatérni.
+Miután a varázsló rámutat a célpontra, a lángok szinte azonnal lelohadnak, és az őket tápláló anyag is lehűl annyira, hogy a lángok nem tudnak egy erősebb széllökéstől belobbanni.

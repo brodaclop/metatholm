@@ -2,5 +2,7 @@
 
 `SpellInfo`
 
-A varázslat E-nként `1d5!` sebzést ad minden pusztakezes támadásra 1 körig, vagy 2E-nként `1d5!`-öt 2 körig, stb.
+A varázslat `1d5!` plusz sebzést ad minden pusztakezes támadásra 1 körig.
+
+További erősítéssel mind a hatás, mind az időtartam növelhető.
 

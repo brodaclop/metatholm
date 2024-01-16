@@ -310,6 +310,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:blunt_senses': 'Blunt Senses',
     'spell:fool_senses': 'Fool Senses',
     'spell:spirit_shroud': 'Spirit Shroud',
+    'spell:telekinesis': 'Telekinesis',
 
 
     'spell_duration:instant': 'instant',
@@ -554,6 +555,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:blunt_senses': 'Érzéktompítás',
     'spell:fool_senses': 'Érzékcsalódás',
     'spell:spirit_shroud': 'Szellemfátyol',
+    'spell:telekinesis': 'Telekinézis',
 
 
     'spell_duration:instant': 'azonnali',
