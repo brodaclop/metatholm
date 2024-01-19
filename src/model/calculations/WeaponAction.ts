@@ -51,7 +51,7 @@ const calculateSkill = (characterSkill?: number, actionModifier = 0): number => 
 const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, number>>, weapon: Weapon): ActionVariantInfo => {
     const ap = APS[name];
     const roll = ROLLS[name] as Expression;
-    const damage = name === 'action:attack' || name === 'action:attack-cq' ? weapon.damage : 0;
+    const damage = name === 'action:attack' || name === 'action:attack-cq' || name === 'action:attack-range' ? weapon.damage : 0;
     const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
     const difficulty = Skill.get(weapon.skill).difficulty;
 

@@ -1,4 +1,4 @@
-# Swords
+# Kardok
 
 `SkillTraining`
 
