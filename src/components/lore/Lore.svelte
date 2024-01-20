@@ -42,7 +42,8 @@
 		rule: 'label:rule',
 		skill: 'character:skill',
 		main: 'label:lore',
-		spell: 'label:spell'
+		spell: 'label:spell',
+		world: 'label:world'
 	};
 </script>
 

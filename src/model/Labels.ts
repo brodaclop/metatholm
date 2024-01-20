@@ -6,7 +6,6 @@ import type { Skill, SkillType } from "./Skills";
 import type { Ancestry } from "./Ancestry";
 import type { Spell, SpellDurations, SpellTargets } from "./Spell";
 import type { ArmourLabels } from "./Armour";
-import type SpellInfo from "../components/lore/interactive/SpellInfo.svelte";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -45,7 +44,8 @@ type GenericLabels = 'label:name' |
     'label:new-character' |
     'label:spell' |
     'label:spell_target' |
-    'label:spell_duration'
+    'label:spell_duration' |
+    'label:world'
     ;
 
 export const Keys = [
@@ -198,6 +198,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:spell': 'Spell',
     'label:spell_target': 'Target',
     'label:spell_duration': 'Duration',
+    'label:world': 'World',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -452,6 +453,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:spell': 'Varázslat',
     'label:spell_target': 'Célpont',
     'label:spell_duration': 'Időtartam',
+    'label:world': 'Világ',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

@@ -13,3 +13,5 @@
 `LoreCategory|{"category": "skill", "title": "Képzettségek" }`
 
 `LoreCategory|{"category": "spell", "title": "Varázslatok" }`
+
+`LoreCategory|{"category": "world:realms:*", "title": "Országok" }`

@@ -4,6 +4,7 @@
 	import LinkRenderer from './LinkRenderer.svelte';
 	import TableRow from './TableRow.svelte';
 	import Table from './Table.svelte';
+	import Image from './Image.svelte';
 
 	export let text: string;
 </script>
@@ -17,6 +18,7 @@
 				code: ActiveElementRenderer,
 				link: LinkRenderer,
 				tablerow: TableRow,
+				image: Image,
 				table: Table
 			}}
 		/>

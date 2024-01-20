@@ -3,11 +3,15 @@ import fs from 'node:fs';
 const LORE_DIR = './src/lib/lore';
 const LORELIST_FILE = './src/model/LoreList.ts'
 
-const main = fs.readdirSync(LORE_DIR);
-const all = [
-    ...main.filter(f => f.endsWith('.md')).map(f => ({ name: f, category: '' })),
-    ...main.filter(f => !f.endsWith('.md')).flatMap(f => fs.readdirSync(`${LORE_DIR}/${f}`).map(fn => ({ name: fn, category: f })))
-];
+const scanDir = (prefix = '') => fs.readdirSync(`${LORE_DIR}${prefix ? '/' : ''}${prefix}`).flatMap(f => {
+    if (f.endsWith('.md')) {
+        return [{ name: f, category: prefix }];
+    } else {
+        return scanDir(`${prefix}${prefix ? '/' : ''}${f}`);
+    }
+});
+
+const all = scanDir();
 
 const langs = { hu: [], en: [] };
 
@@ -25,7 +29,7 @@ const langDefs = Object.fromEntries(Object.entries(langs).map(([lang, files]) =>
         }
         return ret;
     });
-    return [lang, files.map(f => `\t\t'${f.category}${f.category ? ':' : ''}${f.name.substring(0, f.name.lastIndexOf('_'))}': import('$lib/lore/${f.category}${f.category ? '/' : ''}${f.name}?raw'),`).join('\n')];
+    return [lang, files.map(f => `\t\t'${f.category.replaceAll('/', ':')}${f.category ? ':' : ''}${f.name.substring(0, f.name.lastIndexOf('_'))}': import('$lib/lore/${f.category}${f.category ? '/' : ''}${f.name}?raw'),`).join('\n')];
 }));
 
 const output = 'export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>>> = {' +
