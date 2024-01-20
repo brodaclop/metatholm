@@ -469,7 +469,7 @@ export const Labels_hu: Record<Labels, string> = {
     'skill:maces': 'Buzogány',
     'skill:polearms': 'Szálfegyver',
     'skill:stalking': 'Lopakodás',
-    'skill:fistfighting': 'Öklözés',
+    'skill:fistfighting': 'Ökölharc',
     'skill:jumping': 'Ugrás',
     'skill:sprinting': 'Sprintelés',
     'skill:throwing': 'Dobófegyver',

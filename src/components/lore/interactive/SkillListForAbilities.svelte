@@ -10,7 +10,12 @@
 <ul>
 	{#each Skill.list()
 		.filter((s) => s.ability === id && s.positive === positive)
-		.sort((a, z) => a.name.localeCompare(z.name)) as skill}
-		<li><a href="/lore/{skill.name}">{$_(skill.name)} <i>({$_(skill.type)})</i></a></li>
+		.sort((a, z) => $_(a.name).localeCompare($_(z.name))) as skill}
+		<li>
+			<a href="/lore/{skill.name}"
+				>{$_(skill.name)}
+				<i>({$_(skill.type)} / {$_(`label:difficulty:${skill.difficulty}`)})</i></a
+			>
+		</li>
 	{/each}
 </ul>

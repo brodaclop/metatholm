@@ -1,30 +1,15 @@
 # Metatholm
 
-## Szabályok
+`LoreCategory|{"category": "rule", "title": "Szabályok"}`
 
-`LoreCategory|{"category": "rule"}`
+`LoreCategory|{"category": "character", "title": "Karakter" }`
 
-## Karakter
+`LoreCategory|{"category": "ancestry", "title": "Származás" }`
 
-`LoreCategory|{"category": "character"}`
+`LoreCategory|{"category": "background", "title": "Háttér" }`
 
-## Származás
+`LoreCategory|{"category": "ability", "title": "Tulajdonságok" }`
 
-`LoreCategory|{"category": "ancestry"}`
+`LoreCategory|{"category": "skill", "title": "Képzettségek" }`
 
-## Háttér
-
-`LoreCategory|{"category": "background"}`
-
-
-## Tulajdonságok
-
-`LoreCategory|{"category": "ability"}`
-
-## Képzettségek
-
-`LoreCategory|{"category": "skill"}`
-
-## Varázslatok
-
-`LoreCategory|{"category": "spell"}`
+`LoreCategory|{"category": "spell", "title": "Varázslatok" }`

@@ -1,30 +1,15 @@
 # Metatholm
 
-## Rules
+`LoreCategory|{"category": "rule", "title": "Rules"}`
 
-`LoreCategory|{"category": "rule"}`
+`LoreCategory|{"category": "character", "title": "Character" }`
 
-## Character
+`LoreCategory|{"category": "ancestry", "title": "Ancestries" }`
 
-`LoreCategory|{"category": "character"}`
+`LoreCategory|{"category": "background", "title": "Backgrounds" }`
 
-## Ancestries
+`LoreCategory|{"category": "ability", "title": "Abilities" }`
 
-`LoreCategory|{"category": "ancestry"}`
+`LoreCategory|{"category": "skill", "title": "Skills" }`
 
-## Backgrounds
-
-`LoreCategory|{"category": "background"}`
-
-
-## Abilities
-
-`LoreCategory|{"category": "ability"}`
-
-## Skills
-
-`LoreCategory|{"category": "skill"}`
-
-## Spells
-
-`LoreCategory|{"category": "spell"}`
+`LoreCategory|{"category": "spell", "title": "Spells" }`
