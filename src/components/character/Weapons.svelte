@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { Character } from '../../model/Karakter';
+	import { calculateUnarmed, type Character } from '../../model/Karakter';
 	import WeaponEditor from './WeaponEditor.svelte';
 	import type { Weapon } from '../../model/Weapon';
 	import IconButton from '../elements/IconButton.svelte';
@@ -41,6 +41,18 @@
 		</tr>
 	</thead>
 	<tbody>
+		{#each calculateUnarmed(character.skills) as weapon}
+			<tr>
+				<td>{$_(weapon.name)}</td>
+				<td>{weapon.speed}</td>
+				<td>{weapon.attack}</td>
+				<td>{weapon.defence}</td>
+				<td>{weapon.damage}</td>
+				<td>{weapon.reach}</td>
+				<td>{$_(weapon.skill)}</td>
+				<td />
+			</tr>
+		{/each}
 		{#each character.inventory.weapons as weapon}
 			<tr>
 				<td>{weapon.name}</td>

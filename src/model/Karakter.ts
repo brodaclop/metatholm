@@ -56,7 +56,7 @@ export interface CalculatedCharacter {
 }
 
 
-const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
+export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
     const ret: Array<Weapon> = [];
     const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
 
@@ -66,7 +66,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             name: 'skill:brawling',
             skill: 'skill:brawling',
             speed: fraction('skill:strength', 1),
-            attack: fraction('skill:strength', 0.5),
+            attack: fraction('skill:strength', 1),
             defence: fraction('skill:strength', 1),
             reach: 0,
             damage: fraction('skill:strength', 2),
@@ -87,7 +87,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             skill: 'skill:fistfighting',
             speed: fraction('skill:reactions', 1),
             attack: fraction('skill:reactions', 0.5),
-            defence: fraction('skill:reactions', 1.5),
+            defence: fraction('skill:reactions', 1),
             reach: 0,
             damage: fraction('skill:reactions', 1),
             hands: 1,
@@ -109,7 +109,7 @@ const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon>
             attack: fraction('skill:balance', 0.5),
             defence: fraction('skill:balance', 0.5),
             reach: 0,
-            damage: fraction('skill:balance', 0.5),
+            damage: fraction('skill:balance', 0.67),
             hands: 1,
             actions: {
                 'action:attack-cq': 2,
