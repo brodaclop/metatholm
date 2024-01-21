@@ -58,27 +58,33 @@
 		<DeleteButton on:click={deleteCharacter} />
 	</div>
 	<div>
-		<MainBox bind:character />
-		<Box title="character:abilities" flavour="abilities">
-			<Abilities bind:abilities={character.abilities} />
-		</Box>
+		<div class="values">
+			<div class="first">
+				<MainBox bind:character />
+				<Box title="character:abilities" flavour="abilities">
+					<Abilities bind:abilities={character.abilities} />
+				</Box>
+				<Box title="character:points" flavour="points">
+					<Points bind:character {calculatedCharacter} />
+				</Box>
 
-		<Box title={'character:skills'} flavour="skills">
-			<Skills
-				skills={character.skills}
-				modifiedSkills={calculatedCharacter.skills}
-				abilities={character.abilities}
-			/>
-		</Box>
-		<Box title="character:points" flavour="points">
-			<Points bind:character {calculatedCharacter} />
-		</Box>
-		<Box flavour="inventory" title="character:weapons">
-			<Weapons bind:character />
-		</Box>
-		<Box flavour="inventory" title="character:armours">
-			<Armours bind:character />
-		</Box>
+				<Box flavour="inventory" title="character:weapons">
+					<Weapons bind:character />
+				</Box>
+				<Box flavour="inventory" title="character:armours">
+					<Armours bind:character />
+				</Box>
+			</div>
+			<div class="second">
+				<Box title={'character:skills'} flavour="skills">
+					<Skills
+						skills={character.skills}
+						modifiedSkills={calculatedCharacter.skills}
+						abilities={character.abilities}
+					/>
+				</Box>
+			</div>
+		</div>
 
 		<div class="actionRow">
 			<Box title="action:title" flavour="action-container">
@@ -98,6 +104,14 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: start;
+	}
+
+	div.first {
+		flex-basis: 70%;
+	}
+
+	div.second {
+		flex-basis: 30%;
 	}
 
 	div.title {

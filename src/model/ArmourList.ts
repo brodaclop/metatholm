@@ -7,8 +7,8 @@ export const ARMOUR_LIST: Array<Omit<Armour, 'id'>> = [
         hindrance: 0
     },
     {
-        name: 'Plate harness',
-        dr: 5,
+        name: 'Steel plate',
+        dr: 4,
         hindrance: 4,
     },
 ];
