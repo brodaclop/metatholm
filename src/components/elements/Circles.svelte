@@ -4,6 +4,7 @@
 	import FaMinus from 'svelte-icons/fa/FaMinus.svelte';
 	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
+	import Lore from '../lore/Lore.svelte';
 
 	export let value: number;
 	export let newValue: number | undefined = undefined;
@@ -12,6 +13,7 @@
 	export let max: number;
 	export let min: number = 0;
 	export let editable: boolean = false;
+	export let inlineLore: boolean = false;
 	export let plus: () => void = () => {
 		value = Math.min(max, value + 1);
 	};
@@ -20,12 +22,19 @@
 	};
 	export let loreParams: Record<string, unknown> = {};
 
+	let loreOpen: boolean = false;
+
 	$: _newValue = newValue ?? value;
 </script>
 
 <tr class="circles">
-	<td class="name"
-		><LoreInfoIcon id={name} params={{ ...loreParams, level: value }} />{$_(name)}
+	<td class="name">
+		<LoreInfoIcon
+			id={name}
+			inline={inlineLore}
+			params={{ ...loreParams, level: value }}
+			on:click={() => (loreOpen = !loreOpen)}
+		/>{$_(name)}
 		{#if subName}<i>({$_(subName)})</i>{/if}
 	</td>
 	<td class="score">
@@ -59,6 +68,15 @@
 		</td>
 	{/if}
 </tr>
+{#if inlineLore && loreOpen}
+	<tr>
+		<td colspan="3">
+			<div class="loreContainer">
+				<Lore id={name} params={loreParams} />
+			</div>
+		</td>
+	</tr>
+{/if}
 
 <style>
 	.name {
@@ -69,5 +87,9 @@
 	.score {
 		display: flex;
 		flex-wrap: nowrap;
+	}
+
+	.loreContainer {
+		max-width: 30em;
 	}
 </style>

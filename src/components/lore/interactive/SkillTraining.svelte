@@ -90,7 +90,7 @@
 <table class="points">
 	<thead>
 		<tr>
-			<th>{$_('expr:skill_level')}</th>
+			<th class="rowhead">{$_('expr:skill_level')}</th>
 			{#each Array(10) as _, skillLevel (skillLevel)}
 				<th class="header" class:active={skillLevel === level}>{skillLevel}</th>
 			{/each}
@@ -98,7 +98,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<th>{$_('character:kp')}</th>
+			<th class="rowhead">{$_('character:kp')}</th>
 			{#each Array(10) as _, skillLevel (skillLevel)}
 				{@const kp = E.evaluate(SKILL_KP, {
 					'expr:skill_level': skillLevel + 1,
@@ -122,13 +122,22 @@
 		text-align: left;
 	}
 
+	td:nth-child(odd),
+	th.header:nth-child(odd) {
+		background-color: cornsilk;
+	}
+
+	th.rowhead {
+		padding-right: 0.75em;
+	}
+
 	.active {
 		background-color: aliceblue;
 	}
 
 	.points td,
 	.points thead th.header {
-		padding-left: 1em;
-		padding-right: 1em;
+		padding-left: 0.25em;
+		padding-right: 0.25em;
 	}
 </style>

@@ -10,6 +10,7 @@
 	export let editable: boolean = false;
 	export let plus: (name: T) => void = () => {};
 	export let minus: (name: T) => void = () => {};
+	export let inlineLore: boolean = false;
 	export let loreParams: Record<string, unknown> = {};
 </script>
 
@@ -23,6 +24,7 @@
 				newValue={newValues[name]}
 				{max}
 				{editable}
+				{inlineLore}
 				subName={typeof key === 'string' ? '' : key.subName}
 				plus={() => plus(name)}
 				minus={() => minus(name)}

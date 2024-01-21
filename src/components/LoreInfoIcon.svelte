@@ -8,25 +8,32 @@
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
+	export let inline: boolean = false;
 	// TODO: popover in dialog zIndex
 </script>
 
 {#if hasLore(id, $locale)}
 	<span>
-		<IconButton title={id}>
-			<FaInfoCircle />
-			<Popover
-				open={false}
-				showOnClick={true}
-				borderRadius={10}
-				caretBg="black"
-				hideOnExternalClick={true}
-			>
-				<div style:max-width="80vw">
-					<Lore {id} {params} />
-				</div>
-			</Popover>
-		</IconButton>
+		{#if inline}
+			<IconButton title={id} on:click>
+				<FaInfoCircle />
+			</IconButton>
+		{:else}
+			<IconButton title={id}>
+				<FaInfoCircle />
+				<Popover
+					open={false}
+					showOnClick={true}
+					borderRadius={10}
+					caretBg="black"
+					hideOnExternalClick={true}
+				>
+					<div style:max-width="80vw">
+						<Lore {id} {params} />
+					</div>
+				</Popover>
+			</IconButton>
+		{/if}
 	</span>
 {/if}
 

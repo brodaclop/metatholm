@@ -391,7 +391,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:level': 'Szint',
     'character:fp': 'Fájdalomtűrés',
     'character:ep': 'Életerő',
-    'character:mp': 'Mágia Kapacitás',
+    'character:mp': 'Mágia Pont',
     'character:kp': 'Képzettség Pont',
     'character:weapons': 'Fegyverek',
     'character:armours': 'Páncélok',

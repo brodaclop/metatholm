@@ -152,6 +152,7 @@
 									}))}
 									values={character.skills}
 									newValues={sums}
+									inlineLore
 									max={10}
 									editable
 									{plus}
