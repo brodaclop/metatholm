@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import { keys } from '../../model/InfoList';
 	import type { Character } from '../../model/Karakter';
 	import { Skill } from '../../model/Skills';
@@ -10,7 +11,9 @@
 </script>
 
 <CircleGroup
-	rows={keys(skills).map((s) => ({ name: s, subName: Skill.get(s).type }))}
+	rows={keys(skills)
+		.map((s) => ({ name: s, subName: Skill.get(s).type }))
+		.sort((a, z) => $_(a.name).localeCompare($_(z.name)))}
 	values={skills}
 	loreParams={{ abilities }}
 	newValues={modifiedSkills}

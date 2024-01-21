@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { E } from '../../logic/Expression';
-	import { entries, group } from '../../model/InfoList';
+	import { entries, group, keys } from '../../model/InfoList';
 	import type { CalculatedCharacter, Character, Level } from '../../model/Karakter';
 	import { SKILL_KP } from '../../model/Rules';
 	import { Skill, type SkillInfo } from '../../model/Skills';
@@ -128,33 +128,42 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="content" on:click|stopPropagation>
 		<Box title="character:skills" flavour="skills">
-			<div class="scrollable type-container">
+			<div class="buttonbar">
+				{#each keys(group(Skill.list(), (s) => s.type)) as type}
+					<button on:click={() => document.getElementById(type)?.scrollIntoView()}
+						>{$_(type)}</button
+					>
+				{/each}
+			</div>
+			<div class="type-container">
 				{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
-					<div>
+					<div class="type-list" id={type}>
 						<h3>{$_(type)}</h3>
 						{#each entries(group( skillList, (s) => String(s.difficulty) )) as [difficulty, skillList2]}
 							<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
-							<CircleGroup
-								rows={skillList2.map((s) => ({
-									name: s.name,
-									subName:
-										s.ability === 'skill_type:general'
-											? 'skill_type:general'
-											: (s.positive ? '+' : '-') + abilityLabels[s.ability]
-								}))}
-								values={character.skills}
-								newValues={sums}
-								max={10}
-								editable
-								{plus}
-								{minus}
-							>
-								<span slot="extra" let:key>
-									{#if !admin}
-										<ExpressionTooltip expr={kpNeeded[key]} />
-									{/if}
-								</span>
-							</CircleGroup>
+							<div class="skill-group">
+								<CircleGroup
+									rows={skillList2.map((s) => ({
+										name: s.name,
+										subName:
+											s.ability === 'skill_type:general'
+												? 'skill_type:general'
+												: (s.positive ? '+' : '-') + abilityLabels[s.ability]
+									}))}
+									values={character.skills}
+									newValues={sums}
+									max={10}
+									editable
+									{plus}
+									{minus}
+								>
+									<span slot="extra" let:key>
+										{#if !admin}
+											<ExpressionTooltip expr={kpNeeded[key]} />
+										{/if}
+									</span>
+								</CircleGroup>
+							</div>
 						{/each}
 					</div>
 				{/each}
@@ -206,26 +215,32 @@
 		}
 	}
 
-	.scrollable {
+	.type-container {
+		height: 70vh;
 		overflow-y: scroll;
-		max-height: 50vh;
+	}
+
+	.buttonbar {
+		text-align: center;
+		margin-bottom: 0.4em;
+	}
+
+	.skill-group {
+		margin-left: 1em;
+		margin-right: 1em;
+	}
+
+	h4 {
+		margin-bottom: 0.2em;
 	}
 
 	h3 {
-		text-decoration: underline;
+		text-align: center;
+		margin-top: 0.2em;
 	}
 
-	.type-container {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-
-	.type-container > div {
-		border-radius: 0.2rem;
-		border: 1px solid black;
-		margin: 0.2rem;
-		padding: 0.2rem;
+	.type-list {
+		border-bottom: 1px dotted black;
+		padding-bottom: 0.5em;
 	}
 </style>
