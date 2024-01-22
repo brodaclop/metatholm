@@ -124,15 +124,16 @@
 
 	td:nth-child(odd),
 	th.header:nth-child(odd) {
-		background-color: cornsilk;
+		background-color: whitesmoke;
 	}
 
 	th.rowhead {
 		padding-right: 0.75em;
 	}
 
-	.active {
-		background-color: aliceblue;
+	td.active,
+	th.active {
+		background-color: lavender !important;
 	}
 
 	.points td,
