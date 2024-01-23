@@ -186,10 +186,12 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'character:fp': import('$lib/lore/character/fp_en.md?raw'),
 		'character:kp': import('$lib/lore/character/kp_en.md?raw'),
 		'character:level': import('$lib/lore/character/level_en.md?raw'),
+		'character:mp': import('$lib/lore/character/mp_en.md?raw'),
 		'character:skills': import('$lib/lore/character/skills_en.md?raw'),
 		'rule:combat': import('$lib/lore/rule/combat_en.md?raw'),
 		'rule:exploding_dice': import('$lib/lore/rule/exploding_dice_en.md?raw'),
 		'rule:learning_skills': import('$lib/lore/rule/learning_skills_en.md?raw'),
+		'rule:magic': import('$lib/lore/rule/magic_en.md?raw'),
 		'rule:skill_check': import('$lib/lore/rule/skill_check_en.md?raw'),
 		'skill:alchemy': import('$lib/lore/skill/alchemy_en.md?raw'),
 		'skill:architecture': import('$lib/lore/skill/architecture_en.md?raw'),
@@ -234,5 +236,8 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'skill:swimming': import('$lib/lore/skill/swimming_en.md?raw'),
 		'skill:swords': import('$lib/lore/skill/swords_en.md?raw'),
 		'skill:throwing': import('$lib/lore/skill/throwing_en.md?raw'),
+		'world:realms:deep_kingdom:realm': import('$lib/lore/world/realms/deep_kingdom/realm_en.md?raw'),
+		'world:realms:dragon_straits:realm': import('$lib/lore/world/realms/dragon_straits/realm_en.md?raw'),
+		'world:realms:sylvan_alliance:realm': import('$lib/lore/world/realms/sylvan_alliance/realm_en.md?raw'),
 	}
 };

@@ -13,3 +13,5 @@
 `LoreCategory|{"category": "skill", "title": "Skills" }`
 
 `LoreCategory|{"category": "spell", "title": "Spells" }`
+
+`LoreCategory|{"category": "world:realms:*", "title": "Realms" }`

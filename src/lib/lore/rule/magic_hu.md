@@ -1,6 +1,6 @@
 # Mágia
 
-Metatholm világában a mágia mindent és mindenkit óceánként vesz körül, ott van a dühöngő viharban, a tavak finoman fodrozódó felületén, de megtalálható a hétköznapokban is. Amikor a pék kenyere megkel, amikor a kovács a forró acélt hajlítja, amikor az író tolla mintha magától mozdulna, amikor a levesben a fűszerek összeállnak egy új ízzé, az mind a mágia hétköznapi megnyilvánulása.
+Metatholm világában a mágia mindent és mindenkit óceánként vesz körül, ott van a fákat kidöntő viharban, a tavak finoman fodrozódó felületén, de megtalálható a hétköznapokban is. Amikor a pék kenyere megkel, amikor a kovács a forró acélt hajlítja, amikor az író tolla mintha magától mozdulna, amikor a levesben a fűszerek összeállnak egy új ízzé, az mind a mágia hétköznapi megnyilvánulása.
 
 De egy dolog a mágia spontán kisugárzása, amelyre minden élőlény képes, és megint más a tudatos irányítása. Ez utóbbira már csak jóval kevesebben képesek, és még annál is kevesebben értik igazán, hogy működik az egész.
 
@@ -35,3 +35,11 @@ Ezzel szemben a mesélő annyi `1d10!`-zel dob, amennyi a létrehozni kívánt v
 Amennyiben a varázsló dobása magasabb, úgy a varázslat minden további nélkül létrejön.
 
 Ha viszont a mesélő dobása eléri vagy meghaladja a varázslóét, akkor a varázslat minden megkezdett 10 pontnyi különbség után 1 Mágia Pontba kerül. Tehát ha a varázsló 17-et dobott, a mesélő meg 20-at, akkor a költség 1 MP, ha 27-et, akkor 2 MP stb. Amennyiben a varázslónak nincs elég Mágia Pontja, dönthet úgy, hogy a fennmaradó összeget közvetlenül az [életerejéből](character:ep) kívánja törleszteni. De természetesen úgy is dönthet, hogy inkább abbahagyja a varázslást, ezesetben mindössze a varázslásra szánt ideje vész el.
+
+## "Csípőből" varázslás
+
+A varázsló dönthet úgy, hogy a varázslatot gyorsabban, de kisebb erővel hozza létre.
+
+## Lassú varázslás
+
+Lassú varázslás esetén a varázsló az egész harci körét a varázslat létrehozására való koncentrálásnak szenteli. Ez annyit tesz, hogy az adott körben semmi mást nem tehetnek, ideértve a mozgást és a támadások elleni védekezést is.

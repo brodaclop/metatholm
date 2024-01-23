@@ -4,7 +4,7 @@ Valamikor régesrégen a törpök, gnómok és orkok mind a föld alatt éltek, 
 
 De azóta is időről időre akadnak olyan fiatalok, akiknek mindez nem elég, és megbabonázva a múlt legendáitól keresik a módját annak, hogy visszatérhessenek őseik földjére.
 
-Senki nem tudja, mikor állt össze az első csapat suhanc, melyik volt az első beomlott lejárat, amire rábukkantak a hegyekben, mikor építették az első földalatti tábort, se azt, hogy hányan lehettek. Annyi viszont biztos, hogy a három nép fiai együttes erővel láttak neki új otthonuk felépítésének, és a múlt nyomainak feltérképezésének.
+Senki nem tudja, mikor állt össze az első csapat suhanc, melyik volt az első beomlott lejárat, amire rábukkantak a hegyekben, mikor építették az első földalatti tábort, se azt, hogy hányan lehettek. Annyi viszont biztos, hogy a három nép fiai és lányai együttes erővel láttak neki új otthonuk felépítésének, és a múlt nyomainak feltérképezésének.
 
 Az orkok maradtak legközelebb a felszínhez, ők leginkább az új közösségek felépítésében és a felszínnel való kapcsolattartásban jeleskedtek, no nem mintha ez a kapcsolat minden esetben felhőtlen lett volna, de az új ork törzsek, csakúgy mint őseik, nem riadtak vissza a harctól.
 

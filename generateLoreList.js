@@ -21,6 +21,34 @@ all.forEach(f => {
     langs[lang].push(f);
 });
 
+const diff = {};
+Object.entries(langs).forEach(([lang, files]) => {
+    files.forEach(f => {
+        const key = `${f.category}/${f.name.substring(0, f.name.lastIndexOf('_'))}`;
+        if (diff[key]) {
+            diff[key].push(lang);
+        } else {
+            diff[key] = [lang];
+        }
+    });
+});
+
+Object.entries(diff).forEach(([key, langsPresent]) => {
+    if (langsPresent.length < 2) {
+        console.warn(`WARN: ${key} only exists in ${langsPresent}`);
+    }
+});
+
+langs.en.forEach(f => {
+    const key = `${f.category}:${f.name}`;
+    if (diff[key]) {
+        diff.key.push('en');
+    } else {
+        diff.key = ['hu'];
+    }
+});
+
+
 const langDefs = Object.fromEntries(Object.entries(langs).map(([lang, files]) => {
     files.sort((a, z) => {
         let ret = a.category.localeCompare(z.category);

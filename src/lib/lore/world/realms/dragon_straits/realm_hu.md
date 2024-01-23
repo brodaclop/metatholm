@@ -20,4 +20,4 @@ A városok vezetői grófi, a flotta admirálisa és [Délpofa](world:realms:dra
 
 ## Térkép
 
-![Sárkányszoros](/assets/lore/maps/dragon_strait_hu.png)
+![Sárkányszoros](/assets/lore/maps/dragon_straits_hu.png)
