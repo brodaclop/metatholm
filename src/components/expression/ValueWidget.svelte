@@ -14,7 +14,7 @@
 		{#if expr && expr.name && expr.roll === undefined}<span class="label">{$_(expr.name)}</span
 			>{/if}
 
-		{#if expr?.roll}
+		{#if expr?.roll !== undefined}
 			{typeof expr.roll === 'object' ? printKocka(expr.roll) : expr.roll}
 		{/if}
 		{#if result !== undefined && typeof expr?.roll !== 'number'}
