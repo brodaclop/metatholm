@@ -1,4 +1,4 @@
-# Suttogó Árnyak
+# Suttogó árnyak
 
 `SpellInfo`
 

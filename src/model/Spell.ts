@@ -15,6 +15,7 @@ export type Spell =
     | 'spell:heal'
     | 'spell:farsight'
     | 'spell:extinguish_magic'
+    | 'spell:strike_from_afar'
     | 'spell:borrow_time'
     | 'spell:telekinesis'
     | 'spell:lantern'
@@ -146,6 +147,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
     'spell:extinguish_magic': {
         speed: 6,
         level: 1,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
+        skill: 'skill:spacetime_focus'
+    },
+    'spell:strike_from_afar': {
+        speed: 9,
+        level: 3,
         target: 'spell_target:point',
         duration: 'spell_duration:instant',
         skill: 'skill:spacetime_focus'

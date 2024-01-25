@@ -128,6 +128,7 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'spell:shout': import('$lib/lore/spell/shout_hu.md?raw'),
 		'spell:spirit_shroud': import('$lib/lore/spell/spirit_shroud_hu.md?raw'),
 		'spell:steel_will': import('$lib/lore/spell/steel_will_hu.md?raw'),
+		'spell:strike_from_afar': import('$lib/lore/spell/strike_from_afar_hu.md?raw'),
 		'spell:suppress_pain': import('$lib/lore/spell/suppress_pain_hu.md?raw'),
 		'spell:sustenance': import('$lib/lore/spell/sustenance_hu.md?raw'),
 		'spell:telekinesis': import('$lib/lore/spell/telekinesis_hu.md?raw'),
