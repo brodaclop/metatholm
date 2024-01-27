@@ -1,0 +1,9 @@
+# The Monks
+
+Let's start with stating that the "realm" of the Monks is not really a realm. Their monasteries, dotted all across the word are forming an integral part of whichever country they're in and while they don't pay taxes, it's not unheard of for their members to advise kings and queens.
+
+Moreover we're not even talking about a single monastic order but several, although the outside world knows very little about their relationship. One thing is certain: they're not openly hostile with each other. Their monasteries are usually far from cities and close to agricultural land, accordingly a monk in a city is a rare sight to behold, certainly compared to villages. One peculiar thing about these monastic orders is that apparently every ancestry and gender is equally represented: it's just as likely to bump into a female orc monk as a non-binary elven one.
+
+Monks usually are on good terms with the villages belonging to their estates, not least of all because they are reliant on the food produced by them. In return they help out villagers with healing and teaching, and many have observed that epidemics, droughts and plagues of locusts generally tend to not affect villages who pay tribute to monks. So it's worth being a monastic village even if you're essentially taxed twice (as only the monasteries are exempt from the royal treasuries' tax, their villages are not).
+
+As far as it can be ascertained, monks spend most of their time collecting, protecting and cataloguing knowledge. Everything is interesting to them. Accordingly they often send vagabonds into cities to gather information for example. And if a local lord is giving the monks grief, they may one day—let's say during a hunt—find themselves surrounded by a small group of armed vagabonds suddenly stepping forward from the undergrowth...

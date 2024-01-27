@@ -13,3 +13,5 @@ Falusi bűnözés
 ## Térkép
 
 ![Hollófok](/assets/lore/maps/ravenbluff_hu.png)
+
+<!-- https://watabou.github.io/village-generator/?seed=2052337198&tags=river,no%20square,farmland,highway&width=800&height=800&name=Hollófok&pop=250&roads=178938 -->

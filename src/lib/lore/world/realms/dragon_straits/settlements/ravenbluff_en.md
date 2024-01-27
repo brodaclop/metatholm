@@ -12,4 +12,6 @@ Rural crime.
 
 ## Map
 
-![Ravenbluff](/assets/lore/maps/ravenbluff_hu.png)
+![Ravenbluff](/assets/lore/maps/ravenbluff_en.png)
+
+<!-- https://watabou.github.io/village-generator/?seed=2052337198&tags=river,no%20square,farmland,highway&width=800&height=800&name=Ravenbluff&pop=250&roads=178938 -->

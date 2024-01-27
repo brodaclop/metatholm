@@ -241,8 +241,11 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'skill:throwing': import('$lib/lore/skill/throwing_en.md?raw'),
 		'world:realms:deep_kingdom:realm': import('$lib/lore/world/realms/deep_kingdom/realm_en.md?raw'),
 		'world:realms:dragon_straits:realm': import('$lib/lore/world/realms/dragon_straits/realm_en.md?raw'),
+		'world:realms:dragon_straits:settlements:fort_gullet': import('$lib/lore/world/realms/dragon_straits/settlements/fort_gullet_en.md?raw'),
+		'world:realms:dragon_straits:settlements:north_jaw': import('$lib/lore/world/realms/dragon_straits/settlements/north_jaw_en.md?raw'),
 		'world:realms:dragon_straits:settlements:ravenbluff': import('$lib/lore/world/realms/dragon_straits/settlements/ravenbluff_en.md?raw'),
 		'world:realms:dragon_straits:settlements:south_jaw': import('$lib/lore/world/realms/dragon_straits/settlements/south_jaw_en.md?raw'),
+		'world:realms:monks:realms': import('$lib/lore/world/realms/monks/realms_en.md?raw'),
 		'world:realms:sylvan_alliance:realm': import('$lib/lore/world/realms/sylvan_alliance/realm_en.md?raw'),
 	}
 };
