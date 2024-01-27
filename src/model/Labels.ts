@@ -45,7 +45,12 @@ type GenericLabels = 'label:name' |
     'label:spell' |
     'label:spell_target' |
     'label:spell_duration' |
-    'label:world'
+    'label:world' |
+    'label:download_character' |
+    'label:upload_character' |
+    'label:previous_versions' |
+    'label:restore_version' |
+    'label:revert_to_saved'
     ;
 
 export const Keys = [
@@ -199,6 +204,11 @@ export const Labels_en: Record<Labels, string> = {
     'label:spell_target': 'Target',
     'label:spell_duration': 'Duration',
     'label:world': 'World',
+    'label:download_character': 'Download character',
+    'label:upload_character': 'Upload character',
+    'label:previous_versions': 'Previous versions',
+    'label:restore_version': 'Restore',
+    'label:revert_to_saved': 'Revert to saved',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -455,6 +465,11 @@ export const Labels_hu: Record<Labels, string> = {
     'label:spell_target': 'Célpont',
     'label:spell_duration': 'Időtartam',
     'label:world': 'Világ',
+    'label:download_character': 'Karakter letöltése',
+    'label:upload_character': 'Karakter feltöltése',
+    'label:previous_versions': 'Korábbi verziók',
+    'label:restore_version': 'Visszaállít',
+    'label:revert_to_saved': 'Vissza a legutóbbi mentéshez',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

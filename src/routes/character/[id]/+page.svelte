@@ -38,7 +38,12 @@
 
 <div>
 	{#if data.character}
-		<CharacterSheet initialCharacter={data.character} {deleteCharacter} {saveCharacter} />
+		<CharacterSheet
+			initialCharacter={data.character}
+			{deleteCharacter}
+			{saveCharacter}
+			archives={data.archives}
+		/>
 	{:else}
 		Loading...
 	{/if}

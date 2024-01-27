@@ -9,3 +9,5 @@ Although it is a royal capital, governance of the city is officially in the hand
 ## Typical adventures
 
 Smuggling, inter-guild tensions, gang wars, court intrigue.
+
+<--- https://watabou.github.io/city-generator/0.10.0?size=52&seed=650010557&name=South Jaw&greens=1&farms=1&citadel=1&urban_castle=1&plaza=1&temple=0&walls=1&shantytown=1&coast=1&river=0&gates=-1&sea=0.8 -->

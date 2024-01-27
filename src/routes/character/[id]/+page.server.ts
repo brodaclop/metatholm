@@ -1,4 +1,4 @@
-import { deleteCharacter, loadCharacter, saveCharacter } from '$lib/server/Db';
+import { deleteCharacter, loadArchiveVersions, loadCharacter, saveCharacter } from '$lib/server/Db';
 import type { PageServerLoad } from './$types';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
 
@@ -33,7 +33,10 @@ export const actions: Actions = {
 export const load: PageServerLoad = async ({ params, platform }) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const character = await loadCharacter(platform!, params.id);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const archives = await loadArchiveVersions(platform!, params.id);
     return {
-        character
+        character,
+        archives
     };
 }

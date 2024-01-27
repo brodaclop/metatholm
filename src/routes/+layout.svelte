@@ -128,6 +128,11 @@
 		background-color: whitesmoke;
 	}
 
+	:global(table) {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
 	header {
 		position: sticky;
 		top: 0;

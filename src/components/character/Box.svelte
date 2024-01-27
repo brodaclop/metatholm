@@ -6,6 +6,7 @@
 	import type { BoxFlavour } from '../BoxFlavours';
 
 	export let flavour: BoxFlavour;
+	export let marginless: boolean = false;
 
 	const level: number = getContext('level') ?? 1;
 	setContext('level', Math.min(level + 1, 5));
@@ -13,7 +14,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<article class={flavour} on:mouseenter on:mouseleave on:click>
+<article class={flavour} on:mouseenter on:mouseleave on:click class:marginless>
 	<header>
 		{#if level === 1}
 			<h2><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h2>
@@ -39,6 +40,10 @@
 		padding: 0.5em;
 		margin: 0.5em;
 		filter: drop-shadow(0.2em 0.2em 0.2em #00000080);
+	}
+
+	article.marginless {
+		margin: 0;
 	}
 
 	article.character-sheet {

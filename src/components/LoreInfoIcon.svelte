@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Popover } from 'svelte-smooth-popover';
-	import FaInfoCircle from 'svelte-icons/fa/FaInfoCircle.svelte';
+	import MdHelpOutline from 'svelte-icons/md/MdHelpOutline.svelte';
 	import Lore from './lore/Lore.svelte';
 	import { hasLore } from '../model/Lore';
 	import { locale } from 'svelte-i18n';
@@ -16,11 +16,11 @@
 	<span>
 		{#if inline}
 			<IconButton title={id} on:click>
-				<FaInfoCircle />
+				<MdHelpOutline />
 			</IconButton>
 		{:else}
 			<IconButton title={id}>
-				<FaInfoCircle />
+				<MdHelpOutline />
 				<Popover
 					open={false}
 					showOnClick={true}

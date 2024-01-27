@@ -17,6 +17,17 @@ const ensureInit = async (platform: App.Platform) => {
             'payload text not null' +
             ')'
         );
+        //await platform.env.D1_DB.exec('drop table if exists CharacterArchive');
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS CharacterArchive (' +
+            'key integer primary key autoincrement, ' +
+            'id string not null,' +
+            'user string not null,' +
+            'timestamp integer not null,' +
+            'payload text not null' +
+            ')'
+        );
+
         initialised = true;
     }
 }
@@ -39,8 +50,23 @@ export const loadAllCharacters = async (platform: App.Platform): Promise<Array<C
     return (await stmt.all()).results.map(({ payload }) => JSON.parse(payload as string));
 }
 
+const arciveCharacter = async (platform: App.Platform, id: string) => {
+    ensureInit(platform);
+    const char = await loadCharacter(platform, id);
+    await platform.env.D1_DB.prepare('insert into CharacterArchive (id, user, payload, timestamp) VALUES (?1,?2,?3, ?4)')
+        .bind(char.id, 'global', JSON.stringify(char), Date.now())
+        .run();
+}
+
+export const loadArchiveVersions = async (platform: App.Platform, id: string): Promise<Array<{ char: Character, timestamp: number }>> => {
+    ensureInit(platform);
+    const stmt = platform.env.D1_DB.prepare('select payload, timestamp from CharacterArchive where id=? order by key desc').bind(id);
+    return (await stmt.all()).results.map(({ payload, timestamp }) => ({ char: JSON.parse(payload as string), timestamp: timestamp as number }));
+}
+
 export const saveCharacter = async (platform: App.Platform, char: Character) => {
     ensureInit(platform);
+    await arciveCharacter(platform, char.id);
     const res = await platform.env.D1_DB.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET user=?2, name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
         .bind(char.id, 'global', char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
         .run();

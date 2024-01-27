@@ -4,7 +4,7 @@
 	import type { Character } from '../../model/Karakter';
 	import LevelUpModal from './LevelUpModal.svelte';
 	import IconButton from '../elements/IconButton.svelte';
-	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
+	import MdAdd from 'svelte-icons/md/MdAdd.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 
 	export let character: Character;
@@ -30,7 +30,7 @@
 			<td
 				>{character.levels.length}
 				<IconButton title={'label:levelup'} on:click={() => (levellingUp = true)}
-					><FaPlus /></IconButton
+					><MdAdd /></IconButton
 				>
 			</td>
 		</tr>
@@ -41,5 +41,10 @@
 <style>
 	th {
 		text-align: left;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
 	}
 </style>

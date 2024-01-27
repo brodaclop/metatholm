@@ -1,6 +1,6 @@
 <script lang="ts">
 	import IconButton from './IconButton.svelte';
-	import FaTrashAlt from 'svelte-icons/fa/FaTrashAlt.svelte';
+	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 </script>
 
-<IconButton title="label:delete" color="darkred" on:click><FaTrashAlt /></IconButton>
+<IconButton title="label:delete" color="darkred" on:click><MdDelete /></IconButton>
