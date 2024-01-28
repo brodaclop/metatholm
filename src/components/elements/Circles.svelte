@@ -11,15 +11,16 @@
 	export let name: string;
 	export let subName: string = '';
 	export let max: number;
-	export let min: number = 0;
 	export let editable: boolean = false;
 	export let inlineLore: boolean = false;
+	export let canPlus = true;
+	export let canMinus = true;
 
 	export let plus: () => void = () => {
 		value = Math.min(max, value + 1);
 	};
 	export let minus: () => void = () => {
-		value = Math.max(min, value - 1);
+		value = Math.max(0, value - 1);
 	};
 	export let loreParams: Record<string, unknown> = {};
 
@@ -40,8 +41,8 @@
 	</td>
 	<td class="score">
 		{#if editable}
-			{@const isMin = _newValue === 0}
-			<Circle status={isMin ? 'half' : 'active'} on:click={() => !isMin && minus()}>
+			{@const active = _newValue > 0 && canMinus}
+			<Circle status={!active ? 'half' : 'active'} on:click={() => active && minus()}>
 				<MdRemove slot="value" />
 			</Circle>
 		{/if}
@@ -59,8 +60,8 @@
 			{/if}
 		{/each}
 		{#if editable}
-			{@const isMax = _newValue === max}
-			<Circle status={isMax ? 'half' : 'active'} on:click={() => !isMax && plus()}>
+			{@const active = _newValue < max && canPlus}
+			<Circle status={!active ? 'half' : 'active'} on:click={() => active && plus()}>
 				<MdAdd slot="value" />
 			</Circle>
 		{/if}

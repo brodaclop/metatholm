@@ -37,8 +37,6 @@
 
 	$: changed = character && JSON.stringify(initialCharacter) !== JSON.stringify(character);
 
-	$: console.log(character, initialCharacter);
-
 	$: calculatedCharacter = calculateCharacter(character);
 
 	const save = async () => {

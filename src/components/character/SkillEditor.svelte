@@ -111,8 +111,6 @@
 			];
 		})
 	);
-
-	//TODO: calculate real max
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -156,6 +154,8 @@
 									newValues={sums}
 									inlineLore
 									max={10}
+									canPlus={(key) => kpNeeded[key].result <= remainingKp}
+									canMinus={(key) => (changes[key] ?? 0) > 0}
 									editable
 									{plus}
 									{minus}
