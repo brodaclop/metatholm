@@ -33,6 +33,21 @@
 
 	const effectiveAbility = (num: number, positive: boolean) =>
 		isGeneral ? 10 : positive ? num : 10 - num;
+
+	$: kpNeeded = Array(10)
+		.fill(undefined)
+		.map((_, skillLevel) =>
+			E.evaluate(SKILL_KP, {
+				'expr:skill_level': skillLevel + 1,
+				'expr:skill_difficulty': difficulty,
+				'expr:skill_ability': effectiveAbility(ability, skillInfo?.positive ?? positive)
+			})
+		);
+
+	$: {
+		const sumKp = kpNeeded.reduce((acc, curr) => (acc += curr.result), 0);
+		console.debug('sumKp', sumKp, sumKp / 30);
+	}
 </script>
 
 <table>
@@ -50,7 +65,7 @@
 			bind:value={difficulty}
 			subName={$_(`label:difficulty:${difficulty}`)}
 			max={3}
-			min={1}
+			canMinus={difficulty > 1}
 			editable={!skillInfo}
 		/>
 		{#if !isGeneral}
@@ -59,7 +74,6 @@
 				bind:value={ability}
 				subName={String(ability)}
 				max={10}
-				min={0}
 				editable={true}
 			>
 				<IconButton
@@ -81,7 +95,6 @@
 				value={10}
 				subName={'10'}
 				max={10}
-				min={0}
 				editable={false}
 			/>
 		{/if}
@@ -99,12 +112,7 @@
 	<tbody>
 		<tr>
 			<th class="rowhead">{$_('character:kp')}</th>
-			{#each Array(10) as _, skillLevel (skillLevel)}
-				{@const kp = E.evaluate(SKILL_KP, {
-					'expr:skill_level': skillLevel + 1,
-					'expr:skill_difficulty': difficulty,
-					'expr:skill_ability': effectiveAbility(ability, skillInfo?.positive ?? positive)
-				})}
+			{#each kpNeeded as kp, skillLevel}
 				<td class:active={skillLevel === level}>{kp.result}</td>
 			{/each}
 		</tr>
