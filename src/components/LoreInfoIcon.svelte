@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Popover } from 'svelte-smooth-popover';
 	import MdHelpOutline from 'svelte-icons/md/MdHelpOutline.svelte';
+	import MdInfo from 'svelte-icons/md/MdInfo.svelte';
+	import GiInfo from 'svelte-icons/gi/GiInfo.svelte';
 	import Lore from './lore/Lore.svelte';
 	import { hasLore } from '../model/Lore';
 	import { locale } from 'svelte-i18n';
@@ -16,11 +18,11 @@
 	<span>
 		{#if inline}
 			<IconButton title={id} on:click>
-				<MdHelpOutline />
+				<GiInfo />
 			</IconButton>
 		{:else}
 			<IconButton title={id}>
-				<MdHelpOutline />
+				<GiInfo />
 				<Popover
 					open={false}
 					showOnClick={true}

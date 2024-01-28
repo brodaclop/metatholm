@@ -1,7 +1,6 @@
 import type { Ability } from "./Abilities";
 import { createList } from "./InfoList";
 
-//TODO: swimming
 
 export type SkillInfo = {
     readonly name: Skill;
@@ -288,6 +287,12 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: true,
         type: 'skill_type:knowledge'
     },
+    'skill:tinkering': {
+        difficulty: 2,
+        ability: 'ability:activity',
+        positive: false,
+        type: 'skill_type:basic'
+    },
 };
 
 export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge';
@@ -336,7 +341,8 @@ export type Skill = 'skill:endurance' |
     'skill:architecture' |
     'skill:law' |
     'skill:etiquette' |
-    'skill:swimming'
+    'skill:swimming' |
+    'skill:tinkering'
     ;
 
 export const Skill = createList(SkillInfos);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let status: 'empty' | 'half' | 'full' | 'reduced' | 'increased';
+	export let status: 'empty' | 'half' | 'full' | 'reduced' | 'increased' | 'active';
 </script>
 
 <span class={status} on:click on:keypress>
@@ -27,6 +27,16 @@
 
 	.half {
 		background-color: lightgray;
+		opacity: 0.3;
+	}
+
+	.active {
+		background-color: lightgray;
+	}
+
+	.active:hover {
+		background-color: lightgray;
+		opacity: 0.7;
 	}
 
 	.reduced {

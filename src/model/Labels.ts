@@ -260,6 +260,7 @@ export const Labels_en: Record<Labels, string> = {
     'skill:law': 'Law',
     'skill:etiquette': 'Etiquette',
     'skill:swimming': 'Swimming',
+    'skill:tinkering': 'Tinkering',
 
     'skill_type:basic': 'Basic',
     'skill_type:combat': 'Combat',
@@ -521,6 +522,7 @@ export const Labels_hu: Record<Labels, string> = {
     'skill:law': 'Jog',
     'skill:etiquette': 'Etikett',
     'skill:swimming': 'Úszás',
+    'skill:tinkering': 'Bütykölés',
 
     'skill_type:basic': 'Alap',
     'skill_type:combat': 'Harci',

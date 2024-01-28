@@ -111,6 +111,8 @@
 			];
 		})
 	);
+
+	//TODO: calculate real max
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->

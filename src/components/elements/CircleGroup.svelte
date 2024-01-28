@@ -6,7 +6,8 @@
 	export let rows: Array<T | { name: T; subName: string }>;
 	export let values: Partial<Record<T, number>>;
 	export let newValues: Partial<Record<T, number>> = {};
-	export let max: number;
+	export let min: number | ((key: T) => number) = 0;
+	export let max: number | ((key: T) => number);
 	export let editable: boolean = false;
 	export let plus: (name: T) => void = () => {};
 	export let minus: (name: T) => void = () => {};
@@ -22,7 +23,8 @@
 				{name}
 				value={values[name] ?? 0}
 				newValue={newValues[name]}
-				{max}
+				min={typeof min === 'number' ? min : min(name)}
+				max={typeof max === 'number' ? max : max(name)}
 				{editable}
 				{inlineLore}
 				subName={typeof key === 'string' ? '' : key.subName}

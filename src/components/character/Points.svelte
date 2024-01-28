@@ -9,6 +9,7 @@
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	export let character: Character;
 
+	export let admin = false;
 	export let calculatedCharacter: CalculatedCharacter;
 	export let editable = true;
 
@@ -76,7 +77,12 @@
 					<span class="label">{$_('character:kp')}</span>
 				</td>
 				<td>
-					<span><input type="number" bind:value={character.current.kp} disabled={!editable} /></span
+					<span
+						><input
+							type="number"
+							bind:value={character.current.kp}
+							disabled={!editable || !admin}
+						/></span
 					>
 					<span
 						><IconButton

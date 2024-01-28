@@ -15,6 +15,7 @@
 	import MdFileDownload from 'svelte-icons/md/MdFileDownload.svelte';
 	import MdCancel from 'svelte-icons/md/MdCancel.svelte';
 	import MdFileUpload from 'svelte-icons/md/MdFileUpload.svelte';
+	import MdSettings from 'svelte-icons/md/MdSettings.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
@@ -26,6 +27,7 @@
 	export let saveCharacter: (char: Character) => Promise<void>;
 
 	let character: Character;
+	let admin = false;
 
 	let saving = false;
 
@@ -76,7 +78,7 @@
 			</IconButton>
 			<IconButton
 				title="label:revert_to_saved"
-				color={changed || saving ? 'red' : undefined}
+				color={changed || saving ? 'darkred' : undefined}
 				disabled={!changed || saving}
 				on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
 			>
@@ -115,6 +117,13 @@
 		</span>
 		{$_('label:character')}: {character.name}
 		<span>
+			<IconButton
+				title="Admin"
+				on:click={() => (admin = !admin)}
+				color={admin ? 'darkred' : undefined}
+			>
+				<MdSettings />
+			</IconButton>
 			<DeleteButton on:click={deleteCharacter} />
 		</span>
 	</div>
@@ -123,10 +132,10 @@
 			<div class="first">
 				<MainBox bind:character />
 				<Box title="character:abilities" flavour="abilities">
-					<Abilities bind:abilities={character.abilities} />
+					<Abilities bind:abilities={character.abilities} editable={admin} />
 				</Box>
 				<Box title="character:points" flavour="points">
-					<Points bind:character {calculatedCharacter} />
+					<Points bind:character {calculatedCharacter} {admin} />
 				</Box>
 
 				<Box flavour="inventory" title="character:weapons">

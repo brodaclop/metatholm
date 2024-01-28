@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Circle from './Circle.svelte';
-	import FaMinus from 'svelte-icons/fa/FaMinus.svelte';
-	import FaPlus from 'svelte-icons/fa/FaPlus.svelte';
+	import MdAdd from 'svelte-icons/md/MdAdd.svelte';
+	import MdRemove from 'svelte-icons/md/MdRemove.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	import Lore from '../lore/Lore.svelte';
 
@@ -14,6 +14,7 @@
 	export let min: number = 0;
 	export let editable: boolean = false;
 	export let inlineLore: boolean = false;
+
 	export let plus: () => void = () => {
 		value = Math.min(max, value + 1);
 	};
@@ -39,8 +40,9 @@
 	</td>
 	<td class="score">
 		{#if editable}
-			<Circle status={_newValue === 0 ? 'half' : 'empty'} on:click={minus}>
-				<FaMinus slot="value" />
+			{@const isMin = _newValue === 0}
+			<Circle status={isMin ? 'half' : 'active'} on:click={() => !isMin && minus()}>
+				<MdRemove slot="value" />
 			</Circle>
 		{/if}
 		{#each Array(max) as _, i}
@@ -57,8 +59,9 @@
 			{/if}
 		{/each}
 		{#if editable}
-			<Circle status={_newValue === max ? 'half' : 'empty'} on:click={plus}>
-				<FaPlus slot="value" />
+			{@const isMax = _newValue === max}
+			<Circle status={isMax ? 'half' : 'active'} on:click={() => !isMax && plus()}>
+				<MdAdd slot="value" />
 			</Circle>
 		{/if}
 	</td>
