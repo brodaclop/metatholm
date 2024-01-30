@@ -1,5 +1,4 @@
 <script lang="ts">
-	//TODO: positive/negative button title
 	import { _ } from 'svelte-i18n';
 	import { Skill, type SkillInfo } from '../../../model/Skills';
 	import { E } from '../../../logic/Expression';

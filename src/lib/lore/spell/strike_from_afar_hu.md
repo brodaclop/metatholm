@@ -2,7 +2,7 @@
 
 `SpellInfo`
 
-A varázsló rámutat egy tárgyra, majd egy célpontra, amire az – amennyiben nincs rögzítve – nagy sebességgel a célpont fele röppen. A célpontnak, amennyiben képes erre, [Reflex](skill:reactions) ellenpróbát kell dobnia a varázsló [Téridő fókusz](skill_spacetime_focus) képzettsége ellen, és amennyiben ez sikertelen, a tárgy eltalálja, annyiszor `1d5!` sebzést okozva, amennyi a varázslat erősítése.
+A varázsló rámutat egy tárgyra, majd egy célpontra, amire az – amennyiben nincs rögzítve – nagy sebességgel a célpont fele röppen. A célpontnak, amennyiben képes erre, [Reflex](skill:reactions) ellenpróbát kell dobnia a varázsló [Téridő fókusz](skill:spacetime_focus) képzettsége ellen, és amennyiben ez sikertelen, a tárgy eltalálja, annyiszor `1d5!` sebzést okozva, amennyi a varázslat erősítése.
 
 A fentiek egy kb. 5 kilós, tömör, kemény tárgy, pl. egy kődarab esetén érvényesek. Amennyiben a tárgy kevésbé tömör, a sebzés is kevesebb lesz, ha viszont pl. tüskés vagy éles, akkor több.
 
