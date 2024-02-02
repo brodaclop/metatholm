@@ -52,10 +52,20 @@ export const loadAllCharacters = async (platform: App.Platform): Promise<Array<C
 
 const arciveCharacter = async (platform: App.Platform, id: string) => {
     ensureInit(platform);
-    const char = await loadCharacter(platform, id);
-    await platform.env.D1_DB.prepare('insert into CharacterArchive (id, user, payload, timestamp) VALUES (?1,?2,?3, ?4)')
-        .bind(char.id, 'global', JSON.stringify(char), Date.now())
-        .run();
+    let char: Character | undefined = undefined;
+    try {
+        char = await loadCharacter(platform, id);
+    } catch (e) {
+
+    }
+    if (char) {
+        await platform.env.D1_DB.prepare('insert into CharacterArchive (id, user, payload, timestamp) VALUES (?1,?2,?3, ?4)')
+            .bind(char.id, 'global', JSON.stringify(char), Date.now())
+            .run();
+    }
+
+
+
 }
 
 export const loadArchiveVersions = async (platform: App.Platform, id: string): Promise<Array<{ char: Character, timestamp: number }>> => {
@@ -82,7 +92,11 @@ export const deleteCharacter = async (platform: App.Platform, char: Pick<Charact
 export const loadCharacter = async (platform: App.Platform, id: string): Promise<Character> => {
     ensureInit(platform);
     const stmt = platform.env.D1_DB.prepare('select payload from Characters where id = ?').bind(id);
-    return upgrade(JSON.parse((await stmt.first())!.payload as string));
+    const found = await stmt.first();
+    if (!found) {
+        throw new Error('Character not found with id: ' + id);
+    }
+    return upgrade(JSON.parse(found.payload as string));
 }
 
 
