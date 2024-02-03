@@ -7,7 +7,8 @@
 		type Action,
 		type ActionVariant,
 		type ActionRange,
-		ACTION_VARIANT_PROPERTIES
+		ACTION_VARIANT_PROPERTIES,
+		RANGE_ORDER
 	} from '../../model/Action';
 	import { entries, group } from '../../model/InfoList';
 	import GiShieldReflect from 'svelte-icons/gi/GiShieldReflect.svelte';
@@ -48,57 +49,60 @@
 			{$_(action.name)}{/if}</slot
 	>
 	<div class="ranges">
-		{#each entries(sorted) as [currentDistance, variants]}
-			{#if range === undefined || range === currentDistance || currentDistance === 'any-range'}
-				<div class="title">
-					<Box flavour="action-distance" title={`label:${currentDistance}`} />
-					{#each variants as variant}
-						{@const selectable = isSelectable?.(variant.name)}
-						<Box
-							flavour={isSelectable && !selectable
-								? 'action-variant-unselectable'
-								: current === variant.name
-								? 'action-variant-selected'
-								: 'action-variant-selectable'}
-							on:mouseenter={() => {
-								if (selectable) {
-									current = variant.name;
-								}
-							}}
-							on:mouseleave={() => (current = undefined)}
-							on:click={() => {
-								if (current) {
-									select(current);
-									current = undefined;
-								}
-							}}
-						>
-							<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
-								<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
-								<span class="type-icon">
-									{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
-										<GiSpinningSword />
-									{:else}
-										<GiShieldReflect />
-									{/if}
-								</span>
-								{$_(variant.name)}
-							</div>
-							{#each variant.rolls as roll}
-								<div class="row">
-									<span class="label">{$_(roll.name)}</span>
-									<span class="value">
-										{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
-											<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
+		{#each RANGE_ORDER as currentDistance}
+			{@const variants = sorted[currentDistance]}
+			{#if variants}
+				{#if range === undefined || range === currentDistance || currentDistance === 'any-range'}
+					<div class="title">
+						<Box flavour="action-distance" title={`label:${currentDistance}`} />
+						{#each variants as variant}
+							{@const selectable = isSelectable?.(variant.name)}
+							<Box
+								flavour={isSelectable && !selectable
+									? 'action-variant-unselectable'
+									: current === variant.name
+									? 'action-variant-selected'
+									: 'action-variant-selectable'}
+								on:mouseenter={() => {
+									if (selectable) {
+										current = variant.name;
+									}
+								}}
+								on:mouseleave={() => (current = undefined)}
+								on:click={() => {
+									if (current) {
+										select(current);
+										current = undefined;
+									}
+								}}
+							>
+								<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
+									<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
+									<span class="type-icon">
+										{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
+											<GiSpinningSword />
 										{:else}
-											<ExpressionWidget expr={roll.roll} />
+											<GiShieldReflect />
 										{/if}
 									</span>
+									{$_(variant.name)}
 								</div>
-							{/each}
-						</Box>
-					{/each}
-				</div>
+								{#each variant.rolls as roll}
+									<div class="row">
+										<span class="label">{$_(roll.name)}</span>
+										<span class="value">
+											{#if typeof roll.roll !== 'number' && 'result' in roll.roll}
+												<ExpressionTooltip expr={roll.roll} text={roll.rollString} />
+											{:else}
+												<ExpressionWidget expr={roll.roll} />
+											{/if}
+										</span>
+									</div>
+								{/each}
+							</Box>
+						{/each}
+					</div>
+				{/if}
 			{/if}
 		{/each}
 	</div>

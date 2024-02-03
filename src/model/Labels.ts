@@ -84,6 +84,7 @@ export const Keys = [
     'label:difficulty:3',
 
     'skill_type:general',
+    'weapon:effective_skill'
 
 ] as const;
 
@@ -339,6 +340,7 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:speed': 'Speed',
     'weapon:difficulty': 'Difficulty',
     'weapon:skill': 'Skill',
+    'weapon:effective_skill': 'Effective Skill',
     'weapon:attack': 'Attack',
     'weapon:defence': 'Defence',
     'weapon:hands': 'Hands',
@@ -592,6 +594,7 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:speed': 'Sebesség',
     'weapon:difficulty': 'Nehézség',
     'weapon:skill': 'Képzettség',
+    'weapon:effective_skill': 'Hatásos Képzettség',
     'weapon:attack': 'Támadás',
     'weapon:hands': 'Kéz',
     'weapon:defence': 'Védekezés',

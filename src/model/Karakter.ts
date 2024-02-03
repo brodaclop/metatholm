@@ -114,6 +114,8 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
             actions: {
                 'action:attack-cq': 1,
                 'action:defend-cq': 0,
+                'action:defend': -1,
+                'action:defend-range': -2,
                 'action:close-in': 1,
                 'action:disengage': 2,
                 'action:keep-close': 0,

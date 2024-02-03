@@ -25,6 +25,8 @@ export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
 
 export type ActionRange = 'out-of-range' | 'in-range' | 'close-quarters';
 
+export const RANGE_ORDER: Array<ActionRange | 'any-range'> = ['close-quarters', 'in-range', 'out-of-range', 'any-range'];
+
 export type ActionType = 'action' | 'reaction';
 
 export interface ActionVariantProperties {
