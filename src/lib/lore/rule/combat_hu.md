@@ -6,7 +6,7 @@ A követhetőség érdekében ebben a játékban a harc körökre van osztva. A 
 
 ## Akciópontok
 
-A harci kör úgy indul, hogy minden résztvető dob `d10+10`-et, hogy meghatározza, a karakter hány akciópontot költhet abban a körben. A legtöbb akcióponttal rendelkező karakter fog elsőnek cselekedni, így neki kell először eldöntenie, hogy milyen akciót kíván végrehajtani, majd végrehajtania azt. A karakter akciópontjai ezután annyival csökkennek, amennyi az adott manőver akciópont-költsége. Mindezek után az a karakter "lép" következőnek, akinek a jelenlegi állás szerint legtöbb az akciópontja, és így tovább. (Ez akár lehet az imént cselekvő karakter is, amennyiben a végrehajtott manőver különösen gyors volt.) Ezt addig folytatják, amíg egyetlen karakternek sincs már akciópontja, amikoris a kör véget ér, és kezdődik minden előlről.
+A harci kör úgy indul, hogy minden résztvető dob `d10!+10`-et, hogy meghatározza, a karakter hány akciópontot költhet abban a körben. A legtöbb akcióponttal rendelkező karakter fog elsőnek cselekedni, így neki kell először eldöntenie, hogy milyen akciót kíván végrehajtani, majd végrehajtania azt. A karakter akciópontjai ezután annyival csökkennek, amennyi az adott manőver akciópont-költsége. Mindezek után az a karakter "lép" következőnek, akinek a jelenlegi állás szerint legtöbb az akciópontja, és így tovább. (Ez akár lehet az imént cselekvő karakter is, amennyiben a végrehajtott manőver különösen gyors volt.) Ezt addig folytatják, amíg egyetlen karakternek sincs már akciópontja, amikoris a kör véget ér, és kezdődik minden előlről.
 
 ## Akció
 

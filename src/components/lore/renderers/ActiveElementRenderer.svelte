@@ -19,12 +19,13 @@
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 	import { getContext } from 'svelte';
 	import FocusSpellList from '../interactive/FocusSpellList.svelte';
+	import FormattedDate from '../interactive/FormattedDate.svelte';
 
 	export let raw: string;
 
 	const additionalParams = getContext<Record<string, unknown>>('activeElementParams') ?? {};
 
-	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]*(\+[0-9]+)?\!?$/;
+	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]+\!?(\+[0-9]+)?$/;
 
 	const components: Record<string, any> = {
 		SkillRolls: SkillRolls,
@@ -42,7 +43,8 @@
 		CombatRollCalculator: CombatRollCalculator,
 		DamageCalculator: DamageCalculator,
 		FocusSpellList: FocusSpellList,
-		SpellInfo: SpellInfo
+		SpellInfo: SpellInfo,
+		FormattedDate: FormattedDate
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

@@ -20,7 +20,7 @@
 	} from '../../model/Action';
 	import InfoBox from '../../components/simulator/InfoBox.svelte';
 
-	const AP_ROLL = parseKocka('1d10+10');
+	const AP_ROLL = parseKocka('1d10!+10');
 
 	export let data: PageData;
 

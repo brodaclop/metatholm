@@ -43,7 +43,7 @@ export const simulateCombat = (playerOne: SimulationCharacter, playerTwo: Simula
         'miss': 0
     };
     for (let i = 0; i < rounds; i++) {
-        let aps = kockaDobas(parseKocka('1d10+10')).osszeg;
+        let aps = kockaDobas(parseKocka('1d10!+10')).osszeg;
         const apPerHit = E.evaluate(ATTACK_AP, {
             'weapon:speed': playerOne.weapon.ap,
             'weapon:skill': playerOne.skill,

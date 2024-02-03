@@ -215,6 +215,7 @@ export const Labels_en: Record<Labels, string> = {
     'rule:exploding_dice': 'Exploding dice',
     'rule:combat': 'Combat',
     'rule:magic': 'Magic',
+    'rule:changes': 'Rule Changes',
 
     'skill:endurance': 'Endurance',
     'skill:pain_threshold': 'Pain Threshold',
@@ -478,6 +479,7 @@ export const Labels_hu: Record<Labels, string> = {
     'rule:exploding_dice': 'Robbantott kockadobás',
     'rule:combat': 'Harc',
     'rule:magic': 'Mágia',
+    'rule:changes': 'Szabályváltozások',
 
     'skill:endurance': 'Állóképesség',
     'skill:pain_threshold': 'Fájdalomküszöb',
