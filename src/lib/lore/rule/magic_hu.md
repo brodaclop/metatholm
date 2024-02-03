@@ -28,18 +28,22 @@ Minden varázslat egy **fókusz** képzettséghez tartozik, ezt a képzettséget
 
 Ehhez először is el kell döntenie, milyen erősséggel próbálja létrehozni a varázslatot. Hogy az erősség hogy hat a varázslatra, az mindig az adott varázslat leírásából derül ki, de általában a magasabb erősség erősebb hatást, több célpontot vagy hosszabb időrtartamot jelent, esetleg a fentiek kombinációját. (Ilyenkor a varázslat leírásában szerepel az, hogy az adott paraméter "erősíthető".)
 
-Mindezek után a varázsló dob annyi `1d10!`-zel, amennyivel a fókusz képzettsége nagyobb a varázslat szintjénél. Tehát ha pl. a már említett 4-es szintű Testi fókuszú karakter egy 2-es szintű varázslatot próbál létrehozni, akkor a dobás `2d10!` lesz.
+Mindezek után a varázsló dob annyi `d10!`-zel, amennyivel a fókusz képzettsége nagyobb a varázslat szintjénél. Tehát ha pl. a már említett 4-es szintű Testi fókuszú karakter egy 2-es szintű varázslatot próbál létrehozni, akkor a dobás `2d10!` lesz.
 
-Ezzel szemben a mesélő annyi `1d10!`-zel dob, amennyi a létrehozni kívánt varázslat erőssége.
+Ezzel szemben a mesélő annyi `d10!`-zel dob, amennyi a létrehozni kívánt varázslat erőssége.
 
 Amennyiben a varázsló dobása magasabb, úgy a varázslat minden további nélkül létrejön.
 
 Ha viszont a mesélő dobása eléri vagy meghaladja a varázslóét, akkor a varázslat minden megkezdett 10 pontnyi különbség után 1 Mágia Pontba kerül. Tehát ha a varázsló 17-et dobott, a mesélő meg 20-at, akkor a költség 1 MP, ha 27-et, akkor 2 MP stb. Amennyiben a varázslónak nincs elég Mágia Pontja, dönthet úgy, hogy a fennmaradó összeget közvetlenül az [életerejéből](character:ep) kívánja törleszteni. De természetesen úgy is dönthet, hogy inkább abbahagyja a varázslást, ezesetben mindössze a varázslásra szánt ideje vész el.
 
-## "Csípőből" varázslás
+### "Csípőből" varázslás
 
 A varázsló dönthet úgy, hogy a varázslatot gyorsabban, de kisebb erővel hozza létre.
 
-## Lassú varázslás
+### Lassú varázslás
 
 Lassú varázslás esetén a varázsló az egész harci körét a varázslat létrehozására való koncentrálásnak szenteli. Ez annyit tesz, hogy az adott körben semmi mást nem tehetnek, ideértve a mozgást és a támadások elleni védekezést is.
+
+### Időtartam
+
+Amennyiben a varázslat időtartama 1 kör, úgy az alapesetben a varázslás utáni kör végéig tart. Ugyanakkor minden varázslat, amelynek időtartama nem "azonnali", bármikor megszüntethető a varázsló által. Ez történhet úgy, hogy a varázsló ezt bejelenti, amikor ő kerül sorra a körben (akciópont költség nélkül), vagy egy előre meghatározott feltétel teljesülésekor (pl. "amikor bármelyik társam megközelíti a tűzfalat, az eltűnik").

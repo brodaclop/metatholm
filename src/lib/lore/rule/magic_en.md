@@ -28,18 +28,22 @@ Each spell belongs to a **focus skill**, this is the skill the character needs t
 
 For this they first of all have to decide what **strength** they want to cast the spell with. How strength affects a spell is always specified in the description of the spell but usually it means a stronger effect, more targets/larger area of effect, longer duration, or a combination of the above. (The description of the spell will describe this by stating that a property of the spell can be "improved".)
 
-Once strength has been determined, the caster has to roll with as many `1d10!` as the difference of their focus skill and the level of the spell. E.g. the aforementioned character with a Body Focus skill of 4 casting a level 2 spell will roll with `2d10!`.
+Once strength has been determined, the caster has to roll with as many `d10!` as the difference of their focus skill and the level of the spell. E.g. the aforementioned character with a Body Focus skill of 4 casting a level 2 spell will roll with `2d10!`.
 
-The dungeon master will "oppose" this roll with as many `1d10!`s as the chosen strength of the spell.
+The dungeon master will "oppose" this roll with as many `d10!`s as the chosen strength of the spell.
 
 If the spellcaster's roll is higher, the spell is cast without further cost or complication.
 
 If the spellcaster loses the contest, for every 10 points of the difference (starting from 0) they also have to expend 1 Magic Power points. So if the spellcaster rolls a 17 and the DM a 20, the cost is 1 MP, if the DM rolls 27, it's 2 MPs and so on. If the spellcaster hasn't got enough MPs left, they can choose to pay the remaining cost from their [Life Force](character:ep). Of course they can also always decide that they don't want to cast the spell after all, in which case the only thing they lose is the time it took to not-quite-cast the spell.
 
-## Snapshots
+### Snapshots
 
 The caster can also choose to cast the spell faster with less power.
 
-## Slow casting
+### Slow casting
 
 Slow casting means the caster will fully concentrate on creating the spell for their entire combat round, meaning they can't do anything else during that round, including movement or defending against incoming blows. Outside of a combat situation it can usually be assumed that all spellcasting is done this way.
+
+### Duration
+
+If the duration of a spell is 1 round, it normally lasts until the end of the round after it was cast. But any spell whose duration isn't "instant" can be cancelled at any time by the caster, either when it's the caster's turn (no AP cost) or at a pre-determined trigger point (e.g. "when one of my team mates approaches the wall of fire, it disappears").

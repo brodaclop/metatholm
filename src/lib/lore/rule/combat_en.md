@@ -8,6 +8,8 @@ For easier handling of time, combat is split into rounds. Unlike in most other g
 
 Each combat round begins with every participant rolling `d10!+10`, this is how many action points they've got for that round. The character with the highest action point total will act first in the round, picking an action they want to perform. Performing the action will reduce the character's action point total, meaning the character who has the highest total now will act next. (This could be the same character if the action was particularly quick.) This is repeated until none of the participants have any action points left, at which point the combat round ends and we start afresh with the next round.
 
+*If two or more opposing characters have the same amount of action points, the player's character comes first. Between player characters you can use the [Activity](ability:activity) ability as a tiebreaker.*
+
 ## Actions
 
 On their turn characters can pick an action to perform. This could be an attack, casting a spell, attempting to get close to an opponent or any other combat manoeuvre. The target can then usually pick a reaction to oppose the action, depending on what the action was.
