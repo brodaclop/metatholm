@@ -8,58 +8,51 @@ let initialised = false;
 
 //TODO: use virtual generated columns for name, ancestry, background and level
 
-const ensureInit = async (platform: App.Platform): Promise<string> => {
-    try {
-        if (!initialised) {
-            const res1 = await platform.env.D1_DB.exec(
-                'CREATE TABLE IF NOT EXISTS Characters (' +
-                'id string primary key,' +
-                'user string not null,' +
-                'name string not null,' +
-                'ancestry string not null,' +
-                'background string not null,' +
-                'level integer not null,' +
-                'payload text not null' +
-                ')'
-            );
-            //await platform.env.D1_DB.exec('drop table if exists CharacterArchive');
-            const res2 = await platform.env.D1_DB.exec(
-                'CREATE TABLE IF NOT EXISTS CharacterArchive (' +
-                'key integer primary key autoincrement, ' +
-                'id string not null,' +
-                'user string not null,' +
-                'timestamp integer not null,' +
-                'payload text not null' +
-                ')'
-            );
+const ensureInit = async (platform: App.Platform) => {
+    if (!initialised) {
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS Characters (' +
+            'id string primary key,' +
+            'user string not null,' +
+            'name string not null,' +
+            'ancestry string not null,' +
+            'background string not null,' +
+            'level integer not null,' +
+            'payload text not null' +
+            ')'
+        );
+        //await platform.env.D1_DB.exec('drop table if exists CharacterArchive');
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS CharacterArchive (' +
+            'key integer primary key autoincrement, ' +
+            'id string not null,' +
+            'user string not null,' +
+            'timestamp integer not null,' +
+            'payload text not null' +
+            ')'
+        );
 
-            //await platform.env.D1_DB.exec('drop table if exists NPC');
-            const res3 = await platform.env.D1_DB.exec(
-                'CREATE TABLE IF NOT EXISTS NPC (' +
-                'id string primary key,' +
-                'user string not null,' +
-                'payload text not null,' +
-                'name as (json_extract(payload, \'$.name\'))' +
-                ')'
-            );
+        //await platform.env.D1_DB.exec('drop table if exists NPC');
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS NPC (' +
+            'id string primary key,' +
+            'user string not null,' +
+            'payload text not null,' +
+            'name as (json_extract(payload, \'$.name\'))' +
+            ')'
+        );
 
-            const res4 = await platform.env.D1_DB.exec(
-                'CREATE TABLE IF NOT EXISTS Encounters (' +
-                'id string primary key,' +
-                'user string not null,' +
-                'payload text not null,' +
-                'name as (json_extract(payload, \'$.name\'))' +
-                ')'
-            );
+        await platform.env.D1_DB.exec(
+            'CREATE TABLE IF NOT EXISTS Encounters (' +
+            'id string primary key,' +
+            'user string not null,' +
+            'payload text not null,' +
+            'name as (json_extract(payload, \'$.name\'))' +
+            ')'
+        );
 
 
-            initialised = true;
-
-            return 'Table creation: ' + [res1, res2, res3, res4].map(r => JSON.stringify(r)).join('\n');
-        }
-        return 'Already initialised'
-    } catch (e) {
-        return 'failed to initialise db: ' + JSON.stringify(e);
+        initialised = true;
     }
 }
 
@@ -138,17 +131,12 @@ export const saveNPC = async (platform: App.Platform, char: NPC) => {
 }
 
 export const listNPCs = async (platform: App.Platform): Promise<Array<Pick<NPC, 'id' | 'name'>>> => {
-    const res = await ensureInit(platform);
-    try {
-        const stmt = platform.env.D1_DB.prepare('select id, name from NPC');
-        return (await stmt.all()).results.map(({ id, name }) => ({
-            id,
-            name,
-        } as Pick<NPC, 'id' | 'name'>));
-    } catch (e) {
-        throw new Error('my custom error: ' + res);
-    }
-
+    await ensureInit(platform);
+    const stmt = platform.env.D1_DB.prepare('select id, name from NPC');
+    return (await stmt.all()).results.map(({ id, name }) => ({
+        id,
+        name,
+    } as Pick<NPC, 'id' | 'name'>));
 }
 
 export const deleteNPC = async (platform: App.Platform, char: Pick<NPC, 'id'>) => {
