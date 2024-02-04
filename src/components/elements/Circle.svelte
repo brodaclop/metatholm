@@ -1,13 +1,16 @@
 <script lang="ts">
 	export let status: 'empty' | 'half' | 'full' | 'reduced' | 'increased' | 'active';
+	export let clickable = false;
 </script>
 
-<span class={status} on:click on:keypress>
-	<slot name="value" />
+<span class={`${status} main`} on:click on:keypress tabindex="0" class:clickable role="button">
+	<span class="inner">
+		<slot />
+	</span>
 </span>
 
 <style>
-	span {
+	span.main {
 		border: 1px solid black;
 		box-shadow: 0.1em 0.1em 0.1em slategray;
 		border-radius: 50%;
@@ -18,7 +21,17 @@
 		margin-bottom: 0.2em;
 		white-space: pre;
 		font-size: small;
+		text-align: center;
 		padding: 0.1em;
+	}
+
+	span.inner {
+		padding-bottom: 1px;
+		height: 1rem;
+	}
+
+	.clickable {
+		cursor: pointer;
 	}
 
 	.empty {

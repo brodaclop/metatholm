@@ -8,7 +8,7 @@
 
 	export let value: number;
 	export let newValue: number | undefined = undefined;
-	export let name: string;
+	export let name: string | undefined = undefined;
 	export let subName: string = '';
 	export let max: number;
 	export let editable: boolean = false;
@@ -30,20 +30,22 @@
 </script>
 
 <tr class="circles">
-	<td class="name">
-		<LoreInfoIcon
-			id={name}
-			inline={inlineLore}
-			params={{ ...loreParams, level: value }}
-			on:click={() => (loreOpen = !loreOpen)}
-		/>{$_(name)}
-		{#if subName}<i>({$_(subName)})</i>{/if}
-	</td>
+	{#if name}
+		<td class="name">
+			<LoreInfoIcon
+				id={name}
+				inline={inlineLore}
+				params={{ ...loreParams, level: value }}
+				on:click={() => (loreOpen = !loreOpen)}
+			/>{$_(name)}
+			{#if subName}<i>({$_(subName)})</i>{/if}
+		</td>
+	{/if}
 	<td class="score">
 		{#if editable}
 			{@const active = _newValue > 0 && canMinus}
-			<Circle status={!active ? 'half' : 'active'} on:click={() => active && minus()}>
-				<MdRemove slot="value" />
+			<Circle status={!active ? 'half' : 'active'} on:click={() => active && minus()} clickable>
+				<MdRemove />
 			</Circle>
 		{/if}
 		{#each Array(max) as _, i}
@@ -61,8 +63,8 @@
 		{/each}
 		{#if editable}
 			{@const active = _newValue < max && canPlus}
-			<Circle status={!active ? 'half' : 'active'} on:click={() => active && plus()}>
-				<MdAdd slot="value" />
+			<Circle status={!active ? 'half' : 'active'} on:click={() => active && plus()} clickable>
+				<MdAdd />
 			</Circle>
 		{/if}
 	</td>
