@@ -138,11 +138,16 @@ export const saveNPC = async (platform: App.Platform, char: NPC) => {
 
 export const listNPCs = async (platform: App.Platform): Promise<Array<Pick<NPC, 'id' | 'name'>>> => {
     ensureInit(platform);
-    const stmt = platform.env.D1_DB.prepare('select id, name from NPC');
-    return (await stmt.all()).results.map(({ id, name }) => ({
-        id,
-        name,
-    } as Pick<NPC, 'id' | 'name'>));
+    try {
+        const stmt = platform.env.D1_DB.prepare('select id, name from NPC');
+        return (await stmt.all()).results.map(({ id, name }) => ({
+            id,
+            name,
+        } as Pick<NPC, 'id' | 'name'>));
+    } catch (e) {
+        throw new Error('my custom error');
+    }
+
 }
 
 export const deleteNPC = async (platform: App.Platform, char: Pick<NPC, 'id'>) => {
