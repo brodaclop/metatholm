@@ -32,15 +32,21 @@ const ensureInit = async (platform: App.Platform) => {
             ')'
         );
 
-        //await platform.env.D1_DB.exec('drop table if exists NPC');
-        await platform.env.D1_DB.exec(
-            'CREATE TABLE IF NOT EXISTS NPC (' +
-            'id string primary key,' +
-            'user string not null,' +
-            'payload text not null,' +
-            'name as (json_extract(payload, \'$.name\'))' +
-            ')'
-        );
+        try {
+            //await platform.env.D1_DB.exec('drop table if exists NPC');
+            const res = await platform.env.D1_DB.exec(
+                'CREATE TABLE IF NOT EXISTS NPC (' +
+                'id string primary key,' +
+                'user string not null,' +
+                'payload text not null,' +
+                'name as (json_extract(payload, \'$.name\'))' +
+                ')'
+            );
+            console.info('execution result', res);
+
+        } catch (e) {
+            console.error('failed to create NPC table', e);
+        }
 
         await platform.env.D1_DB.exec(
             'CREATE TABLE IF NOT EXISTS Encounters (' +

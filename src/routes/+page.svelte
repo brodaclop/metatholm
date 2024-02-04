@@ -70,7 +70,7 @@
 			]
 		}}
 	/> -->
-	<button on:click={() => (editable = !editable)}>Edit</button>
+	<!-- <button on:click={() => (editable = !editable)}>Edit</button>
 	<Npc
 		{editable}
 		character={{
@@ -160,7 +160,7 @@
 			],
 			notes: ''
 		}}
-	/>
+	/> -->
 
 	<!-- <Harc /> -->
 	<!-- <SkillLore
