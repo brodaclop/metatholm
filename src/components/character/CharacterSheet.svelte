@@ -29,8 +29,6 @@
 	let character: Character;
 	let admin = false;
 
-	let saving = false;
-
 	$: if (!character || character.id !== initialCharacter.id) {
 		character = JSON.parse(JSON.stringify(initialCharacter));
 	}
@@ -38,6 +36,8 @@
 	$: changed = character && JSON.stringify(initialCharacter) !== JSON.stringify(character);
 
 	$: calculatedCharacter = calculateCharacter(character);
+
+	let saving = false;
 
 	const save = async () => {
 		saving = true;

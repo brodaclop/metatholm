@@ -2,6 +2,7 @@ import type { Skill } from "../Skills";
 import type { Spell } from "../Spell";
 
 export interface NPC {
+    id: string;
     name: string;
     ep: number;
     maxEp: number;
@@ -30,6 +31,8 @@ export interface NPC {
     extra_skills: Array<{
         name: Skill;
         level: number;
-    }
+    }>;
+
+    notes: string;
 
 }

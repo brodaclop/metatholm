@@ -50,7 +50,11 @@ type GenericLabels = 'label:name' |
     'label:upload_character' |
     'label:previous_versions' |
     'label:restore_version' |
-    'label:revert_to_saved'
+    'label:revert_to_saved' |
+    'label:spell_strength' |
+    'label:spell_count' |
+    'label:notes' |
+    'label:back_to_list'
     ;
 
 export const Keys = [
@@ -210,6 +214,10 @@ export const Labels_en: Record<Labels, string> = {
     'label:previous_versions': 'Previous versions',
     'label:restore_version': 'Restore',
     'label:revert_to_saved': 'Revert to saved',
+    'label:spell_strength': 'Strength',
+    'label:spell_count': 'Count',
+    'label:notes': 'Notes',
+    'label:back_to_list': 'Back to list',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -474,6 +482,10 @@ export const Labels_hu: Record<Labels, string> = {
     'label:previous_versions': 'Korábbi verziók',
     'label:restore_version': 'Visszaállít',
     'label:revert_to_saved': 'Vissza a legutóbbi mentéshez',
+    'label:spell_strength': 'Erősítés',
+    'label:spell_count': 'Darab',
+    'label:notes': 'Jegyzetek',
+    'label:back_to_list': 'Vissza a listához',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
