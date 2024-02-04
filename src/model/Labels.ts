@@ -54,7 +54,9 @@ type GenericLabels = 'label:name' |
     'label:spell_strength' |
     'label:spell_count' |
     'label:notes' |
-    'label:back_to_list'
+    'label:back_to_list' |
+    'label:npcs' |
+    'label:encounters'
     ;
 
 export const Keys = [
@@ -218,6 +220,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:spell_count': 'Count',
     'label:notes': 'Notes',
     'label:back_to_list': 'Back to list',
+    'label:npcs': 'Non-Player Characters',
+    'label:encounters': 'Encounters',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -486,6 +490,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:spell_count': 'Darab',
     'label:notes': 'Jegyzetek',
     'label:back_to_list': 'Vissza a listához',
+    'label:npcs': 'Nem-Játékos Karakterek',
+    'label:encounters': 'Találkozások',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

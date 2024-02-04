@@ -55,27 +55,48 @@
 	}
 
 	$: changed = character && JSON.stringify(data.character) !== JSON.stringify(character);
+
+	$: console.log(!changed || saving, character, data.character);
 </script>
 
 <div>
 	{#if data.character}
 		<Npc bind:character editable>
 			<span slot="leftbutton">
-				<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
-					{#if saving}
-						<FaSpinner />
-					{:else}
-						<MdSave />
-					{/if}
-				</IconButton>
-				<IconButton
-					title="label:revert_to_saved"
-					color={changed || saving ? 'darkred' : undefined}
-					disabled={!changed || saving}
-					on:click={() => (character = JSON.parse(JSON.stringify(data.character)))}
-				>
-					<MdCancel />
-				</IconButton>
+				<!-- there's a weird error when slot contents change reactively, the slot is not re-rerendered -->
+				{#if changed && !saving}
+					<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
+						{#if saving}
+							<FaSpinner />
+						{:else}
+							<MdSave />
+						{/if}
+					</IconButton>
+					<IconButton
+						title="label:revert_to_saved"
+						color={changed || saving ? 'darkred' : undefined}
+						disabled={!changed || saving}
+						on:click={() => (character = JSON.parse(JSON.stringify(data.character)))}
+					>
+						<MdCancel />
+					</IconButton>
+				{:else}
+					<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
+						{#if saving}
+							<FaSpinner />
+						{:else}
+							<MdSave />
+						{/if}
+					</IconButton>
+					<IconButton
+						title="label:revert_to_saved"
+						color={changed || saving ? 'darkred' : undefined}
+						disabled={!changed || saving}
+						on:click={() => (character = JSON.parse(JSON.stringify(data.character)))}
+					>
+						<MdCancel />
+					</IconButton>
+				{/if}
 			</span>
 			<span slot="rightbutton">
 				<IconButton title="label:back_to_list" on:click={() => goto('/npc')}>

@@ -7,6 +7,7 @@
 	import IconButton from '../../components/elements/IconButton.svelte';
 	import MdPersonAdd from 'svelte-icons/md/MdPersonAdd.svelte';
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
+	import Box from '../../components/character/Box.svelte';
 
 	export let data: PageData;
 
@@ -70,7 +71,7 @@
 	};
 </script>
 
-<div>
+<Box flavour="plain" title="label:npcs">
 	{#if data.characters}
 		<ul>
 			{#each data.characters as character}
@@ -93,7 +94,7 @@
 	{:else}
 		Loading...
 	{/if}
-</div>
+</Box>
 
 <style>
 	ul {
@@ -115,15 +116,19 @@
 
 	li.new-button {
 		border: none;
-		background-color: white !important;
 		flex-basis: content;
+		text-align: center;
+		border-radius: 0;
+		box-sizing: border-box;
+		background-color: transparent !important;
+		padding: 0;
 	}
 
 	li > span {
 		text-align: right;
 	}
 
-	li:nth-child(odd) {
+	li:nth-child(odd):not(.new-button) {
 		background-color: whitesmoke;
 	}
 </style>

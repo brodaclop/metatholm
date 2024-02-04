@@ -12,6 +12,7 @@
 	import MdPersonAdd from 'svelte-icons/md/MdPersonAdd.svelte';
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
 	import type { NPC } from '../../../model/npc/Npc';
+	import MdKeyboardArrowUp from 'svelte-icons/md/MdKeyboardArrowUp.svelte';
 
 	export let data: PageData;
 	let encounter: Encounter;
@@ -79,62 +80,121 @@
 <div>
 	{#if data.encounter}
 		<Box flavour="character">
-			<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
-				{#if saving}
-					<FaSpinner />
-				{:else}
-					<MdSave />
-				{/if}
-			</IconButton>
-			<IconButton
-				title="label:revert_to_saved"
-				color={changed || saving ? 'darkred' : undefined}
-				disabled={!changed || saving}
-				on:click={() => (encounter = JSON.parse(JSON.stringify(data.encounter)))}
-			>
-				<MdCancel />
-			</IconButton>
-			<DeleteButton on:click={deleteEncounter} />
-			<select bind:value={selectedNpc}>
-				{#each data.npcs as npc}
-					<option value={npc}>{npc.name}</option>
+			<div slot="title" class="title">
+				<div class="left-buttons">
+					<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
+						{#if saving}
+							<FaSpinner />
+						{:else}
+							<MdSave />
+						{/if}
+					</IconButton>
+					<IconButton
+						title="label:revert_to_saved"
+						color={changed || saving ? 'darkred' : undefined}
+						disabled={!changed || saving}
+						on:click={() => (encounter = JSON.parse(JSON.stringify(data.encounter)))}
+					>
+						<MdCancel />
+					</IconButton>
+					<select bind:value={selectedNpc}>
+						{#each data.npcs as npc}
+							<option value={npc}>{npc.name}</option>
+						{/each}
+					</select>
+					<IconButton
+						title="label:new-character"
+						disabled={!selectedNpc}
+						on:click={() => {
+							const add = JSON.parse(JSON.stringify(selectedNpc));
+							dedupeName(add);
+							encounter.npcs = [...encounter.npcs, add];
+						}}
+					>
+						<MdPersonAdd />
+					</IconButton>
+				</div>
+				<div>
+					<input type="text" bind:value={encounter.name} />
+				</div>
+				<div class="right-buttons">
+					<IconButton title="label:back_to_list" on:click={() => goto('/encounter')}>
+						<MdKeyboardArrowUp />
+					</IconButton>
+
+					<DeleteButton on:click={deleteEncounter} />
+				</div>
+			</div>
+			<nav class="buttonbar">
+				{#each encounter.npcs as character, i}
+					<button on:click={() => document.getElementById(`npc-${i}`)?.scrollIntoView()}
+						>{character.name}</button
+					>
 				{/each}
-			</select>
-			<IconButton
-				title="label:new-character"
-				disabled={!selectedNpc}
-				on:click={() => {
-					const add = JSON.parse(JSON.stringify(selectedNpc));
-					dedupeName(add);
-					encounter.npcs = [...encounter.npcs, add];
-				}}
-			>
-				<MdPersonAdd />
-			</IconButton>
-			{#each encounter.npcs as character, i}
-				<Npc bind:character>
-					<span slot="rightbutton">
-						<IconButton
-							title="clone"
-							on:click={() => {
-								const clone = JSON.parse(JSON.stringify(character));
-								dedupeName(clone);
-								encounter.npcs = [...encounter.npcs, clone];
-							}}
-						>
-							<MdPeople />
-						</IconButton>
-						<DeleteButton
-							on:click={() => {
-								encounter.npcs.splice(i, 1);
-								encounter.npcs = encounter.npcs;
-							}}
-						/>
-					</span>
-				</Npc>
-			{/each}
+			</nav>
+			<div>
+				{#each encounter.npcs as character, i}
+					<div id="npc-{i}">
+						<Npc bind:character>
+							<span slot="rightbutton">
+								<IconButton
+									title="clone"
+									on:click={() => {
+										const clone = JSON.parse(JSON.stringify(character));
+										dedupeName(clone);
+										encounter.npcs = [...encounter.npcs, clone];
+									}}
+								>
+									<MdPeople />
+								</IconButton>
+								<DeleteButton
+									on:click={() => {
+										encounter.npcs.splice(i, 1);
+										encounter.npcs = encounter.npcs;
+									}}
+								/>
+							</span>
+						</Npc>
+					</div>
+				{/each}
+			</div>
 		</Box>
 	{:else}
 		Loading...
 	{/if}
 </div>
+
+<style>
+	.title {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.left-buttons,
+	.right-buttons {
+		flex-basis: 33%;
+	}
+
+	.left-buttons {
+		text-align: left;
+	}
+
+	.right-buttons {
+		text-align: right;
+	}
+
+	select {
+		padding-top: 0;
+		vertical-align: text-top;
+	}
+
+	.buttonbar {
+		text-align: center;
+		margin-bottom: 0.4em;
+		position: sticky;
+		top: 2rem;
+		z-index: 10000;
+		width: 100%;
+		background-color: #ddddff;
+	}
+</style>
