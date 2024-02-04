@@ -43,7 +43,7 @@ const ensureInit = async (platform: App.Platform) => {
                 ')'
             );
             console.info('execution result', res);
-
+            throw new Error('creating NPC table: ' + JSON.stringify(res));
         } catch (e) {
             console.error('failed to create NPC table', e);
         }
