@@ -13,6 +13,9 @@
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
 	import type { NPC } from '../../../model/npc/Npc';
 	import MdKeyboardArrowUp from 'svelte-icons/md/MdKeyboardArrowUp.svelte';
+	import MdEdit from 'svelte-icons/md/MdEdit.svelte';
+	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
+	import { v4 } from 'uuid';
 
 	export let data: PageData;
 	let encounter: Encounter;
@@ -75,6 +78,8 @@
 			npc.name = `${base} (${clashCount})`;
 		}
 	};
+
+	let edited: Array<string> = [];
 </script>
 
 <div>
@@ -107,6 +112,7 @@
 						disabled={!selectedNpc}
 						on:click={() => {
 							const add = JSON.parse(JSON.stringify(selectedNpc));
+							add.id = v4();
 							dedupeName(add);
 							encounter.npcs = [...encounter.npcs, add];
 						}}
@@ -135,12 +141,31 @@
 			<div>
 				{#each encounter.npcs as character, i}
 					<div id="npc-{i}">
-						<Npc bind:character>
+						<Npc bind:character editable={edited.includes(character.id)}>
+							<span slot="leftbutton">
+								<IconButton
+									title="label:edit"
+									on:click={() => {
+										if (edited.includes(character.id)) {
+											edited = edited.filter((id) => id !== character.id);
+										} else {
+											edited = [...edited, character.id];
+										}
+									}}
+								>
+									{#if edited.includes(character.id)}
+										<MdCheck />
+									{:else}
+										<MdEdit />
+									{/if}
+								</IconButton>
+							</span>
 							<span slot="rightbutton">
 								<IconButton
 									title="clone"
 									on:click={() => {
 										const clone = JSON.parse(JSON.stringify(character));
+										clone.id = v4();
 										dedupeName(clone);
 										encounter.npcs = [...encounter.npcs, clone];
 									}}

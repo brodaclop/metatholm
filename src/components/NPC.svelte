@@ -40,7 +40,7 @@
 	<table class="npc">
 		<thead>
 			<tr>
-				<th colspan="7" class="title">
+				<th colspan="7" class="title nopadding">
 					<div class="titlebar">
 						<div><slot name="leftbutton" /></div>
 						<OptionalInput type="text" bind:value={character.name} {editable} />
@@ -394,7 +394,8 @@
 			background-color: whitesmoke;
 		}
 
-		td.nopadding {
+		td.nopadding,
+		th.nopadding {
 			padding: 0;
 			border: none;
 		}
