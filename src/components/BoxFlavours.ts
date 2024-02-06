@@ -15,4 +15,5 @@ export type BoxFlavour = | 'character-sheet'
     | 'lore'
     | 'simulator-life'
     | 'simulator-turns'
+    | 'notes'
     | 'plain';

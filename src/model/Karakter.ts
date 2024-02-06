@@ -35,7 +35,8 @@ export interface Character extends Entity {
         mp: number;
         kp: number;
         armourWorn?: number;
-    }
+    },
+    notes?: string;
 }
 
 export interface CharacterInfo extends Entity {

@@ -16,6 +16,7 @@
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	import type { Character } from '../../model/Karakter';
 	import type { BoxFlavour } from '../BoxFlavours';
+	import { Spell } from '../../model/Spell';
 
 	export let action: Action | undefined = undefined;
 	export let isSelectable: ((variant: ActionVariant) => boolean) | undefined = undefined;
@@ -41,6 +42,11 @@
 			flavour = 'action-card';
 		}
 	}
+
+	const spellTarget =
+		action?.spell !== undefined
+			? `${$_('label:spell_target')}: ${$_(Spell.get(action.spell).target)}`
+			: undefined;
 </script>
 
 <Box {flavour} title={action?.name ?? ''}>
@@ -54,7 +60,7 @@
 			{#if variants}
 				{#if range === undefined || range === currentDistance || currentDistance === 'any-range'}
 					<div class="title">
-						<Box flavour="action-distance" title={`label:${currentDistance}`} />
+						<Box flavour="action-distance" title={spellTarget ?? `label:${currentDistance}`} />
 						{#each variants as variant}
 							{@const selectable = isSelectable?.(variant.name)}
 							<Box

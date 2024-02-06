@@ -164,6 +164,13 @@
 			</Box>
 		</div>
 	</div>
+	<div class="actionRow">
+		<Box title="label:notes" flavour="notes" grow="1">
+			<div class="noteDiv">
+				<textarea bind:value={character.notes} />
+			</div>
+		</Box>
+	</div>
 </Box>
 
 <style>
@@ -197,6 +204,7 @@
 
 	.actionRow {
 		flex-basis: 100%;
+		flex-grow: 1;
 	}
 
 	.download {
@@ -213,5 +221,17 @@
 	.uploadForm input {
 		opacity: 0;
 		position: absolute;
+	}
+
+	div.noteDiv {
+		width: 100%;
+		display: flex;
+	}
+
+	textarea {
+		flex-grow: 1;
+		width: 100%;
+		height: 10rem;
+		resize: vertical;
 	}
 </style>
