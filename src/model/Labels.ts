@@ -316,7 +316,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:thicket': 'Thicket',
     'spell:shelter': 'Shelter',
     'spell:lightning_strike': 'Lightning Strike',
-    'spell:cloak_of_shadow': 'Clock of Shadows',
+    'spell:cloak_of_shadow': 'Cloak of Shadows',
     'spell:shadow_leap': 'Shadow Leap',
     'spell:whispering_shadows': 'Whispering Shadows',
     'spell:drain_magic': 'Drain Magic',
