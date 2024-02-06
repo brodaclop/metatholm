@@ -43,7 +43,7 @@
 		}
 	}
 
-	const spellTarget =
+	$: spellTarget =
 		action?.spell !== undefined
 			? `${$_('label:spell_target')}: ${$_(Spell.get(action.spell).target)}`
 			: undefined;
