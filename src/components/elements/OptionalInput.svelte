@@ -5,6 +5,7 @@
 	export let editable = false;
 	export let type: 'text' | 'number' | 'select';
 	export let options: Array<string> = [];
+	export let clipboardText: string = '';
 </script>
 
 {#if editable}
@@ -24,7 +25,7 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<span
 		on:click={() => {
-			navigator.clipboard.writeText(String(value));
+			navigator.clipboard.writeText(clipboardText);
 		}}
 	>
 		{typeof value === 'string' ? $_(value) : value ?? '–'}

@@ -97,12 +97,24 @@
 						<div class="bold">
 							<div>{$_('skill:spot_hidden')}</div>
 							<div>
-								<OptionalInput type="number" bind:value={character.spot_hidden} {editable} />
+								<OptionalInput
+									type="number"
+									bind:value={character.spot_hidden}
+									{editable}
+									clipboardText={`Spot hidden: {${character.spot_hidden}d10!}`}
+								/>
 							</div>
 						</div>
 						<div class="bold">
 							<div>{$_('skill:reactions')}</div>
-							<div><OptionalInput type="number" bind:value={character.reactions} {editable} /></div>
+							<div>
+								<OptionalInput
+									type="number"
+									bind:value={character.reactions}
+									{editable}
+									clipboardText={`Reactions: {${character.reactions}d10!}`}
+								/>
+							</div>
 						</div>
 					</div>
 				</td>
@@ -124,30 +136,55 @@
 					<td><OptionalInput type="number" bind:value={weapon.ap} {editable} /></td>
 					<td>
 						{#each weapon.attack as value, i}
-							<OptionalInput type="number" bind:value {editable} />
+							<OptionalInput
+								type="number"
+								bind:value
+								{editable}
+								clipboardText={`Attack: {1d100+${value}}`}
+							/>
 							{#if i < weapon.attack.length - 1} / {/if}
 						{/each}
 					</td>
 					<td>
 						{#each weapon.defend as value, i}
-							<OptionalInput type="number" bind:value {editable} />
+							<OptionalInput
+								type="number"
+								bind:value
+								{editable}
+								clipboardText={`Defend: {1d100+${value}}`}
+							/>
 							{#if i < weapon.defend.length - 1} / {/if}
 						{/each}
 					</td>
 					<td>
 						{#each weapon.disengageCloseIn as value, i}
-							<OptionalInput type="number" bind:value {editable} />
+							<OptionalInput
+								type="number"
+								bind:value
+								{editable}
+								clipboardText={`Disengage/Close in: {1d100+${value}}`}
+							/>
 							{#if i < weapon.disengageCloseIn.length - 1} / {/if}
 						{/each}
 					</td>
 					<td>
 						{#each weapon.keepCloseKeepAway as value, i}
-							<OptionalInput type="number" bind:value {editable} />
+							<OptionalInput
+								type="number"
+								bind:value
+								{editable}
+								clipboardText={`Keep close/away: {1d100+${value}}`}
+							/>
 							{#if i < weapon.keepCloseKeepAway.length - 1} / {/if}
 						{/each}
 					</td>
 					<td
-						><OptionalInput type="number" bind:value={weapon.dmg} {editable} />d5!
+						><OptionalInput
+							type="number"
+							bind:value={weapon.dmg}
+							{editable}
+							clipboardText={`Damage: {${weapon.dmg}d5!}`}
+						/>d5!
 						{#if editable}
 							<DeleteButton
 								on:click={() => {
@@ -218,6 +255,7 @@
 							<OptionalInput
 								type="number"
 								bind:value={character.extra_skills[i].level}
+								clipboardText={`${character.extra_skills[i].name}: {${character.extra_skills[i].level}d10!}`}
 								{editable}
 							/>
 							{#if editable}
@@ -361,14 +399,14 @@
 			resize: vertical;
 		}
 
-		table {
+		table.npc {
 			border-collapse: collapse;
 			border-spacing: 0;
 			border: 1px solid black;
 		}
 
-		thead,
-		tbody {
+		table.npc > thead,
+		table.npc > tbody {
 			border-top: 3px solid black;
 			border-bottom: 3px solid black;
 		}
@@ -377,8 +415,8 @@
 			border: none;
 		}
 
-		td,
-		th {
+		table.npc > thead > tr > td,
+		table.npc > tbody > tr > th {
 			border: 1px solid black;
 			box-sizing: border-box;
 			padding-left: 0.3rem;
@@ -389,7 +427,8 @@
 			text-align: center;
 		}
 
-		th {
+		table.npc > thead > tr > th,
+		table.npc > tbody > tr > th {
 			background-color: azure;
 		}
 
