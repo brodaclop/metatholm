@@ -20,7 +20,15 @@
 		</select>
 	{/if}
 {:else}
-	{typeof value === 'string' ? $_(value) : value ?? '–'}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<span
+		on:click={() => {
+			navigator.clipboard.writeText(String(value));
+		}}
+	>
+		{typeof value === 'string' ? $_(value) : value ?? '–'}
+	</span>
 {/if}
 
 <style>

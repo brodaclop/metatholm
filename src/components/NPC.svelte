@@ -10,6 +10,7 @@
 	import { Skill } from '../model/Skills';
 	import { Spell } from '../model/Spell';
 	import Box from './character/Box.svelte';
+	import LoreInfoIcon from './LoreInfoIcon.svelte';
 
 	export let character: NPC;
 	export let editable = false;
@@ -203,6 +204,7 @@
 				<tr class="striped">
 					<td colspan="2">
 						{#if skill}
+							<LoreInfoIcon id={skill.name} />
 							<OptionalInput
 								type="select"
 								bind:value={character.extra_skills[i].name}
@@ -230,6 +232,7 @@
 					</td>
 					<td>
 						{#if spell}
+							<LoreInfoIcon id={spell.name} />
 							<OptionalInput
 								type="select"
 								bind:value={character.spells[i].name}

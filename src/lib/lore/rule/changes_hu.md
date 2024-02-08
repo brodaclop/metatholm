@@ -12,3 +12,8 @@
 * Támadó- és védekező dobások módosítója 0-nál nem lehet kevesebb
 * A varázslatkártyák "bármely távolság" helyett a konkrét varázslat célpontját írják ki.
 * A karakterlapra jegyzeteket is fel lehet írni.
+
+## `FormattedDate|{"date": "2024-02-08"}`
+
+* [Tölgyvölgy](world:realms:dragon_straits:settlements:oakvale) leírása és térképe.
+* Elkészültek a varázslatok angol nyelvű leírásai.

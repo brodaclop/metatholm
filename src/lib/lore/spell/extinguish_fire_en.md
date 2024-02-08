@@ -2,7 +2,7 @@
 
 `SpellInfo`
 
-This spell will extinguish fires that are already burning, be they of magical or natural origin. To extinguish magical fire (e.g. [Wall of Flame](spell:wall_of_flame) spell), the strength of this spell has to equal or exceed the strength of the targeted magical effect.
+This spell will extinguish fires that are already burning, be they of magical or natural origin. To extinguish magical fire (e.g. [Wall of Flame](spell:tapestry_of_flame) spell), the strength of this spell has to equal or exceed the strength of the targeted magical effect.
 
 For the strength required for natural fires see the table below:
 

@@ -2,7 +2,7 @@
 
 `SpellInfo`
 
-Ezzel a varázslattal már égő tüzet lehet kioltani, legyen az mágikus vagy természetes eredetű. Mágikus tűz (pl. [Lángfal](spell:wall_of_flame) varázslat) ellen ehhez a varázslat erejének meg kell haladnia a célvarázslatét.
+Ezzel a varázslattal már égő tüzet lehet kioltani, legyen az mágikus vagy természetes eredetű. Mágikus tűz (pl. [Lángfal](spell:tapestry_of_flame) varázslat) ellen ehhez a varázslat erejének meg kell haladnia a célvarázslatét.
 
 Természetes tűzeknél az alábbi táblázatot lehet alkalmazni:
 

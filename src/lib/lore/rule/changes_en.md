@@ -14,3 +14,8 @@
 * Attack and defence roll modifiers can't go below 0.
 * Spell action cards display the targeting of the actual spell rather than "Any Range".
 * There's a box for notes on the character sheet.
+
+## `FormattedDate|{"date": "2024-02-08"}`
+
+* Added description and map of [Oakvale](world:realms:dragon_straits:settlements:oakvale).
+* Completed the English descriptions of spells.

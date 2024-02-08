@@ -35,7 +35,7 @@ export type Spell =
     | 'spell:extinguish_fire'
     | 'spell:heat_material'
     | 'spell:flameball'
-    | 'spell:wall_of_flame'
+    | 'spell:tapestry_of_flame'
     | 'spell:magic_bolt'
     | 'spell:steel_will'
     | 'spell:message'
@@ -291,7 +291,7 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         duration: 'spell_duration:instant',
         skill: 'skill:elemental_focus'
     },
-    'spell:wall_of_flame': {
+    'spell:tapestry_of_flame': {
         speed: 2,
         level: 4,
         target: 'spell_target:point',
