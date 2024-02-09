@@ -5,6 +5,7 @@
 	import type { Weapon } from '../../model/Weapon';
 	import IconButton from '../elements/IconButton.svelte';
 	import GiSwordSmithing from 'svelte-icons/gi/GiSwordSmithing.svelte';
+	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import EditButton from '../elements/EditButton.svelte';
 
@@ -63,6 +64,13 @@
 				<td>{weapon.reach}</td>
 				<td>{$_(weapon.skill)}</td>
 				<td>
+					<IconButton
+						title="label:copy"
+						on:click={() =>
+							navigator.clipboard.writeText(JSON.stringify({ ...weapon, id: undefined }))}
+					>
+						<MdContentCopy />
+					</IconButton>
 					<EditButton on:click={() => (editedWeapon = weapon)} />
 					<DeleteButton on:click={() => remove(weapon)} />
 				</td>

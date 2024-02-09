@@ -56,7 +56,11 @@ type GenericLabels = 'label:name' |
     'label:notes' |
     'label:back_to_list' |
     'label:npcs' |
-    'label:encounters'
+    'label:encounters' |
+    'label:copy' |
+    'label:paste' |
+    'label:weapon:select_template' |
+    'label:weapon:paste_here'
     ;
 
 export const Keys = [
@@ -222,6 +226,10 @@ export const Labels_en: Record<Labels, string> = {
     'label:back_to_list': 'Back to list',
     'label:npcs': 'Non-Player Characters',
     'label:encounters': 'Encounters',
+    'label:copy': 'Copy',
+    'label:paste': 'Paste',
+    'label:weapon:select_template': 'Weapon Collection',
+    'label:weapon:paste_here': 'Paste copied weapon here...',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -492,6 +500,10 @@ export const Labels_hu: Record<Labels, string> = {
     'label:back_to_list': 'Vissza a listához',
     'label:npcs': 'Nem-Játékos Karakterek',
     'label:encounters': 'Találkozások',
+    'label:copy': 'Másolás',
+    'label:paste': 'Beilleszt',
+    'label:weapon:select_template': 'Fegyvergyűjtemény',
+    'label:weapon:paste_here': 'Másolt fegyver beillesztése...',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

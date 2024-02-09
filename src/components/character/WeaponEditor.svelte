@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { _, unwrapFunctionStore } from 'svelte-i18n';
+	import { _, locale, unwrapFunctionStore } from 'svelte-i18n';
 	import Box from './Box.svelte';
 	import type { Weapon } from '../../model/Weapon';
 	import { v4 } from 'uuid';
 	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_LIST } from '../../model/WeaponList';
-	import { entries } from '../../model/InfoList';
+	import { WEAPON_LIST, WEAPON_NAMES_LIST } from '../../model/WeaponList';
+	import { entries, keys } from '../../model/InfoList';
 	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
+	import MdContentPaste from 'svelte-icons/md/MdContentPaste.svelte';
+	import IconButton from '../elements/IconButton.svelte';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -71,9 +73,28 @@
 			const id = editedWeapon.id ?? v4();
 			editedWeapon = JSON.parse(JSON.stringify(template));
 			editedWeapon.id = id;
+			editedWeapon.name = WEAPON_NAMES_LIST[template.name as never][langKey];
 			template = null;
 		}
 	};
+
+	let pasted: string = '';
+	$: if (pasted) {
+		try {
+			const pastedWeapon = JSON.parse(pasted);
+			//TODO: validate format
+			editedWeapon = { ...pastedWeapon, id: v4() };
+		} catch (e) {
+			console.debug('Invalid weapon descriptor', e);
+		}
+		pasted = '';
+	}
+
+	const WEAPON_VARIANTS = entries(ACTION_VARIANT_PROPERTIES)
+		.filter(([key, value]) => value.weapon)
+		.map(([key]) => key);
+
+	$: langKey = $locale ?? 'en';
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -97,41 +118,50 @@
 			<table>
 				<tbody>
 					<tr>
-						<td colspan="2">
+						<td>
 							<select bind:value={template} on:change={templateSelected}>
-								<option value={null}>Select template</option>
+								<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option>
 								{#each WEAPON_LIST as tw}
-									<option value={tw}>{tw.name}</option>
+									<option value={tw}>{WEAPON_NAMES_LIST[tw.name][langKey]}</option>
 								{/each}
 							</select>
 						</td>
+						<th>
+							<IconButton title="label:paste">
+								<MdContentPaste />
+							</IconButton>
+						</th>
+						<td>
+							<input type="text" bind:value={pasted} placeholder={$_('label:weapon:paste_here')} />
+						</td>
 					</tr>
+				</tbody><tbody>
 					<tr>
-						<th>{$_('label:name')}</th>
+						<th colspan="2">{$_('label:name')}</th>
 						<td><input type="text" bind:value={editedWeapon.name} /></td>
 					</tr>
 					<tr>
-						<th>{$_('weapon:speed')}</th>
+						<th colspan="2">{$_('weapon:speed')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.speed} /></td>
 					</tr>
 					<tr>
-						<th>{$_('weapon:attack')}</th>
+						<th colspan="2">{$_('weapon:attack')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.attack} /></td>
 					</tr>
 					<tr>
-						<th>{$_('weapon:defence')}</th>
+						<th colspan="2">{$_('weapon:defence')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></td>
 					</tr>
 					<tr>
-						<th>{$_('label:damage')}</th>
+						<th colspan="2">{$_('label:damage')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></td>
 					</tr>
 					<tr>
-						<th>{$_('weapon:reach')}</th>
+						<th colspan="2">{$_('weapon:reach')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.reach} /></td>
 					</tr>
 					<tr>
-						<th>{$_('weapon:hands')}</th>
+						<th colspan="2">{$_('weapon:hands')}</th>
 						<td
 							><select bind:value={editedWeapon.hands}>
 								{#each [0.5, 1, 1.5, 2] as s}
@@ -139,8 +169,9 @@
 								{/each}
 							</select></td
 						>
-					</tr><tr>
-						<th>{$_('weapon:skill')}</th>
+					</tr>
+					<tr>
+						<th colspan="2">{$_('weapon:skill')}</th>
 						<td
 							><select bind:value={editedWeapon.skill}>
 								{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as s}
@@ -149,41 +180,36 @@
 							</select></td
 						>
 					</tr>
-					<tr>
-						<th>{$_('action:title')}</th>
-						<td colspan="2">
-							<table>
-								<tbody>
-									{#each entries(ACTION_VARIANT_PROPERTIES)
-										.filter(([key, value]) => value.weapon)
-										.map(([key]) => key) as action}
-										<tr>
-											<th>{$_(action)}</th>
-											<td>
-												<input
-													type="number"
-													disabled={!(action in editedWeapon.actions)}
-													bind:value={editedWeapon.actions[action]}
-												/>
-												<input
-													type="checkbox"
-													checked={action in editedWeapon.actions}
-													on:change={(e) => {
-														if (action in editedWeapon.actions) {
-															delete editedWeapon.actions[action];
-															editedWeapon = editedWeapon;
-														} else {
-															editedWeapon.actions[action] = 0;
-														}
-													}}
-												/>
-											</td>
-										</tr>
-									{/each}
-								</tbody>
-							</table>
-						</td>
-					</tr>
+				</tbody><tbody>
+					{#each WEAPON_VARIANTS as action, i}
+						<tr>
+							{#if i === 0}
+								<th rowspan={WEAPON_VARIANTS.length}>{$_('action:title')}</th>
+							{/if}
+							<th>
+								{$_(action)}
+							</th>
+							<td class="combined">
+								<input
+									type="number"
+									disabled={!(action in editedWeapon.actions)}
+									bind:value={editedWeapon.actions[action]}
+								/>
+								<input
+									type="checkbox"
+									checked={action in editedWeapon.actions}
+									on:change={(e) => {
+										if (action in editedWeapon.actions) {
+											delete editedWeapon.actions[action];
+											editedWeapon = editedWeapon;
+										} else {
+											editedWeapon.actions[action] = 0;
+										}
+									}}
+								/>
+							</td>
+						</tr>
+					{/each}
 				</tbody>
 				<caption><button on:click={submit}>OK</button></caption>
 			</table>
@@ -193,7 +219,7 @@
 
 <style>
 	dialog {
-		max-width: 32em;
+		max-width: 80vw;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;
@@ -227,5 +253,19 @@
 	caption {
 		caption-side: bottom;
 		text-align: center;
+	}
+
+	th {
+		text-align: right;
+		padding-right: 0.5rem;
+	}
+
+	td.combined {
+		white-space: collapse nowrap;
+	}
+
+	tbody {
+		margin-bottom: 0.5rem;
+		border-bottom: 3px solid black;
 	}
 </style>

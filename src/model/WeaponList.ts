@@ -1,6 +1,7 @@
 import type { Weapon } from "./Weapon";
 
-export const WEAPON_LIST: Array<Omit<Weapon, 'id'>> = [
+
+export const WEAPON_LIST = [
     {
         name: 'Bollock dagger',
         attack: 4,
@@ -97,4 +98,27 @@ export const WEAPON_LIST: Array<Omit<Weapon, 'id'>> = [
             'action:attack-range': -4,
         }
     },
-]
+] as const;
+
+export const WEAPON_NAMES_LIST: Record<typeof WEAPON_LIST[number]['name'], { en: string, hu: string }> = {
+    'Bollock dagger': {
+        en: 'Bollock dagger',
+        hu: 'Heretőr'
+    },
+    'Baselard': {
+        en: 'Baselard',
+        hu: 'Bazelárd'
+    },
+    'Mace': {
+        en: 'Mace',
+        hu: 'Buzogány'
+    },
+    "Quillon dagger": {
+        en: 'Quillon dagger',
+        hu: 'Keresztvasas tőr'
+    },
+    "Throwing Knife": {
+        en: 'Throwing knife',
+        hu: 'Dobótőr'
+    }
+} as const;

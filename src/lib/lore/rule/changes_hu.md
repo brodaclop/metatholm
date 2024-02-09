@@ -17,3 +17,4 @@
 
 * [Tölgyvölgy](world:realms:dragon_straits:settlements:oakvale) leírása és térképe.
 * Elkészültek a varázslatok angol nyelvű leírásai.
+* A fegyverek tulajdonságait ki lehet másolni, majd beilleszteni egy másik karakterhez.

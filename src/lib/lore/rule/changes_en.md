@@ -19,3 +19,4 @@
 
 * Added description and map of [Oakvale](world:realms:dragon_straits:settlements:oakvale).
 * Completed the English descriptions of spells.
+* Added weapon info copy/paste option
