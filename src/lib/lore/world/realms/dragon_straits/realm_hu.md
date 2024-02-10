@@ -18,6 +18,9 @@ A városok vezetői grófi, a flotta admirálisa és [Délpofa](world:realms:dra
 
 `LoreCategory|{"category": "world:realms:dragon_straits:settlements", "title": "Fontosabb települések"}`
 
+`LoreCategory|{"category": "world:realms:dragon_straits:organisations", "title": "Szervezetek"}`
+
+
 ## Térkép
 
 ![Sárkányszoros](/assets/lore/maps/dragon_straits_hu.png)

@@ -181,12 +181,16 @@
 		align-items: start;
 	}
 
+	div.values {
+		justify-content: space-between;
+	}
+
 	div.first {
 		flex-basis: 70%;
 	}
 
 	div.second {
-		flex-basis: 30%;
+		/* flex-basis: 30%; */
 	}
 
 	div.title {

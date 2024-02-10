@@ -18,6 +18,8 @@ Nobility is fairly limited: leaders of cities may wear the title **Earl**, the a
 
 `LoreCategory|{"category": "world:realms:dragon_straits:settlements", "title": "Major Settlements"}`
 
+`LoreCategory|{"category": "world:realms:dragon_straits:organisations", "title": "Organisations"}`
+
 ## Map
 
 ![Sárkányszoros](/assets/lore/maps/dragon_straits_en.png)
