@@ -376,7 +376,7 @@
 			font-weight: bold;
 		}
 
-		th.separate-after {
+		.separate-after {
 			border-right: 3px solid black !important;
 		}
 
