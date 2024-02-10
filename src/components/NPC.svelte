@@ -376,8 +376,8 @@
 			font-weight: bold;
 		}
 
-		.separate-after {
-			border-right: 3px solid black;
+		th.separate-after {
+			border-right: 3px solid black !important;
 		}
 
 		.npc {
@@ -424,7 +424,7 @@
 		}
 
 		th.title {
-			text-align: center;
+			text-align: center !important;
 		}
 
 		table.npc > thead > tr > th,
