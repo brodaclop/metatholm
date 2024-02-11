@@ -23,7 +23,7 @@ export const actions: Actions = {
             const encounter = JSON.parse(encounterString.toString());
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             await deleteEncounter(platform!, encounter);
-            redirect(303, `/`);
+            throw redirect(303, `/`);
         } else {
             fail(400);
         }
