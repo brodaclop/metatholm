@@ -45,7 +45,7 @@
 
 	$: {
 		const sumKp = kpNeeded.reduce((acc, curr) => (acc += curr.result), 0);
-		console.debug('sumKp', sumKp, sumKp / 30);
+		console.debug('Character levels needed for skill level 10', sumKp, sumKp / 30);
 	}
 </script>
 

@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { _, getLocaleFromNavigator, isLoading, init, locale, addMessages } from 'svelte-i18n';
-	import { Labels_en, Labels_hu, convertToDescription } from '../model/Labels';
+	import { _, isLoading, init, locale, addMessages } from 'svelte-i18n';
+	import { Labels_en, Labels_hu } from '../model/Labels';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
-	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { entries, group } from '../model/InfoList';
+	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
+	import IconButton from '../components/elements/IconButton.svelte';
 
 	export let data: PageData;
 
@@ -66,58 +68,77 @@
 	$: lang && locale.set(lang.value);
 </script>
 
-<header>
-	<nav>
-		<ul>
-			<li>Logo</li>
-			<li>
-				<select bind:value={currentCharacter} on:change={switchCharacter}>
-					<option value="">{$_('label:select-character')}</option>
-					{#each data.characters as character}
-						<option value={character.id}
-							>{character.name} ({$_(character.ancestry)}
-							{$_(character.background)} / {$_('character:level')}
-							{character.level})</option
-						>
-					{/each}
-				</select>
-			</li>
-			<li><a href="/create">{$_('label:new-character')}</a></li>
-			<li><a href="/simulator">Simulator</a></li>
-			<li><a href="/lore/main">{$_('label:lore')}</a></li>
-			<li>
-				<Select
-					bind:value={lang}
-					items={LANGUAGES}
-					searchable={false}
-					clearable={false}
-					--height="1.5em"
-					--max-height="1.5em"
-					--value-container-padding="0"
-					--padding="0 0 0 0.2em"
-					--item-padding="0 0 0 0.2em"
-					--internal-padding="0 0 0 0.2em"
-					--selected-item-padding="0 0.2em 0 0"
-					on:change={langChanged}
-				>
-					<div slot="item" let:item>
-						<svelte:component this={item.label} />
-					</div>
-					<div slot="selection" let:selection>
-						<svelte:component this={selection.label} />
-					</div>
-				</Select>
-			</li>
-		</ul>
-	</nav>
-</header>
-<div>
-	{#if $isLoading}
-		<p>Loading...</p>
-	{:else}
-		<slot />
-	{/if}
-</div>
+{#if !data.user}
+	<div class="login">
+		<div>
+			<h1>Metatholm Login</h1>
+			<div><a href="/login/github">GitHub Login</a></div>
+			<div><a href="/login/google">Google Login</a></div>
+		</div>
+	</div>
+{:else}
+	<header>
+		<nav>
+			<ul>
+				<li>Logo</li>
+				<li>
+					{data.user.username}
+					<form method="post" action="/logout">
+						<IconButton title="label:logout"><MdExitToApp /></IconButton>
+					</form>
+				</li>
+				<li>
+					<select bind:value={currentCharacter} on:change={switchCharacter}>
+						<option disabled value="">{$_('label:select-character')}</option>
+						{#each entries(group(data.characters, (c) => c.user)) as [user, characters]}
+							<option disabled>-- {user} --</option>
+							{#each characters as character}
+								<option value={character.id}
+									>{character.name} ({$_(character.ancestry)}
+									{$_(character.background)} / {$_('character:level')}
+									{character.level})</option
+								>
+							{/each}
+						{/each}
+					</select>
+				</li>
+				<li><a href="/create">{$_('label:new-character')}</a></li>
+				<li><a href="/simulator">Simulator</a></li>
+				<li><a href="/lore/main">{$_('label:lore')}</a></li>
+				<li>
+					<Select
+						bind:value={lang}
+						items={LANGUAGES}
+						searchable={false}
+						clearable={false}
+						--height="1.5em"
+						--max-height="1.5em"
+						--value-container-padding="0"
+						--padding="0 0 0 0.2em"
+						--item-padding="0 0 0 0.2em"
+						--internal-padding="0 0 0 0.2em"
+						--selected-item-padding="0 0.2em 0 0"
+						on:change={langChanged}
+					>
+						<div slot="item" let:item>
+							<svelte:component this={item.label} />
+						</div>
+						<div slot="selection" let:selection>
+							<svelte:component this={selection.label} />
+						</div>
+					</Select>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div>
+		{#if $isLoading}
+			<p>Loading...</p>
+		{:else}
+			<slot />
+		{/if}
+	</div>
+{/if}
 
 <style>
 	:global(html) {
@@ -159,5 +180,17 @@
 
 	nav ul li:last-child {
 		margin-left: auto;
+	}
+
+	.login {
+		height: 90vh;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		text-align: center;
+	}
+
+	form {
+		display: inline-block;
 	}
 </style>

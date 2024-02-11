@@ -60,7 +60,8 @@ type GenericLabels = 'label:name' |
     'label:copy' |
     'label:paste' |
     'label:weapon:select_template' |
-    'label:weapon:paste_here'
+    'label:weapon:paste_here' |
+    'label:logout'
     ;
 
 export const Keys = [
@@ -230,6 +231,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:paste': 'Paste',
     'label:weapon:select_template': 'Weapon Collection',
     'label:weapon:paste_here': 'Paste copied weapon here...',
+    'label:logout': 'Logout',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -504,6 +506,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:paste': 'Beilleszt',
     'label:weapon:select_template': 'Fegyvergyűjtemény',
     'label:weapon:paste_here': 'Másolt fegyver beillesztése...',
+    'label:logout': 'Kilépés',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

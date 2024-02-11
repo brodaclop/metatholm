@@ -43,6 +43,7 @@ export interface CharacterInfo extends Entity {
     background: Background;
     ancestry: Ancestry;
     level: number;
+    user: string;
 }
 
 export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;

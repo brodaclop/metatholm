@@ -8,6 +8,7 @@
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 
 	export let character: Character;
+	export let editable: boolean;
 	let levellingUp = false;
 </script>
 
@@ -15,7 +16,7 @@
 	<table>
 		<tr>
 			<th>{$_('label:name')}</th>
-			<td><input type="text" bind:value={character.name} /></td>
+			<td><input type="text" disabled={!editable} bind:value={character.name} /></td>
 		</tr>
 		<tr>
 			<th><LoreInfoIcon id="character:ancestry" />{$_('character:ancestry')}</th>
@@ -29,8 +30,10 @@
 			<th><LoreInfoIcon id="character:level" />{$_('character:level')}</th>
 			<td
 				>{character.levels.length}
-				<IconButton title={'label:levelup'} on:click={() => (levellingUp = true)}
-					><MdAdd /></IconButton
+				<IconButton
+					disabled={!editable}
+					title={'label:levelup'}
+					on:click={() => (levellingUp = true)}><MdAdd /></IconButton
 				>
 			</td>
 		</tr>

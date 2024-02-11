@@ -55,8 +55,6 @@
 	}
 
 	$: changed = character && JSON.stringify(data.character) !== JSON.stringify(character);
-
-	$: console.log(!changed || saving, character, data.character);
 </script>
 
 <div>

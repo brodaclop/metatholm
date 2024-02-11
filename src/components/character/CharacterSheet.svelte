@@ -19,10 +19,10 @@
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
-	import { stringify } from 'uuid';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
+	export let editable: boolean;
 	export let deleteCharacter: () => void;
 	export let saveCharacter: (char: Character) => Promise<void>;
 
@@ -67,22 +67,24 @@
 <Box flavour="character-sheet">
 	<div slot="title" class="title" class:changed>
 		<span>
-			<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
-				{#if saving}
-					<FaSpinner />
-				{:else}
-					<MdSave />
-				{/if}
-			</IconButton>
-			<IconButton
-				title="label:revert_to_saved"
-				color={changed || saving ? 'darkred' : undefined}
-				disabled={!changed || saving}
-				on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
-			>
-				<MdCancel />
-			</IconButton>
-			<Archives {archives} bind:character />
+			{#if editable}
+				<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
+					{#if saving}
+						<FaSpinner />
+					{:else}
+						<MdSave />
+					{/if}
+				</IconButton>
+				<IconButton
+					title="label:revert_to_saved"
+					color={changed || saving ? 'darkred' : undefined}
+					disabled={!changed || saving}
+					on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
+				>
+					<MdCancel />
+				</IconButton>
+				<Archives {archives} bind:character />
+			{/if}
 			{#if changed || saving}
 				<span class="download" style:opacity="0.3">
 					<MdFileDownload />
@@ -96,51 +98,55 @@
 				>
 			{/if}
 
-			<form class="uploadForm">
-				<div>
-					<input
-						accept=".char"
-						type="file"
-						id="file"
-						name="fileToUpload"
-						required
-						on:change={upload}
-					/>
-				</div>
+			{#if editable}
+				<form class="uploadForm">
+					<div>
+						<input
+							accept=".char"
+							type="file"
+							id="file"
+							name="fileToUpload"
+							required
+							on:change={upload}
+						/>
+					</div>
 
-				<IconButton title="label:upload_character" plain>
-					<MdFileUpload />
-				</IconButton>
-			</form>
+					<IconButton title="label:upload_character" plain>
+						<MdFileUpload />
+					</IconButton>
+				</form>
+			{/if}
 		</span>
 		{$_('label:character')}: {character.name}
 		<span>
-			<IconButton
-				title="Admin"
-				on:click={() => (admin = !admin)}
-				color={admin ? 'darkred' : undefined}
-			>
-				<MdSettings />
-			</IconButton>
-			<DeleteButton on:click={deleteCharacter} />
+			{#if editable}
+				<IconButton
+					title="Admin"
+					on:click={() => (admin = !admin)}
+					color={admin ? 'darkred' : undefined}
+				>
+					<MdSettings />
+				</IconButton>
+				<DeleteButton on:click={deleteCharacter} />
+			{/if}
 		</span>
 	</div>
 	<div>
 		<div class="values">
 			<div class="first">
-				<MainBox bind:character />
+				<MainBox bind:character {editable} />
 				<Box title="character:abilities" flavour="abilities">
 					<Abilities bind:abilities={character.abilities} editable={admin} />
 				</Box>
 				<Box title="character:points" flavour="points">
-					<Points bind:character {calculatedCharacter} {admin} />
+					<Points bind:character {calculatedCharacter} {admin} {editable} />
 				</Box>
 
 				<Box flavour="inventory" title="character:weapons">
-					<Weapons bind:character />
+					<Weapons bind:character {editable} />
 				</Box>
 				<Box flavour="inventory" title="character:armours">
-					<Armours bind:character />
+					<Armours bind:character {editable} />
 				</Box>
 			</div>
 			<div class="second">
@@ -165,9 +171,9 @@
 		</div>
 	</div>
 	<div class="actionRow">
-		<Box title="label:notes" flavour="notes" grow="1">
+		<Box title="label:notes" flavour="notes" grow={1}>
 			<div class="noteDiv">
-				<textarea bind:value={character.notes} />
+				<textarea disabled={!editable} bind:value={character.notes} />
 			</div>
 		</Box>
 	</div>

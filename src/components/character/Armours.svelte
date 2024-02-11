@@ -10,6 +10,7 @@
 	import EditButton from '../elements/EditButton.svelte';
 
 	export let character: Character;
+	export let editable: boolean;
 
 	let editedArmour: Armour | 'new' | undefined;
 
@@ -64,21 +65,25 @@
 								character.current.armourWorn === idx ? undefined : idx)}
 						><GiShoulderArmor /></IconButton
 					>
-					<EditButton on:click={() => (editedArmour = armour)} />
+					{#if editable}
+						<EditButton on:click={() => (editedArmour = armour)} />
 
-					<DeleteButton on:click={() => remove(armour)} /></td
-				>
+						<DeleteButton on:click={() => remove(armour)} />
+					{/if}
+				</td>
 			</tr>
 		{/each}
 	</tbody>
 	<caption>
-		<IconButton
-			title="label:new"
-			on:click={() => {
-				editedArmour = 'new';
-			}}><GiSwordSmithing /></IconButton
-		></caption
-	>
+		{#if editable}
+			<IconButton
+				title="label:new"
+				on:click={() => {
+					editedArmour = 'new';
+				}}><GiSwordSmithing /></IconButton
+			>
+		{/if}
+	</caption>
 </table>
 
 <ArmourEditor

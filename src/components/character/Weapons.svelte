@@ -10,6 +10,7 @@
 	import EditButton from '../elements/EditButton.svelte';
 
 	export let character: Character;
+	export let editable: boolean;
 
 	let editedWeapon: Weapon | 'new' | undefined;
 
@@ -71,20 +72,24 @@
 					>
 						<MdContentCopy />
 					</IconButton>
-					<EditButton on:click={() => (editedWeapon = weapon)} />
-					<DeleteButton on:click={() => remove(weapon)} />
+					{#if editable}
+						<EditButton on:click={() => (editedWeapon = weapon)} />
+						<DeleteButton on:click={() => remove(weapon)} />
+					{/if}
 				</td>
 			</tr>
 		{/each}
 	</tbody>
 	<caption>
-		<IconButton
-			title="label:new"
-			on:click={() => {
-				editedWeapon = 'new';
-			}}><GiSwordSmithing /></IconButton
-		></caption
-	>
+		{#if editable}
+			<IconButton
+				title="label:new"
+				on:click={() => {
+					editedWeapon = 'new';
+				}}><GiSwordSmithing /></IconButton
+			>
+		{/if}
+	</caption>
 </table>
 
 <WeaponEditor

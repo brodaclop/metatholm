@@ -122,7 +122,6 @@
 				: 0;
 
 		rawDamageResult = kockaDobas(parseKocka(damageRoll!.rollString as string)).osszeg;
-		console.info(`Damage ${damageRoll!.rollString} = ${rawDamageResult}`);
 		modifiedDamage = [
 			Math.max(0, rawDamageResult - dr),
 			Math.max(0, Math.floor(rawDamageResult / 10 - dr))
@@ -139,17 +138,7 @@
 		const attackRoll = attackAction!.rolls.find((r) => r.name === 'action:roll');
 		const defenceRoll = defenceAction!.rolls.find((r) => r.name === 'action:roll');
 		attackResult = kockaDobas(parseKocka(attackRoll!.rollString as string)).osszeg;
-		console.info(
-			`Player ${attacker + 1} Attacks with ${attack!.action.name}: ${
-				attackRoll!.rollString
-			} = ${attackResult}`
-		);
 		defenceResult = kockaDobas(parseKocka(defenceRoll!.rollString as string)).osszeg;
-		console.info(
-			`Player ${2 - attacker} defends with ${defence!.action.name}: ${
-				defenceRoll!.rollString
-			} = ${defenceResult}`
-		);
 		attackSucceeded = false;
 		rawDamageResult = undefined;
 		modifiedDamage = undefined;

@@ -40,6 +40,7 @@
 	{#if data.character}
 		<CharacterSheet
 			initialCharacter={data.character}
+			editable={data.owner === 'global' || data.owner === data.user?.id}
 			{deleteCharacter}
 			{saveCharacter}
 			archives={data.archives}
