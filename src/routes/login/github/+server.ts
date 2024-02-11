@@ -25,5 +25,5 @@ export async function GET(event: RequestEvent): Promise<Response> {
         sameSite: "lax"
     });
 
-    throw redirect(302, url.toString());
+    redirect(302, url.toString());
 }

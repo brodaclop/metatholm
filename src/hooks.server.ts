@@ -92,7 +92,7 @@ export async function handle({ event, resolve }) {
         const needsAuth = event.url.pathname !== '/' && !event.url.pathname.startsWith('/login') && !event.url.pathname.startsWith('/logout');
         console.log('path', event.url.pathname, 'needsAuth', needsAuth);
         if (!event.locals.user && needsAuth) {
-            throw redirect(302, "/");
+            redirect(302, "/");
         }
     }
 

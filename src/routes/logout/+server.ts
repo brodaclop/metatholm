@@ -13,5 +13,5 @@ export async function POST(event: RequestEvent): Promise<Response> {
         path: ".",
         ...sessionCookie.attributes
     });
-    throw redirect(302, "/");
+    redirect(302, "/");
 };
