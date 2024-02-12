@@ -79,6 +79,9 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:close-in': -2,
                 'action:disengage': -2,
                 'action:keep-close': 1,
+                'action:trip': -3,
+                'action:spin-behind': -1,
+                'action:knockout': -5,
             }
         });
     }
@@ -99,6 +102,9 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:close-in': -1,
                 'action:disengage': -1,
                 'action:keep-close': 0,
+                'action:trip': -5,
+                'action:spin-behind': -3,
+                'action:knockout': -1,
             }
         });
     }
@@ -121,6 +127,9 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:close-in': 1,
                 'action:disengage': 2,
                 'action:keep-close': 0,
+                'action:trip': -1,
+                'action:spin-behind': -3,
+                'action:knockout': -5,
             }
         });
     }

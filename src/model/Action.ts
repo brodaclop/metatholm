@@ -4,7 +4,6 @@ import type { Weapon } from "./Weapon";
 
 export type ActionVariant =
     | 'action:attack'
-    | 'action:disarm'
     | 'action:defend'
     | 'action:cast'
     | 'action:cast-slow'
@@ -19,9 +18,14 @@ export type ActionVariant =
     | 'action:defend-range'
     | 'action:step-in'
     | 'action:step-out'
-    | 'action:do-nothing';
+    | 'action:do-nothing'
+    | 'action:knockout'
+    | 'action:trip'
+    | 'action:hidden-weapon'
+    | 'action:spin-behind'
+    ;
 
-export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage';
+export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage' | 'skill:trick_fighting';
 
 export type ActionRange = 'out-of-range' | 'in-range' | 'close-quarters';
 
@@ -34,6 +38,7 @@ export interface ActionVariantProperties {
     reactionTo?: Array<ActionVariant>;
     weapon: boolean;
     range?: ActionRange;
+    trick?: boolean;
 }
 
 export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantProperties> = {
@@ -71,11 +76,6 @@ export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantPrope
         type: 'action',
         weapon: true,
         range: 'in-range'
-    },
-    'action:disarm': {
-        type: 'action',
-        weapon: true,
-        range: 'close-quarters'
     },
     'action:defend': {
         type: 'reaction',
@@ -122,6 +122,30 @@ export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantPrope
     'action:do-nothing': {
         type: 'reaction',
         weapon: false
+    },
+    'action:knockout': {
+        type: 'action',
+        range: 'close-quarters',
+        trick: true,
+        weapon: true,
+    },
+    'action:trip': {
+        type: 'action',
+        range: 'in-range',
+        trick: true,
+        weapon: true,
+    },
+    'action:hidden-weapon': {
+        type: 'action',
+        range: 'in-range',
+        trick: true,
+        weapon: true,
+    },
+    'action:spin-behind': {
+        type: 'action',
+        range: 'close-quarters',
+        trick: true,
+        weapon: true,
     }
 };
 

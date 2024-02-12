@@ -293,6 +293,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:basic'
     },
+    'skill:trick_fighting': {
+        difficulty: 2,
+        ability: 'ability:build',
+        positive: false,
+        type: 'skill_type:basic'
+    }
+
 };
 
 export type SkillType = 'skill_type:combat' | 'skill_type:focus' | 'skill_type:basic' | 'skill_type:movement' | 'skill_type:knowledge';
@@ -342,7 +349,8 @@ export type Skill = 'skill:endurance' |
     'skill:law' |
     'skill:etiquette' |
     'skill:swimming' |
-    'skill:tinkering'
+    'skill:tinkering' |
+    'skill:trick_fighting'
     ;
 
 export const Skill = createList(SkillInfos);

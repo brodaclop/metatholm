@@ -91,7 +91,6 @@ export const WEAPON_LIST = [
             "action:close-in": -2,
             "action:defend-cq": -2,
             "action:defend": 0,
-            "action:disarm": -2,
             "action:keep-away": -1,
             "action:disengage": -1,
             "action:keep-close": -1,

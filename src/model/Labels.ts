@@ -115,7 +115,6 @@ export const Labels_en: Record<Labels, string> = {
     'action:title': 'Actions',
     'action:attack': 'Attack',
     'action:attack-cq': 'Attack (Close Quarters)',
-    'action:disarm': 'Disarm',
     'action:ap': 'Action Points',
     'action:roll': 'Roll',
     'label:damage': 'Damage',
@@ -134,6 +133,10 @@ export const Labels_en: Record<Labels, string> = {
     'action:cast': 'Cast',
     'action:cast-slow': 'Cast (Slow)',
     'action:cast-snap': 'Cast (Snapshot)',
+    'action:trip': 'Trip/Topple Over',
+    'action:hidden-weapon': 'Hidden Weapon',
+    'action:knockout': 'Knockout',
+    'action:spin-behind': 'Spin Behind',
 
     'armour:dr': 'Damage Reduction',
     'armour:hindrance': 'Hindrance',
@@ -285,6 +288,7 @@ export const Labels_en: Record<Labels, string> = {
     'skill:etiquette': 'Etiquette',
     'skill:swimming': 'Swimming',
     'skill:tinkering': 'Tinkering',
+    'skill:trick_fighting': 'Trick Fighting',
 
     'skill_type:basic': 'Basic',
     'skill_type:combat': 'Combat',
@@ -386,7 +390,6 @@ export const Labels_hu: Record<Labels, string> = {
     'action:cast-slow': 'Varázslás (Lassú)',
     'action:cast-snap': 'Varázslás (Csípőből)',
 
-    'action:disarm': 'Lefegyverzés',
     'action:defend': 'Védekezés',
     'action:defend-cq': 'Védekezés (Belharc)',
     'action:keep-away': 'Távoltartás',
@@ -399,6 +402,10 @@ export const Labels_hu: Record<Labels, string> = {
     'action:step-in': 'Belépés',
     'action:step-out': 'Kilépés',
     'action:do-nothing': 'Semmi',
+    'action:trip': 'Gáncsolás/Felborítás',
+    'action:hidden-weapon': 'Rejtett fegyver',
+    'action:knockout': 'Leütés',
+    'action:spin-behind': 'Mögéperdülés',
 
     'ancestry:elven': 'Elf',
     'ancestry:orcish': 'Ork',
@@ -560,6 +567,7 @@ export const Labels_hu: Record<Labels, string> = {
     'skill:etiquette': 'Etikett',
     'skill:swimming': 'Úszás',
     'skill:tinkering': 'Bütykölés',
+    'skill:trick_fighting': 'Cseles harc',
 
     'skill_type:basic': 'Alap',
     'skill_type:combat': 'Harci',
