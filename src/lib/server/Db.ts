@@ -101,7 +101,7 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
 
 const checkCharacterWriteable = async (db: Awaited<ReturnType<typeof ensureInit>>, charId: string, userId?: string) => {
     console.debug('2.1', charId, userId);
-    const prepared = db.prepare('select user from Characters where id=? limit 1');
+    const prepared = db.prepare('select user from Characters where id=?');
     console.debug('2.2', prepared);
     const bound = prepared.bind(charId);
     console.debug('2.3', bound);
