@@ -110,9 +110,9 @@ export const saveCharacter = async (platform: App.Platform, char: Character, use
     const db = await ensureInit(platform);
     await checkCharacterWriteable(platform, char.id, userId);
     await archiveCharacter(platform, char.id);
-    // const res = await db.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
-    //     .bind(char.id, userId, char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
-    //     .run();
+    const res = await db.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
+        .bind(char.id, userId, char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
+        .run();
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>, userId?: string) => {
