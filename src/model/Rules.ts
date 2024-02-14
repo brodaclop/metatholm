@@ -7,7 +7,7 @@ export type RuleLabels = 'rule:skills' | 'rule:exploding_dice' | 'rule:magic' | 
 
 export const TOTAL_EP: Expression = E.add(E.constant(9), E.value('character:level'));
 export const FP_ALAP: Expression = E.constant(30, 'expr:fp_base');
-export const FP_PER_SZINT: Expression = E.name('expr:fp_per_level', E.add(10, E.constant('2d10', 'expr:fp_roll'), E.mul(2, E.value('skill:endurance')), E.mul(E.value('skill:pain_threshold'), 2)));
+export const FP_PER_SZINT: Expression = E.name('expr:fp_per_level', E.add(E.constant('2d10', 'expr:fp_roll'), E.mul(2, E.value('skill:endurance')), E.mul(E.value('skill:pain_threshold'), 2)));
 export const TOTAL_FP: Expression = E.name('expr:fp_total', E.add(FP_ALAP, E.level(FP_PER_SZINT)));
 
 export const EFFECTIVE_WEAPON_SKILL = E.name('weapon:effective_skill', E.max(0, E.value('weapon:skill')));
