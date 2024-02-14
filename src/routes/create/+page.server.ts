@@ -7,8 +7,8 @@ export const actions: Actions = {
         const characterString = formData.get('character');
         if (characterString) {
             const character = JSON.parse(characterString.toString());
-            //await saveCharacter(platform!, character, locals.user!.id);
-            throw redirect(303, `/character/${character.id}`);
+            await saveCharacter(platform!, character, locals.user!.id);
+            //throw redirect(303, `/character/${character.id}`);
         } else {
             throw fail(400);
         }
