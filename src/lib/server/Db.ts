@@ -3,6 +3,7 @@ import { fail } from "@sveltejs/kit";
 import type { NPC } from "../../model/npc/Npc";
 import type { Encounter } from "../../model/npc/Encounter";
 import { wrapDb } from "./db-wrapper";
+import type { D1Database } from "@cloudflare/workers-types";
 
 let initialised = false;
 
@@ -98,9 +99,10 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
     return (await stmt.all()).results.map(({ payload, timestamp }) => ({ char: JSON.parse(payload as string), timestamp: timestamp as number }));
 }
 
-const checkCharacterWriteable = async (platform: App.Platform, charId: string, userId?: string) => {
-    const db = await ensureInit(platform);
+const checkCharacterWriteable = async (db: Awaited<ReturnType<typeof ensureInit>>, charId: string, userId?: string) => {
+    console.debug('2.1', charId, userId);
     const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
+    console.debug('2.2', currentUser);
     if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
         throw fail(403);
     }
@@ -110,7 +112,7 @@ export const saveCharacter = async (platform: App.Platform, char: Character, use
     console.debug('1', char, userId);
     const db = await ensureInit(platform);
     console.debug('2');
-    await checkCharacterWriteable(platform, char.id, userId);
+    await checkCharacterWriteable(db, char.id, userId);
     console.debug('3');
     await archiveCharacter(platform, char.id);
     console.debug('4');
