@@ -99,17 +99,17 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
 }
 
 const checkCharacterWriteable = async (platform: App.Platform, charId: string, userId?: string) => {
-    // const db = await ensureInit(platform);
-    // const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
-    // if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
-    //     throw fail(403);
-    // }
+    const db = await ensureInit(platform);
+    const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
+    if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
+        throw fail(403);
+    }
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character, userId: string) => {
     const db = await ensureInit(platform);
     await checkCharacterWriteable(platform, char.id, userId);
-    await archiveCharacter(platform, char.id);
+    //await archiveCharacter(platform, char.id);
     const res = await db.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
         .bind(char.id, userId, char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
         .run();
