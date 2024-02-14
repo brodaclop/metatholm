@@ -31,7 +31,12 @@
 
 	$: loadLore(id, $locale);
 
-	$: idPrefix = id?.split(':')?.[0];
+	let idPrefix: string;
+
+	$: {
+		const parts = id.split(':');
+		idPrefix = parts.at(id.startsWith('world:realms') && parts.length === 4 ? -3 : -2) ?? 'main';
+	}
 
 	const PREFIX_MAPPING: Record<string, string> = {
 		ability: 'character:ability',
@@ -43,7 +48,11 @@
 		skill: 'character:skill',
 		main: 'label:lore',
 		spell: 'label:spell',
-		world: 'label:world'
+		world: 'label:world',
+		realms: 'world:realm',
+		settlements: 'world:settlement',
+		organisations: 'world:organisation',
+		concepts: 'world:concept'
 	};
 </script>
 

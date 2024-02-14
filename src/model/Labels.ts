@@ -61,7 +61,11 @@ type GenericLabels = 'label:name' |
     'label:paste' |
     'label:weapon:select_template' |
     'label:weapon:paste_here' |
-    'label:logout'
+    'label:logout' |
+    'world:concept' |
+    'world:realm' |
+    'world:settlement' |
+    'world:organisation'
     ;
 
 export const Keys = [
@@ -374,6 +378,12 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:hands': 'Hands',
     'weapon:reach': 'Reach',
 
+    'world:concept': 'Concept',
+    'world:realm': 'Realm',
+    'world:settlement': 'Settlement',
+    'world:organisation': 'Organisatoin',
+
+
 };
 
 export const Labels_hu: Record<Labels, string> = {
@@ -644,6 +654,12 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:hands': 'Kéz',
     'weapon:defence': 'Védekezés',
     'weapon:reach': 'Ütőtáv',
+
+    'world:concept': 'Fogalom',
+    'world:realm': 'Birodalom',
+    'world:settlement': 'Település',
+    'world:organisation': 'Szervezet',
+
 };
 
 export const convertToDescription = <T extends string>(ob: Record<T, string>): Record<string, string> => Object.fromEntries(Object.entries(ob).map(([key, value]) => ([`description:${key}`, value as string])));

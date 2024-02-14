@@ -5,6 +5,7 @@
 * A szintenkénti [fájdalomtűrés](character:fp) csökkentve lett.
 * Az [Árnyékköpeny](spell:cloak_of_shadow) varázslat időtartama 1 órára nőtt.
 * Új varázslat: [Erdők csendje](spell:silence_of_forests).
+* **Fogalmak** fejezet a kódexben.
 
 
 ## `FormattedDate|{"date": "2024-02-12"}`

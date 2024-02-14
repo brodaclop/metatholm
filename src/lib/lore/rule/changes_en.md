@@ -5,6 +5,7 @@
 * Per-level [pain tolerance](character:fp) has been reduced.
 * The duration of the [Cloak of Shadow](spell:cloak_of_shadow) spell has been increased to 1 hour.
 * Added [Silence of Forests](spell:silence_of_forests) spell.
+* Added **Concepts** heading to lore.
 
 
 ## `FormattedDate|{"date": "2024-02-12"}`

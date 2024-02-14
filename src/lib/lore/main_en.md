@@ -1,5 +1,7 @@
 # Metatholm
 
+`LoreCategory|{"category": "world:concepts", "title": "Concepts" }`
+
 `LoreCategory|{"category": "rule", "title": "Rules"}`
 
 `LoreCategory|{"category": "character", "title": "Character" }`
