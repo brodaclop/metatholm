@@ -55,7 +55,8 @@ const ensureInit = async (platform: App.Platform) => {
 
         initialised = true;
     }
-    return wrapDb(platform);
+    return platform.env.D1_DB;
+    //return wrapDb(platform);
 }
 
 export const listCharacters = async (platform: App.Platform): Promise<Array<CharacterInfo>> => {
@@ -101,12 +102,8 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
 
 const checkCharacterWriteable = async (db: Awaited<ReturnType<typeof ensureInit>>, charId: string, userId?: string) => {
     console.debug('2.1', charId, userId);
-    const prepared = db.prepare('select user from Characters where id=?');
-    console.debug('2.2', prepared);
-    const bound = prepared.bind(charId);
-    console.debug('2.3', bound);
-    const currentUser = await bound.first();
-    console.debug('2.4', currentUser);
+    const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
+    console.debug('2.2', currentUser);
     if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
         throw fail(403);
     }
