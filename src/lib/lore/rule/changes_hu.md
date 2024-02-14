@@ -1,5 +1,12 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-02-14"}`
+
+* A szintenkénti [fájdalomtűrés](character:fp) csökkentve lett.
+* Az [Árnyékköpeny](spell:cloak_of_shadow) varázslat időtartama 1 órára nőtt.
+* Új varázslat: [Erdők csendje](spell:silence_of_forests).
+
+
 ## `FormattedDate|{"date": "2024-02-12"}`
 
 * [Cseles harc](skill:trick_fighting) képzettség és a hozzá tartozó akciók.

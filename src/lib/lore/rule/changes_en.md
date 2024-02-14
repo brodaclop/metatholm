@@ -1,5 +1,12 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-14"}`
+
+* Per-level [pain tolerance](character:fp) has been reduced.
+* The duration of the [Cloak of Shadow](spell:cloak_of_shadow) spell has been increased to 1 hour.
+* Added [Silence of Forests](spell:silence_of_forests) spell.
+
+
 ## `FormattedDate|{"date": "2024-02-12"}`
 * Added [Trick Fighting](skill:trick_fighting) skill and its corresponding actions.
 

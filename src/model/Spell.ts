@@ -45,6 +45,7 @@ export type Spell =
     | 'spell:blunt_senses'
     | 'spell:fool_senses'
     | 'spell:spirit_shroud'
+    | 'spell:silence_of_forests'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -225,7 +226,7 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         speed: 7,
         level: 2,
         target: 'spell_target:touch',
-        duration: 'spell_duration:round',
+        duration: 'spell_duration:hour',
         skill: 'skill:shadow_focus'
     },
     'spell:shadow_leap': {
@@ -360,6 +361,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         target: 'spell_target:touch',
         duration: 'spell_duration:day',
         skill: 'skill:spirit_focus'
+    },
+    'spell:silence_of_forests': {
+        speed: 0,
+        level: 3,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:hour',
+        skill: 'skill:nature_focus'
     },
 
 }

@@ -352,6 +352,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:spirit_shroud': 'Spirit Shroud',
     'spell:telekinesis': 'Telekinesis',
     'spell:strike_from_afar': 'Strike From Afar',
+    'spell:silence_of_forests': 'Silence of Forestst',
 
 
     'spell_duration:instant': 'instant',
@@ -622,6 +623,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:spirit_shroud': 'Szellemfátyol',
     'spell:telekinesis': 'Telekinézis',
     'spell:strike_from_afar': 'Távoli csapás',
+    'spell:silence_of_forests': 'Erdők csendje',
 
 
     'spell_duration:instant': 'azonnali',

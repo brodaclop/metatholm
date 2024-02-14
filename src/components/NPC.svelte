@@ -15,9 +15,6 @@
 	export let character: NPC;
 	export let editable = false;
 
-	//TODO: notes
-	//TODO: spell headings
-
 	$: tableMax = Math.max(character.spells.length, character.extra_skills.length);
 
 	const skillNames = Skill.list()
