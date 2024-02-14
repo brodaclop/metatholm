@@ -101,8 +101,12 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
 
 const checkCharacterWriteable = async (db: Awaited<ReturnType<typeof ensureInit>>, charId: string, userId?: string) => {
     console.debug('2.1', charId, userId);
-    const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
-    console.debug('2.2', currentUser);
+    const prepared = db.prepare('select user from Characters where id=? limit 1');
+    console.debug('2.2', prepared);
+    const bound = prepared.bind(charId);
+    console.debug('2.3', bound);
+    const currentUser = await bound.first();
+    console.debug('2.4', currentUser);
     if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
         throw fail(403);
     }
@@ -124,7 +128,7 @@ export const saveCharacter = async (platform: App.Platform, char: Character, use
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>, userId?: string) => {
     const db = await ensureInit(platform);
-    await checkCharacterWriteable(platform, char.id, userId);
+    await checkCharacterWriteable(db, char.id, userId);
 
     const { success } = await db.prepare('delete from Characters where id = ?')
         .bind(char.id)
