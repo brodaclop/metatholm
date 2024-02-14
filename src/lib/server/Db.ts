@@ -101,26 +101,19 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
 }
 
 const checkCharacterWriteable = async (db: Awaited<ReturnType<typeof ensureInit>>, charId: string, userId?: string) => {
-    console.debug('2.1', charId, userId);
     const currentUser = await db.prepare('select user from Characters where id=? limit 1').bind(charId).first();
-    console.debug('2.2', currentUser);
     if (currentUser !== null && currentUser.user !== 'global' && currentUser.user !== userId) {
         throw fail(403);
     }
 }
 
 export const saveCharacter = async (platform: App.Platform, char: Character, userId: string) => {
-    console.debug('1', char, userId);
     const db = await ensureInit(platform);
-    console.debug('2');
     await checkCharacterWriteable(db, char.id, userId);
-    console.debug('3');
     await archiveCharacter(platform, char.id);
-    console.debug('4');
     const res = await db.prepare('insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7')
         .bind(char.id, userId, char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char))
         .run();
-    console.debug('5');
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>, userId?: string) => {
