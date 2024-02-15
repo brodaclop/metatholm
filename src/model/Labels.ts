@@ -165,7 +165,7 @@ export const Labels_en: Record<Labels, string> = {
     'background:hedge_wizard': 'Hedge Wizard',
     'background:tinker': 'Tinker',
     'background:assassin': 'Assassin',
-    'background:vagabond': 'Vagabond',
+    'background:rover': 'Rover',
     'background:charmer': 'Charmer',
     'background:witch': 'Witch',
 
@@ -435,7 +435,7 @@ export const Labels_hu: Record<Labels, string> = {
     'background:hedge_wizard': 'Sufnimágus',
     'background:tinker': 'Ezermester',
     'background:assassin': 'Orgyilkos',
-    'background:vagabond': 'Kóborló',
+    'background:rover': 'Kóborló',
     'background:charmer': 'Bájgúnár',
     'background:witch': 'Vajákos',
 

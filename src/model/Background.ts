@@ -14,7 +14,7 @@ export type Background =
     'background:hedge_wizard' |
     'background:tinker' |
     'background:assassin' |
-    'background:vagabond' |
+    'background:rover' |
     'background:charmer' |
     'background:witch';
 
@@ -118,7 +118,7 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'ability:build': -1
         }
     },
-    'background:vagabond': {
+    'background:rover': {
         skills: {
             "skill:magic_force": 1,
             'skill:nature_focus': 3,

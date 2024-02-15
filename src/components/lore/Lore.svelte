@@ -7,6 +7,7 @@
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
+	export let includeTitlePrefix = true;
 
 	$: setContext('activeElementParams', { ...params, id });
 
@@ -63,7 +64,9 @@
 		<span>Lore not found</span>
 	{:else}
 		<Box flavour="lore">
-			<span slot="title">{$_(PREFIX_MAPPING[idPrefix])}: {title.replace(/#/g, '')}</span>
+			<span slot="title">
+				{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
+			</span>
 
 			<MarkdownText {text} />
 		</Box>

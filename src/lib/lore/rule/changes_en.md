@@ -1,5 +1,9 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-15"}`
+
+* Renamed **Vagabond** background to **Rover** to avoid confusion.
+
 ## `FormattedDate|{"date": "2024-02-14"}`
 
 * Per-level [pain tolerance](character:fp) has been reduced.
