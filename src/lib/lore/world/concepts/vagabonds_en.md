@@ -16,6 +16,6 @@ But remember, just because you're heroic doesn't mean you're the good guys. You 
 
 And also remember, no matter how powerful you grow, you're still an outsider. Your actions won't change history. Unless...unless you catch history at one of those rare tipping points where fate is focused into a single point in space and time, and a tiny action can push history down one road or another.
 
-But you'll never ascend to godhood. You'll never even be a king. You'll never beat a dragon in a fair fight.
+**But you'll never ascend to godhood. You'll never even be a king. You'll never beat a dragon in a fair fight.**
 
 All this of course doesn't mean you'll be forgotten. The **Monks** will keep records of your deeds. Common folk may remember your name for centuries. Your life can become the kernel of truth in an ever-billowing legend. There is a point to this existence but you'll have to figure it out yourself.
