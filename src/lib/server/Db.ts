@@ -221,6 +221,10 @@ const upgrade = (character: Character): Character => {
             delete w.actions['action:disarm'];
         }
     });
+    // renamed Vagabond background to Rover
+    if ((character.background as unknown) === 'background:vagabond') {
+        character.background = 'background:rover';
+    }
     // added armours to inventory
     character.inventory.armours = character.inventory.armours ?? [];
     return character;
