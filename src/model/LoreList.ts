@@ -302,6 +302,7 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'spell:whispering_shadows': import('$lib/lore/spell/whispering_shadows_en.md?raw'),
 		'spell:write_memories': import('$lib/lore/spell/write_memories_en.md?raw'),
 		'world:concepts:spirits': import('$lib/lore/world/concepts/spirits_en.md?raw'),
+		'world:concepts:vagabonds': import('$lib/lore/world/concepts/vagabonds_en.md?raw'),
 		'world:realms:deep_kingdom:realm': import('$lib/lore/world/realms/deep_kingdom/realm_en.md?raw'),
 		'world:realms:dragon_straits:realm': import('$lib/lore/world/realms/dragon_straits/realm_en.md?raw'),
 		'world:realms:dragon_straits:organisations:ferrymen': import('$lib/lore/world/realms/dragon_straits/organisations/ferrymen_en.md?raw'),
