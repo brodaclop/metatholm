@@ -9,6 +9,7 @@
 	import MdCancel from 'svelte-icons/md/MdCancel.svelte';
 	import DeleteButton from '../../../components/elements/DeleteButton.svelte';
 	import MdKeyboardArrowUp from 'svelte-icons/md/MdKeyboardArrowUp.svelte';
+	import Loading from '../../../components/Loading.svelte';
 
 	export let data: PageData;
 	let character: NPC;
@@ -104,6 +105,6 @@
 			</span>
 		</Npc>
 	{:else}
-		Loading...
+		<Loading />
 	{/if}
 </div>

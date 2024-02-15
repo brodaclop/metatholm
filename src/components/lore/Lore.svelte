@@ -4,6 +4,7 @@
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore } from '../../model/Lore';
 	import { onMount, setContext } from 'svelte';
+	import Loading from '../Loading.svelte';
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
@@ -58,7 +59,7 @@
 </script>
 
 {#await loadedLore}
-	<span>Loading...</span>
+	<Loading />
 {:then { title, text, notFound }}
 	{#if notFound}
 		<span>Lore not found</span>

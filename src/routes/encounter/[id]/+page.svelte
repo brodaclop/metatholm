@@ -16,6 +16,7 @@
 	import MdEdit from 'svelte-icons/md/MdEdit.svelte';
 	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
 	import { v4 } from 'uuid';
+	import Loading from '../../../components/Loading.svelte';
 
 	export let data: PageData;
 	let encounter: Encounter;
@@ -185,7 +186,7 @@
 			</div>
 		</Box>
 	{:else}
-		Loading...
+		<Loading />
 	{/if}
 </div>
 

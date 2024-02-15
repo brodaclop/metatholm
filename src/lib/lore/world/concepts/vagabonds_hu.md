@@ -1,21 +1,21 @@
-# Vagabonds
+# Csavargók
 
-All the player characters in the game of Metatholm can be described with one word: vagabonds.
+A Metatholm játékos karaktereit összefoglalva egyetlen szóval jellemezhetjük: csavargók.
 
-Vagabonds are not part of society. Definitely not polite society, who will at best shun them, but not the fringes of society either, where they may be grudgingly accepted but will always be the other.
+A csavargó nem része a társadalomnak. Sem az úri társadalomnak, aminek tagjai legjobb esetben is kerülik őt, de még a társadalom perifériájára szorultak is, bár elfogadják jelenlétét, sosem fogják maguk közül valónak tekinteni.
 
-Vagabonds may not physically wander around from place to place but they will always be drifting at the whim of powers greater than them who don't care one jot about their fate. Some rebel against this, some resignedly accept this existence and some try to get the best out of it, it makes no difference to the end result.
+Egy csavargónak nem kell feltétlenül vándorolni egyik helyről a másikra, elég annyi, hogy csak úgy sodródik az életben, nála hatalmasabb, iránta azonban teljesen közömbös erők kénye-kedve szerint. Van, aki lázad ez ellen, van aki lemondóan elfogadja sorsát, és akad, aki megpróbálja a legjobbat kihozni belőle – a besorolás szempontjából oly mindegy.
 
-For there are definite upsides to being almost invisible to the rich and powerful, there is an existence to be eked out here, where official codes of honour and traditions are worth nothing. Sometimes things just need to be done and those who need it doing can't afford to do it themselves. But they can afford to pay someone to do it. Someone nobody will notice moving across the land, someone who is not bound by the complex network of obligations the high societies of Metatholm often come with, and someone whose testimony –should they be caught– nobody will believe anyway.
+Mert van azért jó oldala is annak, ha az ember a gazdagok és hatalmasok számára mintegy láthatatlanul létezik, lehet ebből is megélhetést eszkábálni ott, ahol a becsületkódexekre és a tradíciókre mindenki fittyet hány. Vannak cselekedetek, amiket muszáj végrehajtani, de akik számára ez szükséges, nem engedhetik meg maguknak, hogy saját kezüleg tegyék ezt. De azt megengedhetik, hogy másnak fizessenek érte. Olyasvalakinek, akinek utazásai senkinek nem tűnnek fel, olyasvalaki, akit nem köt gúzsba a társadalmi elvárások és szívességek Metatholm világára oly jellemzően sűrű szövedéke, és olyasvalaki, akinek a vallomását – ha véletlenül fülöncsípik – senki nem fogja elhinni.
 
-That's when vagabonds come into their element.
+Ilyenkor van igazán elemében a csavargó.
 
-So this is you, this is your lot in the world of Metatholm. The role of the heroic outsider.
+Ez vagy tehát te, ezt a sorsot osztották neked Metatholm világában. A hősies kívülálló szerepét.
 
-But remember, just because you're heroic doesn't mean you're the good guys. You can think you were the good guys and still may not be them. You may even be popular and still be a villain. Think Al Capone and his soup kitchens.
+De ne feledd: csak azért, mert hősies vagy, nem feltétlenül tartozol a jó fiúk közé. Lehet, hogy te úgy gondolod, hogy odatartozol, és ennek ellenére mégse. Lehetsz ünnepelt és népszerű kalandor és mégis állhatsz a rossz oldalon. Gondolj csak Al Caponére és az ő ingyenkonyháira.
 
-And also remember, no matter how powerful you grow, you're still an outsider. Your actions won't change history. Unless...unless you catch history at one of those rare tipping points where fate is focused into a single point in space and time, and a tiny action can push history down one road or another.
+És azt se feledd, tehetsz szert bármekkora hatalomra, mindig kívülálló maradsz. Tetteid nem fogják megváltoztatni a történelem menetét. Hacsak...hacsak nem csíped el a történelem azon ritka pontjait, amikor a sors látszólag mindent egyetlen helyszínbe és pillanatba koncentrál, és a legkisebb lökés is más-más irányba indíthatja tovább.
 
-**But you'll never ascend to godhood. You'll never even be a king. You'll never beat a dragon in a fair fight.**
+**De sose fogsz istenné válni. Sose lesz belőled király. És sose fogsz sárkányt becsületes csatában legyőzni.**
 
-All this of course doesn't mean you'll be forgotten. The **Monks** will keep records of your deeds. Common folk may remember your name for centuries. Your life can become the kernel of truth in an ever-billowing legend. There is a point to this existence but you'll have to figure it out yourself.
+Mindez persze nem jelenti azt, hogy feledésbe fogsz merülni. A **Szerzetesek** feljegyzik tetteidet. Neved az egyszerű nép ajkán foroghat még évszázadokig. A te életed lehet az igazságmorzsa, ami a jövő egyre dagadó legendáinak mélyén megbúvik. Van tehát értelme ennek a létnek, de hogy pontosan mi az, azt magadnak kell kitalálnod.

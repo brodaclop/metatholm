@@ -2,6 +2,7 @@
 	import { _, locale } from 'svelte-i18n';
 	import { loreCategoryList } from '../../../model/Lore';
 	import Box from '../../../components/character/Box.svelte';
+	import Loading from '../../Loading.svelte';
 
 	export let category: string;
 	export let title: string;
@@ -10,7 +11,7 @@
 <Box {title} flavour="lore">
 	<ul>
 		{#await loreCategoryList(category, $locale)}
-			Loading...
+			<Loading />
 		{:then list}
 			{@const sortedList = list.sort((a, z) => a.title.localeCompare(z.title))}
 			{#each sortedList as lc}

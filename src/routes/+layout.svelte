@@ -11,6 +11,7 @@
 	import { entries, group } from '../model/InfoList';
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
 	import IconButton from '../components/elements/IconButton.svelte';
+	import Loading from '../components/Loading.svelte';
 
 	export let data: PageData;
 
@@ -80,7 +81,7 @@
 	<header>
 		<nav>
 			<ul>
-				<li>Logo</li>
+				<li><a href="/">M</a></li>
 				<li>
 					{data.user.username}
 					<form method="post" action="/logout">
@@ -133,7 +134,7 @@
 	</header>
 	<div>
 		{#if $isLoading}
-			<p>Loading...</p>
+			<Loading />
 		{:else}
 			<slot />
 		{/if}

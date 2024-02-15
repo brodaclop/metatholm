@@ -8,6 +8,7 @@
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
 	import type { Encounter } from '../../model/npc/Encounter';
 	import Box from '../../components/character/Box.svelte';
+	import Loading from '../../components/Loading.svelte';
 
 	export let data: PageData;
 
@@ -82,7 +83,7 @@
 			</li>
 		</ul>
 	{:else}
-		Loading...
+		<Loading />
 	{/if}
 </Box>
 

@@ -3,6 +3,7 @@
 	import CharacterSheet from '../../../components/character/CharacterSheet.svelte';
 	import { goto, invalidate, invalidateAll } from '$app/navigation';
 	import type { Character } from '../../../model/Karakter';
+	import Loading from '../../../components/Loading.svelte';
 
 	export let data: PageData;
 
@@ -46,6 +47,6 @@
 			archives={data.archives}
 		/>
 	{:else}
-		Loading...
+		<Loading />
 	{/if}
 </div>
