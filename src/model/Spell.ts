@@ -46,6 +46,8 @@ export type Spell =
     | 'spell:fool_senses'
     | 'spell:spirit_shroud'
     | 'spell:silence_of_forests'
+    | 'spell:slow_metabolism'
+    | 'spell:suspended_animation'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -369,6 +371,21 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         duration: 'spell_duration:hour',
         skill: 'skill:nature_focus'
     },
+    'spell:slow_metabolism': {
+        speed: 1,
+        level: 4,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:hour',
+        skill: 'skill:life_focus'
+    },
+    'spell:suspended_animation': {
+        speed: 7,
+        level: 5,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:day',
+        skill: 'skill:life_focus'
+    },
+
 
 }
 

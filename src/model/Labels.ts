@@ -357,6 +357,8 @@ export const Labels_en: Record<Labels, string> = {
     'spell:telekinesis': 'Telekinesis',
     'spell:strike_from_afar': 'Strike From Afar',
     'spell:silence_of_forests': 'Silence of Forestst',
+    'spell:slow_metabolism': 'Slow Metabolism',
+    'spell:suspended_animation': 'Suspended Animation',
 
 
     'spell_duration:instant': 'instant',
@@ -634,6 +636,8 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:telekinesis': 'Telekinézis',
     'spell:strike_from_afar': 'Távoli csapás',
     'spell:silence_of_forests': 'Erdők csendje',
+    'spell:slow_metabolism': 'Anyagcsere lassítása',
+    'spell:suspended_animation': 'Tetszhalál',
 
 
     'spell_duration:instant': 'azonnali',

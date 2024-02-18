@@ -1,5 +1,10 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-02-18"}`
+
+* [Anyagcsere lassítása](spell:slow_metabolism) és [Tetszhalál](spell:suspended_animation) varázslat
+
+
 ## `FormattedDate|{"date": "2024-02-14"}`
 
 * A szintenkénti [fájdalomtűrés](character:fp) csökkentve lett.

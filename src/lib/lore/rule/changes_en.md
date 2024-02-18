@@ -1,5 +1,10 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-18"}`
+
+* Added [Slow Metabolism](spell:slow_metabolism) and [Suspended Animation](spell:suspended_animation) spells.
+
+
 ## `FormattedDate|{"date": "2024-02-15"}`
 
 * Renamed **Vagabond** background to **Rover** to avoid confusion.

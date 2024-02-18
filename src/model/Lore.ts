@@ -2,8 +2,8 @@ import { entries } from "./InfoList";
 import { Lore } from "./LoreList";
 
 //TODO: basic description of world
-//TODO: basic description of who the adventurers are
-//TODO: spirits and animism
+
+
 type OptionalString = string | null | undefined;
 
 export const hasLore = (id: string, lang: OptionalString): boolean => id in Lore[lang ?? 'en'];
