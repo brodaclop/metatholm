@@ -15,11 +15,12 @@
 
 	export let character: Character;
 	export let close: () => void;
-	export let fpRoll: number = rollForFp();
+	let fpRoll: number = rollForFp();
 
 	const submit = () => {
 		character = levelUpCharacter(character, fpRoll);
 		dialog.close();
+		fpRoll = rollForFp();
 	};
 </script>
 

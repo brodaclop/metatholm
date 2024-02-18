@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { keys } from '../../model/InfoList';
+	import { keys, sort } from '../../model/InfoList';
 	import type { Character } from '../../model/Karakter';
 	import { Skill } from '../../model/Skills';
 	import CircleGroup from '../elements/CircleGroup.svelte';
@@ -11,9 +11,11 @@
 </script>
 
 <CircleGroup
-	rows={keys(skills)
-		.map((s) => ({ name: s, subName: Skill.get(s).type }))
-		.sort((a, z) => $_(a.name).localeCompare($_(z.name)))}
+	rows={sort(
+		keys(skills).map((s) => ({ name: s, subName: Skill.get(s).type })),
+		'name',
+		$_
+	)}
 	values={skills}
 	loreParams={{ abilities }}
 	newValues={modifiedSkills}

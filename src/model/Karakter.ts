@@ -52,7 +52,8 @@ export interface CalculatedCharacter {
     fp: EvalExpression;
     ep: EvalExpression;
     skills: Partial<Record<Skill, number>>;
-    actions: Array<Action>;
+    spellActions: Array<Action>;
+    weaponActions: Array<Action>;
     weapons: Array<Weapon>;
     spells: Array<SpellInfo>;
 }
@@ -150,15 +151,11 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
 
     const spells: Array<SpellInfo> = entries(skills).flatMap(([key, value]) => Spell.available(key, value));
 
-    const actions: Array<Action> = [
-        ...weapons.map(w => calculateWeaponAction(skills, w)),
-        ...spells.map(s => calculateSpellAction(skills, s))
-    ];
-
     return {
         spells,
         weapons,
-        actions,
+        weaponActions: weapons.map(w => calculateWeaponAction(skills, w)),
+        spellActions: spells.map(s => calculateSpellAction(skills, s)),
         skills,
         ep: E.evaluate(TOTAL_EP, { 'character:level': level }),
         fp: E.evaluate(TOTAL_FP, {

@@ -20,3 +20,6 @@ export const group = <K extends string, V>(input: Array<V>, groupFn: (ob: V) => 
     acc[key] = [...(acc[key] ?? []), curr];
     return acc;
 }, {} as Record<K, Array<V>>);
+
+export const sort = <K>(input: Array<K>, field: keyof K, translator: (label: string) => string) => input.toSorted((a, z) =>
+    translator(String(a[field])).localeCompare(translator(String(z[field]))));

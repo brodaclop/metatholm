@@ -19,6 +19,8 @@
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
+	import { sort } from '../../model/InfoList';
+	import SpellActions from './SpellActions.svelte';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -161,13 +163,16 @@
 		</div>
 
 		<div class="actionRow">
-			<Box title="action:title" flavour="action-container">
+			<Box title="rule:combat" flavour="action-container">
 				<div>
-					{#each calculatedCharacter.actions as action}
+					{#each sort(calculatedCharacter.weaponActions, 'name', $_) as action}
 						<ActionCard {action} skills={calculatedCharacter.skills} />
 					{/each}
 				</div>
 			</Box>
+		</div>
+		<div class="actionRow">
+			<SpellActions {calculatedCharacter} />
 		</div>
 	</div>
 	<div class="actionRow">
@@ -192,7 +197,7 @@
 	}
 
 	div.first {
-		flex-basis: 70%;
+		flex-basis: 65%;
 	}
 
 	div.second {
@@ -214,6 +219,7 @@
 
 	.actionRow {
 		flex-basis: 100%;
+		justify-content: space-around;
 		flex-grow: 1;
 	}
 

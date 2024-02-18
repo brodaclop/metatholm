@@ -15,28 +15,26 @@
 </script>
 
 {#if hasLore(id, $locale)}
-	<span>
-		{#if inline}
-			<IconButton title={id} on:click>
-				<GiInfo />
-			</IconButton>
-		{:else}
-			<IconButton title={id}>
-				<GiInfo />
-				<Popover
-					open={false}
-					showOnClick={true}
-					borderRadius={10}
-					caretBg="black"
-					hideOnExternalClick={true}
-				>
-					<div style:max-width="80vw">
-						<Lore {id} {params} />
-					</div>
-				</Popover>
-			</IconButton>
-		{/if}
-	</span>
+	{#if inline}
+		<IconButton title={id} on:click>
+			<GiInfo />
+		</IconButton>
+	{:else}
+		<IconButton title={id}>
+			<GiInfo />
+			<Popover
+				open={false}
+				showOnClick={true}
+				borderRadius={10}
+				caretBg="black"
+				hideOnExternalClick={true}
+			>
+				<div style:max-width="80vw">
+					<Lore {id} {params} />
+				</div>
+			</Popover>
+		</IconButton>
+	{/if}
 {/if}
 
 <style>

@@ -11,20 +11,15 @@
 	import { Spell } from '../model/Spell';
 	import Box from './character/Box.svelte';
 	import LoreInfoIcon from './LoreInfoIcon.svelte';
+	import { sort } from '../model/InfoList';
 
 	export let character: NPC;
 	export let editable = false;
 
 	$: tableMax = Math.max(character.spells.length, character.extra_skills.length);
 
-	const skillNames = Skill.list()
-		.map((i) => i.name)
-		.sort((a, z) => $_(a).localeCompare($_(z)));
-	const spellNames = Spell.list()
-		.map((i) => i.name)
-		.sort((a, z) => $_(a).localeCompare($_(z)));
-
-	const format = $_;
+	const skillNames = sort(Skill.list(), 'name', $_).map((i) => i.name);
+	const spellNames = sort(Spell.list(), 'name', $_).map((i) => i.name);
 
 	$: if (editable) {
 		character.fp = character.maxFp;

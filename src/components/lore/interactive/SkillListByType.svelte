@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { Skill, type SkillType } from '../../../model/Skills';
+	import { sort } from '../../../model/InfoList';
 
 	export let type: SkillType;
 </script>
 
 <ul>
-	{#each Skill.list()
-		.filter((s) => s.type === type)
-		.sort((a, z) => $_(a.name).localeCompare($_(z.name))) as skill}
+	{#each sort( Skill.list().filter((s) => s.type === type), 'name', $_ ) as skill}
 		<li>
 			<a href="/lore/{skill.name}"
 				>{$_(skill.name)}
