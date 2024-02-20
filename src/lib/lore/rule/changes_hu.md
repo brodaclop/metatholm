@@ -1,6 +1,6 @@
 # Szabályváltozások
 
-## `FormattedDate|{"date": "2024-02-2ö"}`
+## `FormattedDate|{"date": "2024-02-20"}`
 
 * [Jelentéktelenség](spell:insignificance) varázslat
 * [Mágikus erő](skill:magic_force) képzettség használható mágia felfedezésére

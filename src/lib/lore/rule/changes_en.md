@@ -1,6 +1,6 @@
 # Rule Changes
 
-## `FormattedDate|{"date": "2024-02-2ö"}`
+## `FormattedDate|{"date": "2024-02-20"}`
 
 * Added [Insignificance](spell:insignificance) spell.
 * Added ability to detect magic to [Magic Force](skill:magic_force).
