@@ -1,5 +1,11 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-02-2ö"}`
+
+* [Jelentéktelenség](spell:insignificance) varázslat
+* [Mágikus erő](skill:magic_force) képzettség használható mágia felfedezésére
+
+
 ## `FormattedDate|{"date": "2024-02-18"}`
 
 * [Anyagcsere lassítása](spell:slow_metabolism) és [Tetszhalál](spell:suspended_animation) varázslat

@@ -48,6 +48,7 @@ export type Spell =
     | 'spell:silence_of_forests'
     | 'spell:slow_metabolism'
     | 'spell:suspended_animation'
+    | 'spell:insignificance'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -384,6 +385,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         target: 'spell_target:touch',
         duration: 'spell_duration:day',
         skill: 'skill:life_focus'
+    },
+    'spell:insignificance': {
+        speed: 3,
+        level: 5,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:hour',
+        skill: 'skill:spirit_focus'
     },
 
 

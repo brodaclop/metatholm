@@ -1,5 +1,11 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-2ö"}`
+
+* Added [Insignificance](spell:insignificance) spell.
+* Added ability to detect magic to [Magic Force](skill:magic_force).
+
+
 ## `FormattedDate|{"date": "2024-02-18"}`
 
 * Added [Slow Metabolism](spell:slow_metabolism) and [Suspended Animation](spell:suspended_animation) spells.

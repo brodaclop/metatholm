@@ -359,6 +359,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:silence_of_forests': 'Silence of Forestst',
     'spell:slow_metabolism': 'Slow Metabolism',
     'spell:suspended_animation': 'Suspended Animation',
+    'spell:insignificance': 'Insignificance',
 
 
     'spell_duration:instant': 'instant',
@@ -638,7 +639,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:silence_of_forests': 'Erdők csendje',
     'spell:slow_metabolism': 'Anyagcsere lassítása',
     'spell:suspended_animation': 'Tetszhalál',
-
+    'spell:insignificance': 'Jelentéktelenség',
 
     'spell_duration:instant': 'azonnali',
     'spell_duration:round': 'kör',
