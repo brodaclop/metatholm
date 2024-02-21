@@ -1,5 +1,11 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-02-21"}`
+
+* A pusztakezes harc sebzése visszább lett véve egy kicsit
+* A mágikus fókusz képzettségek különleges képességeket is biztosítanak
+
+
 ## `FormattedDate|{"date": "2024-02-20"}`
 
 * [Jelentéktelenség](spell:insignificance) varázslat

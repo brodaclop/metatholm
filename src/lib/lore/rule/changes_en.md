@@ -1,5 +1,10 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-21"}`
+
+* Unarmed combat damage has been toned down somewhat.
+* Magical focus skills now grant various abilities.
+
 ## `FormattedDate|{"date": "2024-02-20"}`
 
 * Added [Insignificance](spell:insignificance) spell.

@@ -95,7 +95,7 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
             attack: fraction('skill:reactions', 0.5),
             defence: fraction('skill:reactions', 1),
             reach: 0,
-            damage: fraction('skill:reactions', 1),
+            damage: fraction('skill:reactions', 1.5),
             hands: 1,
             actions: {
                 'action:attack-cq': 1,
@@ -118,7 +118,7 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
             attack: fraction('skill:balance', 0.5),
             defence: fraction('skill:balance', 0.5),
             reach: 0,
-            damage: fraction('skill:balance', 0.67),
+            damage: fraction('skill:balance', 1),
             hands: 1,
             actions: {
                 'action:attack-cq': 1,
