@@ -1,5 +1,10 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-02-22"}`
+
+* [Mágiaellenállás](skill:magic_resistance) képzettség leírása.
+
+
 ## `FormattedDate|{"date": "2024-02-21"}`
 
 * A pusztakezes harc sebzése visszább lett véve egy kicsit

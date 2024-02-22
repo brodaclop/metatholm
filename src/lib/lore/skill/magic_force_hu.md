@@ -4,7 +4,7 @@
 
 A **Mágikus erő** azt jelzi, mennyire képes a karakter uralni a mindenkit átjáró mágikus erőt. Egy alacsony mágikus erejű karakter mindössze pár egyszerű varázslat létrehozása után is kimerül, míg egy magasan képzett varázsló hatalmas erejű varázslatok garmadáját képes megidézni, mindenféle különösebb negatív hatás nélkül.
 
-A képzettség használható továbbá mágia érzékelésére is, ilyenkor képzettség ellenpróbát kell tenni annyi `d10!` ellen, amennyi a felfedni kívánt varázslat vagy mágikus hatás erőssége. Ezt egy célpont ellen naponta csak egyszer lehet megtenni.
+A képzettség használható továbbá mágia érzékelésére is, ilyenkor képzettség ellenpróbát kell tenni annyi `d10!` ellen, amennyi a felfedni kívánt varázslat vagy mágikus hatás erőssége. (Ha a varázslat célpontja vagy varázstárgy birtokosa [ellenáll](skill:magic_resistance), a varázslat erőssége annyival többnek számít, amennyi a célpont **Mágiaellenállás** képzettsége.) Ezt egy célpont ellen naponta csak egyszer lehet megtenni.
 
 Amennyiben a próba sikeres, nem csak a mágia jelenlétére derül fény, hanem annak erősségére is és körülbelüli hatására (pl. "4-es erősségű ártó őselemi mágis"). Azonban ha a karakter jártas abban a fókuszban, amihez az adott varázslat tartozik, úgy a pontos hatása is meghatározható.
 

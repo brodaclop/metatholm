@@ -1,5 +1,10 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-02-22"}`
+
+* Added description of [Magic Resistance](skill:magic_resistance).
+
+
 ## `FormattedDate|{"date": "2024-02-21"}`
 
 * Unarmed combat damage has been toned down somewhat.
