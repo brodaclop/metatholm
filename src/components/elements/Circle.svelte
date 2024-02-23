@@ -3,7 +3,15 @@
 	export let clickable = false;
 </script>
 
-<span class={`${status} main`} on:click on:keypress tabindex="0" class:clickable role="button">
+<span
+	class={`${status} main`}
+	style:background-color={`var(--circle-c-${status})`}
+	on:click
+	on:keypress
+	tabindex="0"
+	class:clickable
+	role="button"
+>
 	<span class="inner">
 		<slot />
 	</span>
@@ -34,33 +42,11 @@
 		cursor: pointer;
 	}
 
-	.empty {
-		background-color: white;
-	}
-
 	.half {
-		background-color: lightgray;
 		opacity: 0.3;
 	}
 
-	.active {
-		background-color: lightgray;
-	}
-
 	.active:hover {
-		background-color: lightgray;
 		opacity: 0.7;
-	}
-
-	.reduced {
-		background-color: firebrick;
-	}
-
-	.increased {
-		background-color: chartreuse;
-	}
-
-	.full {
-		background-color: slategray;
 	}
 </style>

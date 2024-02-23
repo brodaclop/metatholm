@@ -64,7 +64,7 @@
 	{#if notFound}
 		<span>Lore not found</span>
 	{:else}
-		<Box flavour="lore">
+		<Box flavour="lore" marginless>
 			<span slot="title">
 				{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
 			</span>

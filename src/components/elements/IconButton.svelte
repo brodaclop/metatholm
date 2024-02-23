@@ -26,6 +26,10 @@
 </button>
 
 <style>
+	button {
+		border-radius: 0.5rem;
+	}
+
 	.plain {
 		outline: inherit;
 		background: none;

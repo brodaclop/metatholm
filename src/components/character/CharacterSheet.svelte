@@ -225,7 +225,7 @@
 
 	.download {
 		display: inline-block;
-		color: black;
+		color: var(--text-c);
 		height: 0.85rem;
 	}
 

@@ -17,6 +17,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article
 	class={flavour}
+	style:background-color={`var(--box-c-${flavour})`}
 	on:mouseenter
 	on:mouseleave
 	on:click
@@ -52,79 +53,6 @@
 
 	article.marginless {
 		margin: 0;
-	}
-
-	article.character-sheet {
-		background-color: #ffeeee;
-	}
-
-	article.character {
-		background-color: #ddddff;
-	}
-
-	article.abilities {
-		background-color: #eeeeff;
-	}
-
-	article.skills {
-		background-color: #eeffee;
-	}
-
-	article.points {
-		background-color: #eeffff;
-	}
-
-	article.inventory {
-		background-color: #eeeeee;
-	}
-
-	article.action-container {
-		background-color: #ffffee;
-	}
-
-	article.action-card {
-		background-color: #ffeeff;
-	}
-
-	article.action-card-spell {
-		background-color: #eeeeff;
-	}
-
-	article.action-card-weapon {
-		background-color: #ffeeee;
-	}
-
-	article.action-distance {
-		background-color: #eedddd;
-	}
-
-	article.notes {
-		background-color: #eeffcc;
-	}
-
-	article.action-variant-selectable {
-		background-color: white;
-	}
-
-	article.action-variant-unselectable {
-		background-color: lightgray;
-	}
-
-	article.action-variant-selected {
-		background-color: aquamarine;
-	}
-
-	article.lore {
-		background-color: white;
-		margin: 0;
-	}
-
-	article.simulator-life {
-		background-color: cornsilk;
-	}
-
-	article.simulator-turns {
-		background-color: #eeeeff;
 	}
 
 	h2,

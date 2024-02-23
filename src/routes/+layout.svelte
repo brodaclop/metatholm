@@ -12,6 +12,7 @@
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
 	import IconButton from '../components/elements/IconButton.svelte';
 	import Loading from '../components/Loading.svelte';
+	import '../css/themes.css';
 
 	export let data: PageData;
 
@@ -144,6 +145,28 @@
 <style>
 	:global(html) {
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		color: var(--text-c);
+	}
+
+	:global(button) {
+		color: var(--text-c);
+		background-color: var(--button-background-c);
+	}
+
+	:global(select) {
+		color: vaR(--text-c);
+	}
+
+	:global(input) {
+		color: var(--text-c);
+	}
+
+	:global(a) {
+		color: var(--link-c);
+	}
+
+	:global(a:visited) {
+		color: var(--link-visited-c);
 	}
 
 	:global(.markdown tr:nth-child(even):not(.circles)) {

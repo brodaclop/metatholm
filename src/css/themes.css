@@ -1,0 +1,37 @@
+:root {
+
+    /* box flavours */
+    --box-c-character-sheet: #ffeeee;
+    --box-c-character: #ddddff;
+    --box-c-abilities: #eeeeff;
+    --box-c-skills: #eeffee;
+    --box-c-points: #eeffff;
+    --box-c-inventory: #eeeeee;
+    --box-c-action-container: #ffffee;
+    --box-c-action-card: #ffeeff;
+    --box-c-action-card-spell: #eeeeff;
+    --box-c-action-card-weapon: #ffeeee;
+    --box-c-action-distance: #eedddd;
+    --box-c-notes: #eeffcc;
+    --box-c-action-variant-selectable: white;
+    --box-c-action-variant-unselectable: lightgray;
+    --box-c-action-variant-selected: aquamarine;
+    --box-c-lore: white;
+    --box-c-simulator-life: cornsilk;
+    --box-c-simulator-turns: #eeeeff;
+
+    /* circles */
+    --circle-c-empty: white;
+    --circle-c-half: lightgray;
+    --circle-c-active: lightgray;
+    --circle-c-reduced: firebrick;
+    --circle-c-increased: chartreuse;
+    --circle-c-full: slategray;
+
+
+    /* generic */
+    --text-c: black;
+    --button-background-c: lightgray;
+    --link-c: blue;
+    --link-visited-c: blue;
+}

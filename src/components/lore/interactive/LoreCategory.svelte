@@ -8,7 +8,7 @@
 	export let title: string;
 </script>
 
-<Box {title} flavour="lore">
+<Box {title} flavour="lore" marginless>
 	<ul>
 		{#await loreCategoryList(category, $locale)}
 			<Loading />
