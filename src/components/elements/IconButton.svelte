@@ -15,6 +15,7 @@
 	style:color
 	style:background-color={backgroundColor}
 	style:border-color={backgroundColor}
+	style:border-radius={!$$slots.text ? '50%' : undefined}
 	class:plain
 >
 	<span class="icon">
