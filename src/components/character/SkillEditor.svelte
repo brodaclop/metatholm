@@ -243,7 +243,7 @@
 	}
 
 	.type-list {
-		border-bottom: 1px dotted black;
+		border-bottom: 1px dotted var(--default-border-c);
 		padding-bottom: 0.5em;
 	}
 </style>

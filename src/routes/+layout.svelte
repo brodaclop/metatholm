@@ -153,20 +153,24 @@
 		background-color: var(--background-c);
 	}
 
-	:global(button) {
-		color: var(--text-c);
-		background-color: var(--button-background-c);
-	}
-
 	:global(button:disabled) {
 		color: var(--button-disabled-c);
 	}
 
-	:global(select),
-	:global(input),
-	:global(textarea:enabled) {
-		color: vaR(--text-c);
+	:global(button),
+	:global(select:enabled),
+	:global(input:enabled),
+	:global(textarea:enabled),
+	:global(dialog) {
+		color: var(--text-c);
 		background-color: var(--background-c);
+	}
+
+	:global(select:disabled),
+	:global(input:disabled),
+	:global(textarea:disabled) {
+		color: var(--text-c);
+		background-color: var(--button-disabled-c);
 	}
 
 	:global(a) {

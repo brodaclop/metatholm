@@ -94,7 +94,7 @@
 		.filter(([key, value]) => value.weapon)
 		.map(([key]) => key);
 
-	$: langKey = $locale ?? 'en';
+	$: langKey = ($locale ?? 'en') as 'hu' | 'en';
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -118,19 +118,20 @@
 			<table>
 				<tbody>
 					<tr>
-						<td>
-							<select bind:value={template} on:change={templateSelected}>
-								<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option>
-								{#each WEAPON_LIST as tw}
-									<option value={tw}>{WEAPON_NAMES_LIST[tw.name][langKey]}</option>
-								{/each}
-							</select>
+						<td colspan={2}>
+							<div class="first">
+								<select bind:value={template} on:change={templateSelected}>
+									<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option
+									>
+									{#each WEAPON_LIST as tw}
+										<option value={tw}>{WEAPON_NAMES_LIST[tw.name][langKey]}</option>
+									{/each}
+								</select>
+								<IconButton title="label:paste">
+									<MdContentPaste />
+								</IconButton>
+							</div>
 						</td>
-						<th>
-							<IconButton title="label:paste">
-								<MdContentPaste />
-							</IconButton>
-						</th>
 						<td>
 							<input type="text" bind:value={pasted} placeholder={$_('label:weapon:paste_here')} />
 						</td>
@@ -267,5 +268,11 @@
 	tbody {
 		margin-bottom: 0.5rem;
 		border-bottom: 3px solid var(--default-border-c);
+	}
+
+	.first {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
 	}
 </style>
