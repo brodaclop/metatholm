@@ -105,8 +105,12 @@
 					</select>
 				</li>
 				<li><a href="/create">{$_('label:new-character')}</a></li>
-				<li><a href="/simulator">Simulator</a></li>
 				<li><a href="/lore/main">{$_('label:lore')}</a></li>
+				<li class="divider">&nbsp;</li>
+				<li><a href="/npc">{$_('label:npcs')}</a></li>
+				<li><a href="/encounter">{$_('label:encounters')}</a></li>
+				<li class="divider">&nbsp;</li>
+				<li><a href="/simulator">Simulator</a></li>
 				<li>
 					<Select
 						bind:value={lang}
@@ -146,6 +150,7 @@
 	:global(html) {
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		color: var(--text-c);
+		background-color: var(--background-c);
 	}
 
 	:global(button) {
@@ -153,12 +158,15 @@
 		background-color: var(--button-background-c);
 	}
 
-	:global(select) {
-		color: vaR(--text-c);
+	:global(button:disabled) {
+		color: var(--button-disabled-c);
 	}
 
-	:global(input) {
-		color: var(--text-c);
+	:global(select),
+	:global(input),
+	:global(textarea:enabled) {
+		color: vaR(--text-c);
+		background-color: var(--background-c);
 	}
 
 	:global(a) {
@@ -166,11 +174,7 @@
 	}
 
 	:global(a:visited) {
-		color: var(--link-visited-c);
-	}
-
-	:global(.markdown tr:nth-child(even):not(.circles)) {
-		background-color: whitesmoke;
+		color: var(--link-c);
 	}
 
 	:global(table) {
@@ -181,7 +185,7 @@
 	header {
 		position: sticky;
 		top: 0;
-		background-color: wheat;
+		background-color: var(--header-background-c);
 		padding-bottom: 0.1em;
 		z-index: 1000;
 	}
@@ -212,6 +216,14 @@
 		justify-content: space-around;
 		align-items: center;
 		text-align: center;
+	}
+
+	.divider {
+		border-left: 1px solid var(--text-c);
+		width: 0;
+		padding: 0;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
 	}
 
 	form {

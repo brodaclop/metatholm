@@ -24,8 +24,8 @@
 
 <style>
 	div {
-		background-color: white;
-		border: 1px solid black;
+		background-color: var(--background-c);
+		border: 1px solid var(--default-border-c);
 		border-radius: 10px;
 		padding: 10px;
 	}

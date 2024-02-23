@@ -53,7 +53,7 @@
 			? `${$_('label:spell_target')}: ${$_(Spell.get(action.spell).target)}`
 			: undefined;
 
-	let expanded = false;
+	export let expanded = false;
 
 	$: skill = action?.weapon?.skill ?? (action?.spell ? Spell.get(action.spell).skill : undefined);
 </script>
@@ -208,15 +208,15 @@
 	}
 
 	.action {
-		color: cornflowerblue;
+		color: var(--actioncard-action-c);
 	}
 
 	.reaction {
-		color: coral;
+		color: var(--actioncard-reaction-c);
 	}
 
 	.skill-icon {
-		color: darkolivegreen;
+		color: var(--actioncard-skill-icon-c);
 		width: 1em;
 		display: inline-block;
 		vertical-align: middle;

@@ -266,6 +266,6 @@
 
 	tbody {
 		margin-bottom: 0.5rem;
-		border-bottom: 3px solid black;
+		border-bottom: 3px solid var(--default-border-c);
 	}
 </style>

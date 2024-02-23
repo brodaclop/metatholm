@@ -243,7 +243,7 @@
 							{#each [0, 1] as handIdx}
 								{@const action =
 									weapons[idx][handIdx] !== undefined
-										? calculatedCharacter.actions.find(
+										? calculatedCharacter.weaponActions.find(
 												(a) =>
 													a.name === calculatedCharacter.weapons[weapons[idx][handIdx] ?? 0].name
 										  )
@@ -252,6 +252,7 @@
 									<ActionCard
 										{action}
 										{range}
+										expanded={true}
 										isSelectable={(variant) =>
 											!!action &&
 											nextStep.idx === idx &&
@@ -270,6 +271,7 @@
 							{/each}
 							<div style:order={1}>
 								<ActionCard
+									expanded={true}
 									action={MOVES_ACTION}
 									{range}
 									isSelectable={(variant) =>

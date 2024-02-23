@@ -22,7 +22,11 @@
 	).map((si) => si.name);
 
 	$: color = (focus: Skill) =>
-		allowedFoci.has(focus) ? 'palegreen' : deniedFoci.has(focus) ? 'salmon' : undefined;
+		allowedFoci.has(focus)
+			? 'var(--spell-action-filter-allowed)'
+			: deniedFoci.has(focus)
+			? 'var(--spell-action-filter-denied)'
+			: undefined;
 
 	$: filteredSpells = calculatedCharacter.spellActions.filter((sa) => {
 		const focus = Spell.get(sa.spell!).skill;

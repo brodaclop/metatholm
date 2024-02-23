@@ -2,6 +2,10 @@
 
 <style>
 	tr:nth-child(even) {
-		background-color: silver;
+		background-color: var(--striped-table-even-c);
+	}
+
+	tr:nth-child(odd) {
+		background-color: var(--striped-table-odd-c);
 	}
 </style>

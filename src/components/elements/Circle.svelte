@@ -19,7 +19,7 @@
 
 <style>
 	span.main {
-		border: 1px solid black;
+		border: 1px solid var(--default-border-c);
 		box-shadow: 0.1em 0.1em 0.1em slategray;
 		border-radius: 50%;
 		width: 1em;

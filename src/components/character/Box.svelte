@@ -26,15 +26,15 @@
 >
 	<header>
 		{#if level === 1}
-			<h2><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h2>
+			<h2><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h2>
 		{:else if level === 2}
-			<h3><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h3>
+			<h3><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h3>
 		{:else if level === 3}
-			<h4><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h4>
+			<h4><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h4>
 		{:else if level === 4}
-			<h5><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h5>
+			<h5><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h5>
 		{:else if level === 5}
-			<h6><slot name="title"><LoreInfoIcon id={title} />{$_(title ?? '')}</slot></h6>
+			<h6><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h6>
 		{/if}
 	</header>
 	<slot />
@@ -45,10 +45,10 @@
 		border-radius: 1em;
 		border-style: groove;
 		border-width: 3px;
-		border-color: gray;
+		border-color: var(--box-border-c);
 		padding: 0.5em;
 		margin: 0.5em;
-		filter: drop-shadow(0.2em 0.2em 0.2em #00000080);
+		filter: drop-shadow(0.2em 0.2em 0.2em var(--box-shadow-c));
 	}
 
 	article.marginless {

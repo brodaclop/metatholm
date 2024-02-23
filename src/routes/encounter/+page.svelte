@@ -97,7 +97,7 @@
 
 	li {
 		margin-right: 1rem;
-		border: 1px solid black;
+		border: 1px solid var(--default-border-c);
 		border-radius: 0.5em;
 		flex-basis: 15%;
 		display: flex;
@@ -120,6 +120,10 @@
 	}
 
 	li:nth-child(odd) {
-		background-color: whitesmoke;
+		background-color: var(--striped-table-odd-c);
+	}
+
+	li:nth-child(even) {
+		background-color: var(--striped-table-even-c);
 	}
 </style>

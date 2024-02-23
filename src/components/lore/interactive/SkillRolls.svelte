@@ -87,11 +87,11 @@
 
 	table tbody th,
 	table thead tr th:first-child {
-		background-color: aliceblue;
+		background-color: var(--lore-skill-rolls-header-c);
 	}
 
 	table tbody td,
 	table thead tr th:not(:first-child) {
-		background-color: antiquewhite;
+		background-color: var(--lore-skill-rolls-cells-c);
 	}
 </style>

@@ -37,7 +37,8 @@
 				inline={inlineLore}
 				params={{ ...loreParams, level: value }}
 				on:click={() => (loreOpen = !loreOpen)}
-			/>{$_(name)}
+			/>
+			{$_(name)}
 			{#if subName}<i>({$_(subName)})</i>{/if}
 		</td>
 	{/if}

@@ -73,7 +73,7 @@
 				bind:value={ability}
 				subName={String(ability)}
 				max={10}
-				editable={true}
+				editable={!abilities}
 			>
 				<IconButton
 					title="character:ability"
@@ -98,54 +98,67 @@
 			/>
 		{/if}
 	</tbody>
-</table>
-<table class="points">
-	<thead>
-		<tr>
-			<th class="rowhead">{$_('expr:skill_level')}</th>
-			{#each Array(10) as _, skillLevel (skillLevel)}
-				<th class="header" class:active={skillLevel === level}>{skillLevel}</th>
-			{/each}
-		</tr>
-	</thead>
 	<tbody>
 		<tr>
+			<th class="rowhead">{$_('expr:skill_level')}</th>
+			<td colspan={3}>
+				<div class="point-container">
+					{#each Array(10) as _, skillLevel (skillLevel)}
+						<span class="header" class:active={skillLevel === level}>{skillLevel}</span>
+					{/each}
+				</div>
+			</td>
+		</tr>
+		<tr>
 			<th class="rowhead">{$_('character:kp')}</th>
-			{#each kpNeeded as kp, skillLevel}
-				<td class:active={skillLevel === level}>{kp.result}</td>
-			{/each}
+			<td colspan={3}>
+				<div class="point-container">
+					{#each kpNeeded as kp, skillLevel}
+						<span class:active={skillLevel === level}>{kp.result}</span>
+					{/each}
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>
 
 <style>
-	table {
-		border-collapse: collapse;
+	.point-container {
+		display: flex;
+		flex-wrap: nowrap;
+	}
+
+	.point-container span {
+		flex-basis: 10%;
+		padding-right: 0.2rem;
+		padding-left: 0.1rem;
+	}
+
+	span.header {
+		font-weight: bold;
 	}
 
 	td,
 	th {
 		padding-right: 0.25em;
 		text-align: left;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 
-	td:nth-child(odd),
-	th.header:nth-child(odd) {
-		background-color: whitesmoke;
+	.point-container span:nth-child(even) {
+		background-color: var(--striped-table-even-c);
+	}
+
+	.point-container span:nth-child(odd) {
+		background-color: var(--striped-table-odd-c);
 	}
 
 	th.rowhead {
 		padding-right: 0.75em;
 	}
 
-	td.active,
-	th.active {
-		background-color: lavender !important;
-	}
-
-	.points td,
-	.points thead th.header {
-		padding-left: 0.25em;
-		padding-right: 0.25em;
+	span.active {
+		background-color: var(--lore-active-cells-c) !important;
 	}
 </style>

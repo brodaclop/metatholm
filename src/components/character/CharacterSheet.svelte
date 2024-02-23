@@ -214,7 +214,7 @@
 	}
 
 	div.changed {
-		background-color: darksalmon;
+		background-color: var(--unsaved-background-c);
 	}
 
 	.actionRow {

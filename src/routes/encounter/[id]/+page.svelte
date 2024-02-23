@@ -221,6 +221,6 @@
 		top: 2rem;
 		z-index: 10000;
 		width: 100%;
-		background-color: #ddddff;
+		background-color: var(--encounter-buttonbar-background-c);
 	}
 </style>

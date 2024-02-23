@@ -361,7 +361,7 @@
 		}
 
 		div.points > div {
-			border-right: 1px solid black;
+			border-right: 1px solid var(--default-border-c);
 			padding-left: 0.2em;
 			padding-right: 0.2em;
 			text-align: center;
@@ -369,7 +369,7 @@
 		}
 
 		.separate-after {
-			border-right: 3px solid black !important;
+			border-right: 3px solid var(--default-border-c) !important;
 		}
 
 		.npc {
@@ -394,13 +394,13 @@
 		table.npc {
 			border-collapse: collapse;
 			border-spacing: 0;
-			border: 1px solid black;
+			border: 1px solid var(--default-border-c);
 		}
 
 		table.npc > thead,
 		table.npc > tbody {
-			border-top: 3px solid black;
-			border-bottom: 3px solid black;
+			border-top: 3px solid var(--default-border-c);
+			border-bottom: 3px solid var(--default-border-c);
 		}
 
 		table.circles {
@@ -409,7 +409,7 @@
 
 		table.npc > thead > tr > td,
 		table.npc > tbody > tr > th {
-			border: 1px solid black;
+			border: 1px solid var(--default-border-c);
 			box-sizing: border-box;
 			padding-left: 0.3rem;
 			text-align: left;
@@ -421,11 +421,15 @@
 
 		table.npc > thead > tr > th,
 		table.npc > tbody > tr > th {
-			background-color: azure;
+			background-color: var(--npc-header-c);
 		}
 
 		tr.striped:nth-of-type(even) {
-			background-color: whitesmoke;
+			background-color: var(--striped-table-even-c);
+		}
+
+		tr.striped:nth-of-type(odd) {
+			background-color: var(--striped-table-odd-c);
 		}
 
 		td.nopadding,

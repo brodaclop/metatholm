@@ -13,7 +13,7 @@
 		max-width: 80%;
 		border-width: 3px;
 		border-style: inset;
-		border-color: aqua;
+		border-color: var(--lore-img-border-c);
 		border-radius: 2px;
 	}
 </style>

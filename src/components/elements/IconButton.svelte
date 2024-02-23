@@ -28,6 +28,8 @@
 <style>
 	button {
 		border-radius: 0.5rem;
+		margin-left: 1px;
+		margin-right: 1px;
 	}
 
 	.plain {

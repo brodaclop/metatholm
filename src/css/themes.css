@@ -28,10 +28,128 @@
     --circle-c-increased: chartreuse;
     --circle-c-full: slategray;
 
+    /* NPCs */
+
+    --npc-header-c: azure;
+
+    /* Actions */
+
+    --actioncard-action-c: cornflowerblue;
+    --actioncard-reaction-c: coral;
+    --actioncard-skill-icon-c: darkolivegreen;
+
+    /* Box */
+
+    --box-border-c: gray;
+    --box-shadow-c: #00000080;
+
+
+    /* Lore */
+    --lore-img-border-c: aqua;
+    --lore-dice-c: bisque;
+    --lore-active-cells-c: lavender;
+    --lore-skill-rolls-header-c: aliceblue;
+    --lore-skill-rolls-cells-c: antiquewhite;
+
+    /* Encounters */
+
+    --encounter-buttonbar-background-c: #ddddff;
+
+    /* Spell Actions */
+
+    --spell-action-filter-allowed: palegreen;
+    --spall-action-filter-denied: salmon;
+
 
     /* generic */
+    --default-border-c: black;
     --text-c: black;
+    --background-c: white;
     --button-background-c: lightgray;
+    /* --button-disabled-c: #808080; */
     --link-c: blue;
-    --link-visited-c: blue;
+    --unsaved-background-c: darksalmon;
+    --header-background-c: wheat;
+    --striped-table-even-c: whitesmoke;
+    --striped-table-odd-c: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+
+        --color-very-dark-gray: #2c2c2c;
+
+        /* box flavours */
+        --box-c-character-sheet: var(--color-very-dark-gray);
+        --box-c-character: var(--color-very-dark-gray);
+        --box-c-abilities: var(--color-very-dark-gray);
+        --box-c-skills: var(--color-very-dark-gray);
+        --box-c-points: var(--color-very-dark-gray);
+        --box-c-inventory: var(--color-very-dark-gray);
+        --box-c-action-container: var(--color-very-dark-gray);
+        --box-c-action-card: var(--color-very-dark-gray);
+        --box-c-action-card-spell: var(--color-very-dark-gray);
+        --box-c-action-card-weapon: var(--color-very-dark-gray);
+        --box-c-action-distance: var(--color-very-dark-gray);
+        --box-c-notes: var(--color-very-dark-gray);
+        --box-c-action-variant-selectable: var(--color-very-dark-gray);
+        --box-c-action-variant-unselectable: slategray;
+        --box-c-action-variant-selected: darkolivegreen;
+        --box-c-lore: black;
+        --box-c-simulator-life: var(--color-very-dark-gray);
+        --box-c-simulator-turns: var(--color-very-dark-gray);
+
+        /* circles */
+        --circle-c-empty: white;
+        --circle-c-half: black;
+        --circle-c-active: var(--color-very-dark-gray);
+        --circle-c-reduced: firebrick;
+        --circle-c-increased: chartreuse;
+        --circle-c-full: slategray;
+
+        /* NPCs */
+
+        --npc-header-c: #000022;
+
+        /* Actions */
+
+        --actioncard-action-c: cornflowerblue;
+        --actioncard-reaction-c: coral;
+        --actioncard-skill-icon-c: darkolivegreen;
+
+        /* Box */
+
+        --box-border-c: gray;
+        --box-shadow-c: #ffffff80;
+
+
+        /* Lore */
+        --lore-img-border-c: aqua;
+        --lore-dice-c: saddlebrown;
+        --lore-active-cells-c: #440044;
+        --lore-skill-rolls-header-c: black;
+        --lore-skill-rolls-cells-c: #1c1c1c;
+
+        /* Encounters */
+
+        --encounter-buttonbar-background-c: #002200;
+
+        /* Spell Actions */
+
+        --spell-action-filter-allowed: darkolivegreen;
+        --spell-action-filter-denied: maroon;
+
+        /* generic */
+        --default-border-c: white;
+        --text-c: white;
+        --background-c: black;
+        --button-background-c: #404040;
+        --button-disabled-c: #808080;
+        --link-c: lightskyblue;
+        --unsaved-background-c: darksalmon;
+        --header-background-c: #4c4c4c;
+        --striped-table-even-c: var(--color-very-dark-gray);
+        --striped-table-odd-c: black;
+
+    }
 }
