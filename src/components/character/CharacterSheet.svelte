@@ -163,16 +163,18 @@
 		</div>
 
 		<div class="actionRow">
-			<Box title="rule:combat" flavour="action-container">
-				<div>
-					{#each sort(calculatedCharacter.weaponActions, 'name', $_) as action}
-						<ActionCard {action} skills={calculatedCharacter.skills} />
-					{/each}
-				</div>
-			</Box>
-		</div>
-		<div class="actionRow">
-			<SpellActions {calculatedCharacter} />
+			<div>
+				<Box title="rule:combat" flavour="action-container">
+					<div>
+						{#each sort(calculatedCharacter.weaponActions, 'name', $_) as action}
+							<ActionCard {action} skills={calculatedCharacter.skills} />
+						{/each}
+					</div>
+				</Box>
+			</div>
+			<div>
+				<SpellActions {calculatedCharacter} />
+			</div>
 		</div>
 	</div>
 	<div class="actionRow">
@@ -218,8 +220,14 @@
 	}
 
 	.actionRow {
+		display: flex;
 		flex-basis: 100%;
 		justify-content: space-around;
+		flex-grow: 1;
+	}
+
+	.actionRow > div {
+		flex-basis: 50%;
 		flex-grow: 1;
 	}
 

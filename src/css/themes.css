@@ -69,7 +69,9 @@
     /* --button-disabled-c: #808080; */
     --link-c: blue;
     --unsaved-background-c: darksalmon;
-    --header-background-c: wheat;
+    --header-background-c: paleturquoise;
+    --menu-item-background-c: color-mix(in srgb, paleturquoise 70%, black);
+    --menu-item-hover-c: color-mix(in srgb, paleturquoise 50%, black);
     --striped-table-even-c: whitesmoke;
     --striped-table-odd-c: white;
 }
@@ -146,8 +148,10 @@
         --button-background-c: #404040;
         --button-disabled-c: #808080;
         --link-c: lightskyblue;
-        --unsaved-background-c: darksalmon;
+        --unsaved-background-c: firebrick;
+        --menu-item-background-c: #2c002c;
         --header-background-c: #4c4c4c;
+        --menu-item-hover-c: #4c004c;
         --striped-table-even-c: var(--color-very-dark-gray);
         --striped-table-odd-c: black;
 

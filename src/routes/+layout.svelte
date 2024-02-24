@@ -10,13 +10,14 @@
 	import { browser } from '$app/environment';
 	import { entries, group } from '../model/InfoList';
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
+	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import IconButton from '../components/elements/IconButton.svelte';
 	import Loading from '../components/Loading.svelte';
 	import '../css/themes.css';
 
 	export let data: PageData;
 
-	const LANGUAGES = [
+	export const LANGUAGES = [
 		{ value: 'en', label: Gb },
 		{ value: 'hu', label: Hu }
 	];
@@ -68,6 +69,8 @@
 	};
 
 	$: lang && locale.set(lang.value);
+
+	let menuOpen = false;
 </script>
 
 {#if !data.user}
@@ -104,13 +107,20 @@
 						{/each}
 					</select>
 				</li>
-				<li><a href="/create">{$_('label:new-character')}</a></li>
-				<li><a href="/lore/main">{$_('label:lore')}</a></li>
-				<li class="divider">&nbsp;</li>
-				<li><a href="/npc">{$_('label:npcs')}</a></li>
-				<li><a href="/encounter">{$_('label:encounters')}</a></li>
-				<li class="divider">&nbsp;</li>
-				<li><a href="/simulator">Simulator</a></li>
+				<li class="responsive">
+					<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
+						<span><MdMenu /></span>
+					</button>
+					<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
+						<li><a href="/create">{$_('label:new-character')}</a></li>
+						<li><a href="/lore/main">{$_('label:lore')}</a></li>
+						<li class="divider">&nbsp;</li>
+						<li><a href="/npc">{$_('label:npcs')}</a></li>
+						<li><a href="/encounter">{$_('label:encounters')}</a></li>
+						<li class="divider">&nbsp;</li>
+						<li><a href="/simulator">Simulator</a></li>
+					</ul>
+				</li>
 				<li>
 					<Select
 						bind:value={lang}
@@ -210,6 +220,10 @@
 		text-align: center;
 	}
 
+	nav ul li:not(.responsive):hover {
+		background-color: var(--menu-item-hover-c);
+	}
+
 	nav ul li:last-child {
 		margin-left: auto;
 	}
@@ -232,5 +246,71 @@
 
 	form {
 		display: inline-block;
+	}
+
+	.menu-opener {
+		display: none;
+	}
+
+	@media screen and (max-width: 1000px) {
+		.menu-opener {
+			display: var(--display-dropdown);
+		}
+
+		.menu-opener span {
+			display: inline-block;
+			width: 1em;
+			vertical-align: middle;
+		}
+
+		.responsive {
+			position: relative;
+		}
+
+		.responsive ul {
+			display: var(--display-dropdown);
+			flex-direction: column;
+			position: absolute;
+			padding-left: 0.15rem;
+			padding-right: 0.15rem;
+			background-color: var(--menu-item-background-c);
+			border-bottom-left-radius: 0.5rem;
+			border-bottom-right-radius: 0.5rem;
+			border-top-right-radius: 0.5rem;
+		}
+
+		.responsive ul li {
+			width: 100%;
+			text-align: left;
+			padding: 0;
+			white-space: nowrap;
+			white-space-collapse: collapse;
+		}
+
+		.divider {
+			border-bottom: 1px solid var(--text-c);
+			border-left: none;
+			height: 1px;
+			width: 100%;
+			padding: 0;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.responsive ul {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			right: 0.2rem;
+			padding-left: 0.1rem;
+			padding-right: 0.1rem;
+			background-color: var(--menu-item-background-c);
+			border-bottom-left-radius: 0.5rem;
+			border-bottom-right-radius: 0.5rem;
+			border-top-left-radius: 0.5rem;
+			border-top-right-radius: 0;
+		}
 	}
 </style>

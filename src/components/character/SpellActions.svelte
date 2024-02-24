@@ -85,5 +85,6 @@
 
 	div.buttonbar {
 		justify-content: space-around;
+		text-align: center;
 	}
 </style>
