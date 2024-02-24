@@ -51,6 +51,7 @@
 			const paths = $page.url.pathname.split('/');
 			const penultimate = paths.at(-2);
 			const last = paths.at(-1);
+			menuOpen = false;
 			if (penultimate === 'character' && last) {
 				currentCharacter = last;
 			} else {
