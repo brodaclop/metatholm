@@ -29,7 +29,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
         console.log('user', user);
 
-        const existingUser: Record<string, string> | null = await db.prepare('select * from user where github_id = ?').bind(user.sub).first();
+        const existingUser: Record<string, string> | null = await db.prepare('select * from user where github_id =?1 or google_id=?1').bind(user.sub).first();
 
         if (existingUser) {
             const session = await lucia.createSession(existingUser.id, {});
@@ -40,7 +40,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
             });
         } else {
             const userId = generateId(15);
-            await db.prepare('insert into user (id, github_id, username) VALUES (?, ?, ?)').bind(userId, user.sub, user.email).run();
+            await db.prepare('insert into user (id, google_id, username) VALUES (?, ?, ?)').bind(userId, user.sub, user.email).run();
             const session = await lucia.createSession(userId, {});
             const sessionCookie = lucia.createSessionCookie(session.id);
             event.cookies.set(sessionCookie.name, sessionCookie.value, {
