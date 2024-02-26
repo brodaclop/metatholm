@@ -28,6 +28,7 @@ export const calculateSpellAction = (skills: Partial<Record<Skill, number>>, spe
                 {
                     name: 'action:ap',
                     roll: ap,
+                    rollString: ap.result
                 },
                 {
                     name: 'action:roll',

@@ -165,7 +165,7 @@
 	}
 
 	:global(button:disabled) {
-		color: var(--button-disabled-c);
+		opacity: 0.3;
 	}
 
 	:global(button),
@@ -178,6 +178,7 @@
 	}
 
 	:global(select:disabled),
+	:global(button:disabled),
 	:global(input:disabled),
 	:global(textarea:disabled) {
 		color: var(--text-c);

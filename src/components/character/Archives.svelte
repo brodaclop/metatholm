@@ -9,40 +9,43 @@
 
 	export let character: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
+	export let disabled: boolean = false;
 </script>
 
-<IconButton title="label:previous_versions" disabled={archives.length === 0}>
+<IconButton title="label:previous_versions" disabled={disabled || archives.length === 0}>
 	<MdHistory />
-	<Popover
-		open={false}
-		showOnClick={true}
-		borderRadius={10}
-		caretBg="black"
-		hideOnExternalClick={true}
-	>
-		<div style:max-width="20rem">
-			<Box title="label:previous_versions" flavour="character" marginless>
-				<ul>
-					{#each archives as archive}
-						<li>
-							{$date(new Date(archive.timestamp), {
-								month: 'numeric',
-								day: 'numeric',
-								year: 'numeric'
-							})}
-							{$time(new Date(archive.timestamp))}
-							<IconButton title="label:restore_version" on:click={() => (character = archive.char)}>
-								<MdRestore />
-								<!-- <span slot="text">
-									{$_('label:restore_version')}
-								</span> -->
-							</IconButton>
-						</li>
-					{/each}
-				</ul>
-			</Box>
-		</div>
-	</Popover>
+	{#if !(disabled || archives.length === 0)}
+		<Popover
+			open={false}
+			showOnClick={true}
+			borderRadius={10}
+			caretBg="black"
+			hideOnExternalClick={true}
+		>
+			<div style:max-width="20rem">
+				<Box title="label:previous_versions" flavour="character" marginless>
+					<ul>
+						{#each archives as archive}
+							<li>
+								{$date(new Date(archive.timestamp), {
+									month: 'numeric',
+									day: 'numeric',
+									year: 'numeric'
+								})}
+								{$time(new Date(archive.timestamp))}
+								<IconButton
+									title="label:restore_version"
+									on:click={() => (character = archive.char)}
+								>
+									<MdRestore />
+								</IconButton>
+							</li>
+						{/each}
+					</ul>
+				</Box>
+			</div>
+		</Popover>
+	{/if}
 </IconButton>
 
 <style>

@@ -37,6 +37,13 @@ export interface Character extends Entity {
         armourWorn?: number;
     },
     notes?: string;
+
+    tableplop?: {
+        characterId: number;
+        tokenURL: string;
+        private: boolean;
+        appearanceBlock: unknown;
+    };
 }
 
 export interface CharacterInfo extends Entity {
@@ -51,6 +58,7 @@ export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'backgrou
 export interface CalculatedCharacter {
     fp: EvalExpression;
     ep: EvalExpression;
+    mp: EvalExpression;
     skills: Partial<Record<Skill, number>>;
     spellActions: Array<Action>;
     weaponActions: Array<Action>;
@@ -157,6 +165,9 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
         weaponActions: weapons.map(w => calculateWeaponAction(skills, w)),
         spellActions: spells.map(s => calculateSpellAction(skills, s)),
         skills,
+        mp: E.evaluate(E.value('skill:magic_force'), {
+            ...character.skills
+        }),
         ep: E.evaluate(TOTAL_EP, { 'character:level': level }),
         fp: E.evaluate(TOTAL_FP, {
             'character:level': level,

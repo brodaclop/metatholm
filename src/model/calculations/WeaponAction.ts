@@ -53,7 +53,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         rolls.push({
             name: 'skill:trick_fighting',
             roll: E.constant(trickSkill ? `${trickSkill}d10!` : '1d5!'),
-            //rollString: tri`${trickSkill}d10!`
+            rollString: trickSkill ? `${trickSkill}d10!` : '1d5!'
         });
     }
     if (damage) {
@@ -73,7 +73,8 @@ const d100roll = (roll: EvalExpression): Roll => ({
 
 const apRoll = (roll: EvalExpression): Roll => ({
     name: 'action:ap',
-    roll
+    roll,
+    rollString: `${roll.result}`
 });
 
 const damageRoll = (dice: number): Roll => ({

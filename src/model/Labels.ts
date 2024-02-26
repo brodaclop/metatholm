@@ -65,7 +65,11 @@ type GenericLabels = 'label:name' |
     'world:concept' |
     'world:realm' |
     'world:settlement' |
-    'world:organisation'
+    'world:organisation' |
+    'tableplop:roll' |
+    'tableplop:synchronise' |
+    'tableplop:export' |
+    'tableplop:unsynchronise'
     ;
 
 export const Keys = [
@@ -372,6 +376,12 @@ export const Labels_en: Record<Labels, string> = {
     'spell_target:point': 'point',
     'spell_target:other': 'other',
 
+    'tableplop:roll': 'roll',
+    'tableplop:synchronise': 'Synchronise with Tableplop character',
+    'tableplop:export': 'Export to Tableplop',
+    'tableplop:unsynchronise': 'Remove Tableplop character synchronisation',
+
+
     'weapon:speed': 'Speed',
     'weapon:difficulty': 'Difficulty',
     'weapon:skill': 'Skill',
@@ -650,6 +660,11 @@ export const Labels_hu: Record<Labels, string> = {
     'spell_target:touch': 'érintés',
     'spell_target:point': 'mutatás',
     'spell_target:other': 'egyéb',
+
+    'tableplop:roll': 'dobás',
+    'tableplop:synchronise': 'Tableplop karakter szinkronizálása',
+    'tableplop:export': 'Exportálás Tableplopra',
+    'tableplop:unsynchronise': 'Tableplop karakter szinkronizálás megszüntetése',
 
     'weapon:speed': 'Sebesség',
     'weapon:difficulty': 'Nehézség',

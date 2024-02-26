@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { _, date, time } from 'svelte-i18n';
+	import { _, date, time, locale } from 'svelte-i18n';
 	import Box from './Box.svelte';
 	import Abilities from './Abilities.svelte';
 	import Skills from './Skills.svelte';
@@ -16,11 +16,16 @@
 	import MdCancel from 'svelte-icons/md/MdCancel.svelte';
 	import MdFileUpload from 'svelte-icons/md/MdFileUpload.svelte';
 	import MdSettings from 'svelte-icons/md/MdSettings.svelte';
+	import MdSync from 'svelte-icons/md/MdSync.svelte';
+	import MdSyncProblem from 'svelte-icons/md/MdSyncProblem.svelte';
+	import MdSyncDisabled from 'svelte-icons/md/MdSyncDisabled.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
 	import { sort } from '../../model/InfoList';
 	import SpellActions from './SpellActions.svelte';
+	import DownloadButton from './DownloadButton.svelte';
+	import UploadButton from './UploadButton.svelte';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -55,69 +60,79 @@
 		}
 	});
 
-	const upload = async (e: any) => {
-		const files: FileList | null = (e.target as HTMLInputElement).files;
-		const file = files?.[0];
-		if (file) {
-			const uploadedChar: Character = JSON.parse(await file.text());
-			character = { ...uploadedChar, id: character.id };
-			e.target.value = '';
-		}
+	const upload = (contents: string) => {
+		const uploadedChar: Character = JSON.parse(contents);
+		character = { ...uploadedChar, id: character.id };
+	};
+
+	const synchronise = (contents: string) => {
+		const json = JSON.parse(contents);
+		const appearanceBlock = json.properties.find((p: any) => p.type === 'appearance')?.data;
+		character.tableplop = {
+			characterId: json.properties[0].characterId,
+			tokenURL: json.appearance,
+			private: json.private,
+			appearanceBlock
+		};
 	};
 </script>
 
 <Box flavour="character-sheet">
 	<div slot="title" class="title" class:changed>
 		<span>
-			{#if editable}
-				<IconButton title="label:save" disabled={!changed || saving} on:click={save}>
-					{#if saving}
-						<FaSpinner />
-					{:else}
-						<MdSave />
-					{/if}
-				</IconButton>
-				<IconButton
-					title="label:revert_to_saved"
-					color={changed || saving ? 'darkred' : undefined}
-					disabled={!changed || saving}
-					on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
-				>
-					<MdCancel />
-				</IconButton>
-				<Archives {archives} bind:character />
-			{/if}
-			{#if changed || saving}
-				<span class="download" style:opacity="0.3">
-					<MdFileDownload />
-				</span>
+			<IconButton title="label:save" disabled={!changed || saving || !editable} on:click={save}>
+				{#if saving}
+					<FaSpinner />
+				{:else}
+					<MdSave />
+				{/if}
+			</IconButton>
+			<IconButton
+				title="label:revert_to_saved"
+				color={changed || saving ? 'darkred' : undefined}
+				disabled={!changed || saving || !editable}
+				on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
+			>
+				<MdCancel />
+			</IconButton>
+
+			<Archives {archives} bind:character disabled={!editable} />
+			<DownloadButton
+				disabled={changed || saving}
+				title="label:download_character"
+				href="/api/character/{character.id}"
+				download="{character.name}.char"
+			>
+				<MdFileDownload />
+			</DownloadButton>
+
+			<UploadButton title="label:upload_character" disabled={!editable} onUpload={upload}>
+				<MdFileUpload />
+			</UploadButton>
+
+			{#if !character.tableplop}
+				<UploadButton title="tableplop:synchronise" disabled={!editable} onUpload={synchronise}>
+					<MdSyncProblem />
+				</UploadButton>
 			{:else}
-				<a
-					class="download"
-					title={$_('label:download_character')}
-					href="/api/character/{character.id}"
-					download="{character.name}.char"><MdFileDownload /></a
+				<IconButton
+					title="tableplop:unsynchronise"
+					disabled={!editable}
+					on:click={() => {
+						character.tableplop = undefined;
+					}}
 				>
+					<MdSyncDisabled />
+				</IconButton>
 			{/if}
-
-			{#if editable}
-				<form class="uploadForm">
-					<div>
-						<input
-							accept=".char"
-							type="file"
-							id="file"
-							name="fileToUpload"
-							required
-							on:change={upload}
-						/>
-					</div>
-
-					<IconButton title="label:upload_character" plain>
-						<MdFileUpload />
-					</IconButton>
-				</form>
-			{/if}
+			<DownloadButton
+				disabled={changed || saving || !character.tableplop}
+				title="tableplop:export"
+				href="/api/tableplop/{character.id}?lang={$locale}"
+				download="{character.name}-tableplop.json"
+			>
+				<MdSync />
+			</DownloadButton>
 		</span>
 		{$_('label:character')}: {character.name}
 		<span>
