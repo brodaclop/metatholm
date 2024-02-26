@@ -1,5 +1,4 @@
-import ActionVariants from "../../components/lore/interactive/ActionVariants.svelte";
-import { E, type EvalExpression, type Expression } from "../../logic/Expression";
+import { E, type EvalExpression } from "../../logic/Expression";
 import { ACTION_VARIANT_PROPERTIES, type Action, type ActionRange, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
 import { keys } from "../InfoList";
 import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
