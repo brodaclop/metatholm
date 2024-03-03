@@ -11,6 +11,8 @@
 	import { entries, group } from '../model/InfoList';
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
 	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
+	import MdWbSunny from 'svelte-icons/md/MdWbSunny.svelte';
+	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
 	import IconButton from '../components/elements/IconButton.svelte';
 	import Loading from '../components/Loading.svelte';
 	import '../css/themes.css';
@@ -44,7 +46,23 @@
 	let currentCharacter: string = '';
 	let lastPath: string = '';
 
+	let theme: 'dark' | 'light' | undefined = undefined;
+
+	$: if (theme) {
+		document.querySelector('html')?.classList.remove('light');
+		document.querySelector('html')?.classList.remove('dark');
+		document.querySelector('html')?.classList.add(theme);
+		window?.localStorage?.setItem('theme', theme);
+	}
+
 	onMount(() => (lang = storedLang() ?? lang));
+
+	onMount(() => {
+		const storedMode = window.localStorage.getItem('theme');
+		if (storedMode) {
+			theme = storedMode === 'dark' ? 'dark' : 'light';
+		}
+	});
 
 	$: {
 		if (lastPath !== $page.url.pathname) {
@@ -86,14 +104,14 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="/">M</a></li>
-				<li>
+				<li class="nohover"><a href="/">M</a></li>
+				<li class="nohover">
 					{data.user.username}
 					<form method="post" action="/logout">
 						<IconButton title="label:logout"><MdExitToApp /></IconButton>
 					</form>
 				</li>
-				<li>
+				<li class="nohover">
 					<select bind:value={currentCharacter} on:change={switchCharacter}>
 						<option disabled value="">{$_('label:select-character')}</option>
 						{#each entries(group(data.characters, (c) => c.user)) as [user, characters]}
@@ -122,28 +140,40 @@
 						<li><a href="/simulator">Simulator</a></li>
 					</ul>
 				</li>
-				<li>
-					<Select
-						bind:value={lang}
-						items={LANGUAGES}
-						searchable={false}
-						clearable={false}
-						--height="1.5em"
-						--max-height="1.5em"
-						--value-container-padding="0"
-						--padding="0 0 0 0.2em"
-						--item-padding="0 0 0 0.2em"
-						--internal-padding="0 0 0 0.2em"
-						--selected-item-padding="0 0.2em 0 0"
-						on:change={langChanged}
-					>
-						<div slot="item" let:item>
-							<svelte:component this={item.label} />
-						</div>
-						<div slot="selection" let:selection>
-							<svelte:component this={selection.label} />
-						</div>
-					</Select>
+				<li class="nohover">
+					<div class="right-controls">
+						<IconButton
+							title="Switch theme"
+							on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
+						>
+							{#if theme === 'dark'}
+								<MdWbSunny />
+							{:else}
+								<FaMoon />
+							{/if}
+						</IconButton>
+						<Select
+							bind:value={lang}
+							items={LANGUAGES}
+							searchable={false}
+							clearable={false}
+							--height="1.5em"
+							--max-height="1.5em"
+							--value-container-padding="0"
+							--padding="0 0 0 0.2em"
+							--item-padding="0 0 0 0.2em"
+							--internal-padding="0 0 0 0.2em"
+							--selected-item-padding="0 0.2em 0 0"
+							on:change={langChanged}
+						>
+							<div slot="item" let:item>
+								<svelte:component this={item.label} />
+							</div>
+							<div slot="selection" let:selection>
+								<svelte:component this={selection.label} />
+							</div>
+						</Select>
+					</div>
 				</li>
 			</ul>
 		</nav>
@@ -228,7 +258,7 @@
 		text-align: center;
 	}
 
-	nav ul li:not(.responsive):hover {
+	nav ul li:not(.nohover):not(.responsive):hover {
 		background-color: var(--menu-item-hover-c);
 	}
 
@@ -258,6 +288,10 @@
 
 	.menu-opener {
 		display: none;
+	}
+
+	.right-controls {
+		display: flex;
 	}
 
 	@media screen and (max-width: 1000px) {

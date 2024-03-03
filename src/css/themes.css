@@ -1,4 +1,5 @@
-:root {
+html,
+html.light {
 
     /* box flavours */
     --box-c-character-sheet: #ffeeee;
@@ -76,9 +77,87 @@
     --striped-table-odd-c: white;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
+html.dark {
+    --color-very-dark-gray: #2c2c2c;
 
+    /* box flavours */
+    --box-c-character-sheet: var(--color-very-dark-gray);
+    --box-c-character: var(--color-very-dark-gray);
+    --box-c-abilities: var(--color-very-dark-gray);
+    --box-c-skills: var(--color-very-dark-gray);
+    --box-c-points: var(--color-very-dark-gray);
+    --box-c-inventory: var(--color-very-dark-gray);
+    --box-c-action-container: var(--color-very-dark-gray);
+    --box-c-action-card: var(--color-very-dark-gray);
+    --box-c-action-card-spell: var(--color-very-dark-gray);
+    --box-c-action-card-weapon: var(--color-very-dark-gray);
+    --box-c-action-distance: var(--color-very-dark-gray);
+    --box-c-notes: var(--color-very-dark-gray);
+    --box-c-action-variant-selectable: var(--color-very-dark-gray);
+    --box-c-action-variant-unselectable: slategray;
+    --box-c-action-variant-selected: darkolivegreen;
+    --box-c-lore: black;
+    --box-c-simulator-life: var(--color-very-dark-gray);
+    --box-c-simulator-turns: var(--color-very-dark-gray);
+
+    /* circles */
+    --circle-c-empty: white;
+    --circle-c-half: black;
+    --circle-c-active: var(--color-very-dark-gray);
+    --circle-c-reduced: firebrick;
+    --circle-c-increased: chartreuse;
+    --circle-c-full: slategray;
+
+    /* NPCs */
+
+    --npc-header-c: #000022;
+
+    /* Actions */
+
+    --actioncard-action-c: cornflowerblue;
+    --actioncard-reaction-c: coral;
+    --actioncard-skill-icon-c: lightgreen;
+
+    /* Box */
+
+    --box-border-c: gray;
+    --box-shadow-c: #ffffff80;
+
+
+    /* Lore */
+    --lore-img-border-c: aqua;
+    --lore-dice-c: saddlebrown;
+    --lore-active-cells-c: #440044;
+    --lore-skill-rolls-header-c: black;
+    --lore-skill-rolls-cells-c: #1c1c1c;
+
+    /* Encounters */
+
+    --encounter-buttonbar-background-c: #002200;
+
+    /* Spell Actions */
+
+    --spell-action-filter-allowed: darkolivegreen;
+    --spell-action-filter-denied: maroon;
+
+    /* generic */
+    --default-border-c: white;
+    --text-c: white;
+    --background-c: black;
+    --button-background-c: #404040;
+    --button-disabled-c: #808080;
+    --link-c: lightskyblue;
+    --unsaved-background-c: firebrick;
+    --menu-item-background-c: #2c002c;
+    --header-background-c: #4c4c4c;
+    --menu-item-hover-c: #4c004c;
+    --striped-table-even-c: var(--color-very-dark-gray);
+    --striped-table-odd-c: black;
+}
+
+/* This is a duplicate of html.dark to avoid FOUC when dark mode is set from the OS */
+@media (prefers-color-scheme: dark) {
+    html {
         --color-very-dark-gray: #2c2c2c;
 
         /* box flavours */
@@ -154,6 +233,5 @@
         --menu-item-hover-c: #4c004c;
         --striped-table-even-c: var(--color-very-dark-gray);
         --striped-table-odd-c: black;
-
     }
 }
