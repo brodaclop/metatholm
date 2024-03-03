@@ -8,6 +8,8 @@
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import EditButton from '../elements/EditButton.svelte';
+	import Abbr from '../Abbr.svelte';
+	import SkillIcon from './SkillIcon.svelte';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -32,13 +34,14 @@
 <table>
 	<thead>
 		<tr>
-			<th>{$_('label:name')}</th>
-			<th>{$_('weapon:speed')}</th>
-			<th>{$_('weapon:attack')}</th>
-			<th>{$_('weapon:defence')}</th>
-			<th>{$_('label:damage')}</th>
-			<th>{$_('weapon:reach')}</th>
-			<th>{$_('weapon:skill')}</th>
+			<th><Abbr text="label:name" /></th>
+			<th><Abbr text="weapon:speed" /></th>
+			<th><Abbr text="weapon:attack" /></th>
+			<th><Abbr text="weapon:defence" /></th>
+			<th><Abbr text="label:damage" /></th>
+			<th><Abbr text="weapon:reach" /></th>
+			<th><Abbr text="weapon:hands" /></th>
+			<th><Abbr text="weapon:skill" /></th>
 			<th />
 		</tr>
 	</thead>
@@ -51,7 +54,12 @@
 				<td>{weapon.defence}</td>
 				<td>{weapon.damage}</td>
 				<td>{weapon.reach}</td>
-				<td>{$_(weapon.skill)}</td>
+				<td>{weapon.hands}</td>
+				<td>
+					<div class="skill-icon">
+						<SkillIcon skill={weapon.skill} />
+					</div>
+				</td>
 				<td />
 			</tr>
 		{/each}
@@ -63,7 +71,12 @@
 				<td>{weapon.defence}</td>
 				<td>{weapon.damage}</td>
 				<td>{weapon.reach}</td>
-				<td>{$_(weapon.skill)}</td>
+				<td>{weapon.hands}</td>
+				<td>
+					<div class="skill-icon">
+						<SkillIcon skill={weapon.skill} />
+					</div>
+				</td>
 				<td>
 					<IconButton
 						title="label:copy"
@@ -100,8 +113,17 @@
 />
 
 <style>
-	th {
+	.skill-icon {
+		color: var(--actioncard-skill-icon-c);
+		width: 1em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	th,
+	td {
 		text-align: left;
+		padding-right: 0.25rem;
 	}
 
 	caption {

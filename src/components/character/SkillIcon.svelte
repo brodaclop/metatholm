@@ -18,6 +18,7 @@
 	import GiBroadsword from 'svelte-icons/gi/GiBroadsword.svelte';
 	import GiStarShuriken from 'svelte-icons/gi/GiStarShuriken.svelte';
 	import type { Skill } from '../../model/Skills';
+	import { _ } from 'svelte-i18n';
 
 	export let skill: Skill | undefined;
 
@@ -44,5 +45,5 @@
 </script>
 
 {#if skill && SKILL_ICONS[skill]}
-	<svelte:component this={SKILL_ICONS[skill]} />
+	<svelte:component this={SKILL_ICONS[skill]} title={$_(skill)} />
 {/if}

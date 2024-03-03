@@ -158,10 +158,16 @@
 {/if}
 
 <style>
+	@import url('https://fonts.cdnfonts.com/css/luminari');
+
 	:global(html) {
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		color: var(--text-c);
 		background-color: var(--background-c);
+	}
+
+	:global(h1, h2, h3, h4, h5, h6) {
+		font-family: 'Luminari';
 	}
 
 	:global(button:disabled) {
@@ -276,6 +282,7 @@
 			padding-left: 0.15rem;
 			padding-right: 0.15rem;
 			background-color: var(--menu-item-background-c);
+			opacity: 0.9;
 			border-bottom-left-radius: 0.5rem;
 			border-bottom-right-radius: 0.5rem;
 			border-top-right-radius: 0.5rem;

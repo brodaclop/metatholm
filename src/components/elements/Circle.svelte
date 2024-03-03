@@ -35,7 +35,8 @@
 
 	span.inner {
 		padding-bottom: 1px;
-		height: 1rem;
+		font-size: x-small;
+		vertical-align: top;
 	}
 
 	.clickable {

@@ -8,6 +8,7 @@
 	import ArmourEditor from './ArmourEditor.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import EditButton from '../elements/EditButton.svelte';
+	import Abbr from '../Abbr.svelte';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -44,9 +45,9 @@
 <table>
 	<thead>
 		<tr>
-			<th>{$_('label:name')}</th>
-			<th>{$_('armour:dr')}</th>
-			<th>{$_('armour:hindrance')}</th>
+			<th><Abbr text="label:name" /></th>
+			<th><Abbr text="armour:dr" /></th>
+			<th><Abbr text="armour:hindrance" /></th>
 			<th />
 		</tr>
 	</thead>
@@ -94,8 +95,10 @@
 />
 
 <style>
-	th {
+	th,
+	td {
 		text-align: left;
+		padding-right: 0.25rem;
 	}
 
 	caption {

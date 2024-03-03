@@ -107,13 +107,26 @@ export const Keys = [
 
 ] as const;
 
+const Abbreviations = [
+    'label:name:abbr',
+    'weapon:speed:abbr',
+    'weapon:attack:abbr',
+    'weapon:defence:abbr',
+    'label:damage:abbr',
+    'weapon:reach:abbr',
+    'weapon:skill:abbr',
+    'weapon:hands:abbr',
+    'armour:dr:abbr',
+    'armour:hindrance:abbr',
+] as const;
+
 export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
 type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations;
 
-export type Labels = Valueless | Values;
+export type Labels = Valueless | Values | typeof Abbreviations[number];
 export const Labels_en: Record<Labels, string> = {
     'ability:build': 'Build',
     'ability:presence': 'Presence',
@@ -126,6 +139,7 @@ export const Labels_en: Record<Labels, string> = {
     'action:ap': 'Action Points',
     'action:roll': 'Roll',
     'label:damage': 'Damage',
+    'label:damage:abbr': 'Dmg',
     'action:defend': 'Defend',
     'action:defend-cq': 'Defend (Close Quarters)',
     'action:keep-away': 'Keep away',
@@ -147,9 +161,12 @@ export const Labels_en: Record<Labels, string> = {
     'action:spin-behind': 'Spin Behind',
 
     'armour:dr': 'Damage Reduction',
+    'armour:dr:abbr': 'DR',
     'armour:hindrance': 'Hindrance',
+    'armour:hindrance:abbr': 'Hindr',
 
     'label:name': 'Name',
+    'label:name:abbr': 'Name',
     'character:abilities': 'Abilities',
     'character:skills': 'Skills',
     'character:info': 'Info',
@@ -383,13 +400,19 @@ export const Labels_en: Record<Labels, string> = {
 
 
     'weapon:speed': 'Speed',
+    'weapon:speed:abbr': 'Spd',
     'weapon:difficulty': 'Difficulty',
     'weapon:skill': 'Skill',
+    'weapon:skill:abbr': 'Skl',
     'weapon:effective_skill': 'Effective Skill',
     'weapon:attack': 'Attack',
+    'weapon:attack:abbr': 'Atk',
     'weapon:defence': 'Defence',
+    'weapon:defence:abbr': 'Def',
     'weapon:hands': 'Hands',
+    'weapon:hands:abbr': 'Hands',
     'weapon:reach': 'Reach',
+    'weapon:reach:abbr': 'Rch',
 
     'world:concept': 'Concept',
     'world:realm': 'Realm',
@@ -441,7 +464,9 @@ export const Labels_hu: Record<Labels, string> = {
     'ancestry:kalovin': 'Kalovin',
 
     'armour:dr': 'Sebzéscsökkentés',
+    'armour:dr:abbr': 'Seb.csökk.',
     'armour:hindrance': 'Akadály',
+    'armour:hindrance:abbr': 'Akad.',
 
     'background:bruiser': 'Balhés',
     'background:sneak': 'Sunyi',
@@ -483,6 +508,7 @@ export const Labels_hu: Record<Labels, string> = {
 
     'label:action': 'Akció',
     'label:damage': 'Sebzés',
+    'label:damage:abbr': 'Sebz.',
     'label:difficulty:1': 'Könnyű',
     'label:difficulty:2': 'Átlagos',
     'label:difficulty:3': 'Nehéz',
@@ -499,6 +525,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:at_least': 'Az eredmény legalább...',
     'label:exactly': 'Az eredmény pontosan...',
     'label:name': 'Név',
+    'label:name:abbr': 'Név',
     'label:roll': 'Dobás',
     'label:skill_check_success_probabilities': 'Sikeres képzettségpróba esélye',
     'label:lore': 'Kódex',
@@ -666,14 +693,20 @@ export const Labels_hu: Record<Labels, string> = {
     'tableplop:export': 'Exportálás Tableplopra',
     'tableplop:unsynchronise': 'Tableplop karakter szinkronizálás megszüntetése',
 
-    'weapon:speed': 'Sebesség',
+    'weapon:speed': 'Gyorsaság',
+    'weapon:speed:abbr': 'Gyors.',
     'weapon:difficulty': 'Nehézség',
     'weapon:skill': 'Képzettség',
+    'weapon:skill:abbr': 'Képz.',
     'weapon:effective_skill': 'Hatásos Képzettség',
     'weapon:attack': 'Támadás',
+    'weapon:attack:abbr': 'Tám.',
     'weapon:hands': 'Kéz',
+    'weapon:hands:abbr': 'Kéz',
     'weapon:defence': 'Védekezés',
+    'weapon:defence:abbr': 'Véd.',
     'weapon:reach': 'Ütőtáv',
+    'weapon:reach:abbr': 'Üt.',
 
     'world:concept': 'Fogalom',
     'world:realm': 'Birodalom',
