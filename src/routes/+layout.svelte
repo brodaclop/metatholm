@@ -130,7 +130,7 @@
 				<li class="nohover">
 					<div class="right-controls">
 						<div class="username">
-							{data.user.username}
+							<span>{data.user.username}</span>
 							<form method="post" action="/logout">
 								<IconButton title="label:logout"><MdExitToApp /></IconButton>
 							</form>
@@ -307,8 +307,14 @@
 
 	.right-controls .username {
 		white-space: nowrap;
-		max-width: 10rem;
+	}
+
+	.right-controls .username span {
+		display: inline-block;
+		max-width: 8rem;
 		text-overflow: ellipsis;
+		overflow: hidden;
+		vertical-align: top;
 	}
 
 	.responsive ul {
