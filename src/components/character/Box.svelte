@@ -62,7 +62,7 @@
 	h6 {
 		font-size: large;
 		text-align: center;
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 		margin-top: 0;
 		margin-bottom: 0.5em;
 	}

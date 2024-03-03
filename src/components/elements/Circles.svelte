@@ -87,7 +87,7 @@
 
 <style>
 	.name {
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 		white-space: nowrap;
 	}
 

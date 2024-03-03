@@ -189,7 +189,7 @@
 	.label {
 		flex-basis: 90%;
 		white-space: nowrap;
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 		padding-right: 0.5em;
 	}
 

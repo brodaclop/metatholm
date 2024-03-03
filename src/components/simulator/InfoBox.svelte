@@ -34,6 +34,6 @@
 
 	.bignumber {
 		font-size: x-large;
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 	}
 </style>

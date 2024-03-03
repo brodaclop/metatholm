@@ -79,13 +79,16 @@ html.light {
     --menu-item-hover-c: color-mix(in srgb, var(--header-background-c) 65%, black);
     --striped-table-even-c: whitesmoke;
     --striped-table-odd-c: white;
+
+    --font-weight: 400;
+    --font-weight-bold: 700;
 }
 
 html.dark {
-    --default-box: #2c2c2c;
+    --default-box: #373737;
 
     /* box flavours */
-    --box-c-character-sheet: var(--default-box);
+    --box-c-character-sheet: color-mix(in srgb, var(--default-box) 70%, black);
     --box-c-character: var(--default-box);
     --box-c-abilities: var(--default-box);
     --box-c-skills: var(--default-box);
@@ -105,7 +108,7 @@ html.dark {
     --box-c-simulator-turns: var(--default-box);
 
     /* circles */
-    --circle-c-empty: white;
+    --circle-c-empty: ghostwhite;
     --circle-c-half: black;
     --circle-c-active: var(--default-box);
     --circle-c-reduced: firebrick;
@@ -125,7 +128,7 @@ html.dark {
     /* Box */
 
     --box-border-c: gray;
-    --box-shadow-c: #ffffff80;
+    --box-shadow-c: #80808080;
 
 
     /* Lore */
@@ -145,8 +148,8 @@ html.dark {
     --spell-action-filter-denied: maroon;
 
     /* generic */
-    --default-border-c: white;
-    --text-c: white;
+    --default-border-c: ghostwhite;
+    --text-c: ghostwhite;
     --background-c: black;
     --button-background-c: #404040;
     --button-disabled-c: #808080;
@@ -157,15 +160,18 @@ html.dark {
     --menu-item-hover-c: #4c004c;
     --striped-table-even-c: var(--default-box);
     --striped-table-odd-c: black;
+
+    --font-weight: 350;
+    --font-weight-bold: 500;
 }
 
 /* This is a duplicate of html.dark to avoid FOUC when dark mode is set from the OS */
 @media (prefers-color-scheme: dark) {
     html {
-        --default-box: #2c2c2c;
+        --default-box: #373737;
 
         /* box flavours */
-        --box-c-character-sheet: var(--default-box);
+        --box-c-character-sheet: color-mix(in srgb, var(--default-box) 70%, black);
         --box-c-character: var(--default-box);
         --box-c-abilities: var(--default-box);
         --box-c-skills: var(--default-box);
@@ -205,7 +211,7 @@ html.dark {
         /* Box */
 
         --box-border-c: gray;
-        --box-shadow-c: #ffffff80;
+        --box-shadow-c: #80808080;
 
 
         /* Lore */
@@ -237,5 +243,7 @@ html.dark {
         --menu-item-hover-c: #4c004c;
         --striped-table-even-c: var(--default-box);
         --striped-table-odd-c: black;
+
+        --font-weight: 350;
     }
 }

@@ -75,7 +75,7 @@
 <style>
 	.dice {
 		background-color: var(--lore-dice-c);
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 	}
 
 	.popover {

@@ -39,7 +39,7 @@
 	}
 
 	caption {
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 		font-size: x-large;
 	}
 </style>

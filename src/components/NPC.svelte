@@ -365,7 +365,7 @@
 			padding-left: 0.2em;
 			padding-right: 0.2em;
 			text-align: center;
-			font-weight: bold;
+			font-weight: var(--font-weight-bold);
 		}
 
 		.separate-after {

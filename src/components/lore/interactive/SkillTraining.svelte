@@ -135,7 +135,7 @@
 	}
 
 	span.header {
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 	}
 
 	td,

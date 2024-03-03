@@ -103,7 +103,7 @@
 
 	.label {
 		white-space: nowrap;
-		font-weight: bold;
+		font-weight: var(--font-weight-bold);
 	}
 
 	.value {

@@ -189,11 +189,21 @@
 
 <style>
 	@import url('https://fonts.cdnfonts.com/css/luminari');
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 
 	:global(html) {
-		font-family: 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: 'Noto Sans Display', 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri,
+			'Trebuchet MS', sans-serif;
 		color: var(--text-c);
 		background-color: var(--background-c);
+		font-weight: var(--font-weight);
+		font-optical-sizing: auto;
+		font-style: normal;
+		font-variation-settings: 'wdth' 100;
+	}
+
+	:global(th) {
+		font-weight: var(--font-weight-bold);
 	}
 
 	:global(h1, h2, h3, h4, h5, h6) {

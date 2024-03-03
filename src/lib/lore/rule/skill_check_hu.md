@@ -1,6 +1,6 @@
 # Képzettségpróba
 
-A képzettségpróbákat [halmozott kockákkal](rule:exploding_dice) dobjuk, mégpedig annyi `d10`-zel, amenny a képzettség szintje. Ha a karakter teljesen képzetlen, akkor is próbálkozhat, de akkor egyetlen `d5!`-öt dobhat csak.
+A képzettségpróbákat [halmozott kockákkal](rule:exploding_dice) dobjuk, mégpedig annyi `d10`-zel, amennyi a képzettség szintje. Ha a karakter teljesen képzetlen, akkor is próbálkozhat, de akkor egyetlen `d5!`-öt dobhat csak.
 
 ## Ellenpróba
 

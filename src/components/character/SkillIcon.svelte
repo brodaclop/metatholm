@@ -4,11 +4,11 @@
 	import GiTwoShadows from 'svelte-icons/gi/GiTwoShadows.svelte';
 	import GiBoltSpellCast from 'svelte-icons/gi/GiBoltSpellCast.svelte';
 	import GiPrayer from 'svelte-icons/gi/GiPrayer.svelte';
-	import GiMagicGate from 'svelte-icons/gi/GiMagicGate.svelte';
 	import GiTemplarShield from 'svelte-icons/gi/GiTemplarShield.svelte';
 	import GiFlangedMace from 'svelte-icons/gi/GiFlangedMace.svelte';
 	import GiHighShot from 'svelte-icons/gi/GiHighShot.svelte';
 	import GiHighKick from 'svelte-icons/gi/GiHighKick.svelte';
+	import GiHourglass from 'svelte-icons/gi/GiHourglass.svelte';
 	import GiStrong from 'svelte-icons/gi/GiStrong.svelte';
 	import GiCrossbow from 'svelte-icons/gi/GiCrossbow.svelte';
 	import GiPunch from 'svelte-icons/gi/GiPunch.svelte';
@@ -28,7 +28,7 @@
 		'skill:shadow_focus': GiTwoShadows,
 		'skill:elemental_focus': GiBoltSpellCast,
 		'skill:spirit_focus': GiPrayer,
-		'skill:spacetime_focus': GiMagicGate,
+		'skill:spacetime_focus': GiHourglass,
 		'skill:life_focus': GiTemplarShield,
 		'skill:maces': GiFlangedMace,
 		'skill:bows': GiHighShot,
