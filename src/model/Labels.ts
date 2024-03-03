@@ -69,7 +69,8 @@ type GenericLabels = 'label:name' |
     'tableplop:roll' |
     'tableplop:synchronise' |
     'tableplop:export' |
-    'tableplop:unsynchronise'
+    'tableplop:unsynchronise' |
+    'label:lightdark'
     ;
 
 export const Keys = [
@@ -260,6 +261,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:weapon:select_template': 'Weapon Collection',
     'label:weapon:paste_here': 'Paste copied weapon here...',
     'label:logout': 'Logout',
+    'label:lightdark': 'Light/Dark Mode',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -565,6 +567,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:weapon:select_template': 'Fegyvergyűjtemény',
     'label:weapon:paste_here': 'Másolt fegyver beillesztése...',
     'label:logout': 'Kilépés',
+    'label:lightdark': 'Világos/Sötét üzemmód',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

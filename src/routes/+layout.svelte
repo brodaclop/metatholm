@@ -143,7 +143,7 @@
 				<li class="nohover">
 					<div class="right-controls">
 						<IconButton
-							title="Switch theme"
+							title="label:lightdark"
 							on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
 						>
 							{#if theme === 'dark'}
@@ -256,6 +256,10 @@
 		padding-left: 0.2em;
 		padding-right: 0.2em;
 		text-align: center;
+	}
+
+	nav ul li a {
+		text-decoration: none;
 	}
 
 	nav ul li:not(.nohover):not(.responsive):hover {

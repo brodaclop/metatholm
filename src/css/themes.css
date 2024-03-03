@@ -2,24 +2,28 @@ html,
 html.light {
 
     /* box flavours */
-    --box-c-character-sheet: #ffeeee;
-    --box-c-character: #ddddff;
-    --box-c-abilities: #eeeeff;
-    --box-c-skills: #eeffee;
-    --box-c-points: #eeffff;
-    --box-c-inventory: #eeeeee;
-    --box-c-action-container: #ffffee;
-    --box-c-action-card: #ffeeff;
-    --box-c-action-card-spell: #eeeeff;
-    --box-c-action-card-weapon: #ffeeee;
-    --box-c-action-distance: #eedddd;
-    --box-c-notes: #eeffcc;
-    --box-c-action-variant-selectable: white;
+    --default-box: color-mix(in srgb, #ddddff 20%, gainsboro);
+
+    /* box flavours */
+    --box-c-character-sheet: gainsboro;
+    --box-c-character: var(--default-box);
+    --box-c-abilities: var(--default-box);
+    --box-c-skills: var(--default-box);
+    --box-c-points: var(--default-box);
+    --box-c-inventory: var(--default-box);
+    --box-c-action-container: var(--default-box);
+    --box-c-action-card: var(--default-box);
+    --box-c-action-card-spell: var(--default-box);
+    --box-c-action-card-weapon: var(--default-box);
+    --box-c-action-distance: var(--default-box);
+    --box-c-notes: var(--default-box);
+    --box-c-action-variant-selectable: var(--default-box);
     --box-c-action-variant-unselectable: lightgray;
     --box-c-action-variant-selected: aquamarine;
     --box-c-lore: white;
-    --box-c-simulator-life: cornsilk;
-    --box-c-simulator-turns: #eeeeff;
+    --box-c-simulator-life: var(--default-box);
+    --box-c-simulator-turns: var(--default-box);
+
 
     /* circles */
     --circle-c-empty: white;
@@ -37,7 +41,7 @@ html.light {
 
     --actioncard-action-c: cornflowerblue;
     --actioncard-reaction-c: coral;
-    --actioncard-skill-icon-c: darkolivegreen;
+    --actioncard-skill-icon-c: olivedrab;
 
     /* Box */
 
@@ -70,40 +74,40 @@ html.light {
     /* --button-disabled-c: #808080; */
     --link-c: blue;
     --unsaved-background-c: darksalmon;
-    --header-background-c: paleturquoise;
-    --menu-item-background-c: color-mix(in srgb, paleturquoise 70%, black);
-    --menu-item-hover-c: color-mix(in srgb, paleturquoise 50%, black);
+    --header-background-c: color-mix(in srgb, lightgreen 10%, lightgray);
+    --menu-item-background-c: color-mix(in srgb, var(--header-background-c) 80%, black);
+    --menu-item-hover-c: color-mix(in srgb, var(--header-background-c) 65%, black);
     --striped-table-even-c: whitesmoke;
     --striped-table-odd-c: white;
 }
 
 html.dark {
-    --color-very-dark-gray: #2c2c2c;
+    --default-box: #2c2c2c;
 
     /* box flavours */
-    --box-c-character-sheet: var(--color-very-dark-gray);
-    --box-c-character: var(--color-very-dark-gray);
-    --box-c-abilities: var(--color-very-dark-gray);
-    --box-c-skills: var(--color-very-dark-gray);
-    --box-c-points: var(--color-very-dark-gray);
-    --box-c-inventory: var(--color-very-dark-gray);
-    --box-c-action-container: var(--color-very-dark-gray);
-    --box-c-action-card: var(--color-very-dark-gray);
-    --box-c-action-card-spell: var(--color-very-dark-gray);
-    --box-c-action-card-weapon: var(--color-very-dark-gray);
-    --box-c-action-distance: var(--color-very-dark-gray);
-    --box-c-notes: var(--color-very-dark-gray);
-    --box-c-action-variant-selectable: var(--color-very-dark-gray);
+    --box-c-character-sheet: var(--default-box);
+    --box-c-character: var(--default-box);
+    --box-c-abilities: var(--default-box);
+    --box-c-skills: var(--default-box);
+    --box-c-points: var(--default-box);
+    --box-c-inventory: var(--default-box);
+    --box-c-action-container: var(--default-box);
+    --box-c-action-card: var(--default-box);
+    --box-c-action-card-spell: var(--default-box);
+    --box-c-action-card-weapon: var(--default-box);
+    --box-c-action-distance: var(--default-box);
+    --box-c-notes: var(--default-box);
+    --box-c-action-variant-selectable: var(--default-box);
     --box-c-action-variant-unselectable: slategray;
     --box-c-action-variant-selected: darkolivegreen;
     --box-c-lore: black;
-    --box-c-simulator-life: var(--color-very-dark-gray);
-    --box-c-simulator-turns: var(--color-very-dark-gray);
+    --box-c-simulator-life: var(--default-box);
+    --box-c-simulator-turns: var(--default-box);
 
     /* circles */
     --circle-c-empty: white;
     --circle-c-half: black;
-    --circle-c-active: var(--color-very-dark-gray);
+    --circle-c-active: var(--default-box);
     --circle-c-reduced: firebrick;
     --circle-c-increased: chartreuse;
     --circle-c-full: slategray;
@@ -151,39 +155,39 @@ html.dark {
     --menu-item-background-c: #2c002c;
     --header-background-c: #4c4c4c;
     --menu-item-hover-c: #4c004c;
-    --striped-table-even-c: var(--color-very-dark-gray);
+    --striped-table-even-c: var(--default-box);
     --striped-table-odd-c: black;
 }
 
 /* This is a duplicate of html.dark to avoid FOUC when dark mode is set from the OS */
 @media (prefers-color-scheme: dark) {
     html {
-        --color-very-dark-gray: #2c2c2c;
+        --default-box: #2c2c2c;
 
         /* box flavours */
-        --box-c-character-sheet: var(--color-very-dark-gray);
-        --box-c-character: var(--color-very-dark-gray);
-        --box-c-abilities: var(--color-very-dark-gray);
-        --box-c-skills: var(--color-very-dark-gray);
-        --box-c-points: var(--color-very-dark-gray);
-        --box-c-inventory: var(--color-very-dark-gray);
-        --box-c-action-container: var(--color-very-dark-gray);
-        --box-c-action-card: var(--color-very-dark-gray);
-        --box-c-action-card-spell: var(--color-very-dark-gray);
-        --box-c-action-card-weapon: var(--color-very-dark-gray);
-        --box-c-action-distance: var(--color-very-dark-gray);
-        --box-c-notes: var(--color-very-dark-gray);
-        --box-c-action-variant-selectable: var(--color-very-dark-gray);
+        --box-c-character-sheet: var(--default-box);
+        --box-c-character: var(--default-box);
+        --box-c-abilities: var(--default-box);
+        --box-c-skills: var(--default-box);
+        --box-c-points: var(--default-box);
+        --box-c-inventory: var(--default-box);
+        --box-c-action-container: var(--default-box);
+        --box-c-action-card: var(--default-box);
+        --box-c-action-card-spell: var(--default-box);
+        --box-c-action-card-weapon: var(--default-box);
+        --box-c-action-distance: var(--default-box);
+        --box-c-notes: var(--default-box);
+        --box-c-action-variant-selectable: var(--default-box);
         --box-c-action-variant-unselectable: slategray;
         --box-c-action-variant-selected: darkolivegreen;
         --box-c-lore: black;
-        --box-c-simulator-life: var(--color-very-dark-gray);
-        --box-c-simulator-turns: var(--color-very-dark-gray);
+        --box-c-simulator-life: var(--default-box);
+        --box-c-simulator-turns: var(--default-box);
 
         /* circles */
         --circle-c-empty: white;
         --circle-c-half: black;
-        --circle-c-active: var(--color-very-dark-gray);
+        --circle-c-active: var(--default-box);
         --circle-c-reduced: firebrick;
         --circle-c-increased: chartreuse;
         --circle-c-full: slategray;
@@ -231,7 +235,7 @@ html.dark {
         --menu-item-background-c: #2c002c;
         --header-background-c: #4c4c4c;
         --menu-item-hover-c: #4c004c;
-        --striped-table-even-c: var(--color-very-dark-gray);
+        --striped-table-even-c: var(--default-box);
         --striped-table-odd-c: black;
     }
 }
