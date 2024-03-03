@@ -8,7 +8,6 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { entries, group } from '../model/InfoList';
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
 	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import MdWbSunny from 'svelte-icons/md/MdWbSunny.svelte';
@@ -16,6 +15,7 @@
 	import IconButton from '../components/elements/IconButton.svelte';
 	import Loading from '../components/Loading.svelte';
 	import '../css/themes.css';
+	import CharacterSelector from '../components/CharacterSelector.svelte';
 
 	export let data: PageData;
 
@@ -105,32 +105,19 @@
 		<nav>
 			<ul>
 				<li class="nohover"><a href="/">M</a></li>
-				<li class="nohover">
-					{data.user.username}
-					<form method="post" action="/logout">
-						<IconButton title="label:logout"><MdExitToApp /></IconButton>
-					</form>
-				</li>
-				<li class="nohover">
-					<select bind:value={currentCharacter} on:change={switchCharacter}>
-						<option disabled value="">{$_('label:select-character')}</option>
-						{#each entries(group(data.characters, (c) => c.user)) as [user, characters]}
-							<option disabled>-- {user} --</option>
-							{#each characters as character}
-								<option value={character.id}
-									>{character.name} ({$_(character.ancestry)}
-									{$_(character.background)} / {$_('character:level')}
-									{character.level})</option
-								>
-							{/each}
-						{/each}
-					</select>
-				</li>
 				<li class="responsive">
 					<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
 						<span><MdMenu /></span>
 					</button>
 					<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
+						<li class="nohover">
+							<CharacterSelector
+								bind:currentCharacter
+								characters={data.characters}
+								on:change={switchCharacter}
+							/>
+						</li>
+						<li class="divider">&nbsp;</li>
 						<li><a href="/create">{$_('label:new-character')}</a></li>
 						<li><a href="/lore/main">{$_('label:lore')}</a></li>
 						<li class="divider">&nbsp;</li>
@@ -142,6 +129,12 @@
 				</li>
 				<li class="nohover">
 					<div class="right-controls">
+						<div class="username">
+							{data.user.username}
+							<form method="post" action="/logout">
+								<IconButton title="label:logout"><MdExitToApp /></IconButton>
+							</form>
+						</div>
 						<IconButton
 							title="label:lightdark"
 							on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
@@ -191,7 +184,8 @@
 	@import url('https://fonts.cdnfonts.com/css/luminari');
 	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 
-	:global(html) {
+	:global(html),
+	:global(button) {
 		font-family: 'Noto Sans Display', 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri,
 			'Trebuchet MS', sans-serif;
 		color: var(--text-c);
@@ -306,6 +300,19 @@
 
 	.right-controls {
 		display: flex;
+		flex-wrap: nowrap;
+		width: 100%;
+		justify-content: right;
+	}
+
+	.right-controls .username {
+		white-space: nowrap;
+		max-width: 10rem;
+		text-overflow: ellipsis;
+	}
+
+	.responsive ul {
+		padding-left: 0;
 	}
 
 	@media screen and (max-width: 1000px) {
@@ -334,6 +341,9 @@
 			border-bottom-left-radius: 0.5rem;
 			border-bottom-right-radius: 0.5rem;
 			border-top-right-radius: 0.5rem;
+			max-height: 80vh;
+			overflow-x: hidden;
+			overflow-y: scroll;
 		}
 
 		.responsive ul li {
@@ -352,22 +362,6 @@
 			padding: 0;
 			margin-top: 0.5rem;
 			margin-bottom: 0.5rem;
-		}
-	}
-
-	@media screen and (max-width: 600px) {
-		.responsive ul {
-			display: flex;
-			flex-direction: column;
-			position: absolute;
-			right: 0.2rem;
-			padding-left: 0.1rem;
-			padding-right: 0.1rem;
-			background-color: var(--menu-item-background-c);
-			border-bottom-left-radius: 0.5rem;
-			border-bottom-right-radius: 0.5rem;
-			border-top-left-radius: 0.5rem;
-			border-top-right-radius: 0;
 		}
 	}
 </style>
