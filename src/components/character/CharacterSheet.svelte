@@ -19,6 +19,7 @@
 	import MdSync from 'svelte-icons/md/MdSync.svelte';
 	import MdSyncProblem from 'svelte-icons/md/MdSyncProblem.svelte';
 	import MdSyncDisabled from 'svelte-icons/md/MdSyncDisabled.svelte';
+	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
@@ -27,6 +28,7 @@
 	import DownloadButton from './DownloadButton.svelte';
 	import UploadButton from './UploadButton.svelte';
 	import { onMount } from 'svelte';
+	import { Popover } from 'svelte-smooth-popover';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -58,6 +60,8 @@
 	$: calculatedCharacter = calculateCharacter(character);
 
 	let saving = false;
+
+	let deleting = false;
 
 	const save = async () => {
 		saving = true;
@@ -157,7 +161,35 @@
 				>
 					<MdSettings />
 				</IconButton>
-				<DeleteButton on:click={deleteCharacter} />
+				<DeleteButton on:click={() => (deleting = true)} />
+				{#if deleting}
+					<Popover
+						open={true}
+						showOnClick={true}
+						borderRadius={10}
+						caretBg="black"
+						on:close={() => (deleting = false)}
+						hideOnExternalClick={true}
+					>
+						<div class="confirm-delete">
+							<div>
+								{$_('label:delete')}?
+							</div>
+							<div>
+								<IconButton
+									title="label:delete"
+									on:click={deleteCharacter}
+									color="var(--delete-icon-c)"
+								>
+									<MdCheck />
+								</IconButton>
+								<IconButton title="label:cancel" on:click={() => (deleting = false)}>
+									<MdCancel />
+								</IconButton>
+							</div>
+						</div>
+					</Popover>
+				{/if}
 			{/if}
 		</span>
 	</div>
@@ -303,5 +335,17 @@
 		width: 100%;
 		height: 10rem;
 		resize: vertical;
+	}
+
+	.confirm-delete {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: var(--header-background-c);
+		padding: 0.25em;
+		border-color: var(--border-color-c);
+		border-style: solid;
+		border-radius: 0.25rem;
+		border-width: 3px;
 	}
 </style>

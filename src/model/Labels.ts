@@ -71,7 +71,8 @@ type GenericLabels = 'label:name' |
     'tableplop:export' |
     'tableplop:unsynchronise' |
     'label:lightdark' |
-    'label:characters'
+    'label:characters' |
+    'label:cancel'
     ;
 
 export const Keys = [
@@ -264,6 +265,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:logout': 'Logout',
     'label:lightdark': 'Light/Dark Mode',
     'label:characters': 'Characters',
+    'label:cancel': 'Cancel',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -571,6 +573,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:logout': 'Kilépés',
     'label:lightdark': 'Világos/Sötét üzemmód',
     'label:characters': 'Karakterek',
+    'label:cancel': 'Mégse',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
