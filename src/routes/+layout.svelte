@@ -227,6 +227,10 @@
 		font-variation-settings: 'wdth' 100;
 	}
 
+	:global(strong) {
+		font-weight: var(--font-weight-bold);
+	}
+
 	:global(button),
 	:global(select:enabled),
 	:global(input:enabled),
