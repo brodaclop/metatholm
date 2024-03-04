@@ -2,20 +2,24 @@
 	import type { CharacterInfo } from '../model/Karakter';
 	import { entries, group } from '../model/InfoList';
 	import { _ } from 'svelte-i18n';
+	import { detectOutsideClick } from '$lib/client/outside-click';
 
 	export let currentCharacter: string;
 	export let characters: Array<CharacterInfo>;
 
 	let open = false;
+	let selectBox: HTMLElement;
 
 	$: if (currentCharacter) {
 		open = false;
 	}
 
-	//TODO: handle outside clicks
+	$: if (open) {
+		detectOutsideClick(selectBox, () => (open = false));
+	}
 </script>
 
-<div>
+<div bind:this={selectBox}>
 	<button on:click={() => (open = !open)}>{$_('label:characters')}</button>
 	<select size={10} bind:value={currentCharacter} on:change style:display={open ? 'block' : 'none'}>
 		<option disabled value="">{$_('label:select-character')}</option>

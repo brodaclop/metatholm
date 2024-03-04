@@ -16,6 +16,7 @@
 	import Loading from '../components/Loading.svelte';
 	import '../css/themes.css';
 	import CharacterSelector from '../components/CharacterSelector.svelte';
+	import { detectOutsideClick } from '$lib/client/outside-click';
 
 	export let data: PageData;
 
@@ -90,6 +91,11 @@
 	$: lang && locale.set(lang.value);
 
 	let menuOpen = false;
+	let dropdown: HTMLElement;
+
+	$: if (menuOpen) {
+		detectOutsideClick(dropdown, () => (menuOpen = false));
+	}
 </script>
 
 {#if !data.user}
@@ -105,7 +111,7 @@
 		<nav>
 			<ul>
 				<li class="nohover"><a href="/">M</a></li>
-				<li class="responsive">
+				<li bind:this={dropdown} class="responsive">
 					<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
 						<span><MdMenu /></span>
 					</button>
