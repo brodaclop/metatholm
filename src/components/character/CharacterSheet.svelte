@@ -161,7 +161,7 @@
 			{/if}
 		</span>
 	</div>
-	<div>
+	<div class="main">
 		<div class="values">
 			<div class="first">
 				<MainBox bind:character {editable} />
@@ -235,6 +235,12 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: start;
+	}
+
+	div.main {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 	}
 
 	div.values {
