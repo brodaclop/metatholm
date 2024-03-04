@@ -11,6 +11,8 @@
 	$: if (currentCharacter) {
 		open = false;
 	}
+
+	//TODO: handle outside clicks
 </script>
 
 <div>

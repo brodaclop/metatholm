@@ -26,6 +26,7 @@
 	import SpellActions from './SpellActions.svelte';
 	import DownloadButton from './DownloadButton.svelte';
 	import UploadButton from './UploadButton.svelte';
+	import { onMount } from 'svelte';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -35,6 +36,18 @@
 
 	let character: Character;
 	let admin = false;
+
+	let slender = false;
+	let wide = true;
+
+	onMount(() => {
+		const slenderMatcher = window.matchMedia('(max-width: 550px)');
+		slender = slenderMatcher.matches;
+		slenderMatcher.addEventListener('change', (e) => (slender = e.matches));
+		const wideMatcher = window.matchMedia('(min-width: 1000px)');
+		wide = wideMatcher.matches;
+		wideMatcher.addEventListener('change', (e) => (wide = e.matches));
+	});
 
 	$: if (!character || character.id !== initialCharacter.id) {
 		character = JSON.parse(JSON.stringify(initialCharacter));
@@ -89,7 +102,7 @@
 			</IconButton>
 			<IconButton
 				title="label:revert_to_saved"
-				color={changed || saving ? 'darkred' : undefined}
+				color={changed || saving ? 'var(--delete-icon-c)' : undefined}
 				disabled={!changed || saving || !editable}
 				on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
 			>
@@ -140,7 +153,7 @@
 				<IconButton
 					title="Admin"
 					on:click={() => (admin = !admin)}
-					color={admin ? 'darkred' : undefined}
+					color={admin ? 'var(--delete-icon-c)' : undefined}
 				>
 					<MdSettings />
 				</IconButton>
@@ -152,8 +165,20 @@
 		<div class="values">
 			<div class="first">
 				<MainBox bind:character {editable} />
+				{#if !wide}
+					<div style:flex-basis="100%">
+						<Box title={'character:skills'} flavour="skills">
+							<Skills
+								{slender}
+								skills={character.skills}
+								modifiedSkills={calculatedCharacter.skills}
+								abilities={character.abilities}
+							/>
+						</Box>
+					</div>
+				{/if}
 				<Box title="character:abilities" flavour="abilities">
-					<Abilities bind:abilities={character.abilities} editable={admin} />
+					<Abilities bind:abilities={character.abilities} editable={admin} {slender} />
 				</Box>
 				<Box title="character:points" flavour="points">
 					<Points bind:character {calculatedCharacter} {admin} {editable} />
@@ -166,15 +191,18 @@
 					<Armours bind:character {editable} />
 				</Box>
 			</div>
-			<div class="second">
-				<Box title={'character:skills'} flavour="skills">
-					<Skills
-						skills={character.skills}
-						modifiedSkills={calculatedCharacter.skills}
-						abilities={character.abilities}
-					/>
-				</Box>
-			</div>
+			{#if wide}
+				<div class="second">
+					<Box title={'character:skills'} flavour="skills">
+						<Skills
+							{slender}
+							skills={character.skills}
+							modifiedSkills={calculatedCharacter.skills}
+							abilities={character.abilities}
+						/>
+					</Box>
+				</div>
+			{/if}
 		</div>
 
 		<div class="actionRow">
@@ -192,7 +220,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="actionRow">
+	<div class="noteRow">
 		<Box title="label:notes" flavour="notes" grow={1}>
 			<div class="noteDiv">
 				<textarea disabled={!editable} bind:value={character.notes} />
@@ -211,14 +239,23 @@
 
 	div.values {
 		justify-content: space-between;
+		flex-wrap: nowrap;
+		flex-grow: 1;
+	}
+
+	@media screen and (max-width: 1000px) {
+		div.values {
+			flex-wrap: wrap;
+		}
 	}
 
 	div.first {
-		flex-basis: 65%;
-	}
-
-	div.second {
-		/* flex-basis: 30%; */
+		flex-grow: 1;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: start;
+		flex-basis: content;
 	}
 
 	div.title {
@@ -234,32 +271,20 @@
 		background-color: var(--unsaved-background-c);
 	}
 
-	.actionRow {
+	.actionRow,
+	.noteRow {
 		display: flex;
 		flex-basis: 100%;
-		justify-content: space-around;
+		justify-content: space-between;
 		flex-grow: 1;
 	}
 
 	.actionRow > div {
 		flex-basis: 50%;
 		flex-grow: 1;
-	}
-
-	.download {
-		display: inline-block;
-		color: var(--text-c);
-		height: 0.85rem;
-	}
-
-	.uploadForm,
-	.uploadForm div {
-		display: inline;
-	}
-
-	.uploadForm input {
-		opacity: 0;
-		position: absolute;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
 	}
 
 	div.noteDiv {

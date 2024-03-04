@@ -97,7 +97,7 @@
 					</IconButton>
 					<IconButton
 						title="label:revert_to_saved"
-						color={changed || saving ? 'darkred' : undefined}
+						color={changed || saving ? 'var(--delete-icon-c)' : undefined}
 						disabled={!changed || saving}
 						on:click={() => (encounter = JSON.parse(JSON.stringify(data.encounter)))}
 					>

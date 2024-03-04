@@ -40,6 +40,8 @@
 		character.inventory.armours.splice(idx, 1);
 		character = character; // refresh screen
 	};
+
+	//TODO: templates and i18n
 </script>
 
 <table>
@@ -54,7 +56,7 @@
 	<tbody>
 		{#each character.inventory.armours as armour, idx}
 			<tr>
-				<td>{armour.name}</td>
+				<td class="ellipsis" title={$_(armour.name)}>{$_(armour.name)}</td>
 				<td>{armour.dr}</td>
 				<td>{armour.hindrance}</td>
 				<td>
@@ -104,5 +106,12 @@
 	caption {
 		caption-side: bottom;
 		text-align: center;
+	}
+
+	td.ellipsis {
+		max-width: 7rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 </style>

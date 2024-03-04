@@ -48,7 +48,7 @@
 	<tbody>
 		{#each calculateUnarmed(character.skills) as weapon}
 			<tr>
-				<td>{$_(weapon.name)}</td>
+				<td class="ellipsis" title={$_(weapon.name)}>{$_(weapon.name)}</td>
 				<td>{weapon.speed}</td>
 				<td>{weapon.attack}</td>
 				<td>{weapon.defence}</td>
@@ -65,7 +65,7 @@
 		{/each}
 		{#each character.inventory.weapons as weapon}
 			<tr>
-				<td>{weapon.name}</td>
+				<td class="ellipsis" title={$_(weapon.name)}>{$_(weapon.name)}</td>
 				<td>{weapon.speed}</td>
 				<td>{weapon.attack}</td>
 				<td>{weapon.defence}</td>
@@ -134,5 +134,12 @@
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
+	}
+
+	td.ellipsis {
+		max-width: 7rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 </style>

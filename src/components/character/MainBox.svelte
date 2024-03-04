@@ -50,4 +50,8 @@
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+
+	input {
+		width: 7rem;
+	}
 </style>

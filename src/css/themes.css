@@ -79,6 +79,7 @@ html.light {
     --menu-item-hover-c: color-mix(in srgb, var(--header-background-c) 65%, black);
     --striped-table-even-c: whitesmoke;
     --striped-table-odd-c: white;
+    --delete-icon-c: darkred;
 
     --font-weight: 400;
     --font-weight-bold: 700;
@@ -160,6 +161,7 @@ html.dark {
     --menu-item-hover-c: #4c004c;
     --striped-table-even-c: var(--default-box);
     --striped-table-odd-c: black;
+    --delete-icon-c: orangered;
 
     --font-weight: 350;
     --font-weight-bold: 500;
@@ -243,6 +245,7 @@ html.dark {
         --menu-item-hover-c: #4c004c;
         --striped-table-even-c: var(--default-box);
         --striped-table-odd-c: black;
+        --delete-icon-c: orangered;
 
         --font-weight: 350;
     }

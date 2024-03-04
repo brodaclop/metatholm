@@ -209,6 +209,19 @@
 	}
 
 	:global(button),
+	:global(select),
+	:global(input),
+	:global(textarea),
+	:global(dialog) {
+		font-family: 'Noto Sans Display', 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri,
+			'Trebuchet MS', sans-serif;
+		font-weight: var(--font-weight);
+		font-optical-sizing: auto;
+		font-style: normal;
+		font-variation-settings: 'wdth' 100;
+	}
+
+	:global(button),
 	:global(select:enabled),
 	:global(input:enabled),
 	:global(textarea:enabled),
