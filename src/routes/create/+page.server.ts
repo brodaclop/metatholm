@@ -1,4 +1,4 @@
-import { saveCharacter } from '$lib/server/Db';
+import { saveCharacter } from '$lib/server/db/character';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {

@@ -1,4 +1,4 @@
-import { loadAllCharacters } from "$lib/server/Db";
+import { loadAllCharacters } from "$lib/server/db/character";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params, platform }) => {

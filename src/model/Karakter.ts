@@ -51,6 +51,7 @@ export interface CharacterInfo extends Entity {
     ancestry: Ancestry;
     level: number;
     user: string;
+    partyId: string;
 }
 
 export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;

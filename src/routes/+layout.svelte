@@ -2,13 +2,13 @@
 	import { _, isLoading, init, locale, addMessages } from 'svelte-i18n';
 	import { Labels_en, Labels_hu } from '../model/Labels';
 	import type { PageData } from './$types';
-	import { goto } from '$app/navigation';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';
+	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
 	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import MdWbSunny from 'svelte-icons/md/MdWbSunny.svelte';
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
@@ -17,6 +17,8 @@
 	import '../css/themes.css';
 	import CharacterSelector from '../components/CharacterSelector.svelte';
 	import { detectOutsideClick } from '$lib/client/outside-click';
+	import type { Party } from '../model/party/Party';
+	import Menu from '../components/Menu.svelte';
 
 	export let data: PageData;
 
@@ -96,6 +98,47 @@
 	$: if (menuOpen) {
 		detectOutsideClick(dropdown, () => (menuOpen = false));
 	}
+
+	const activateParty = (party: Party) => {
+		return fetch(`/party/${party.id}/activate`, {
+			method: 'POST',
+			headers: {
+				'x-sveltekit-action': 'true'
+			}
+		})
+			.then(() => invalidate('db:partylist'))
+			.then(() => invalidate('db:characterlist'))
+			.then(() => invalidateAll());
+	};
+
+	$: userMenu = [
+		{
+			type: 'link',
+			text: 'label:settings',
+			href: '/user'
+		},
+		{
+			type: 'divider'
+		},
+		{
+			type: 'title',
+			text: 'label:parties'
+		},
+		...(data.parties ?? []).map(({ party, active }) => ({
+			type: 'button',
+			text: party.name,
+			onClick: () => activateParty(party),
+			icon: active ? MdCheck : undefined
+		})),
+		{
+			type: 'divider'
+		},
+		{
+			type: 'link',
+			text: 'label:logout',
+			href: '/logout'
+		}
+	] as any;
 </script>
 
 {#if !data.user}
@@ -135,12 +178,14 @@
 				</li>
 				<li class="nohover">
 					<div class="right-controls">
-						<div class="username">
-							<span>{data.user.username}</span>
-							<form method="post" action="/logout">
-								<IconButton title="label:logout"><MdExitToApp /></IconButton>
-							</form>
-						</div>
+						<Menu items={userMenu}>
+							<span class="nowrap">
+								<span class="username">{data.user.username} </span>
+								<span class="username">
+									/ {data.parties.find((p) => p.active)?.party.name ?? '-'}
+								</span>
+							</span>
+						</Menu>
 						<IconButton
 							title="label:lightdark"
 							on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
@@ -328,16 +373,17 @@
 		justify-content: right;
 	}
 
-	.right-controls .username {
+	.nowrap {
 		white-space: nowrap;
+		display: inline-block;
+		vertical-align: top;
 	}
 
-	.right-controls .username span {
+	.username {
 		display: inline-block;
-		max-width: 8rem;
+		max-width: 6rem;
 		text-overflow: ellipsis;
 		overflow: hidden;
-		vertical-align: top;
 	}
 
 	.responsive ul {

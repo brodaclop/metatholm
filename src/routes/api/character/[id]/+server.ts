@@ -1,4 +1,4 @@
-import { loadCharacter } from '$lib/server/Db.js';
+import { loadCharacter } from '$lib/server/db/character';
 
 export const GET = async ({ params, platform }) => {
     try {

@@ -19,10 +19,11 @@
 	import GiStarShuriken from 'svelte-icons/gi/GiStarShuriken.svelte';
 	import type { Skill } from '../../model/Skills';
 	import { _ } from 'svelte-i18n';
+	import type { ComponentType, SvelteComponent } from 'svelte';
 
 	export let skill: Skill | undefined;
 
-	const SKILL_ICONS: Partial<Record<Skill, ConstructorOfATypedSvelteComponent>> = {
+	const SKILL_ICONS: Partial<Record<Skill, ComponentType<SvelteComponent>>> = {
 		'skill:body_focus': GiPerson,
 		'skill:nature_focus': GiOak,
 		'skill:shadow_focus': GiTwoShadows,

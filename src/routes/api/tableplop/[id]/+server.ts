@@ -1,4 +1,4 @@
-import { loadCharacter } from '$lib/server/Db.js';
+import { loadCharacter } from '$lib/server/db/character';
 import { Labels_en, Labels_hu, type Labels } from '../../../../model/Labels.js';
 import { generateTableplopJSON } from '../../../../model/tableplop/TPExporter.js';
 

@@ -72,7 +72,19 @@ type GenericLabels = 'label:name' |
     'tableplop:unsynchronise' |
     'label:lightdark' |
     'label:characters' |
-    'label:cancel'
+    'label:cancel' |
+    'label:settings' |
+    'label:parties' |
+    'label:parties:party' |
+    'label:parties:invite' |
+    'label:parties:admin' |
+    'label:parties:player' |
+    'label:parties:leave' |
+    'label:parties:kickout' |
+    'label:parties:new' |
+    'label:parties:new_invite' |
+    'label:parties:promote' |
+    'label:parties:demote'
     ;
 
 export const Keys = [
@@ -266,6 +278,18 @@ export const Labels_en: Record<Labels, string> = {
     'label:lightdark': 'Light/Dark Mode',
     'label:characters': 'Characters',
     'label:cancel': 'Cancel',
+    'label:settings': 'Settings',
+    'label:parties': 'Adventuring Parties',
+    'label:parties:party': 'Adventuring Party',
+    'label:parties:invite': 'Invite link',
+    'label:parties:admin': 'admin',
+    'label:parties:player': 'player',
+    'label:parties:leave': 'Leave party',
+    'label:parties:kickout': 'Kick out',
+    'label:parties:new': 'New adventuring party',
+    'label:parties:new_invite': 'Generate new invite code',
+    'label:parties:promote': 'Promote',
+    'label:parties:demote': 'Demote',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -574,6 +598,18 @@ export const Labels_hu: Record<Labels, string> = {
     'label:lightdark': 'Világos/Sötét üzemmód',
     'label:characters': 'Karakterek',
     'label:cancel': 'Mégse',
+    'label:settings': 'Beállítások',
+    'label:parties': 'Kalandozócsapatok',
+    'label:parties:party': 'Kalandozócsapat',
+    'label:parties:invite': 'Meghívó linkje',
+    'label:parties:admin': 'admin',
+    'label:parties:player': 'játékos',
+    'label:parties:leave': 'Kilépés a csapatból',
+    'label:parties:kickout': 'Kirúg',
+    'label:parties:new': 'Új kalandozócsapat',
+    'label:parties:new_invite': 'Új meghívó generálása',
+    'label:parties:promote': 'Előléptetés',
+    'label:parties:demote': 'Lefokozás',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',
