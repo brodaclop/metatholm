@@ -159,6 +159,7 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'world:realms:dragon_straits:settlements:ravenbluff': import('$lib/lore/world/realms/dragon_straits/settlements/ravenbluff_hu.md?raw'),
 		'world:realms:dragon_straits:settlements:south_jaw': import('$lib/lore/world/realms/dragon_straits/settlements/south_jaw_hu.md?raw'),
 		'world:realms:monks:realms': import('$lib/lore/world/realms/monks/realms_hu.md?raw'),
+		'world:realms:swampfealand:realm': import('$lib/lore/world/realms/swampfealand/realm_hu.md?raw'),
 		'world:realms:sylvan_alliance:realm': import('$lib/lore/world/realms/sylvan_alliance/realm_hu.md?raw'),
 	},
 	en: {
@@ -321,6 +322,7 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'world:realms:dragon_straits:settlements:ravenbluff': import('$lib/lore/world/realms/dragon_straits/settlements/ravenbluff_en.md?raw'),
 		'world:realms:dragon_straits:settlements:south_jaw': import('$lib/lore/world/realms/dragon_straits/settlements/south_jaw_en.md?raw'),
 		'world:realms:monks:realms': import('$lib/lore/world/realms/monks/realms_en.md?raw'),
+		'world:realms:swampfealand:realm': import('$lib/lore/world/realms/swampfealand/realm_en.md?raw'),
 		'world:realms:sylvan_alliance:realm': import('$lib/lore/world/realms/sylvan_alliance/realm_en.md?raw'),
 	}
 };
