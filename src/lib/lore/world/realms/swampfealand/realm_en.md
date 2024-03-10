@@ -6,7 +6,7 @@ Swampfaeland got its name from apparently being once populated by swamp fairies,
 
 The first travellers found rivers rich in fish and gold, which attracted more and more settlers. As they proceeded upstream on the River Wide and its tributaries, they found mountain slopes rich in tea shrubs, which is what has made this country famous, apart from its gold.
 
-The country also has numerous impenetrable forests where few dare to venture and the few who return have spoken about fae magic and other weird things there.
+The country also has numerous impenetrable forests where few dare to venture and the even fewer who return did so with tales about fae magic and other weird things there.
 
 ## Economy
 
