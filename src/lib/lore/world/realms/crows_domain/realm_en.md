@@ -29,6 +29,6 @@ The military power of Crow's Domain is heavily concentrated on the fortified cit
 
 ## Map
 
-![Foxfire](/assets/lore/maps/crows_domain_en.png)
+![Foxfire](/assets/lore/maps/crows_domain_en.jpg)
 
 

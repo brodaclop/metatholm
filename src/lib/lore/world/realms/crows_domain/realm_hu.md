@@ -28,6 +28,6 @@ Varjú Birtokának hadereje a folyó alsó szakaszán található erődített v�
 
 ## Térkép
 
-![Rókatűz](/assets/lore/maps/crows_domain_hu.png)
+![Rókatűz](/assets/lore/maps/crows_domain_hu.jpg)
 
 
