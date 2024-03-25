@@ -146,6 +146,8 @@
 			href: '/logout'
 		}
 	] as any;
+
+	$: noActiveParty = data.parties.every(p => !p.active);
 </script>
 
 {#if !data.user}
@@ -168,6 +170,7 @@
 					<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
 						<li class="nohover">
 							<CharacterSelector
+								disabled={noActiveParty}
 								{currentCharacter}
 								characters={data.characters}
 								{switchCharacter}

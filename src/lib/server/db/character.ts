@@ -5,7 +5,6 @@ import { activeParty } from "./party";
 
 
 //TODO: create personal party on user creation
-//TODO: disable character search if not member of party
 export const listCharacters = async (platform: App.Platform, userId: string): Promise<Array<CharacterInfo>> => {
     const db = await ensureInit(platform);
 
