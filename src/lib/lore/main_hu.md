@@ -18,3 +18,5 @@
 
 `LoreCategory|{"category": "world:realms:*", "title": "Országok" }`
 
+`LoreCategory|{"category": "notes", "title": "A szerző jegyzetei" }`
+

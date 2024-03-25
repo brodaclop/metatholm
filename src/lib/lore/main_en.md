@@ -17,3 +17,5 @@
 `LoreCategory|{"category": "spell", "title": "Spells" }`
 
 `LoreCategory|{"category": "world:realms:*", "title": "Realms" }`
+
+`LoreCategory|{"category": "notes", "title": "Author's Notes" }`

@@ -51,6 +51,7 @@ export interface CharacterInfo extends Entity {
     ancestry: Ancestry;
     level: number;
     user: string;
+    userId: string;
     partyId: string;
 }
 

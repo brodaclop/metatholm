@@ -82,7 +82,14 @@
 		lastPath = $page.url.pathname;
 	}
 
-	$: switchCharacter = () => goto(currentCharacter ? `/character/${currentCharacter}` : '/');
+	$: switchCharacter = (newCharacter: string | null) => {
+		if (newCharacter !== null) {
+			currentCharacter = newCharacter;
+			goto(currentCharacter ? `/character/${currentCharacter}` : '/')
+		} else {
+			goto('/create');
+		}
+	};
 
 	const langChanged = () => {
 		if (browser) {
@@ -161,13 +168,11 @@
 					<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
 						<li class="nohover">
 							<CharacterSelector
-								bind:currentCharacter
+								{currentCharacter}
 								characters={data.characters}
-								on:change={switchCharacter}
+								{switchCharacter}
 							/>
 						</li>
-						<li class="divider">&nbsp;</li>
-						<li><a href="/create">{$_('label:new-character')}</a></li>
 						<li><a href="/lore/main">{$_('label:lore')}</a></li>
 						<li class="divider">&nbsp;</li>
 						<li><a href="/npc">{$_('label:npcs')}</a></li>

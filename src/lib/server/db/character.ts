@@ -3,6 +3,9 @@ import type { Character, CharacterInfo } from "../../../model/Karakter";
 import { ensureInit } from "./Db";
 import { activeParty } from "./party";
 
+
+//TODO: create personal party on user creation
+//TODO: disable character search if not member of party
 export const listCharacters = async (platform: App.Platform, userId: string): Promise<Array<CharacterInfo>> => {
     const db = await ensureInit(platform);
 
@@ -10,19 +13,20 @@ export const listCharacters = async (platform: App.Platform, userId: string): Pr
 
     if (partyId) {
         return await db.all(
-            'select c.id, c.name, c.background, c.ancestry, c.level, u.username ' +
+            'select c.id, c.name, c.background, c.ancestry, c.level, c.user, u.username ' +
             'from Characters c ' +
             'inner join PartyUserAssoc pa on pa.user_id = c.user ' +
             'left join user u where u.id = c.user and pa.party_id = ?1 '
             //+ 'and (c.user is null or exists (select 1 from PartyUserAssoc pa, Party p where pa.user_id = c.user))'
             ,
-            ({ id, name, background, ancestry, level, username, party_id }) => ({
+            ({ id, name, background, ancestry, level, username, user, party_id }) => ({
                 id,
                 name,
                 background,
                 ancestry,
                 level,
                 partyId: party_id,
+                userId: user,
                 user: username || '<public>'
             } as CharacterInfo), partyId);
     } else {

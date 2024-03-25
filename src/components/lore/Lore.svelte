@@ -51,6 +51,7 @@
 		main: 'label:lore',
 		spell: 'label:spell',
 		world: 'label:world',
+		notes: 'label:notes',
 		realms: 'world:realm',
 		settlements: 'world:settlement',
 		organisations: 'world:organisation',
