@@ -147,7 +147,7 @@
 		}
 	] as any;
 
-	$: noActiveParty = data.parties.every(p => !p.active);
+	$: noActiveParty = data.parties?.every(p => !p.active);
 </script>
 
 {#if !data.user}
