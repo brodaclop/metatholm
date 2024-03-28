@@ -1,8 +1,8 @@
 # Csavargók
 
-A Metatholm játékos karaktereit összefoglalva egyetlen szóval jellemezhetjük: csavargók.
+A Metatholm [játékos karaktereit](world:concepts:character) összefoglalva egyetlen szóval jellemezhetjük: csavargók.
 
-A csavargó nem része a társadalomnak. Sem az úri társadalomnak, aminek tagjai legjobb esetben is kerülik őt, de még a társadalom perifériájára szorultak is, bár elfogadják jelenlétét, sosem fogják maguk közül valónak tekinteni.
+A csavargó nem része a társadalomnak. Sem az úri társadalomnak, aminek tagjai legjobb esetben is kerülik őt, de még a társadalom perifériájára szorultak se – bár elfogadják jelenlétét – fogják soha maguk közül valónak tekinteni.
 
 Egy csavargónak nem kell feltétlenül vándorolni egyik helyről a másikra, elég annyi, hogy csak úgy sodródik az életben, nála hatalmasabb, iránta azonban teljesen közömbös erők kénye-kedve szerint. Van, aki lázad ez ellen, van aki lemondóan elfogadja sorsát, és akad, aki megpróbálja a legjobbat kihozni belőle – a besorolás szempontjából oly mindegy.
 
@@ -18,4 +18,6 @@ De ne feledd: csak azért, mert hősies vagy, nem feltétlenül tartozol a jó f
 
 **De sose fogsz istenné válni. Sose lesz belőled király. És sose fogsz sárkányt becsületes csatában legyőzni.**
 
-Mindez persze nem jelenti azt, hogy feledésbe fogsz merülni. A **Szerzetesek** feljegyzik tetteidet. Neved az egyszerű nép ajkán foroghat még évszázadokig. A te életed lehet az igazságmorzsa, ami a jövő egyre dagadó legendáinak mélyén megbúvik. Van tehát értelme ennek a létnek, de hogy pontosan mi az, azt magadnak kell kitalálnod.
+Mindez persze nem jelenti azt, hogy feledésbe fogsz merülni. A [Szerzetesek](world:realms:monks:realms) feljegyzik tetteidet. Neved az egyszerű nép ajkán foroghat még évszázadokig. A te életed lehet az igazságmorzsa, ami a jövő egyre dagadó legendáinak mélyén megbúvik. Van tehát értelme ennek a létnek, de hogy pontosan mi az, azt magadnak kell kitalálnod.
+
+[Tovább a Kódexhez](main)

@@ -240,7 +240,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:exactly': 'Result is exactly...',
     'label:roll': 'Roll',
     'label:skill_check_success_probabilities': 'Skill check success probabilities',
-    'label:lore': 'Lore',
+    'label:lore': 'Codex',
     'label:close-quarters': 'Close Quarters',
     'label:in-range': 'In Measure',
     'label:out-of-range': 'Out Of Measure',

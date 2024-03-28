@@ -149,6 +149,7 @@ export const Lore: Record<string, Record<string, Promise<typeof import("*?raw")>
 		'spell:thicket': import('$lib/lore/spell/thicket_hu.md?raw'),
 		'spell:whispering_shadows': import('$lib/lore/spell/whispering_shadows_hu.md?raw'),
 		'spell:write_memories': import('$lib/lore/spell/write_memories_hu.md?raw'),
+		'world:concepts:character': import('$lib/lore/world/concepts/character_hu.md?raw'),
 		'world:concepts:spirits': import('$lib/lore/world/concepts/spirits_hu.md?raw'),
 		'world:concepts:vagabonds': import('$lib/lore/world/concepts/vagabonds_hu.md?raw'),
 		'world:realms:crows_domain:realm': import('$lib/lore/world/realms/crows_domain/realm_hu.md?raw'),

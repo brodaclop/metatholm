@@ -1,8 +1,8 @@
 # Vagabonds
 
-All the player characters in the game of Metatholm can be described with one word: vagabonds.
+All the [player characters]((world:concepts:character)) in the game of Metatholm can be described with one word: vagabonds.
 
-Vagabonds are not part of society. Definitely not polite society, who will at best shun them, but not the fringes of society either, where they may be grudgingly accepted but will always be the other.
+Vagabonds are not part of society. Definitely not polite society, who will at best shun them, but not the fringes of society either, where they may be grudgingly accepted but will always be the Other.
 
 Vagabonds may not physically wander around from place to place but they will always be drifting at the whim of powers greater than them who don't care one jot about their fate. Some rebel against this, some resignedly accept this existence and some try to get the best out of it, it makes no difference to the end result.
 
@@ -18,4 +18,6 @@ And also remember, no matter how powerful you grow, you're still an outsider. Yo
 
 **But you'll never ascend to godhood. You'll never even be a king. You'll never beat a dragon in a fair fight.**
 
-All this of course doesn't mean you'll be forgotten. The **Monks** will keep records of your deeds. Common folk may remember your name for centuries. Your life can become the kernel of truth in an ever-billowing legend. There is a point to this existence but you'll have to figure it out yourself.
+All this of course doesn't mean you'll be forgotten. The [Monks](world:realms:monks:realms) will keep records of your deeds. Common folk may remember your name for centuries. Your life can become the kernel of truth in an ever-billowing legend. There is a point to this existence but you'll have to figure it out yourself.
+
+[Continue to Codex](main)
