@@ -25,6 +25,7 @@ export interface Character extends Entity {
     ancestry: Ancestry;
     levels: Array<Level>;
     skills: Partial<Record<Skill, number>>;
+    isPublic: boolean;
     inventory: {
         weapons: Array<Weapon>;
         armours: Array<Armour>;
@@ -53,6 +54,7 @@ export interface CharacterInfo extends Entity {
     user: string;
     userId: string;
     partyId: string;
+    isPublic: boolean;
 }
 
 export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;
@@ -201,6 +203,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         background: template.background,
         ancestry: template.ancestry,
         abilities,
+        isPublic: false,
         inventory: {
             weapons: [],
             armours: [],

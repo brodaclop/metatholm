@@ -180,8 +180,6 @@
 						<li class="divider">&nbsp;</li>
 						<li><a href="/npc">{$_('label:npcs')}</a></li>
 						<li><a href="/encounter">{$_('label:encounters')}</a></li>
-						<li class="divider">&nbsp;</li>
-						<li><a href="/simulator">Simulator</a></li>
 					</ul>
 				</li>
 				<li class="nohover">

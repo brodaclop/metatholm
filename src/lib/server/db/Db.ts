@@ -1,10 +1,3 @@
-import type { Character, CharacterInfo } from "../../../model/Karakter";
-import { fail } from "@sveltejs/kit";
-import type { NPC } from "../../../model/npc/Npc";
-import type { Encounter } from "../../../model/npc/Encounter";
-import { generateId } from "lucia";
-import type { Party, PartyWithUsers } from "../../../model/party/Party";
-
 let initialised = false;
 
 //TODO: use virtual generated columns for name, ancestry, background and level
@@ -22,6 +15,12 @@ export const ensureInit = async (platform: App.Platform) => {
             'payload text not null' +
             ')'
         );
+        try {
+            await platform.env.D1_DB.exec('alter table Characters add column ispublic integer');
+        } catch (e) {
+            // console.info('Failed to create column "is#public"', e);
+        }
+
         //await platform.env.D1_DB.exec('drop table if exists CharacterArchive');
         await platform.env.D1_DB.exec(
             'CREATE TABLE IF NOT EXISTS CharacterArchive (' +
@@ -74,6 +73,7 @@ export const ensureInit = async (platform: App.Platform) => {
             'foreign key(user_id) references user(id) on delete cascade' +
             ')'
         );
+
 
 
         initialised = true;

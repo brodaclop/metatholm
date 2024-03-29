@@ -84,7 +84,8 @@ type GenericLabels = 'label:name' |
     'label:parties:new' |
     'label:parties:new_invite' |
     'label:parties:promote' |
-    'label:parties:demote'
+    'label:parties:demote' |
+    'character:public'
     ;
 
 export const Keys = [
@@ -195,6 +196,7 @@ export const Labels_en: Record<Labels, string> = {
     'character:armours': 'Armours',
     'character:ancestry': 'Ancestry',
     'character:spells': 'Spells',
+    'character:public': 'Public',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -523,6 +525,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:skill': 'Képzettség',
     'character:ability': 'Tulajdonság',
     'character:spells': 'Varázslatok',
+    'character:public': 'Nyilvános',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',

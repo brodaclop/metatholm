@@ -12,28 +12,30 @@ export const listCharacters = async (platform: App.Platform, userId: string): Pr
 
     if (partyId) {
         return await db.all(
-            'select c.id, c.name, c.background, c.ancestry, c.level, c.user, u.username ' +
+            'select c.id, c.name, c.background, c.ancestry, c.level, c.user, c.ispublic, u.username ' +
             'from Characters c ' +
-            'inner join PartyUserAssoc pa on pa.user_id = c.user ' +
+            'inner join PartyUserAssoc pa on pa.user_id = c.user and (c.ispublic != 0 or c.user = ?2)' +
             'left join user u where u.id = c.user and pa.party_id = ?1 '
             //+ 'and (c.user is null or exists (select 1 from PartyUserAssoc pa, Party p where pa.user_id = c.user))'
             ,
-            ({ id, name, background, ancestry, level, username, user, party_id }) => ({
+            ({ id, name, background, ancestry, level, username, user, ispublic, party_id }) => ({
                 id,
                 name,
                 background,
                 ancestry,
                 level,
+                isPublic: ispublic !== 0,
                 partyId: party_id,
                 userId: user,
                 user: username || '<public>'
-            } as CharacterInfo), partyId);
+            } as CharacterInfo), partyId, userId);
     } else {
         return [];
     }
 
 }
 
+//TODO: fix this
 export const loadAllCharacters = async (platform: App.Platform): Promise<Array<Character>> => {
     const db = await ensureInit(platform);
     return await db.all('select payload from Characters', ({ payload }) => JSON.parse(payload as string));
@@ -77,8 +79,8 @@ export const saveCharacter = async (platform: App.Platform, char: Character, use
     await checkCharacterWriteable(db, char.id, userId);
     await archiveCharacter(platform, char.id);
     await db.run(
-        'insert into Characters (id, user, name, ancestry, background, level, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7',
-        char.id, userId, char.name, char.ancestry, char.background, char.levels.length, JSON.stringify(char));
+        'insert into Characters (id, user, name, ancestry, background, level, ispublic, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7',
+        char.id, userId, char.name, char.ancestry, char.background, char.levels.length, char.isPublic ? 1 : 0, JSON.stringify(char));
 }
 
 export const deleteCharacter = async (platform: App.Platform, char: Pick<Character, 'id'>, userId?: string) => {
@@ -116,5 +118,7 @@ const upgrade = (character: Character): Character => {
     }
     // added armours to inventory
     character.inventory.armours = character.inventory.armours ?? [];
+    // added public flag, defaults to true if missing
+    character.isPublic = character.isPublic ?? true;
     return character;
 }

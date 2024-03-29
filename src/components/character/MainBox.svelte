@@ -37,6 +37,12 @@
 				>
 			</td>
 		</tr>
+		<tr>
+			<th>{$_('character:public')}</th>
+			<td>
+				<input type="checkbox" bind:value={character.isPublic} disabled={!editable}/>
+			</td>
+		</tr>
 	</table>
 	<LevelUpModal bind:character showModal={levellingUp} close={() => (levellingUp = false)} />
 </Box>
@@ -53,5 +59,9 @@
 
 	input {
 		width: 7rem;
+	}
+
+	input[type='checkbox'] {
+		width: unset;
 	}
 </style>
