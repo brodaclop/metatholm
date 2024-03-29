@@ -1,5 +1,10 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-03-29"}`
+
+* Added [Shirnk](spell:shrink) spell.
+
+
 ## `FormattedDate|{"date": "2024-02-22"}`
 
 * Added description of [Magic Resistance](skill:magic_resistance).

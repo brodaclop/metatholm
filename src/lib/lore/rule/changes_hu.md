@@ -1,5 +1,9 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-03-29"}`
+
+* [Zsugorítás](spell:shrink) varázslat.
+
 ## `FormattedDate|{"date": "2024-02-22"}`
 
 * [Mágiaellenállás](skill:magic_resistance) képzettség leírása.

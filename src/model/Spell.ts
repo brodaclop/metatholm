@@ -49,6 +49,7 @@ export type Spell =
     | 'spell:slow_metabolism'
     | 'spell:suspended_animation'
     | 'spell:insignificance'
+    | 'spell:shrink'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -392,6 +393,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         target: 'spell_target:touch',
         duration: 'spell_duration:hour',
         skill: 'skill:spirit_focus'
+    },
+    'spell:shrink': {
+        speed: 2,
+        level: 4,
+        target: 'spell_target:touch',
+        duration: 'spell_duration:hour',
+        skill: 'skill:spacetime_focus'
     },
 
 

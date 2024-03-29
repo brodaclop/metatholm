@@ -413,6 +413,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:slow_metabolism': 'Slow Metabolism',
     'spell:suspended_animation': 'Suspended Animation',
     'spell:insignificance': 'Insignificance',
+    'spell:shrink': 'Shrink',
 
 
     'spell_duration:instant': 'instant',
@@ -725,6 +726,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:slow_metabolism': 'Anyagcsere lassítása',
     'spell:suspended_animation': 'Tetszhalál',
     'spell:insignificance': 'Jelentéktelenség',
+    'spell:shrink': 'Zsugorítás',
 
     'spell_duration:instant': 'azonnali',
     'spell_duration:round': 'kör',
