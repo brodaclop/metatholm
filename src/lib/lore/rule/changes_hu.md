@@ -1,5 +1,9 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-03-31"}`
+
+* Rövidebb hatótávolság az [Üzenet](spell:message) és a [Suttogó Árnyak](spell:whispering_shadows) varázslathoz.
+
 ## `FormattedDate|{"date": "2024-03-29"}`
 
 * [Zsugorítás](spell:shrink) varázslat.

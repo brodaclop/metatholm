@@ -6,4 +6,6 @@ A varázsló egy általa látott (vagy jól ismert) élőlénnyel tud gondolati 
 
 Természetesen amennyiben a célpont nincs tudatánál, a kapcsolat nem jön létre, és ha nem kívánja "fogadni" az üzenetet, minden további nélkül ki tudja zárni az elméjéből, tehát ha valamilyen feladatra erősen koncentrál, ezzel a varázslattal nemigen lehet megzavarni.
 
+A varázslat maximális hatótávolsága 1km, vér szerinti rokonok közt 5km, ikertestvérek között pedig 10km.
+
 A varázslat erősítésével az időtartam növelhető.

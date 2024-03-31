@@ -6,4 +6,6 @@ The caster can telepathically "chat" with a living creature they can see (or kno
 
 Naturally if the target isn't conscious, the connection fails. Same is true if the target doesn't want to "take" the call, it takes very little mental effort to block out the nagging feeling of the call, so it isn't possible to break somebody's concentration by targeting them with this spell.
 
+The maximum range of this spell is 1km, which grows to 5km between blood relatives and 10km between twins.
+
 Strengthening the spell can increase the duration.

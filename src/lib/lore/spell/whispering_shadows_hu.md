@@ -6,4 +6,6 @@ A varázsló rövid üzenetet küldhet mindazoknak, akikre koncentrál. A célpo
 
 Az üzenet szó szerint a célpontok fülébe lesz suttogva a varázsló hangján: ha a célpont ismeri a varázslót, fel fogja ismerni a hangot. Sőt, ha valaki igen közel áll a célponthoz, esetleg el is csíphet pár foszlányt.
 
+A varázslat maximális hatótávolsága 1km, vér szerinti rokonok közt 5km, ikertestvérek között pedig 10km.
+
 A varázslat időtartama 1 kör, további E-kért mind az időtartam, mind a célpontok száma nüvelhető.
