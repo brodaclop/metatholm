@@ -10,5 +10,6 @@ export interface Weapon extends Entity {
     damage: number;
     skill: Skill;
     actions: Partial<Record<ActionVariant, number>>;
+    notes: string;
     hands: 0.5 | 1 | 1.5 | 2;
 }

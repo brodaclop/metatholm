@@ -65,7 +65,7 @@
 		{/each}
 		{#each character.inventory.weapons as weapon}
 			<tr>
-				<td class="ellipsis" title={$_(weapon.name)}>{$_(weapon.name)}</td>
+				<td class="ellipsis" title={`${$_(weapon.name)}${weapon.notes ? ('\n\n' + weapon.notes) : ''}`}>{$_(weapon.name)}</td>
 				<td>{weapon.speed}</td>
 				<td>{weapon.attack}</td>
 				<td>{weapon.defence}</td>

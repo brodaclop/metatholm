@@ -1,5 +1,9 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-04-01"}`
+
+* Added notes section to weapons
+
 ## `FormattedDate|{"date": "2024-03-31"}`
 
 * Reduced the range of [Message](spell:message) and [Whispering Shadows](spell:whispering_shadows) spells.

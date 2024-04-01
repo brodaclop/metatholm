@@ -7,15 +7,13 @@
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
 	import { WEAPON_LIST, WEAPON_NAMES_LIST } from '../../model/WeaponList';
-	import { entries, keys } from '../../model/InfoList';
+	import { entries } from '../../model/InfoList';
 	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
 	import MdContentPaste from 'svelte-icons/md/MdContentPaste.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
-
-	const labels = unwrapFunctionStore(_);
 
 	$: if (dialog && showModal) dialog.showModal();
 
@@ -32,6 +30,7 @@
 		speed: 0,
 		hands: 1,
 		skill: 'skill:knives',
+		notes: '',
 		actions: {}
 	};
 
@@ -55,6 +54,7 @@
 						speed: 0,
 						hands: 1,
 						skill: 'skill:knives',
+						notes: '',
 						actions: {}
 				  };
 			weaponInitialised = true;
@@ -212,6 +212,17 @@
 						</tr>
 					{/each}
 				</tbody>
+				<tbody>
+					<tr>
+						<td colspan={4}>
+								<Box title="label:notes" flavour="notes" grow={1}>
+									<div class="noteDiv">
+										<textarea bind:value={editedWeapon.notes} />
+									</div>
+								</Box>
+						</td>
+					</tr>
+				</tbody>
 				<caption><button on:click={submit}>OK</button></caption>
 			</table>
 		</Box>
@@ -270,6 +281,17 @@
 		border-bottom: 3px solid var(--default-border-c);
 	}
 
+	div.noteDiv {
+		width: 100%;
+		display: flex;
+	}
+
+	textarea {
+		flex-grow: 1;
+		width: 100%;
+		height: 10rem;
+		resize: vertical;
+	}
 	.first {
 		display: flex;
 		flex-wrap: nowrap;
