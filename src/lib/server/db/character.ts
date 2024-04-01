@@ -79,7 +79,7 @@ export const saveCharacter = async (platform: App.Platform, char: Character, use
     await checkCharacterWriteable(db, char.id, userId);
     await archiveCharacter(platform, char.id);
     await db.run(
-        'insert into Characters (id, user, name, ancestry, background, level, ispublic, payload) VALUES (?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, payload=?7',
+        'insert into Characters (id, user, name, ancestry, background, level, ispublic, payload) VALUES (?1,?2,?3,?4,?5,?6,?7,?8) ON CONFLICT(id) DO UPDATE SET name=?3, ancestry=?4, background=?5, level=?6, ispublic=?7, payload=?8',
         char.id, userId, char.name, char.ancestry, char.background, char.levels.length, char.isPublic ? 1 : 0, JSON.stringify(char));
 }
 
