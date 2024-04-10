@@ -18,9 +18,11 @@
 	style:border-radius={!$$slots.text ? '50%' : undefined}
 	class:plain
 >
-	<span class="icon">
-		<slot />
-	</span>
+	{#if $$slots.default}
+		<span class="icon">
+			<slot />
+		</span>
+	{/if}
 	{#if $$slots.text}
 		<span class="text"><slot name="text" /></span>
 	{/if}

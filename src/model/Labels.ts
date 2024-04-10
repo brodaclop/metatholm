@@ -85,7 +85,9 @@ type GenericLabels = 'label:name' |
     'label:parties:new_invite' |
     'label:parties:promote' |
     'label:parties:demote' |
-    'character:public'
+    'character:public' |
+    'label:next' |
+    'label:scenario'
     ;
 
 export const Keys = [
@@ -292,6 +294,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:parties:new_invite': 'Generate new invite code',
     'label:parties:promote': 'Promote',
     'label:parties:demote': 'Demote',
+    'label:next': 'Next',
+    'label:scenario': 'Scenario',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -614,6 +618,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:parties:new_invite': 'Új meghívó generálása',
     'label:parties:promote': 'Előléptetés',
     'label:parties:demote': 'Lefokozás',
+    'label:next': 'Tovább',
+    'label:scenario': 'Jelenet',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

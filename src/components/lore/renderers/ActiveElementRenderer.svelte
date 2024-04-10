@@ -20,6 +20,7 @@
 	import { getContext } from 'svelte';
 	import FocusSpellList from '../interactive/FocusSpellList.svelte';
 	import FormattedDate from '../interactive/FormattedDate.svelte';
+	import PlayScenario from '../interactive/PlayScenario.svelte';
 
 	export let raw: string;
 
@@ -44,7 +45,8 @@
 		DamageCalculator: DamageCalculator,
 		FocusSpellList: FocusSpellList,
 		SpellInfo: SpellInfo,
-		FormattedDate: FormattedDate
+		FormattedDate: FormattedDate,
+		PlayScenario: PlayScenario
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

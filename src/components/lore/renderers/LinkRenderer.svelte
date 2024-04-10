@@ -1,8 +1,29 @@
 <script lang="ts">
+	import { Popover } from 'svelte-smooth-popover';
+	import Lore from '../Lore.svelte';
+
 	export let href: string = '';
 	export let title: string | undefined = undefined;
 
 	$: effectiveHref = `/lore/${href}`;
 </script>
 
-<a href={effectiveHref} {title}><slot /></a>
+{#if href.startsWith('+')}
+	<!-- svelte-ignore a11y-invalid-attribute -->
+	<a href="#" {title}>
+		<slot />
+		<Popover
+			open={false}
+			showOnClick={true}
+			borderRadius={10}
+			caretBg="var(--default-border-c)"
+			hideOnExternalClick={true}
+		>
+			<div style:max-width="80vw">
+				<Lore id={href.slice(1)} />
+			</div>
+		</Popover>
+	</a>
+{:else}
+	<a href={effectiveHref} {title}><slot /></a>
+{/if}

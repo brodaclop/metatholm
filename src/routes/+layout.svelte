@@ -36,6 +36,10 @@
 		}
 	};
 
+	//TODO: when joining new party, make it the active party
+	//TODO: limit character and other object sizes, including archive list size
+	//TODO: display level in archive list
+
 	let lang = storedLang() ?? LANGUAGES[0];
 
 	addMessages('en', Labels_en);
@@ -85,7 +89,7 @@
 	$: switchCharacter = (newCharacter: string | null) => {
 		if (newCharacter !== null) {
 			currentCharacter = newCharacter;
-			goto(currentCharacter ? `/character/${currentCharacter}` : '/')
+			goto(currentCharacter ? `/character/${currentCharacter}` : '/');
 		} else {
 			goto('/create');
 		}
@@ -147,7 +151,7 @@
 		}
 	] as any;
 
-	$: noActiveParty = data.parties?.every(p => !p.active);
+	$: noActiveParty = data.parties?.every((p) => !p.active);
 </script>
 
 {#if !data.user}

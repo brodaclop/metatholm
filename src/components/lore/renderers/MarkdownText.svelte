@@ -7,11 +7,13 @@
 	import Image from './Image.svelte';
 
 	export let text: string;
+	export let isInline = false;
 </script>
 
 {#key Math.random()}
-	<div class="markdown">
+	<div class="markdown" class:inline={isInline}>
 		<SvelteMarkdown
+			{isInline}
 			source={text}
 			renderers={{
 				codespan: ActiveElementRenderer,
@@ -24,3 +26,9 @@
 		/>
 	</div>
 {/key}
+
+<style>
+	.inline {
+		display: inline-block;
+	}
+</style>

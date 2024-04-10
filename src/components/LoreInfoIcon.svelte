@@ -26,7 +26,7 @@
 				open={false}
 				showOnClick={true}
 				borderRadius={10}
-				caretBg="black"
+				caretBg="var(--default-border-c)"
 				hideOnExternalClick={true}
 			>
 				<div style:max-width="80vw">

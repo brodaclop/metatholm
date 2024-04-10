@@ -1,10 +1,5 @@
 <script lang="ts">
-	import Harc from '../components/Harc.svelte';
-	import Npc from '../components/NPC.svelte';
-	import Damage from '../components/elements/Damage.svelte';
 	import Lore from '../components/lore/Lore.svelte';
-
-	let editable = false;
 </script>
 
 <div>
