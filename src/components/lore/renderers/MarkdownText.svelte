@@ -29,6 +29,6 @@
 
 <style>
 	.inline {
-		display: inline-block;
+		display: inline;
 	}
 </style>
