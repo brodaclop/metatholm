@@ -48,9 +48,11 @@
 
 	.player-0 {
 		align-self: flex-start;
+		background-color: var(--striped-table-even-c);
 	}
 
 	.player-1 {
 		align-self: flex-end;
+		background-color: var(--striped-table-odd-c);
 	}
 </style>
