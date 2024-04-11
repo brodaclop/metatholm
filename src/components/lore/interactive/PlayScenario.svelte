@@ -1,11 +1,23 @@
 <script lang="ts">
 	import { _, locale } from 'svelte-i18n';
 	import ScenarioBox from '../scenario/ScenarioBox.svelte';
-	import { VARAZSLAS_SCENARIO } from '../../../model/scenario/Scenario';
+	import Loading from '../../Loading.svelte';
+	import type { Scenario } from '../../../model/scenario/Scenario';
 
-	export let id: string;
+	export let scenario: string;
 
-	$: fileName = `${id}-${$locale}.json`;
+	const SCENARIOS: Record<string, Scenario> = import.meta.glob('$lib/scenario/*.json', {
+		eager: true,
+		import: 'default'
+	}) as unknown as Record<string, Scenario>;
+
+	$: fileName = `${scenario}_${$locale}.json`;
+
+	$: scenarioFile = SCENARIOS[`/src/lib/scenario/${fileName}`];
+
+	$: console.log('SCENARIO', fileName, scenarioFile);
 </script>
 
-<ScenarioBox scenario={VARAZSLAS_SCENARIO} />
+{#if scenarioFile}
+	<ScenarioBox scenario={scenarioFile} />
+{/if}

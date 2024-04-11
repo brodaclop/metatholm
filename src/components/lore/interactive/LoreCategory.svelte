@@ -2,27 +2,25 @@
 	import { _, locale } from 'svelte-i18n';
 	import { loreCategoryList } from '../../../model/Lore';
 	import Box from '../../../components/character/Box.svelte';
-	import Loading from '../../Loading.svelte';
 
 	export let category: string;
 	export let title: string;
+
+	$: sortedList = loreCategoryList(category, $locale).sort((a, z) =>
+		a.title.localeCompare(z.title)
+	);
 </script>
 
 <Box {title} flavour="lore" marginless>
 	<ul>
-		{#await loreCategoryList(category, $locale)}
-			<Loading />
-		{:then list}
-			{@const sortedList = list.sort((a, z) => a.title.localeCompare(z.title))}
-			{#each sortedList as lc}
-				<li><a href="/lore/{lc.id}">{lc.title.replace(/#/g, '')}</a></li>
-			{/each}
-			<li />
-			<li />
-			<li />
-			<li />
-			<li />
-		{/await}
+		{#each sortedList as lc}
+			<li><a href="/lore/{lc.id}">{lc.title.replace(/#/g, '')}</a></li>
+		{/each}
+		<li />
+		<li />
+		<li />
+		<li />
+		<li />
 	</ul>
 </Box>
 

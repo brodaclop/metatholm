@@ -47,3 +47,5 @@ Slow casting means the caster will fully concentrate on creating the spell for t
 ### Duration
 
 If the duration of a spell is 1 round, it normally lasts until the end of the round after it was cast. But any spell whose duration isn't "instant" can be cancelled at any time by the caster, either when it's the caster's turn (no AP cost) or at a pre-determined trigger point (e.g. "when one of my team mates approaches the wall of fire, it disappears").
+
+`PlayScenario|{"scenario":"casting"}`

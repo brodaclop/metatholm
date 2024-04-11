@@ -12,26 +12,11 @@
 
 	$: setContext('activeElementParams', { ...params, id });
 
-	let loadedLore: Promise<{ title: string; text: string; notFound: boolean }> = Promise.resolve({
-		title: '',
-		text: '',
-		notFound: false
-	});
+	$: loreText = lore(id, $locale);
 
-	const loadLore = (loreId: string, locale: string | null | undefined) => {
-		loadedLore = lore(loreId, locale)
-			.then((res) => {
-				const [title, ...textLines] = res.split('\n') ?? [];
-				return {
-					title,
-					text: textLines.join('\n'),
-					notFound: false
-				};
-			})
-			.catch((e) => ({ notFound: true, text: '', title: '' }));
-	};
+	$: title = loreText?.split('\n', 1)[0];
 
-	$: loadLore(id, $locale);
+	$: text = loreText?.split('\n').slice(1).join('\n');
 
 	let idPrefix: string;
 
@@ -59,18 +44,14 @@
 	};
 </script>
 
-{#await loadedLore}
-	<Loading />
-{:then { title, text, notFound }}
-	{#if notFound}
-		<span>Lore not found</span>
-	{:else}
-		<Box flavour="lore" marginless>
-			<span slot="title">
-				{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
-			</span>
+{#if !title}
+	<span>Lore not found</span>
+{:else}
+	<Box flavour="lore" marginless>
+		<span slot="title">
+			{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
+		</span>
 
-			<MarkdownText {text} />
-		</Box>
-	{/if}
-{/await}
+		<MarkdownText {text} />
+	</Box>
+{/if}

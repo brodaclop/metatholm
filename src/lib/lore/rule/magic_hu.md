@@ -36,8 +36,6 @@ Amennyiben a varázsló dobása magasabb, úgy a varázslat minden további nél
 
 Ha viszont a mesélő dobása eléri vagy meghaladja a varázslóét, akkor a varázslat minden megkezdett 10 pontnyi különbség után 1 Mágia Pontba kerül. Tehát ha a varázsló 17-et dobott, a mesélő meg 20-at, akkor a költség 1 MP, ha 27-et, akkor 2 MP stb. Amennyiben a varázslónak nincs elég Mágia Pontja, dönthet úgy, hogy a fennmaradó összeget közvetlenül az [életerejéből](character:ep) kívánja törleszteni. De természetesen úgy is dönthet, hogy inkább abbahagyja a varázslást, ezesetben mindössze a varázslásra szánt ideje vész el.
 
-`PlayScenario|{"scenario":"casting"}`
-
 ### "Csípőből" varázslás
 
 A varázsló dönthet úgy, hogy a varázslatot gyorsabban, de kisebb erővel hozza létre.
@@ -49,3 +47,5 @@ Lassú varázslás esetén a varázsló az egész harci körét a varázslat lé
 ### Időtartam
 
 Amennyiben a varázslat időtartama 1 kör, úgy az alapesetben a varázslás utáni kör végéig tart. Ugyanakkor minden varázslat, amelynek időtartama nem "azonnali", bármikor megszüntethető a varázsló által. Ez történhet úgy, hogy a varázsló ezt bejelenti, amikor ő kerül sorra a körben (akciópont költség nélkül), vagy egy előre meghatározott feltétel teljesülésekor (pl. "amikor bármelyik társam megközelíti a tűzfalat, az eltűnik").
+
+`PlayScenario|{"scenario":"casting"}`

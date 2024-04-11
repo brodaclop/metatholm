@@ -1,0 +1,87 @@
+{
+    "title": "Casting Spells",
+    "background": "A group of bandits has chased the party into a cave, where after about fifty metres of running they suddenly realise they're surrounded by total darkness and they don't know where next.\n\nThey can hear the bandit leader outside barking orders to a couple of his men to follow them and bring them out while the rest set up camp outside. Waiting for them to leave is not an option then.\n\n**Sneaky Bob**, the party's [gnomish](+ancestry:gnomish) [rover](+background:rover) tries to use their brief moment of calm wisely...",
+    "participants": [
+        "Sneaky Bob",
+        "Game Master"
+    ],
+    "start": {
+        "player": 0,
+        "text": "I'm going to try to cast a [Lantern](+spell:lantern) spell!",
+        "next": {
+            "player": 1,
+            "text": "What spell strength do you have in mind?",
+            "next": {
+                "player": 0,
+                "text": "I reckon we're going to spend at least 4 hours bumbling around in this cave so let's make it **5**.",
+                "next": {
+                    "player": 1,
+                    "text": "Okay, what's your [Nature Focus](+skill:nature_focus) skill level?",
+                    "next": {
+                        "player": 0,
+                        "text": "3, but hopefully we've got half a minute or so, so I'll [cast it slow](+action:cast-slow).",
+                        "next": {
+                            "player": 1,
+                            "text": "Alright, in that case your skill level counts as 1 higher.",
+                            "next": {
+                                "player": 1,
+                                "text": "And because Lantern is a level 0 spell, there's nothing to subtract from that, you'll need to roll `4d10!`!",
+                                "next": {
+                                    "player": 0,
+                                    "text": "*(Loud dice noises)* **18**, not gonna lie, this could've been better.",
+                                    "next": {
+                                        "player": 1,
+                                        "text": "Don't worry, my dice aren't performing well today either. As you chose a spell strength of **5**, I will roll `5d10!` against your roll.",
+                                        "next": {
+                                            "options": {
+                                                "Small roll (<18)": {
+                                                    "player": 1,
+                                                    "text": "There you go, **15**, told you so. Your spell flickers into existence without any complications.",
+                                                    "next": null
+                                                },
+                                                "Mid-range roll (18-27)": {
+                                                    "player": 1,
+                                                    "text": "This is a **26**, how much did you roll,  **18**? Then the difference is **8**, which is less than **10**, therefore your spell will cost you 1 [Magic Force](+character:mp) if you'll take it.",
+                                                    "next": {
+                                                        "player": 0,
+                                                        "text": "*(Sharp intake of breath)* Of course I take it, what other choice I've got.",
+                                                        "next": {
+                                                            "player": 1,
+                                                            "text": "Then your spell is active now and please subtract **1** point of Magic Force!",
+                                                            "next": null
+                                                        }
+                                                    }
+                                                },
+                                                "Large roll (>27)": {
+                                                    "player": 1,
+                                                    "text": "I'm afraid this is **34** against your **18**. The difference is **16**, more than **10** but at least less than **20**, so your spell will cost you 2 points of [Magic Force](+character:mp) if you take it.",
+                                                    "next": {
+                                                        "player": 0,
+                                                        "text": "I've only got 1 point of Magic force.",
+                                                        "next": {
+                                                            "player": 1,
+                                                            "text": "Then the second point should come off your [Life Force](+character:ep).",
+                                                            "next": {
+                                                                "player": 0,
+                                                                "text": "Nah, I'm not going to sacrifice my health for a bit of blasted light, we'll hide here and try to ambush them, hope they bring a torch.",
+                                                                "next": {
+                                                                    "player": 1,
+                                                                    "text": "Fine but you've still spent 1 combat round with your attempt, you can already hear booted footsteps approaching!",
+                                                                    "next": null
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
