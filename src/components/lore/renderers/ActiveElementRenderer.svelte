@@ -21,6 +21,8 @@
 	import FocusSpellList from '../interactive/FocusSpellList.svelte';
 	import FormattedDate from '../interactive/FormattedDate.svelte';
 	import PlayScenario from '../interactive/PlayScenario.svelte';
+	import SpellActionPointCalculator from '../interactive/SpellActionPointCalculator.svelte';
+	import SpellRollCalculator from '../interactive/SpellRollCalculator.svelte';
 
 	export let raw: string;
 
@@ -46,7 +48,9 @@
 		FocusSpellList: FocusSpellList,
 		SpellInfo: SpellInfo,
 		FormattedDate: FormattedDate,
-		PlayScenario: PlayScenario
+		PlayScenario: PlayScenario,
+		SpellActionPointCalculator: SpellActionPointCalculator,
+		SpellRollCalculator: SpellRollCalculator
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

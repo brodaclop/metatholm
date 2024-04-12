@@ -7,3 +7,9 @@ Ha a karakter egy varázslatot próbál létrehozni csökkentett sebességgel, a
 ## Akciópontok
 
 A lassú varázslás minden esetben egész harci kört igényel, ennek megfelelően csak a varázsló körének első akciójaként kísérelhető meg. Ebben a körben a varázsló semmilyen más cselekedetre nem képes, ideértve az őt érő támadások elleni védekezést is.
+
+## Varázsló dobás
+
+A varázsláshoz szükséges kockadobást két tényező befolyásolja: a varázslat szintje valamint a varázslathoz tartozó fókusz képzettség szintje.
+
+`SpellRollCalculator`

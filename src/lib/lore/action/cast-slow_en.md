@@ -8,3 +8,9 @@ This action is used whenever a spell is to be cast at slow speed. Casting a spel
 
 Slow casting a spell always takes the entire combat round and can thus only be attempted as the first action of the caster in that round. The caster can't perform any other action during this round, including defending incoming attacks.
 
+## Spellcasting Roll
+
+The spellcasting roll depends on two factors: the **level** of the spell and the corresponding focus skill level of the spellcaster.
+
+`SpellRollCalculator`
+

@@ -1,8 +1,8 @@
-# Varázslás
+# Varázslás (Csípőből)
 
 `ActionInfo`
 
-Ha a karakter egy varázslatot próbál létrehozni normál sebességgel, azt ezzel az akcióval teheti meg.
+Ha a karakter egy varázslatot próbál gyorsan létrehozni, azt ezzel az akcióval teheti meg. Csípőből varázslás esetén a varázslat akciópont-költsége jelentősen csökken, de a varázslat nehezebben tartható kordában, így a varázsló fókusz képzettsége 1-gyel alacsonyabbnak számít.
 
 ## Akciópontok
 

@@ -10,7 +10,7 @@
 		ACTION_VARIANT_PROPERTIES,
 		RANGE_ORDER
 	} from '../../model/Action';
-	import { entries, group } from '../../model/InfoList';
+	import { group } from '../../model/InfoList';
 	import GiShieldReflect from 'svelte-icons/gi/GiShieldReflect.svelte';
 	import GiSpinningSword from 'svelte-icons/gi/GiSpinningSword.svelte';
 	import MdExpandMore from 'svelte-icons/md/MdExpandMore.svelte';
@@ -116,7 +116,10 @@
 									}}
 								>
 									<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
-										<LoreInfoIcon id={variant.name} params={{ skills, weapon: action?.weapon }} />
+										<LoreInfoIcon
+											id={variant.name}
+											params={{ skills, weapon: action?.weapon, spell: action?.spell }}
+										/>
 										<span class="type-icon">
 											{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
 												<GiSpinningSword />

@@ -1,8 +1,8 @@
-# Cast
+# Cast (Snapshot)
 
 `ActionInfo`
 
-This action is used whenever a spell is to be cast at regular speed.
+This action is used whenever a spell is to be cast at high speed. This will drastically reduce the action points cost of the spell but sloppy casting results in a more difficult to control spell, reducing the effective skill level of the caster by 1.
 
 ## Action Points
 
