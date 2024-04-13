@@ -1,0 +1,67 @@
+{
+    "title": "Képzettség célpróba",
+    "background": "A partit egy útonálló banda bekergette egy barlangba, és most jönnek, hogy kifüstöljék őket onnan. A csapat [gnóm](+ancestry:gnomish) [kóborlója](+background:rover), **Sunyi Bob** azt javasolja, hogy állítsanak gyors csapdát, **Izom Tibor**, az [ork](+ancestry:orcish) [ezermester](+background:tinker) segítségével.",
+    "participants": [
+        "Sunyi Bob",
+        "Mesélő",
+        "Izom Tibor"
+    ],
+    "start": {
+        "player": 0,
+        "text": "**Tibor**, akkor te mássz fel erre a sziklára, hogy jól lássanak, én meg megpróbálok a járat túloldalán elbújni.",
+        "next": {
+            "player": 2,
+            "text": "Ja, csak azért, mert ork vagyok, engem aztán üthetnek?",
+            "next": {
+                "player": 0,
+                "text": "Kettőnk közül nem nekem van házilag barkácsolt 800 fontos számszeríja.",
+                "next": {
+                    "player": 2,
+                    "text": "Jól van, jól van. Akkor majd jó hangosan fel is csörlőzöm, hátha az üldözőink meggondolják magukat tőle. De először másznék.",
+                    "next": {
+                        "player": 1,
+                        "text": "Rendben, mennyi a [Mászás](+skill:climbing) képzettséged?",
+                        "next": {
+                            "player": 2,
+                            "text": "**3**",
+                            "next": {
+                                "player": 1,
+                                "text": "Akkor dobj is `3d10!`-zel!",
+                                "next": {
+                                    "options": {
+                                        "Gyenge dobás (<=20)": {
+                                            "player": 2,
+                                            "text": "*(Dob)* **20**!",
+                                            "next": {
+                                                "player": 1,
+                                                "text": "Érzed, hogy normál esetben ez elég lenne, de a nagy sietségben megcsúszik a bal lábad, és lepottyansz. Szerencsére bajod nem esik.",
+                                                "next": {
+                                                    "player": 2,
+                                                    "text": "Megette a fene, akkor csak kiállok a szikla elé, és vigyorogva célra emelem a nyílpuskát. Adni kell a stílusra!",
+                                                    "next": null
+                                                }
+                                            }
+                                        },
+                                        "Nagy dobás (>20)": {
+                                            "player": 2,
+                                            "text": "*(Dob)* **24**!",
+                                            "next": {
+                                                "player": 1,
+                                                "text": "Szerencséd van, mert normál esetben ezekre a sziklákra könnyű lenne felmászni, viszont a sietség és a sötétség miatt nehéznek minősítettem a próbát. De a **20**-as célszámnál így is nagyobbat dobtál.",
+                                                "next": {
+                                                    "player": 1,
+                                                    "text": "És te, **Bob**, akkor megpróbálsz elrejtőzni?",
+                                                    "next": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

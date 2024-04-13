@@ -1,0 +1,67 @@
+{
+    "title": "Uncontested Skill Check",
+    "background": "The party has fled in a cave from a gang of bandits who are now coming to capture them. The team's [gnomish](+ancestry:gnomish) [rover](+background:rover), **Sneaky Bob** suggest they set a quick ambush with the help of **Tiberius the Hench**, his [orcish](+ancestry:orcish) [tinker](+background:tinker) friend.",
+    "participants": [
+        "Sneaky Bob",
+        "Game Master",
+        "Tiberius the Hench"
+    ],
+    "start": {
+        "player": 0,
+        "text": "**Tiberius**, you go climb on top of this boulder to be very visible, meanwhile I'll try to hide at the opposite wall of this passage.",
+        "next": {
+            "player": 2,
+            "text": "Oh so just because I'm an orc, I'm fine to be bashed?",
+            "next": {
+                "player": 0,
+                "text": "Look, out of the two of us I'm not the one with an 800 pound draw weight homemade crossbow.",
+                "next": {
+                    "player": 2,
+                    "text": "Alright, alright. I will crank the windlass extra loud too, maybe that'll give our pursuers second thoughts. But first, climbing.",
+                    "next": {
+                        "player": 1,
+                        "text": "Cool, what's the level of your [Climbing](+skill:climbing) skill?",
+                        "next": {
+                            "player": 2,
+                            "text": "**3**",
+                            "next": {
+                                "player": 1,
+                                "text": "Roll `3d10!` then!",
+                                "next": {
+                                    "options": {
+                                        "Poor roll (<=20)": {
+                                            "player": 2,
+                                            "text": "*(Rolls.)* **20**!",
+                                            "next": {
+                                                "player": 1,
+                                                "text": "You feel that under normal circumstances this would've been more than enough. But in the big hurry your left foot slips so you fall back down. Luckily you land on your feet, no damage done.",
+                                                "next": {
+                                                    "player": 2,
+                                                    "text": "Arse. I'll just stand in front of the boulder then and raise my crossbow on target with a wide toothy grin. At least let's do this in style!",
+                                                    "next": null
+                                                }
+                                            }
+                                        },
+                                        "Good roll (>20)": {
+                                            "player": 2,
+                                            "text": "*(Rolls.)* **24**!",
+                                            "next": {
+                                                "player": 1,
+                                                "text": "You're lucky, normally this boulder would've been easy to climb but due to the darkness and the lack of time I classed this check as hard. But you rolled higher than the target of **20** I had set.",
+                                                "next": {
+                                                    "player": 1,
+                                                    "text": "And you **Bob**, are you going to try to hide now?",
+                                                    "next": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

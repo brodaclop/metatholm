@@ -1,0 +1,67 @@
+{
+    "title": "Contested Skill Check",
+    "background": "The story continues, **Tiberius the Hench** climben on top of a boulder to shoot the first bandit as soon as he appears in sight, meanwhile **Sneaky Bob**, clutching his throwing axe, tries to hide near the opposite wall.",
+    "participants": [
+        "Sneaky Bob",
+        "Game Master",
+        "Tiberius the Hench"
+    ],
+    "start": {
+        "player": 1,
+        "text": "Okay, **Bob**, it's your turn, roll me a  [Hiding](+skill:hiding) check!",
+        "next": {
+            "player": 0,
+            "text": "I'd rather go with [Camouflage](+skill:camouflage) if possible.",
+            "next": {
+                "player": 1,
+                "text": "But it isn't, you're not trying to appears as something else but conceal your presence altogether.",
+                "next": {
+                    "player": 0,
+                    "text": "Alright, alright, I was just hoping. So with a Hiding skill of 4 I'm rolling a `4d10!`, right?",
+                    "next": {
+                        "player": 1,
+                        "text": "Yes but add 5 to the result because **Tiberius the Hench's** sight is likely to draw a bit of attention.",
+                        "next": {
+                            "player": 0,
+                            "text": "**27**, plus 5 is **32**!",
+                            "next": {
+                                "player": 1,
+                                "text": "You feel you've almost blended into the wall, you even think about concealing the blade of your axe to avoid it glinting in the torchlight. And here comes the first bandit, let's see if they can spot you. *(Rolls `3d10!` for the bandit's [Spot Hidden](+skill:spot_hidden) skill of 3.)*",
+                                "next": {
+                                    "options": {
+                                        "Poor roll (<=32)": {
+                                            "player": 1,
+                                            "text": "**14**, the bandit spots the grinning **Tiberius** atop the boulder and immediately tries to hop into cover, he almost bumps into you as he walks past!",
+                                            "next": {
+                                                "player": 2,
+                                                "text": "Cover or not, I'm shooting!",
+                                                "next": {
+                                                    "player": 0,
+                                                    "text": "And I'll chuck the axe afterwards!",
+                                                    "next": null
+                                                }
+                                            }
+                                        },
+                                        "Good roll (>32)": {
+                                            "player": 1,
+                                            "text": "Bloody hell, **35**! He almost walks past you when your axe clinks against the rock, the bandit spins immediately and closes in on you with a brandished sword.",
+                                            "next": {
+                                                "player": 2,
+                                                "text": "Splendid, I'm going to shoot him in the back then!",
+                                                "next": {
+                                                    "player": 1,
+                                                    "text": "Hope you roll a good one cos with this tiny hatchet in my hand I've got no chance in melee.",
+                                                    "next": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

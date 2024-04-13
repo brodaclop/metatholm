@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { _, locale } from 'svelte-i18n';
 	import ScenarioBox from '../scenario/ScenarioBox.svelte';
-	import Loading from '../../Loading.svelte';
 	import type { Scenario } from '../../../model/scenario/Scenario';
 
 	export let scenario: string;

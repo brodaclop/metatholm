@@ -15,7 +15,7 @@
 	</div>
 	<div class="container">
 		{#each steps as step, i (step.text)}
-			<div class="line player-{step.player}">
+			<div class="line player-{step.player % 2}">
 				<ScenarioStepLine
 					participants={scenario.participants}
 					{step}

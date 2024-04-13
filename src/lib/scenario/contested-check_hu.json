@@ -1,0 +1,67 @@
+{
+    "title": "Képzettség ellenpróba",
+    "background": "Folytatódik a történet, **Izom Tibor** felmászott egy sziklára, hogy onnan lője le az első banditát, amint feltűnik, eközben **Sunyi Bob** egy dobóbaltát szorongatva megpróbál elbújni a szemközti fal mellett.",
+    "participants": [
+        "Sunyi Bob",
+        "Mesélő",
+        "Izom Tibor"
+    ],
+    "start": {
+        "player": 1,
+        "text": "Oké, **Bob**, rajtad a sor, dobj egy [Rejtőzés](+skill:hiding) próbát!",
+        "next": {
+            "player": 0,
+            "text": "Inkább [Álcázást](+skill:camouflage) szeretnék, ha lehetne.",
+            "next": {
+                "player": 1,
+                "text": "De nem lehet, mert nem valaki másnak akarod láttatni magad, hanem a jelenléted tényét elrejteni.",
+                "next": {
+                    "player": 0,
+                    "text": "Jól van, jól van, csak reménykedtem. Akkor 4-es Rejtőzéssel `4d10!`-et dobok, ugye?",
+                    "next": {
+                        "player": 1,
+                        "text": "Igen, de adj hozzá még 5-öt, mert **Izom Tibor** látványa jó eséllyel le fogja foglalni a figyelmüket.",
+                        "next": {
+                            "player": 0,
+                            "text": "**27**, plusz 5, az **32**!",
+                            "next": {
+                                "player": 1,
+                                "text": "Úgy érzed, szinte beleolvadtál a falba, még arra is gondolsz, hogy a dobóbaltát egy kő mögé rejtsd, hogy ne csillanjon meg rajta a fény. És már itt is jön az első bandita, lássuk, észrevesz-e. *(Dob `3d10!`-zel a bandita 3-as [Rejtett dolgok Felfedezése](+skill:spot_hidden) képzettségére.)*",
+                                "next": {
+                                    "options": {
+                                        "Gyenge dobás (<=32)": {
+                                            "player": 1,
+                                            "text": "**14**, a bandita megpillantja a vigyorgó **Tibort** a szikla tetején, és azonnal megpróbál fedezékbe ugrani, szinte az orrod előtt megy el!",
+                                            "next": {
+                                                "player": 2,
+                                                "text": "Fedezék vagy sem, én lövök!",
+                                                "next": {
+                                                    "player": 0,
+                                                    "text": "És utána én is dobom a baltát!",
+                                                    "next": null
+                                                }
+                                            }
+                                        },
+                                        "Nagy dobás (>32)": {
+                                            "player": 1,
+                                            "text": "Azt a mindenit, **35**! Már majdnem elsétál előtted, amikor a baltád hozzákoccan a falhoz. A bandita azonnal megpördül, és kivont karddal feléd fordul.",
+                                            "next": {
+                                                "player": 2,
+                                                "text": "Remek, akkor hátba is lőném!",
+                                                "next": {
+                                                    "player": 1,
+                                                    "text": "Remélem, jót dobsz, mert ezzel a kis szekercével a kezemben nem sok esélyem van közelharcban.",
+                                                    "next": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
