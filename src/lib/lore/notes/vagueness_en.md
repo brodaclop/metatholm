@@ -2,11 +2,11 @@
 
 Many descriptions of historical events on these pages are pretty vague, especially when compared to the "canon" lore of other fantasy worlds.
 
-This was a deliberate choice: in the world of Metatholm (just like in our own real world) history as remembered doesn't always match history as it happened. For example is the origin of the [Kalovin](ancestry:kalovin), as mentioned in the section about [Foxfire](world:realms:foxfire:realm). Who remembers what really happened thousands of years ago? And who can tell the truth from the legend?
+This was a deliberate choice: in the world of Metatholm (just like in our own real world) history as remembered doesn't always match history as it happened. An example of this is the origin of the [Kalovin](ancestry:kalovin), as mentioned in the section about [Foxfire](world:realms:foxfire:realm). Who remembers what really happened thousands of years ago? And who can tell the truth from the legend?
 
 **History as remembered is unreliable.**
 
-To cite another example, this time from the real country of the United Kingdom of Great Britain and Northern Ireland, their House of Lords houses an important historical artefact: the Woolsack. This, as its name suggests, is a sack filled with wool on which the Lord Speaker sits, a kind of medieval beanbag. It's filled with wool to symbolise the erstwhile importance of this material to England and English economy.
+To cite another example, this time from the real country of the United Kingdom of Great Britain and Northern Ireland, their House of Lords houses an important historical artefact: the **Woolsack**. This, as its name suggests, is a sack filled with wool on which the Lord Speaker sits, a kind of medieval beanbag. It's filled with wool to symbolise the erstwhile importance of this material to England and English economy.
 
 This is history as remembered.
 
@@ -16,6 +16,8 @@ All this is not to say that historical truth is not important in Metatholm, and 
 
 **But it's up to the Game Master to determine what it is, the lore as written only lists possibilities.**
 
-What this means is that your Metatholm may be very different from my Metatholm and everyone else's Metatholm. And this is fine.
+What this means is that your Metatholm may be very different from my Metatholm and everyone else's Metatholm.
+
+And this is fine.
 
 

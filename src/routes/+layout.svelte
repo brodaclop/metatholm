@@ -154,24 +154,17 @@
 	$: noActiveParty = data.parties?.every((p) => !p.active);
 </script>
 
-{#if !data.user}
-	<div class="login">
-		<div>
-			<h1>Metatholm Login</h1>
-			<div><a href="/login/github">GitHub Login</a></div>
-			<div><a href="/login/google">Google Login</a></div>
-		</div>
-	</div>
-{:else}
-	<header>
-		<nav>
-			<ul>
-				<li class="nohover"><a href="/">M</a></li>
-				<li bind:this={dropdown} class="responsive">
-					<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
-						<span><MdMenu /></span>
-					</button>
-					<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
+<header>
+	<nav>
+		<ul>
+			<li class="nohover"><a href="/">M</a></li>
+			<li bind:this={dropdown} class="responsive">
+				<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
+					<span><MdMenu /></span>
+				</button>
+				<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
+					<li><a href="/lore/main">{$_('label:lore')}</a></li>
+					{#if data.user}
 						<li class="nohover">
 							<CharacterSelector
 								disabled={noActiveParty}
@@ -180,14 +173,15 @@
 								{switchCharacter}
 							/>
 						</li>
-						<li><a href="/lore/main">{$_('label:lore')}</a></li>
 						<li class="divider">&nbsp;</li>
 						<li><a href="/npc">{$_('label:npcs')}</a></li>
 						<li><a href="/encounter">{$_('label:encounters')}</a></li>
-					</ul>
-				</li>
-				<li class="nohover">
-					<div class="right-controls">
+					{/if}
+				</ul>
+			</li>
+			<li class="nohover">
+				<div class="right-controls">
+					{#if data.user}
 						<Menu items={userMenu}>
 							<span class="nowrap">
 								<span class="username">{data.user.username} </span>
@@ -196,50 +190,52 @@
 								</span>
 							</span>
 						</Menu>
-						<IconButton
-							title="label:lightdark"
-							on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
-						>
-							{#if theme === 'dark'}
-								<MdWbSunny />
-							{:else}
-								<FaMoon />
-							{/if}
-						</IconButton>
-						<Select
-							bind:value={lang}
-							items={LANGUAGES}
-							searchable={false}
-							clearable={false}
-							--height="1.5em"
-							--max-height="1.5em"
-							--value-container-padding="0"
-							--padding="0 0 0 0.2em"
-							--item-padding="0 0 0 0.2em"
-							--internal-padding="0 0 0 0.2em"
-							--selected-item-padding="0 0.2em 0 0"
-							on:change={langChanged}
-						>
-							<div slot="item" let:item>
-								<svelte:component this={item.label} />
-							</div>
-							<div slot="selection" let:selection>
-								<svelte:component this={selection.label} />
-							</div>
-						</Select>
-					</div>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<div>
-		{#if $isLoading}
-			<Loading />
-		{:else}
-			<slot />
-		{/if}
-	</div>
-{/if}
+					{:else}
+						<a href="/login">Login</a>
+					{/if}
+					<IconButton
+						title="label:lightdark"
+						on:click={() => (theme = theme === 'dark' ? 'light' : 'dark')}
+					>
+						{#if theme === 'dark'}
+							<MdWbSunny />
+						{:else}
+							<FaMoon />
+						{/if}
+					</IconButton>
+					<Select
+						bind:value={lang}
+						items={LANGUAGES}
+						searchable={false}
+						clearable={false}
+						--height="1.5em"
+						--max-height="1.5em"
+						--value-container-padding="0"
+						--padding="0 0 0 0.2em"
+						--item-padding="0 0 0 0.2em"
+						--internal-padding="0 0 0 0.2em"
+						--selected-item-padding="0 0.2em 0 0"
+						on:change={langChanged}
+					>
+						<div slot="item" let:item>
+							<svelte:component this={item.label} />
+						</div>
+						<div slot="selection" let:selection>
+							<svelte:component this={selection.label} />
+						</div>
+					</Select>
+				</div>
+			</li>
+		</ul>
+	</nav>
+</header>
+<div>
+	{#if $isLoading}
+		<Loading />
+	{:else}
+		<slot />
+	{/if}
+</div>
 
 <style>
 	@import url('https://fonts.cdnfonts.com/css/luminari');

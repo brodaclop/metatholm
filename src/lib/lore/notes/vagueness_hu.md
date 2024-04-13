@@ -6,7 +6,7 @@ Ez szándékosan lett így: Metatholm világában (csakúgy mint a sajátunkban)
 
 **Az emlékezetünkben élő történelem mindig megbízhatatlan.**
 
-De vegyünk egy másik példát, ezúttal egy nagyonis valódi országból, Nagy-Britannia és Észak-Írország Egyesült Királyságából. Az itteni Lordok Háza ad otthont egy fontos történelmi emléktárgynak, a Gyapjúzsáknak (angolul Woolsack). Ez, mint nevéből sejthető, egy gyapjúval töltött zsák, amin a felsőház elnöke ül, egyfajta középkori babzsákról van szó. Gyapjúval van töltve, ezzel szimbolizálva, milyen fontos volt egykoron ez az anyag Anglia és az angol gazdaság számára.
+De vegyünk egy másik példát, ezúttal egy nagyonis valódi országból, Nagy-Britannia és Észak-Írország Egyesült Királyságából. Az itteni Lordok Háza ad otthont egy fontos történelmi emléktárgynak, a **Gyapjúzsáknak** (angolul Woolsack). Ez, mint nevéből sejthető, egy gyapjúval töltött zsák, amin a felsőház elnöke ül, egyfajta középkori babzsákról van szó. Gyapjúval van töltve, ezzel szimbolizálva, milyen fontos volt egykoron ez az anyag Anglia és az angol gazdaság számára.
 
 Mindez emlékezetünkben élő történelem.
 
@@ -16,4 +16,6 @@ Mindez természetesen nem azt jelenti, hogy a történelmi igazság nem létezik
 
 **De azt, hogy pontosan mi történt a múltban, a Mesélő dolga meghatározni, a Kódexben mindössze a lehetőségeket soroljuk fel.**
 
-Mindez azzal is jár, hogy a te Metatholmod más lesz, mint az én Metatholmom, vagy bárki másé. És ez 1gy van rendjén.
+Mindez azzal is jár, hogy a te Metatholmod más lesz, mint az én Metatholmom, vagy bárki másé.
+
+És ez így van rendjén.

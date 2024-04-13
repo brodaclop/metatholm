@@ -47,11 +47,13 @@
 {#if !title}
 	<span>Lore not found</span>
 {:else}
-	<Box flavour="lore" marginless>
-		<span slot="title">
-			{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
-		</span>
+	{#key text}
+		<Box flavour="lore" marginless>
+			<span slot="title">
+				{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
+			</span>
 
-		<MarkdownText {text} />
-	</Box>
+			<MarkdownText {text} />
+		</Box>
+	{/key}
 {/if}
