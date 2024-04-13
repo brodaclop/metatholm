@@ -1,6 +1,6 @@
 # Vagabonds
 
-All the [player characters]((world:concepts:character)) in the game of Metatholm can be described with one word: vagabonds.
+All the [player characters](world:concepts:character) in the game of Metatholm can be described with one word: vagabonds.
 
 Vagabonds are not part of society. Definitely not polite society, who will at best shun them, but not the fringes of society either, where they may be grudgingly accepted but will always be the Other.
 
