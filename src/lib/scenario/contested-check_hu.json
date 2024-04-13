@@ -49,7 +49,7 @@
                                                 "player": 2,
                                                 "text": "Remek, akkor hátba is lőném!",
                                                 "next": {
-                                                    "player": 1,
+                                                    "player": 0,
                                                     "text": "Remélem, jót dobsz, mert ezzel a kis szekercével a kezemben nem sok esélyem van közelharcban.",
                                                     "next": null
                                                 }

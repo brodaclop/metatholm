@@ -49,7 +49,7 @@
                                                 "player": 2,
                                                 "text": "Splendid, I'm going to shoot him in the back then!",
                                                 "next": {
-                                                    "player": 1,
+                                                    "player": 0,
                                                     "text": "Hope you roll a good one cos with this tiny hatchet in my hand I've got no chance in melee.",
                                                     "next": null
                                                 }
