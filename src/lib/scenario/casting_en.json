@@ -41,20 +41,20 @@
                                                 },
                                                 "Mid-range roll (18-27)": {
                                                     "player": 1,
-                                                    "text": "This is a **26**, how much did you roll,  **18**? Then the difference is **8**, which is less than **10**, therefore your spell will cost you 1 [Magic Force](+character:mp) if you'll take it.",
+                                                    "text": "This is a **26**, how much did you roll,  **18**? Then the difference is **8**, which is less than **10**, therefore your spell will cost you 1 [Magic Power](+character:mp) if you'll take it.",
                                                     "next": {
                                                         "player": 0,
                                                         "text": "*(Sharp intake of breath)* Of course I take it, what other choice I've got.",
                                                         "next": {
                                                             "player": 1,
-                                                            "text": "Then your spell is active now and please subtract **1** point of Magic Force!",
+                                                            "text": "Then your spell is active now and please subtract **1** point of Magic Power!",
                                                             "next": null
                                                         }
                                                     }
                                                 },
                                                 "Large roll (>27)": {
                                                     "player": 1,
-                                                    "text": "I'm afraid this is **34** against your **18**. The difference is **16**, more than **10** but at least less than **20**, so your spell will cost you 2 points of [Magic Force](+character:mp) if you take it.",
+                                                    "text": "I'm afraid this is **34** against your **18**. The difference is **16**, more than **10** but at least less than **20**, so your spell will cost you 2 points of [Magic Power](+character:mp) if you take it.",
                                                     "next": {
                                                         "player": 0,
                                                         "text": "I've only got 1 point of Magic force.",
