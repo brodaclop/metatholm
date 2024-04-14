@@ -4,7 +4,7 @@ Skill checks are rolled with [exploding dice](rule:exploding_dice), for which yo
 
 ## Uncontested
 
-In an uncontested skill check the character is up against a challenge with fixed difficulty. This difficulty is determined by the GM and is expressed as a **target number**. Your skill check is considered successful if your dice total reaches or exceeds the target number, which depends on the difficulty of the task. Typical target numbers for the various difficulties are as follows:
+In an uncontested skill check the character is up against a challenge with fixed difficulty. This difficulty is determined by the GM and is expressed as a **target number**. Your skill check is considered successful if your dice total exceeds the target number, which depends on the difficulty of the task. Typical target numbers for the various difficulties are as follows:
 
 | Difficulty | Typical target |
 | :- | :- |

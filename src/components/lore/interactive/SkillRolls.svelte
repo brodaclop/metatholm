@@ -34,7 +34,7 @@
 		for (let i = 0; i < count; i++) {
 			const result = kockaDobas(dobas).osszeg;
 			Object.keys(ret).forEach((key) => {
-				if (result >= Number(key)) {
+				if (result > Number(key)) {
 					ret[key]++;
 				}
 			});
