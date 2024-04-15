@@ -87,7 +87,8 @@ type GenericLabels = 'label:name' |
     'label:parties:demote' |
     'character:public' |
     'label:next' |
-    'label:scenario'
+    'label:scenario' |
+    'label:references'
     ;
 
 export const Keys = [
@@ -296,6 +297,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:parties:demote': 'Demote',
     'label:next': 'Next',
     'label:scenario': 'Scenario',
+    'label:references': 'References',
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -620,6 +622,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:parties:demote': 'Lefokozás',
     'label:next': 'Tovább',
     'label:scenario': 'Jelenet',
+    'label:references': 'Hivatkozások',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

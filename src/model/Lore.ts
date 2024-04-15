@@ -29,6 +29,14 @@ type OptionalString = string | null | undefined;
 
 export const hasLore = (id: string, lang: OptionalString): boolean => id in Lore[lang ?? 'en'];
 export const lore = (id: string, lang: OptionalString): string => Lore[lang ?? 'en'][id];
+
+export const loreIncomingLinks = (id: string, lang: OptionalString): Array<{ id: string, title: string }> => {
+    const linkString = `(${id})`;
+    const matchingEntries: Array<[string, string]> = entries(Lore[lang ?? 'en'])
+        .filter(([, value]) => value.includes(linkString));
+    return matchingEntries.map(([id, text]) => ({ id, title: text.split('\n', 1)[0].replace(/#/g, '') }))
+}
+
 export const loreCategoryList = (category: string, lang: OptionalString): Array<{ id: string, title: string }> => {
     //TODO: optimise this, it's absolute crap
     const categoryList = category.split(':');
@@ -46,7 +54,7 @@ export const loreCategoryList = (category: string, lang: OptionalString): Array<
         .filter(([key]) => inCategory(key));
     const ret: Array<{ id: string, title: string }> = [];
     for (const entry of lorePromises) {
-        ret.push({ id: entry[0], title: entry[1].split('\n')[0] })
+        ret.push({ id: entry[0], title: entry[1].split('\n', 1)[0].replace(/#/g, '') })
     }
     return ret;
 }

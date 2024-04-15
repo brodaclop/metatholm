@@ -2,9 +2,8 @@
 	import { _, locale } from 'svelte-i18n';
 	import Box from '../character/Box.svelte';
 	import MarkdownText from './renderers/MarkdownText.svelte';
-	import { lore } from '../../model/Lore';
-	import { onMount, setContext } from 'svelte';
-	import Loading from '../Loading.svelte';
+	import { lore, loreIncomingLinks } from '../../model/Lore';
+	import { setContext } from 'svelte';
 
 	export let id: string;
 	export let params: Record<string, unknown> = {};
@@ -17,13 +16,6 @@
 	$: title = loreText?.split('\n', 1)[0];
 
 	$: text = loreText?.split('\n').slice(1).join('\n');
-
-	let idPrefix: string;
-
-	$: {
-		const parts = id.split(':');
-		idPrefix = parts.at(id.startsWith('world:realms') && parts.length === 4 ? -3 : -2) ?? 'main';
-	}
 
 	const PREFIX_MAPPING: Record<string, string> = {
 		ability: 'character:ability',
@@ -42,6 +34,15 @@
 		organisations: 'world:organisation',
 		concepts: 'world:concept'
 	};
+
+	const calculatePrefix = (fullId: string): string => {
+		const parts = fullId.split(':');
+		return PREFIX_MAPPING[
+			parts.at(fullId.startsWith('world:realms') && parts.length === 4 ? -3 : -2) ?? 'main'
+		];
+	};
+
+	$: incomingLinks = loreIncomingLinks(id, $locale);
 </script>
 
 {#if !title}
@@ -50,10 +51,21 @@
 	{#key text}
 		<Box flavour="lore" marginless>
 			<span slot="title">
-				{#if includeTitlePrefix}{$_(PREFIX_MAPPING[idPrefix])}: {/if}{title.replace(/#/g, '')}
+				{#if includeTitlePrefix}{$_(calculatePrefix(id))}: {/if}{title.replace(/#/g, '')}
 			</span>
 
 			<MarkdownText {text} />
+
+			{#if incomingLinks.length > 0}
+				<div class="references">
+					<h4>{$_('label:references')}:</h4>
+					<ul>
+						{#each incomingLinks as link}
+							<li><a href="/lore/{link.id}">{$_(calculatePrefix(link.id))}: {link.title}</a></li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
 		</Box>
 	{/key}
 {/if}

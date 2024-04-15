@@ -14,7 +14,7 @@
 <Box {title} flavour="lore" marginless>
 	<ul>
 		{#each sortedList as lc}
-			<li><a href="/lore/{lc.id}">{lc.title.replace(/#/g, '')}</a></li>
+			<li><a href="/lore/{lc.id}">{lc.title}</a></li>
 		{/each}
 		<li />
 		<li />
