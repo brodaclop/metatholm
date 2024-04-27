@@ -32,7 +32,7 @@ Először azt kell kiválasztani az alábbi táblázatból, hogy milyen mágikus
 | A varázslat minden egyes szintje után | +10 |
 | A varázslat minden egyes erőssége után (minimum 1E) | +10 |
 | Ha a varázslat a tárgy megsemmisülése által szabadul ki (pl. gyógyital vagy eltörhető pálca) | +0 |
-| Ha a varázslatot szándékosan lehet kiszabadítani | +10 |
+| Ha a varázslatot paranccsal lehet kiszabadítani | +10 |
 | Ha a varázslat kiszabadítása automatikus, amennyiben egy adott feltétel teljesül (pl. érintésre aktiválódó csapda) | +20 |
 | **Bájolásra szánt idő hossza** |
 | **Idő** | **Célszám** |
