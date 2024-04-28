@@ -54,8 +54,6 @@
 				{#if includeTitlePrefix}{$_(calculatePrefix(id))}: {/if}{title.replace(/#/g, '')}
 			</span>
 
-			<MarkdownText {text} />
-
 			{#if incomingLinks.length > 0}
 				<div class="references">
 					<h4>{$_('label:references')}:</h4>
@@ -66,6 +64,28 @@
 					</ul>
 				</div>
 			{/if}
+
+			<MarkdownText {text} />
 		</Box>
 	{/key}
 {/if}
+
+<style>
+	.references {
+		float: right;
+		clear: right;
+		border: 1px solid var(--default-border-c);
+		padding: 0.25rem;
+		margin: 0.25rem;
+	}
+
+	.references h4 {
+		margin-top: 0;
+	}
+
+	.references ul {
+		padding-left: 1rem;
+		margin-bottom: 0;
+		list-style-type: none;
+	}
+</style>

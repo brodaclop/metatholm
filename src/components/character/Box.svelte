@@ -51,6 +51,10 @@
 		filter: drop-shadow(0.2em 0.2em 0.2em var(--box-shadow-c));
 	}
 
+	article.lore {
+		overflow-y: auto;
+	}
+
 	article.marginless {
 		margin: 0;
 	}

@@ -47,6 +47,8 @@
 		const sumKp = kpNeeded.reduce((acc, curr) => (acc += curr.result), 0);
 		console.debug('Character levels needed for skill level 10', sumKp, sumKp / 30);
 	}
+
+	//TODO: fix up/down arrow layout
 </script>
 
 <table>
@@ -123,6 +125,12 @@
 </table>
 
 <style>
+	table {
+		border: 1px solid var(--default-border-c);
+		padding: 0.25rem;
+		margin: 0.25rem;
+	}
+
 	.point-container {
 		display: flex;
 		flex-wrap: nowrap;
