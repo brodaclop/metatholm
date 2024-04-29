@@ -54,7 +54,7 @@
 				{#if includeTitlePrefix}{$_(calculatePrefix(id))}: {/if}{title.replace(/#/g, '')}
 			</span>
 
-			{#if incomingLinks.length > 0}
+			{#if incomingLinks.length > 0 && id !== 'main'}
 				<div class="references">
 					<h4>{$_('label:references')}:</h4>
 					<ul>
