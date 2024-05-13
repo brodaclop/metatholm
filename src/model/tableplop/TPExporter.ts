@@ -72,13 +72,6 @@ const convertToTableplop = (character: Character, i18n: (key: string) => string)
             text('character:background', character.background),
             number('character:level', character.levels.length),
             {
-                type: 'number',
-                name: 'AP',
-                value: 10,
-                local: true,
-                message: `${i18n('action:ap')}: { ap = 1d10! + 10 } {initiative = ap}`
-            },
-            {
                 type: 'health',
                 name: i18n('character:ep'),
                 local: true,
@@ -122,8 +115,15 @@ const convertToTableplop = (character: Character, i18n: (key: string) => string)
     const generateCombatTab = (): Tab => ({
         type: 'tab-section',
         title: i18n('rule:combat'),
-        children: sort(calculatedCharacter.weaponActions, 'name', i18n).map(action)
-    });
+        children: [{
+            type: 'number',
+            name: 'AP',
+            value: 10,
+            local: true,
+            message: `${i18n('action:ap')}: { ap = 1d10! + 10 } {initiative = ap}`
+        },
+        ...sort(calculatedCharacter.weaponActions, 'name', i18n).map(action)]
+    })
 
     const generateSpellsTab = (): Tab => ({
         type: 'tab-section',
@@ -140,7 +140,24 @@ const convertToTableplop = (character: Character, i18n: (key: string) => string)
     }
 }
 
+const removeAccents = (str: string) =>
+    str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+const recursiveRemoveAccents = <T>(ob: T): T => {
+    if (ob === null || ob === undefined || typeof ob === 'number' || typeof ob === 'boolean') {
+        return ob;
+    }
+    if (typeof ob === 'string') {
+        return removeAccents(ob) as T;
+    } else if (Array.isArray(ob)) {
+        return ob.map(item => recursiveRemoveAccents(item)) as T;
+    } else {
+        return Object.fromEntries(Object.entries(ob).map(([key, value]) => [key, recursiveRemoveAccents(value)])) as T;
+    }
+}
+
 export const generateTableplopJSON = (character: Character, i18n: (key: string) => string): string => {
     const tpChar = convertToTableplop(character, i18n);
-    return JSON.stringify(convertInternalToExternal(tpChar));
+    return JSON.stringify(recursiveRemoveAccents(convertInternalToExternal(tpChar)));
 }
+
