@@ -50,3 +50,9 @@ Once this is done, the character must sacrifice some of their MPs (or in a dire 
 After this the character can choose to sacrifice further Magic Power or Life Force to make the skill check easier, with each point adding an extra `1d10!` to their skill check roll.
 
 Finally the character must make a single skill check to determine if the object is successfully enchanted. Should the check fail, the sacrificed Magic Power (and Life Force) is lost. It's important to note that life force lost this way can't be healed magically, only resting and the [Medicine](skill:medicine) skill helps.
+
+## Targeting
+
+When storing a spell in an object, one question arises immediately: who or what is the target of the spell? There is no fixed rule for this but the mode of targeting should depend on the nature of the object being enchanted, a potion will logically target the person drinking it, a wand can be targeted by pointing, etc.
+
+The only real rule is that the mode of targeting needs to be determined by the enchanter, using the guidelines above and in agreement with the Game Master.

@@ -51,3 +51,9 @@ A karakter ezek után dönthet úgy, hogy további MP-ket vagy ÉP-ket is elkül
 
 Legvégül pedig képzettségpróbát kell tennie, és amennyiben ez sikeres, a tárgy bájolása sikerült. Amennyiben az eredmény kudarc, a feláldozott Mágia- és Életerő pontok elvesznek. Fontos, hogy az így elvesztett életerő mágikus módon nem gyógyítható, kizárólag a pihenés, esetleg az [Orvoslás](skill:medicine) képzettség segíthet.
 
+## Célpont
+
+Ha varázslatot tárolunk egy tárgyban, felmerül a kérdés, hogy ki vagy mi lesz a varázslat célpontja. Erre nézve nincs fix szabály, mindössze annyi, hogy a célpont kiválasztása attól függ, milyen tárgyat bájolunk. Pl. italok esetén a célpont logikusan az, aki elfogyasztja, egy botban tárolt varázslat célpontját legkönnyebben rámutatással lehet kiválasztani, stb.
+
+Az egyetlen szabály az, hogy a célzás módját a bájoló karakternek kell meghatároznia, a fentiekkel összhangban, és a Mesélő egyetértésével.
+
