@@ -2,7 +2,7 @@ import type { Ability } from "./Abilities";
 import type { ActionRoll, ActionVariant } from "./Action";
 import type { Background } from "./Background";
 import type { ExpressionNames, RuleLabels } from "./Rules";
-import type { Skill, SkillType } from "./Skills";
+import type { Personality, Skill, SkillType } from "./Skills";
 import type { Ancestry } from "./Ancestry";
 import type { Spell, SpellDurations, SpellTargets } from "./Spell";
 import type { ArmourLabels } from "./Armour";
@@ -108,6 +108,7 @@ export const Keys = [
     'character:background',
     'character:ability',
     'character:spells',
+    'character:personality',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -143,7 +144,7 @@ export type LabelCollection = Record<Values, string>;
 
 export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
-type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations;
+type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality;
 
 export type Labels = Valueless | Values | typeof Abbreviations[number];
 export const Labels_en: Record<Labels, string> = {
@@ -200,6 +201,7 @@ export const Labels_en: Record<Labels, string> = {
     'character:ancestry': 'Ancestry',
     'character:spells': 'Spells',
     'character:public': 'Public',
+    'character:personality': 'Personality',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -298,6 +300,19 @@ export const Labels_en: Record<Labels, string> = {
     'label:next': 'Next',
     'label:scenario': 'Scenario',
     'label:references': 'References',
+
+    'personality:aggressive': 'Aggressive',
+    'personality:curious': 'Curious',
+    'personality:disciplined': 'Disciplined',
+    'personality:helpful': 'Helpful',
+    'personality:learned': 'Learned',
+    'personality:polite': 'Polite',
+    'personality:resourceful': 'Resourceful',
+    'personality:selfish': 'Selfish',
+    'personality:tenacious': 'Tenacious',
+    'personality:tricky': 'Tricky',
+    'personality:cautious': 'Cautious',
+
 
     'rule:skills': 'Skills',
     'rule:exploding_dice': 'Exploding dice',
@@ -533,6 +548,7 @@ export const Labels_hu: Record<Labels, string> = {
     'character:ability': 'Tulajdonság',
     'character:spells': 'Varázslatok',
     'character:public': 'Nyilvános',
+    'character:personality': 'Személyiség',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',
@@ -623,6 +639,18 @@ export const Labels_hu: Record<Labels, string> = {
     'label:next': 'Tovább',
     'label:scenario': 'Jelenet',
     'label:references': 'Hivatkozások',
+
+    'personality:aggressive': 'Agresszív',
+    'personality:curious': 'Kíváncsi',
+    'personality:disciplined': 'Fegyelmezett',
+    'personality:helpful': 'Segítőkész',
+    'personality:learned': 'Művelt',
+    'personality:polite': 'Udvarias',
+    'personality:resourceful': 'Találékony',
+    'personality:selfish': 'Önző',
+    'personality:tenacious': 'Kitartó',
+    'personality:tricky': 'Cseles',
+    'personality:cautious': 'Óvatos',
 
     'rule:skills': 'Képzettségek',
     'rule:exploding_dice': 'Robbantott kockadobás',

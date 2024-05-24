@@ -11,8 +11,9 @@ import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
 import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
-import { Skill } from "./Skills";
+import { Skill, type Personality } from "./Skills";
 import type { Armour } from "./Armour";
+import { calculatePersonality } from "./calculations/Personality";
 
 
 export interface Level {
@@ -68,6 +69,7 @@ export interface CalculatedCharacter {
     weaponActions: Array<Action>;
     weapons: Array<Weapon>;
     spells: Array<SpellInfo>;
+    personality: Array<Personality>;
 }
 
 
@@ -95,7 +97,8 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:trip': -3,
                 'action:spin-behind': -1,
                 'action:knockout': -5,
-            }
+            },
+            notes: ''
         });
     }
     if (skills['skill:fistfighting']) {
@@ -118,7 +121,8 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:trip': -5,
                 'action:spin-behind': -3,
                 'action:knockout': -1,
-            }
+            },
+            notes: ''
         });
     }
     if (skills['skill:martial_arts']) {
@@ -143,7 +147,8 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:trip': -1,
                 'action:spin-behind': -3,
                 'action:knockout': -5,
-            }
+            },
+            notes: ''
         });
     }
     return ret;
@@ -178,7 +183,8 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
             'expr:fp_roll': character.levels.map(l => l.fpRoll),
             ...abilities,
             ...skills
-        })
+        }),
+        personality: calculatePersonality(character.skills)
     }
 };
 

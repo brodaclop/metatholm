@@ -1,5 +1,10 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-05-24"}`
+
+* Added [personality](character:personality) calculation
+
+
 ## `FormattedDate|{"date": "2024-04-01"}`
 
 * Added notes section to weapons

@@ -58,6 +58,10 @@
 				<th>{$_('label:type')}</th>
 				<td>{$_(skillInfo.type)}</td>
 			</tr>
+			<tr>
+				<th>{$_('character:personality')}</th>
+				<td>{skillInfo.personality.map((p) => $_(p)).join(', ')}</td>
+			</tr>
 		{/if}
 	</thead>
 	<tbody>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import Box from './Box.svelte';
-	import type { Character } from '../../model/Karakter';
+	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import LevelUpModal from './LevelUpModal.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import MdAdd from 'svelte-icons/md/MdAdd.svelte';
@@ -10,6 +10,8 @@
 	export let character: Character;
 	export let editable: boolean;
 	let levellingUp = false;
+
+	$: calculatedCharacter = calculateCharacter(character);
 </script>
 
 <Box title="label:character" flavour="character">
@@ -38,9 +40,15 @@
 			</td>
 		</tr>
 		<tr>
+			<th><LoreInfoIcon id="character:personality" />{$_('character:personality')}</th>
+			<td>
+				{calculatedCharacter.personality.map((p) => $_(p)).join(', ')}
+			</td>
+		</tr>
+		<tr>
 			<th>{$_('character:public')}</th>
 			<td>
-				<input type="checkbox" bind:value={character.isPublic} disabled={!editable}/>
+				<input type="checkbox" bind:checked={character.isPublic} disabled={!editable} />
 			</td>
 		</tr>
 	</table>

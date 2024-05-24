@@ -1,5 +1,10 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-05-24"}`
+
+* Karakter [személyiségének](character:personality) kiszámolása.
+
+
 ## `FormattedDate|{"date": "2024-04-01"}`
 
 * Jegyzetek fűzhetők a fegyverekhez
