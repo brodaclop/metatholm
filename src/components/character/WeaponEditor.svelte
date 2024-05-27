@@ -11,6 +11,7 @@
 	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
 	import MdContentPaste from 'svelte-icons/md/MdContentPaste.svelte';
 	import IconButton from '../elements/IconButton.svelte';
+	import { calculateWeaponPower } from '../../model/calculations/WeaponPower';
 
 	const dispatch = createEventDispatcher();
 	let dialog: HTMLDialogElement; // HTMLDialogElement
@@ -65,6 +66,8 @@
 		dispatch('submit', editedWeapon);
 		dialog.close();
 	};
+
+	$: console.log('WEAPON POWER', editedWeapon.name, calculateWeaponPower(editedWeapon));
 
 	let template: Weapon | null = null;
 
@@ -124,7 +127,9 @@
 									<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option
 									>
 									{#each WEAPON_LIST as tw}
-										<option value={tw}>{WEAPON_NAMES_LIST[tw.name][langKey]}</option>
+										<option value={tw}
+											>{WEAPON_NAMES_LIST[tw.name][langKey]} ({calculateWeaponPower(tw)})</option
+										>
 									{/each}
 								</select>
 								<IconButton title="label:paste">
@@ -154,7 +159,7 @@
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></td>
 					</tr>
 					<tr>
-						<th colspan="2">{$_('label:damage')}</th>
+						<th colspan="2">{$_('weapon:damage')}</th>
 						<td><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></td>
 					</tr>
 					<tr>
@@ -215,11 +220,11 @@
 				<tbody>
 					<tr>
 						<td colspan={4}>
-								<Box title="label:notes" flavour="notes" grow={1}>
-									<div class="noteDiv">
-										<textarea bind:value={editedWeapon.notes} />
-									</div>
-								</Box>
+							<Box title="label:notes" flavour="notes" grow={1}>
+								<div class="noteDiv">
+									<textarea bind:value={editedWeapon.notes} />
+								</div>
+							</Box>
 						</td>
 					</tr>
 				</tbody>

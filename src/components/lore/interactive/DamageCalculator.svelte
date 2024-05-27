@@ -16,7 +16,7 @@
 <table>
 	<tbody>
 		<Circles
-			name="label:damage"
+			name="weapon:damage"
 			bind:value={damage}
 			subName={String(damage)}
 			max={20}

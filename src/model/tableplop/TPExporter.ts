@@ -37,10 +37,10 @@ const convertToTableplop = (character: Character, i18n: (key: string) => string)
         let ret = '';
         ret += `${i18n(variant.name)} ${i18n('tableplop:roll')}: {${roll(variant, 'action:roll')}} `;
         const ap = roll(variant, 'action:ap');
-        const dmg = roll(variant, 'label:damage');
+        const dmg = roll(variant, 'weapon:damage');
         const trick = roll(variant, 'skill:trick_fighting');
         if (dmg) {
-            ret += `${i18n('label:damage')}: {${dmg}} `
+            ret += `${i18n('weapon:damage')}: {${dmg}} `
         }
         if (trick) {
             ret += `${i18n('skill:trick_fighting')}: {${trick}} `

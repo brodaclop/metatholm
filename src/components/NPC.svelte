@@ -120,7 +120,7 @@
 				<th>{$_('action:defend')}</th>
 				<th>{$_('action:disengage')} / {$_('action:close-in')}</th>
 				<th>{$_('action:keep-close')} / {$_('action:keep-away')}</th>
-				<th>{$_('label:damage')}</th>
+				<th>{$_('weapon:damage')}</th>
 			</tr>
 			{#each character.weapons as weapon, weaponIdx}
 				<tr class="striped">

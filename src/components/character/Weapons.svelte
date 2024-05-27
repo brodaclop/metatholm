@@ -10,6 +10,7 @@
 	import EditButton from '../elements/EditButton.svelte';
 	import Abbr from '../Abbr.svelte';
 	import SkillIcon from './SkillIcon.svelte';
+	import { calculateWeaponPower } from '../../model/calculations/WeaponPower';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -38,7 +39,7 @@
 			<th><Abbr text="weapon:speed" /></th>
 			<th><Abbr text="weapon:attack" /></th>
 			<th><Abbr text="weapon:defence" /></th>
-			<th><Abbr text="label:damage" /></th>
+			<th><Abbr text="weapon:damage" /></th>
 			<th><Abbr text="weapon:reach" /></th>
 			<th><Abbr text="weapon:hands" /></th>
 			<th><Abbr text="weapon:skill" /></th>
@@ -65,7 +66,12 @@
 		{/each}
 		{#each character.inventory.weapons as weapon}
 			<tr>
-				<td class="ellipsis" title={`${$_(weapon.name)}${weapon.notes ? ('\n\n' + weapon.notes) : ''}`}>{$_(weapon.name)}</td>
+				<td
+					class="ellipsis"
+					title={`${$_(weapon.name)} (${calculateWeaponPower(weapon)})${
+						weapon.notes ? '\n\n' + weapon.notes : ''
+					}`}>{$_(weapon.name)}</td
+				>
 				<td>{weapon.speed}</td>
 				<td>{weapon.attack}</td>
 				<td>{weapon.defence}</td>

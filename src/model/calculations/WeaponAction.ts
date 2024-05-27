@@ -77,7 +77,7 @@ const apRoll = (roll: EvalExpression): Roll => ({
 });
 
 const damageRoll = (dice: number): Roll => ({
-    name: 'label:damage',
+    name: 'weapon:damage',
     roll: E.constant(`${dice}d5!`),
     rollString: `${dice}d5!`
 })

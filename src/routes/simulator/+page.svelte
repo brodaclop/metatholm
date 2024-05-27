@@ -114,7 +114,7 @@
 	};
 
 	const damage = (attackAction: ActionVariantInfo) => {
-		const damageRoll = attackAction.rolls.find((r) => r.name === 'label:damage');
+		const damageRoll = attackAction.rolls.find((r) => r.name === 'weapon:damage');
 		const target = characters[1 - attacker];
 		const dr =
 			target.current.armourWorn !== undefined

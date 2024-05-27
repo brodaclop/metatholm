@@ -25,7 +25,7 @@ export type ActionVariant =
     | 'action:spin-behind'
     ;
 
-export type ActionRoll = 'action:ap' | 'action:roll' | 'label:damage' | 'skill:trick_fighting';
+export type ActionRoll = 'action:ap' | 'action:roll' | 'weapon:damage' | 'skill:trick_fighting';
 
 export type ActionRange = 'out-of-range' | 'in-range' | 'close-quarters';
 
