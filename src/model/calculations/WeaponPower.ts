@@ -40,7 +40,5 @@ export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id'>): numb
         return (ACTION_MULTIPLIER[action] ?? 0) * (10 + skill) * (10 + skill) / 10;
     }).reduce((acc, curr) => acc + curr, 0);
 
-    //console.log('BASE POWER', weapon.name, base.result, multiplier, base);
-
-    return Math.round(base.result * multiplier / 100);
+    return Math.max(1, Math.round((base.result * multiplier - 1200) / 200));
 }
