@@ -8,6 +8,7 @@
 	import FaRegArrowAltCircleDown from 'svelte-icons/fa/FaRegArrowAltCircleDown.svelte';
 	import IconButton from '../../elements/IconButton.svelte';
 	import type { Character } from '../../../model/Karakter';
+	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
@@ -55,11 +56,13 @@
 	<thead>
 		{#if skillInfo}
 			<tr>
-				<th>{$_('label:type')}</th>
+				<th class="rowhead"><LoreInfoIcon />{$_('label:type')}</th>
 				<td>{$_(skillInfo.type)}</td>
 			</tr>
 			<tr>
-				<th>{$_('character:personality')}</th>
+				<th class="rowhead"
+					><LoreInfoIcon id="character:personality" />{$_('character:personality')}</th
+				>
 				<td>{skillInfo.personality.map((p) => $_(p)).join(', ')}</td>
 			</tr>
 		{/if}
@@ -106,7 +109,7 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<th class="rowhead">{$_('expr:skill_level')}</th>
+			<th class="rowhead"><LoreInfoIcon />{$_('expr:skill_level')}</th>
 			<td colspan={3}>
 				<div class="point-container">
 					{#each Array(10) as _, skillLevel (skillLevel)}
@@ -116,7 +119,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th class="rowhead">{$_('character:kp')}</th>
+			<th class="rowhead"><LoreInfoIcon />{$_('character:kp')}</th>
 			<td colspan={3}>
 				<div class="point-container">
 					{#each kpNeeded as kp, skillLevel}
@@ -168,6 +171,7 @@
 
 	th.rowhead {
 		padding-right: 0.75em;
+		padding-left: 6px;
 	}
 
 	span.active {

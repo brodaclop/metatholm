@@ -37,7 +37,11 @@
 			<h6><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h6>
 		{/if}
 	</header>
-	<slot />
+	<div>
+		<div class="contents">
+			<slot />
+		</div>
+	</div>
 </article>
 
 <style>
@@ -49,6 +53,9 @@
 		padding: 0.5em;
 		margin: 0.5em;
 		filter: drop-shadow(0.2em 0.2em 0.2em var(--box-shadow-c));
+		flex-grow: 1;
+		text-align: -moz-center;
+		text-align: -webkit-center;
 	}
 
 	article.lore {

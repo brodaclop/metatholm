@@ -4,6 +4,4 @@ A character's **background** shows what kind of prior experience they had when t
 
 Of course the above is only true in game terms, a reputation gained in the early days is probably quite hard to shake.
 
-## Backgrounds to choose from
-
-`LoreCategory|{"category": "background"}`
+`LoreCategory|{"title": "Backgrounds to choose from", "category": "background"}`

@@ -46,7 +46,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>{$_('character:public')}</th>
+			<th><LoreInfoIcon id="character:public" />{$_('character:public')}</th>
 			<td>
 				<input type="checkbox" bind:checked={character.isPublic} disabled={!editable} />
 			</td>

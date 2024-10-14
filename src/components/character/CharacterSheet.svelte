@@ -294,6 +294,7 @@
 		flex-wrap: wrap;
 		align-items: start;
 		flex-basis: content;
+		align-items: stretch;
 	}
 
 	div.title {

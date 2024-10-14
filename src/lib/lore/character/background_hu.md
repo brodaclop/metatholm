@@ -4,6 +4,4 @@ A karakter **háttere** azt mutatja, milyen előzetes tapasztalattal bír, amiko
 
 Persze ez csak a játékrendszer szempontjából van így, a korai években elnyert hírnevet alighanem nehéz megváltoztatni.
 
-## A karakter által választható hátterek
-
-`LoreCategory|{"category": "background"}`
+`LoreCategory|{"title": "Választható hátterek", "category": "background"}`

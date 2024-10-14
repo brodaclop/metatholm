@@ -65,12 +65,18 @@
 				</div>
 			{/if}
 
-			<MarkdownText {text} />
+			<div class="contents">
+				<MarkdownText {text} />
+			</div>
 		</Box>
 	{/key}
 {/if}
 
 <style>
+	.contents {
+		text-align: left;
+	}
+
 	.references {
 		float: right;
 		clear: right;

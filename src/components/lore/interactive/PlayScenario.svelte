@@ -13,8 +13,6 @@
 	$: fileName = `${scenario}_${$locale}.json`;
 
 	$: scenarioFile = SCENARIOS[`/src/lib/scenario/${fileName}`];
-
-	$: console.log('SCENARIO', fileName, scenarioFile);
 </script>
 
 {#if scenarioFile}

@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { Popover } from 'svelte-smooth-popover';
-	import MdHelpOutline from 'svelte-icons/md/MdHelpOutline.svelte';
-	import MdInfo from 'svelte-icons/md/MdInfo.svelte';
 	import GiInfo from 'svelte-icons/gi/GiInfo.svelte';
 	import Lore from './lore/Lore.svelte';
 	import { hasLore } from '../model/Lore';
 	import { locale } from 'svelte-i18n';
 	import IconButton from './elements/IconButton.svelte';
 
-	export let id: string;
+	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let inline: boolean = false;
 	// TODO: popover in dialog zIndex
@@ -35,10 +33,17 @@
 			</Popover>
 		</IconButton>
 	{/if}
+{:else}
+	<span class="placeholder" />
 {/if}
 
 <style>
 	span {
 		margin-right: 0.2em;
+	}
+
+	span.placeholder {
+		display: inline-block;
+		width: 1em;
 	}
 </style>
