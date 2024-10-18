@@ -109,6 +109,8 @@ export const Keys = [
     'character:ability',
     'character:spells',
     'character:personality',
+    'character:patron',
+    'character:ip',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -203,6 +205,8 @@ export const Labels_en: Record<Labels, string> = {
     'character:spells': 'Spells',
     'character:public': 'Public',
     'character:personality': 'Personality',
+    'character:patron': 'Patron',
+    'character:ip': 'Ideal Points',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -550,6 +554,8 @@ export const Labels_hu: Record<Labels, string> = {
     'character:spells': 'Varázslatok',
     'character:public': 'Nyilvános',
     'character:personality': 'Személyiség',
+    'character:patron': 'Patrónus',
+    'character:ip': 'Ideál',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',

@@ -120,5 +120,8 @@ const upgrade = (character: Character): Character => {
     character.inventory.armours = character.inventory.armours ?? [];
     // added public flag, defaults to true if missing
     character.isPublic = character.isPublic ?? true;
+    // added patron and ip, should default to empty values
+    character.patron = character.patron ?? '';
+    character.ip = character.ip ?? 0;
     return character;
 }

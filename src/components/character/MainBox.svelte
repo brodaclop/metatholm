@@ -17,7 +17,7 @@
 <Box title="label:character" flavour="character">
 	<table>
 		<tr>
-			<th>{$_('label:name')}</th>
+			<th><LoreInfoIcon />{$_('label:name')}</th>
 			<td><input type="text" disabled={!editable} bind:value={character.name} /></td>
 		</tr>
 		<tr>
@@ -44,6 +44,14 @@
 			<td>
 				{calculatedCharacter.personality.map((p) => $_(p)).join(', ')}
 			</td>
+		</tr>
+		<tr>
+			<th><LoreInfoIcon id="character:patron" />{$_('character:patron')}</th>
+			<td><input type="text" disabled={!editable} bind:value={character.patron} /></td>
+		</tr>
+		<tr>
+			<th><LoreInfoIcon id="character:ip" />{$_('character:ip')}</th>
+			<td><input type="number" disabled={!editable} bind:value={character.ip} /></td>
 		</tr>
 		<tr>
 			<th><LoreInfoIcon id="character:public" />{$_('character:public')}</th>
