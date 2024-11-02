@@ -9,6 +9,7 @@
 	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let inline: boolean = false;
+	export let disablePlaceholder: boolean = false;
 	// TODO: popover in dialog zIndex
 </script>
 
@@ -33,7 +34,7 @@
 			</Popover>
 		</IconButton>
 	{/if}
-{:else}
+{:else if !disablePlaceholder}
 	<span class="placeholder" />
 {/if}
 

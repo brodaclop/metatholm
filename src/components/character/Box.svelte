@@ -26,15 +26,25 @@
 >
 	<header>
 		{#if level === 1}
-			<h2><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h2>
+			<h2>
+				<slot name="title"><LoreInfoIcon disablePlaceholder id={title} /> {$_(title ?? '')}</slot>
+			</h2>
 		{:else if level === 2}
-			<h3><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h3>
+			<h3>
+				<slot name="title"><LoreInfoIcon disablePlaceholder id={title} /> {$_(title ?? '')}</slot>
+			</h3>
 		{:else if level === 3}
-			<h4><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h4>
+			<h4>
+				<slot name="title"><LoreInfoIcon disablePlaceholder id={title} /> {$_(title ?? '')}</slot>
+			</h4>
 		{:else if level === 4}
-			<h5><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h5>
+			<h5>
+				<slot name="title"><LoreInfoIcon disablePlaceholder id={title} /> {$_(title ?? '')}</slot>
+			</h5>
 		{:else if level === 5}
-			<h6><slot name="title"><LoreInfoIcon id={title} /> {$_(title ?? '')}</slot></h6>
+			<h6>
+				<slot name="title"><LoreInfoIcon disablePlaceholder id={title} /> {$_(title ?? '')}</slot>
+			</h6>
 		{/if}
 	</header>
 	<div>
@@ -74,7 +84,9 @@
 		font-size: large;
 		text-align: center;
 		font-weight: var(--font-weight-bold);
+		color: var(--box-title-c);
 		margin-top: 0;
 		margin-bottom: 0.5em;
+		text-shadow: 1px 1px 2px var(--box-title-c);
 	}
 </style>
