@@ -81,7 +81,11 @@
 		float: right;
 		clear: right;
 		border: 1px solid var(--default-border-c);
+		background-color: var(--lore-references-background-c);
+		border-radius: 1em;
 		padding: 0.25rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
 		margin: 0.25rem;
 	}
 
@@ -90,7 +94,7 @@
 	}
 
 	.references ul {
-		padding-left: 1rem;
+		padding-left: 0rem;
 		margin-bottom: 0;
 		list-style-type: none;
 	}

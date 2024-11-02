@@ -18,25 +18,15 @@ A képzettségek a karakter által [elsajátítható](rule:learning_skills) tud�
 
 A képzettségeket az alábbi kategóriákba soroljuk: **Alap**, **Mozgás**, **Harci**, **Fókusz** és **Tudás**.
 
-Az **Alap** képzettségek többnyire egyszerűek, és mint a név is jelzi, alapvetőek, viszont nem igazán lehet őket tanulni vagy tanítani, csak gyakorolni.
+`SkillListByType|{"type": "skill_type:basic", "caption": "Az **alapképzettségek** többnyire egyszerűek, és mint a név is jelzi, alapvetőek, viszont nem igazán lehet őket tanulni vagy tanítani, csak gyakorolni."}`
 
-`SkillListByType|{"type": "skill_type:basic"}`
+`SkillListByType|{"type": "skill_type:movement", "caption": "A **mozgás képzettségek** igen hasonlóak az alapképzettségekhez, annyi különbséggel, hogy a helyváltoztatás különböző módjaira vonatkoznak. A gyakorlatban ez a megkülönböztetés azt jelenti, hogy ezen képzettségek használatát a páncélviselet nehezítheti."}`
 
-A **Mozgás** képzettségek igen hasonlóak az alapképzettségekhez, annyi különbséggel, hogy a helyváltoztatás különböző módjaira vonatkoznak. A gyakorlatban ez a megkülönböztetés azt jelenti, hogy ezen képzettségek használatát a páncélviselet nehezítheti.
+`SkillListByType|{"type": "skill_type:combat", "caption": "A **harci képzettségek** nem meglepő módon harcban használatosak. Minden egyes harcstílusra vagy fegyvercsaládra külön képzettség vonatkozik."}`
 
-`SkillListByType|{"type": "skill_type:movement"}`
+`SkillListByType|{"type": "skill_type:focus", "caption": "A **fókusz képzettségek** a varázsláshoz szükségesek. A magasabb szinten elsajátított fókusz képzettségek nem csak a karakter által már ismert varázslatokat teszik erősebbé, de új varázslatokhoz is hozzáférést biztosítanak."}`
 
-A **Harci** képzettségek nem meglepő módon harcban használatosak. Minden egyes harcstílusra vagy fegyvercsaládra külön képzettség vonatkozik.
-
-`SkillListByType|{"type": "skill_type:combat"}`
-
-A **Fókusz** képzettségek varázslatok létrehozásához szükségesek. A magasabb szinten elsajátított fókusz képzettségek nem csak a karakter által már ismert varázslatokat teszik erősebbé, de új varázslatokhoz is hozzáférést biztosítanak.
-
-`SkillListByType|{"type": "skill_type:focus"}`
-
-A **Tudás** kategóriájú képzettségek elsősorban lexikális tudásra támaszkodnak. Általában tanár vagy legalábbis könyvek szükségesek az elsajátításukhoz, bár némelyiket kísérletezéssel is fejleszthetjük.
-
-`SkillListByType|{"type": "skill_type:knowledge"}`
+`SkillListByType|{"type": "skill_type:knowledge", "caption": "A **tudás képzettségek** elsősorban lexikális tudásra támaszkodnak. Általában tanár vagy legalábbis könyvek szükségesek az elsajátításukhoz, bár némelyiket kísérletezéssel is fejleszthetjük."}`
 
 ## Hogyan használjuk?
 

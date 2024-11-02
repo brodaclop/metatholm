@@ -12,4 +12,6 @@ The character concentrates for 1 round, at the end of which they can separate th
 
 The character can "see" in the dark in a radius of 3 metres per skill level. This only means they sense empty spaces and the silhouettes and boundaries of objects or creatures around them. This ability works with eyes closed or blindfolded, in this case well-lit areas are perceived as completely opaque "walls".
 
+## Spells
+
 `FocusSpellList`

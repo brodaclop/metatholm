@@ -12,4 +12,6 @@ A karakter egy körig koncentrál, aminek végeztével képes leválasztani mag�
 
 A karakter a képzettség minden szintje után 3 méterrel növekedő sugarú körben "lát" a sötétben. Ez mindössze arra terjed ki, hogy érzékeli, hol van üres tér és hol vannak a környező tárgyak vagy élőlények körvonalai. Minderre csukott vagy bekötött szemmel is képes, ilyenkor a jól megvilágított területek átlátszatlan "falként" jelennek meg lelki szemei előtt.
 
+## Varázslatok
+
 `FocusSpellList`

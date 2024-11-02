@@ -2,6 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 	import { entries } from '../../../model/InfoList';
+	import LoreLink from './LoreLink.svelte';
 
 	export let id: ActionVariant;
 
@@ -21,14 +22,14 @@
 	{#if info.reactionTo}
 		<li>
 			<b>{$_('label:counters')}:</b>{#each info.reactionTo as ra}
-				<span class="counter-item"><a href="/lore/{ra}">{$_(ra)}</a></span>
+				<span class="counter-item"><LoreLink target={ra} /></span>
 			{/each}
 		</li>
 	{/if}
 	{#if counteredBy.length > 0}
 		<li>
 			<b>{$_('label:countered-by')}:</b>{#each counteredBy as ra}
-				<span class="counter-item"><a href="/lore/{ra}">{$_(ra)}</a></span>
+				<span class="counter-item"><LoreLink target={ra} /></span>
 			{/each}
 		</li>
 	{/if}

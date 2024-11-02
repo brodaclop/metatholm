@@ -12,4 +12,6 @@ A karakter egy körig koncentrál a közeli jövőre, pontosabban egy abban eset
 
 Mivel a karakter térben és időben is kissé bizonytalan helyet foglal el, ha meglepetésszerű támadás éri, a védekezéséhez annyiszor +10 pont jár, amennyi a Téridő fókuszban való jártassága. Ez azokra az esetekre is érvényes, amikor a támadás közeledtéről ugyan tud, de képtelen aktív módon védekezni, például az a háta mögül érkezik.
 
+## Varázslatok
+
 `FocusSpellList`

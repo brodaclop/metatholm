@@ -22,4 +22,6 @@ Fontos leszögezni, hogy a szellemek más dolgokat tartanak fontosnak (és így 
 
 Ahogy egyre jobban elmályül a Szellem fókuszban, a karakter arca és testbeszéde egyre kevesebbet árul el az érzelmeiről vagy gondolatairól. Amennyiben valaki [Szemfényvesztés](skill:bamboozling) próbát tesz, hogy "olvassa" a karakter arcát vagy testbeszédét, azt nem a karakter Szemfényvesztés képzettsége, hanem annak Szellem fókusza ellen kell tennie. Mindez automatikusan történik, a karakternek nem is kell tudatában lennie annak, hogy figyelik. Mivel ez a képesség automatikus, nem tesz különbséget barát vagy ellenség között, úgyhogy néha a karakter barátai akár úgy is érezhetik, hogy társuk nem törődik a sorsukkal.
 
+## Varázslatok
+
 `FocusSpellList`

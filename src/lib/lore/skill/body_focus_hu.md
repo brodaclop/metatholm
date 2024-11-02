@@ -12,4 +12,6 @@ A karakter egy k0rig koncentrál egy **Mozgás típusú** képzettségpróbát i
 
 A karakter ura a saját fájdalmának, ha zuhanásból vagy hasonló hatásból szenved el sebzést, képzettségpróbát tehet, és annyi [Fájdalomtűrés Ponttal](character:fp) csökkentheti a sebzést, amennyit dobott. Az esetleges [Életerő](character:ep) sebzésre mindez nincs hatással, azt mindenképp elszenvedi.
 
+## Varázslatok
+
 `FocusSpellList`

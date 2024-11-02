@@ -12,6 +12,10 @@
 <style>
 	td,
 	th {
-		padding-right: 0.25em;
+		padding-right: 0.5em;
+	}
+
+	th {
+		background-color: var(--table-head-background-c);
 	}
 </style>

@@ -12,4 +12,6 @@ The character concentrates for 1 round on an upcoming task requiring a **Movemen
 
 The character is master of their own pain, if they suffer damage from falling or a similar effect, they can roll a skill check and subtract as many [Pain Tolerance Points](character:fp) from the damage as the result of the roll. Any [Life Force](character:ep) damage they may also suffer is unaffected.
 
+## Spells
+
 `FocusSpellList`

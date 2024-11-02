@@ -1,24 +1,130 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { Skill, type SkillType } from '../../../model/Skills';
+	import { Skill, type SkillInfo, type SkillType } from '../../../model/Skills';
 	import { sort } from '../../../model/InfoList';
+	import MarkdownText from '../renderers/MarkdownText.svelte';
+	import LoreLink from './LoreLink.svelte';
 
 	export let type: SkillType;
+	export let caption: string;
+
+	const skills = sort(
+		Skill.list().filter((s) => s.type === type),
+		'name',
+		$_
+	);
+
+	const allAbilities: Array<SkillInfo['ability']> = [
+		'ability:build',
+		'ability:activity',
+		'ability:presence',
+		'ability:magic',
+		'skill_type:general'
+	];
+
+	const abilities: Array<SkillInfo['ability']> = allAbilities.filter((ability) =>
+		skills.some((s) => s.ability === ability)
+	);
 </script>
 
-<ul>
-	{#each sort( Skill.list().filter((s) => s.type === type), 'name', $_ ) as skill}
-		<li>
-			<a href="/lore/{skill.name}"
-				>{$_(skill.name)}
-				<i
-					>({skill.ability === 'skill_type:general'
-						? $_('skill_type:general')
-						: (skill.positive ? '+' : '-') + $_(skill.ability)} / {$_(
-						`label:difficulty:${skill.difficulty}`
-					)})</i
-				></a
-			>
-		</li>
-	{/each}
-</ul>
+<table>
+	<thead>
+		<tr>
+			<th />
+			<th />
+			<th>{$_('label:difficulty:1')}</th>
+			<th>{$_('label:difficulty:2')}</th>
+			<th>{$_('label:difficulty:3')}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each abilities as ability}
+			{@const isGeneral = ability === 'skill_type:general'}
+			<tr class="first">
+				<th rowspan={isGeneral ? 1 : 2}>{$_(ability)}</th>
+				<th
+					>{#if !isGeneral}↑{/if}</th
+				>
+				{#each [1, 2, 3] as difficulty}
+					{@const filteredSkills = skills.filter(
+						(s) => s.ability === ability && s.difficulty === difficulty && s.positive
+					)}
+					<td>
+						{#if filteredSkills.length > 0}
+							<ul>
+								{#each filteredSkills as skill}
+									<li><LoreLink target={skill.name} /></li>
+								{/each}
+							</ul>
+						{:else}
+							–
+						{/if}
+					</td>
+				{/each}
+			</tr>
+			{#if !isGeneral}
+				<tr>
+					<th>↓ </th>
+					{#each [1, 2, 3] as difficulty}
+						{@const filteredSkills = skills.filter(
+							(s) => s.ability === ability && s.difficulty === difficulty && !s.positive
+						)}
+						<td>
+							{#if filteredSkills.length > 0}
+								<ul>
+									{#each filteredSkills as skill}
+										<li><LoreLink target={skill.name} /></li>
+									{/each}
+								</ul>
+							{:else}
+								–
+							{/if}
+						</td>
+					{/each}
+				</tr>
+			{/if}
+		{/each}
+	</tbody>
+	<caption>
+		<MarkdownText isInline text={caption} />
+	</caption>
+</table>
+
+<style>
+	table {
+		border-collapse: collapse;
+		border: 1px solid var(--box-border-c);
+	}
+
+	tr:nth-child(even) {
+		background-color: var(--striped-table-even-c);
+	}
+
+	tr:nth-child(odd) {
+		background-color: var(--striped-table-odd-c);
+	}
+
+	tr.first {
+		border-top: 1px solid var(--box-border-c);
+	}
+
+	td,
+	th {
+		padding-right: 0.5em;
+	}
+
+	th {
+		background-color: var(--table-head-background-c);
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+
+	caption {
+		text-align: left;
+		border: 1px solid var(--box-border-c);
+	}
+</style>

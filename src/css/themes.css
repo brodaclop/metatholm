@@ -55,6 +55,7 @@ html.light {
     --lore-active-cells-c: lavender;
     --lore-skill-rolls-header-c: aliceblue;
     --lore-skill-rolls-cells-c: antiquewhite;
+    --lore-references-background-c: antiquewhite;
 
     /* Encounters */
 
@@ -78,8 +79,9 @@ html.light {
     --header-background-c: color-mix(in srgb, lightgreen 10%, lightgray);
     --menu-item-background-c: color-mix(in srgb, var(--header-background-c) 80%, black);
     --menu-item-hover-c: color-mix(in srgb, var(--header-background-c) 65%, black);
-    --striped-table-even-c: whitesmoke;
-    --striped-table-odd-c: white;
+    --striped-table-even-c: antiquewhite;
+    --striped-table-odd-c: whitesmoke;
+    --table-head-background-c: aliceblue;
     --delete-icon-c: darkred;
 
     --font-weight: 400;
@@ -139,6 +141,7 @@ html.dark {
     --lore-active-cells-c: #440044;
     --lore-skill-rolls-header-c: black;
     --lore-skill-rolls-cells-c: #1c1c1c;
+    --lore-references-background-c: #1c1c1c;
 
     /* Encounters */
 
@@ -162,7 +165,9 @@ html.dark {
     --header-background-c: #4c4c4c;
     --menu-item-hover-c: #4c004c;
     --striped-table-even-c: var(--default-box);
-    --striped-table-odd-c: black;
+    --striped-table-odd-c: #1c1c1c;
+    --table-head-background-c: saddlebrown;
+
     --delete-icon-c: orangered;
 
     --font-weight: 350;
@@ -224,6 +229,7 @@ html.dark {
         --lore-active-cells-c: #440044;
         --lore-skill-rolls-header-c: black;
         --lore-skill-rolls-cells-c: #1c1c1c;
+        --lore-references-background-c: #1c1c1c;
 
         /* Encounters */
 
@@ -247,7 +253,8 @@ html.dark {
         --header-background-c: #4c4c4c;
         --menu-item-hover-c: #4c004c;
         --striped-table-even-c: var(--default-box);
-        --striped-table-odd-c: black;
+        --striped-table-odd-c: #1c1c1c;
+        --table-head-background-c: saddlebrown;
         --delete-icon-c: orangered;
 
         --font-weight: 350;

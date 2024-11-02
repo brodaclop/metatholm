@@ -5,6 +5,8 @@
 	import TableRow from './TableRow.svelte';
 	import Table from './Table.svelte';
 	import Image from './Image.svelte';
+	import TableCell from './TableCell.svelte';
+	import TableHead from './TableHead.svelte';
 
 	export let text: string;
 	export let isInline = false;
@@ -20,6 +22,8 @@
 				code: ActiveElementRenderer,
 				link: LinkRenderer,
 				tablerow: TableRow,
+				tablecell: TableCell,
+				tablehead: TableHead,
 				image: Image,
 				table: Table
 			}}

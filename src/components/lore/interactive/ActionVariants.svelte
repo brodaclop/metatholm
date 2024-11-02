@@ -6,6 +6,7 @@
 		type ActionType
 	} from '../../../model/Action';
 	import { entries } from '../../../model/InfoList';
+	import LoreLink from './LoreLink.svelte';
 
 	const RANGES: Array<ActionRange | 'any-range'> = [
 		'close-quarters',
@@ -31,7 +32,7 @@
 				{#each TYPES as type}
 					<td>
 						{#each entries(ACTION_VARIANT_PROPERTIES).filter(([key, value]) => (value.range === range || (range === 'any-range' && value.range === undefined)) && value.type === type) as [variant]}
-							<div><a href="/lore/{variant}">{$_(variant)}</a></div>
+							<div><LoreLink target={variant} /></div>
 						{/each}
 					</td>
 				{/each}

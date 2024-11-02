@@ -22,4 +22,6 @@ It's important to state here that what spirits find important (and thus worthy o
 
 As they immerse themselves into the Spirit focus, the character's features and body language will reveal less and less about their feelings and thoughts. If someone tries to roll a contested [Bamboozling](skill:bamboozling) skill check, they have to do it not against the character's Bamboozling skill but their Spirit focus skill. This happens automatically, the character doesn't even have to be aware of being observed. Also, as this ability is automatic and doesn't differentiate between friend or foe, sometimes the friends of the character can indeed start to feel the character doesn't care about their mates.
 
+## Spells
+
 `FocusSpellList`

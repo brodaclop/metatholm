@@ -27,5 +27,6 @@ Amennyiben ez sikertelen, az elszenvedett sebzés a kitörésbe sűrített [mág
 
 A karakter a szokásosnál ellenállóbb az őselemekkel szemben: minden, őselemek által okozott FP-sebzésből annyit vonhat le, amennyi a képzettségének szintje. Ez az ÉP-sebzés mértékére nincs hatással, csupán jobban bírja a fájdalmat. A hatás kiterjed kő- vagy fémfegyverekre is, de pusztakezes harcra, továbbá fa- vagy csontfegyverekre nem.
 
+## Varázslatok
 
 `FocusSpellList`

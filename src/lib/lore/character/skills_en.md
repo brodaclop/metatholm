@@ -15,27 +15,18 @@ Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike
 
 ## What kind of skills exist?
 
-Skills fall into one of several categories: **Basic**, **Movement**, **Combat**, **Focus** and **Knowledge**.
+Skills are split into one of the following categories: **Basic**, **Movement**, **Combat**, **Focus** and **Knowledge**.
 
-**Basic** skills are fundamental traits that can't really be taught or learnt. They can only really be trained by practising.
 
-`SkillListByType|{"type": "skill_type:basic"}`
+`SkillListByType|{"type": "skill_type:basic", "caption": "**Basic skills** are fundamental traits that can't really be taught or learnt. They can only really be trained by practising."}`
 
-**Movement** skills are very similar to basic skills, except they relate to various forms of movement. The main difference in practice is that the use of these skills can be hindered by wearing armour.
+`SkillListByType|{"type": "skill_type:movement", "caption": "**Movement skills** are very similar to basic skills, except they relate to various forms of movement. The main difference in practice is that the use of these skills can be hindered by wearing armour."}`
 
-`SkillListByType|{"type": "skill_type:movement"}`
+`SkillListByType|{"type": "skill_type:combat", "caption": "**Combat skills** are used in, you guessed it, combat. Each combat skill represents either a style of fighting or knowledge of a weapon family."}`
 
-**Combat** skills are used in, you guessed it, combat. Each combat skill represents either a style of fighting or knowledge of a weapon family.
+`SkillListByType|{"type": "skill_type:focus", "caption": "**Focus skills** are the ones used to cast magic spells. Higher skills not only make a character's existing spells more reliable but also give them access to more powerful spells."}`
 
-`SkillListByType|{"type": "skill_type:combat"}`
-
-**Focus** skill are the skills used to cast magic spells. Higher skills not only make a character's existing spells more reliable but also give them access to more powerful spells.
-
-`SkillListByType|{"type": "skill_type:focus"}`
-
-**Knowledge** skills rely mainly on lexical knowledge. They usually require a teacher or a book to study, although some can be improved via experimentation too.
-
-`SkillListByType|{"type": "skill_type:knowledge"}`
+`SkillListByType|{"type": "skill_type:knowledge", "caption": "**Knowledge** skills rely mainly on lexical knowledge. They usually require a teacher or a book to study, although some can be improved via experimentation too."}`
 
 ## How to use skills?
 

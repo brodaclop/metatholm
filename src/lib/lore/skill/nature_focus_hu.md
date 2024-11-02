@@ -22,4 +22,6 @@ A feladatnak olyannak kell lennie, amire az adott állat akár magától is kép
 
 A karakter képzettségszintenként 10 méter sugarú körben érzékeli az ehető növényeket és az iható vizet adó forrásokat, földalatti víztározókat, kutakat, patakokat, tavakat.
 
+## Varázslatok
+
 `FocusSpellList`

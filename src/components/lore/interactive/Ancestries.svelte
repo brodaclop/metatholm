@@ -2,10 +2,11 @@
 	import { _ } from 'svelte-i18n';
 	import { Ancestry } from '../../../model/Ancestry';
 	import { sort } from '../../../model/InfoList';
+	import LoreLink from './LoreLink.svelte';
 </script>
 
 <ul>
 	{#each sort(Ancestry.list(), 'name', $_) as a}
-		<li><a href="/lore/{a.name}">{$_(a.name)}</a></li>
+		<li><LoreLink target={a.name} /></li>
 	{/each}
 </ul>

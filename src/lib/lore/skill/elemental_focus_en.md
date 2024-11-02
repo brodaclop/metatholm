@@ -27,4 +27,6 @@ If they fail this check, the damage they suffer is dependent on the number of [M
 
 The character is unusually resistant to elemental forces, every damage caused by them can be reduced by as many [Pain Tolerance Points](character:fp) as the character's skill level. This has no effect on [Life Force](character:ep) damage suffered, they're just good at handling the pain. The effect also works against damage done by steel or stone weapons but not unarmed combat, wooden or bone weapons.
 
+## Spells
+
 `FocusSpellList`
