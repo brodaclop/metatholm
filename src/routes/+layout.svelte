@@ -157,11 +157,7 @@
 					<li><a href="/lore/main">{$_('label:lore')}</a></li>
 					{#if data.user}
 						<li class="nohover">
-							<CharacterSelector
-								disabled={noActiveParty}
-								characters={data.characters}
-								currentUser={data.user.id}
-							/>
+							<CharacterSelector disabled={noActiveParty} characters={data.characters} />
 						</li>
 						<li class="divider">&nbsp;</li>
 						<li><a href="/npc">{$_('label:npcs')}</a></li>
@@ -338,24 +334,12 @@
 		margin-left: auto;
 	}
 
-	.login {
-		height: 90vh;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		text-align: center;
-	}
-
 	.divider {
 		border-left: 1px solid var(--text-c);
 		width: 0;
 		padding: 0;
 		margin-left: 0.5rem;
 		margin-right: 0.5rem;
-	}
-
-	form {
-		display: inline-block;
 	}
 
 	.menu-opener {
