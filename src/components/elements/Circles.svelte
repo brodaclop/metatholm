@@ -5,6 +5,7 @@
 	import MdRemove from 'svelte-icons/md/MdRemove.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	import Lore from '../lore/Lore.svelte';
+	import CircleRow from './CircleRow.svelte';
 
 	export let value: number;
 	export let newValue: number | undefined = undefined;
@@ -43,31 +44,7 @@
 		</td>
 	{/if}
 	<td class="score">
-		{#if editable}
-			{@const active = _newValue > 0 && canMinus}
-			<Circle status={!active ? 'half' : 'active'} on:click={() => active && minus()} clickable>
-				<MdRemove />
-			</Circle>
-		{/if}
-		{#each Array(max) as _, i}
-			{#if i < Math.min(value, _newValue)}
-				<Circle status="full" />
-			{:else if i < Math.max(value, _newValue)}
-				{#if _newValue < value}
-					<Circle status="reduced" />
-				{:else}
-					<Circle status="increased" />
-				{/if}
-			{:else}
-				<Circle status="empty" />
-			{/if}
-		{/each}
-		{#if editable}
-			{@const active = _newValue < max && canPlus}
-			<Circle status={!active ? 'half' : 'active'} on:click={() => active && plus()} clickable>
-				<MdAdd />
-			</Circle>
-		{/if}
+		<CircleRow {canMinus} {canPlus} {editable} {max} {plus} {minus} {value} {newValue} />
 	</td>
 	{#if $$slots.extra}
 		<td class="extra">

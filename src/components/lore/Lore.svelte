@@ -5,7 +5,7 @@
 	import { lore, loreIncomingLinks } from '../../model/Lore';
 	import { setContext } from 'svelte';
 
-	export let id: string;
+	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let includeTitlePrefix = true;
 

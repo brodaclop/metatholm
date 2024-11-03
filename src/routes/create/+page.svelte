@@ -29,6 +29,7 @@
 	});
 
 	let name: string;
+	let patron: string;
 	let abilities: CharacterTemplate['abilities'] = nullAbilities();
 	let background: Background;
 	let ancestry: Ancestry;
@@ -50,7 +51,9 @@
 	};
 
 	$: character =
-		ancestry && background ? createCharacter({ name, ancestry, background, abilities }) : undefined;
+		ancestry && background
+			? createCharacter({ name, patron, ancestry, background, abilities })
+			: undefined;
 
 	$: abilityModifiers = Object.fromEntries(
 		entries(nullAbilities()).map(([a, n]) => [
@@ -70,7 +73,7 @@
 			use:enhance={({ formElement, formData, action, cancel, submitter }) => {
 				formData.set(
 					'character',
-					JSON.stringify(createCharacter({ name, ancestry, background, abilities }))
+					JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
 				);
 			}}
 		>
@@ -85,11 +88,15 @@
 		<Box title="label:character" flavour="character">
 			<div class="character-box">
 				<label>
-					{$_('label:name')}
+					<div>{$_('label:name')}</div>
 					<input type="text" bind:value={name} />
 				</label>
 				<label>
-					{$_('character:ancestry')}
+					<div>{$_('character:patron')}</div>
+					<input type="text" bind:value={patron} />
+				</label>
+				<label>
+					<div>{$_('character:ancestry')}</div>
 					<select bind:value={ancestry}>
 						{#each ancestryList as s}
 							<option value={s.name}>{$_(s.name)}</option>
@@ -97,7 +104,7 @@
 					</select>
 				</label>
 				<label>
-					{$_('character:background')}
+					<div>{$_('character:background')}</div>
 					<select bind:value={background}>
 						{#each backgroundList as s}
 							<option value={s.name}>{$_(s.name)}</option>
@@ -158,7 +165,7 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		align-items: start;
+		align-items: stretch;
 	}
 
 	div.title {

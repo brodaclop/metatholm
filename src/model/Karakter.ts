@@ -60,7 +60,7 @@ export interface CharacterInfo extends Entity {
     isPublic: boolean;
 }
 
-export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry'>;
+export type CharacterTemplate = Pick<Character, 'name' | 'abilities' | 'background' | 'ancestry' | 'patron'>;
 
 export interface CalculatedCharacter {
     fp: EvalExpression;
@@ -211,7 +211,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         background: template.background,
         ancestry: template.ancestry,
         abilities,
-        patron: '',
+        patron: template.patron,
         ip: 0,
         isPublic: false,
         inventory: {

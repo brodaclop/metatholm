@@ -4,7 +4,7 @@
 
 **Magic Force** expresses a character's control over the magical powers that exist in everyone. A low **Magic Force** skill would leave a character magically exhausted after only a handful of simple spells, while a highly skilled magician can unleash spells of unimaginable power without much adverse effect.
 
-The skill can furthermore be used to detect magic, when used this way the character has to roll a contested skill check against as many `d10!`s as the targeted spell's or magical effect's strength. (If the target of the spell or the owner of a magic item [resistsl](skill:magic_resistance), the strength of the spell counts as many points higher as the target's **Magic Resistance** skill level.) This can be performed once per day on a given target.
+The skill can furthermore be used to detect magic, when used this way the character has to roll a contested skill check against as many `d10!`s as the targeted spell's or magical effect's strength. (If the target of the spell or the owner of a magic item [resists](skill:magic_resistance), the strength of the spell counts as many points higher as the target's **Magic Resistance** skill level.) This can be performed once per day on a given target.
 
 If the skill check is successful, not only the presence of magic will be revealed but also its strength and nature  (e.g. "offensive elemental magic of strength 4") If on top of this the character is skilled in the focus the targeted magic belongs to, they will learn the precise nature (and potentially name) of the spell.
 

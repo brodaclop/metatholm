@@ -31,12 +31,13 @@
 		font-size: small;
 		text-align: center;
 		padding: 0.1em;
+		/* vertical-align: super; */
 	}
 
 	span.inner {
 		padding-bottom: 1px;
 		font-size: x-small;
-		vertical-align: top;
+		vertical-align: super;
 	}
 
 	.clickable {

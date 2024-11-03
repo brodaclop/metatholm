@@ -9,6 +9,7 @@
 	import IconButton from '../../elements/IconButton.svelte';
 	import type { Character } from '../../../model/Karakter';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
+	import CircleRow from '../../elements/CircleRow.svelte';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
@@ -68,43 +69,46 @@
 		{/if}
 	</thead>
 	<tbody>
-		<Circles
-			name="label:difficulty"
-			bind:value={difficulty}
-			subName={$_(`label:difficulty:${difficulty}`)}
-			max={3}
-			canMinus={difficulty > 1}
-			editable={!skillInfo}
-		/>
+		<tr>
+			<th
+				><LoreInfoIcon id="label:difficulty" />
+				{$_('label:difficulty')}
+				({$_(`label:difficulty:${difficulty}`)})
+			</th>
+			<td>
+				<CircleRow
+					bind:value={difficulty}
+					max={3}
+					canMinus={difficulty > 1}
+					editable={!skillInfo}
+				/>
+			</td>
+			<td />
+		</tr>
 		{#if !isGeneral}
-			<Circles
-				name={skillInfo?.ability ?? 'character:ability'}
-				bind:value={ability}
-				subName={String(ability)}
-				max={10}
-				editable={!abilities}
-			>
-				<IconButton
-					title="character:ability"
-					slot="extra"
-					disabled={!!skillInfo || isGeneral}
-					on:click={() => (positive = !positive)}
-				>
-					{#if positive}
-						<FaRegArrowAltCircleUp />
-					{:else}
-						<FaRegArrowAltCircleDown />
-					{/if}
-				</IconButton>
-			</Circles>
-		{:else}
-			<Circles
-				name={skillInfo?.ability ?? 'character:ability'}
-				value={10}
-				subName={'10'}
-				max={10}
-				editable={false}
-			/>
+			<tr>
+				<th>
+					<LoreInfoIcon id={skillInfo?.ability ?? 'character:ability'} />
+					{$_(skillInfo?.ability ?? 'character:ability')}
+					({ability})
+				</th>
+				<td>
+					<CircleRow bind:value={ability} max={10} editable={!abilities} />
+				</td>
+				<td>
+					<IconButton
+						title="character:ability"
+						disabled={!!skillInfo || isGeneral}
+						on:click={() => (positive = !positive)}
+					>
+						{#if positive}
+							<FaRegArrowAltCircleUp />
+						{:else}
+							<FaRegArrowAltCircleDown />
+						{/if}
+					</IconButton>
+				</td>
+			</tr>
 		{/if}
 	</tbody>
 	<tbody>
