@@ -33,6 +33,7 @@ type GenericLabels = 'label:name' |
     'label:out-of-range' |
     'label:any-range' |
     'label:range' |
+    'label:level' |
     'label:counters' |
     'label:countered-by' |
     'label:reaction' |
@@ -88,7 +89,8 @@ type GenericLabels = 'label:name' |
     'character:public' |
     'label:next' |
     'label:scenario' |
-    'label:references'
+    'label:references' |
+    'label:player'
     ;
 
 export const Keys = [
@@ -305,6 +307,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:next': 'Next',
     'label:scenario': 'Scenario',
     'label:references': 'References',
+    'label:level': 'Level {level}',
+    'label:player': 'Player',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -646,6 +650,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:next': 'Tovább',
     'label:scenario': 'Jelenet',
     'label:references': 'Hivatkozások',
+    'label:level': '{level} szintű',
+    'label:player': 'Játékos',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',

@@ -11,37 +11,39 @@
 	export let data: PageData;
 </script>
 
-<Box title="label:settings" flavour="lore">
-	<form method="post" action="?/renameUser" use:enhance>
-		{$_('label:name')}: <input type="text" name="name" value={data.user?.username} />
-		<IconButton title="label:save">
-			<MdSave />
-		</IconButton>
-	</form>
-</Box>
+<div class="container">
+	<Box title="label:settings" flavour="lore">
+		<form method="post" action="?/renameUser" use:enhance>
+			{$_('label:name')}: <input type="text" name="name" value={data.user?.username} />
+			<IconButton title="label:save">
+				<MdSave />
+			</IconButton>
+		</form>
+	</Box>
 
-<Box title="label:parties" flavour="lore">
-	<div>
-		{#each data.parties as party}
-			<Box flavour="lore">
-				<span slot="title">
-					<a href="/party/{party.party.id}">{party.party.name}</a>
-				</span>
-			</Box>
-		{/each}
+	<Box title="label:parties" flavour="lore">
+		<div>
+			{#each data.parties as party}
+				<Box flavour="lore">
+					<span slot="title">
+						<a href="/party/{party.party.id}">{party.party.name}</a>
+					</span>
+				</Box>
+			{/each}
 
-		<div class="fullrow">
-			<Box title="label:parties:new" flavour="lore">
-				<form method="post" action="?/createParty" use:enhance>
-					{$_('label:name')}: <input type="text" name="name" />
-					<IconButton title="label:parties:new">
-						<GiSwordSmithing />
-					</IconButton>
-				</form>
-			</Box>
+			<div class="fullrow">
+				<Box title="label:parties:new" flavour="lore">
+					<form method="post" action="?/createParty" use:enhance>
+						{$_('label:name')}: <input type="text" name="name" />
+						<IconButton title="label:parties:new">
+							<GiSwordSmithing />
+						</IconButton>
+					</form>
+				</Box>
+			</div>
 		</div>
-	</div>
-</Box>
+	</Box>
+</div>
 
 <style>
 	div {

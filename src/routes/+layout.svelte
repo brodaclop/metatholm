@@ -86,15 +86,6 @@
 		lastPath = $page.url.pathname;
 	}
 
-	$: switchCharacter = (newCharacter: string | null) => {
-		if (newCharacter !== null) {
-			currentCharacter = newCharacter;
-			goto(currentCharacter ? `/character/${currentCharacter}` : '/');
-		} else {
-			goto('/create');
-		}
-	};
-
 	const langChanged = () => {
 		if (browser) {
 			window.localStorage.setItem('lang', lang.value);
@@ -168,9 +159,8 @@
 						<li class="nohover">
 							<CharacterSelector
 								disabled={noActiveParty}
-								{currentCharacter}
 								characters={data.characters}
-								{switchCharacter}
+								currentUser={data.user.id}
 							/>
 						</li>
 						<li class="divider">&nbsp;</li>
