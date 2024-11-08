@@ -46,5 +46,6 @@
 	span.placeholder {
 		display: inline-block;
 		width: 1em;
+		margin-left: 1px;
 	}
 </style>

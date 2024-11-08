@@ -53,26 +53,21 @@
 	//TODO: fix up/down arrow layout
 </script>
 
-<table>
-	<thead>
+<table class="maintable">
+	<tbody>
 		{#if skillInfo}
 			<tr>
-				<th class="rowhead"><LoreInfoIcon />{$_('label:type')}</th>
+				<th><LoreInfoIcon />{$_('label:type')}</th>
 				<td>{$_(skillInfo.type)}</td>
 			</tr>
 			<tr>
-				<th class="rowhead"
-					><LoreInfoIcon id="character:personality" />{$_('character:personality')}</th
-				>
+				<th><LoreInfoIcon id="character:personality" />{$_('character:personality')}</th>
 				<td>{skillInfo.personality.map((p) => $_(p)).join(', ')}</td>
 			</tr>
 		{/if}
-	</thead>
-	<tbody>
 		<tr>
 			<th
-				><LoreInfoIcon id="label:difficulty" />
-				{$_('label:difficulty')}
+				><LoreInfoIcon id="label:difficulty" />{$_('label:difficulty')}
 				({$_(`label:difficulty:${difficulty}`)})
 			</th>
 			<td>
@@ -88,8 +83,9 @@
 		{#if !isGeneral}
 			<tr>
 				<th>
-					<LoreInfoIcon id={skillInfo?.ability ?? 'character:ability'} />
-					{$_(skillInfo?.ability ?? 'character:ability')}
+					<LoreInfoIcon id={skillInfo?.ability ?? 'character:ability'} />{$_(
+						skillInfo?.ability ?? 'character:ability'
+					)}
 					({ability})
 				</th>
 				<td>
@@ -110,10 +106,8 @@
 				</td>
 			</tr>
 		{/if}
-	</tbody>
-	<tbody>
 		<tr>
-			<th class="rowhead"><LoreInfoIcon />{$_('expr:skill_level')}</th>
+			<th><LoreInfoIcon />{$_('expr:skill_level')}</th>
 			<td colspan={3}>
 				<div class="point-container">
 					{#each Array(10) as _, skillLevel (skillLevel)}
@@ -123,7 +117,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th class="rowhead"><LoreInfoIcon />{$_('character:kp')}</th>
+			<th><LoreInfoIcon />{$_('character:kp')}</th>
 			<td colspan={3}>
 				<div class="point-container">
 					{#each kpNeeded as kp, skillLevel}
@@ -137,9 +131,7 @@
 
 <style>
 	table {
-		border: 1px solid var(--default-border-c);
-		padding: 0.25rem;
-		margin: 0.25rem;
+		border-collapse: collapse;
 	}
 
 	.point-container {
@@ -157,14 +149,6 @@
 		font-weight: var(--font-weight-bold);
 	}
 
-	td,
-	th {
-		padding-right: 0.25em;
-		text-align: left;
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-
 	.point-container span:nth-child(even) {
 		background-color: var(--striped-table-even-c);
 	}
@@ -173,9 +157,8 @@
 		background-color: var(--striped-table-odd-c);
 	}
 
-	th.rowhead {
+	th {
 		padding-right: 0.75em;
-		padding-left: 6px;
 	}
 
 	span.active {
