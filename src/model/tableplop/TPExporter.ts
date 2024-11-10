@@ -1,7 +1,7 @@
 import type { Action, ActionRoll, ActionVariantInfo } from "../Action";
 import { entries, keys, sort } from "../InfoList";
 import { calculateCharacter, type Character } from "../Karakter";
-import type { Labels } from "../Labels";
+import type { Labels } from "../labels/Labels";
 import type { Skill } from "../Skills";
 import type { Character as TPCharacter, NumberProp, Tab, Text, TitleSection } from "./InternalTypes";
 import { convertInternalToExternal } from "./TPConverter";

@@ -29,6 +29,7 @@
 	import UploadButton from './UploadButton.svelte';
 	import { onMount } from 'svelte';
 	import { Popover } from 'svelte-smooth-popover';
+	import SpiritAnimals from './SpiritAnimals.svelte';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -235,6 +236,10 @@
 					</Box>
 				</div>
 			{/if}
+		</div>
+
+		<div>
+			<SpiritAnimals bind:character {editable} />
 		</div>
 
 		<div class="actionRow">

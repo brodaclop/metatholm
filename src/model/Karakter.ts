@@ -1,6 +1,6 @@
 import { E, type EvalExpression } from "../logic/Expression";
 import type { Entity } from "./Entity";
-import { TOTAL_EP, TOTAL_FP } from "./Rules";
+import { SPIRIT_ANIMAL_COUNT, TOTAL_EP, TOTAL_FP } from "./Rules";
 import type { Weapon } from "./Weapon";
 import type { Ability } from "./Abilities";
 import type { Action } from "./Action";
@@ -14,10 +14,16 @@ import { calculateSpellAction } from "./calculations/SpellAction";
 import { Skill, type Personality } from "./Skills";
 import type { Armour } from "./Armour";
 import { calculatePersonality } from "./calculations/Personality";
+import type { SpiritAnimal, SpiritManifestation } from "./Spirits";
 
 
 export interface Level {
     fpRoll: number;
+}
+
+export interface SpiritManifestationRecord {
+    name: SpiritAnimal,
+    manifestation: SpiritManifestation
 }
 
 export interface Character extends Entity {
@@ -29,6 +35,7 @@ export interface Character extends Entity {
     isPublic: boolean;
     patron: string;
     ip: number;
+    spiritAnimals: Array<SpiritManifestationRecord>,
     inventory: {
         weapons: Array<Weapon>;
         armours: Array<Armour>;
@@ -72,6 +79,7 @@ export interface CalculatedCharacter {
     weapons: Array<Weapon>;
     spells: Array<SpellInfo>;
     personality: Array<Personality>;
+    maxSpiritAnimals: EvalExpression;
 }
 
 
@@ -186,7 +194,8 @@ export const calculateCharacter = (character: Character): CalculatedCharacter =>
             ...abilities,
             ...skills
         }),
-        personality: calculatePersonality(character.skills)
+        personality: calculatePersonality(character.skills),
+        maxSpiritAnimals: E.evaluate(SPIRIT_ANIMAL_COUNT, { 'character:ip': character.ip })
     }
 };
 
@@ -213,6 +222,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
         abilities,
         patron: template.patron,
         ip: 0,
+        spiritAnimals: [],
         isPublic: false,
         inventory: {
             weapons: [],

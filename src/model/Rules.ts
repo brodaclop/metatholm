@@ -20,3 +20,5 @@ export const MAGIC_EFFECTIVE_SKILL: Expression = E.name('expr:effective_spell_sk
 export const SKILL_KP: Expression = E.mul(E.value('expr:skill_level'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(3, E.div(E.value('expr:skill_difficulty'), 2)))), 33));
 
 export const SPELL_AP: Expression = E.max(4, E.div(E.mul(2, E.sub(20, E.value('expr:spell_speed')), E.sub(54, E.mul(4, E.sub(E.value('expr:spell_focus_skill'), 1)))), 54));
+
+export const SPIRIT_ANIMAL_COUNT = E.floor(E.div(E.value('character:ip'), 5));

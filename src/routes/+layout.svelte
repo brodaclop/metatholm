@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { _, isLoading, init, locale, addMessages } from 'svelte-i18n';
-	import { Labels_en, Labels_hu } from '../model/Labels';
+	import { Labels_en, Labels_hu } from '../model/labels/Labels';
 	import type { PageData } from './$types';
-	import { goto, invalidate, invalidateAll } from '$app/navigation';
+	import { invalidate, invalidateAll } from '$app/navigation';
 	import Select from 'svelte-select';
 	import { Hu, Gb } from 'svelte-flags';
 	import { page } from '$app/stores';

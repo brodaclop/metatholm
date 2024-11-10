@@ -1,11 +1,13 @@
-import type { Ability } from "./Abilities";
-import type { ActionRoll, ActionVariant } from "./Action";
-import type { Background } from "./Background";
-import type { ExpressionNames, RuleLabels } from "./Rules";
-import type { Personality, Skill, SkillType } from "./Skills";
-import type { Ancestry } from "./Ancestry";
-import type { Spell, SpellDurations, SpellTargets } from "./Spell";
-import type { ArmourLabels } from "./Armour";
+import type { Ability } from "../Abilities";
+import type { ActionRoll, ActionVariant } from "../Action";
+import type { Background } from "../Background";
+import type { ExpressionNames, RuleLabels } from "../Rules";
+import type { Personality, Skill, SkillType } from "../Skills";
+import type { Ancestry } from "../Ancestry";
+import type { Spell, SpellDurations, SpellTargets } from "../Spell";
+import type { ArmourLabels } from "../Armour";
+import { SpiritLabels } from "./SpiritLabels";
+import { CharacterLabels } from "./CharacterLabels";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -16,7 +18,6 @@ type GenericLabels = 'label:name' |
     'label:new' |
     'label:create_character' |
     'label:character' |
-    'character:skill' |
     'label:difficulty' |
     'label:type' |
     'label:rule' |
@@ -86,33 +87,15 @@ type GenericLabels = 'label:name' |
     'label:parties:new_invite' |
     'label:parties:promote' |
     'label:parties:demote' |
-    'character:public' |
     'label:next' |
     'label:scenario' |
     'label:references' |
-    'label:player'
+    'label:player' |
+    'label:gain_ip'
     ;
 
 export const Keys = [
     'action:title',
-    'character:level',
-    'character:abilities',
-    'character:skills',
-    'character:info',
-    'character:points',
-    'character:ep',
-    'character:fp',
-    'character:mp',
-    'character:kp',
-    'character:weapons',
-    'character:armours',
-    'character:ancestry',
-    'character:background',
-    'character:ability',
-    'character:spells',
-    'character:personality',
-    'character:patron',
-    'character:ip',
 
     'weapon:speed',
     'weapon:difficulty',
@@ -151,8 +134,10 @@ export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
 
 type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality;
 
-export type Labels = Valueless | Values | typeof Abbreviations[number];
+export type Labels = Valueless | Values | typeof Abbreviations[number] | keyof typeof SpiritLabels[Language] | keyof typeof CharacterLabels[Language];
 export const Labels_en: Record<Labels, string> = {
+    ...SpiritLabels.en,
+    ...CharacterLabels.en,
     'ability:build': 'Build',
     'ability:presence': 'Presence',
     'ability:activity': 'Activity',
@@ -192,23 +177,6 @@ export const Labels_en: Record<Labels, string> = {
 
     'label:name': 'Name',
     'label:name:abbr': 'Name',
-    'character:abilities': 'Abilities',
-    'character:skills': 'Skills',
-    'character:info': 'Info',
-    'character:points': 'Points',
-    'character:level': 'Level',
-    'character:fp': 'Pain tolerance',
-    'character:ep': 'Life force',
-    'character:mp': 'Magic Power',
-    'character:kp': 'Skill Points',
-    'character:weapons': 'Weapons',
-    'character:armours': 'Armours',
-    'character:ancestry': 'Ancestry',
-    'character:spells': 'Spells',
-    'character:public': 'Public',
-    'character:personality': 'Personality',
-    'character:patron': 'Patron',
-    'character:ip': 'Ideal Points',
 
     'background:bruiser': 'Bruiser',
     'background:sneak': 'Sneak',
@@ -242,10 +210,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:new': 'New',
     'label:character': 'Character',
     'label:create_character': 'Create Character',
-    'character:background': 'Background',
-    'character:skill': 'Skill',
     'label:difficulty': 'Difficulty',
-    'character:ability': 'Ability',
     'label:type': 'Type',
     'label:rule': 'Rule',
     'label:dice_roller': 'Dice Roller',
@@ -309,6 +274,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:references': 'References',
     'label:level': 'Level {level}',
     'label:player': 'Player',
+    'label:gain_ip': 'Gain Ideal Point',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -481,11 +447,11 @@ export const Labels_en: Record<Labels, string> = {
     'world:realm': 'Realm',
     'world:settlement': 'Settlement',
     'world:organisation': 'Organisatoin',
-
-
 };
 
 export const Labels_hu: Record<Labels, string> = {
+    ...SpiritLabels.hu,
+    ...CharacterLabels.hu,
     'ability:build': 'Testalkat',
     'ability:presence': 'Jelenlét',
     'ability:activity': 'Aktivitás',
@@ -540,26 +506,6 @@ export const Labels_hu: Record<Labels, string> = {
     'background:charmer': 'Bájgúnár',
     'background:witch': 'Vajákos',
 
-    'character:abilities': 'Tulajdonságok',
-    'character:skills': 'Képzettségek',
-    'character:info': 'Adatok',
-    'character:points': 'Pontok',
-    'character:level': 'Szint',
-    'character:fp': 'Fájdalomtűrés',
-    'character:ep': 'Életerő',
-    'character:mp': 'Mágia Pont',
-    'character:kp': 'Képzettség Pont',
-    'character:weapons': 'Fegyverek',
-    'character:armours': 'Páncélok',
-    'character:ancestry': 'Származás',
-    'character:background': 'Háttér',
-    'character:skill': 'Képzettség',
-    'character:ability': 'Tulajdonság',
-    'character:spells': 'Varázslatok',
-    'character:public': 'Nyilvános',
-    'character:personality': 'Személyiség',
-    'character:patron': 'Patrónus',
-    'character:ip': 'Ideál',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',
@@ -652,6 +598,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:references': 'Hivatkozások',
     'label:level': '{level} szintű',
     'label:player': 'Játékos',
+    'label:gain_ip': 'Ideál növelése',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',

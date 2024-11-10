@@ -51,7 +51,14 @@
 		</tr>
 		<tr>
 			<th><LoreInfoIcon id="character:ip" />{$_('character:ip')}</th>
-			<td><input type="number" disabled={!editable} bind:value={character.ip} /></td>
+			<td
+				>{character.ip}
+				<IconButton
+					disabled={!editable}
+					title={'label:gain_ip'}
+					on:click={() => (character.ip = character.ip + 1)}><MdAdd /></IconButton
+				></td
+			>
 		</tr>
 		<tr>
 			<th><LoreInfoIcon id="character:public" />{$_('character:public')}</th>

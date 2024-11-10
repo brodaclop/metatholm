@@ -1,5 +1,5 @@
 import { loadCharacter } from '$lib/server/db/character';
-import { Labels_en, Labels_hu, type Labels } from '../../../../model/Labels.js';
+import { Labels_en, Labels_hu, type Labels } from '../../../../model/labels/Labels.js';
 import { generateTableplopJSON } from '../../../../model/tableplop/TPExporter.js';
 
 export const GET = async ({ params, platform, url }) => {

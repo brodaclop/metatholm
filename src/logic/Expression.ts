@@ -1,4 +1,4 @@
-import type { Keys, Values } from "../model/Labels";
+import type { Values } from "../model/labels/Labels";
 import { kockaDobas, parseKocka, type KockaDobas } from "./Kocka";
 
 export interface Value {
@@ -25,7 +25,13 @@ export interface BinaryOp {
     args: [Expression, Expression];
 }
 
-export type Operation = MultiOp | BinaryOp;
+export interface FloorOp {
+    type: 'floor';
+    name?: Values;
+    arg: Expression;
+}
+
+export type Operation = MultiOp | BinaryOp | FloorOp;
 
 export type Expression = Value | Operation | LevelSum | number;
 
@@ -78,6 +84,9 @@ const evaluate = (expr: Expression, values: Partial<Record<Values, number | Arra
         const first = evaluate(expr.args[0], values, level);
         const second = evaluate(expr.args[1], values, level);
         return { type: 'sub', args: [first, second], result: first.result - second.result, name: expr.name };
+    } else if (expr.type === 'floor') {
+        const arg = evaluate(expr.arg, values, level);
+        return { type: 'floor', arg, name: expr.name, result: Math.floor(arg.result) };
     } else {
         const args = expr.args.map(arg => evaluate(arg, values, level));
         const result = calculateMultiOpResult(expr.type, args);
@@ -105,5 +114,6 @@ export const E = {
     min: (...args: Array<Expression>): MultiOp => ({ type: 'min', args }),
     div: (denominator: Expression, divisor: Expression): BinaryOp => ({ type: 'div', args: [denominator, divisor] }),
     sub: (minuend: Expression, subtrahend: Expression): BinaryOp => ({ type: 'sub', args: [minuend, subtrahend] }),
+    floor: (arg: Expression): FloorOp => ({ type: 'floor', arg }),
     name: (name: Values, expr: Exclude<Expression, number>): Expression => ({ ...expr, name })
 };

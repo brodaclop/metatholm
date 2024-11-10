@@ -61,6 +61,8 @@
 				{/if}
 			{/each}
 			)
+		{:else if expr.type === 'floor'}
+			floor(<svelte:self parentType={expr.type} expr={expr.arg} />)
 		{/if}
 	</span>
 {/if}
