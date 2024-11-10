@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Box from '../../character/Box.svelte';
 	import type { Skill } from '../../../model/Skills';
 	import { Spell } from '../../../model/Spell';
-	import LoreLink from './LoreLink.svelte';
 	import { sort } from '../../../model/InfoList';
 
 	export let id: Skill;
@@ -13,7 +11,7 @@
 	const i18n = $_;
 </script>
 
-<table>
+<table class="standard">
 	<thead>
 		<tr>
 			<th />
@@ -42,31 +40,3 @@
 		{/each}
 	</tbody>
 </table>
-
-<style>
-	table {
-		border-collapse: collapse;
-		border: 1px solid var(--box-border-c);
-	}
-
-	tr:nth-child(even) {
-		background-color: var(--striped-table-even-c);
-	}
-
-	tr:nth-child(odd) {
-		background-color: var(--striped-table-odd-c);
-	}
-
-	tr.first {
-		border-top: 1px solid var(--box-border-c);
-	}
-
-	td,
-	th {
-		padding-right: 0.5em;
-	}
-
-	th {
-		background-color: var(--table-head-background-c);
-	}
-</style>

@@ -44,7 +44,7 @@
 	//TODO: templates and i18n
 </script>
 
-<table>
+<table class="standard wide">
 	<thead>
 		<tr>
 			<th><Abbr text="label:name" /></th>
@@ -59,7 +59,7 @@
 				<td class="ellipsis" title={$_(armour.name)}>{$_(armour.name)}</td>
 				<td>{armour.dr}</td>
 				<td>{armour.hindrance}</td>
-				<td>
+				<td class="right">
 					<IconButton
 						title="label:wear"
 						color={character.current.armourWorn === idx ? 'black' : 'lightgrey'}

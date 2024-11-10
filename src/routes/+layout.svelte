@@ -298,6 +298,39 @@
 		border-spacing: 0;
 	}
 
+	:global(table.wide) {
+		width: 100%;
+	}
+
+	:global(table.standard) {
+		border-collapse: collapse;
+		border: 1px solid var(--box-border-c);
+		caption-side: bottom;
+	}
+
+	:global(table.standard tr:nth-child(even)) {
+		background-color: var(--striped-table-even-c);
+	}
+
+	:global(table.standard tr:nth-child(odd)) {
+		background-color: var(--striped-table-odd-c);
+	}
+
+	:global(table.standard td),
+	:global(table.standard th) {
+		padding-right: 0.5em;
+		text-align: left;
+	}
+
+	:global(table.standard td.right),
+	:global(table.standard th.right) {
+		text-align: right;
+	}
+
+	:global(table.standard th) {
+		background-color: var(--table-head-background-c);
+	}
+
 	header {
 		position: sticky;
 		top: 0;

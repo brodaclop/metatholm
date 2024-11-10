@@ -33,7 +33,7 @@
 </script>
 
 <Box title="character:spirit_animals" flavour="character">
-	<table>
+	<table class="standard wide">
 		<thead>
 			<tr>
 				<th>{$_('label:spirit_animal')}</th>
@@ -48,7 +48,7 @@
 					<td>{$_(animal.name)}</td>
 					<td>{$_(animal.manifestation)}</td>
 					<td>{$_(Spirit.get(animal.name).manifestations[animal.manifestation] ?? '')}</td>
-					<td>
+					<td class="right">
 						{#if editable}
 							<EditButton on:click={() => (editedManifestation = idx)} />
 							<DeleteButton
@@ -80,30 +80,3 @@
 	close={() => (editedManifestation = undefined)}
 	on:submit={submit}
 />
-
-<style>
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		border: 1px solid var(--box-border-c);
-		caption-side: bottom;
-	}
-
-	tr:nth-child(even) {
-		background-color: var(--striped-table-even-c);
-	}
-
-	tr:nth-child(odd) {
-		background-color: var(--striped-table-odd-c);
-	}
-
-	td,
-	th {
-		padding-right: 0.5em;
-		text-align: left;
-	}
-
-	th {
-		background-color: var(--table-head-background-c);
-	}
-</style>

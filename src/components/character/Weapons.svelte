@@ -32,7 +32,7 @@
 	};
 </script>
 
-<table>
+<table class="standard wide">
 	<thead>
 		<tr>
 			<th><Abbr text="label:name" /></th>
@@ -83,7 +83,7 @@
 						<SkillIcon skill={weapon.skill} />
 					</div>
 				</td>
-				<td>
+				<td class="right">
 					<IconButton
 						title="label:copy"
 						on:click={() =>

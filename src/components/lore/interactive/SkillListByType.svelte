@@ -27,7 +27,7 @@
 	);
 </script>
 
-<table>
+<table class="standard">
 	<thead>
 		<tr>
 			<th />
@@ -91,32 +91,6 @@
 </table>
 
 <style>
-	table {
-		border-collapse: collapse;
-		border: 1px solid var(--box-border-c);
-	}
-
-	tr:nth-child(even) {
-		background-color: var(--striped-table-even-c);
-	}
-
-	tr:nth-child(odd) {
-		background-color: var(--striped-table-odd-c);
-	}
-
-	tr.first {
-		border-top: 1px solid var(--box-border-c);
-	}
-
-	td,
-	th {
-		padding-right: 0.5em;
-	}
-
-	th {
-		background-color: var(--table-head-background-c);
-	}
-
 	ul {
 		margin: 0;
 		padding: 0;
