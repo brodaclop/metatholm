@@ -11,6 +11,7 @@
 	import SpiritAnimalEditor from './SpiritAnimalEditor.svelte';
 	import EditButton from '../elements/EditButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
+	import { stringify } from 'uuid';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -25,7 +26,11 @@
 		const { manifestationIndex, editedManifestation } = e.detail;
 
 		if (manifestationIndex === -1) {
-			character.spiritAnimals = [...character.spiritAnimals, editedManifestation];
+			const blockEnd = character.spiritAnimals.findLastIndex(
+				(sa) => sa.name === editedManifestation.name
+			);
+			character.spiritAnimals.splice(blockEnd + 1, 0, editedManifestation);
+			character.spiritAnimals = character.spiritAnimals;
 		} else {
 			character.spiritAnimals[manifestationIndex] = editedManifestation;
 		}
@@ -43,9 +48,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each character.spiritAnimals as animal, idx}
+			{#each character.spiritAnimals as animal, idx (`${JSON.stringify(animal)}${idx}`)}
+				{@const firstRowOfAnimal =
+					idx === 0 || character.spiritAnimals[idx - 1].name !== animal.name}
+				{@const numberOfRows = character.spiritAnimals.filter(
+					(sa) => sa.name === animal.name
+				).length}
 				<tr>
-					<td>{$_(animal.name)}</td>
+					{#if firstRowOfAnimal}
+						<td rowspan={numberOfRows}>{$_(animal.name)}</td>
+					{/if}
 					<td>{$_(animal.manifestation)}</td>
 					<td>{$_(Spirit.get(animal.name).manifestations[animal.manifestation] ?? '')}</td>
 					<td class="right">

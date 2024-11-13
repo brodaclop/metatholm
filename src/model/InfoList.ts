@@ -12,8 +12,8 @@ export const createList = <K extends string, V extends { name: K }>(input: Recor
     }
 }
 
-export const keys = <K extends string, V>(rec: Partial<Record<K, V>>): Array<K> => Object.keys(rec) as Array<K>;
-export const entries = <K extends string, V>(rec: Partial<Record<K, V>>): Array<[K, V]> => Object.entries(rec) as Array<[K, V]>;
+export const keys = <K extends string, V>(rec: Partial<Record<K, V>>): Array<K> => rec === null || rec === undefined ? [] : Object.keys(rec) as Array<K>;
+export const entries = <K extends string, V>(rec: Partial<Record<K, V>>): Array<[K, V]> => rec === null || rec === undefined ? [] : Object.entries(rec) as Array<[K, V]>;
 
 export const group = <K extends string, V>(input: Array<V>, groupFn: (ob: V) => K): Record<K, Array<V>> => input.reduce((acc, curr) => {
     const key = groupFn(curr);
