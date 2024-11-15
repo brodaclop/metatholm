@@ -23,6 +23,7 @@
 	import PlayScenario from '../interactive/PlayScenario.svelte';
 	import SpellActionPointCalculator from '../interactive/SpellActionPointCalculator.svelte';
 	import SpellRollCalculator from '../interactive/SpellRollCalculator.svelte';
+	import SpiritAnimalList from '../interactive/SpiritAnimalList.svelte';
 
 	export let raw: string;
 
@@ -50,7 +51,8 @@
 		FormattedDate: FormattedDate,
 		PlayScenario: PlayScenario,
 		SpellActionPointCalculator: SpellActionPointCalculator,
-		SpellRollCalculator: SpellRollCalculator
+		SpellRollCalculator: SpellRollCalculator,
+		SpiritAnimalList: SpiritAnimalList
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);
