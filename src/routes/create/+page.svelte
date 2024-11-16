@@ -4,8 +4,7 @@
 	import {
 		createCharacter,
 		type CharacterTemplate,
-		calculateCharacter,
-		Character
+		calculateCharacter
 	} from '../../model/Karakter';
 	import { Ancestry } from '../../model/Ancestry';
 	import Box from '../../components/character/Box.svelte';
