@@ -205,6 +205,7 @@ export const levelUpCharacter = (character: Character, fpRoll: number): Characte
     const calc = calculateCharacter(character);
     character.current.ep = calc.ep.result;
     character.current.fp = calc.fp.result;
+    character.current.mp = calc.mp.result;
     return character;
 }
 

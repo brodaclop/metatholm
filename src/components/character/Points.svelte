@@ -2,7 +2,6 @@
 	import type { CalculatedCharacter, Character } from '../../model/Karakter';
 	import { _ } from 'svelte-i18n';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
-	import { E } from '../../logic/Expression';
 	import SkillEditor from './SkillEditor.svelte';
 	import GiOpenBook from 'svelte-icons/gi/GiOpenBook.svelte';
 	import IconButton from '../elements/IconButton.svelte';

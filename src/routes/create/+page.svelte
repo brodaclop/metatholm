@@ -4,7 +4,8 @@
 	import {
 		createCharacter,
 		type CharacterTemplate,
-		calculateCharacter
+		calculateCharacter,
+		Character
 	} from '../../model/Karakter';
 	import { Ancestry } from '../../model/Ancestry';
 	import Box from '../../components/character/Box.svelte';
@@ -21,6 +22,8 @@
 	import Points from '../../components/character/Points.svelte';
 	import LoreInfoIcon from '../../components/LoreInfoIcon.svelte';
 
+	type Highlight = 'name' | 'patron' | 'ancestry' | 'background' | 'roll' | 'save';
+
 	const nullAbilities = (): Record<Ability, number> => ({
 		'ability:build': 0,
 		'ability:activity': 0,
@@ -35,6 +38,8 @@
 	let ancestry: Ancestry;
 	let rolled = false;
 
+	let highlight: Highlight = 'name';
+
 	$: ancestralAbilities = ancestry !== undefined ? Ancestry.get(ancestry).abilities : {};
 	$: backgroundAbilities = background !== undefined ? Background.get(background).abilities : {};
 
@@ -48,6 +53,7 @@
 		abilities['ability:presence'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:magic'] = kockaDobas(abilityRoll).osszeg;
 		rolled = true;
+		updateHighlight();
 	};
 
 	$: character =
@@ -63,74 +69,136 @@
 	);
 
 	$: calculatedCharacter = character ? calculateCharacter(character) : undefined;
+
+	$: updateHighlight = () => {
+		console.log('rolled', rolled);
+		if ((name?.trim() ?? '') === '') {
+			highlight = 'name';
+		} else if ((patron?.trim() ?? '') === '') {
+			highlight = 'patron';
+		} else if (!ancestry) {
+			highlight = 'ancestry';
+		} else if (!background) {
+			highlight = 'background';
+		} else if (!rolled) {
+			highlight = 'roll';
+		} else {
+			highlight = 'save';
+		}
+	};
 </script>
 
-<Box flavour="character-sheet">
-	<div slot="title" class="title">
-		<form
-			method="post"
-			action="?/saveCharacter"
-			use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-				formData.set(
-					'character',
-					JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
-				);
-			}}
-		>
-			<IconButton title="label:save" disabled={!name || !ancestry || !background || !rolled}>
-				<FaSave />
-			</IconButton>
-		</form>
-		{$_('label:create_character')}
-		<span />
-	</div>
+<Box flavour="character-sheet" title="label:create_character">
 	<div class="character-sheet">
 		<Box title="label:character" flavour="character">
-			<div class="character-box">
-				<label>
-					<div>{$_('label:name')}</div>
-					<input type="text" bind:value={name} />
-				</label>
-				<label>
-					<div>{$_('character:patron')}</div>
-					<input type="text" bind:value={patron} />
-				</label>
-				<label>
-					<div>{$_('character:ancestry')}</div>
-					<select bind:value={ancestry}>
-						{#each ancestryList as s}
-							<option value={s.name}>{$_(s.name)}</option>
-						{/each}
-					</select>
-				</label>
-				<label>
-					<div>{$_('character:background')}</div>
-					<select bind:value={background}>
-						{#each backgroundList as s}
-							<option value={s.name}>{$_(s.name)}</option>
-						{/each}
-					</select>
-				</label>
-			</div>
+			<table>
+				<tr>
+					<td><LoreInfoIcon id="character:name" /> {$_('label:name')}</td>
+					<td
+						><input
+							type="text"
+							bind:value={name}
+							class:highlighted={highlight === 'name'}
+							class:hl={true}
+							on:blur={updateHighlight}
+						/></td
+					>
+				</tr>
+				<tr>
+					<td><LoreInfoIcon id="character:patron" />{$_('character:patron')}</td>
+					<td
+						><input
+							type="text"
+							bind:value={patron}
+							class:highlighted={highlight === 'patron'}
+							class:hl={true}
+							on:blur={updateHighlight}
+						/>
+					</td>
+				</tr>
+				<tr>
+					<td><LoreInfoIcon id="character:ancestry" />{$_('character:ancestry')}</td>
+					<td>
+						<select
+							bind:value={ancestry}
+							class:highlighted={highlight === 'ancestry'}
+							class:hl={true}
+							on:change={updateHighlight}
+						>
+							<option disabled value={undefined}>{$_('label:select')}</option>
+							{#each ancestryList as s}
+								<option value={s.name}>{$_(s.name)}</option>
+							{/each}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><LoreInfoIcon id="character:background" />{$_('character:background')}</td>
+					<td>
+						<select
+							bind:value={background}
+							class:hl={true}
+							class:highlighted={highlight === 'background'}
+							on:change={updateHighlight}
+						>
+							<option disabled value={undefined}>{$_('label:select')}</option>
+							{#each backgroundList as s}
+								<option value={s.name}>{$_(s.name)}</option>
+							{/each}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="center">
+						<form
+							method="post"
+							action="?/saveCharacter"
+							use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+								formData.set(
+									'character',
+									JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
+								);
+							}}
+						>
+							<IconButton
+								title="label:save"
+								disabled={!name || !ancestry || !background || !rolled}
+								backgroundColor={highlight === 'save' ? 'lightgreen' : undefined}
+							>
+								<FaSave />
+								<svelte:fragment slot="text">{$_('label:save')}</svelte:fragment>
+							</IconButton>
+						</form>
+					</td>
+				</tr>
+			</table>
 		</Box>
 		<Box flavour="abilities">
 			<div slot="title" class="title">
-				<IconButton title="label:roll" on:click={roll}><GiRollingDices /></IconButton>
+				<IconButton
+					title="label:roll"
+					on:click={roll}
+					backgroundColor={highlight === 'roll' ? 'lightgreen' : undefined}
+					><GiRollingDices />
+					<svelte:fragment slot="text">{$_('label:roll')}</svelte:fragment>
+				</IconButton>
 				<span>{$_('character:abilities')}</span>
 				<LoreInfoIcon id="character:abilities" />
 			</div>
 			<Abilities bind:abilities modifiers={abilityModifiers} />
 		</Box>
-		<Box title="character:skills" flavour="skills">
+		<div class="lore">
 			{#if character}
-				<Skills skills={character.skills} abilities={character.abilities} />
+				<Box title="character:skills" flavour="skills">
+					<Skills skills={character.skills} abilities={character.abilities} />
+				</Box>
 			{/if}
-		</Box>
-		{#if character && calculatedCharacter}
-			<Box title="character:points" flavour="points">
-				<Points editable={false} bind:character {calculatedCharacter} />
-			</Box>
-		{/if}
+			{#if character && calculatedCharacter}
+				<Box title="character:points" flavour="points">
+					<Points editable={false} bind:character {calculatedCharacter} />
+				</Box>
+			{/if}
+		</div>
 	</div>
 	<div class="lore">
 		<div>
@@ -150,15 +218,12 @@
 	.lore {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	.lore > div {
 		flex-basis: 50%;
-	}
-
-	.character-box {
-		display: flex;
-		flex-direction: column;
 	}
 
 	.character-sheet {
@@ -175,5 +240,21 @@
 		border-radius: 0.2em;
 		padding-left: 1px;
 		padding-right: 1px;
+	}
+
+	.hl {
+		transition: background-color 0.5s ease-in-out;
+	}
+
+	.highlighted {
+		background-color: lightgreen;
+	}
+
+	option {
+		background-color: unset;
+	}
+
+	.center {
+		text-align: center;
 	}
 </style>

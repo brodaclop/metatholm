@@ -33,6 +33,7 @@
 		border-radius: 0.5rem;
 		margin-left: 1px;
 		margin-right: 1px;
+		transition: background-color 0.5s ease-in-out;
 	}
 
 	.plain {

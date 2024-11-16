@@ -91,7 +91,8 @@ type GenericLabels = 'label:name' |
     'label:scenario' |
     'label:references' |
     'label:player' |
-    'label:gain_ip'
+    'label:gain_ip' |
+    'label:select'
     ;
 
 export const Keys = [
@@ -275,6 +276,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:level': 'Level {level}',
     'label:player': 'Player',
     'label:gain_ip': 'Gain Ideal Point',
+    'label:select': 'Select...',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -599,6 +601,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:level': '{level} szintű',
     'label:player': 'Játékos',
     'label:gain_ip': 'Ideál növelése',
+    'label:select': 'Válassz...',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',
