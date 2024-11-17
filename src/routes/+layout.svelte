@@ -156,7 +156,7 @@
 				<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
 					<li><a href="/lore/main">{$_('label:lore')}</a></li>
 					{#if data.user}
-						<li class="nohover">
+						<li>
 							<CharacterSelector disabled={noActiveParty} characters={data.characters} />
 						</li>
 						<li class="divider">&nbsp;</li>
@@ -353,6 +353,7 @@
 		padding-left: 0.2em;
 		padding-right: 0.2em;
 		text-align: center;
+		transition: background-color 0.2s ease-in-out;
 	}
 
 	nav ul li a {

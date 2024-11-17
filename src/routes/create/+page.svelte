@@ -21,6 +21,7 @@
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 	import Points from '../../components/character/Points.svelte';
 	import LoreInfoIcon from '../../components/LoreInfoIcon.svelte';
+	import LoreLink from '../../components/lore/interactive/LoreLink.svelte';
 
 	type Highlight = 'name' | 'patron' | 'ancestry' | 'background' | 'roll' | 'skills' | 'save';
 
@@ -101,9 +102,25 @@
 		ancestry && background
 			? JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
 			: '';
+
+	let displayRole = false;
 </script>
 
 <Box flavour="character-sheet" title="label:create_character">
+	<div slot="title" class="title">
+		<span />
+		<span>{$_('label:create_character')}</span>
+		<LoreInfoIcon
+			id="world:concepts:character"
+			inline
+			on:click={() => (displayRole = !displayRole)}
+		/>
+	</div>
+	{#if displayRole}
+		<div>
+			<Lore id="world:concepts:character" />
+		</div>
+	{/if}
 	<div class="character-sheet">
 		<Box title="label:character" flavour="character">
 			<table>

@@ -2,9 +2,13 @@
 
 In this game player characters are all "vagabonds". The vagabond falls outside normal society in most countries, without rights but without obligations too. In a way player characters were born for adventuring. Although their physical and mental abilities ostensibly don't surpass other people's, their life force and their magic makes them stand out.
 
+## Patron
+
+Whether this is the reason or the result of being shunned by society, your character represents an otherworldy [patron](character:patron) who must be chosen when the character is created. You can then attempt to play your character according to the values of your chosen patron, and doing so will be rewarded by the Game Master by granting you [spirit animal](character:spirit_animals) followers.
+
 ## Abilities
 
-Every player character has 4 [(base) abilities](character:abilities). These are innate and (almost) never change throughout the chracter's life. Their value is between 0 and 10.
+Every player character has 4 [(base) abilities](character:abilities). These are innate and almost never change throughout the chracter's life. Their value is between 0 and 10.
 
 Unlike in many other similar games, the role of these abilities is fairly limited: their sole purpose is to indicate how easily or otherwise the character can learn certain skills. A further difference is that in certain cases lower ability scores are more advantageous than higher ones. Which skill relies on which ability and whether it has a positive or negative effect can be found out from the description of the individual abilities ([Build](ability:build), [Activity](ability:activity), [Presence](ability:presence), [Magic](ability:magic))
 

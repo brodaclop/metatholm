@@ -55,14 +55,18 @@
 	button {
 		border: none;
 		color: var(--link-c);
-		background-color: var(--header-background-c);
+		background-color: transparent;
 		font-size: 1rem;
 		padding: 0;
-		padding-left: 0.25em;
-		padding-right: 0.25em;
+		transition: background-color 0.2s ease-in-out;
 	}
 
-	button:hover {
+	.newCharacter > a {
+		transition: background-color 0.2s ease-in-out;
+	}
+
+	.newCharacter > a:hover,
+	.characterCard:hover {
 		background-color: var(--menu-item-hover-c);
 	}
 
@@ -111,6 +115,8 @@
 		text-align: left;
 		padding: 0.5em;
 		filter: drop-shadow(0.2em 0.2em 0.2em var(--box-shadow-c));
+		transition: background-color 0.2s ease-in-out;
+		border-radius: 0.5em;
 	}
 
 	.characterCard .secondLine {
@@ -138,11 +144,9 @@
 		button {
 			border: none;
 			color: var(--link-c);
-			background-color: var(--menu-item-background-c);
+			background-color: transparent;
 			font-size: 1rem;
 			padding: 0;
-			padding-left: 0.25em;
-			padding-right: 0.25em;
 		}
 
 		button:hover {

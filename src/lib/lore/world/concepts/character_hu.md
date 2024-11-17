@@ -2,6 +2,10 @@
 
 Ebben a játékban a játékos karakterek mind "csavargók". A csavargó szinte minden országban kívül esik a társadalmi renden, nincsenek jogai, de kötelezettségei sem. Ha úgy tetszik, a játékos karakterek kalandozásra születtek. Bár fizikai vagy mentális képességeik látszólag nem haladják meg más emberekét, mégis kiemelkednek közülük életerejük és mágiájuk folytán.
 
+## Patrónus
+
+Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a karaktered egy túlvilági [patrónust](character:patron) képvisel, akit a karakter megalkotásakor kell kiválasztani. Ezután igyekezhetsz a választott patrónusodnak tetsző módon játszani a karakteredet, amit a Mesélő [totemállat](character:spirit_animals) követőkkel jutalmaz majd.
+
 ## Tulajdonságok
 
 Minden játékos karakter 4 [(alap)tulajdonsággal](character:abilities) rendelkezik. Ezek veleszületett adottságok, amelyek a karakter élete során (szinte) soha nem változnak. Ezek értéke 0 és 10 között mozog.
