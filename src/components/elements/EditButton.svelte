@@ -3,4 +3,4 @@
 	import IconButton from './IconButton.svelte';
 </script>
 
-<IconButton title="label:edit" on:click><MdEdit /></IconButton>
+<IconButton title="label:edit" on:click verticalCorrection="-1px"><MdEdit /></IconButton>

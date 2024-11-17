@@ -84,6 +84,7 @@
 					<span
 						><IconButton
 							title="label:learn"
+							verticalCorrection="-1px"
 							backgroundColor={highlightSkillEditButton ? 'var(--highlight-c)' : undefined}
 							disabled={!editable}
 							on:click={() => (showModal = true)}><GiOpenBook /></IconButton

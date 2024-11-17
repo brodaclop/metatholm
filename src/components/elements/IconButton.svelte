@@ -58,6 +58,7 @@
 
 	.text {
 		display: inline-block;
+		padding-right: 1px;
 	}
 
 	button {

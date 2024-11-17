@@ -103,6 +103,7 @@
 		{#if editable}
 			<IconButton
 				withText
+				verticalCorrection="-1px"
 				title="label:new"
 				on:click={() => {
 					editedWeapon = 'new';

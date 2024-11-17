@@ -82,6 +82,7 @@
 			<IconButton
 				withText
 				title="label:new"
+				verticalCorrection="-1px"
 				on:click={() => {
 					editedArmour = 'new';
 				}}><GiSwordSmithing /></IconButton

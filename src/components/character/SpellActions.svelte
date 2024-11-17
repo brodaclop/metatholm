@@ -46,6 +46,8 @@
 			{#each FOCUS_SKILLS as focus}
 				<IconButton
 					title={focus}
+					withText
+					verticalCorrection="-1px"
 					backgroundColor={color(focus)}
 					on:click={() => {
 						if (allowedFoci.has(focus)) {
@@ -61,9 +63,6 @@
 					}}
 				>
 					<SkillIcon skill={focus} />
-					<span slot="text">
-						{$_(focus)}
-					</span>
 				</IconButton>
 			{/each}
 		</span>
