@@ -39,9 +39,7 @@
 					<form method="POST" action="?/setRole" use:enhance>
 						<input type="hidden" name="userId" value={user.id} />
 						<input type="hidden" name="role" value={targetIsAdmin ? 'player' : 'admin'} />
-						<IconButton title={`label:parties:${targetIsAdmin ? 'demote' : 'promote'}`}
-							><span slot="text">{$_(`label:parties:${targetIsAdmin ? 'demote' : 'promote'}`)}</span
-							>
+						<IconButton title={`label:parties:${targetIsAdmin ? 'demote' : 'promote'}`} withText>
 							{#if targetIsAdmin}<MdArrowDownward />{:else}<MdArrowUpward />{/if}
 						</IconButton>
 					</form>
@@ -53,9 +51,8 @@
 
 						<IconButton
 							title={`label:parties:${targetIsCurrentUser ? 'leave' : 'kickout'}`}
+							withText
 							color="var(--delete-icon-c)"
-							><span slot="text"
-								>{$_(`label:parties:${targetIsCurrentUser ? 'leave' : 'kickout'}`)}</span
 							><MdExitToApp />
 						</IconButton>
 					</form>
@@ -64,8 +61,7 @@
 		{/each}
 	</ul>
 	<form method="POST" action="?/regenerateInvite" use:enhance>
-		<IconButton title={'label:parties:new_invite'}>
-			<span slot="text">{$_('label:parties:new_invite')}</span>
+		<IconButton title={'label:parties:new_invite'} withText>
 			<GiRollingDices />
 		</IconButton>
 	</form>

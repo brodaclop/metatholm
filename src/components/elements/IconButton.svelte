@@ -6,6 +6,8 @@
 	export let backgroundColor: string | undefined = undefined;
 	export let disabled: boolean | undefined = undefined;
 	export let plain: boolean = false;
+	export let withText = false;
+	export let verticalCorrection: string | undefined = undefined;
 </script>
 
 <button
@@ -15,16 +17,21 @@
 	style:color
 	style:background-color={backgroundColor}
 	style:border-color={backgroundColor}
-	style:border-radius={!$$slots.text ? '50%' : undefined}
+	style:border-radius={!$$slots.text && !withText ? '50%' : undefined}
 	class:plain
 >
 	{#if $$slots.default}
-		<span class="icon">
+		<span
+			class="icon"
+			style:transform={verticalCorrection ? `translateY(${verticalCorrection})` : undefined}
+		>
 			<slot />
 		</span>
 	{/if}
 	{#if $$slots.text}
 		<span class="text"><slot name="text" /></span>
+	{:else if withText}
+		<span class="text">{$_(title)}</span>
 	{/if}
 </button>
 
@@ -44,8 +51,9 @@
 
 	.icon {
 		display: inline-block;
-		vertical-align: middle;
+		vertical-align: sub;
 		width: 1em;
+		height: 1em;
 	}
 
 	.text {

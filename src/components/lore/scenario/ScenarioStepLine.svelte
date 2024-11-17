@@ -15,8 +15,6 @@
 				? step.next.options
 				: { [$_('label:next')]: step.next }
 			: {};
-
-	//TODO: action lore for cast/cast-slow/cast-whatever
 </script>
 
 <div>

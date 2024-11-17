@@ -425,9 +425,9 @@ export const Labels_en: Record<Labels, string> = {
     'spell_target:other': 'other',
 
     'tableplop:roll': 'roll',
-    'tableplop:synchronise': 'Synchronise with Tableplop character',
+    'tableplop:synchronise': 'Synchronise with Tableplop',
     'tableplop:export': 'Export to Tableplop',
-    'tableplop:unsynchronise': 'Remove Tableplop character synchronisation',
+    'tableplop:unsynchronise': 'Remove Tableplop synchronisation',
 
 
     'weapon:speed': 'Speed',
@@ -739,9 +739,9 @@ export const Labels_hu: Record<Labels, string> = {
     'spell_target:other': 'egyéb',
 
     'tableplop:roll': 'dobás',
-    'tableplop:synchronise': 'Tableplop karakter szinkronizálása',
+    'tableplop:synchronise': 'Tableplop szinkronizálása',
     'tableplop:export': 'Exportálás Tableplopra',
-    'tableplop:unsynchronise': 'Tableplop karakter szinkronizálás megszüntetése',
+    'tableplop:unsynchronise': 'Tableplop szinkronizálás törlése',
 
     'weapon:speed': 'Gyorsaság',
     'weapon:speed:abbr': 'Gyors.',

@@ -18,6 +18,7 @@
 
 <IconButton
 	title={$_(title)}
+	withText
 	{disabled}
 	on:click={() => {
 		const input = document.createElement('input');

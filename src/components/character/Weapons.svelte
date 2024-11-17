@@ -102,6 +102,7 @@
 	<caption>
 		{#if editable}
 			<IconButton
+				withText
 				title="label:new"
 				on:click={() => {
 					editedWeapon = 'new';
@@ -135,6 +136,7 @@
 	caption {
 		caption-side: bottom;
 		text-align: center;
+		padding-top: 0.5em;
 	}
 
 	table {

@@ -12,7 +12,7 @@
 	export let disabled: boolean = false;
 </script>
 
-<IconButton title="label:previous_versions" disabled={disabled || archives.length === 0}>
+<IconButton title="label:previous_versions" disabled={disabled || archives.length === 0} withText>
 	<MdHistory />
 	{#if !(disabled || archives.length === 0)}
 		<Popover

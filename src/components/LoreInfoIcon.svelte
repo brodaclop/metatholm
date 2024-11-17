@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Popover } from 'svelte-smooth-popover';
 	import GiInfo from 'svelte-icons/gi/GiInfo.svelte';
+	import FaInfo from 'svelte-icons/fa/FaInfo.svelte';
 	import Lore from './lore/Lore.svelte';
 	import { hasLore } from '../model/Lore';
 	import { locale } from 'svelte-i18n';
@@ -15,12 +16,12 @@
 
 {#if hasLore(id, $locale)}
 	{#if inline}
-		<IconButton title={id} on:click>
-			<GiInfo />
+		<IconButton title={id} verticalCorrection="-1px" on:click>
+			<FaInfo />
 		</IconButton>
 	{:else}
-		<IconButton title={id}>
-			<GiInfo />
+		<IconButton title={id} verticalCorrection="-1px">
+			<FaInfo />
 			<Popover
 				open={false}
 				showOnClick={true}

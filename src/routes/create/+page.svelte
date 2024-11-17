@@ -4,7 +4,8 @@
 	import {
 		createCharacter,
 		type CharacterTemplate,
-		calculateCharacter
+		calculateCharacter,
+		type Character
 	} from '../../model/Karakter';
 	import { Ancestry } from '../../model/Ancestry';
 	import Box from '../../components/character/Box.svelte';
@@ -21,7 +22,7 @@
 	import Points from '../../components/character/Points.svelte';
 	import LoreInfoIcon from '../../components/LoreInfoIcon.svelte';
 
-	type Highlight = 'name' | 'patron' | 'ancestry' | 'background' | 'roll' | 'save';
+	type Highlight = 'name' | 'patron' | 'ancestry' | 'background' | 'roll' | 'skills' | 'save';
 
 	const nullAbilities = (): Record<Ability, number> => ({
 		'ability:build': 0,
@@ -30,35 +31,44 @@
 		'ability:magic': 0
 	});
 
-	let name: string;
-	let patron: string;
+	let name: string = '';
+	let patron: string = '';
 	let abilities: CharacterTemplate['abilities'] = nullAbilities();
-	let background: Background;
-	let ancestry: Ancestry;
+	let background: Background | undefined = undefined;
+	let ancestry: Ancestry | undefined = undefined;
 	let rolled = false;
 
 	let highlight: Highlight = 'name';
 
 	$: ancestralAbilities = ancestry !== undefined ? Ancestry.get(ancestry).abilities : {};
 	$: backgroundAbilities = background !== undefined ? Background.get(background).abilities : {};
+	$: if ((character?.current.kp ?? 30) < 30) {
+		updateHighlight();
+	}
 
 	const ancestryList = Ancestry.list();
 	const backgroundList = Background.list();
+	const abilityRoll = parseKocka('1d5+2');
+
+	let character: Character | undefined;
+
+	const rerollCharacter = () => {
+		character =
+			ancestry && background
+				? createCharacter({ name, patron, ancestry, background, abilities })
+				: undefined;
+		console.log('skills', character?.skills);
+		updateHighlight();
+	};
 
 	const roll = () => {
-		const abilityRoll = parseKocka('1d5+2');
 		abilities['ability:build'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:activity'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:presence'] = kockaDobas(abilityRoll).osszeg;
 		abilities['ability:magic'] = kockaDobas(abilityRoll).osszeg;
 		rolled = true;
-		updateHighlight();
+		rerollCharacter();
 	};
-
-	$: character =
-		ancestry && background
-			? createCharacter({ name, patron, ancestry, background, abilities })
-			: undefined;
 
 	$: abilityModifiers = Object.fromEntries(
 		entries(nullAbilities()).map(([a, n]) => [
@@ -69,8 +79,7 @@
 
 	$: calculatedCharacter = character ? calculateCharacter(character) : undefined;
 
-	$: updateHighlight = () => {
-		console.log('rolled', rolled);
+	const updateHighlight = () => {
 		if ((name?.trim() ?? '') === '') {
 			highlight = 'name';
 		} else if ((patron?.trim() ?? '') === '') {
@@ -81,10 +90,17 @@
 			highlight = 'background';
 		} else if (!rolled) {
 			highlight = 'roll';
+		} else if (character?.current.kp === 30) {
+			highlight = 'skills';
 		} else {
 			highlight = 'save';
 		}
 	};
+
+	$: createCharacterJSON = () =>
+		ancestry && background
+			? JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
+			: '';
 </script>
 
 <Box flavour="character-sheet" title="label:create_character">
@@ -122,7 +138,7 @@
 							bind:value={ancestry}
 							class:highlighted={highlight === 'ancestry'}
 							class:hl={true}
-							on:change={updateHighlight}
+							on:change={rerollCharacter}
 						>
 							<option disabled value={undefined}>{$_('label:select')}</option>
 							{#each ancestryList as s}
@@ -138,7 +154,7 @@
 							bind:value={background}
 							class:hl={true}
 							class:highlighted={highlight === 'background'}
-							on:change={updateHighlight}
+							on:change={rerollCharacter}
 						>
 							<option disabled value={undefined}>{$_('label:select')}</option>
 							{#each backgroundList as s}
@@ -153,19 +169,16 @@
 							method="post"
 							action="?/saveCharacter"
 							use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-								formData.set(
-									'character',
-									JSON.stringify(createCharacter({ name, ancestry, background, patron, abilities }))
-								);
+								formData.set('character', createCharacterJSON());
 							}}
 						>
 							<IconButton
 								title="label:save"
 								disabled={!name || !ancestry || !background || !rolled}
-								backgroundColor={highlight === 'save' ? 'lightgreen' : undefined}
+								withText
+								backgroundColor={highlight === 'save' ? 'var(--highlight-c)' : undefined}
 							>
 								<FaSave />
-								<svelte:fragment slot="text">{$_('label:save')}</svelte:fragment>
 							</IconButton>
 						</form>
 					</td>
@@ -176,10 +189,10 @@
 			<div slot="title" class="title">
 				<IconButton
 					title="label:roll"
+					withText
 					on:click={roll}
-					backgroundColor={highlight === 'roll' ? 'lightgreen' : undefined}
+					backgroundColor={highlight === 'roll' ? 'var(--highlight-c)' : undefined}
 					><GiRollingDices />
-					<svelte:fragment slot="text">{$_('label:roll')}</svelte:fragment>
 				</IconButton>
 				<span>{$_('character:abilities')}</span>
 				<LoreInfoIcon id="character:abilities" />
@@ -194,7 +207,12 @@
 			{/if}
 			{#if character && calculatedCharacter}
 				<Box title="character:points" flavour="points">
-					<Points editable={false} bind:character {calculatedCharacter} />
+					<Points
+						editable={true}
+						bind:character
+						{calculatedCharacter}
+						highlightSkillEditButton={highlight === 'skills'}
+					/>
 				</Box>
 			{/if}
 		</div>
@@ -246,7 +264,7 @@
 	}
 
 	.highlighted {
-		background-color: lightgreen;
+		background-color: var(--highlight-c);
 	}
 
 	option {

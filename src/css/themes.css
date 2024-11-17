@@ -83,6 +83,7 @@ html.light {
     --striped-table-odd-c: whitesmoke;
     --table-head-background-c: aliceblue;
     --delete-icon-c: darkred;
+    --highlight-c: lightgreen;
 
     --font-weight: 400;
     --font-weight-bold: 700;
@@ -167,8 +168,8 @@ html.dark {
     --striped-table-even-c: var(--default-box);
     --striped-table-odd-c: #1c1c1c;
     --table-head-background-c: saddlebrown;
-
     --delete-icon-c: orangered;
+    --highlight-c: mediumseagreen;
 
     --font-weight: 350;
     --font-weight-bold: 500;
@@ -256,6 +257,7 @@ html.dark {
         --striped-table-odd-c: #1c1c1c;
         --table-head-background-c: saddlebrown;
         --delete-icon-c: orangered;
+        --highlight-c: darkolivegreen;
 
         --font-weight: 350;
         --font-weight-bold: 500;

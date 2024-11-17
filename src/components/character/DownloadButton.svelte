@@ -10,6 +10,7 @@
 
 <IconButton
 	{disabled}
+	withText
 	title={$_(title)}
 	on:click={() => {
 		const a = document.createElement('a');

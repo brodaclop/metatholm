@@ -217,7 +217,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
     return levelUpCharacter({
         name: template.name,
         id: v4(),
-        skills: backgroundInfo.skills,
+        skills: { ...backgroundInfo.skills },
         background: template.background,
         ancestry: template.ancestry,
         abilities,

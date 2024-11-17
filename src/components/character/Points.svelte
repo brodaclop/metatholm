@@ -12,6 +12,8 @@
 	export let calculatedCharacter: CalculatedCharacter;
 	export let editable = true;
 
+	export let highlightSkillEditButton = false;
+
 	let showModal = false;
 </script>
 
@@ -82,6 +84,7 @@
 					<span
 						><IconButton
 							title="label:learn"
+							backgroundColor={highlightSkillEditButton ? 'var(--highlight-c)' : undefined}
 							disabled={!editable}
 							on:click={() => (showModal = true)}><GiOpenBook /></IconButton
 						></span

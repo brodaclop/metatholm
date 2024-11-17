@@ -97,8 +97,13 @@
 
 <Box flavour="character-sheet">
 	<div slot="title" class="title" class:changed>
-		<span>
-			<IconButton title="label:save" disabled={!changed || saving || !editable} on:click={save}>
+		<span style:text-align="left">
+			<IconButton
+				title="label:save"
+				disabled={!changed || saving || !editable}
+				on:click={save}
+				withText
+			>
 				{#if saving}
 					<FaSpinner />
 				{:else}
@@ -107,6 +112,7 @@
 			</IconButton>
 			<IconButton
 				title="label:revert_to_saved"
+				withText
 				color={changed || saving ? 'var(--delete-icon-c)' : undefined}
 				disabled={!changed || saving || !editable}
 				on:click={() => (character = JSON.parse(JSON.stringify(initialCharacter)))}
@@ -134,6 +140,7 @@
 				</UploadButton>
 			{:else}
 				<IconButton
+					withText
 					title="tableplop:unsynchronise"
 					disabled={!editable}
 					on:click={() => {
@@ -152,17 +159,18 @@
 				<MdSync />
 			</DownloadButton>
 		</span>
-		{$_('label:character')}: {character.name}
-		<span>
+		<span style:text-align="center">{$_('label:character')}: {character.name}</span>
+		<span style:text-align="right">
 			{#if editable}
 				<IconButton
 					title="Admin"
+					withText
 					on:click={() => (admin = !admin)}
 					color={admin ? 'var(--delete-icon-c)' : undefined}
 				>
 					<MdSettings />
 				</IconButton>
-				<DeleteButton on:click={() => (deleting = true)} />
+				<DeleteButton withText on:click={() => (deleting = true)} />
 				{#if deleting}
 					<Popover
 						open={true}
@@ -309,6 +317,12 @@
 		border-radius: 0.2em;
 		padding-left: 1px;
 		padding-right: 1px;
+	}
+
+	div.title > span {
+		flex-basis: 33%;
+		flex-grow: 0;
+		flex-shrink: 0;
 	}
 
 	div.changed {

@@ -80,6 +80,7 @@
 	<caption>
 		{#if editable}
 			<IconButton
+				withText
 				title="label:new"
 				on:click={() => {
 					editedArmour = 'new';
@@ -106,6 +107,7 @@
 	caption {
 		caption-side: bottom;
 		text-align: center;
+		padding-top: 0.5em;
 	}
 
 	td.ellipsis {

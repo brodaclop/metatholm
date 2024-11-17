@@ -34,6 +34,7 @@
 				>{character.levels.length}
 				<IconButton
 					disabled={!editable}
+					withText
 					title={'label:levelup'}
 					on:click={() => (levellingUp = true)}><MdAdd /></IconButton
 				>
@@ -54,6 +55,7 @@
 			<td
 				>{character.ip}
 				<IconButton
+					withText
 					disabled={!editable}
 					title={'label:gain_ip'}
 					on:click={() => (character.ip = character.ip + 1)}><MdAdd /></IconButton
