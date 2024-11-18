@@ -284,6 +284,10 @@
 		background-color: var(--highlight-c);
 	}
 
+	select.highlighted:focus {
+		background-color: var(--background-c);
+	}
+
 	option {
 		background-color: unset;
 	}
