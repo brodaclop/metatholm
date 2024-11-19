@@ -12,8 +12,8 @@ For the strength required for natural fires see the table below:
 | Campfire | 2 |
 | Small bonfire | 3 |
 | Fire beacon | 4 |
-| Blacksmith's force/burning house | 5 |
+| Blacksmith's forge/burning house | 5 |
 
 The strength can of course be split between multiple targets, making it possible to extinguish several smaller fires at once.
 
-Once the spellcaster points at the target(s), the flames die down almost instantly and if there's anything feeding the fire, it will also cool down enough so that the fire won't reignite by a strong breeze.
+Once the spellcaster points at the target(s), the flames die down almost instantly and if there's anything feeding the fire, it will also cool down enough so that the fire won't be reignited by a strong breeze.

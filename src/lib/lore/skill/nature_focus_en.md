@@ -6,7 +6,7 @@
 
 ## Active
 
-The character concentrates for 1 round on an animal they are touching, after which they can ask the animal to carry out a task, which the animal will try to perform to the best of their abilities. The maximum duration of the task is determined by the result of a skill checkÉ
+The character concentrates for 1 round on an animal they are touching, after which they can ask the animal to carry out a task, which the animal will try to perform to the best of their abilities. The maximum duration of the task is determined by the result of a skill check:
 
 | Roll | Maximum duration |
 | :-    | :- |

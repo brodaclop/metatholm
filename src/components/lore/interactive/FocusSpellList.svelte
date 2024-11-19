@@ -3,6 +3,7 @@
 	import type { Skill } from '../../../model/Skills';
 	import { Spell } from '../../../model/Spell';
 	import { sort } from '../../../model/InfoList';
+	import LoreLink from './LoreLink.svelte';
 
 	export let id: Skill;
 
@@ -30,7 +31,7 @@
 						{#if idx === 0}
 							<th rowspan={levelSpells.length}>{i18n('expr:skill_level')}: {level}</th>
 						{/if}
-						<td>{i18n(spell.name)}</td>
+						<td><LoreLink target={spell.name} /></td>
 						<td>{spell.speed}</td>
 						<td>{i18n(spell.target)}</td>
 						<td>{i18n(spell.duration)}</td>
@@ -40,3 +41,11 @@
 		{/each}
 	</tbody>
 </table>
+
+<style>
+	tr.first {
+		border-top-style: groove;
+		border-top-width: 2px;
+		border-top-color: var(--box-border-c);
+	}
+</style>

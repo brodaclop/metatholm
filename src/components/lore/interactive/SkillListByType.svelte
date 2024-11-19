@@ -91,6 +91,12 @@
 </table>
 
 <style>
+	tr.first {
+		border-top-style: groove;
+		border-top-width: 2px;
+		border-top-color: var(--box-border-c);
+	}
+
 	ul {
 		margin: 0;
 		padding: 0;

@@ -12,7 +12,7 @@ Természetes tűzeknél az alábbi táblázatot lehet alkalmazni:
 | Tábortűz | 2 |
 | Kisebb máglya | 3 |
 | Jelzőtűz | 4 |
-| Kovácskemence/Égő ház | 5 |
+| Kovácstűzhely/Égő ház | 5 |
 
 Természetesen az erősség meg is osztható több célpont között, így több kisebb tüzet is ki lehet egyszerre oltani.
 
