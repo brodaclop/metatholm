@@ -12,6 +12,7 @@
 	export let name: string | undefined = undefined;
 	export let subName: string = '';
 	export let max: number;
+	export let min: number = 0;
 	export let editable: boolean = false;
 	export let inlineLore: boolean = false;
 	export let canPlus = true;
@@ -21,7 +22,7 @@
 		value = Math.min(max, value + 1);
 	};
 	export let minus: () => void = () => {
-		value = Math.max(0, value - 1);
+		value = Math.max(min, value - 1);
 	};
 	export let loreParams: Record<string, unknown> = {};
 

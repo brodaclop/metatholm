@@ -52,7 +52,7 @@ html.light {
     /* Lore */
     --lore-img-border-c: aqua;
     --lore-dice-c: bisque;
-    --lore-active-cells-c: lavender;
+    --lore-active-cells-c: burlywood;
     --lore-skill-rolls-header-c: aliceblue;
     --lore-skill-rolls-cells-c: antiquewhite;
     --lore-references-background-c: antiquewhite;
@@ -139,7 +139,7 @@ html.dark {
     /* Lore */
     --lore-img-border-c: aqua;
     --lore-dice-c: saddlebrown;
-    --lore-active-cells-c: #440044;
+    --lore-active-cells-c: burlywood;
     --lore-skill-rolls-header-c: black;
     --lore-skill-rolls-cells-c: #1c1c1c;
     --lore-references-background-c: #1c1c1c;
@@ -227,7 +227,7 @@ html.dark {
         /* Lore */
         --lore-img-border-c: aqua;
         --lore-dice-c: saddlebrown;
-        --lore-active-cells-c: #440044;
+        --lore-active-cells-c: burlywood;
         --lore-skill-rolls-header-c: black;
         --lore-skill-rolls-cells-c: #1c1c1c;
         --lore-references-background-c: #1c1c1c;

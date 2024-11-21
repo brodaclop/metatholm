@@ -39,6 +39,7 @@
 			bind:value={skill}
 			subName={String(skill)}
 			max={10}
+			canMinus={spellCheck > 1}
 			editable={!spell || !skills}
 		/>
 		<Circles
@@ -46,6 +47,7 @@
 			bind:value={level}
 			subName={String(level)}
 			max={10}
+			canPlus={spellCheck > 1}
 			editable={!spell}
 		/>
 	</tbody>

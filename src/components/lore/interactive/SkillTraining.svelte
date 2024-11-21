@@ -108,23 +108,27 @@
 		{/if}
 		<tr>
 			<th><LoreInfoIcon />{$_('expr:skill_level')}</th>
-			<td colspan={3}>
-				<div class="point-container">
-					{#each Array(10) as _, skillLevel (skillLevel)}
-						<span class="header" class:active={skillLevel === level}>{skillLevel}</span>
-					{/each}
-				</div>
+			<td colspan={3} rowspan={2}>
+				<table class="standard">
+					<thead>
+						<tr>
+							{#each Array(10) as _, skillLevel (skillLevel)}
+								<th class:active={skillLevel === level}>{skillLevel}</th>
+							{/each}
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							{#each kpNeeded as kp, skillLevel}
+								<td class:active={skillLevel === level}>{kp.result}</td>
+							{/each}
+						</tr>
+					</tbody>
+				</table>
 			</td>
 		</tr>
 		<tr>
 			<th><LoreInfoIcon />{$_('character:kp')}</th>
-			<td colspan={3}>
-				<div class="point-container">
-					{#each kpNeeded as kp, skillLevel}
-						<span class:active={skillLevel === level}>{kp.result}</span>
-					{/each}
-				</div>
-			</td>
 		</tr>
 	</tbody>
 </table>
@@ -134,34 +138,11 @@
 		border-collapse: collapse;
 	}
 
-	.point-container {
-		display: flex;
-		flex-wrap: nowrap;
-	}
-
-	.point-container span {
-		flex-basis: 10%;
-		padding-right: 0.2rem;
-		padding-left: 0.1rem;
-	}
-
-	span.header {
-		font-weight: var(--font-weight-bold);
-	}
-
-	.point-container span:nth-child(even) {
-		background-color: var(--striped-table-even-c);
-	}
-
-	.point-container span:nth-child(odd) {
-		background-color: var(--striped-table-odd-c);
-	}
-
 	th {
 		padding-right: 0.75em;
 	}
 
-	span.active {
-		background-color: var(--lore-active-cells-c) !important;
+	.active {
+		background-color: var(--lore-active-cells-c);
 	}
 </style>
