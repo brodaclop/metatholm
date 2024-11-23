@@ -25,7 +25,6 @@
 		} else {
 			character.inventory.weapons[idx] = weapon;
 		}
-		editedWeapon = undefined;
 	};
 
 	const remove = (weapon: Weapon) => {

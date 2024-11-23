@@ -96,7 +96,7 @@
 	</table>
 </div>
 
-<SkillEditor bind:character bind:showModal />
+<SkillEditor bind:character bind:showModal close={() => (showModal = false)} />
 
 <style>
 	table {

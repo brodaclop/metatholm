@@ -6,11 +6,9 @@
 	import { Spirit } from '../../model/Spirits';
 	import type { Character, SpiritManifestationRecord } from '../../model/Karakter';
 	import { entries, group } from '../../model/InfoList';
+	import DialogBox from '../elements/DialogBox.svelte';
 
 	const dispatch = createEventDispatcher();
-	let dialog: HTMLDialogElement; // HTMLDialogElement
-
-	$: if (dialog && showModal) dialog.showModal();
 
 	export let character: Character;
 
@@ -58,85 +56,33 @@
 
 	const submit = () => {
 		dispatch('submit', { manifestationIndex, editedManifestation });
-		dialog.close();
+		close();
 	};
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<dialog
-	bind:this={dialog}
-	on:close={() => {
-		showModal = false;
-		close();
-	}}
-	on:click|self={() => dialog.close()}
-	on:keypress={(e) => {
-		if (e.key === 'Escape') {
-			dialog.close();
-		}
-	}}
->
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div class="content" on:click|stopPropagation>
-		<Box title="character:spirit_animals" flavour="inventory">
-			<select bind:value={editedManifestation.name} disabled={manifestationIndex !== -1}>
-				<option disabled value="">Select</option>
-				{#each Spirit.list() as spirit}
-					<option value={spirit.name}>{$_(spirit.name)}</option>
-				{/each}
-			</select>
-			<ul>
-				{#each manifestationOptions as { value, description }}
-					<li>
-						<span><strong>{$_(value)}</strong>: {$_(description)}</span>
-						<input type="radio" {value} bind:group={editedManifestation.manifestation} />
-					</li>
-				{/each}
-			</ul>
+<DialogBox title="character:spirit_animals" flavour="inventory" {close} {showModal}>
+	<select bind:value={editedManifestation.name} disabled={manifestationIndex !== -1}>
+		<option disabled value="">Select</option>
+		{#each Spirit.list() as spirit}
+			<option value={spirit.name}>{$_(spirit.name)}</option>
+		{/each}
+	</select>
+	<ul>
+		{#each manifestationOptions as { value, description }}
+			<li>
+				<span><strong>{$_(value)}</strong>: {$_(description)}</span>
+				<input type="radio" {value} bind:group={editedManifestation.manifestation} />
+			</li>
+		{/each}
+	</ul>
 
-			<button
-				disabled={!editedManifestation.name || !editedManifestation.manifestation}
-				on:click={submit}>OK</button
-			>
-		</Box>
-	</div>
-</dialog>
+	<button
+		disabled={!editedManifestation.name || !editedManifestation.manifestation}
+		on:click={submit}>OK</button
+	>
+</DialogBox>
 
 <style>
-	dialog {
-		max-width: 32em;
-		border-radius: 0.2em;
-		border: none;
-		padding: 0;
-		background: transparent;
-	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
-	}
-	dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-	}
-	@keyframes zoom {
-		from {
-			transform: scale(0.95);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-	dialog[open]::backdrop {
-		animation: fade 0.2s ease-out;
-	}
-	@keyframes fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
 	ul {
 		list-style-type: none;
 		margin: 0;

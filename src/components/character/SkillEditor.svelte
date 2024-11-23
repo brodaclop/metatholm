@@ -7,12 +7,10 @@
 	import { Skill, type SkillInfo } from '../../model/Skills';
 	import CircleGroup from '../elements/CircleGroup.svelte';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
-	import Box from '../elements/Box.svelte';
+	import DialogBox from '../elements/DialogBox.svelte';
+
 	export let showModal: boolean; // boolean
-
-	let dialog: HTMLDialogElement; // HTMLDialogElement
-
-	$: if (dialog && showModal) dialog.showModal();
+	export let close: () => void;
 	export let character: Character;
 	export let admin = false;
 
@@ -90,7 +88,7 @@
 			}
 		});
 		character.current.kp = remainingKp;
-		dialog.close();
+		close();
 	};
 
 	$: kpNeeded = Object.fromEntries(
@@ -113,71 +111,53 @@
 	);
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<dialog
-	bind:this={dialog}
-	on:close={() => (showModal = false)}
-	on:click|self={() => dialog.close()}
-	on:keypress={(e) => {
-		if (e.key === 'Escape') {
-			dialog.close();
-		}
-	}}
->
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div class="content" on:click|stopPropagation>
-		<Box title="character:skills" flavour="skills">
-			<div class="buttonbar">
-				{#each keys(group(Skill.list(), (s) => s.type)) as type}
-					<button on:click={() => document.getElementById(type)?.scrollIntoView()}
-						>{$_(type)}</button
-					>
-				{/each}
-			</div>
-			<div class="type-container">
-				{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
-					<div class="type-list" id={type}>
-						<h3>{$_(type)}</h3>
-						{#each entries(group( skillList, (s) => String(s.difficulty) )) as [difficulty, skillList2]}
-							<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
-							<div class="skill-group">
-								<CircleGroup
-									rows={skillList2.map((s) => ({
-										name: s.name,
-										subName:
-											s.ability === 'skill_type:general'
-												? 'skill_type:general'
-												: (s.positive ? '+' : '-') + abilityLabels[s.ability]
-									}))}
-									values={character.skills}
-									newValues={sums}
-									inlineLore
-									max={10}
-									canPlus={(key) => kpNeeded[key].result <= remainingKp}
-									canMinus={(key) => (changes[key] ?? 0) > 0}
-									editable
-									{plus}
-									{minus}
-								>
-									<span slot="extra" let:key>
-										{#if !admin}
-											<ExpressionTooltip expr={kpNeeded[key]} />
-										{/if}
-									</span>
-								</CircleGroup>
-							</div>
-						{/each}
+<DialogBox {close} {showModal} title="character:skills" flavour="skills">
+	<div class="buttonbar">
+		{#each keys(group(Skill.list(), (s) => s.type)) as type}
+			<button on:click={() => document.getElementById(type)?.scrollIntoView()}>{$_(type)}</button>
+		{/each}
+	</div>
+	<div class="type-container">
+		{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
+			<div class="type-list" id={type}>
+				<h3>{$_(type)}</h3>
+				{#each entries(group(skillList, (s) => String(s.difficulty))) as [difficulty, skillList2]}
+					<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
+					<div class="skill-group">
+						<CircleGroup
+							rows={skillList2.map((s) => ({
+								name: s.name,
+								subName:
+									s.ability === 'skill_type:general'
+										? 'skill_type:general'
+										: (s.positive ? '+' : '-') + abilityLabels[s.ability]
+							}))}
+							values={character.skills}
+							newValues={sums}
+							inlineLore
+							max={10}
+							canPlus={(key) => kpNeeded[key].result <= remainingKp}
+							canMinus={(key) => (changes[key] ?? 0) > 0}
+							editable
+							{plus}
+							{minus}
+						>
+							<span slot="extra" let:key>
+								{#if !admin}
+									<ExpressionTooltip expr={kpNeeded[key]} />
+								{/if}
+							</span>
+						</CircleGroup>
 					</div>
 				{/each}
 			</div>
-			<div class="footer">
-				<span>{$_('character:kp')}: {remainingKp}</span>
-				<button on:click={submit}>OK</button>
-			</div>
-		</Box>
+		{/each}
 	</div>
-</dialog>
+	<div class="footer">
+		<span>{$_('character:kp')}: {remainingKp}</span>
+		<button on:click={submit}>OK</button>
+	</div>
+</DialogBox>
 
 <style>
 	.footer {
@@ -185,41 +165,8 @@
 		justify-content: space-between;
 	}
 
-	dialog {
-		max-width: fit-content;
-		border-radius: 0.2em;
-		border: none;
-		padding: 0;
-		background: transparent;
-	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
-	}
-	dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-	}
-	@keyframes zoom {
-		from {
-			transform: scale(0.95);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-	dialog[open]::backdrop {
-		animation: fade 0.2s ease-out;
-	}
-	@keyframes fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
 	.type-container {
-		height: 70vh;
+		height: 50vh;
 		overflow-y: scroll;
 	}
 

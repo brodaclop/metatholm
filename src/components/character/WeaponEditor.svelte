@@ -64,6 +64,7 @@
 
 	const submit = () => {
 		dispatch('submit', editedWeapon);
+		close();
 	};
 
 	$: console.log('WEAPON POWER', editedWeapon.name, calculateWeaponPower(editedWeapon));
