@@ -1,14 +1,9 @@
 <script lang="ts">
-	import { _, unwrapFunctionStore } from 'svelte-i18n';
-	import Box from './Box.svelte';
-	import type { Weapon } from '../../model/Weapon';
+	import { _ } from 'svelte-i18n';
+	import Box from '../elements/Box.svelte';
 	import { v4 } from 'uuid';
-	import { Skill } from '../../model/Skills';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_LIST } from '../../model/WeaponList';
-	import { entries } from '../../model/InfoList';
-	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
 	import type { Armour } from '../../model/Armour';
 	import { ARMOUR_LIST } from '../../model/ArmourList';
 

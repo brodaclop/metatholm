@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { Scenario, ScenarioStep } from '../../../model/scenario/Scenario';
-	import Box from '../../character/Box.svelte';
+	import Box from '../../elements/Box.svelte';
 	import MarkdownText from '../renderers/MarkdownText.svelte';
 	import ScenarioStepLine from './ScenarioStepLine.svelte';
 

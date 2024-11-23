@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _, addMessages } from 'svelte-i18n';
 	import { kockaDobas, parseKocka } from '../../../logic/Kocka';
-	import Box from '../../character/Box.svelte';
+	import Box from '../../elements/Box.svelte';
 
 	addMessages('en', {
 		'check_difficulty:5': 'Easy',

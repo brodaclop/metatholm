@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import { levelUpCharacter, type Character } from '../../model/Karakter';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import IconButton from '../elements/IconButton.svelte';

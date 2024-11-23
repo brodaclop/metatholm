@@ -2,12 +2,12 @@
 	import { _ } from 'svelte-i18n';
 	import { E } from '../../logic/Expression';
 	import { entries, group, keys } from '../../model/InfoList';
-	import type { CalculatedCharacter, Character, Level } from '../../model/Karakter';
+	import type { Character } from '../../model/Karakter';
 	import { SKILL_KP } from '../../model/Rules';
 	import { Skill, type SkillInfo } from '../../model/Skills';
 	import CircleGroup from '../elements/CircleGroup.svelte';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	export let showModal: boolean; // boolean
 
 	let dialog: HTMLDialogElement; // HTMLDialogElement

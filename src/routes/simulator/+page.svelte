@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import type { PageData } from './$types';
-	import Box from '../../components/character/Box.svelte';
+	import Box from '../../components/elements/Box.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import ActionCard from '../../components/character/ActionCard.svelte';
 	import CharacterSelector from '../../components/simulator/CharacterSelector.svelte';

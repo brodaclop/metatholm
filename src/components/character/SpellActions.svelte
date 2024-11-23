@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { sort } from '../../model/InfoList';
 	import type { CalculatedCharacter } from '../../model/Karakter';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import ActionCard from './ActionCard.svelte';
 	import { Skill } from '../../model/Skills';
 

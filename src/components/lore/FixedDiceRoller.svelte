@@ -11,7 +11,7 @@
 	} from 'chart.js/auto';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import { _ } from 'svelte-i18n';
-	import Box from '../character/Box.svelte';
+	import Box from '../elements/Box.svelte';
 
 	Chart.register(Title, BarController, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 

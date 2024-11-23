@@ -8,7 +8,7 @@
 	import MdCancel from 'svelte-icons/md/MdCancel.svelte';
 	import DeleteButton from '../../../components/elements/DeleteButton.svelte';
 	import type { Encounter } from '../../../model/npc/Encounter';
-	import Box from '../../../components/character/Box.svelte';
+	import Box from '../../../components/elements/Box.svelte';
 	import MdPersonAdd from 'svelte-icons/md/MdPersonAdd.svelte';
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
 	import type { NPC } from '../../../model/npc/Npc';

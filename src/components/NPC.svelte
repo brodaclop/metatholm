@@ -9,7 +9,7 @@
 	import GiAnvil from 'svelte-icons/gi/GiAnvil.svelte';
 	import { Skill } from '../model/Skills';
 	import { Spell } from '../model/Spell';
-	import Box from './character/Box.svelte';
+	import Box from './elements/Box.svelte';
 	import LoreInfoIcon from './LoreInfoIcon.svelte';
 	import { sort } from '../model/InfoList';
 

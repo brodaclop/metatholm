@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import LevelUpModal from './LevelUpModal.svelte';
 	import IconButton from '../elements/IconButton.svelte';

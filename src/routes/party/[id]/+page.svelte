@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
-	import Box from '../../../components/character/Box.svelte';
+	import Box from '../../../components/elements/Box.svelte';
 	import { _ } from 'svelte-i18n';
 	import IconButton from '../../../components/elements/IconButton.svelte';
 	import MdExitToApp from 'svelte-icons/md/MdExitToApp.svelte';

@@ -5,13 +5,12 @@
 		type SpiritManifestationRecord,
 		type Character
 	} from '../../model/Karakter';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import { Spirit } from '../../model/Spirits';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
 	import SpiritAnimalEditor from './SpiritAnimalEditor.svelte';
 	import EditButton from '../elements/EditButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
-	import { stringify } from 'uuid';
 
 	export let character: Character;
 	export let editable: boolean;

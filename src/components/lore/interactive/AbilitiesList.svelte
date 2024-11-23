@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { Ancestry } from '../../../model/Ancestry';
 	import { entries, keys } from '../../../model/InfoList';
-	import Box from '../../character/Box.svelte';
+	import Box from '../../elements/Box.svelte';
 	import { Background } from '../../../model/Background';
 	import CircleGroup from '../../elements/CircleGroup.svelte';
 

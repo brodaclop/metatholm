@@ -5,7 +5,7 @@
 	import MdRestore from 'svelte-icons/md/MdRestore.svelte';
 	import { Popover } from 'svelte-smooth-popover';
 	import type { Character } from '../../model/Karakter';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 
 	export let character: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;

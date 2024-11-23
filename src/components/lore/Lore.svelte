@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _, locale } from 'svelte-i18n';
-	import Box from '../character/Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore, loreIncomingLinks } from '../../model/Lore';
 	import { setContext } from 'svelte';

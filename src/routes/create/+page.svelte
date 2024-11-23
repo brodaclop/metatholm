@@ -8,7 +8,7 @@
 		type Character
 	} from '../../model/Karakter';
 	import { Ancestry } from '../../model/Ancestry';
-	import Box from '../../components/character/Box.svelte';
+	import Box from '../../components/elements/Box.svelte';
 	import { kockaDobas, parseKocka } from '../../logic/Kocka';
 	import Abilities from '../../components/character/Abilities.svelte';
 	import Skills from '../../components/character/Skills.svelte';

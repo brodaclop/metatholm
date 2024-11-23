@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _, locale } from 'svelte-i18n';
 	import { loreCategoryList } from '../../../model/Lore';
-	import Box from '../../../components/character/Box.svelte';
+	import Box from '../../../components/elements/Box.svelte';
 
 	export let category: string;
 	export let title: string;

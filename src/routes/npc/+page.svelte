@@ -7,7 +7,7 @@
 	import IconButton from '../../components/elements/IconButton.svelte';
 	import MdPersonAdd from 'svelte-icons/md/MdPersonAdd.svelte';
 	import MdPeople from 'svelte-icons/md/MdPeople.svelte';
-	import Box from '../../components/character/Box.svelte';
+	import Box from '../../components/elements/Box.svelte';
 	import Loading from '../../components/Loading.svelte';
 
 	export let data: PageData;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { calculateCharacter, type Character } from '../../model/Karakter';
-	import Box from '../character/Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import { _ } from 'svelte-i18n';
 	import Skills from '../character/Skills.svelte';
 	import Points from '../character/Points.svelte';

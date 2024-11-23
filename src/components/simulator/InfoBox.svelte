@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Box from '../character/Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import type { BoxFlavour } from '../BoxFlavours';
 
 	export let lines: Array<{ label: string; value: unknown }>;

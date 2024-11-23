@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { _, date, time, locale } from 'svelte-i18n';
-	import Box from './Box.svelte';
+	import { _, locale } from 'svelte-i18n';
+	import Box from '../elements/Box.svelte';
 	import Abilities from './Abilities.svelte';
 	import Skills from './Skills.svelte';
 	import { calculateCharacter, type Character } from '../../model/Karakter';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	export let showModal: boolean; // boolean
 	import { createEventDispatcher } from 'svelte';
 	import { Spirit } from '../../model/Spirits';

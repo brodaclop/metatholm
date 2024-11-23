@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Box from '../../components/character/Box.svelte';
+	import Box from '../../components/elements/Box.svelte';
 	import { _ } from 'svelte-i18n';
 	import IconButton from '../../components/elements/IconButton.svelte';
 	import GiSwordSmithing from 'svelte-icons/gi/GiSwordSmithing.svelte';

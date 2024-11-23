@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import ExpressionTooltip from '../expression/ExpressionTooltip.svelte';
-	import Box from './Box.svelte';
+	import Box from '../elements/Box.svelte';
 	import ExpressionWidget from '../expression/ExpressionWidget.svelte';
 	import {
 		type Action,
