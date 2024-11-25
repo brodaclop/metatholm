@@ -15,6 +15,8 @@
 	}
 
 	const charactersByUser = entries(group(characters, (c) => c.userId));
+
+	let characterLinks: Record<string, HTMLElement> = {};
 </script>
 
 <div class="outer" bind:this={selectBox}>
@@ -29,10 +31,14 @@
 			<article class="player">
 				<div class="name">{$_('label:player')}: {chars[0].user}</div>
 				{#each chars as character}
-					<div class="characterCard">
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<div class="characterCard" on:click={() => characterLinks[character.id].click()}>
 						<div>
-							<a on:click={() => (open = false)} href="/character/{character.id}"
-								>{character.name}</a
+							<a
+								bind:this={characterLinks[character.id]}
+								on:click={() => (open = false)}
+								href="/character/{character.id}">{character.name}</a
 							>
 						</div>
 						<div class="secondLine">

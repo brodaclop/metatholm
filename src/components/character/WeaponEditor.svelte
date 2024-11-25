@@ -103,162 +103,166 @@
 </script>
 
 <DialogBox title="label:weapon" flavour="inventory" bind:showModal {close}>
-	<table>
-		<colgroup>
-			<col style:width="30em" />
-			<col />
-		</colgroup>
-		<tbody>
-			<tr>
-				<td>
-					<div class="first">
-						<select bind:value={template} on:change={templateSelected}>
-							<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option>
-							{#each WEAPON_LIST as tw}
-								<option value={tw}
-									>{WEAPON_NAMES_LIST[tw.name][langKey]} ({calculateWeaponPower(tw)})</option
-								>
+	{#if !openLore}
+		<div class="horizontal-group">
+			<div>
+				<select bind:value={template} on:change={templateSelected}>
+					<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option>
+					{#each WEAPON_LIST as tw}
+						<option value={tw}
+							>{WEAPON_NAMES_LIST[tw.name][langKey]} ({calculateWeaponPower(tw)})</option
+						>
+					{/each}
+				</select>
+			</div>
+			<span>
+				<IconButton title="label:paste">
+					<MdContentPaste />
+				</IconButton>
+				<input type="text" bind:value={pasted} placeholder={$_('label:weapon:paste_here')} />
+			</span>
+		</div>
+		<div class="horizontal-group">
+			<div class="rows">
+				<h3>Base Values</h3>
+				<div class="row">
+					<span>{$_('label:name')}</span>
+					<span><input type="text" bind:value={editedWeapon.name} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:skill')}</span>
+					<span
+						><select bind:value={editedWeapon.skill}>
+							{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as s}
+								<option value={s.name}>{$_(s.name)}</option>
 							{/each}
-						</select>
-						<IconButton title="label:paste">
-							<MdContentPaste />
-						</IconButton>
+						</select></span
+					>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:speed')}</span>
+					<span><input type="number" min="0" max="20" bind:value={editedWeapon.speed} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:attack')}</span>
+					<span><input type="number" min="0" max="20" bind:value={editedWeapon.attack} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:defence')}</span>
+					<span><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:damage')}</span>
+					<span><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:reach')}</span>
+					<span><input type="number" min="0" max="20" bind:value={editedWeapon.reach} /></span>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:hands')}</span>
+					<span
+						><select bind:value={editedWeapon.hands}>
+							{#each [0.5, 1, 1.5, 2] as s}
+								<option value={s}>{s}</option>
+							{/each}
+						</select></span
+					>
+				</div>
+				<div class="row">
+					<span>{$_('weapon:power')}</span>
+					<span>{calculateWeaponPower(editedWeapon)}</span>
+				</div>
+			</div>
+
+			<div class="rows">
+				<h3>
+					{$_('action:title')}
+				</h3>
+				{#each WEAPON_VARIANTS as action, i}
+					<div class="row">
+						<span class="header">
+							<LoreInfoIcon
+								id={action}
+								inline
+								on:click={() => (openLore = openLore === undefined ? action : undefined)}
+							/>
+							{$_(action)}
+						</span>
+						<span class="value">
+							<input
+								alt={$_('label:skill_modifier')}
+								type="number"
+								disabled={!(action in editedWeapon.actions)}
+								bind:value={editedWeapon.actions[action]}
+							/>
+							<input
+								type="checkbox"
+								checked={action in editedWeapon.actions}
+								on:change={(e) => {
+									if (action in editedWeapon.actions) {
+										delete editedWeapon.actions[action];
+										editedWeapon = editedWeapon;
+									} else {
+										editedWeapon.actions[action] = 0;
+									}
+								}}
+							/>
+						</span>
 					</div>
-				</td>
-				<td>
-					<input type="text" bind:value={pasted} placeholder={$_('label:weapon:paste_here')} />
-				</td>
-			</tr>
-		</tbody><tbody>
-			<tr>
-				<th>{$_('label:name')}</th>
-				<td><input type="text" bind:value={editedWeapon.name} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:speed')}</th>
-				<td><input type="number" min="0" max="20" bind:value={editedWeapon.speed} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:attack')}</th>
-				<td><input type="number" min="0" max="20" bind:value={editedWeapon.attack} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:defence')}</th>
-				<td><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:damage')}</th>
-				<td><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:reach')}</th>
-				<td><input type="number" min="0" max="20" bind:value={editedWeapon.reach} /></td>
-			</tr>
-			<tr>
-				<th>{$_('weapon:hands')}</th>
-				<td
-					><select bind:value={editedWeapon.hands}>
-						{#each [0.5, 1, 1.5, 2] as s}
-							<option value={s}>{s}</option>
-						{/each}
-					</select></td
-				>
-			</tr>
-			<tr>
-				<th>{$_('weapon:skill')}</th>
-				<td
-					><select bind:value={editedWeapon.skill}>
-						{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as s}
-							<option value={s.name}>{$_(s.name)}</option>
-						{/each}
-					</select></td
-				>
-			</tr>
-			<tr>
-				<th>Weapon power</th>
-				<td>{calculateWeaponPower(editedWeapon)}</td>
-			</tr>
-		</tbody><tbody>
-			<tr>
-				<th colspan="2" class="title">{$_('action:title')}</th>
-			</tr>
-			{#each WEAPON_VARIANTS as action, i}
-				<tr>
-					<th>
-						<LoreInfoIcon
-							id={action}
-							inline
-							on:click={() => (openLore = openLore === undefined ? action : undefined)}
-						/>
-						{$_(action)}
-					</th>
-					<td class="combined">
-						<input
-							type="number"
-							disabled={!(action in editedWeapon.actions)}
-							bind:value={editedWeapon.actions[action]}
-						/>
-						<input
-							type="checkbox"
-							checked={action in editedWeapon.actions}
-							on:change={(e) => {
-								if (action in editedWeapon.actions) {
-									delete editedWeapon.actions[action];
-									editedWeapon = editedWeapon;
-								} else {
-									editedWeapon.actions[action] = 0;
-								}
-							}}
-						/>
-					</td>
-				</tr>
-				{#if openLore === action}
-					<tr>
-						<td colspan="2">
-							<Lore id={action} />
-						</td>
-					</tr>
-				{/if}
-			{/each}
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan={4}>
-					<Box title="label:notes" flavour="notes" grow={1}>
-						<div class="noteDiv">
-							<textarea bind:value={editedWeapon.notes} />
-						</div>
-					</Box>
-				</td>
-			</tr>
-		</tbody>
-		<caption><button on:click={submit}>OK</button></caption>
-	</table>
+				{/each}
+			</div>
+		</div>
+		<div class="notes">
+			<Box title="label:notes" flavour="notes" grow={1}>
+				<div class="noteDiv">
+					<textarea bind:value={editedWeapon.notes} />
+				</div>
+			</Box>
+		</div>
+		<div class="button"><button on:click={submit}>OK</button></div>
+	{:else}
+		<button on:click={() => (openLore = undefined)}>{$_('label:back_to_editor')}</button>
+		<Lore id={openLore} />
+	{/if}
 </DialogBox>
 
 <style>
-	caption {
-		caption-side: bottom;
-		text-align: center;
+	div.row > span:nth-child(1) {
+		font-weight: bold;
+		padding-right: 0.5em;
 	}
 
-	th {
+	.horizontal-group {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+	}
+
+	.horizontal-group > * {
+		margin-left: 1em;
+		margin-right: 1em;
+	}
+
+	input[type='number'] {
+		width: 3em;
+	}
+
+	div.rows {
+		display: flex;
+		flex-direction: column;
+	}
+
+	div.row {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
 		text-align: left;
-		padding-right: 0.5rem;
+		margin-bottom: 1px;
 	}
 
-	th.title {
-		font-size: large;
-		text-align: center;
-	}
-
-	td.combined {
-		white-space: collapse nowrap;
-	}
-
-	tbody {
-		margin-bottom: 0.5rem;
-		border-bottom: 3px solid var(--default-border-c);
+	div.row > * {
+		white-space: nowrap;
 	}
 
 	div.noteDiv {
@@ -271,10 +275,5 @@
 		width: 100%;
 		height: 10rem;
 		resize: vertical;
-	}
-	.first {
-		display: flex;
-		flex-wrap: nowrap;
-		justify-content: space-between;
 	}
 </style>

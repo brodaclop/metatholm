@@ -92,7 +92,8 @@ type GenericLabels = 'label:name' |
     'label:references' |
     'label:player' |
     'label:gain_ip' |
-    'label:select'
+    'label:select' |
+    'label:back_to_editor'
     ;
 
 export const Keys = [
@@ -106,6 +107,8 @@ export const Keys = [
     'weapon:defence',
     'weapon:hands',
     'weapon:damage',
+    'weapon:power',
+    'weapon:skill_modifier',
 
     'label:difficulty:1',
     'label:difficulty:2',
@@ -277,6 +280,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:player': 'Player',
     'label:gain_ip': 'Gain Ideal Point',
     'label:select': 'Select...',
+    'label:back_to_editor': 'Back to editor',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -437,6 +441,8 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:skill:abbr': 'Skl',
     'weapon:effective_skill': 'Effective Skill',
     'weapon:attack': 'Attack',
+    'weapon:power': 'Overall Power',
+    'weapon:skill_modifier': 'Skill level modifier',
     'weapon:attack:abbr': 'Atk',
     'weapon:defence': 'Defence',
     'weapon:defence:abbr': 'Def',
@@ -602,6 +608,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:player': 'Játékos',
     'label:gain_ip': 'Ideál növelése',
     'label:select': 'Válassz...',
+    'label:back_to_editor': 'Vissza a szerkesztőhöz',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',
@@ -750,6 +757,7 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:skill:abbr': 'Képz.',
     'weapon:effective_skill': 'Hatásos Képzettség',
     'weapon:attack': 'Támadás',
+    'weapon:power': 'Összesített erő',
     'weapon:attack:abbr': 'Tám.',
     'weapon:hands': 'Kéz',
     'weapon:hands:abbr': 'Kéz',
@@ -757,6 +765,7 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:defence:abbr': 'Véd.',
     'weapon:reach': 'Ütőtáv',
     'weapon:reach:abbr': 'Üt.',
+    'weapon:skill_modifier': 'Képzettség módosító',
 
     'world:concept': 'Fogalom',
     'world:realm': 'Birodalom',
