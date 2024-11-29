@@ -93,7 +93,9 @@ type GenericLabels = 'label:name' |
     'label:player' |
     'label:gain_ip' |
     'label:select' |
-    'label:back_to_editor'
+    'label:back_to_editor' |
+    'weapon:base_values'
+
     ;
 
 export const Keys = [
@@ -450,6 +452,7 @@ export const Labels_en: Record<Labels, string> = {
     'weapon:hands:abbr': 'Hands',
     'weapon:reach': 'Reach',
     'weapon:reach:abbr': 'Rch',
+    'weapon:base_values': 'Base Values',
 
     'world:concept': 'Concept',
     'world:realm': 'Realm',
@@ -766,6 +769,7 @@ export const Labels_hu: Record<Labels, string> = {
     'weapon:reach': 'Ütőtáv',
     'weapon:reach:abbr': 'Üt.',
     'weapon:skill_modifier': 'Képzettség módosító',
+    'weapon:base_values': 'Alapértékek',
 
     'world:concept': 'Fogalom',
     'world:realm': 'Birodalom',

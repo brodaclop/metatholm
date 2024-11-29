@@ -124,7 +124,7 @@
 		</div>
 		<div class="horizontal-group">
 			<div class="rows">
-				<h3>Base Values</h3>
+				<h3>{$_('weapon:base_values')}</h3>
 				<div class="row">
 					<span>{$_('label:name')}</span>
 					<span><input type="text" bind:value={editedWeapon.name} /></span>
