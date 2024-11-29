@@ -8,6 +8,7 @@
 	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let includeTitlePrefix = true;
+	export let modal = false;
 
 	$: setContext('activeElementParams', { ...params, id });
 
@@ -54,19 +55,24 @@
 				{#if includeTitlePrefix}{$_(calculatePrefix(id))}: {/if}{title.replace(/#/g, '')}
 			</span>
 
-			{#if incomingLinks.length > 0 && id !== 'main'}
-				<div class="references">
-					<h4>{$_('label:references')}:</h4>
-					<ul>
-						{#each incomingLinks as link}
-							<li><a href="/lore/{link.id}">{$_(calculatePrefix(link.id))}: {link.title}</a></li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
+			<div
+				style:max-height={modal ? '80vh' : undefined}
+				style:overflow-y={modal ? 'auto' : undefined}
+			>
+				{#if incomingLinks.length > 0 && id !== 'main'}
+					<div class="references">
+						<h4>{$_('label:references')}:</h4>
+						<ul>
+							{#each incomingLinks as link}
+								<li><a href="/lore/{link.id}">{$_(calculatePrefix(link.id))}: {link.title}</a></li>
+							{/each}
+						</ul>
+					</div>
+				{/if}
 
-			<div class="contents">
-				<MarkdownText {text} />
+				<div class="contents">
+					<MarkdownText {text} />
+				</div>
 			</div>
 		</Box>
 	{/key}
@@ -75,6 +81,7 @@
 <style>
 	.contents {
 		text-align: left;
+		white-space: initial;
 	}
 
 	.references {

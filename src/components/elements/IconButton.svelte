@@ -8,12 +8,15 @@
 	export let plain: boolean = false;
 	export let withText = false;
 	export let verticalCorrection: string | undefined = undefined;
+	export let popovertarget: string | undefined = undefined;
 </script>
 
 <button
 	title={$_(title)}
 	on:click
 	{disabled}
+	{popovertarget}
+	popovertargetaction={popovertarget !== undefined ? 'auto' : undefined}
 	style:color
 	style:background-color={backgroundColor}
 	style:border-color={backgroundColor}

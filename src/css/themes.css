@@ -73,6 +73,7 @@ html.light {
     --background-c: white;
     --button-background-c: lightgray;
     --box-title-c: sienna;
+    --title-shadow-c: transparent;
     /* --button-disabled-c: #808080; */
     --link-c: blue;
     --unsaved-background-c: darksalmon;
@@ -160,6 +161,7 @@ html.dark {
     --button-background-c: #404040;
     --button-disabled-c: #808080;
     --box-title-c: sandybrown;
+    --title-shadow-c: var(--box-title-c);
     --link-c: lightskyblue;
     --unsaved-background-c: firebrick;
     --menu-item-background-c: #2c002c;
@@ -248,6 +250,7 @@ html.dark {
         --button-background-c: #404040;
         --button-disabled-c: #808080;
         --box-title-c: sandybrown;
+        --title-shadow-c: var(--box-title-c);
         --link-c: lightskyblue;
         --unsaved-background-c: firebrick;
         --menu-item-background-c: #2c002c;

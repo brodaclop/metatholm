@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { Popover } from 'svelte-smooth-popover';
-	import GiInfo from 'svelte-icons/gi/GiInfo.svelte';
 	import FaInfo from 'svelte-icons/fa/FaInfo.svelte';
 	import Lore from './lore/Lore.svelte';
 	import { hasLore } from '../model/Lore';
@@ -20,26 +18,25 @@
 			<FaInfo />
 		</IconButton>
 	{:else}
-		<IconButton title={id} verticalCorrection="-1px">
+		<IconButton title={id} verticalCorrection="-1px" popovertarget="popover|{id}">
 			<FaInfo />
-			<Popover
-				open={false}
-				showOnClick={true}
-				borderRadius={10}
-				caretBg="var(--default-border-c)"
-				hideOnExternalClick={true}
-			>
-				<div style:max-width="80vw">
-					<Lore {id} {params} />
-				</div>
-			</Popover>
 		</IconButton>
+		<div class="popover reset-font" popover="auto" id="popover|{id}">
+			<Lore {id} {params} modal />
+		</div>
 	{/if}
 {:else if !disablePlaceholder}
 	<span class="placeholder" />
 {/if}
 
 <style>
+	div.popover {
+		max-width: 80vw;
+		border: none;
+		background-color: transparent;
+		text-shadow: none;
+	}
+
 	span {
 		margin-right: 0.2em;
 	}

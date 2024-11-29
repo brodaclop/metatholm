@@ -87,6 +87,6 @@
 		color: var(--box-title-c);
 		margin-top: 0;
 		margin-bottom: 0.5em;
-		text-shadow: 1px 1px 2px var(--box-title-c);
+		text-shadow: 1px 1px 2px var(--title-shadow-c);
 	}
 </style>

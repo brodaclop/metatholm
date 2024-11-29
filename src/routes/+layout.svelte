@@ -227,6 +227,7 @@
 	@import url('https://fonts.cdnfonts.com/css/luminari');
 	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 
+	:global(.reset-font),
 	:global(html),
 	:global(button) {
 		font-family: 'Noto Sans Display', 'Verdana', 'Gill Sans', 'Gill Sans MT', Calibri,
