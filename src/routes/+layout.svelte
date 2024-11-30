@@ -148,7 +148,7 @@
 <header>
 	<nav>
 		<ul>
-			<li class="nohover"><a href="/">M</a></li>
+			<li class="nohover"><a href="/"><img class="logo" src="/mt.svg" alt="Metatholm" /></a></li>
 			<li bind:this={dropdown} class="responsive">
 				<button class="menu-opener" on:click={() => (menuOpen = !menuOpen)}>
 					<span><MdMenu /></span>
@@ -346,6 +346,7 @@
 		flex-flow: row nowrap;
 		align-items: center;
 		margin: 0;
+		padding-left: 0.2em;
 		padding-bottom: 0.2em;
 		padding-top: 0.2em;
 	}
@@ -403,6 +404,10 @@
 
 	.responsive ul {
 		padding-left: 0;
+	}
+
+	.logo {
+		height: 2em;
 	}
 
 	@media screen and (max-width: 1000px) {

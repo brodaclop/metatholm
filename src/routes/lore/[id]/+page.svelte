@@ -5,4 +5,12 @@
 	$: id = $page.params.id ?? '';
 </script>
 
-<Lore {id} />
+<div>
+	<Lore {id} />
+</div>
+
+<style>
+	div {
+		margin: 0.5em;
+	}
+</style>

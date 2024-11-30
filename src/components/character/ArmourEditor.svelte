@@ -6,6 +6,7 @@
 	import type { Armour } from '../../model/Armour';
 	import { ARMOUR_LIST } from '../../model/ArmourList';
 	import DialogBox from '../elements/DialogBox.svelte';
+	import Box from '../elements/Box.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -16,7 +17,8 @@
 		id: v4(),
 		name: '',
 		dr: 0,
-		hindrance: 0
+		hindrance: 0,
+		notes: ''
 	};
 
 	let armourInitialised: boolean = false;
@@ -62,7 +64,7 @@
 			<tr>
 				<td colspan="2">
 					<select bind:value={template} on:change={templateSelected}>
-						<option value={null}>Select template</option>
+						<option value={null}>{$_('label:select_template')}</option>
 						{#each ARMOUR_LIST as tw}
 							<option value={tw}>{tw.name}</option>
 						{/each}
@@ -81,6 +83,17 @@
 				<th>{$_('armour:hindrance')}</th>
 				<td><input type="number" min="0" max="10" bind:value={editedArmour.hindrance} /></td>
 			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="notes">
+						<Box title="label:notes" flavour="notes" grow={1}>
+							<div class="noteDiv">
+								<textarea bind:value={editedArmour.notes} />
+							</div>
+						</Box>
+					</div>
+				</td>
+			</tr>
 		</tbody>
 		<caption><button on:click={submit}>OK</button></caption>
 	</table>
@@ -90,5 +103,17 @@
 	caption {
 		caption-side: bottom;
 		text-align: center;
+	}
+
+	div.noteDiv {
+		width: 100%;
+		display: flex;
+	}
+
+	textarea {
+		flex-grow: 1;
+		width: 100%;
+		height: 10rem;
+		resize: vertical;
 	}
 </style>

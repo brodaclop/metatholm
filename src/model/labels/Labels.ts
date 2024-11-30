@@ -94,7 +94,8 @@ type GenericLabels = 'label:name' |
     'label:gain_ip' |
     'label:select' |
     'label:back_to_editor' |
-    'weapon:base_values'
+    'weapon:base_values' |
+    'label:select_template'
 
     ;
 
@@ -283,6 +284,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:gain_ip': 'Gain Ideal Point',
     'label:select': 'Select...',
     'label:back_to_editor': 'Back to editor',
+    'label:select_template': 'Select template',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -612,6 +614,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:gain_ip': 'Ideál növelése',
     'label:select': 'Válassz...',
     'label:back_to_editor': 'Vissza a szerkesztőhöz',
+    'label:select_template': 'Válassz sablont',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',
