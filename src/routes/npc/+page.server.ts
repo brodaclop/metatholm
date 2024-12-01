@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ depends, platform, locals }) => {
     depends('db:npclist');
     return {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        characters: listNPCs(platform!, locals.user!.id)
+        characters: await listNPCs(platform!, locals.user!.id)
     };
 }
 

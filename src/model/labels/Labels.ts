@@ -8,6 +8,7 @@ import type { Spell, SpellDurations, SpellTargets } from "../Spell";
 import type { ArmourLabels } from "../Armour";
 import { SpiritLabels } from "./SpiritLabels";
 import { CharacterLabels } from "./CharacterLabels";
+import { WeaponLabels } from "./WeaponLabels";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -94,57 +95,30 @@ type GenericLabels = 'label:name' |
     'label:gain_ip' |
     'label:select' |
     'label:back_to_editor' |
-    'weapon:base_values' |
-    'label:select_template'
+    'label:select_template' |
+    'action:title' |
+    'skill_type:general'
 
     ;
 
-export const Keys = [
-    'action:title',
-
-    'weapon:speed',
-    'weapon:difficulty',
-    'weapon:skill',
-    'weapon:reach',
-    'weapon:attack',
-    'weapon:defence',
-    'weapon:hands',
-    'weapon:damage',
-    'weapon:power',
-    'weapon:skill_modifier',
-
-    'label:difficulty:1',
-    'label:difficulty:2',
-    'label:difficulty:3',
-
-    'skill_type:general',
-    'weapon:effective_skill'
-
-] as const;
-
 const Abbreviations = [
     'label:name:abbr',
-    'weapon:speed:abbr',
-    'weapon:attack:abbr',
-    'weapon:defence:abbr',
-    'weapon:damage:abbr',
-    'weapon:reach:abbr',
-    'weapon:skill:abbr',
-    'weapon:hands:abbr',
     'armour:dr:abbr',
     'armour:hindrance:abbr',
 ] as const;
 
-export type LabelCollection = Record<Values, string>;
 
-export type Values = typeof Keys[number] | Skill | Ability | ExpressionNames;
-
-type Valueless = Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality;
-
-export type Labels = Valueless | Values | typeof Abbreviations[number] | keyof typeof SpiritLabels[Language] | keyof typeof CharacterLabels[Language];
+export type Labels =
+    | Skill | Ability | ExpressionNames
+    | Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality
+    | typeof Abbreviations[number]
+    | keyof typeof SpiritLabels[Language]
+    | keyof typeof CharacterLabels[Language]
+    | keyof typeof WeaponLabels[Language];
 export const Labels_en: Record<Labels, string> = {
     ...SpiritLabels.en,
     ...CharacterLabels.en,
+    ...WeaponLabels.en,
     'ability:build': 'Build',
     'ability:presence': 'Presence',
     'ability:activity': 'Activity',
@@ -155,8 +129,6 @@ export const Labels_en: Record<Labels, string> = {
     'action:attack-cq': 'Attack (Close Quarters)',
     'action:ap': 'Action Points',
     'action:roll': 'Roll',
-    'weapon:damage': 'Damage',
-    'weapon:damage:abbr': 'Dmg',
     'action:defend': 'Defend',
     'action:defend-cq': 'Defend (Close Quarters)',
     'action:keep-away': 'Keep away',
@@ -208,9 +180,6 @@ export const Labels_en: Record<Labels, string> = {
 
     'label:action': 'Action',
     'label:weapon': 'Weapon',
-    'label:difficulty:1': 'Easy',
-    'label:difficulty:2': 'Average',
-    'label:difficulty:3': 'Hard',
     'label:learn': 'Learn',
     'label:edit': 'Edit',
     'label:delete': 'Delete',
@@ -437,25 +406,6 @@ export const Labels_en: Record<Labels, string> = {
     'tableplop:export': 'Export to Tableplop',
     'tableplop:unsynchronise': 'Remove Tableplop synchronisation',
 
-
-    'weapon:speed': 'Speed',
-    'weapon:speed:abbr': 'Spd',
-    'weapon:difficulty': 'Difficulty',
-    'weapon:skill': 'Skill',
-    'weapon:skill:abbr': 'Skl',
-    'weapon:effective_skill': 'Effective Skill',
-    'weapon:attack': 'Attack',
-    'weapon:power': 'Overall Power',
-    'weapon:skill_modifier': 'Skill level modifier',
-    'weapon:attack:abbr': 'Atk',
-    'weapon:defence': 'Defence',
-    'weapon:defence:abbr': 'Def',
-    'weapon:hands': 'Hands',
-    'weapon:hands:abbr': 'Hands',
-    'weapon:reach': 'Reach',
-    'weapon:reach:abbr': 'Rch',
-    'weapon:base_values': 'Base Values',
-
     'world:concept': 'Concept',
     'world:realm': 'Realm',
     'world:settlement': 'Settlement',
@@ -465,6 +415,7 @@ export const Labels_en: Record<Labels, string> = {
 export const Labels_hu: Record<Labels, string> = {
     ...SpiritLabels.hu,
     ...CharacterLabels.hu,
+    ...WeaponLabels.hu,
     'ability:build': 'Testalkat',
     'ability:presence': 'Jelenlét',
     'ability:activity': 'Aktivitás',
@@ -533,11 +484,6 @@ export const Labels_hu: Record<Labels, string> = {
     'expr:skill_difficulty': 'Nehézség',
 
     'label:action': 'Akció',
-    'weapon:damage': 'Sebzés',
-    'weapon:damage:abbr': 'Sebz.',
-    'label:difficulty:1': 'Könnyű',
-    'label:difficulty:2': 'Átlagos',
-    'label:difficulty:3': 'Nehéz',
     'label:learn': 'Tanulás',
     'label:edit': 'Szerkeszt',
     'label:delete': 'Töröl',
@@ -755,24 +701,6 @@ export const Labels_hu: Record<Labels, string> = {
     'tableplop:synchronise': 'Tableplop szinkronizálása',
     'tableplop:export': 'Exportálás Tableplopra',
     'tableplop:unsynchronise': 'Tableplop szinkronizálás törlése',
-
-    'weapon:speed': 'Gyorsaság',
-    'weapon:speed:abbr': 'Gyors.',
-    'weapon:difficulty': 'Nehézség',
-    'weapon:skill': 'Képzettség',
-    'weapon:skill:abbr': 'Képz.',
-    'weapon:effective_skill': 'Hatásos Képzettség',
-    'weapon:attack': 'Támadás',
-    'weapon:power': 'Összesített erő',
-    'weapon:attack:abbr': 'Tám.',
-    'weapon:hands': 'Kéz',
-    'weapon:hands:abbr': 'Kéz',
-    'weapon:defence': 'Védekezés',
-    'weapon:defence:abbr': 'Véd.',
-    'weapon:reach': 'Ütőtáv',
-    'weapon:reach:abbr': 'Üt.',
-    'weapon:skill_modifier': 'Képzettség módosító',
-    'weapon:base_values': 'Alapértékek',
 
     'world:concept': 'Fogalom',
     'world:realm': 'Birodalom',

@@ -1,4 +1,4 @@
-import type { Values } from "../model/labels/Labels";
+import type { Values } from "./Values";
 import { kockaDobas, parseKocka, type KockaDobas } from "./Kocka";
 
 export interface Value {

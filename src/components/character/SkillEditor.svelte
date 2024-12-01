@@ -130,7 +130,7 @@
 						{@const list = sort(skillListForDifficulty, 'name', $_)}
 						<tr>
 							<th colspan="3">
-								<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
+								<h4>{$_(`weapon:difficulty:${difficulty}`)}</h4>
 							</th>
 						</tr>
 						<CircleGroup

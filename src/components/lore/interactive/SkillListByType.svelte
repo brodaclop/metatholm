@@ -32,9 +32,9 @@
 		<tr>
 			<th />
 			<th />
-			<th>{$_('label:difficulty:1')}</th>
-			<th>{$_('label:difficulty:2')}</th>
-			<th>{$_('label:difficulty:3')}</th>
+			<th>{$_('weapon:difficulty:1')}</th>
+			<th>{$_('weapon:difficulty:2')}</th>
+			<th>{$_('weapon:difficulty:3')}</th>
 		</tr>
 	</thead>
 	<tbody>

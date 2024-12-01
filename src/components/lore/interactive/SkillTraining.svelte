@@ -68,7 +68,7 @@
 		<tr>
 			<th
 				><LoreInfoIcon id="label:difficulty" />{$_('label:difficulty')}
-				({$_(`label:difficulty:${difficulty}`)})
+				({$_(`weapon:difficulty:${difficulty}`)})
 			</th>
 			<td>
 				<CircleRow

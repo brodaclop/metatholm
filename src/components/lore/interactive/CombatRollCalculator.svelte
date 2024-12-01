@@ -64,7 +64,7 @@
 		<Circles
 			name="label:difficulty"
 			bind:value={difficulty}
-			subName={$_(`label:difficulty:${difficulty}`)}
+			subName={$_(`weapon:difficulty:${difficulty}`)}
 			max={3}
 			min={1}
 			canMinus={difficulty > 1}
