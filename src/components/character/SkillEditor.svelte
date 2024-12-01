@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { E } from '../../logic/Expression';
-	import { entries, group, keys } from '../../model/InfoList';
+	import { entries, group, keys, sort } from '../../model/InfoList';
 	import type { Character } from '../../model/Karakter';
 	import { SKILL_KP } from '../../model/Rules';
 	import { Skill, type SkillInfo } from '../../model/Skills';
@@ -118,14 +118,24 @@
 		{/each}
 	</div>
 	<div class="type-container">
-		{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
-			<div class="type-list" id={type}>
-				<h3>{$_(type)}</h3>
-				{#each entries(group(skillList, (s) => String(s.difficulty))) as [difficulty, skillList2]}
-					<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
-					<div class="skill-group">
+		<table>
+			{#each entries(group(Skill.list(), (s) => s.type)) as [type, skillList]}
+				<tbody class="type-list" id={type}>
+					<tr>
+						<th colspan="3">
+							<h3>{$_(type)}</h3>
+						</th>
+					</tr>
+					{#each entries(group( skillList, (s) => String(s.difficulty) )) as [difficulty, skillListForDifficulty]}
+						{@const list = sort(skillListForDifficulty, 'name', $_)}
+						<tr>
+							<th colspan="3">
+								<h4>{$_(`label:difficulty:${difficulty}`)}</h4>
+							</th>
+						</tr>
 						<CircleGroup
-							rows={skillList2.map((s) => ({
+							wrapInTable={false}
+							rows={list.map((s) => ({
 								name: s.name,
 								subName:
 									s.ability === 'skill_type:general'
@@ -142,16 +152,17 @@
 							{plus}
 							{minus}
 						>
-							<span slot="extra" let:key>
+							<span slot="extra" let:key class="points">
 								{#if !admin}
+									&nbsp;
 									<ExpressionTooltip expr={kpNeeded[key]} />
 								{/if}
 							</span>
 						</CircleGroup>
-					</div>
-				{/each}
-			</div>
-		{/each}
+					{/each}
+				</tbody>
+			{/each}
+		</table>
 	</div>
 	<div class="footer">
 		<span>{$_('character:kp')}: {remainingKp}</span>
@@ -166,18 +177,13 @@
 	}
 
 	.type-container {
-		height: 50vh;
+		height: 45vh;
 		overflow-y: scroll;
 	}
 
 	.buttonbar {
 		text-align: center;
 		margin-bottom: 0.4em;
-	}
-
-	.skill-group {
-		margin-left: 1em;
-		margin-right: 1em;
 	}
 
 	h4 {
@@ -192,5 +198,11 @@
 	.type-list {
 		border-bottom: 1px dotted var(--default-border-c);
 		padding-bottom: 0.5em;
+	}
+
+	.points {
+		display: inline-block;
+		text-align: right;
+		width: 100%;
 	}
 </style>
