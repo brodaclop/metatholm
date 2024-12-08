@@ -8,6 +8,7 @@
 	import type { Weapon } from '../../../model/Weapon';
 	import type { Character } from '../../../model/Karakter';
 	import { Skill } from '../../../model/Skills';
+	import PointsTable from '../../PointsTable.svelte';
 
 	let difficulty: 1 | 2 | 3 = 1;
 	let skill = 1;
@@ -80,71 +81,15 @@
 	</tbody>
 </table>
 
-<table class="standard">
-	<thead>
-		<tr>
-			<th />
-			<th />
-			<th colspan="21" style:text-align="center"
-				>{$_(variantProps.type === 'action' ? 'weapon:attack' : 'weapon:defence')}</th
-			>
-		</tr>
-		<tr>
-			<th />
-			<th />
-			{#each Array(21) as _, _weapon}
-				<th class:semi-highlighted={weaponProp === _weapon}>{_weapon}</th>
-			{/each}
-		</tr>
-	</thead>
-	<tbody>
-		{#each Array(11) as _, _skill}
-			<tr>
-				{#if _skill === 0}
-					<th rowspan="11">{i18n('weapon:skill')}</th>
-				{/if}
-				<th class:semi-highlighted={skill === _skill}>
-					{_skill}
-				</th>
-				{#each Array(21) as _, _weapon}
-					<td
-						on:mouseenter={() => select(_skill, _weapon)}
-						on:mouseleave={() => select(-1, -1)}
-						class:semi-highlighted={(skill === _skill) !== (weaponProp === _weapon)}
-						class:highlighted={skill === _skill && weaponProp === _weapon}
-						>{calculate(_weapon, _skill, difficulty, reach)}</td
-					>
-				{/each}
-			</tr>
-		{/each}
-	</tbody>
-	<caption
-		>{$_(id)}: {skill !== -1 && weaponProp !== -1
-			? calculate(skill, weaponProp, difficulty, reach)
-			: '-'}</caption
-	>
-</table>
-
-<style>
-	table {
-		caption-side: bottom;
-	}
-
-	td,
-	th {
-		transition: background-color 0.05s ease-in-out;
-	}
-
-	.semi-highlighted {
-		background-color: hsl(from var(--lore-active-cells-c) h calc(s/2) l);
-	}
-
-	.highlighted {
-		background-color: var(--lore-active-cells-c);
-	}
-
-	caption {
-		font-weight: var(--font-weight-bold);
-		font-size: large;
-	}
-</style>
+<PointsTable
+	columnName={variantProps.type === 'action' ? 'weapon:attack' : 'weapon:defence'}
+	columnMax={20}
+	columnChangeable={!weapon}
+	bind:column={weaponProp}
+	rowName="weapon:skill"
+	rowChangeable={!skills}
+	rowMax={10}
+	bind:row={skill}
+	{id}
+	valueCalculator={(row, column) => calculate(column, row, difficulty, reach)}
+/>
