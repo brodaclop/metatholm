@@ -6,7 +6,8 @@ If a character is in measure (i.e. they are in melee range but not in close quar
 
 ## Action Points
 
-How many action points this action costs depends on three factors: the **speed** of the weapon, the difficulty of the combat skill used and the skill level of the user.
+How many action points this action costs depends on two factors: the **speed** of the weapon and the skill level of the user.
+
 
 `ActionPointCalculator`
 

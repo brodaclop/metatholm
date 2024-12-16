@@ -18,7 +18,6 @@
 	export let roll = '1d10!';
 	let lastRoll: string = '';
 	const TRIES = 100000;
-	export let editable: boolean = true;
 
 	let data: any;
 	let avg = 0;

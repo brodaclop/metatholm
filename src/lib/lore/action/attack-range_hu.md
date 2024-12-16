@@ -6,7 +6,7 @@ Ezt az akciót használjuk a távolról, lőfegyverrel vagy dobófegyverrel val�
 
 ## Akciópontok
 
-A támadás akciópont-költségét három tényező befolyásolja: a támadó fegyver **sebessége**, a támadáshoz használt képzettség nehézsége és a képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **sebessége** és a képzettség szintje.
 
 `ActionPointCalculator`
 

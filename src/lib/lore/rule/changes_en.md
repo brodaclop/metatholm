@@ -1,5 +1,9 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2024-12-16"}`
+
+* Simplified and rebalanced calculation of attack/defence values and action point costs of combat actions.
+
 ## `FormattedDate|{"date": "2024-05-24"}`
 
 * Added [personality](character:personality) calculation

@@ -32,14 +32,3 @@
 		</tr>
 	</tbody>
 </table>
-
-<style>
-	table {
-		caption-side: bottom;
-	}
-
-	caption {
-		font-weight: var(--font-weight-bold);
-		font-size: x-large;
-	}
-</style>

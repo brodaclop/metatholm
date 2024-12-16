@@ -1,5 +1,9 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2024-12-16"}`
+
+* Támadó és védekező dobás, valamint harci manőverek akciópont számításának egyszerűsítése és kiegyensúlyozása.
+
 ## `FormattedDate|{"date": "2024-05-24"}`
 
 * Karakter [személyiségének](character:personality) kiszámolása.

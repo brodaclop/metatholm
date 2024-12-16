@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import Circles from '../../elements/Circles.svelte';
 	import { SPELL_AP } from '../../../model/Rules';
 	import { E } from '../../../logic/Expression';
 	import type { Character } from '../../../model/Karakter';
@@ -24,25 +23,12 @@
 	}
 
 	const calculate = (_speed: number, _skill: number): number =>
-		_skill === 0
-			? 40
-			: Math.round(
-					E.evaluate(SPELL_AP, {
-						'expr:spell_speed': Math.min(20, _speed * SpeedModifiers[id]),
-						'expr:spell_focus_skill': _skill
-					}).result
-			  );
-
-	const i18n = $_;
-
-	const select = (_skill: number, _speed: number) => {
-		if (!skills) {
-			skill = _skill;
-		}
-		if (!spell) {
-			speed = _speed;
-		}
-	};
+		Math.round(
+			E.evaluate(SPELL_AP, {
+				'expr:spell_speed': _speed * SpeedModifiers[id],
+				'expr:spell_focus_skill': _skill
+			}).result
+		);
 </script>
 
 <PointsTable

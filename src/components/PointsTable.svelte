@@ -15,7 +15,6 @@
 	const i18n = $_;
 
 	$: select = (_row: number, _column: number) => {
-		console.log(row, column);
 		if (columnChangeable) {
 			column = _column;
 		}

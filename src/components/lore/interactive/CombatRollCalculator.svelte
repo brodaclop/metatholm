@@ -47,17 +47,6 @@
 				}).result * (_skill === 0 ? 0 : 1)
 			)
 		);
-
-	const select = (_skill: number, _weapon: number) => {
-		if (!skills) {
-			skill = _skill;
-		}
-		if (!weapon) {
-			weaponProp = _weapon;
-		}
-	};
-
-	const i18n = $_;
 </script>
 
 <table>
