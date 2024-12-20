@@ -24,7 +24,7 @@ Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy 
 
 ## Származás
 
-Metatholm népei sokfélék, ezért minden játékos karakternek kell választania egy [származást](character:ancestry). Ez elsősorban a tulajdonságokat befolyásolja, pozitív vagy negatív irányban.
+Metatholm népei eredetileg nagyhatalmú szellemek megtestesülései voltak, és ennek utórezgései a mai napig érezhetőek, ezért minden játékos karakternek kell választania egy [szellemőst](character:ancestry). Ez elsősorban a tulajdonságokat befolyásolja, pozitív vagy negatív irányban.
 
 Ezen felül természetesen hatással van a karakter kinézetére is, de sokkal kevésbé kötelező érvényűen, mint a sok hasonló játékban megtalálható "faj" jellemző. Tehát nyugodtan lehet egy karakter szakállas elf vagy viszonylag magas törp, bár általában egy-két, az adott származásra jellemző külső jegyet azért érdemes választani (pl. hegyes fül, nagy szemfogak vagy erőteljes testszőrzet).
 

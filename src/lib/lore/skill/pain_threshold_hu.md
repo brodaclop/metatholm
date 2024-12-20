@@ -6,4 +6,4 @@ A **Fájdalomküszöb** azt határozza meg, mennyire érinti meg a karaktert a f
 
 Erre a képzettségre szinte soha nem kell dobni, kivéve például ha fontos az, hogy a karakter csendben maradjon sérülése ellenére.
 
-A képzettség további hatása, hogy minden egyes szintje után a karakter [fájfalomtűrés](character:fp) maximuma karakterszintenként 2-vel nő.
+A képzettség további hatása, hogy minden egyes szintje után a karakter [fájdalomtűrés](character:fp) maximuma karakterszintenként 2-vel nő.

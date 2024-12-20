@@ -24,7 +24,7 @@ Although the rules of the game don't require players to spend extra time or seek
 
 ## Ancestry
 
-The people of Metatholm are a multitude, so every player character has to choose an [ancestry](character:ancestry). The main effect of this choice is on the character's abilities, which can be increased or decreased.
+The people of Metatholm were originally embodiments of powerful spirits which still echoes today, so every player character has to choose an [ancestral spirit](character:ancestry). The main effect of this choice is on the character's abilities, which can be increased or decreased.
 
 On top of that it of course also affects the looks of the character albeit in a much less prescriptive way than the somewhat similar concept of "race" does in many other games. So you can be a bearded elf or a fairly tall-ish dwarf, although it's always worth picking at least one or two aspects typical to the chosen ancestry (e.g. pointy ear, prominent canines or excessive body hair).
 

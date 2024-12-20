@@ -10,7 +10,7 @@ Here, between the valley and the sea the warmth of the earth feels stronger, so 
 
 As wispy fog tends to rise from the river, often covering it completely, this area is often called **Mistvale** by the locals.
 
-The inhabitants of Foxfire are almost exlusively of the [Kalovin](ancestry:kalovin)ancestry, some even say this is the Kalovin homeland whence they radiated to the rest of the world. But local stories dispute this: Foxfire is merely the first place where the Kalovin settlers of old landed their (seafaring or flying, there's still no agreement on this) ships.
+The inhabitants of Foxfire are almost exlusively of [Kalovin](ancestry:kalovin) ancestry, some even say this is the Kalovin homeland whence they radiated to the rest of the world. But local stories dispute this: Foxfire is merely the first place where the Kalovin settlers of old landed their (seafaring or flying, there's still no agreement on this) ships.
 
 Be that as it may, the Kalovins like to wander and discover, throughout the centuries they traversed and mapped **Stonyfield** for example, although only the foolhardiest of them would volunteer for these expedictions. Not just due to the harsh weather and extremely limited food supply but also because sometimes at night strange stone- and ice creatures are roaming the land.
 
