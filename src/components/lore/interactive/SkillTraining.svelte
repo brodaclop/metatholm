@@ -3,13 +3,11 @@
 	import { Skill, type SkillInfo } from '../../../model/Skills';
 	import { E } from '../../../logic/Expression';
 	import { SKILL_KP } from '../../../model/Rules';
-	import Circles from '../../elements/Circles.svelte';
-	import FaRegArrowAltCircleUp from 'svelte-icons/fa/FaRegArrowAltCircleUp.svelte';
-	import FaRegArrowAltCircleDown from 'svelte-icons/fa/FaRegArrowAltCircleDown.svelte';
 	import IconButton from '../../elements/IconButton.svelte';
 	import type { Character } from '../../../model/Karakter';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 	import CircleRow from '../../elements/CircleRow.svelte';
+	import PointsTable from '../../PointsTable.svelte';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
@@ -18,39 +16,35 @@
 	export let level: number | undefined = undefined;
 
 	let ability: number = 0;
-	let positive: boolean = true;
+	let effect: boolean | 'none' = true;
+	let selectedLevel: number = -1;
+
+	$: if (level !== undefined) selectedLevel = level;
 
 	$: skillInfo = Skill.has(id) ? Skill.get(id) : undefined;
 
 	$: if (skillInfo) {
 		difficulty = skillInfo.difficulty;
-		positive = skillInfo.positive;
+		effect = skillInfo.ability === 'skill_type:general' ? 'none' : skillInfo.positive;
 		if (abilities && skillInfo?.ability !== 'skill_type:general') {
 			ability = abilities[skillInfo.ability];
 		}
 	}
 
-	$: isGeneral = skillInfo?.ability === 'skill_type:general';
+	const effectiveAbility = (num: number, effect: boolean | 'none') =>
+		effect === 'none' ? 10 : effect ? num : 10 - num;
 
-	const effectiveAbility = (num: number, positive: boolean) =>
-		isGeneral ? 10 : positive ? num : 10 - num;
-
-	$: kpNeeded = Array(10)
-		.fill(undefined)
-		.map((_, skillLevel) =>
-			E.evaluate(SKILL_KP, {
-				'expr:skill_level': skillLevel + 1,
-				'expr:skill_difficulty': difficulty,
-				'expr:skill_ability': effectiveAbility(ability, skillInfo?.positive ?? positive)
-			})
-		);
-
-	$: {
-		const sumKp = kpNeeded.reduce((acc, curr) => (acc += curr.result), 0);
-		console.debug('Character levels needed for skill level 10', sumKp, sumKp / 30);
-	}
-
-	//TODO: fix up/down arrow layout
+	const calculate = (
+		_level: number,
+		_difficulty: number,
+		_ability: number,
+		effect: boolean | 'none'
+	) =>
+		E.evaluate(SKILL_KP, {
+			'expr:skill_level': _level + 1,
+			'expr:skill_difficulty': _difficulty,
+			'expr:skill_ability': effectiveAbility(_ability, effect)
+		}).result;
 </script>
 
 <table class="maintable">
@@ -80,55 +74,67 @@
 			</td>
 			<td />
 		</tr>
-		{#if !isGeneral}
-			<tr>
-				<th>
-					<LoreInfoIcon id={skillInfo?.ability ?? 'character:ability'} />{$_(
-						skillInfo?.ability ?? 'character:ability'
-					)}
-					({ability})
-				</th>
-				<td>
-					<CircleRow bind:value={ability} max={10} editable={!abilities} />
-				</td>
-				<td>
-					<IconButton
-						title="character:ability"
-						disabled={!!skillInfo || isGeneral}
-						on:click={() => (positive = !positive)}
-					>
-						{#if positive}
-							<FaRegArrowAltCircleUp />
-						{:else}
-							<FaRegArrowAltCircleDown />
-						{/if}
-					</IconButton>
-				</td>
-			</tr>
-		{/if}
 		<tr>
-			<th><LoreInfoIcon />{$_('expr:skill_level')}</th>
-			<td colspan={3} rowspan={2}>
-				<table class="standard">
-					<thead>
-						<tr>
-							{#each Array(10) as _, skillLevel (skillLevel)}
-								<th class:active={skillLevel === level}>{skillLevel}</th>
-							{/each}
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							{#each kpNeeded as kp, skillLevel}
-								<td class:active={skillLevel === level}>{kp.result}</td>
-							{/each}
-						</tr>
-					</tbody>
-				</table>
+			<th
+				><LoreInfoIcon />{$_(
+					(skillInfo?.ability !== 'skill_type:general' ? skillInfo?.ability : undefined) ??
+						'character:ability'
+				)}
+				{$_('label:skill_effect_direction')}</th
+			>
+			<td colspan={3}>
+				<button
+					disabled={!!skillInfo}
+					class:selected={effect === true}
+					on:click={() => (effect = true)}>{$_('label:skill_effect:positive')}</button
+				>
+				<button
+					disabled={!!skillInfo}
+					class:selected={effect === 'none'}
+					on:click={() => (effect = 'none')}>{$_('label:skill_effect:none')}</button
+				>
+				<button
+					disabled={!!skillInfo}
+					class:selected={effect === false}
+					on:click={() => (effect = false)}>{$_('label:skill_effect:negative')}</button
+				>
 			</td>
 		</tr>
 		<tr>
-			<th><LoreInfoIcon />{$_('character:kp')}</th>
+			<td colspan={4}>
+				<div class="points-table-container">
+					{#if !abilities && effect !== 'none'}
+						<PointsTable
+							columnName={skillInfo?.ability ?? 'character:ability'}
+							columnMax={10}
+							bind:column={ability}
+							columnChangeable={abilities === undefined}
+							rowName="expr:skill_level"
+							rowMax={9}
+							rowChangeable={level === undefined}
+							bind:row={selectedLevel}
+							id="character:kp"
+							fullWidth
+							valueCalculator={(row, column) => calculate(row, difficulty, column, effect)}
+						/>
+					{:else}
+						<PointsTable
+							columnName={'expr:skill_level'}
+							columnMax={9}
+							bind:column={selectedLevel}
+							columnChangeable={level === undefined}
+							rowName="character:kp"
+							rowMax={0}
+							rowChangeable={false}
+							row={0}
+							hideRowCounter
+							fullWidth
+							id="character:kp"
+							valueCalculator={(row, column) => calculate(column, difficulty, row, effect)}
+						/>
+					{/if}
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>
@@ -144,5 +150,13 @@
 
 	.active {
 		background-color: var(--lore-active-cells-c);
+	}
+
+	button.selected {
+		background-color: var(--spell-action-filter-allowed);
+	}
+
+	.points-table-container {
+		margin-left: calc(1em + 0.2em + 1px);
 	}
 </style>

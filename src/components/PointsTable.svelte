@@ -10,6 +10,8 @@
 	export let column: number;
 	export let rowMax: number;
 	export let columnMax: number;
+	export let hideRowCounter = false;
+	export let fullWidth = false;
 	export let valueCalculator: (_row: number, _column: number) => number;
 
 	const i18n = $_;
@@ -24,16 +26,20 @@
 	};
 </script>
 
-<table class="standard">
+<table class="standard" class:fullWidth>
 	<thead>
 		<tr>
 			<th />
-			<th />
+			{#if !hideRowCounter}
+				<th />
+			{/if}
 			<th colspan={columnMax + 1} style:text-align="center">{$_(columnName)}</th>
 		</tr>
 		<tr>
 			<th />
-			<th />
+			{#if !hideRowCounter}
+				<th />
+			{/if}
 			{#each Array(columnMax + 1) as _, _column}
 				<th class:semi-highlighted={column === _column}>{_column}</th>
 			{/each}
@@ -45,9 +51,11 @@
 				{#if _row === 0}
 					<th rowspan={rowMax + 1}>{i18n(rowName)}</th>
 				{/if}
-				<th class:semi-highlighted={row === _row}>
-					{_row}
-				</th>
+				{#if !hideRowCounter}
+					<th class:semi-highlighted={row === _row}>
+						{_row}
+					</th>
+				{/if}
 				{#each Array(columnMax + 1) as _, _column}
 					<td
 						on:mouseenter={() => select(_row, _column)}
@@ -66,6 +74,10 @@
 <style>
 	table {
 		caption-side: bottom;
+	}
+
+	table.fullWidth {
+		width: 100%;
 	}
 
 	td,

@@ -97,7 +97,11 @@ type GenericLabels = 'label:name' |
     'label:back_to_editor' |
     'label:select_template' |
     'action:title' |
-    'skill_type:general'
+    'skill_type:general' |
+    'label:skill_effect_direction' |
+    'label:skill_effect:positive' |
+    'label:skill_effect:none' |
+    'label:skill_effect:negative'
 
     ;
 
@@ -254,6 +258,10 @@ export const Labels_en: Record<Labels, string> = {
     'label:select': 'Select...',
     'label:back_to_editor': 'Back to editor',
     'label:select_template': 'Select template',
+    'label:skill_effect_direction': 'affects learning',
+    'label:skill_effect:positive': 'Positively',
+    'label:skill_effect:none': 'None',
+    'label:skill_effect:negative': 'Negatively',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -561,6 +569,10 @@ export const Labels_hu: Record<Labels, string> = {
     'label:select': 'Válassz...',
     'label:back_to_editor': 'Vissza a szerkesztőhöz',
     'label:select_template': 'Válassz sablont',
+    'label:skill_effect_direction': 'hatása a tanulásra',
+    'label:skill_effect:positive': 'Pozitív',
+    'label:skill_effect:none': 'Nincs',
+    'label:skill_effect:negative': 'Negatív',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',

@@ -20,8 +20,7 @@
 	{:else}
 		<IconButton title={id} verticalCorrection="-1px" popovertarget="popover|{id}">
 			<FaInfo />
-		</IconButton>
-		<div class="popover reset-font" popover="auto" id="popover|{id}">
+		</IconButton><div class="popover reset-font" popover="auto" id="popover|{id}">
 			<Lore {id} {params} modal />
 		</div>
 	{/if}
