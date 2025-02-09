@@ -202,7 +202,7 @@
 				</tr>
 			</table>
 		</Box>
-		<Box flavour="abilities">
+		<Abilities bind:abilities modifiers={abilityModifiers}>
 			<div slot="title" class="title">
 				<IconButton
 					title="label:roll"
@@ -214,23 +214,18 @@
 				<span>{$_('character:abilities')}</span>
 				<LoreInfoIcon id="character:abilities" />
 			</div>
-			<Abilities bind:abilities modifiers={abilityModifiers} />
-		</Box>
+		</Abilities>
 		<div class="lore">
 			{#if character}
-				<Box title="character:skills" flavour="skills">
-					<Skills skills={character.skills} abilities={character.abilities} />
-				</Box>
+				<Skills skills={character.skills} abilities={character.abilities} />
 			{/if}
 			{#if character && calculatedCharacter}
-				<Box title="character:points" flavour="points">
-					<Points
-						editable={true}
-						bind:character
-						{calculatedCharacter}
-						highlightSkillEditButton={highlight === 'skills'}
-					/>
-				</Box>
+				<Points
+					editable={true}
+					bind:character
+					{calculatedCharacter}
+					highlightSkillEditButton={highlight === 'skills'}
+				/>
 			{/if}
 		</div>
 	</div>

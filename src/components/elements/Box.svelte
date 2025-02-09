@@ -8,6 +8,7 @@
 	export let flavour: BoxFlavour;
 	export let marginless: boolean = false;
 	export let grow: number | undefined = undefined;
+	export let flexBasis: string | undefined = undefined;
 
 	const level: number = getContext('level') ?? 1;
 	setContext('level', Math.min(level + 1, 5));
@@ -16,6 +17,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article
+	id={title}
 	class={flavour}
 	style:background-color={`var(--box-c-${flavour})`}
 	on:mouseenter
@@ -23,6 +25,7 @@
 	on:click
 	class:marginless
 	style:flex-grow={grow}
+	style:flex-basis={flexBasis}
 >
 	<header>
 		{#if level === 1}
@@ -66,6 +69,7 @@
 		flex-grow: 1;
 		text-align: -moz-center;
 		text-align: -webkit-center;
+		scroll-margin-top: 5em;
 	}
 
 	article.lore {

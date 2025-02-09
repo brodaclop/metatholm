@@ -5,7 +5,6 @@
 	import Skills from './Skills.svelte';
 	import { calculateCharacter, type Character } from '../../model/Karakter';
 	import Points from './Points.svelte';
-	import ActionCard from './ActionCard.svelte';
 	import Weapons from './Weapons.svelte';
 	import MainBox from './MainBox.svelte';
 	import { beforeNavigate } from '$app/navigation';
@@ -23,13 +22,13 @@
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
-	import { sort } from '../../model/InfoList';
 	import SpellActions from './SpellActions.svelte';
 	import DownloadButton from './DownloadButton.svelte';
 	import UploadButton from './UploadButton.svelte';
 	import { onMount } from 'svelte';
 	import { Popover } from 'svelte-smooth-popover';
 	import SpiritAnimals from './SpiritAnimals.svelte';
+	import WeaponActions from './WeaponActions.svelte';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -93,6 +92,19 @@
 			appearanceBlock
 		};
 	};
+
+	const BOXES: Array<string> = [
+		'label:character',
+		'character:skills',
+		'character:abilities',
+		'character:points',
+		'character:weapons',
+		'character:armours',
+		'character:spirit_animals',
+		'rule:combat',
+		'character:spells',
+		'character:notes'
+	];
 </script>
 
 <Box flavour="character-sheet">
@@ -202,79 +214,50 @@
 			{/if}
 		</span>
 	</div>
+
+	<nav class="jumplinks">
+		{#each BOXES as box}
+			<button
+				on:click={() =>
+					document.getElementById(box)?.scrollIntoView({ block: 'start', behavior: 'smooth' })}
+				>{$_(box)}</button
+			>
+		{/each}
+	</nav>
+
 	<div class="main">
-		<div class="values">
-			<div class="first">
-				<MainBox bind:character {editable} />
-				{#if !wide}
-					<div style:flex-basis="100%">
-						<Box title={'character:skills'} flavour="skills">
-							<Skills
-								{slender}
-								skills={character.skills}
-								modifiedSkills={calculatedCharacter.skills}
-								abilities={character.abilities}
-							/>
-						</Box>
-					</div>
-				{/if}
-				<Box title="character:abilities" flavour="abilities">
-					<Abilities bind:abilities={character.abilities} editable={admin} {slender} />
-				</Box>
-				<Box title="character:points" flavour="points">
-					<Points bind:character {calculatedCharacter} {admin} {editable} />
-				</Box>
-
-				<Box flavour="inventory" title="character:weapons">
-					<Weapons bind:character {editable} />
-				</Box>
-				<Box flavour="inventory" title="character:armours">
-					<Armours bind:character {editable} />
-				</Box>
-			</div>
-			{#if wide}
-				<div class="second">
-					<Box title={'character:skills'} flavour="skills">
-						<Skills
-							{slender}
-							skills={character.skills}
-							modifiedSkills={calculatedCharacter.skills}
-							abilities={character.abilities}
-						/>
-					</Box>
+		<MainBox bind:character {editable} />
+		<Skills
+			{slender}
+			skills={character.skills}
+			modifiedSkills={calculatedCharacter.skills}
+			abilities={character.abilities}
+		/>
+		<Abilities bind:abilities={character.abilities} editable={admin} {slender} />
+		<Points bind:character {calculatedCharacter} {admin} {editable} />
+		<Weapons bind:character {editable} />
+		<Armours bind:character {editable} />
+		<SpiritAnimals bind:character {editable} />
+		<WeaponActions {calculatedCharacter} flexBasis="40%" />
+		<SpellActions {calculatedCharacter} flexBasis="40%" />
+		<div class="noteRow">
+			<Box title="character:notes" flavour="notes" grow={1}>
+				<div class="noteDiv">
+					<textarea disabled={!editable} bind:value={character.notes} />
 				</div>
-			{/if}
+			</Box>
 		</div>
-
-		<div>
-			<SpiritAnimals bind:character {editable} />
-		</div>
-
-		<div class="actionRow">
-			<div>
-				<Box title="rule:combat" flavour="action-container">
-					<div>
-						{#each sort(calculatedCharacter.weaponActions, 'name', $_) as action}
-							<ActionCard {action} skills={calculatedCharacter.skills} />
-						{/each}
-					</div>
-				</Box>
-			</div>
-			<div>
-				<SpellActions {calculatedCharacter} />
-			</div>
-		</div>
-	</div>
-	<div class="noteRow">
-		<Box title="label:notes" flavour="notes" grow={1}>
-			<div class="noteDiv">
-				<textarea disabled={!editable} bind:value={character.notes} />
-			</div>
-		</Box>
 	</div>
 </Box>
 
 <style>
+	nav.jumplinks {
+		position: sticky;
+		top: 2.75em;
+		z-index: 1;
+		background-color: var(--box-c-character-sheet);
+	}
+
 	div {
 		display: flex;
 		flex-direction: row;
@@ -284,29 +267,7 @@
 
 	div.main {
 		display: flex;
-		flex-direction: column;
-		align-items: stretch;
-	}
-
-	div.values {
-		justify-content: space-between;
-		flex-wrap: nowrap;
-		flex-grow: 1;
-	}
-
-	@media screen and (max-width: 1000px) {
-		div.values {
-			flex-wrap: wrap;
-		}
-	}
-
-	div.first {
-		flex-grow: 1;
-		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: start;
-		flex-basis: content;
 		align-items: stretch;
 	}
 
@@ -329,20 +290,11 @@
 		background-color: var(--unsaved-background-c);
 	}
 
-	.actionRow,
 	.noteRow {
 		display: flex;
 		flex-basis: 100%;
 		justify-content: space-between;
 		flex-grow: 1;
-	}
-
-	.actionRow > div {
-		flex-basis: 50%;
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
 	}
 
 	div.noteDiv {

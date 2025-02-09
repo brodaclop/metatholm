@@ -6,6 +6,7 @@
 	import GiOpenBook from 'svelte-icons/gi/GiOpenBook.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
+	import Box from '../elements/Box.svelte';
 	export let character: Character;
 
 	export let admin = false;
@@ -17,84 +18,95 @@
 	let showModal = false;
 </script>
 
-<div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<LoreInfoIcon id="character:fp" />
-					<span class="label">{$_('character:fp')}</span>
-				</td>
-				<td>
-					<span class="value">
+<Box title="character:points" flavour="points">
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<LoreInfoIcon id="character:fp" />
+						<span class="label">{$_('character:fp')}</span>
+					</td>
+					<td>
+						<span class="value">
+							<span
+								><input
+									type="number"
+									bind:value={character.current.fp}
+									disabled={!editable}
+								/></span
+							>
+							<span>/</span>
+							<span>
+								<ExpressionTooltip expr={calculatedCharacter.fp} />
+							</span>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<LoreInfoIcon id="character:ep" />
+						<span class="label">{$_('character:ep')}</span>
+					</td>
+					<td>
+						<span class="value">
+							<span
+								><input
+									type="number"
+									bind:value={character.current.ep}
+									disabled={!editable}
+								/></span
+							>
+							<span>/</span>
+							<span>
+								<ExpressionTooltip expr={calculatedCharacter.ep} />
+							</span>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<LoreInfoIcon id="character:mp" />
+						<span class="label">{$_('character:mp')}</span>
+					</td>
+					<td>
 						<span
-							><input type="number" bind:value={character.current.fp} disabled={!editable} /></span
+							><input type="number" bind:value={character.current.mp} disabled={!editable} /></span
 						>
 						<span>/</span>
 						<span>
-							<ExpressionTooltip expr={calculatedCharacter.fp} />
+							<ExpressionTooltip expr={calculatedCharacter.mp} />
 						</span>
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<LoreInfoIcon id="character:ep" />
-					<span class="label">{$_('character:ep')}</span>
-				</td>
-				<td>
-					<span class="value">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<LoreInfoIcon id="character:kp" />
+						<span class="label">{$_('character:kp')}</span>
+					</td>
+					<td>
 						<span
-							><input type="number" bind:value={character.current.ep} disabled={!editable} /></span
+							><input
+								type="number"
+								bind:value={character.current.kp}
+								disabled={!editable || !admin}
+							/></span
 						>
-						<span>/</span>
-						<span>
-							<ExpressionTooltip expr={calculatedCharacter.ep} />
-						</span>
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<LoreInfoIcon id="character:mp" />
-					<span class="label">{$_('character:mp')}</span>
-				</td>
-				<td>
-					<span><input type="number" bind:value={character.current.mp} disabled={!editable} /></span
-					>
-					<span>/</span>
-					<span>
-						<ExpressionTooltip expr={calculatedCharacter.mp} />
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<LoreInfoIcon id="character:kp" />
-					<span class="label">{$_('character:kp')}</span>
-				</td>
-				<td>
-					<span
-						><input
-							type="number"
-							bind:value={character.current.kp}
-							disabled={!editable || !admin}
-						/></span
-					>
-					<span
-						><IconButton
-							title="label:learn"
-							verticalCorrection="-1px"
-							backgroundColor={highlightSkillEditButton ? 'var(--highlight-c)' : undefined}
-							disabled={!editable}
-							on:click={() => (showModal = true)}><GiOpenBook /></IconButton
-						></span
-					>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+						<span
+							><IconButton
+								title="label:learn"
+								verticalCorrection="-1px"
+								backgroundColor={highlightSkillEditButton ? 'var(--highlight-c)' : undefined}
+								disabled={!editable}
+								on:click={() => (showModal = true)}><GiOpenBook /></IconButton
+							></span
+						>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</Box>
 
 <SkillEditor bind:character bind:showModal close={() => (showModal = false)} />
 

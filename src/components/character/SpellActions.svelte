@@ -11,6 +11,7 @@
 	import SkillIcon from './SkillIcon.svelte';
 
 	export let calculatedCharacter: CalculatedCharacter;
+	export let flexBasis: string | undefined = undefined;
 
 	let allowedFoci: Set<Skill> = new Set<Skill>();
 	let deniedFoci: Set<Skill> = new Set<Skill>();
@@ -40,7 +41,7 @@
 	});
 </script>
 
-<Box title="character:spells" flavour="action-container">
+<Box title="character:spells" flavour="action-container" {flexBasis}>
 	<div class="buttonbar">
 		<span>
 			{#each FOCUS_SKILLS as focus}

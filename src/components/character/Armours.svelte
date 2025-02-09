@@ -9,6 +9,7 @@
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import EditButton from '../elements/EditButton.svelte';
 	import Abbr from '../Abbr.svelte';
+	import Box from '../elements/Box.svelte';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -44,52 +45,54 @@
 	//TODO: templates and i18n
 </script>
 
-<table class="standard wide">
-	<thead>
-		<tr>
-			<th><Abbr text="label:name" /></th>
-			<th><Abbr text="armour:dr" /></th>
-			<th><Abbr text="armour:hindrance" /></th>
-			<th />
-		</tr>
-	</thead>
-	<tbody>
-		{#each character.inventory.armours as armour, idx}
+<Box flavour="inventory" title="character:armours">
+	<table class="standard wide">
+		<thead>
 			<tr>
-				<td class="ellipsis" title={$_(armour.name)}>{$_(armour.name)}</td>
-				<td>{armour.dr}</td>
-				<td>{armour.hindrance}</td>
-				<td class="right">
-					<IconButton
-						title="label:wear"
-						color={character.current.armourWorn === idx ? 'black' : 'lightgrey'}
-						on:click={() =>
-							(character.current.armourWorn =
-								character.current.armourWorn === idx ? undefined : idx)}
-						><GiShoulderArmor /></IconButton
-					>
-					{#if editable}
-						<EditButton on:click={() => (editedArmour = armour)} />
-
-						<DeleteButton on:click={() => remove(armour)} />
-					{/if}
-				</td>
+				<th><Abbr text="label:name" /></th>
+				<th><Abbr text="armour:dr" /></th>
+				<th><Abbr text="armour:hindrance" /></th>
+				<th />
 			</tr>
-		{/each}
-	</tbody>
-	<caption>
-		{#if editable}
-			<IconButton
-				withText
-				title="label:new"
-				verticalCorrection="-1px"
-				on:click={() => {
-					editedArmour = 'new';
-				}}><GiSwordSmithing /></IconButton
-			>
-		{/if}
-	</caption>
-</table>
+		</thead>
+		<tbody>
+			{#each character.inventory.armours as armour, idx}
+				<tr>
+					<td class="ellipsis" title={$_(armour.name)}>{$_(armour.name)}</td>
+					<td>{armour.dr}</td>
+					<td>{armour.hindrance}</td>
+					<td class="right">
+						<IconButton
+							title="label:wear"
+							color={character.current.armourWorn === idx ? 'black' : 'lightgrey'}
+							on:click={() =>
+								(character.current.armourWorn =
+									character.current.armourWorn === idx ? undefined : idx)}
+							><GiShoulderArmor /></IconButton
+						>
+						{#if editable}
+							<EditButton on:click={() => (editedArmour = armour)} />
+
+							<DeleteButton on:click={() => remove(armour)} />
+						{/if}
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+		<caption>
+			{#if editable}
+				<IconButton
+					withText
+					title="label:new"
+					verticalCorrection="-1px"
+					on:click={() => {
+						editedArmour = 'new';
+					}}><GiSwordSmithing /></IconButton
+				>
+			{/if}
+		</caption>
+	</table>
+</Box>
 
 <ArmourEditor
 	armour={editedArmour !== 'new' ? editedArmour : undefined}

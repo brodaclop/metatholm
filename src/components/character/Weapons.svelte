@@ -11,6 +11,7 @@
 	import Abbr from '../Abbr.svelte';
 	import SkillIcon from './SkillIcon.svelte';
 	import { calculateWeaponPower } from '../../model/calculations/WeaponPower';
+	import Box from '../elements/Box.svelte';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -32,86 +33,88 @@
 	};
 </script>
 
-<table class="standard wide">
-	<thead>
-		<tr>
-			<th><Abbr text="label:name" /></th>
-			<th><Abbr text="weapon:speed" /></th>
-			<th><Abbr text="weapon:attack" /></th>
-			<th><Abbr text="weapon:defence" /></th>
-			<th><Abbr text="weapon:damage" /></th>
-			<th><Abbr text="weapon:reach" /></th>
-			<th><Abbr text="weapon:hands" /></th>
-			<th><Abbr text="weapon:skill" /></th>
-			<th />
-		</tr>
-	</thead>
-	<tbody>
-		{#each calculateUnarmed(character.skills) as weapon}
+<Box flavour="inventory" title="character:weapons">
+	<table class="standard wide">
+		<thead>
 			<tr>
-				<td class="ellipsis" title={$_(weapon.name)}>{$_(weapon.name)}</td>
-				<td>{weapon.speed}</td>
-				<td>{weapon.attack}</td>
-				<td>{weapon.defence}</td>
-				<td>{weapon.damage}</td>
-				<td>{weapon.reach}</td>
-				<td>{weapon.hands}</td>
-				<td>
-					<div class="skill-icon">
-						<SkillIcon skill={weapon.skill} />
-					</div>
-				</td>
-				<td />
+				<th><Abbr text="label:name" /></th>
+				<th><Abbr text="weapon:speed" /></th>
+				<th><Abbr text="weapon:attack" /></th>
+				<th><Abbr text="weapon:defence" /></th>
+				<th><Abbr text="weapon:damage" /></th>
+				<th><Abbr text="weapon:reach" /></th>
+				<th><Abbr text="weapon:hands" /></th>
+				<th><Abbr text="weapon:skill" /></th>
+				<th />
 			</tr>
-		{/each}
-		{#each character.inventory.weapons as weapon}
-			<tr>
-				<td
-					class="ellipsis"
-					title={`${$_(weapon.name)} (${calculateWeaponPower(weapon)})${
-						weapon.notes ? '\n\n' + weapon.notes : ''
-					}`}>{$_(weapon.name)}</td
-				>
-				<td>{weapon.speed}</td>
-				<td>{weapon.attack}</td>
-				<td>{weapon.defence}</td>
-				<td>{weapon.damage}</td>
-				<td>{weapon.reach}</td>
-				<td>{weapon.hands}</td>
-				<td>
-					<div class="skill-icon">
-						<SkillIcon skill={weapon.skill} />
-					</div>
-				</td>
-				<td class="right">
-					<IconButton
-						title="label:copy"
-						on:click={() =>
-							navigator.clipboard.writeText(JSON.stringify({ ...weapon, id: undefined }))}
+		</thead>
+		<tbody>
+			{#each calculateUnarmed(character.skills) as weapon}
+				<tr>
+					<td class="ellipsis" title={$_(weapon.name)}>{$_(weapon.name)}</td>
+					<td>{weapon.speed}</td>
+					<td>{weapon.attack}</td>
+					<td>{weapon.defence}</td>
+					<td>{weapon.damage}</td>
+					<td>{weapon.reach}</td>
+					<td>{weapon.hands}</td>
+					<td>
+						<div class="skill-icon">
+							<SkillIcon skill={weapon.skill} />
+						</div>
+					</td>
+					<td />
+				</tr>
+			{/each}
+			{#each character.inventory.weapons as weapon}
+				<tr>
+					<td
+						class="ellipsis"
+						title={`${$_(weapon.name)} (${calculateWeaponPower(weapon)})${
+							weapon.notes ? '\n\n' + weapon.notes : ''
+						}`}>{$_(weapon.name)}</td
 					>
-						<MdContentCopy />
-					</IconButton>
-					{#if editable}
-						<EditButton on:click={() => (editedWeapon = weapon)} />
-						<DeleteButton on:click={() => remove(weapon)} />
-					{/if}
-				</td>
-			</tr>
-		{/each}
-	</tbody>
-	<caption>
-		{#if editable}
-			<IconButton
-				withText
-				verticalCorrection="-1px"
-				title="label:new"
-				on:click={() => {
-					editedWeapon = 'new';
-				}}><GiSwordSmithing /></IconButton
-			>
-		{/if}
-	</caption>
-</table>
+					<td>{weapon.speed}</td>
+					<td>{weapon.attack}</td>
+					<td>{weapon.defence}</td>
+					<td>{weapon.damage}</td>
+					<td>{weapon.reach}</td>
+					<td>{weapon.hands}</td>
+					<td>
+						<div class="skill-icon">
+							<SkillIcon skill={weapon.skill} />
+						</div>
+					</td>
+					<td class="right">
+						<IconButton
+							title="label:copy"
+							on:click={() =>
+								navigator.clipboard.writeText(JSON.stringify({ ...weapon, id: undefined }))}
+						>
+							<MdContentCopy />
+						</IconButton>
+						{#if editable}
+							<EditButton on:click={() => (editedWeapon = weapon)} />
+							<DeleteButton on:click={() => remove(weapon)} />
+						{/if}
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+		<caption>
+			{#if editable}
+				<IconButton
+					withText
+					verticalCorrection="-1px"
+					title="label:new"
+					on:click={() => {
+						editedWeapon = 'new';
+					}}><GiSwordSmithing /></IconButton
+				>
+			{/if}
+		</caption>
+	</table>
+</Box>
 
 <WeaponEditor
 	weapon={editedWeapon !== 'new' ? editedWeapon : undefined}
