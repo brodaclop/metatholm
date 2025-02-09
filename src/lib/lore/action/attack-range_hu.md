@@ -1,4 +1,4 @@
-# Támadás
+# Támadás (Távolról)
 
 `ActionInfo`
 

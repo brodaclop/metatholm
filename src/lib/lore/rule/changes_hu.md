@@ -1,5 +1,9 @@
 # Szabályváltozások
 
+## `FormattedDate|{"date": "2025-02-09"}`
+
+* [Lökés](spell:push) varázslat
+
 ## `FormattedDate|{"date": "2024-12-16"}`
 
 * Támadó és védekező dobás, valamint harci manőverek akciópont számításának egyszerűsítése és kiegyensúlyozása.

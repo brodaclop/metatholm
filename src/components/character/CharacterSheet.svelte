@@ -19,6 +19,7 @@
 	import MdSyncProblem from 'svelte-icons/md/MdSyncProblem.svelte';
 	import MdSyncDisabled from 'svelte-icons/md/MdSyncDisabled.svelte';
 	import MdCheck from 'svelte-icons/md/MdCheck.svelte';
+	import MdMenu from 'svelte-icons/md/MdMenu.svelte';
 	import IconButton from '../elements/IconButton.svelte';
 	import DeleteButton from '../elements/DeleteButton.svelte';
 	import Archives from './Archives.svelte';
@@ -29,6 +30,7 @@
 	import { Popover } from 'svelte-smooth-popover';
 	import SpiritAnimals from './SpiritAnimals.svelte';
 	import WeaponActions from './WeaponActions.svelte';
+	import { detectOutsideClick } from '$lib/client/outside-click';
 
 	export let initialCharacter: Character;
 	export let archives: Array<{ char: Character; timestamp: number }>;
@@ -41,6 +43,18 @@
 
 	let slender = false;
 	let wide = true;
+	let menuOpen = false;
+	let dropdown: HTMLElement;
+	let removeOutsideClickDetector: (() => void) | undefined = undefined;
+
+	$: if (menuOpen) {
+		removeOutsideClickDetector = detectOutsideClick(dropdown, () => (menuOpen = false));
+	}
+
+	$: if (!menuOpen && removeOutsideClickDetector) {
+		removeOutsideClickDetector();
+		removeOutsideClickDetector = undefined;
+	}
 
 	onMount(() => {
 		const slenderMatcher = window.matchMedia('(max-width: 550px)');
@@ -131,57 +145,65 @@
 			>
 				<MdCancel />
 			</IconButton>
-
-			<Archives {archives} bind:character disabled={!editable} />
-			<DownloadButton
-				disabled={changed || saving}
-				title="label:download_character"
-				href="/api/character/{character.id}"
-				download="{character.name}.char"
-			>
-				<MdFileDownload />
-			</DownloadButton>
-
-			<UploadButton title="label:upload_character" disabled={!editable} onUpload={upload}>
-				<MdFileUpload />
-			</UploadButton>
-
-			{#if !character.tableplop}
-				<UploadButton title="tableplop:synchronise" disabled={!editable} onUpload={synchronise}>
-					<MdSyncProblem />
-				</UploadButton>
-			{:else}
-				<IconButton
-					withText
-					title="tableplop:unsynchronise"
-					disabled={!editable}
-					on:click={() => {
-						character.tableplop = undefined;
-					}}
-				>
-					<MdSyncDisabled />
+			<span class="dropdown-container" bind:this={dropdown}>
+				<IconButton title="label:misc_actions" on:click={() => (menuOpen = !menuOpen)}>
+					<MdMenu />
 				</IconButton>
-			{/if}
-			<DownloadButton
-				disabled={changed || saving || !character.tableplop}
-				title="tableplop:export"
-				href="/api/tableplop/{character.id}?lang={$locale}"
-				download="{character.name}-tableplop.json"
-			>
-				<MdSync />
-			</DownloadButton>
+
+				<div class="dropdown" bind:this={dropdown} style:display={menuOpen ? 'flex' : 'none'}>
+					<Archives {archives} bind:character disabled={!editable} />
+					<DownloadButton
+						disabled={changed || saving}
+						title="label:download_character"
+						href="/api/character/{character.id}"
+						download="{character.name}.char"
+					>
+						<MdFileDownload />
+					</DownloadButton>
+
+					<UploadButton title="label:upload_character" disabled={!editable} onUpload={upload}>
+						<MdFileUpload />
+					</UploadButton>
+
+					{#if !character.tableplop}
+						<UploadButton title="tableplop:synchronise" disabled={!editable} onUpload={synchronise}>
+							<MdSyncProblem />
+						</UploadButton>
+					{:else}
+						<IconButton
+							withText
+							title="tableplop:unsynchronise"
+							disabled={!editable}
+							on:click={() => {
+								character.tableplop = undefined;
+							}}
+						>
+							<MdSyncDisabled />
+						</IconButton>
+					{/if}
+					<DownloadButton
+						disabled={changed || saving || !character.tableplop}
+						title="tableplop:export"
+						href="/api/tableplop/{character.id}?lang={$locale}"
+						download="{character.name}-tableplop.json"
+					>
+						<MdSync />
+					</DownloadButton>
+					<IconButton
+						title="Admin"
+						withText
+						on:click={() => (admin = !admin)}
+						disabled={!editable}
+						color={admin ? 'var(--delete-icon-c)' : undefined}
+					>
+						<MdSettings />
+					</IconButton>
+				</div>
+			</span>
 		</span>
 		<span style:text-align="center">{$_('label:character')}: {character.name}</span>
 		<span style:text-align="right">
 			{#if editable}
-				<IconButton
-					title="Admin"
-					withText
-					on:click={() => (admin = !admin)}
-					color={admin ? 'var(--delete-icon-c)' : undefined}
-				>
-					<MdSettings />
-				</IconButton>
 				<DeleteButton withText on:click={() => (deleting = true)} />
 				{#if deleting}
 					<Popover
@@ -217,11 +239,12 @@
 
 	<nav class="jumplinks">
 		{#each BOXES as box}
-			<button
+			<IconButton
+				title={box}
+				withText
 				on:click={() =>
 					document.getElementById(box)?.scrollIntoView({ block: 'start', behavior: 'smooth' })}
-				>{$_(box)}</button
-			>
+			/>
 		{/each}
 	</nav>
 
@@ -319,5 +342,24 @@
 		border-style: solid;
 		border-radius: 0.25rem;
 		border-width: 3px;
+	}
+
+	.dropdown-container {
+		position: relative;
+	}
+
+	.dropdown {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		background-color: var(--header-background-c);
+		padding: 0.25em;
+		border-color: var(--border-color-c);
+		border-style: solid;
+		border-radius: 0.25rem;
+		border-width: 3px;
+		flex-direction: column;
+		width: max-content;
 	}
 </style>

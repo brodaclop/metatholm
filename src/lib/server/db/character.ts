@@ -62,7 +62,7 @@ export const loadArchiveVersions = async (platform: App.Platform, id: string): P
     const db = await ensureInit(platform);
     return await db.all(
         'select payload, timestamp from CharacterArchive where id=? order by key desc',
-        ({ payload, timestamp }) => ({ char: JSON.parse(payload as string), timestamp: timestamp as number }),
+        ({ payload, timestamp }) => ({ char: upgrade(JSON.parse(payload as string)), timestamp: timestamp as number }),
         id
     );
 }

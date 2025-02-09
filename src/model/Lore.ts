@@ -34,7 +34,7 @@ export const loreIncomingLinks = (id: string, lang: OptionalString): Array<{ id:
     const linkString = `(${id})`;
     const matchingEntries: Array<[string, string]> = entries(Lore[lang ?? 'en'])
         .filter(([, value]) => value.includes(linkString));
-    return matchingEntries.map(([id, text]) => ({ id, title: text.split('\n', 1)[0].replace(/#/g, '') }))
+    return matchingEntries.map(([id, text]) => ({ id, title: text.split('\n', 1)[0].replace(/#/g, '') })).sort((a, z) => a.title.localeCompare(z.title));
 }
 
 export const loreCategoryList = (category: string, lang: OptionalString): Array<{ id: string, title: string }> => {

@@ -1,5 +1,9 @@
 # Rule Changes
 
+## `FormattedDate|{"date": "2025-02-09"}`
+
+* Added [Push](spell:push) spell
+
 ## `FormattedDate|{"date": "2024-12-16"}`
 
 * Simplified and rebalanced calculation of attack/defence values and action point costs of combat actions.

@@ -10,7 +10,7 @@ Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a
 
 Minden játékos karakter 4 [(alap)tulajdonsággal](character:abilities) rendelkezik. Ezek veleszületett adottságok, amelyek a karakter élete során (szinte) soha nem változnak. Ezek értéke 0 és 10 között mozog.
 
-A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség továbbá, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, és pozitív vagy negatív hatással van-e rá, azt az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
+A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség továbbá, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, és pozitív vagy negatív hatással van-e rá, az az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
 
 ## Képzettségek
 

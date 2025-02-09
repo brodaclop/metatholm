@@ -50,6 +50,7 @@ export type Spell =
     | 'spell:suspended_animation'
     | 'spell:insignificance'
     | 'spell:shrink'
+    | 'spell:push'
     ;
 
 export type SpellTargets = 'spell_target:self' | 'spell_target:touch' | 'spell_target:point' | 'spell_target:other';
@@ -399,6 +400,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         level: 4,
         target: 'spell_target:touch',
         duration: 'spell_duration:hour',
+        skill: 'skill:spacetime_focus'
+    },
+    'spell:push': {
+        speed: 10,
+        level: 1,
+        target: 'spell_target:point',
+        duration: 'spell_duration:instant',
         skill: 'skill:spacetime_focus'
     },
 

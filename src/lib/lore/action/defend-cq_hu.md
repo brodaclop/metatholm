@@ -1,4 +1,4 @@
-# Védekezés
+# Védekezés (Belharcban)
 
 `ActionInfo`
 

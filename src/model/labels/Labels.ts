@@ -397,6 +397,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:suspended_animation': 'Suspended Animation',
     'spell:insignificance': 'Insignificance',
     'spell:shrink': 'Shrink',
+    'spell:push': 'Push',
 
 
     'spell_duration:instant': 'instant',
@@ -431,7 +432,7 @@ export const Labels_hu: Record<Labels, string> = {
 
     'action:title': 'Akciók',
     'action:attack': 'Támadás',
-    'action:attack-cq': 'Támadás (Belharc)',
+    'action:attack-cq': 'Támadás (Belharcban)',
     'action:ap': 'Akciópont',
     'action:roll': 'Dobás',
     'action:cast': 'Varázslás',
@@ -439,7 +440,7 @@ export const Labels_hu: Record<Labels, string> = {
     'action:cast-snap': 'Varázslás (Csípőből)',
 
     'action:defend': 'Védekezés',
-    'action:defend-cq': 'Védekezés (Belharc)',
+    'action:defend-cq': 'Védekezés (Belharcban)',
     'action:keep-away': 'Távoltartás',
     'action:close-in': 'Közelkerülés',
     'action:disengage': 'Eltávolodás',
@@ -698,6 +699,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:suspended_animation': 'Tetszhalál',
     'spell:insignificance': 'Jelentéktelenség',
     'spell:shrink': 'Zsugorítás',
+    'spell:push': 'Lökés',
 
     'spell_duration:instant': 'azonnali',
     'spell_duration:round': 'kör',
