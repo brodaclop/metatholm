@@ -7,6 +7,7 @@
 
 	export let type: SkillType;
 	export let caption: string;
+	export let bookMode: boolean;
 
 	const skills = sort(
 		Skill.list().filter((s) => s.type === type),
@@ -53,7 +54,7 @@
 						{#if filteredSkills.length > 0}
 							<ul>
 								{#each filteredSkills as skill}
-									<li><LoreLink target={skill.name} /></li>
+									<li><LoreLink target={skill.name} {bookMode} /></li>
 								{/each}
 							</ul>
 						{:else}
@@ -73,7 +74,7 @@
 							{#if filteredSkills.length > 0}
 								<ul>
 									{#each filteredSkills as skill}
-										<li><LoreLink target={skill.name} /></li>
+										<li><LoreLink target={skill.name} {bookMode} /></li>
 									{/each}
 								</ul>
 							{:else}

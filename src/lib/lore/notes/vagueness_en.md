@@ -14,7 +14,7 @@ History as it really happened however tells us that in 1938 they opened up this 
 
 All this is not to say that historical truth is not important in Metatholm, and everything is just a matter of opinion.
 
-**But it's up to the Game Master to determine what it is, the lore as written only lists possibilities.**
+**But it's up to the [Spirit Guide](world:concepts:spirit_guide) to determine what it is, the lore as written only lists possibilities.**
 
 What this means is that your Metatholm may be very different from my Metatholm and everyone else's Metatholm.
 

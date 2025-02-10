@@ -4,7 +4,7 @@ In this game player characters are all "vagabonds". The vagabond falls outside n
 
 ## Patron
 
-Whether this is the reason or the result of being shunned by society, your character represents an otherworldy [patron](character:patron) who must be chosen when the character is created. You can then attempt to play your character according to the values of your chosen patron, and doing so will be rewarded by the Game Master by granting you [spirit animal](character:spirit_animals) followers.
+Whether this is the reason or the result of being shunned by society, your character represents an otherworldy [patron](character:patron) who must be chosen when the character is created. You can then attempt to play your character according to the values of your chosen patron, and doing so will be rewarded by the [Spirit Guide](world:concepts:spirit_guide) by granting you [spirit animal](character:spirit_animals) followers.
 
 ## Abilities
 
@@ -18,9 +18,9 @@ Every time a player tries to perform an action that is important from the game's
 
 Skills can be used in multiple ways: in some cases a [skill check](rule:skill_check) is needed, other situations like [combat](rule:combat) or [magic](rule:magic) have their own dedicated rules.
 
-Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the Game Master. This non-skill knowledge certainly adds to the colour of the game but there are very few adventures that rely on who's the better baker.
+Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the [Spirit Guide](world:concepts:spirit_guide). This non-skill knowledge certainly adds to the colour of the game but there are very few adventures that rely on who's the better baker.
 
-Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the Game Master can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill level of the character.
+Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the [Spirit Guide](world:concepts:spirit_guide) can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill level of the character.
 
 ## Ancestry
 

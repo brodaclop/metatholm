@@ -7,6 +7,7 @@
 
 	export let id: Ability;
 	export let positive: boolean;
+	export let bookMode: boolean;
 
 	const skills = sort(
 		Skill.list().filter((s) => s.ability === id && s.positive === positive),
@@ -46,7 +47,7 @@
 						{#if filteredSkills.length > 0}
 							<ul>
 								{#each filteredSkills as skill}
-									<li><LoreLink target={skill.name} /></li>
+									<li><LoreLink target={skill.name} {bookMode} /></li>
 								{/each}
 							</ul>
 						{:else}

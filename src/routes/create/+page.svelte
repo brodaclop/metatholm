@@ -21,7 +21,6 @@
 	import GiRollingDices from 'svelte-icons/gi/GiRollingDices.svelte';
 	import Points from '../../components/character/Points.svelte';
 	import LoreInfoIcon from '../../components/LoreInfoIcon.svelte';
-	import LoreLink from '../../components/lore/interactive/LoreLink.svelte';
 
 	type Highlight = 'name' | 'patron' | 'ancestry' | 'background' | 'roll' | 'skills' | 'save';
 

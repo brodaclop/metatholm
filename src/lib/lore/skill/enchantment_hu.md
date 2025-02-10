@@ -55,5 +55,5 @@ Legvégül pedig képzettségpróbát kell tennie, és amennyiben ez sikeres, a 
 
 Ha varázslatot tárolunk egy tárgyban, felmerül a kérdés, hogy ki vagy mi lesz a varázslat célpontja. Erre nézve nincs fix szabály, mindössze annyi, hogy a célpont kiválasztása attól függ, milyen tárgyat bájolunk. Pl. italok esetén a célpont logikusan az, aki elfogyasztja, egy botban tárolt varázslat célpontját legkönnyebben rámutatással lehet kiválasztani, stb.
 
-Az egyetlen szabály az, hogy a célzás módját a bájoló karakternek kell meghatároznia, a fentiekkel összhangban, és a Mesélő egyetértésével.
+Az egyetlen szabály az, hogy a célzás módját a bájoló karakternek kell meghatároznia, a fentiekkel összhangban, és a [Szellemkalauz](world:concepts:spirit_guide) egyetértésével.
 

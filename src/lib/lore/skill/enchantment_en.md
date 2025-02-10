@@ -55,4 +55,4 @@ Finally the character must make a single skill check to determine if the object 
 
 When storing a spell in an object, one question arises immediately: who or what is the target of the spell? There is no fixed rule for this but the mode of targeting should depend on the nature of the object being enchanted, a potion will logically target the person drinking it, a wand can be targeted by pointing, etc.
 
-The only real rule is that the mode of targeting needs to be determined by the enchanter, using the guidelines above and in agreement with the Game Master.
+The only real rule is that the mode of targeting needs to be determined by the enchanter, using the guidelines above and in agreement with the [Spirit Guide](world:concepts:spirit_guide).

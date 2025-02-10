@@ -16,7 +16,7 @@ Célpróba esetén a karakter egy rögzített nehézségű feladatot próbál el
 
 Megjegyzendő, hogy a feladat nehézségét nem pusztán a feladat természete határozza meg, a körülmények sokszor döntő súllyal esnek latba. Például bár bármelyik matróz tud laposcsomót kötni, ez önmagában könnyű feladat, na de dühöngő viharban, fél kézzel? Hirtelen a "könnyű" feladat sokkal nehezebb lett.
 
-*Megjegyzés a Mesélőnek: Amikor egy játékos **Tudás** típusú képzettségpróbát tesz, hogy fel tud-e idézni valamilyen lexikális tudást, érdemes több célszámot is meghatározni, hogy kiderüljön, mennyire részletes a válasz. Tehát pl. egy [Jog](skill:law) próba esetén ha a dobás 5-nél nagyobb, a karakter tudja, hogy a király erdeiben való mászkálás illegális-e vagy sem, 10 fölött már azt is tudja, mi a tipikus büntetés, 20 fölött pedig már a kivételekkel, kiskapukkal és lehetséges mentő körülményekkel is tisztában van.* 
+*Megjegyzés a [Szellemkalauznak](world:concepts:spirit_guide): Amikor egy játékos **Tudás** típusú képzettségpróbát tesz, hogy fel tud-e idézni valamilyen lexikális tudást, érdemes több célszámot is meghatározni, hogy kiderüljön, mennyire részletes a válasz. Tehát pl. egy [Jog](skill:law) próba esetén ha a dobás 5-nél nagyobb, a karakter tudja, hogy a király erdeiben való mászkálás illegális-e vagy sem, 10 fölött már azt is tudja, mi a tipikus büntetés, 20 fölött pedig már a kivételekkel, kiskapukkal és lehetséges mentő körülményekkel is tisztában van.* 
 
 Az alábbi táblázat azt mutatja meg, hogy a képzettség szintje és a feladat nehézsége függvényében mekkora várható eséllyel sikerül egy célpróba.
 

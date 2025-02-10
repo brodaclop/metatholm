@@ -28,6 +28,7 @@
 	export let raw: string;
 
 	const additionalParams = getContext<Record<string, unknown>>('activeElementParams') ?? {};
+	const bookMode: boolean = getContext('bookMode') ?? false;
 
 	const DICE_ROLL_PATTERN = /^[0-9]*d[0-9]+\!?(\+[0-9]+)?$/;
 
@@ -57,7 +58,7 @@
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);
 
-	$: paramOb = { ...additionalParams, ...(params ? JSON.parse(params) : {}) };
+	$: paramOb = { ...additionalParams, ...(params ? JSON.parse(params) : {}), bookMode };
 </script>
 
 {#if DICE_ROLL_PATTERN.test(name)}

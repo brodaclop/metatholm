@@ -3,12 +3,14 @@
 	import Box from '../elements/Box.svelte';
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore, loreIncomingLinks } from '../../model/Lore';
-	import { setContext } from 'svelte';
+	import { getContext, setContext } from 'svelte';
 
 	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let includeTitlePrefix = true;
 	export let modal = false;
+
+	const bookMode: boolean = getContext('bookMode') ?? false;
 
 	$: setContext('activeElementParams', { ...params, id });
 
@@ -43,7 +45,11 @@
 		];
 	};
 
-	$: incomingLinks = loreIncomingLinks(id, $locale);
+	$: incomingLinks = bookMode
+		? []
+		: loreIncomingLinks(id, $locale)
+				.map(({ id, title }) => ({ id, title: `${$_(calculatePrefix(id))}: ${title}` }))
+				.sort((a, z) => a.title.localeCompare(z.title));
 </script>
 
 {#if !title}
@@ -51,8 +57,11 @@
 {:else}
 	{#key text}
 		<Box flavour="lore" marginless>
-			<span slot="title">
-				{#if includeTitlePrefix}{$_(calculatePrefix(id))}: {/if}{title.replace(/#/g, '')}
+			<span slot="title" {id} class="title">
+				{#if includeTitlePrefix && !bookMode}{$_(calculatePrefix(id))}: {/if}{title.replace(
+					/#/g,
+					''
+				)}
 			</span>
 
 			<div
@@ -64,7 +73,7 @@
 						<h4>{$_('label:references')}:</h4>
 						<ul>
 							{#each incomingLinks as link}
-								<li><a href="/lore/{link.id}">{$_(calculatePrefix(link.id))}: {link.title}</a></li>
+								<li><a href="/lore/{link.id}">{link.title}</a></li>
 							{/each}
 						</ul>
 					</div>
@@ -79,6 +88,10 @@
 {/if}
 
 <style>
+	.title {
+		scroll-margin-top: 3em;
+	}
+
 	.contents {
 		text-align: left;
 		white-space: initial;

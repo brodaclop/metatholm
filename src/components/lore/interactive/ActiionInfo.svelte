@@ -5,6 +5,7 @@
 	import LoreLink from './LoreLink.svelte';
 
 	export let id: ActionVariant;
+	export let bookMode: boolean;
 
 	$: info = ACTION_VARIANT_PROPERTIES[id];
 	$: counteredBy = entries(ACTION_VARIANT_PROPERTIES)
@@ -22,14 +23,14 @@
 	{#if info.reactionTo}
 		<li>
 			<b>{$_('label:counters')}:</b>{#each info.reactionTo as ra}
-				<span class="counter-item"><LoreLink target={ra} /></span>
+				<span class="counter-item"><LoreLink target={ra} {bookMode} /></span>
 			{/each}
 		</li>
 	{/if}
 	{#if counteredBy.length > 0}
 		<li>
 			<b>{$_('label:countered-by')}:</b>{#each counteredBy as ra}
-				<span class="counter-item"><LoreLink target={ra} /></span>
+				<span class="counter-item"><LoreLink target={ra} {bookMode} /></span>
 			{/each}
 		</li>
 	{/if}

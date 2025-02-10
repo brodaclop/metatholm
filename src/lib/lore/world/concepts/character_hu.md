@@ -4,7 +4,7 @@ Ebben a játékban a játékos karakterek mind "csavargók". A csavargó szinte 
 
 ## Patrónus
 
-Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a karaktered egy túlvilági [patrónust](character:patron) képvisel, akit a karakter megalkotásakor kell kiválasztani. Ezután igyekezhetsz a választott patrónusodnak tetsző módon játszani a karakteredet, amit a Mesélő [totemállat](character:spirit_animals) követőkkel jutalmaz majd.
+Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a karaktered egy túlvilági [patrónust](character:patron) képvisel, akit a karakter megalkotásakor kell kiválasztani. Ezután igyekezhetsz a választott patrónusodnak tetsző módon játszani a karakteredet, amit a [Szellemkalauz](world:concepts:spirit_guide) [totemállat](character:spirit_animals) követőkkel jutalmaz majd.
 
 ## Tulajdonságok
 

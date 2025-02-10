@@ -8,6 +8,6 @@ Once someone dies, their spirit leaves them and that's the end of the story...at
 
 Because due to the nature of [spirits](world:concepts:spirits), it is perfectly possible for a departing spirit to choose to inhabit another living being straight away.
 
-In practice this means that when a player is forced to re-roll a character, the Game Master can allow the spirit of their previous character to be present in it.
+In practice this means that when a player is forced to re-roll a character, the [Spirit Guide](world:concepts:spirit_guide) can allow the spirit of their previous character to be present in it.
 
 This doesn't confer the new character any extra skills or knowledge of their prior life, beyond a vague attraction to their previous companions. In return, these companions, especially ones skilled in [Spirit magic](skill:spirit_focus) can also recognise that the new person showing up in their life is somehow familiar...

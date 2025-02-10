@@ -2,27 +2,39 @@
 	import { _, locale } from 'svelte-i18n';
 	import { loreCategoryList } from '../../../model/Lore';
 	import Box from '../../../components/elements/Box.svelte';
+	import Lore from '../Lore.svelte';
 
 	export let category: string;
 	export let title: string;
+	export let bookMode: boolean;
 
-	$: sortedList = loreCategoryList(category, $locale).sort((a, z) =>
-		a.title.localeCompare(z.title)
-	);
+	$: sortedList = loreCategoryList(category, $locale)
+		.sort((a, z) => (bookMode ? a.id.localeCompare(z.id) : a.title.localeCompare(z.title)))
+		.filter((item) => !bookMode || !excludeInBookMode.includes(item.id));
+
+	const excludeInBookMode: Array<string> = ['rule:changes'];
 </script>
 
-<Box {title} flavour="lore" marginless>
-	<ul>
+{#if bookMode}
+	<Box {title} flavour="lore" marginless>
 		{#each sortedList as lc}
-			<li><a href="/lore/{lc.id}">{lc.title}</a></li>
+			<Lore id={lc.id} />
 		{/each}
-		<li />
-		<li />
-		<li />
-		<li />
-		<li />
-	</ul>
-</Box>
+	</Box>
+{:else}
+	<Box {title} flavour="lore" marginless>
+		<ul>
+			{#each sortedList as lc}
+				<li><a href="/lore/{lc.id}">{lc.title}</a></li>
+			{/each}
+			<li />
+			<li />
+			<li />
+			<li />
+			<li />
+		</ul>
+	</Box>
+{/if}
 
 <style>
 	ul {

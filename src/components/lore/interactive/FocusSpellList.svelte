@@ -6,6 +6,7 @@
 	import LoreLink from './LoreLink.svelte';
 
 	export let id: Skill;
+	export let bookMode: boolean;
 
 	$: spells = sort(Spell.available(id, 10), 'name', $_);
 
@@ -31,7 +32,7 @@
 						{#if idx === 0}
 							<th rowspan={levelSpells.length}>{i18n('expr:skill_level')}: {level}</th>
 						{/if}
-						<td><LoreLink target={spell.name} /></td>
+						<td><LoreLink target={spell.name} {bookMode} /></td>
 						<td>{spell.speed}</td>
 						<td>{i18n(spell.target)}</td>
 						<td>{i18n(spell.duration)}</td>

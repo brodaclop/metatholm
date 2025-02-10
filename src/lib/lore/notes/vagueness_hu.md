@@ -14,7 +14,7 @@ A valóban megtörtént történelem szerint viszont amikor 1938-ban kibontottá
 
 Mindez természetesen nem azt jelenti, hogy a történelmi igazság nem létezik, vagy nem fontos Metatholm világában, és minden csak vélemény kérdése lenne.
 
-**De azt, hogy pontosan mi történt a múltban, a Mesélő dolga meghatározni, a Kódexben mindössze a lehetőségeket soroljuk fel.**
+**De azt, hogy pontosan mi történt a múltban, a [Szellemkalauz](world:concepts:spirit_guide) dolga meghatározni, a Kódexben mindössze a lehetőségeket soroljuk fel.**
 
 Mindez azzal is jár, hogy a te Metatholmod más lesz, mint az én Metatholmom, vagy bárki másé.
 

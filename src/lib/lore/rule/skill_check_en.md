@@ -16,7 +16,7 @@ In an uncontested skill check the character is up against a challenge with fixed
 
 It's worth noting that the difficulty of a task is not solely determined by the nature of the task itself, circumstances can play a decisive part. Sure, any sailor can tie a reef knot. It's an easy task. But doing so with one hand, in the middle of a raging storm? Suddenly that "easy" task has become a lot harder.
 
-*Note to Game Masters: When asking a player to roll a **Knowledge** type skill check to see what lexical information their character can recall, it's probably a good idea to set multiple target scores for various levels of detail. So for example when performing a [Law](skill:law) check to determine if tresppassing in the king's forest is a crime, rolling above 5 could mean the character recalls a yes/no answer, above 10 would also reveal what the typical punishment is, above 20 will reveal what exceptions, loopholes and possible defenses may apply.*
+*Note to [Spirit Guides](world:concepts:spirit_guide): When asking a player to roll a **Knowledge** type skill check to see what lexical information their character can recall, it's probably a good idea to set multiple target scores for various levels of detail. So for example when performing a [Law](skill:law) check to determine if tresppassing in the king's forest is a crime, rolling above 5 could mean the character recalls a yes/no answer, above 10 would also reveal what the typical punishment is, above 20 will reveal what exceptions, loopholes and possible defenses may apply.*
 
 The table below shows how likely you are to succeed a skill check, given your skill level and the task's difficulty.
 

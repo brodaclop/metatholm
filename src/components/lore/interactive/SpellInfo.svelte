@@ -4,6 +4,7 @@
 	import LoreLink from './LoreLink.svelte';
 
 	export let id: Spell;
+	export let bookMode: boolean;
 
 	$: info = Spell.get(id);
 </script>
@@ -13,7 +14,7 @@
 	<li><b>{$_('expr:spell_speed')}:</b> {info.speed}</li>
 	<li><b>{$_('label:spell_target')}:</b> {$_(info.target)}</li>
 	<li><b>{$_('label:spell_duration')}:</b> {$_(info.duration)}</li>
-	<li><b>{$_('weapon:skill')}:</b> <LoreLink target={info.skill} /></li>
+	<li><b>{$_('weapon:skill')}:</b> <LoreLink target={info.skill} {bookMode} /></li>
 </ul>
 
 <style>
