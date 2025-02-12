@@ -85,6 +85,7 @@ html.light {
     --table-head-background-c: aliceblue;
     --delete-icon-c: darkred;
     --highlight-c: cornflowerblue;
+    --toc-highlight-c: palegreen;
 
     --font-weight: 400;
     --font-weight-bold: 700;
@@ -172,6 +173,7 @@ html.dark {
     --table-head-background-c: saddlebrown;
     --delete-icon-c: orangered;
     --highlight-c: steelblue;
+    --toc-highlight-c: darkolivegreen;
 
     --font-weight: 350;
     --font-weight-bold: 500;
@@ -261,6 +263,7 @@ html.dark {
         --table-head-background-c: saddlebrown;
         --delete-icon-c: orangered;
         --highlight-c: steelblue;
+        --toc-highlight-c: darkolivegreen;
 
         --font-weight: 350;
         --font-weight-bold: 500;

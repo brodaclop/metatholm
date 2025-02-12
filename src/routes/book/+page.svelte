@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { _, locale } from 'svelte-i18n';
 	import Lore from '../../components/lore/Lore.svelte';
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import TableOfContents from '../../components/lore/TableOfContents.svelte';
 
 	setContext('bookMode', true);
@@ -16,7 +17,6 @@
 	let article: HTMLElement;
 
 	const parseHeadings = (elem: HTMLElement) => {
-		const popovers = Array.from(elem.querySelectorAll('.popover'));
 		const headingElements = Array.from(elem.querySelectorAll('h1, h2, h3, h4, h5, h6'));
 		let ret: Heading = {
 			id: '',
@@ -28,10 +28,9 @@
 		let currentHeading: Heading = ret;
 		let currentLevel = 0;
 		headingElements.forEach((elem) => {
-			const isInPopover = popovers.some((po) => po.contains(elem));
 			const level = Number(elem.tagName.charAt(1));
 			const id = elem.parentElement?.getAttribute('id');
-			if (!id || isInPopover) {
+			if (!id) {
 				return;
 			}
 			if (level <= currentLevel) {
@@ -62,20 +61,48 @@
 	};
 
 	$: headings = article ? parseHeadings(article) : null;
+
+	let highlights: Array<string> = [];
+
+	onMount(() => {
+		const handler = (e: Event) => {
+			if (article) {
+				const sections = Array.from(article.querySelectorAll('section[id]'));
+				const inView = sections.filter((section) => {
+					const rect = section.getBoundingClientRect();
+					const screenHeight = document.documentElement.clientHeight;
+					const before = rect.top < 0 && rect.bottom < 0;
+					const after = rect.top >= screenHeight && rect.bottom >= screenHeight;
+					return !after && !before;
+				});
+				highlights = inView.map((elem) => elem.getAttribute('id') ?? '');
+			}
+		};
+		document.addEventListener('scroll', handler);
+		return () => document.removeEventListener('scroll', handler);
+	});
 </script>
 
 {#if headings}
-	<article class="toc">
+	<article class="toc" data-lang={$locale}>
 		<header>
-			<h1>Tartalomjegyzék</h1>
-			<TableOfContents heading={headings} />
+			<h1>{$_('label:toc')}</h1>
+			<TableOfContents heading={headings} {highlights} />
 		</header>
 	</article>
 {/if}
 
-<article class="lore" bind:this={article}>
-	<Lore id="book" />
-</article>
+{#key $locale}
+	<article
+		class="lore"
+		bind:this={article}
+		on:scroll={(e) => {
+			console.log('scroll', e);
+		}}
+	>
+		<Lore id="book" />
+	</article>
+{/key}
 
 <style>
 	.lore {
@@ -84,10 +111,10 @@
 
 	.toc {
 		position: fixed;
-		top: 3em;
+		top: 3.5em;
 		right: 0;
-		z-index: 1000;
-		max-height: calc(100vh - 3em);
+		z-index: 500;
+		max-height: calc(100vh - 4em);
 		padding-left: 0.5em;
 		padding-right: 0.5em;
 		width: 30vw;

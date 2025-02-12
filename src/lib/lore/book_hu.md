@@ -1,4 +1,4 @@
-# Metatholm
+# Szabályköny
 
 `LoreCategory|{"category": "world:concepts", "title": "Fogalmak" }`
 

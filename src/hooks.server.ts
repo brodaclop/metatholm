@@ -12,6 +12,7 @@ declare module "lucia" {
     }
 }
 
+const NO_AUTH_PATHS = ['/lore', '/book', '/login', '/logout']
 
 
 export let lucia: Lucia<Record<never, never>, {
@@ -89,7 +90,7 @@ export async function handle({ event, resolve }) {
         }
 
         // check is authenticated endpoint
-        const needsAuth = event.url.pathname !== '/' && !event.url.pathname.startsWith('/login') && !event.url.pathname.startsWith('/lore') && !event.url.pathname.startsWith('/logout');
+        const needsAuth = event.url.pathname !== '/' && !NO_AUTH_PATHS.some(prefix => event.url.pathname.startsWith(prefix));
         console.log('path', event.url.pathname, 'needsAuth', needsAuth);
         if (!event.locals.user && needsAuth) {
             throw redirect(302, "/");

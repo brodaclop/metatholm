@@ -54,6 +54,9 @@
 		: loreIncomingLinks(id, $locale)
 				.map(({ id, title }) => ({ id, title: `${$_(calculatePrefix(id))}: ${title}` }))
 				.sort((a, z) => a.title.localeCompare(z.title));
+
+	// TODO: számozás
+	// TODO: mobil kinézet
 </script>
 
 {#if !title}

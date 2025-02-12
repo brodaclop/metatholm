@@ -1,4 +1,4 @@
-# Metatholm
+# Rulebook
 
 `LoreCategory|{"category": "world:concepts", "title": "Concepts" }`
 

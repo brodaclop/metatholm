@@ -28,7 +28,7 @@ The people of Metatholm were originally embodiments of powerful spirits which st
 
 On top of that it of course also affects the looks of the character albeit in a much less prescriptive way than the somewhat similar concept of "race" does in many other games. So you can be a bearded elf or a fairly tall-ish dwarf, although it's always worth picking at least one or two aspects typical to the chosen ancestry (e.g. pointy ear, prominent canines or excessive body hair).
 
-What ancestry has absolutely no effect on is the skills of the character. In the world of Metatholm nobody will automatically be good at archery just because they had elven ancestors. Although it is quite plausible that they will show an otherwise inecplicable interest in these things, they'll have to learn it like everyone else.
+What ancestry has absolutely no effect on is the skills of the character. In the world of Metatholm nobody will automatically be good at archery just because they had elven ancestors. Although it is quite plausible that they will show an otherwise inexplicable interest in these things, they'll have to learn it like everyone else.
 
 ## Background
 

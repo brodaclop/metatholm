@@ -1,4 +1,4 @@
-# Abilities
+# Ability
 
 A character's **abilities** are a character's fundamental, long-lasting traits. Each is determined as a number between 0 and 10 at character creation and will stay largely unchanged throughout the character's life.
 

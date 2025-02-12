@@ -1,4 +1,4 @@
-# Tulajdonságok
+# Tulajdonság
 
 Egy karakter **tulajdonságai** alapjaiban és hosszú távon határozzák meg a karakter jellegét. Minden tulajdonság egy 0 és 10 közötti számmal fejezhető ki, és ez a szám a karakter megalkotása után ritkán változik.
 

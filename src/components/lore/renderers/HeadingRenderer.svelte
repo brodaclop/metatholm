@@ -5,7 +5,7 @@
 	export let text;
 
 	const headingLevel: number = getContext('headingLevel') ?? 1;
-	depth = Math.min(depth + headingLevel, 6);
+	depth = Math.min(depth + headingLevel - 1, 6);
 </script>
 
 {#if depth === 1}
