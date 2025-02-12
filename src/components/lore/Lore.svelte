@@ -4,6 +4,7 @@
 	import MarkdownText from './renderers/MarkdownText.svelte';
 	import { lore, loreIncomingLinks } from '../../model/Lore';
 	import { getContext, setContext } from 'svelte';
+	import Heading from '../elements/Heading.svelte';
 
 	export let id: string = '';
 	export let params: Record<string, unknown> = {};
@@ -11,6 +12,9 @@
 	export let modal = false;
 
 	const bookMode: boolean = getContext('bookMode') ?? false;
+	const headingLevel: number = getContext('headingLevel') ?? 0;
+
+	setContext('headingLevel', Math.min(headingLevel + 1, 6));
 
 	$: setContext('activeElementParams', { ...params, id });
 
@@ -54,10 +58,10 @@
 
 {#if !title}
 	<span>Lore not found</span>
-{:else}
+{:else if !bookMode || modal}
 	{#key text}
 		<Box flavour="lore" marginless>
-			<span slot="title" {id} class="title">
+			<span slot="title" class="title">
 				{#if includeTitlePrefix && !bookMode}{$_(calculatePrefix(id))}: {/if}{title.replace(
 					/#/g,
 					''
@@ -85,6 +89,13 @@
 			</div>
 		</Box>
 	{/key}
+{:else}
+	<section {id} class="title">
+		<Heading>{title.replace(/#/g, '')}</Heading>
+		<div class="contents">
+			<MarkdownText {text} />
+		</div>
+	</section>
 {/if}
 
 <style>

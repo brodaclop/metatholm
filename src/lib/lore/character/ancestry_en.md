@@ -12,4 +12,4 @@ Of course the world of Metatholm isn't devoid of prejudice, so some of its inhab
 
 The ancestral spirits available for player characters are:
 
-`Ancestries`
+`LoreCategory|{"category": "ancestry", "title": "Ancestral spirits" }`

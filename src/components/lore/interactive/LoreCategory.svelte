@@ -3,10 +3,15 @@
 	import { loreCategoryList } from '../../../model/Lore';
 	import Box from '../../../components/elements/Box.svelte';
 	import Lore from '../Lore.svelte';
+	import { getContext, setContext } from 'svelte';
+	import Heading from '../../elements/Heading.svelte';
 
 	export let category: string;
 	export let title: string;
 	export let bookMode: boolean;
+
+	const headingLevel: number = getContext('headingLevel') ?? 0;
+	setContext('headingLevel', headingLevel + 1);
 
 	$: sortedList = loreCategoryList(category, $locale)
 		.sort((a, z) => (bookMode ? a.id.localeCompare(z.id) : a.title.localeCompare(z.title)))
@@ -16,11 +21,12 @@
 </script>
 
 {#if bookMode}
-	<Box {title} flavour="lore" marginless>
+	<section id={category}>
+		<Heading>{title}</Heading>
 		{#each sortedList as lc}
 			<Lore id={lc.id} />
 		{/each}
-	</Box>
+	</section>
 {:else}
 	<Box {title} flavour="lore" marginless>
 		<ul>

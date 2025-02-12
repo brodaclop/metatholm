@@ -7,6 +7,7 @@
 	import Image from './Image.svelte';
 	import TableCell from './TableCell.svelte';
 	import TableHead from './TableHead.svelte';
+	import HeadingRenderer from './HeadingRenderer.svelte';
 
 	export let text: string;
 	export let isInline = false;
@@ -23,6 +24,7 @@
 				link: LinkRenderer,
 				tablerow: TableRow,
 				tablecell: TableCell,
+				heading: HeadingRenderer,
 				tablehead: TableHead,
 				image: Image,
 				table: Table

@@ -4,11 +4,15 @@
 	import { hasLore } from '../model/Lore';
 	import { locale } from 'svelte-i18n';
 	import IconButton from './elements/IconButton.svelte';
+	import { getContext } from 'svelte';
 
 	export let id: string = '';
 	export let params: Record<string, unknown> = {};
 	export let inline: boolean = false;
 	export let disablePlaceholder: boolean = false;
+
+	const bookMode: boolean = getContext('bookMode') ?? false;
+
 	// TODO: popover in dialog zIndex
 </script>
 
@@ -17,12 +21,21 @@
 		<IconButton title={id} verticalCorrection="-1px" on:click>
 			<FaInfo />
 		</IconButton>
-	{:else}
+	{:else if !bookMode}
 		<IconButton title={id} verticalCorrection="-1px" popovertarget="popover|{id}">
 			<FaInfo />
-		</IconButton><div class="popover reset-font" popover="auto" id="popover|{id}">
+		</IconButton>
+		<div class="popover reset-font" popover="auto" id="popover|{id}">
 			<Lore {id} {params} modal />
 		</div>
+	{:else}
+		<IconButton
+			title={id}
+			verticalCorrection="-1px"
+			on:click={() => document.getElementById(id)?.scrollIntoView()}
+		>
+			<FaInfo />
+		</IconButton>
 	{/if}
 {:else if !disablePlaceholder}
 	<span class="placeholder" />

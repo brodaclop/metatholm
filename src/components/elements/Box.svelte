@@ -10,14 +10,16 @@
 	export let grow: number | undefined = undefined;
 	export let flexBasis: string | undefined = undefined;
 
-	const level: number = getContext('level') ?? 1;
-	setContext('level', Math.min(level + 1, 5));
+	const level: number = getContext('headingLevel') ?? 1;
+	setContext('headingLevel', Math.min(level + 1, 6));
+
+	const bookMode: boolean = getContext('bookMode') ?? false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article
-	id={title}
+	id={bookMode ? undefined : title}
 	class={flavour}
 	style:background-color={`var(--box-c-${flavour})`}
 	on:mouseenter

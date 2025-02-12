@@ -12,4 +12,4 @@ Persze Metatholm világa sem mentes az előítéletektől, úgyhogy némely lak�
 
 A karakter által választható szellemősök:
 
-`Ancestries`
+`LoreCategory|{"category": "ancestry", "title": "Szellemősök" }`
