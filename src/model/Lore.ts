@@ -1,10 +1,11 @@
 import { entries } from "./InfoList";
 
-//TODO: basic description of world
-
-const convertToLoreId = (file: string): [string, string] => {
+const convertToLoreId = (file: string): [string, string, number] => {
     const ret = file.replace('/src/lib/lore/', '').replace('.md', '').replaceAll('/', ':');
-    return [ret.slice(-2), ret.slice(0, -3)];
+    const lang = ret.slice(-2);
+    const [id, index] = ret.slice(0, -3).split('!')
+
+    return [lang, id, Number(index ?? '0')];
 }
 
 const LORES = import.meta.glob('$lib/lore/**/*.md', {
@@ -13,14 +14,14 @@ const LORES = import.meta.glob('$lib/lore/**/*.md', {
     import: 'default'
 });
 
-const Lore: Record<string, Record<string, string>> = { en: {}, hu: {} };
+const Lore: Record<string, Record<string, { index: number, text: string }>> = { en: {}, hu: {} };
 
 entries(LORES).forEach(([key, value]) => {
-    const [lang, id] = convertToLoreId(key);
+    const [lang, id, index] = convertToLoreId(key);
     try {
-        Lore[lang][id] = value as string;
+        Lore[lang][id] = { index, text: value as string };
     } catch (e) {
-        console.log(key, id, lang);
+        console.error('Failed to load', key, id, lang);
     }
 });
 
@@ -28,34 +29,34 @@ entries(LORES).forEach(([key, value]) => {
 type OptionalString = string | null | undefined;
 
 export const hasLore = (id: string, lang: OptionalString): boolean => id in Lore[lang ?? 'en'];
-export const lore = (id: string, lang: OptionalString): string => Lore[lang ?? 'en'][id];
+export const lore = (id: string, lang: OptionalString): string => Lore[lang ?? 'en'][id].text;
 
 export const loreIncomingLinks = (id: string, lang: OptionalString): Array<{ id: string, title: string }> => {
     const linkString = `(${id})`;
-    const matchingEntries: Array<[string, string]> = entries(Lore[lang ?? 'en'])
-        .filter(([, value]) => value.includes(linkString));
-    return matchingEntries.map(([id, text]) => ({ id, title: text.split('\n', 1)[0].replace(/#/g, '') }));
+    return entries(Lore[lang ?? 'en'])
+        .filter(([, value]) => value.text.includes(linkString))
+        .map(([id, file]) => ({ id, title: file.text.split('\n', 1)[0].replace(/#/g, '') }));
 }
 
-export const loreCategoryList = (category: string, lang: OptionalString): Array<{ id: string, title: string }> => {
-    //TODO: optimise this, it's absolute crap
-    const categoryList = category.split(':');
+export const loreCategoryList = (category: string, lang: OptionalString, bookMode: boolean): Array<{ id: string, title: string }> => {
+    const filterList = category.split(':');
     let wildcards = 0;
-    while (categoryList.at(-1) === '*') {
-        categoryList.pop();
+    while (filterList.at(-1) === '*') {
+        filterList.pop();
         wildcards++;
     }
+    const filterListLength = filterList.length;
+    const filterString = filterList.join(':');
+
     const inCategory = (key: string) => {
         const keyList = key.split(':');
-        return (keyList.length === categoryList.length + wildcards + 1 && keyList.slice(0, categoryList.length).join(':') === categoryList.join(':'));
+        return (keyList.length === filterList.length + wildcards + 1 && keyList.slice(0, filterListLength).join(':') === filterString);
     }
 
-    const lorePromises: Array<[string, string]> = entries(Lore[lang ?? 'en'])
-        .filter(([key]) => inCategory(key));
-    const ret: Array<{ id: string, title: string }> = [];
-    for (const entry of lorePromises) {
-        ret.push({ id: entry[0], title: entry[1].split('\n', 1)[0].replace(/#/g, '') })
-    }
-    return ret;
+    return entries(Lore[lang ?? 'en'])
+        .filter(([key]) => inCategory(key))
+        .map(([id, file]) => ({ id: id, index: file.index, title: file.text.split('\n', 1)[0].replace(/#/g, '') }))
+        .sort((a, z) => bookMode ? a.id.localeCompare(z.id) : a.title.localeCompare(z.title))
+        .sort((a, z) => a.index - z.index);
 }
 

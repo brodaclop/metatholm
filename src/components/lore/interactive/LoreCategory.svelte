@@ -13,9 +13,9 @@
 	const headingLevel: number = getContext('headingLevel') ?? 0;
 	setContext('headingLevel', headingLevel + 1);
 
-	$: sortedList = loreCategoryList(category, $locale)
-		.sort((a, z) => (bookMode ? a.id.localeCompare(z.id) : a.title.localeCompare(z.title)))
-		.filter((item) => !bookMode || !excludeInBookMode.includes(item.id));
+	$: sortedList = loreCategoryList(category, $locale, bookMode).filter(
+		(item) => !bookMode || !excludeInBookMode.includes(item.id)
+	);
 
 	const excludeInBookMode: Array<string> = ['rule:changes'];
 </script>
@@ -31,7 +31,7 @@
 	<Box {title} flavour="lore" marginless>
 		<ul>
 			{#each sortedList as lc}
-				<li><a href="/lore/{lc.id}">{lc.title}</a></li>
+				<li><a href="/codex/{lc.id}">{lc.title}</a></li>
 			{/each}
 			<li />
 			<li />

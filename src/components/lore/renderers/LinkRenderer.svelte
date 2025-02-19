@@ -8,11 +8,13 @@
 
 	const bookMode: boolean = getContext('bookMode') ?? false;
 
-	$: effectiveHref = `/lore/${href}`;
+	$: effectiveHref = `/codex/${href}`;
 </script>
 
 {#if bookMode}
-	<a href="#{href}" {title}><slot /></a>
+	{#if href !== 'main'}
+		<a href="#{href}" {title}><slot /></a>
+	{/if}
 {:else if href.startsWith('+')}
 	<!-- svelte-ignore a11y-invalid-attribute -->
 	<a href="#" {title}>

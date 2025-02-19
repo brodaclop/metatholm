@@ -6,6 +6,8 @@
 
 `LoreCategory|{"category": "character", "title": "Karakter" }`
 
+`LoreCategory|{"category": "action", "title": "Harci manőverek" }`
+
 `LoreCategory|{"category": "skill", "title": "Képzettségek" }`
 
 `LoreCategory|{"category": "spell", "title": "Varázslatok" }`

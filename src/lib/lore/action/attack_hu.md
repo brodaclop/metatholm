@@ -6,7 +6,7 @@ Ezt az akciót használjuk normál közelharci támadáshoz.
 
 ## Akciópontok
 
-A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **sebessége** és a képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a képzettség szintje.
 
 `ActionPointCalculator`
 

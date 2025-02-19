@@ -6,6 +6,8 @@
 
 `LoreCategory|{"category": "character", "title": "Character" }`
 
+`LoreCategory|{"category": "action", "title": "Combat Manoeuvres" }`
+
 `LoreCategory|{"category": "skill", "title": "Skills" }`
 
 `LoreCategory|{"category": "spell", "title": "Spells" }`

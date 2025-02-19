@@ -80,7 +80,7 @@
 						<h4>{$_('label:references')}:</h4>
 						<ul>
 							{#each incomingLinks as link}
-								<li><a href="/lore/{link.id}">{link.title}</a></li>
+								<li><a href="/codex/{link.id}">{link.title}</a></li>
 							{/each}
 						</ul>
 					</div>

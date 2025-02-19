@@ -154,7 +154,8 @@
 					<span><MdMenu /></span>
 				</button>
 				<ul style:--display-dropdown={!menuOpen ? 'none' : 'flex'}>
-					<li><a href="/lore/main">{$_('label:lore')}</a></li>
+					<li><a href="/codex/main">{$_('label:lore')}</a></li>
+					<li><a href="/scroll">{$_('label:scroll')}</a></li>
 					{#if data.user}
 						<li>
 							<CharacterSelector disabled={noActiveParty} characters={data.characters} />

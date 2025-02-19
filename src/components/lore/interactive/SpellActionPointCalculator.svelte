@@ -32,8 +32,8 @@
 </script>
 
 <PointsTable
-	columnName="weapon:speed"
-	columnMax={20}
+	columnName="expr:spell_speed"
+	columnMax={10}
 	bind:column={speed}
 	columnChangeable={!skills}
 	rowName="weapon:skill"

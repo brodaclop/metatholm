@@ -9,7 +9,6 @@
 	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 	import PointsTable from '../../PointsTable.svelte';
 
-	let difficulty: 1 | 2 | 3 = 1;
 	let skill = 1;
 	let speed = 1;
 
@@ -19,35 +18,19 @@
 
 	$: if (weapon) {
 		speed = weapon.speed;
-		difficulty = Skill.get(weapon.skill).difficulty;
 		if (skills && ACTION_VARIANT_PROPERTIES[id]) {
 			skill = Math.max(0, (skills[weapon.skill] ?? 0) + (weapon.actions[id] ?? 0));
 		}
 	}
 
-	const calculate = (_speed: number, _skill: number, _difficulty: number): number =>
+	const calculate = (_speed: number, _skill: number): number =>
 		Math.round(
 			E.evaluate(ATTACK_AP, {
 				'weapon:speed': _speed,
-				'weapon:skill': _skill,
-				'weapon:difficulty': _difficulty
+				'weapon:skill': _skill
 			}).result * (_skill === 0 ? 0 : 1)
 		);
 </script>
-
-<table>
-	<tbody>
-		<tr><td /></tr>
-		<Circles
-			name="label:difficulty"
-			bind:value={difficulty}
-			subName={$_(`weapon:difficulty:${difficulty}`)}
-			max={3}
-			min={1}
-			editable={!weapon}
-		/>
-	</tbody>
-</table>
 
 <PointsTable
 	columnName="weapon:speed"
@@ -59,5 +42,5 @@
 	rowChangeable={!weapon}
 	bind:row={skill}
 	{id}
-	valueCalculator={(row, column) => calculate(column, row, difficulty)}
+	valueCalculator={(row, column) => calculate(column, row)}
 />

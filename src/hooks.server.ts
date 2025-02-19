@@ -12,7 +12,7 @@ declare module "lucia" {
     }
 }
 
-const NO_AUTH_PATHS = ['/lore', '/book', '/login', '/logout']
+const NO_AUTH_PATHS = ['/codex', '/scroll', '/login', '/logout']
 
 
 export let lucia: Lucia<Record<never, never>, {

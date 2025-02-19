@@ -6,7 +6,7 @@ Ha a karakter közelharci távolságban van ellenfelével, ezen akció segítés
 
 ## Akciópontok
 
-A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **sebessége** és a képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a képzettség szintje.
 
 `ActionPointCalculator`
 

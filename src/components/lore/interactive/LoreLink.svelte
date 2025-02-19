@@ -8,5 +8,5 @@
 {#if bookMode}
 	<a href="#{target}">{$_(target)}</a>
 {:else}
-	<a href="/lore/{target}">{$_(target)}</a>
+	<a href="/codex/{target}">{$_(target)}</a>
 {/if}
