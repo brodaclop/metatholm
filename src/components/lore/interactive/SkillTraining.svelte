@@ -148,10 +148,6 @@
 		padding-right: 0.75em;
 	}
 
-	.active {
-		background-color: var(--lore-active-cells-c);
-	}
-
 	button.selected {
 		background-color: var(--spell-action-filter-allowed);
 	}
