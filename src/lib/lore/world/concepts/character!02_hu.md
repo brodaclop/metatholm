@@ -18,9 +18,9 @@ Minden alkalommal, amikor a játékos olyan cselekedetet próbál végrehajtani,
 
 A képzettségeket többféle módon lehet használni: egyes esetekben [képzettségpróba](rule:skill_check) szükséges hozzá, más esetekben, pl. [harcban](rule:combat) vagy [varázsláskor](rule:magic) külön szabályok határozzák meg.
 
-A karakter természetesen rendelkezhet egyéb, a képzettségek által nem szabályozott ismeretekkel is, pl. szakma, ezeket a mesélővel való egyeztetés után egyszerűen fel lehet jegyezni a karakterlapra (a Jegyzetek rovatba). Az ilyen ismeretek színesítik a játékot, de viszonylag ritka az a kaland, ami azon múlna, hogy ki a jobb pék.
+A karakter természetesen rendelkezhet egyéb, a képzettségek által nem szabályozott ismeretekkel is, pl. szakma, ezeket a [Szellemkalauzzal](world:concepts:spirit_guide) való egyeztetés után egyszerűen fel lehet jegyezni a karakterlapra (a Jegyzetek rovatba). Az ilyen ismeretek színesítik a játékot, de viszonylag ritka az a kaland, ami azon múlna, hogy ki a jobb pék.
 
-Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy megfelelő tanítómestert ill. könyvet találni a képzettségek fejlesztéséhez, természetesen a mesélő dönhet úgy, hogy ezzel is életszerűbbé tenné a játékot. Ilyenkor azonban érdemes figyelembe venni a képzettség kategóriáját (harci/tudás/mozgás/stb.), nehézségét és a karakter meglevő tudásszintjét is.
+Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy megfelelő tanítómestert ill. könyvet találni a képzettségek fejlesztéséhez, természetesen a [Szellemkalauz](world:concepts:spirit_guide) dönhet úgy, hogy ezzel is életszerűbbé tenné a játékot. Ilyenkor azonban érdemes figyelembe venni a képzettség kategóriáját (harci/tudás/mozgás/stb.), nehézségét és a karakter meglevő tudásszintjét is.
 
 ## Származás
 

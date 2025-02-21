@@ -30,11 +30,11 @@ For this they first of all have to decide what **strength** they want to cast th
 
 Once strength has been determined, the caster has to roll with as many `d10!` as the difference of their focus skill and the level of the spell. E.g. the aforementioned character with a Body Focus skill of 4 casting a level 2 spell will roll with `2d10!`.
 
-The dungeon master will "oppose" this roll with as many `d10!`s as the chosen strength of the spell.
+The [Spirit Guide](world:concepts:spirit_guide) will "oppose" this roll with as many `d10!`s as the chosen strength of the spell.
 
 If the spellcaster's roll is higher, the spell is cast without further cost or complication.
 
-If the spellcaster loses the contest, for every 10 points of the difference (starting from 0) they also have to expend 1 Magic Power points. So if the spellcaster rolls a 17 and the DM a 20, the cost is 1 MP, if the DM rolls 27, it's 2 MPs and so on. If the spellcaster hasn't got enough MPs left, they can choose to pay the remaining cost from their [Life Force](character:ep). Of course they can also always decide that they don't want to cast the spell after all, in which case the only thing they lose is the time it took to not-quite-cast the spell.
+If the spellcaster loses the contest, for every 10 points of the difference (starting from 0) they also have to expend 1 Magic Power points. So if the spellcaster rolls a 17 and the [Spirit Guide](world:concepts:spirit_guide) a 20, the cost is 1 MP, if the [Spirit Guide](world:concepts:spirit_guide) rolls 27, it's 2 MPs and so on. If the spellcaster hasn't got enough MPs left, they can choose to pay the remaining cost from their [Life Force](character:ep). Of course they can also always decide that they don't want to cast the spell after all, in which case the only thing they lose is the time it took to not-quite-cast the spell.
 
 ### Snapshots
 

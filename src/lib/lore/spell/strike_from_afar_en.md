@@ -6,6 +6,6 @@ The caster points at an object than a target which makes the object (unless it's
 
 This applies to a solid and hard object weighing about 5 kg. If the object is not as solid or hard, the damage will be less but if it's spiky or sharp, it will be more.
 
-If the object is lighter, the damage will also be less however the spellcaster will get a bonus on their skill check to hit the target as the object will fly faster. The reverse is true if the object is heavier. *The deviation will need to be determined by the dungeon master but a rule of thumb is that +-`1d5!` damage can be traded for -+ on the evasion skill check.*
+If the object is lighter, the damage will also be less however the spellcaster will get a bonus on their skill check to hit the target as the object will fly faster. The reverse is true if the object is heavier. *The deviation will need to be determined by the [Spirit Guide](world:concepts:spirit_guide) but a rule of thumb is that +-`1d5!` damage can be traded for -+ 1 die on the evasion skill check.*
 
 Objects heavier than 20 kg can't be moved this way, nor can any living creatures.

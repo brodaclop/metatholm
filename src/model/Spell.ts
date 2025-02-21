@@ -357,7 +357,7 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         speed: 4,
         level: 3,
         target: 'spell_target:point',
-        duration: 'spell_duration:round',
+        duration: 'spell_duration:hour',
         skill: 'skill:spirit_focus'
     },
     'spell:spirit_shroud': {

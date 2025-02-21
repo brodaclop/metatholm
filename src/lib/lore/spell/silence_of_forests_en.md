@@ -1,5 +1,7 @@
 # Silence of Forests
 
+`SpellInfo`
+
 The spellcaster and the living creatures touched by them while casting this spell become an organic part of nature. Although animals will notice them, unless they act threateningly or appear to be easy prey, do not give them much heed.
 
 In fact the natural world's noises makes the targets of this spell even less conspicuous: birds will start to sing at the exact moment a dry branch cracks under the foot of a character, crickets will chirp to the rhythm of their footsteps and the rustling of the leaves will mask the heavy breathing of an exhausted person.

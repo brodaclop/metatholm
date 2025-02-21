@@ -1,5 +1,7 @@
 # Erdők csendje
 
+`SpellInfo`
+
 A varázsló és az általa a varázslás közben megérintett élőlények a természet szerves részévé válnak. Az állatvilág ugyan észreveszi őket, de hacsak nem lépnek fel fenyegetően, vagy nem tűnnek könnyű prédának, nem tanúsít nekik különösebb jelentőséget.
 
 Sőt, neszezésével még inkább észrevétlenné teszi a varázslat alanyait: a madarak pont akkor kezdenek csicseregni, amikor az egyik karakter talpa alatt megreccsen egy lehullott faág, a tücskök a léptek ritmusára ciripelnek, a fák levelének susogása még a fáradt karakter lihegését is elfedi.

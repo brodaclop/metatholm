@@ -4,7 +4,7 @@ A képzettségpróbákat [halmozott kockákkal](rule:exploding_dice) dobjuk, mé
 
 ## Célpróba
 
-Célpróba esetén a karakter egy rögzített nehézségű feladatot próbál elvégezni. A nehézséget minden esetben a mesélő határozza meg, és egy **célszámban** nyilvánul meg. A képzettségpróba akkor minősül sikeresnek, ha a dobás meghaladja a célszámot. Íme pár példa célszám:
+Célpróba esetén a karakter egy rögzített nehézségű feladatot próbál elvégezni. A nehézséget minden esetben a [Szellemkalauz](world:concepts:spirit_guide) határozza meg, és egy **célszámban** nyilvánul meg. A képzettségpróba akkor minősül sikeresnek, ha a dobás meghaladja a célszámot. Íme pár példa célszám:
 
 | Nehézség | Tipikus célszám |
 | :- | :- |
