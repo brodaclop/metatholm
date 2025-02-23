@@ -396,7 +396,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:spirit_shroud': 'Spirit Shroud',
     'spell:telekinesis': 'Telekinesis',
     'spell:strike_from_afar': 'Strike From Afar',
-    'spell:silence_of_forests': 'Silence of Forestst',
+    'spell:silence_of_forests': 'Silence of Forests',
     'spell:slow_metabolism': 'Slow Metabolism',
     'spell:suspended_animation': 'Suspended Animation',
     'spell:insignificance': 'Insignificance',
