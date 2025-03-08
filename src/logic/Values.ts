@@ -11,10 +11,12 @@ export type Values =
     | 'character:level'
     | 'weapon:speed'
     | 'weapon:skill'
-    | 'weapon:difficulty'
     | 'weapon:reach'
     | 'weapon:attack'
     | 'weapon:defence'
+    | 'weapon:damage'
+    | 'weapon:hands'
     | 'weapon:effective_skill'
     | 'character:ip'
+    | 'weapon:multiplier'
     ;

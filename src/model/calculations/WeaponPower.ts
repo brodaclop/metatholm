@@ -26,7 +26,8 @@ const ACTION_MULTIPLIER: Partial<Record<ActionVariant, number>> = {
     'action:spin-behind': 2,
 }
 
-export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id'>): number => {
+export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id' | 'name'>): number => {
+    console.log('WEAPON', JSON.stringify(weapon))
     const skill = Skill.get(weapon.skill);
     const base = E.evaluate(WEAPON_POWER, {
         'weapon:attack': weapon.attack,
@@ -36,9 +37,12 @@ export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id'>): numb
         'weapon:hands': weapon.hands,
         'expr:skill_difficulty': skill.difficulty
     });
+
     const multiplier = entries(weapon.actions).map(([action, skill]) => {
         return (ACTION_MULTIPLIER[action] ?? 0) * (10 + skill) * (10 + skill) / 10;
     }).reduce((acc, curr) => acc + curr, 0);
+
+    console.log('BASE', base, multiplier);
 
     return Math.max(1, Math.round((base.result * multiplier - 1200) / 200));
 }

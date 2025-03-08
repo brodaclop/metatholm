@@ -3,23 +3,43 @@
 	import Circles from '../../elements/Circles.svelte';
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
 	import type { Weapon } from '../../../model/Weapon';
+	import { Skill, WEAPON_MULTIPLIERS } from '../../../model/Skills';
+	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 
 	let damage = 1;
+	let weaponSkill: Skill;
 
 	export let weapon: Weapon | undefined = undefined;
 
 	$: if (weapon) {
+		weaponSkill = weapon.skill;
 		damage = weapon.damage;
 	}
+
+	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.damage ?? 1
+
 </script>
 
 <table>
 	<tbody>
+		<tr>
+			<th>
+				<LoreInfoIcon
+				id='weapon:skill'
+			/>
+				{$_('weapon:skill')}</th>
+			<td><select bind:value={weaponSkill} disabled={!!weapon}>
+				<option value={undefined}>???</option>
+				{#each Skill.list().filter(s => s.type === 'skill_type:combat') as skill}
+					<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
+				{/each}
+			</select></td>
+		</tr>
 		<Circles
 			name="weapon:damage"
 			bind:value={damage}
 			subName={String(damage)}
-			max={20}
+			max={10}
 			min={1}
 			editable={!weapon}
 		/>
@@ -27,7 +47,7 @@
 	<tbody>
 		<tr>
 			<td colspan="3">
-				<FixedDiceRoller roll="{damage}d5!" />
+				<FixedDiceRoller roll="{Math.floor(damage*multiplier(weaponSkill))}d5!" />
 			</td>
 		</tr>
 	</tbody>

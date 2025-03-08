@@ -3,7 +3,7 @@
 	import Box from '../elements/Box.svelte';
 	import type { Weapon } from '../../model/Weapon';
 	import { v4 } from 'uuid';
-	import { Skill } from '../../model/Skills';
+	import { Skill, WEAPON_MULTIPLIERS } from '../../model/Skills';
 	import { createEventDispatcher } from 'svelte';
 	import { WEAPON_LIST, WEAPON_NAMES_LIST } from '../../model/WeaponList';
 	import { entries } from '../../model/InfoList';
@@ -100,6 +100,10 @@
 	$: langKey = ($locale ?? 'en') as 'hu' | 'en';
 
 	let openLore: string | undefined;
+
+	$: multipliers = WEAPON_MULTIPLIERS[editedWeapon.skill];
+
+	$: power = calculateWeaponPower({skill: editedWeapon.skill, attack: editedWeapon.attack, defence: editedWeapon.defence, damage: editedWeapon.damage, speed: editedWeapon.speed, actions: editedWeapon.actions, hands: editedWeapon.hands, reach: editedWeapon.reach});
 </script>
 
 <DialogBox title="label:weapon" flavour="inventory" bind:showModal {close}>
@@ -141,23 +145,23 @@
 				</div>
 				<div class="row">
 					<span>{$_('weapon:speed')}</span>
-					<span><input type="number" min="0" max="20" bind:value={editedWeapon.speed} /></span>
+					<span><input type="number" min="0" max="10" bind:value={editedWeapon.speed} /> (x{multipliers?.speed ?? 1})</span>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:attack')}</span>
-					<span><input type="number" min="0" max="20" bind:value={editedWeapon.attack} /></span>
+					<span><input type="number" min="0" max="10" bind:value={editedWeapon.attack} /> (x{multipliers?.attack ?? 1}</span>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:defence')}</span>
-					<span><input type="number" min="0" max="20" bind:value={editedWeapon.defence} /></span>
+					<span><input type="number" min="0" max="10" bind:value={editedWeapon.defence} /> (x{multipliers?.defence ?? 1})</span>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:damage')}</span>
-					<span><input type="number" min="0" max="20" bind:value={editedWeapon.damage} /></span>
+					<span><input type="number" min="0" max="10" bind:value={editedWeapon.damage} /> (x{multipliers?.damage ?? 1})</span>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:reach')}</span>
-					<span><input type="number" min="0" max="20" bind:value={editedWeapon.reach} /></span>
+					<span><input type="number" min="0" max="10" bind:value={editedWeapon.reach} /></span>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:hands')}</span>
@@ -171,7 +175,7 @@
 				</div>
 				<div class="row">
 					<span>{$_('weapon:power')}</span>
-					<span>{calculateWeaponPower(editedWeapon)}</span>
+					<span>{power}</span>
 				</div>
 			</div>
 

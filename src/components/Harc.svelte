@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { E } from '../logic/Expression';
-	import { ATTACK_AP, SPELL_AP, WEAPON_ATK } from '../model/Rules';
+	import {  SPELL_AP } from '../model/Rules';
 
 	let hardness = 3;
 

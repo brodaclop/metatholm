@@ -414,3 +414,77 @@ export type Skill = 'skill:endurance' |
     ;
 
 export const Skill = createList(SkillInfos);
+
+export const WEAPON_MULTIPLIERS: Partial<Record<Skill, {
+    attack: 1 | 1.5 | 2;
+    defence: 1 | 1.5 | 2;
+    speed: 1 | 1.5 | 2;
+    damage: 1 | 1.5 | 2;
+}>> = {
+    'skill:bows': {
+        attack: 1,
+        defence: 1,
+        speed: 1.5,
+        damage: 1.5
+    },
+    'skill:brawling': {
+        attack: 1,
+        defence: 1,
+        speed: 1.5,
+        damage: 1
+    },
+    'skill:crossbows': {
+        attack: 1,
+        defence: 1,
+        speed: 1,
+        damage: 1.5
+    },
+    'skill:fistfighting': {
+        attack: 1,
+        defence: 1,
+        speed: 1.5,
+        damage: 1.5
+    },
+    'skill:knives': {
+        attack: 1,
+        defence: 1,
+        speed: 1.5,
+        damage: 1
+    },
+    'skill:maces': {
+        attack: 1,
+        defence: 1,
+        speed: 1,
+        damage: 1.5
+    },
+    'skill:martial_arts': {
+        attack: 1.5,
+        defence: 1.5,
+        speed: 2,
+        damage: 1
+    },
+    'skill:polearms': {
+        attack: 1,
+        defence: 1,
+        speed: 1,
+        damage: 2
+    },
+    'skill:shields': {
+        attack: 1,
+        defence: 2,
+        speed: 1,
+        damage: 1
+    },
+    'skill:swords': {
+        attack: 1.5,
+        defence: 1.5,
+        speed: 1.5,
+        damage: 1.5
+    },
+    'skill:throwing': {
+        attack: 2,
+        defence: 1,
+        speed: 2,
+        damage: 1
+    }
+}

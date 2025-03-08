@@ -2,7 +2,7 @@ import { E, type EvalExpression } from "../../logic/Expression";
 import { ACTION_VARIANT_PROPERTIES, type Action, type ActionRange, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
 import { keys } from "../InfoList";
 import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
-import { Skill } from "../Skills";
+import { Skill, WEAPON_MULTIPLIERS } from "../Skills";
 import type { Weapon } from "../Weapon";
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
@@ -31,22 +31,28 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
     const roll = variantInfo.type === 'action' ? WEAPON_ATK : WEAPON_DEF;
     const damage = name === 'action:attack' || name === 'action:attack-cq' || name === 'action:attack-range' || name === 'action:hidden-weapon' ? weapon.damage : 0;
     const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
-    const difficulty = Skill.get(weapon.skill).difficulty;
+    const multipliers = WEAPON_MULTIPLIERS[weapon.skill];
 
     const rolls: Array<Roll> = [];
     const args = {
         'weapon:speed': weapon.speed,
         'weapon:attack': weapon.attack,
         'weapon:defence': weapon.defence,
-        'weapon:difficulty': difficulty,
         'weapon:skill': skill,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         'weapon:reach': ReachMultipliers[variantInfo.range!] * weapon.reach,
     };
     if (ap) {
-        rolls.push(apRoll(E.evaluate(ap, args)));
+        rolls.push(apRoll(E.evaluate(ap,
+            {
+                ...args,
+                'weapon:multiplier': multipliers?.speed ?? 1
+            })));
     }
-    rolls.push(d100roll(E.evaluate(roll, args)));
+    rolls.push(d100roll(E.evaluate(roll, {
+        ...args,
+        'weapon:multiplier': multipliers![variantInfo.type === 'action' ? 'attack' : 'defence'] ?? 1
+    })));
     if (variantInfo.trick) {
         const trickSkill = skills["skill:trick_fighting"] ?? 0;
         rolls.push({
@@ -56,7 +62,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         });
     }
     if (damage) {
-        rolls.push(damageRoll(damage));
+        rolls.push(damageRoll(damage, multipliers?.damage ?? 1));
     }
     return {
         name,
@@ -67,7 +73,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
 const d100roll = (roll: EvalExpression): Roll => ({
     name: 'action:roll',
     roll,
-    rollString: `1d100 + ${roll.result}`,
+    rollString: `1d100 ${roll.result >= 0 ? '+' : '-'} ${Math.abs(roll.result)}`,
 });
 
 const apRoll = (roll: EvalExpression): Roll => ({
@@ -76,8 +82,8 @@ const apRoll = (roll: EvalExpression): Roll => ({
     rollString: `${roll.result}`
 });
 
-const damageRoll = (dice: number): Roll => ({
+const damageRoll = (dice: number, multiplier: number): Roll => ({
     name: 'weapon:damage',
-    roll: E.constant(`${dice}d5!`),
-    rollString: `${dice}d5!`
+    roll: E.constant(`${Math.floor(dice * multiplier)}d5!`),
+    rollString: `${Math.floor(dice * multiplier)}d5!`
 })

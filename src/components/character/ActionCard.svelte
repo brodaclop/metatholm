@@ -183,6 +183,7 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
+		justify-content: space-between;
 	}
 
 	span {
@@ -194,6 +195,7 @@
 		white-space: nowrap;
 		font-weight: var(--font-weight-bold);
 		padding-right: 0.5em;
+		text-align: left;
 	}
 
 	.value {
