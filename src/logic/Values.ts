@@ -18,5 +18,5 @@ export type Values =
     | 'weapon:hands'
     | 'weapon:effective_skill'
     | 'character:ip'
-    | 'weapon:multiplier'
+    | 'combat:multiplier'
     ;

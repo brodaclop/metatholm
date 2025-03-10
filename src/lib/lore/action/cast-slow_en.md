@@ -6,7 +6,9 @@ This action is used whenever a spell is to be cast at slow speed. Casting a spel
 
 ## Action Points
 
-Slow casting a spell always takes the entire combat round and can thus only be attempted as the first action of the caster in that round. The caster can't perform any other action during this round, including defending incoming attacks.
+How many action points this action costs depends on two factors: the **speed** of the spell and the corresponding focus skill level of the spell caster.
+
+`SpellActionPointCalculator`
 
 ## Spellcasting Roll
 

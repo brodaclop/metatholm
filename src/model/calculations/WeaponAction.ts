@@ -46,12 +46,12 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         rolls.push(apRoll(E.evaluate(ap,
             {
                 ...args,
-                'weapon:multiplier': multipliers?.speed ?? 1
+                'combat:multiplier': multipliers?.speed ?? 1
             })));
     }
     rolls.push(d100roll(E.evaluate(roll, {
         ...args,
-        'weapon:multiplier': multipliers![variantInfo.type === 'action' ? 'attack' : 'defence'] ?? 1
+        'combat:multiplier': multipliers![variantInfo.type === 'action' ? 'attack' : 'defence'] ?? 1
     })));
     if (variantInfo.trick) {
         const trickSkill = skills["skill:trick_fighting"] ?? 0;

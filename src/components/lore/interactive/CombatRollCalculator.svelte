@@ -44,7 +44,7 @@
 					'weapon:attack': _weapon,
 					'weapon:defence': _weapon,
 					'weapon:skill': _skill,
-					'weapon:multiplier': _multiplier,
+					'combat:multiplier': _multiplier,
 					'weapon:reach': _reach * ReachMultipliers[variantProps.range ?? 'in-range']
 				}).result * (_skill === 0 ? 0 : 1)
 			)

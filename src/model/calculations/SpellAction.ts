@@ -7,9 +7,9 @@ import type { SpellInfo } from "../Spell";
 const CastActions = ['action:cast', 'action:cast-slow', 'action:cast-snap'] as const;
 
 export const SpeedModifiers: Record<typeof CastActions[number], number> = {
-    'action:cast': 1,
+    'action:cast': 1.5,
     'action:cast-snap': 2,
-    'action:cast-slow': 0
+    'action:cast-slow': 1
 }
 
 export const LevelModifiers: Record<typeof CastActions[number], number> = {
@@ -25,17 +25,17 @@ export const calculateSpellAction = (skills: Partial<Record<Skill, number>>, spe
             return undefined;
         }
 
-        const apRolls: Array<EvalExpression> = av === 'action:cast-slow' ? [] : [E.evaluate(SPELL_AP, { 'expr:spell_speed': Math.min(20, spell.speed * SpeedModifiers[av]), 'expr:spell_focus_skill': skills[spell.skill] })];
+        const apRoll: EvalExpression = E.evaluate(SPELL_AP, { 'expr:spell_speed': spell.speed, 'expr:spell_focus_skill': skills[spell.skill] ?? 0, 'combat:multiplier': SpeedModifiers[av] });
 
 
         const ret: ActionVariantInfo = {
             name: av,
             rolls: [
-                ...apRolls.map(ap => ({
+                {
                     name: 'action:ap',
-                    roll: ap,
-                    rollString: String(ap.result)
-                } as Roll)),
+                    roll: apRoll,
+                    rollString: String(apRoll.result)
+                },
                 {
                     name: 'action:roll',
                     roll,

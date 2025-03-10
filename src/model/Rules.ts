@@ -13,13 +13,14 @@ export const TOTAL_FP: Expression = E.name('expr:fp_total', E.add(FP_ALAP, E.lev
 export const EFFECTIVE_ATTACK_SKILL: Expression = E.min(E.value('weapon:attack'), E.value('weapon:skill'));
 export const EFFECTIVE_DEFENCE_SKILL: Expression = E.min(E.value('weapon:defence'), E.value('weapon:skill'));
 export const EFFECTIVE_SPEED_SKILL: Expression = E.min(E.value('weapon:speed'), E.value('weapon:skill'));
+export const EFFECTIVE_SPELL_SPEED_SKILL: Expression = E.min(E.value('expr:spell_speed'), E.value('expr:spell_focus_skill'));
 
-export const WEAPON_ATK: Expression = E.add(E.mul(EFFECTIVE_ATTACK_SKILL, E.value('weapon:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
-export const WEAPON_DEF: Expression = E.add(E.mul(EFFECTIVE_DEFENCE_SKILL, E.value('weapon:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
+export const WEAPON_ATK: Expression = E.add(E.mul(EFFECTIVE_ATTACK_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
+export const WEAPON_DEF: Expression = E.add(E.mul(EFFECTIVE_DEFENCE_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
 
-export const ATTACK_AP: Expression = E.sub(30, E.floor(E.mul(EFFECTIVE_SPEED_SKILL, E.add(0.5, E.value('weapon:multiplier')))));
+export const ATTACK_AP: Expression = E.sub(25, E.floor(E.mul(EFFECTIVE_SPEED_SKILL, E.value('combat:multiplier'))));
 
-export const SPELL_AP: Expression = E.max(4, E.sub(30, E.div(E.add(E.mul(3, E.value('expr:spell_speed')), E.mul(E.value('expr:spell_focus_skill'), 5)), 4)));
+export const SPELL_AP: Expression = E.sub(25, E.floor(E.mul(EFFECTIVE_SPELL_SPEED_SKILL, E.value('combat:multiplier'))));
 
 export const MAGIC_EFFECTIVE_SKILL: Expression = E.name('expr:effective_spell_skill', E.add(E.sub(E.value('expr:spell_focus_skill'), E.value('expr:spell_level')), 1));
 export const SKILL_KP: Expression = E.mul(E.value('expr:skill_level'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(3, E.div(E.value('expr:skill_difficulty'), 2)))), 33));

@@ -6,7 +6,9 @@ Ha a karakter egy varázslatot próbál létrehozni csökkentett sebességgel, a
 
 ## Akciópontok
 
-A lassú varázslás minden esetben egész harci kört igényel, ennek megfelelően csak a varázsló körének első akciójaként kísérelhető meg. Ebben a körben a varázsló semmilyen más cselekedetre nem képes, ideértve az őt érő támadások elleni védekezést is.
+A varázslás akciópont-költségét két tényező befolyásolja: a varázslat **sebessége** valamint a varázslathoz tartozó fókusz képzettség szintje.
+
+`SpellActionPointCalculator`
 
 ## Varázsló dobás
 

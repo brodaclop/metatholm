@@ -85,18 +85,19 @@ export interface CalculatedCharacter {
 
 export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
     const ret: Array<Weapon> = [];
-    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
+//    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
 
     if (skills['skill:brawling']) {
+        const strength = skills['skill:strength'] ?? 0;
         ret.push({
             id: 'skill:brawling',
             name: 'skill:brawling',
             skill: 'skill:brawling',
-            speed: fraction('skill:strength', 1),
-            attack: fraction('skill:strength', 1),
-            defence: fraction('skill:strength', 1),
+            speed: strength,
+            attack: strength,
+            defence: strength,
             reach: 0,
-            damage: fraction('skill:strength', 2),
+            damage: strength,
             hands: 1,
             actions: {
                 'action:attack-cq': 1,
@@ -112,15 +113,17 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
         });
     }
     if (skills['skill:fistfighting']) {
+        const reactions = skills['skill:reactions'] ?? 0;
+
         ret.push({
             id: 'skill:fistfighting',
             name: 'skill:fistfighting',
             skill: 'skill:fistfighting',
-            speed: fraction('skill:reactions', 0.5),
-            attack: fraction('skill:reactions', 0.5),
-            defence: fraction('skill:reactions', 1),
+            speed: reactions,
+            attack: reactions,
+            defence: reactions,
             reach: 0,
-            damage: fraction('skill:reactions', 1.5),
+            damage: reactions,
             hands: 1,
             actions: {
                 'action:attack-cq': 1,
@@ -136,22 +139,24 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
         });
     }
     if (skills['skill:martial_arts']) {
+        const balance = skills['skill:balance'] ?? 0;
+
         ret.push({
             id: 'skill:martial_arts',
             name: 'skill:martial_arts',
             skill: 'skill:martial_arts',
-            speed: fraction('skill:balance', 0.67),
-            attack: fraction('skill:balance', 0.5),
-            defence: fraction('skill:balance', 0.5),
+            speed: balance,
+            attack: balance,
+            defence: balance,
             reach: 0,
-            damage: fraction('skill:balance', 1),
+            damage: balance,
             hands: 1,
             actions: {
                 'action:attack-cq': 1,
                 'action:defend-cq': 0,
                 'action:defend': -1,
                 'action:defend-range': -2,
-                'action:close-in': 1,
+                'action:close-in': 0,
                 'action:disengage': 2,
                 'action:keep-close': 0,
                 'action:trip': -1,

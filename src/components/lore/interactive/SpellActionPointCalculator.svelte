@@ -12,7 +12,7 @@
 
 	export let spell: Spell | undefined = undefined;
 	export let skills: Character['skills'] | undefined = undefined;
-	export let id: 'action:cast' | 'action:cast-snap';
+	export let id: 'action:cast' | 'action:cast-snap' | 'action:cast-slow';
 
 	$: if (spell) {
 		const spellInfo = Spell.get(spell);
@@ -22,11 +22,12 @@
 		}
 	}
 
-	const calculate = (_speed: number, _skill: number): number =>
+	const calculate = (_speed: number, _skill: number, _multiplier: number): number =>
 		Math.round(
 			E.evaluate(SPELL_AP, {
-				'expr:spell_speed': _speed * SpeedModifiers[id],
-				'expr:spell_focus_skill': _skill
+				'expr:spell_speed': _speed,
+				'expr:spell_focus_skill': _skill,
+				'combat:multiplier': _multiplier
 			}).result
 		);
 </script>
@@ -41,5 +42,5 @@
 	rowChangeable={!spell}
 	bind:row={skill}
 	{id}
-	valueCalculator={(row, column) => calculate(column, row)}
+	valueCalculator={(row, column) => calculate(column, row, SpeedModifiers[id])}
 />

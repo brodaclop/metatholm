@@ -30,7 +30,7 @@
 			E.evaluate(ATTACK_AP, {
 				'weapon:speed': _speed,
 				'weapon:skill': _skill,
-				'weapon:multiplier': _multiplier
+				'combat:multiplier': _multiplier
 			}).result * (_skill === 0 ? 0 : 1)
 		);
 
