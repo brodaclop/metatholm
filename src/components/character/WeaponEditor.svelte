@@ -14,6 +14,7 @@
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
 	import Lore from '../lore/Lore.svelte';
 	import DialogBox from '../elements/DialogBox.svelte';
+	import BasicValues from './weaponeditor/BasicValues.svelte';
 
 	export let showModal: boolean; // boolean
 	const dispatch = createEventDispatcher();
@@ -32,7 +33,8 @@
 		hands: 1,
 		skill: 'skill:knives',
 		notes: '',
-		actions: {}
+		actions: {},
+		enchantment: {}
 	};
 
 	let weaponInitialised: boolean = false;
@@ -56,7 +58,8 @@
 						hands: 1,
 						skill: 'skill:knives',
 						notes: '',
-						actions: {}
+						actions: {},
+						enchantment: {}
 				  };
 			weaponInitialised = true;
 		}
@@ -94,8 +97,9 @@
 	}
 
 	const WEAPON_VARIANTS = entries(ACTION_VARIANT_PROPERTIES)
-		.filter(([key, value]) => value.weapon)
-		.map(([key]) => key);
+		.filter(([key, value]) => value.weapon && !value.noRoll)
+		.map(([key]) => key)
+		.sort((a, z) => $_(a).localeCompare($_(z)));
 
 	$: langKey = ($locale ?? 'en') as 'hu' | 'en';
 
@@ -103,7 +107,9 @@
 
 	$: multipliers = WEAPON_MULTIPLIERS[editedWeapon.skill];
 
-	$: power = calculateWeaponPower({skill: editedWeapon.skill, attack: editedWeapon.attack, defence: editedWeapon.defence, damage: editedWeapon.damage, speed: editedWeapon.speed, actions: editedWeapon.actions, hands: editedWeapon.hands, reach: editedWeapon.reach});
+	$: power = calculateWeaponPower(editedWeapon);
+
+	const BASIC_VALUES: Array<keyof Weapon['enchantment']> = ['speed', 'attack', 'defence', 'damage'];
 </script>
 
 <DialogBox title="label:weapon" flavour="inventory" bind:showModal {close}>
@@ -143,22 +149,11 @@
 						</select></span
 					>
 				</div>
-				<div class="row">
-					<span>{$_('weapon:speed')}</span>
-					<span><input type="number" min="0" max="10" bind:value={editedWeapon.speed} /> (x{multipliers?.speed ?? 1})</span>
-				</div>
-				<div class="row">
-					<span>{$_('weapon:attack')}</span>
-					<span><input type="number" min="0" max="10" bind:value={editedWeapon.attack} /> (x{multipliers?.attack ?? 1}</span>
-				</div>
-				<div class="row">
-					<span>{$_('weapon:defence')}</span>
-					<span><input type="number" min="0" max="10" bind:value={editedWeapon.defence} /> (x{multipliers?.defence ?? 1})</span>
-				</div>
-				<div class="row">
-					<span>{$_('weapon:damage')}</span>
-					<span><input type="number" min="0" max="10" bind:value={editedWeapon.damage} /> (x{multipliers?.damage ?? 1})</span>
-				</div>
+				{#each BASIC_VALUES as value}
+					<div class="row">
+						<BasicValues bind:editedWeapon {multipliers} {value} />
+					</div>
+				{/each}
 				<div class="row">
 					<span>{$_('weapon:reach')}</span>
 					<span><input type="number" min="0" max="10" bind:value={editedWeapon.reach} /></span>

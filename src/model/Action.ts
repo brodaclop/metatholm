@@ -39,6 +39,7 @@ export interface ActionVariantProperties {
     weapon: boolean;
     range?: ActionRange;
     trick?: boolean;
+    noRoll?: boolean;
 }
 
 export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantProperties> = {
@@ -70,12 +71,14 @@ export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantPrope
     'action:step-in': {
         type: 'action',
         weapon: true,
-        range: 'out-of-range'
+        range: 'out-of-range',
+        noRoll: true
     },
     'action:step-out': {
         type: 'action',
         weapon: true,
-        range: 'in-range'
+        range: 'in-range',
+        noRoll: true
     },
     'action:defend': {
         type: 'reaction',

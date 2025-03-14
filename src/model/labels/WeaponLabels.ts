@@ -23,6 +23,7 @@ export const WeaponKeys = [
     'weapon:reach:abbr',
     'weapon:skill:abbr',
     'weapon:hands:abbr',
+    'weapon:enchantment',
 
     'weapon:base_values',
     'weapon:effective_skill'
@@ -52,9 +53,7 @@ export const WeaponLabels: Record<Language, Record<typeof WeaponKeys[number], st
         'weapon:difficulty:1': 'Easy',
         'weapon:difficulty:2': 'Average',
         'weapon:difficulty:3': 'Hard',
-
-
-
+        'weapon:enchantment': 'Enchantment'
     },
     hu: {
         'weapon:speed': 'Gyorsaság',
@@ -79,6 +78,7 @@ export const WeaponLabels: Record<Language, Record<typeof WeaponKeys[number], st
         'weapon:difficulty:1': 'Könnyű',
         'weapon:difficulty:2': 'Átlagos',
         'weapon:difficulty:3': 'Nehéz',
+        'weapon:enchantment': 'Bájolás'
 
     }
 }

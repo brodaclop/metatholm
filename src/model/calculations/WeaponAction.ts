@@ -3,7 +3,7 @@ import { ACTION_VARIANT_PROPERTIES, type Action, type ActionRange, type ActionVa
 import { keys } from "../InfoList";
 import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
 import { Skill, WEAPON_MULTIPLIERS } from "../Skills";
-import type { Weapon } from "../Weapon";
+import { ENCHANTMENT_MAGNITUDE, type Weapon } from "../Weapon";
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,
@@ -33,6 +33,8 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
     const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
     const multipliers = WEAPON_MULTIPLIERS[weapon.skill];
 
+    const weaponProp = variantInfo.type === 'action' ? 'attack' : 'defence';
+
     const rolls: Array<Roll> = [];
     const args = {
         'weapon:speed': weapon.speed,
@@ -46,12 +48,14 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
         rolls.push(apRoll(E.evaluate(ap,
             {
                 ...args,
-                'combat:multiplier': multipliers?.speed ?? 1
+                'combat:multiplier': multipliers?.speed ?? 1,
+                'weapon:enchantment': weapon.enchantment.speed ?? 0
             })));
     }
     rolls.push(d100roll(E.evaluate(roll, {
         ...args,
-        'combat:multiplier': multipliers![variantInfo.type === 'action' ? 'attack' : 'defence'] ?? 1
+        'combat:multiplier': multipliers![weaponProp] ?? 1,
+        'weapon:enchantment': ENCHANTMENT_MAGNITUDE[weaponProp] * (weapon.enchantment[weaponProp] ?? 0)
     })));
     if (variantInfo.trick) {
         const trickSkill = skills["skill:trick_fighting"] ?? 0;

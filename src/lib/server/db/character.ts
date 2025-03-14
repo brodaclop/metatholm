@@ -106,11 +106,13 @@ const upgrade = (character: Character): Character => {
             delete w.actions['action:counter'];
         }
     });
-    // temporarily removed action:disarm
     character.inventory.weapons.forEach(w => {
+        // temporarily removed action:disarm
         if ('action:disarm' in w.actions) {
             delete w.actions['action:disarm'];
         }
+        // add missing empty container for enchantments
+        w.enchantment = w.enchantment ?? {};
     });
     // renamed Vagabond background to Rover
     if ((character.background as unknown) === 'background:vagabond') {

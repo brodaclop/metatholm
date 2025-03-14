@@ -38,14 +38,18 @@ Ha viszont a [Szellemkalauz](world:concepts:spirit_guide) dobása eléri vagy me
 
 ### "Csípőből" varázslás
 
-A varázsló dönthet úgy, hogy a varázslatot gyorsabban, de kisebb erővel hozza létre.
+A varázsló dönthet úgy, hogy a varázslatot gyorsabban, de kevésbé biztosan hozza létre. Ilyenkor fókusz képzettsége 1-gyel alacsonyabbnak számít.
 
 ### Lassú varázslás
 
-Lassú varázslás esetén a varázsló az egész harci körét a varázslat létrehozására való koncentrálásnak szenteli. Ez annyit tesz, hogy az adott körben semmi mást nem tehetnek, ideértve a mozgást és a támadások elleni védekezést is.
+A lassú varázslás a fentiek ellentéte: a varázsló a hatást különös gonddal és figyelemmel hozza létre, a szokásosnál több időt szánva rá. Cserébe viszont fókusz képzettsége a valósnál 1-gyel magasabbnak fog számítani.
 
 ### Időtartam
 
-Amennyiben a varázslat időtartama 1 kör, úgy az alapesetben a varázslás utáni kör végéig tart. Ugyanakkor minden varázslat, amelynek időtartama nem "azonnali", bármikor megszüntethető a varázsló által. Ez történhet úgy, hogy a varázsló ezt bejelenti, amikor ő kerül sorra a körben (akciópont költség nélkül), vagy egy előre meghatározott feltétel teljesülésekor (pl. "amikor bármelyik társam megközelíti a tűzfalat, az eltűnik").
+Minden varázslat időtartama az alábbi négy egyike: **azonnali**, **kör**, **óra** vagy **nap**. Az **azonnali** varázslatokat leszámítva mindegyik többszörözhető a varázslat **erősítésével**
+
+Amennyiben a varázslat időtartama 1 kör, úgy az alapesetben a varázslás utáni kör végéig tart. A hosszabban tartó varázslatok addig tartanak, amíg az időtartam nevéből is kitalálható.
+
+Minden varázslat, amelynek időtartama nem **azonnali**, bármikor megszüntethető a varázsló által. Ez történhet úgy, hogy a varázsló ezt bejelenti, amikor ő kerül sorra a körben (akciópont költség nélkül), vagy egy előre meghatározott feltétel teljesülésekor (pl. "amikor bármelyik társam megközelíti a tűzfalat, az eltűnik").
 
 `PlayScenario|{"scenario":"casting"}`

@@ -36,16 +36,20 @@ If the spellcaster's roll is higher, the spell is cast without further cost or c
 
 If the spellcaster loses the contest, for every 10 points of the difference (starting from 0) they also have to expend 1 Magic Power points. So if the spellcaster rolls a 17 and the [Spirit Guide](world:concepts:spirit_guide) a 20, the cost is 1 MP, if the [Spirit Guide](world:concepts:spirit_guide) rolls 27, it's 2 MPs and so on. If the spellcaster hasn't got enough MPs left, they can choose to pay the remaining cost from their [Life Force](character:ep). Of course they can also always decide that they don't want to cast the spell after all, in which case the only thing they lose is the time it took to not-quite-cast the spell.
 
-### Snapshots
+### Snapshot
 
-The caster can also choose to cast the spell faster with less power.
+The caster can choose to cast their spell faster with less precise control, in this case their focus skill counts as 1 lower than it really is.
 
 ### Slow casting
 
-Slow casting means the caster will fully concentrate on creating the spell for their entire combat round, meaning they can't do anything else during that round, including movement or defending against incoming blows. Outside of a combat situation it can usually be assumed that all spellcasting is done this way.
+Slow casting is the opposite of the above: the caster will formulate the spell very carefully and deliberately, taking more time but with their focus skill counting as 1 higher than it really is.
 
 ### Duration
 
-If the duration of a spell is 1 round, it normally lasts until the end of the round after it was cast. But any spell whose duration isn't "instant" can be cancelled at any time by the caster, either when it's the caster's turn (no AP cost) or at a pre-determined trigger point (e.g. "when one of my team mates approaches the wall of fire, it disappears").
+All spells can have one of four duration values: **instant**, **round**, **hour** or **day**. All of them except **instant** can be extended by increasing the **spell strength**.
+
+If the duration of a spell is **round**, it lasts until the end of the round after it was cast. Longer duration spell last as long as the duration name implies.
+
+Any spell whose duration isn't **instant** can be cancelled at any time by the caster, either when it's the caster's turn (no AP cost) or at a pre-determined trigger point (e.g. "when one of my teammates approaches the wall of fire, it disappears").
 
 `PlayScenario|{"scenario":"casting"}`

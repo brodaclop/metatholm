@@ -1,5 +1,3 @@
-import type { Weapon } from "./Weapon";
-
 
 export const WEAPON_LIST = [
     {
@@ -19,7 +17,8 @@ export const WEAPON_LIST = [
             "action:disengage": 0,
             "action:keep-close": 0,
             'action:attack-range': -4,
-        }
+        },
+        enchantment: {}
     },
     {
         name: 'Quillon dagger',
@@ -38,7 +37,8 @@ export const WEAPON_LIST = [
             "action:disengage": 0,
             "action:keep-close": 0,
             'action:attack-range': -4,
-        }
+        },
+        enchantment: {}
     },
     {
         name: 'Baselard',
@@ -57,7 +57,8 @@ export const WEAPON_LIST = [
             "action:disengage": 0,
             "action:keep-close": 0,
             'action:attack-range': -4,
-        }
+        },
+        enchantment: {}
     },
     {
         name: 'Throwing Knife',
@@ -74,7 +75,8 @@ export const WEAPON_LIST = [
             "action:defend-cq": -3,
             "action:defend": -4,
             'action:attack-range': 0,
-        }
+        },
+        enchantment: {}
     },
     {
         name: 'Mace',
@@ -95,7 +97,8 @@ export const WEAPON_LIST = [
             "action:disengage": -1,
             "action:keep-close": -1,
             'action:attack-range': -4,
-        }
+        },
+        enchantment: {}
     },
 ] as const;
 

@@ -19,4 +19,5 @@ export type Values =
     | 'weapon:effective_skill'
     | 'character:ip'
     | 'combat:multiplier'
+    | 'weapon:enchantment'
     ;

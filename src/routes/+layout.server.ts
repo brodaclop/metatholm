@@ -12,7 +12,7 @@ export const load: LayoutServerLoad = async ({ depends, platform, locals }) => {
         const parties = await findParties(platform!, locals.user!.id);
         return {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            characters: listCharacters(platform!, locals.user!.id),
+            characters: await listCharacters(platform!, locals.user!.id),
             parties,
             user: locals.user
         };

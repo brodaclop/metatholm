@@ -1,7 +1,7 @@
 import { E, type Expression } from "../../logic/Expression";
 import type { ActionVariant } from "../Action";
 import { entries } from "../InfoList";
-import { Skill } from "../Skills";
+import { Skill, WEAPON_MULTIPLIERS } from "../Skills";
 import type { Weapon } from "../Weapon";
 
 const WEAPON_POWER: Expression = E.add(
@@ -9,8 +9,7 @@ const WEAPON_POWER: Expression = E.add(
     E.value('weapon:attack'),
     E.value('weapon:defence'),
     E.mul(E.value('weapon:damage'), 3),
-    E.div(2, E.value('weapon:hands')),
-    E.div(10, E.value('expr:skill_difficulty')),
+    E.div(2, E.value('weapon:hands'))
 );
 
 const ACTION_MULTIPLIER: Partial<Record<ActionVariant, number>> = {
@@ -28,18 +27,19 @@ const ACTION_MULTIPLIER: Partial<Record<ActionVariant, number>> = {
 
 export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id' | 'name'>): number => {
     const skill = Skill.get(weapon.skill);
+    const multipliers = WEAPON_MULTIPLIERS[weapon.skill];
     const base = E.evaluate(WEAPON_POWER, {
-        'weapon:attack': weapon.attack,
-        'weapon:defence': weapon.defence,
-        'weapon:damage': weapon.damage,
-        'weapon:speed': weapon.speed,
-        'weapon:hands': weapon.hands,
-        'expr:skill_difficulty': skill.difficulty
+        'weapon:attack': weapon.attack * (multipliers?.attack ?? 1),
+        'weapon:defence': weapon.defence * (multipliers?.defence ?? 1),
+        'weapon:damage': weapon.damage * (multipliers?.damage ?? 1),
+        'weapon:speed': weapon.speed * (multipliers?.speed ?? 1),
+        'weapon:hands': weapon.hands
     });
 
     const multiplier = entries(weapon.actions).map(([action, skill]) => {
         return (ACTION_MULTIPLIER[action] ?? 0) * (10 + skill) * (10 + skill) / 10;
     }).reduce((acc, curr) => acc + curr, 0);
 
-    return Math.max(1, Math.round((base.result * multiplier - 1200) / 200));
+    console.debug('raw', base.result * multiplier)
+    return Math.max(1, Math.round((base.result * multiplier - 500) / 100));
 }

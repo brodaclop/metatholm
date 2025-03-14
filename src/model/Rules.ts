@@ -15,10 +15,10 @@ export const EFFECTIVE_DEFENCE_SKILL: Expression = E.min(E.value('weapon:defence
 export const EFFECTIVE_SPEED_SKILL: Expression = E.min(E.value('weapon:speed'), E.value('weapon:skill'));
 export const EFFECTIVE_SPELL_SPEED_SKILL: Expression = E.min(E.value('expr:spell_speed'), E.value('expr:spell_focus_skill'));
 
-export const WEAPON_ATK: Expression = E.add(E.mul(EFFECTIVE_ATTACK_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
-export const WEAPON_DEF: Expression = E.add(E.mul(EFFECTIVE_DEFENCE_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5));
+export const WEAPON_ATK: Expression = E.add(E.mul(EFFECTIVE_ATTACK_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5), E.value('weapon:enchantment'));
+export const WEAPON_DEF: Expression = E.add(E.mul(EFFECTIVE_DEFENCE_SKILL, E.value('combat:multiplier'), 10), E.mul(E.value('weapon:reach'), 5), E.value('weapon:enchantment'));
 
-export const ATTACK_AP: Expression = E.sub(25, E.floor(E.mul(EFFECTIVE_SPEED_SKILL, E.value('combat:multiplier'))));
+export const ATTACK_AP: Expression = E.sub(E.sub(25, E.floor(E.mul(EFFECTIVE_SPEED_SKILL, E.value('combat:multiplier')))), E.value('weapon:enchantment'));
 
 export const SPELL_AP: Expression = E.sub(25, E.floor(E.mul(EFFECTIVE_SPELL_SPEED_SKILL, E.value('combat:multiplier'))));
 

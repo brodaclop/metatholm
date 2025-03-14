@@ -11,19 +11,18 @@ First of all the character must choose from the table below the magical effects 
 | Weapon Enchantments | |
 | :------| ------: |
 | **Effect** | **Target modifier** |
-| +1 for all stats† | +5 |
-| +2 for all stats† | +10 |
-| +3 for all stats† | +20 |
-| +4 for all stats† | +40 |
-| +5 for all stats† | +60 |
-| +6 for all stats† | +80 |
-| +1 for one stat† | +3 |
-| +2 for one stat† | +5 |
-| +3 for one stat† | +10 |
-| +4 for one stat† | +20 |
-| +5 for one stat† | +30 |
-| +6 for one stat† | +40 |
-| *† Except reach* | |
+| +1 damage/speed | +3 |
+| +2 damage/speed | +5 |
+| +3 damage/speed | +10 |
+| +4 damage/speed | +20 |
+| +5 damage/speed | +30 |
+| +6 damage/speed | +40 |
+| +10 attack/defence | +3 |
+| +20 attack/defence | +5 |
+| +30 attack/defence | +10 |
+| +40 attack/defence | +20 |
+| +50 attack/defence | +30 |
+| +60 attack/defence | +40 |
 | **Armour Enchantments** | |
 | **Effect** | **Target modifier** |
 | For each point of **Damage Reduction** increase | +20 |

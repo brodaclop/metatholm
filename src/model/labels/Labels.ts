@@ -9,6 +9,7 @@ import type { ArmourLabels } from "../Armour";
 import { SpiritLabels } from "./SpiritLabels";
 import { CharacterLabels } from "./CharacterLabels";
 import { WeaponLabels } from "./WeaponLabels";
+import type { Values } from "../../logic/Values";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -117,6 +118,7 @@ const Abbreviations = [
 export type Labels =
     | Skill | Ability | ExpressionNames
     | Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality
+    | Values
     | typeof Abbreviations[number]
     | keyof typeof SpiritLabels[Language]
     | keyof typeof CharacterLabels[Language]
@@ -171,6 +173,8 @@ export const Labels_en: Record<Labels, string> = {
     'background:rover': 'Rover',
     'background:charmer': 'Charmer',
     'background:witch': 'Witch',
+
+    'combat:multiplier': 'Multiplier',
 
     'expr:fp_base': 'Pain Tolerance Base',
     'expr:fp_per_level': 'Level Pain Tolerance',
@@ -483,6 +487,7 @@ export const Labels_hu: Record<Labels, string> = {
     'background:charmer': 'Bájgúnár',
     'background:witch': 'Vajákos',
 
+    'combat:multiplier': 'Szorzó',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',

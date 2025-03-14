@@ -6,24 +6,23 @@ Azt mondják, a **Bájolás** szakavatott ismerői aranyat érnek. Nem csoda, hi
 
 Egy tárgy mágiával való felruházásához három dolog szükséges: [Mágia Pont](character:mp), idő, no meg persze szerencse.
 
-Először azt kell kiválasztani az alábbi táblázatból, hogy milyen mágikus hatást kíván a karakter létrehozni, a táblázat második oszlopából pedig leolvasó, hogy ez mekkora célszámot eredményez (több sor kiválasztása esetén a számok összeadódnak).
+Először azt kell kiválasztani az alábbi táblázatból, hogy milyen mágikus hatást kíván a karakter létrehozni, a táblázat második oszlopából pedig leolvasható, hogy ez mekkora célszámot eredményez (több sor kiválasztása esetén a számok összeadódnak).
 
 | Fegyver bájolása | |
 | :------| ------: |
 | **Hatás** | **Célszám** |
-| +1 minden értékre† | +5 |
-| +2 minden értékre† | +10 |
-| +3 minden értékre† | +20 |
-| +4 minden értékre† | +40 |
-| +5 minden értékre† | +60 |
-| +6 minden értékre† | +80 |
-| +1 egy értékre† | +3 |
-| +2 egy értékre† | +5 |
-| +3 egy értékre† | +10 |
-| +4 egy értékre† | +20 |
-| +5 egy értékre† | +30 |
-| +6 egy értékre† | +40 |
-| *† Kivéve ütéstávolság* | |
+| +1 sebzés/sebesség | +3 |
+| +2 sebzés/sebesség | +5 |
+| +3 sebzés/sebesség | +10 |
+| +4 sebzés/sebesség | +20 |
+| +5 sebzés/sebesség | +30 |
+| +6 sebzés/sebesség | +40 |
+| +10 támadás/védekezés | +3 |
+| +20 támadás/védekezés | +5 |
+| +30 támadás/védekezés | +10 |
+| +40 támadás/védekezés | +20 |
+| +50 támadás/védekezés | +30 |
+| +60 támadás/védekezés | +40 |
 | **Páncél bájolása** | |
 | **Hatás** | **Célszám** |
 | Minden egyes pont **Sebzéscsökkentés** növelés | +20 |
@@ -45,7 +44,7 @@ Először azt kell kiválasztani az alábbi táblázatból, hogy milyen mágikus
 | Kiválóan megmunkált | -5 |
 | Drágakő vagy drágakövet tartalmazó | -10 |
 
-Ezután a kívánt időtartam függvényében a karakter MP-ket, vagy ha nagyon megszorul, [Életerőt](character:ep) kell feláldozzon. Minden egyes feláldozott pontért 1 napig tart a bájolás. Ha a tárolni kívánt mágikus hatás viszonylag kevés kihívást jelent, további napok is "kicsikarhatóak", de minden egyes napért 10-zel nő a célszám. Sőt, ha a karakter legalább 10 MP-ot rááldozott az időtartamra, +80 célszám ellenében megkísérelheti a lehetetlent: maradandót alkotni.
+Ezután a kívánt időtartam függvényében a karakter MP-ket, vagy ha nagyon megszorul, [Életerőt](character:ep) kell feláldozzon. Minden egyes feláldozott pontért 1 napig tart a bájolás hatása. Ha a tárolni kívánt mágikus hatás viszonylag kevés kihívást jelent, további napok is "kicsikarhatóak", de minden egyes napért 10-zel nő a célszám. Sőt, ha a karakter legalább 10 MP-ot rááldozott az időtartamra, +80 célszám ellenében megkísérelheti a lehetetlent: maradandót alkotni.
 
 A karakter ezek után dönthet úgy, hogy további MP-ket vagy ÉP-ket is elkülönít a képzettségpróba könnyítésére, minden egyes pont egy újabb `1d10!`-zel növeli a dobást.
 

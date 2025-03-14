@@ -30,28 +30,29 @@
 			E.evaluate(ATTACK_AP, {
 				'weapon:speed': _speed,
 				'weapon:skill': _skill,
-				'combat:multiplier': _multiplier
+				'combat:multiplier': _multiplier,
+				'weapon:enchantment': weapon?.enchantment.speed ?? 0
 			}).result * (_skill === 0 ? 0 : 1)
 		);
 
-	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.speed ?? 1
-
+	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.speed ?? 1;
 </script>
 
 <table>
 	<tbody>
 		<tr>
 			<th>
-				<LoreInfoIcon
-				id='weapon:skill'
-			/>
-				{$_('weapon:skill')}</th>
-			<td><select bind:value={weaponSkill} disabled={!!weapon}>
-				<option value={undefined}>???</option>
-				{#each Skill.list().filter(s => s.type === 'skill_type:combat') as skill}
-					<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
-				{/each}
-			</select></td>
+				<LoreInfoIcon id="weapon:skill" />
+				{$_('weapon:skill')}</th
+			>
+			<td
+				><select bind:value={weaponSkill} disabled={!!weapon}>
+					<option value={undefined}>???</option>
+					{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as skill}
+						<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
+					{/each}
+				</select></td
+			>
 		</tr>
 	</tbody>
 </table>
