@@ -10,7 +10,7 @@
 	const enchantmentMagnitude = ENCHANTMENT_MAGNITUDE[value];
 </script>
 
-<span>{$_(`weapon:${value}`)}</span>
+<span class="header">{$_(`weapon:${value}`)}</span>
 <span>
 	<input type="number" min="0" max="10" bind:value={editedWeapon[value]} />
 	x {(multipliers?.[value] ?? 1) * enchantmentMagnitude}
@@ -26,5 +26,10 @@
 <style>
 	select {
 		width: 3em;
+	}
+
+	.header {
+		font-weight: bold;
+		padding-right: 0.5em;
 	}
 </style>

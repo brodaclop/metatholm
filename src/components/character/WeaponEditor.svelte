@@ -5,7 +5,7 @@
 	import { v4 } from 'uuid';
 	import { Skill, WEAPON_MULTIPLIERS } from '../../model/Skills';
 	import { createEventDispatcher } from 'svelte';
-	import { WEAPON_LIST, WEAPON_NAMES_LIST } from '../../model/WeaponList';
+	import { WEAPON_LIST, type WeaponListEntry } from '../../model/WeaponList';
 	import { entries } from '../../model/InfoList';
 	import { ACTION_VARIANT_PROPERTIES } from '../../model/Action';
 	import MdContentPaste from 'svelte-icons/md/MdContentPaste.svelte';
@@ -70,17 +70,15 @@
 		close();
 	};
 
-	$: console.log('WEAPON POWER', editedWeapon.name, calculateWeaponPower(editedWeapon));
-
-	let template: Weapon | null = null;
+	let type: WeaponListEntry | null = null;
 
 	const templateSelected = () => {
-		if (template) {
-			const id = editedWeapon.id ?? v4();
-			editedWeapon = JSON.parse(JSON.stringify(template));
-			editedWeapon.id = id;
-			editedWeapon.name = WEAPON_NAMES_LIST[template.name as never][langKey];
-			template = null;
+		if (type) {
+			editedWeapon.name = type.name[langKey];
+			editedWeapon.actions = JSON.parse(JSON.stringify(type.actions));
+			editedWeapon.hands = type.hands;
+			editedWeapon.reach = type.reach;
+			editedWeapon.skill = type.skill;
 		}
 	};
 
@@ -116,12 +114,10 @@
 	{#if !openLore}
 		<div class="horizontal-group">
 			<div>
-				<select bind:value={template} on:change={templateSelected}>
-					<option disabled value={null}>--- {$_('label:weapon:select_template')} ---</option>
+				<select bind:value={type} on:change={templateSelected}>
+					<option value={null}>{$_('label:weapon:select_template')}</option>
 					{#each WEAPON_LIST as tw}
-						<option value={tw}
-							>{WEAPON_NAMES_LIST[tw.name][langKey]} ({calculateWeaponPower(tw)})</option
-						>
+						<option value={tw}>{tw.name[langKey]}</option>
 					{/each}
 				</select>
 			</div>
@@ -142,7 +138,7 @@
 				<div class="row">
 					<span>{$_('weapon:skill')}</span>
 					<span
-						><select bind:value={editedWeapon.skill}>
+						><select bind:value={editedWeapon.skill} disabled={!!type}>
 							{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as s}
 								<option value={s.name}>{$_(s.name)}</option>
 							{/each}
@@ -156,12 +152,20 @@
 				{/each}
 				<div class="row">
 					<span>{$_('weapon:reach')}</span>
-					<span><input type="number" min="0" max="10" bind:value={editedWeapon.reach} /></span>
+					<span
+						><input
+							disabled={!!type}
+							type="number"
+							min="0"
+							max="10"
+							bind:value={editedWeapon.reach}
+						/></span
+					>
 				</div>
 				<div class="row">
 					<span>{$_('weapon:hands')}</span>
 					<span
-						><select bind:value={editedWeapon.hands}>
+						><select disabled={!!type} bind:value={editedWeapon.hands}>
 							{#each [0.5, 1, 1.5, 2] as s}
 								<option value={s}>{s}</option>
 							{/each}
@@ -192,12 +196,13 @@
 							<input
 								alt={$_('label:skill_modifier')}
 								type="number"
-								disabled={!(action in editedWeapon.actions)}
+								disabled={!(action in editedWeapon.actions) || !!type}
 								bind:value={editedWeapon.actions[action]}
 							/>
 							<input
 								type="checkbox"
 								checked={action in editedWeapon.actions}
+								disabled={!!type}
 								on:change={(e) => {
 									if (action in editedWeapon.actions) {
 										delete editedWeapon.actions[action];

@@ -85,7 +85,7 @@ export interface CalculatedCharacter {
 
 export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
     const ret: Array<Weapon> = [];
-//    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
+    //    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
 
     if (skills['skill:brawling']) {
         const strength = skills['skill:strength'] ?? 0;
@@ -109,6 +109,7 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:spin-behind': -1,
                 'action:knockout': -5,
             },
+            enchantment: {},
             notes: ''
         });
     }
@@ -135,6 +136,7 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:spin-behind': -3,
                 'action:knockout': -1,
             },
+            enchantment: {},
             notes: ''
         });
     }
@@ -163,6 +165,7 @@ export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<
                 'action:spin-behind': -3,
                 'action:knockout': -5,
             },
+            enchantment: {},
             notes: ''
         });
     }
