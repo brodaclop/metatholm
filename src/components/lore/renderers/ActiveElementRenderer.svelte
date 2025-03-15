@@ -24,6 +24,7 @@
 	import SpellActionPointCalculator from '../interactive/SpellActionPointCalculator.svelte';
 	import SpellRollCalculator from '../interactive/SpellRollCalculator.svelte';
 	import SpiritAnimalList from '../interactive/SpiritAnimalList.svelte';
+	import MainLinks from '../interactive/MainLinks.svelte';
 
 	export let raw: string;
 
@@ -53,7 +54,8 @@
 		PlayScenario: PlayScenario,
 		SpellActionPointCalculator: SpellActionPointCalculator,
 		SpellRollCalculator: SpellRollCalculator,
-		SpiritAnimalList: SpiritAnimalList
+		SpiritAnimalList: SpiritAnimalList,
+		MainLinks: MainLinks
 	};
 
 	$: [name, params] = raw.replace(/`/g, '').split('|', 2);

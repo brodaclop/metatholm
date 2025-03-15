@@ -37,4 +37,10 @@
 	.inline {
 		display: inline;
 	}
+
+	:global(.markdown blockquote) {
+		text-align: right;
+		font-style: italic;
+		margin-right: 0;
+	}
 </style>

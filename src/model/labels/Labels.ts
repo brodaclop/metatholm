@@ -104,7 +104,9 @@ type GenericLabels = 'label:name' |
     'label:skill_effect:none' |
     'label:skill_effect:negative' |
     'label:toc' |
-    'label:scroll'
+    'label:scroll' |
+    'label:read_scroll' |
+    'label:read_codex'
 
     ;
 
@@ -270,6 +272,8 @@ export const Labels_en: Record<Labels, string> = {
     'label:skill_effect:negative': 'Negatively',
     'label:toc': 'Table of Contents',
     'label:scroll': 'Scroll',
+    'label:read_scroll': 'Peruse the Scroll',
+    'label:read_codex': 'Browse the Codex',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -585,6 +589,8 @@ export const Labels_hu: Record<Labels, string> = {
     'label:skill_effect:negative': 'Negatív',
     'label:toc': 'Tartalomjegyzék',
     'label:scroll': 'Tekercs',
+    'label:read_scroll': 'Olvasd el a Tekercset',
+    'label:read_codex': 'Böngészd a Kódexet',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',
