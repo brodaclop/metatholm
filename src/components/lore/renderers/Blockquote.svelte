@@ -16,6 +16,7 @@
 	blockquote.note {
 		text-align: justify;
 		font-style: italic;
+		max-width: fit-content;
 		border: 1px solid var(--box-border-c);
 		border-radius: 0.25em;
 		background-color: var(--lore-references-background-c);
