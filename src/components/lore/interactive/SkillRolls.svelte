@@ -48,43 +48,40 @@
 		.map((_, i) => roll(i, ROLLS));
 </script>
 
-<div>
-	<Box flavour="plain" title={$_('label:skill_check_success_probabilities')}>
-		<table>
-			<thead>
-				<tr>
-					<th />
-					<th colspan={CHECK_LEVELS.length}>{$_('label:difficulty')}</th>
-				</tr>
-				<tr>
-					<th>{$_('expr:skill_level')}</th>
-					{#each CHECK_LEVELS as level}
-						<th>{$_(`check_difficulty:${level}`)} <i>({level})</i></th>
-					{/each}
-				</tr>
-			</thead>
-			<tbody>
-				{#each results as result, i}
-					<tr>
-						<th>{i}</th>
-						{#each Object.values(result) as value}
-							<td>{Number(((value * 100) / ROLLS).toFixed(2))}%</td>
-						{/each}
-					</tr>
+<table class="standard">
+	<caption>{$_('label:skill_check_success_probabilities')}</caption>
+	<thead>
+		<tr>
+			<th rowspan="2">{$_('expr:skill_level')}</th>
+			<th colspan={CHECK_LEVELS.length}>{$_('label:difficulty')}</th>
+		</tr>
+		<tr>
+			{#each CHECK_LEVELS as level}
+				<th>{$_(`check_difficulty:${level}`)} <i>({level})</i></th>
+			{/each}
+		</tr>
+	</thead>
+	<tbody>
+		{#each results as result, i}
+			<tr>
+				<th>{i}</th>
+				{#each Object.values(result) as value}
+					<td>{Number(((value * 100) / ROLLS).toFixed(2))}%</td>
 				{/each}
-			</tbody>
-		</table>
-	</Box>
-</div>
+			</tr>
+		{/each}
+	</tbody>
+</table>
 
 <style>
-	div {
-		display: flex;
-		justify-content: space-around;
+	table {
+		caption-side: top;
 	}
 
-	table {
-		border-collapse: collapse;
+	caption {
+		border: 2px ridge var(--box-border-c);
+		background-color: var(--table-head-background-c);
+		font-weight: bold;
 	}
 
 	td,
@@ -92,13 +89,7 @@
 		padding-right: 0.25em;
 	}
 
-	table tbody th,
-	table thead tr th:first-child {
-		background-color: var(--lore-skill-rolls-header-c);
-	}
-
-	table tbody td,
-	table thead tr th:not(:first-child) {
-		background-color: var(--lore-skill-rolls-cells-c);
+	th {
+		text-align: center;
 	}
 </style>

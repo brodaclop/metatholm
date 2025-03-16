@@ -140,10 +140,6 @@
 </table>
 
 <style>
-	table {
-		border-collapse: collapse;
-	}
-
 	th {
 		padding-right: 0.75em;
 	}

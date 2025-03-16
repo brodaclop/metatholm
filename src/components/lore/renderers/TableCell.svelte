@@ -14,8 +14,4 @@
 	th {
 		padding-right: 0.5em;
 	}
-
-	th {
-		background-color: var(--table-head-background-c);
-	}
 </style>

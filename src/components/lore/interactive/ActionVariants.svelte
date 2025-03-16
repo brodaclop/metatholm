@@ -19,7 +19,7 @@
 	const TYPES: Array<ActionType> = ['action', 'reaction'];
 </script>
 
-<table>
+<table class="standard">
 	<thead>
 		<tr>
 			<th />
@@ -48,6 +48,9 @@
 	td {
 		text-align: left;
 		vertical-align: top;
+	}
+
+	td {
 		padding-bottom: 0.5em;
 	}
 </style>

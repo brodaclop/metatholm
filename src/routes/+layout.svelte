@@ -306,8 +306,12 @@
 
 	:global(table.standard) {
 		border-collapse: collapse;
-		border: 1px solid var(--box-border-c);
+		border: 2px ridge var(--box-border-c);
 		caption-side: bottom;
+	}
+
+	:global(table.standard tr) {
+		border: 1px solid var(--box-border-c);
 	}
 
 	:global(table.standard tr:nth-child(even)) {
@@ -321,6 +325,7 @@
 	:global(table.standard td),
 	:global(table.standard th) {
 		padding-right: 0.5em;
+		padding-left: 0.25em;
 		text-align: left;
 	}
 
@@ -330,6 +335,7 @@
 	}
 
 	:global(table.standard th) {
+		border: 1px solid var(--box-border-c);
 		background-color: var(--table-head-background-c);
 	}
 
