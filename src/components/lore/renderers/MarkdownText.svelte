@@ -8,6 +8,7 @@
 	import TableCell from './TableCell.svelte';
 	import TableHead from './TableHead.svelte';
 	import HeadingRenderer from './HeadingRenderer.svelte';
+	import Blockquote from './Blockquote.svelte';
 
 	export let text: string;
 	export let isInline = false;
@@ -17,6 +18,7 @@
 	<div class="markdown" class:inline={isInline}>
 		<SvelteMarkdown
 			{isInline}
+			on:parsed={(tokens) => console.log(tokens)}
 			source={text}
 			renderers={{
 				codespan: ActiveElementRenderer,
@@ -27,7 +29,8 @@
 				heading: HeadingRenderer,
 				tablehead: TableHead,
 				image: Image,
-				table: Table
+				table: Table,
+				blockquote: Blockquote
 			}}
 		/>
 	</div>
@@ -36,11 +39,5 @@
 <style>
 	.inline {
 		display: inline;
-	}
-
-	:global(.markdown blockquote) {
-		text-align: right;
-		font-style: italic;
-		margin-right: 0;
 	}
 </style>

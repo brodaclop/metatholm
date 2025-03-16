@@ -1,6 +1,6 @@
 # A Játékos Karakter
 
-Ebben a játékban a játékos karakterek mind "csavargók". A csavargó szinte minden országban kívül esik a társadalmi renden, nincsenek jogai, de kötelezettségei sem. Ha úgy tetszik, a játékos karakterek kalandozásra születtek. Bár fizikai vagy mentális képességeik látszólag nem haladják meg más emberekét, mégis kiemelkednek közülük életerejük és mágiájuk folytán.
+Ebben a játékban a játékos karakterek mind "csavargók". A csavargó szinte minden országban kívül esik a társadalmi renden, nincsenek jogai, de kötelezettségei sem. Ha úgy tetszik, a játékos karakterek kalandozásra születtek. Bár fizikai vagy mentális képességeik látszólag nem haladják meg más emberekéit, mégis kiemelkednek közülük életerejük és puszta élni akarásuk folytán.
 
 ## Patrónus
 
@@ -8,9 +8,9 @@ Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a
 
 ## Tulajdonságok
 
-Minden játékos karakter 4 [(alap)tulajdonsággal](character:abilities) rendelkezik. Ezek veleszületett adottságok, amelyek a karakter élete során (szinte) soha nem változnak. Ezek értéke 0 és 10 között mozog.
+Minden játékos karakter 4 [(alap)tulajdonsággal](character:abilities) rendelkezik. Ezek veleszületett adottságok, amelyek a karakter élete során (szinte) soha nem változnak. Értékük 0 és 10 között mozog.
 
-A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség továbbá, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, és pozitív vagy negatív hatással van-e rá, az az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
+A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség továbbá, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, illetve hogy pozitív vagy negatív hatással van-e rá, az az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
 
 ## Képzettségek
 
@@ -20,7 +20,8 @@ A képzettségeket többféle módon lehet használni: egyes esetekben [képzett
 
 A karakter természetesen rendelkezhet egyéb, a képzettségek által nem szabályozott ismeretekkel is, pl. szakma, ezeket a [Szellemkalauzzal](world:concepts:spirit_guide) való egyeztetés után egyszerűen fel lehet jegyezni a karakterlapra (a Jegyzetek rovatba). Az ilyen ismeretek színesítik a játékot, de viszonylag ritka az a kaland, ami azon múlna, hogy ki a jobb pék.
 
-Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy megfelelő tanítómestert ill. könyvet találni a képzettségek fejlesztéséhez, természetesen a [Szellemkalauz](world:concepts:spirit_guide) dönhet úgy, hogy ezzel is életszerűbbé tenné a játékot. Ilyenkor azonban érdemes figyelembe venni a képzettség kategóriáját (harci/tudás/mozgás/stb.), nehézségét és a karakter meglevő tudásszintjét is.
+> [note]: #
+Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy megfelelő tanítómestert ill. könyvet találni a képzettségek fejlesztéséhez, természetesen a [Szellemkalauz](world:concepts:spirit_guide) dönthet úgy, hogy ezzel is életszerűbbé tenné a játékot. Ilyenkor azonban érdemes figyelembe venni a képzettség kategóriáját (harci/tudás/mozgás/stb.), nehézségét és a karakter meglevő tudásszintjét is.
 
 ## Származás
 
@@ -28,7 +29,7 @@ Metatholm népei eredetileg nagyhatalmú szellemek megtestesülései voltak, és
 
 Ezen felül természetesen hatással van a karakter kinézetére is, de sokkal kevésbé kötelező érvényűen, mint a sok hasonló játékban megtalálható "faj" jellemző. Tehát nyugodtan lehet egy karakter szakállas elf vagy viszonylag magas törp, bár általában egy-két, az adott származásra jellemző külső jegyet azért érdemes választani (pl. hegyes fül, nagy szemfogak vagy erőteljes testszőrzet).
 
-Amire a származás nincs hatással, az a karakter képzettségei. Metatholm világában nem létezik olyan, hogy egy elf pusztán a származása folytán ért pl. az íjakhoz, bár az könnyen elképzelhető, hogy másképp nehezen magyarázható érdeklődést mutat iránta. Viszont megtanulni ugyanúgy kell neki, mint bárki másnak.
+Amire a származás nincs hatással, az a karakter képzettségei. Metatholm világában nem létezik olyan, hogy egy elf pusztán a származása folytán ért pl. az íjakhoz, bár az könnyen elképzelhető, hogy másképp nehezen magyarázható érdeklődést mutat irántuk. Viszont megtanulni használni őket ugyanúgy kell neki, mint bárki másnak.
 
 ## Háttér
 

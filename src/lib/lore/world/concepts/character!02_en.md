@@ -1,6 +1,6 @@
 # The Player Character
 
-In this game player characters are all "vagabonds". The vagabond falls outside normal society in most countries, without rights but without obligations too. In a way player characters were born for adventuring. Although their physical and mental abilities ostensibly don't surpass other people's, their life force and their magic makes them stand out.
+In this game player characters are all "vagabonds". The vagabond falls outside normal society in most countries, without rights but without obligations too. In a way player characters were born for adventuring. Although their physical and mental abilities ostensibly don't surpass other people's, their life force and their sheer will to live makes them stand out.
 
 ## Patron
 
@@ -20,6 +20,7 @@ Skills can be used in multiple ways: in some cases a [skill check](rule:skill_ch
 
 Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the [Spirit Guide](world:concepts:spirit_guide). This non-skill knowledge certainly adds to the colour of the game but there are very few adventures that rely on who's the better baker.
 
+> [note]: #
 Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the [Spirit Guide](world:concepts:spirit_guide) can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill level of the character.
 
 ## Ancestry

@@ -1,6 +1,6 @@
 # Kockadobások
 
-A játék során összesen ötféle kockadobást használunk, két **egyszerű dobást** és három **halmozott dobást**.
+A játék során összesen hatféle kockadobást használunk, három **egyszerű dobást** és három **halmozott dobást**.
 
 ## Egyszerű kockadobás
 
@@ -9,13 +9,14 @@ Az egyszerű kockadobás, mint neve is mutatja, egyszerű. Dobunk egyetlen kock�
 **Egyszerű kockadobást** két esetben használunk:
 
 - Karakteralkotáskor a karakter [tulajdonságait](character:abilities) `1d5+2`-vel határozzuk meg.
+- [Szintlépéskor](character:level) a karakter [fájdalomtűrése](character:fp) `2d10`-zel (plusz a képzettségekből adódó egyéb módosítók) nő.
 - [Harcban](rule:combat) a támadás ill. az ellene való védekezés sikerét egy-egy `d100` dobással határozzuk meg (plusz az esetleges módosítók, amelyek a harci helyzetből, képzettségből, fegyver tulajdonságaiból stb. adódnak): ha a támadó dobás nagyobb, mint a védekező, a támadás sikeres volt.
 
 ## Halmozott kockadobás
 
 A **halmozott kockadobás** úgy történik, hogy először a megadott számú kockával dobunk, majd azokat, amelyek maximális értéket dobtak (tehát pl. `d10!` esetében 10-et), újradobjuk, és így tovább, végül pedig összeadjuk az összes dobás értékét.
  
-A halmozott kockadobást a játékban a **!** jelöli, tehát `3d10!` azt jeleti, hogy 3 darab tízoldalú kockával kell először dobni, majd újradobni azokat, amik 10-est dobtak.
+A halmozott kockadobást a játékban a **!** jelöli, tehát `3d10!` azt jelenti, hogy 3 darab tízoldalú kockával kell először dobni, majd újradobni azokat, amik 10-est dobtak.
 
 **Halmozott kockadobást** három esetben használunk:
 

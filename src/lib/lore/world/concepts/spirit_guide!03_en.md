@@ -1,6 +1,7 @@
 # Spirit Guide
 
-Some games call them Game Master, Dungeon Master or Adventure Facilitator, we call them **Spirit Guides**.
+> [note]: #
+Some games call the people fulfilling this role Game Master, Dungeon Master or Adventure Facilitator, in this game we call them **Spirit Guides**.
 
 The role of the **Spirit Guide** is to bring the world of Metatholm to life and provide the [players](world:concepts:character) with an adventure.
 
@@ -10,3 +11,4 @@ As the name suggests, the **Spirit Guide** is not a "master" of any kind, their 
 * Reward players behaving a way befitting their [patron](character:patron) with [Ideal Points](character:ip) and choose them a suitable [spirit animal](character:spirit_animals).
 * During combat decide what situational modifiers apply to a given action.
 * Fill in the gaps and uncertainties in Metatholm's lore, decide which version of reality is the truth and what are unfounded beliefs.
+* Bringing the narrative of the story to life, including all the beings (be they friendly or hostile) the player characters come across.

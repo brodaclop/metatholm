@@ -1,6 +1,6 @@
 # Dice Rolls
 
-Throughout the game we employ five types of dice rolls in total: two **simple rolls** and three **exploded rolls**
+Throughout the game we employ six types of dice rolls in total: three **simple rolls** and three **exploded rolls**
 
 ## Simple dice rolls
 
@@ -8,6 +8,7 @@ Simple dice rolls, as can be suspected from the name, are simple. We woll a sing
 
 **Simple dice rolls** are used in two scenarios:
 - During character creation the [abilities](character:abilities) of the character are rolled as `1d5+2`.
+- When [levelling up](character:level) the character's [pain tolerance](character:fp) increases by `2d10` (plus some fixed value depending on skills).
 - In [combat](rule:combat) the success of an attack or defence against it is determined via a `d100` roll (plus modifiers coming from combat situation, skill, the properties of the weapon used, etc.): if the attacking roll is bigger than the defensive roll, the attack was successful.
 
 # Exploded dice rolls
