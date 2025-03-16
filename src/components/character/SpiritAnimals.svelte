@@ -55,7 +55,7 @@
 				).length}
 				<tr>
 					{#if firstRowOfAnimal}
-						<td rowspan={numberOfRows}>{$_(animal.name)}</td>
+						<th rowspan={numberOfRows}>{$_(animal.name)}</th>
 					{/if}
 					<td>{$_(animal.manifestation)}</td>
 					<td>{$_(Spirit.get(animal.name).manifestations[animal.manifestation] ?? '')}</td>

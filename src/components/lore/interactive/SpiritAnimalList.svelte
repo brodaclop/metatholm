@@ -19,7 +19,7 @@
 			{#each manifestations as manifestation, idx}
 				<tr>
 					{#if idx === 0}
-						<td rowspan={manifestations.length}>{$_(animal.name)}</td>
+						<th rowspan={manifestations.length}>{$_(animal.name)}</th>
 					{/if}
 					<td>{$_(manifestation[0])}</td>
 					<td>{$_(manifestation[1])}</td>

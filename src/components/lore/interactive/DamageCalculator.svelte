@@ -16,24 +16,24 @@
 		damage = weapon.damage;
 	}
 
-	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.damage ?? 1
-
+	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.damage ?? 1;
 </script>
 
 <table>
 	<tbody>
 		<tr>
 			<th>
-				<LoreInfoIcon
-				id='weapon:skill'
-			/>
-				{$_('weapon:skill')}</th>
-			<td><select bind:value={weaponSkill} disabled={!!weapon}>
-				<option value={undefined}>???</option>
-				{#each Skill.list().filter(s => s.type === 'skill_type:combat') as skill}
-					<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
-				{/each}
-			</select></td>
+				<LoreInfoIcon id="weapon:skill" />
+				{$_('weapon:skill')}</th
+			>
+			<td
+				><select bind:value={weaponSkill} disabled={!!weapon}>
+					<option value={undefined}>{$_('label:select_combat_skill')}</option>
+					{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as skill}
+						<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
+					{/each}
+				</select></td
+			>
 		</tr>
 		<Circles
 			name="weapon:damage"
@@ -47,7 +47,7 @@
 	<tbody>
 		<tr>
 			<td colspan="3">
-				<FixedDiceRoller roll="{Math.floor(damage*multiplier(weaponSkill))}d5!" />
+				<FixedDiceRoller roll="{Math.floor(damage * multiplier(weaponSkill))}d5!" />
 			</td>
 		</tr>
 	</tbody>

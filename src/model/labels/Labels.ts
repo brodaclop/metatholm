@@ -106,8 +106,8 @@ type GenericLabels = 'label:name' |
     'label:toc' |
     'label:scroll' |
     'label:read_scroll' |
-    'label:read_codex'
-
+    'label:read_codex' |
+    'label:select_combat_skill'
     ;
 
 const Abbreviations = [
@@ -274,6 +274,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:scroll': 'Scroll',
     'label:read_scroll': 'Peruse the Scroll',
     'label:read_codex': 'Browse the Codex',
+    'label:select_combat_skill': 'Select combat skill',
 
     'personality:aggressive': 'Aggressive',
     'personality:curious': 'Curious',
@@ -591,6 +592,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:scroll': 'Tekercs',
     'label:read_scroll': 'Olvasd el a Tekercset',
     'label:read_codex': 'Böngészd a Kódexet',
+    'label:select_combat_skill': 'Válassz harci képzettséget',
 
     'personality:aggressive': 'Agresszív',
     'personality:curious': 'Kíváncsi',

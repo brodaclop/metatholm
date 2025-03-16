@@ -67,7 +67,7 @@
 			>
 			<td
 				><select bind:value={weaponSkill} disabled={!!weapon}>
-					<option value={undefined}>???</option>
+					<option value={undefined}>{$_('label:select_combat_skill')}</option>
 					{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as skill}
 						<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
 					{/each}
