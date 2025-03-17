@@ -39,7 +39,7 @@ export const WeaponLabels: Record<Language, Record<typeof WeaponKeys[number], st
         'weapon:effective_skill': 'Effective Skill',
         'weapon:attack': 'Attack',
         'weapon:power': 'Overall Power',
-        'weapon:skill_modifier': 'Skill level modifier',
+        'weapon:skill_modifier': 'Skill rank modifier',
         'weapon:attack:abbr': 'Atk',
         'weapon:defence': 'Defence',
         'weapon:defence:abbr': 'Def',

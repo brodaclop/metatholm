@@ -14,14 +14,14 @@ Unlike in many other similar games, the role of these abilities is fairly limite
 
 ## Skills
 
-Every time a player tries to perform an action that is important from the game's perspective and its outcome is uncertain, they need to rely on their skills. Their skill level can also be between 0 and 10.
+Every time a player tries to perform an action that is important from the game's perspective and its outcome is uncertain, they need to rely on their skills. Their skill rank can also be between 0 and 10.
 
 Skills can be used in multiple ways: in some cases a [skill check](rule:skill_check) is needed, other situations like [combat](rule:combat) or [magic](rule:magic) have their own dedicated rules.
 
 Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the [Spirit Guide](world:concepts:spirit_guide). This non-skill knowledge certainly adds to the colour of the game but there are very few adventures that rely on who's the better baker.
 
 > [note]: #
-Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the [Spirit Guide](world:concepts:spirit_guide) can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill level of the character.
+Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the [Spirit Guide](world:concepts:spirit_guide) can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill rank of the character.
 
 ## Ancestry
 
@@ -51,6 +51,7 @@ If the character's Pain Tolerance falls to 0, the character will become unable t
 
 If however the character's Life Force falls to 0, that's serious trouble. Without quick magical intervention (e.g. [Suspended Animation spell](spell:suspended_animation)) the character irrevocably dies.
 
+> [note]: #
 As the character levels up, these maximums grow too but not in equal measure: on lower levels life force will be dominant but as the level of danger increases in later game, so does the importance of avoiding serious wounds.
 
 ## Character Level

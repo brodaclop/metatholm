@@ -20,7 +20,7 @@
                     "text": "Alright, alright. I will crank the windlass extra loud too, maybe that'll give our pursuers second thoughts. But first, climbing.",
                     "next": {
                         "player": 1,
-                        "text": "Cool, what's the level of your [Climbing](+skill:climbing) skill?",
+                        "text": "Cool, what's the rank of your [Climbing](+skill:climbing) skill?",
                         "next": {
                             "player": 2,
                             "text": "**3**",

@@ -30,7 +30,7 @@
 				{#each levelSpells as spell, idx}
 					<tr class:first={idx === 0}>
 						{#if idx === 0}
-							<th rowspan={levelSpells.length}>{i18n('expr:skill_level')}: {level}</th>
+							<th rowspan={levelSpells.length}>{i18n('expr:skill_rank')}: {level}</th>
 						{/if}
 						<td><LoreLink target={spell.name} {bookMode} /></td>
 						<td>{spell.speed}</td>

@@ -6,7 +6,7 @@ Ezt az akciót használjuk akkor, ha az ellenfelet földre próbáljuk vinni.
 
 ## Akciópontok
 
-A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a képzettség foka.
 
 `ActionPointCalculator`
 

@@ -10,7 +10,7 @@ The character must concentrate for 1 round on radiating the essence of life out 
 
 ## Passive
 
-The character's being in tune with the constant ebb and flow of life force enables them to automatically detect undead in their surroundings, even if they're trying to hide, and even if they're behind a wall or in a different room altogether. These creatures will show up as wells of darkness in the all-pervasive fabric of life force. The effective radius of this ability is 3 metres for each skill level.
+The character's being in tune with the constant ebb and flow of life force enables them to automatically detect undead in their surroundings, even if they're trying to hide, and even if they're behind a wall or in a different room altogether. These creatures will show up as wells of darkness in the all-pervasive fabric of life force. The effective radius of this ability is 3 metres for each skill rank.
 
 ## Spells
 

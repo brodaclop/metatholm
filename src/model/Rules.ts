@@ -1,6 +1,6 @@
 import { E, type Expression } from "../logic/Expression";
 
-export type ExpressionNames = 'expr:fp_base' | 'expr:fp_per_level' | 'expr:fp_total' | 'expr:fp_roll' | 'expr:effective_spell_skill' | 'expr:spell_level' | 'expr:spell_focus_skill' | 'expr:spell_speed' | 'expr:skill_level' | 'expr:skill_ability' | 'expr:skill_difficulty';
+export type ExpressionNames = 'expr:fp_base' | 'expr:fp_per_level' | 'expr:fp_total' | 'expr:fp_roll' | 'expr:effective_spell_skill' | 'expr:spell_level' | 'expr:spell_focus_skill' | 'expr:spell_speed' | 'expr:skill_rank' | 'expr:skill_ability' | 'expr:skill_difficulty';
 
 export type RuleLabels = 'rule:skills' | 'rule:exploding_dice' | 'rule:magic' | 'rule:combat' | 'rule:changes';
 
@@ -25,7 +25,7 @@ export const WEAPON_DAMAGE: Expression = E.floor(E.add(E.mul(EFFECTIVE_DAMAGE_SK
 export const SPELL_AP: Expression = E.sub(25, E.floor(E.mul(EFFECTIVE_SPELL_SPEED_SKILL, E.value('combat:multiplier'))));
 
 export const MAGIC_EFFECTIVE_SKILL: Expression = E.name('expr:effective_spell_skill', E.add(E.sub(E.value('expr:spell_focus_skill'), E.value('expr:spell_level')), 1));
-export const SKILL_KP: Expression = E.mul(E.value('expr:skill_level'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(3, E.div(E.value('expr:skill_difficulty'), 2)))), 33));
+export const SKILL_KP: Expression = E.mul(E.value('expr:skill_rank'), 10, E.div(E.sub(33, E.mul(E.value('expr:skill_ability'), E.sub(3, E.div(E.value('expr:skill_difficulty'), 2)))), 33));
 
 
 export const SPIRIT_ANIMAL_COUNT = E.floor(E.div(E.value('character:ip'), 5));

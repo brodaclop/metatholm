@@ -6,7 +6,7 @@ Ezt az akciót használjuk akkor, ha az ellenfelet egy eleddig elrejtett fegyver
 
 ## Akciópontok
 
-A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a fegyveres képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a fegyveres képzettség foka.
 
 `ActionPointCalculator`
 

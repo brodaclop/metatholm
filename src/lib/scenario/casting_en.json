@@ -16,13 +16,13 @@
                 "text": "I reckon we're going to spend at least 4 hours bumbling around in this cave so let's make it **5**.",
                 "next": {
                     "player": 1,
-                    "text": "Okay, what's your [Nature Focus](+skill:nature_focus) skill level?",
+                    "text": "Okay, what's your [Nature Focus](+skill:nature_focus) skill rank?",
                     "next": {
                         "player": 0,
                         "text": "3, but hopefully we've got half a minute or so, so I'll [cast it slow](+action:cast-slow).",
                         "next": {
                             "player": 1,
-                            "text": "Alright, in that case your skill level counts as 1 higher.",
+                            "text": "Alright, in that case your skill rank counts as 1 higher.",
                             "next": {
                                 "player": 1,
                                 "text": "And because Lantern is a level 0 spell, there's nothing to subtract from that, you'll need to roll `4d10!`!",

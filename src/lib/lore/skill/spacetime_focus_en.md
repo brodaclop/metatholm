@@ -10,7 +10,7 @@ The character concentrates for 1 round on the near future, or to be precise on a
 
 ## Passive
 
-As the character's location in space and time has become slightly uncertain, should they be the target of a surprise attack, they get +10 points on their defensive roll for every level they have in this skill. This also applies to situations where they are aware of the incoming threat but for some reason are unable to defend against it, for example because it is coming from behind.
+As the character's location in space and time has become slightly uncertain, should they be the target of a surprise attack, they get +10 points on their defensive roll for every rank they have in this skill. This also applies to situations where they are aware of the incoming threat but for some reason are unable to defend against it, for example because it is coming from behind.
 
 ## Spells
 

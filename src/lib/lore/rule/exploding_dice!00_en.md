@@ -19,7 +19,7 @@ If the reroll is a maximum too, we repeat the process, and so on. The symbol for
 
 **Exploded dice rolls** are used in three scenarios:
 
-- In the case of a [skill check](rule:skill_check) or [casting a spell](rule:magic) we roll with as many `d10!` as the level of the relevant skill.
+- In the case of a [skill check](rule:skill_check) or [casting a spell](rule:magic) we roll with as many `d10!` as the rank of the relevant skill.
 - On success of an attack or damage-dealing spell damage is rolled with `d5!` dice.
 - At the start of a [combat round](rule:combat) we determine the **action points** available to a character in that round by rolling `1d10!+10`.
 

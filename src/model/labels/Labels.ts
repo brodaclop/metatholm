@@ -186,7 +186,7 @@ export const Labels_en: Record<Labels, string> = {
     'expr:spell_level': 'Spell Level',
     'expr:spell_focus_skill': 'Focus skill',
     'expr:spell_speed': 'Spell speed',
-    'expr:skill_level': 'Skill level',
+    'expr:skill_rank': 'Skill rank',
     'expr:skill_ability': 'Ability',
     'expr:skill_difficulty': 'Difficulty',
 
@@ -502,7 +502,7 @@ export const Labels_hu: Record<Labels, string> = {
     'expr:spell_level': 'Varázslat Szintje',
     'expr:spell_focus_skill': 'Fókusz képzettség',
     'expr:spell_speed': 'Varázslat sebessége',
-    'expr:skill_level': 'Képzettség szintje',
+    'expr:skill_rank': 'Képzettség foka',
     'expr:skill_ability': 'Tulajdonság',
     'expr:skill_difficulty': 'Nehézség',
 

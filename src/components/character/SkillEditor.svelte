@@ -43,7 +43,7 @@
 						? character.abilities[skill.ability]
 						: 10 - character.abilities[skill.ability];
 				const kpDeduction = E.evaluate(SKILL_KP, {
-					'expr:skill_level': sums[skill.name] + 1,
+					'expr:skill_rank': sums[skill.name] + 1,
 					'expr:skill_difficulty': skill.difficulty,
 					'expr:skill_ability': ability
 				}).result;
@@ -68,7 +68,7 @@
 						? character.abilities[skill.ability]
 						: 10 - character.abilities[skill.ability];
 				const kpRebate = E.evaluate(SKILL_KP, {
-					'expr:skill_level': sums[skill.name],
+					'expr:skill_rank': sums[skill.name],
 					'expr:skill_difficulty': skill.difficulty,
 					'expr:skill_ability': ability
 				}).result;
@@ -97,7 +97,7 @@
 			return [
 				key,
 				E.evaluate(SKILL_KP, {
-					'expr:skill_level': sums[skill.name] + 1,
+					'expr:skill_rank': sums[skill.name] + 1,
 					'expr:skill_difficulty': skill.difficulty,
 					'expr:skill_ability':
 						skill.ability === 'skill_type:general'

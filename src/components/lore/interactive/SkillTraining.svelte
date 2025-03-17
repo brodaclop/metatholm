@@ -41,7 +41,7 @@
 		effect: boolean | 'none'
 	) =>
 		E.evaluate(SKILL_KP, {
-			'expr:skill_level': _level + 1,
+			'expr:skill_rank': _level + 1,
 			'expr:skill_difficulty': _difficulty,
 			'expr:skill_ability': effectiveAbility(_ability, effect)
 		}).result;
@@ -109,7 +109,7 @@
 							columnMax={10}
 							bind:column={ability}
 							columnChangeable={abilities === undefined}
-							rowName="expr:skill_level"
+							rowName="expr:skill_rank"
 							rowMax={9}
 							rowChangeable={level === undefined}
 							bind:row={selectedLevel}
@@ -119,7 +119,7 @@
 						/>
 					{:else}
 						<PointsTable
-							columnName={'expr:skill_level'}
+							columnName={'expr:skill_rank'}
 							columnMax={9}
 							bind:column={selectedLevel}
 							columnChangeable={level === undefined}

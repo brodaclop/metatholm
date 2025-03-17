@@ -12,8 +12,8 @@ A képzettségpróba célszámára az alábbi módosítók is érvényesek:
 
 | Feltétel | Módosító |
 | :- | :- |
-| A célbavett varázslat fókuszában való jártasság minden szintje után | -5 |
+| A célbavett varázslat fókuszában való jártasság minden foka után | -5 |
 | A karakter tanúja volt a varázslat létrejöttének | -20 |
-| Varázstárgy vizsgálata esetén a [Bájolás](skill:enchantment) képzettség minden szintje után | -5 |
+| Varázstárgy vizsgálata esetén a [Bájolás](skill:enchantment) képzettség minden foka után | -5 |
 | **Mágus** által létrehozott mágikus hatás | +20 |
 | Valódi természetét rejteni kívánó mágikus lény leleplezése | +40 | 

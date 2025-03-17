@@ -6,7 +6,7 @@ Az **Őselemi fókusz** az őselemek és a nyers mágikus erő megidézésének,
 
 ## Aktív
 
-A karakter egy körig koncentrál, aminek végeztével a testében tárolt összes mágia képzettségszintenként 3 méter sugarú gömbben nyers, pusztító mágiaként kitör. A kitörés a környező tárgyakat és épületeket is megrongálhja, és akit elér, annak [Reflex](skill:reactions) ellenpróbát kell dobnia a varázsló Őselemi fókusz képzettsége ellen.
+A karakter egy körig koncentrál, aminek végeztével a testében tárolt összes mágia képzettségfokonként 3 méter sugarú gömbben nyers, pusztító mágiaként kitör. A kitörés a környező tárgyakat és épületeket is megrongálhja, és akit elér, annak [Reflex](skill:reactions) ellenpróbát kell dobnia a varázsló Őselemi fókusz képzettsége ellen.
 
 Amennyiben ez sikertelen, az elszenvedett sebzés a kitörésbe sűrített [mágia pontok](character:mp) számától függ.
 
@@ -25,7 +25,7 @@ Amennyiben ez sikertelen, az elszenvedett sebzés a kitörésbe sűrített [mág
 
 ## Passzív
 
-A karakter a szokásosnál ellenállóbb az őselemekkel szemben: minden, őselemek által okozott FP-sebzésből annyit vonhat le, amennyi a képzettségének szintje. Ez az ÉP-sebzés mértékére nincs hatással, csupán jobban bírja a fájdalmat. A hatás kiterjed kő- vagy fémfegyverekre is, de pusztakezes harcra, továbbá fa- vagy csontfegyverekre nem.
+A karakter a szokásosnál ellenállóbb az őselemekkel szemben: minden, őselemek által okozott FP-sebzésből annyit vonhat le, amennyi a képzettségének foka. Ez az ÉP-sebzés mértékére nincs hatással, csupán jobban bírja a fájdalmat. A hatás kiterjed kő- vagy fémfegyverekre is, de pusztakezes harcra, továbbá fa- vagy csontfegyverekre nem.
 
 ## Varázslatok
 

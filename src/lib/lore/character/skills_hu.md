@@ -2,9 +2,9 @@
 
 ## Mi is az a képzettség?
 
-A képzettségek a karakter által [elsajátítható](rule:learning_skills) tudást jelzik. A [tulajdonságokkal](character:abilities) ellentétben, amik jórészt változatlanok a karakter élete során, a képzettségek tanulhatók és gyakorolhatók. A tudás mértéke a **képzettség szintje**
+A képzettségek a karakter által [elsajátítható](rule:learning_skills) tudást jelzik. A [tulajdonságokkal](character:abilities) ellentétben, amik jórészt változatlanok a karakter élete során, a képzettségek tanulhatók és gyakorolhatók. A tudás mértéke a **képzettség foka**
 
-| Képzettség szintje | Jellemzés | Jegyzetek |
+| Képzettség foka | Jellemzés | Jegyzetek |
 | :------------|:-|:-|
 | 0 | Képzetlen/Laikus | Kizárólag a legegyszerűbb feladatok elvégzésére vállalkozhatsz, és a siker még itt sem garantált. |
 | 1-2 | Kezdő/Tanonc | Ismered a szakterület alapjait, bár inkább csak ösztönösen, mint tudatosan. |
@@ -24,7 +24,7 @@ A képzettségeket az alábbi kategóriákba soroljuk: **Alap**, **Mozgás**, **
 
 `SkillListByType|{"type": "skill_type:combat", "caption": "A **harci képzettségek** nem meglepő módon harcban használatosak. Minden egyes harcstílusra vagy fegyvercsaládra külön képzettség vonatkozik."}`
 
-`SkillListByType|{"type": "skill_type:focus", "caption": "A **fókusz képzettségek** a varázsláshoz szükségesek. A magasabb szinten elsajátított fókusz képzettségek nem csak a karakter által már ismert varázslatokat teszik erősebbé, de új varázslatokhoz is hozzáférést biztosítanak."}`
+`SkillListByType|{"type": "skill_type:focus", "caption": "A **fókusz képzettségek** a varázsláshoz szükségesek. A magasabb fokon elsajátított fókusz képzettségek nem csak a karakter által már ismert varázslatokat teszik erősebbé, de új varázslatokhoz is hozzáférést biztosítanak."}`
 
 `SkillListByType|{"type": "skill_type:knowledge", "caption": "A **tudás képzettségek** elsősorban lexikális tudásra támaszkodnak. Általában tanár vagy legalábbis könyvek szükségesek az elsajátításukhoz, bár némelyiket kísérletezéssel is fejleszthetjük."}`
 

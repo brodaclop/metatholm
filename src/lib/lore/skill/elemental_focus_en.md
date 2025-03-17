@@ -6,7 +6,7 @@
 
 ## Active
 
-The character concentrates for 1 round, at the end of which all magical energy stored in their body erupts with deadly force in a sphere with a radius of 3 meters per every skill level. The blast damages surrounding buildings and objects, and whoever is caught in it must roll a [Reactions](skill:reactions) skill check, contested by the character's Elemental focus skill.
+The character concentrates for 1 round, at the end of which all magical energy stored in their body erupts with deadly force in a sphere with a radius of 3 meters per every skill rank. The blast damages surrounding buildings and objects, and whoever is caught in it must roll a [Reactions](skill:reactions) skill check, contested by the character's Elemental focus skill.
 
 If they fail this check, the damage they suffer is dependent on the number of [Magic Points](character:mp) concentrated into the blast.
 
@@ -25,7 +25,7 @@ If they fail this check, the damage they suffer is dependent on the number of [M
 
 ## Passive
 
-The character is unusually resistant to elemental forces, every damage caused by them can be reduced by as many [Pain Tolerance Points](character:fp) as the character's skill level. This has no effect on [Life Force](character:ep) damage suffered, they're just good at handling the pain. The effect also works against damage done by steel or stone weapons but not unarmed combat, wooden or bone weapons.
+The character is unusually resistant to elemental forces, every damage caused by them can be reduced by as many [Pain Tolerance Points](character:fp) as the character's skill rank. This has no effect on [Life Force](character:ep) damage suffered, they're just good at handling the pain. The effect also works against damage done by steel or stone weapons but not unarmed combat, wooden or bone weapons.
 
 ## Spells
 

@@ -20,7 +20,7 @@ The task has to be one that the animal is capable of by itself both physically a
 
 ## Passive
 
-The character can detect edible plants and sources of potable water (springs, wells, streams, lakes, aquifers) in a radius of 10 metres per skill level.
+The character can detect edible plants and sources of potable water (springs, wells, streams, lakes, aquifers) in a radius of 10 metres per skill rank.
 
 ## Spells
 

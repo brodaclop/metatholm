@@ -14,7 +14,7 @@ A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetős
 
 ## Képzettségek
 
-Minden alkalommal, amikor a játékos olyan cselekedetet próbál végrehajtani, ami a játék szempontjából fontos, és a kimenetele kérdéses, a képzettségeire kell hagyatkozzon. A képzettség ismeretének szintje szintén 0 és 10 között van.
+Minden alkalommal, amikor a játékos olyan cselekedetet próbál végrehajtani, ami a játék szempontjából fontos, és a kimenetele kérdéses, a képzettségeire kell hagyatkozzon. A képzettség ismeretének foka szintén 0 és 10 között van.
 
 A képzettségeket többféle módon lehet használni: egyes esetekben [képzettségpróba](rule:skill_check) szükséges hozzá, más esetekben, pl. [harcban](rule:combat) vagy [varázsláskor](rule:magic) külön szabályok határozzák meg.
 
@@ -51,6 +51,7 @@ Ha a karakter fájdalomtűrése 0-ra csökken, a karakter harcképtelenné váli
 
 Ha azonban a karakter életereje csökken 0-ra, jóval nagyobb a baj. Gyors mágikus közbeavatkozás (pl. [Tetszhalál varázslat](spell:suspended_animation)) híján a karakter visszavonhatatlanul meghal.
 
+> [note]: #
 Ahogy a karakter szintet lép, a fenti maximumok is növekednek, de nem egyenlő mértékben: alacsonyabb szinten az életerő dominál, ahogy azonban növekedik a veszély, úgy lesz egyre fontosabb, hogy elkerüljük az esetleges súlyos sérüléseket.
 
 ## Szint

@@ -6,14 +6,14 @@ If a character is in close quarters, they can attempt to move out of it using th
 
 ## Action Points
 
-How many action points this action costs depends on two factors: the **speed** of the weapon and the skill level of the user.
+How many action points this action costs depends on two factors: the **speed** of the weapon and the skill rank of the user.
 
 
 `ActionPointCalculator`
 
 ## Roll
 
-Disengage rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the type and **attack** property of the weapon and the skill level of the user. Five times the weapon's **reach** is then subtracted from this because in close quarters combat a longer reach is a disadvantage.
+Disengage rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the type and **attack** property of the weapon and the skill rank of the user. Five times the weapon's **reach** is then subtracted from this because in close quarters combat a longer reach is a disadvantage.
 
 `CombatRollCalculator`
 

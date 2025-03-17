@@ -6,12 +6,12 @@ Ha a karakter egy varázslatot próbál gyorsan létrehozni, azt ezzel az akció
 
 ## Akciópontok
 
-A varázslás akciópont-költségét két tényező befolyásolja: a varázslat **sebessége** valamint a varázslathoz tartozó fókusz képzettség szintje.
+A varázslás akciópont-költségét két tényező befolyásolja: a varázslat **sebessége** valamint a varázslathoz tartozó fókusz képzettség foka.
 
 `SpellActionPointCalculator`
 
 ## Varázsló dobás
 
-A varázsláshoz szükséges kockadobást két tényező befolyásolja: a varázslat szintje valamint a varázslathoz tartozó fókusz képzettség szintje.
+A varázsláshoz szükséges kockadobást két tényező befolyásolja: a varázslat szintje valamint a varázslathoz tartozó fókusz képzettség foka.
 
 `SpellRollCalculator`

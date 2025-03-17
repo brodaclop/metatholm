@@ -52,7 +52,7 @@
 	<caption>{$_('label:skill_check_success_probabilities')}</caption>
 	<thead>
 		<tr>
-			<th rowspan="2">{$_('expr:skill_level')}</th>
+			<th rowspan="2">{$_('expr:skill_rank')}</th>
 			<th colspan={CHECK_LEVELS.length}>{$_('label:difficulty')}</th>
 		</tr>
 		<tr>

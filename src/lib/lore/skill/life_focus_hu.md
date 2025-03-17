@@ -10,7 +10,7 @@ A karakter egy körig koncentrál arra, hogy az élet esszenciáját sugározhas
 
 ## Passzív
 
-A karakter annyira összhangban van az életerő folyamatos áramlásával, hogy automatikusan érzekeli a környezetében tartózkodó élőhalottakat, még akkor is, ha rejtőzni próbálnak, sőt, akár akkor is, ha például egy másik szobában vannak. Ezek a lények éjsötét kútként mutatkoznak meg a mindent átható életerő szövedékében. A képesség hatósugara a képzettség minden szintje után 3 méterrel növekszik.
+A karakter annyira összhangban van az életerő folyamatos áramlásával, hogy automatikusan érzekeli a környezetében tartózkodó élőhalottakat, még akkor is, ha rejtőzni próbálnak, sőt, akár akkor is, ha például egy másik szobában vannak. Ezek a lények éjsötét kútként mutatkoznak meg a mindent átható életerő szövedékében. A képesség hatósugara a képzettség minden foka után 3 méterrel növekszik.
 
 ## Varázslatok
 

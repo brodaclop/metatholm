@@ -2,13 +2,13 @@
 
 ## What is a skill?
 
-Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike [abilities](character:abilities), which stay largely fixed throughout your lifetime, skills can be learnt/trained for. The level of training a character has is called their **skill level**. 
+Skills represent a character's [learned](rule:learning_skills) knowledge. Unlike [abilities](character:abilities), which stay largely fixed throughout your lifetime, skills can be learnt/trained for. The level of training a character has is called their **skill rank**. 
 
-| Skill level | Description | Notes |
+| Skill rank | Description | Notes |
 | :------------|:-|:-|
 | 0 | Unskilled/Untrained | You can attempt only the simplest of tasks, and even then failure is more likely than success. |
 | 1-2 | Beginner/Apprentice | You are familiar with the basics of the field, albeit probably more instinctively than consciously. |
-| 3-4 | Skilled/Journeyman | You can make a living out of using your skill, if it's the kind of thing people pay for. You can converse about your field and are a reliable judge of others' skill level. |
+| 3-4 | Skilled/Journeyman | You can make a living out of using your skill, if it's the kind of thing people pay for. You can converse about your field and are a reliable judge of others' skill rank. |
 | 5-6 | Expert/Master | You are an accepted expert of your field. You are now also capable of training others in this skill. |
 | 7-8 | Grandmaster | You are a known authority, masters of the field will recognise your work and defer to you. |
 | 9-10 | Living legend | Your name is known by all serious practitioners of this skill, and will be remembered for centuries. |

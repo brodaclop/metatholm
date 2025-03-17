@@ -6,7 +6,7 @@ This is the action to be used when attempting to wound an opponent with a weapon
 
 ## Action Points
 
-How many action points this action costs depends on two factors: the **speed** of the weapon and the skill level of the user.
+How many action points this action costs depends on two factors: the **speed** of the weapon and the skill rank of the user.
 
 `ActionPointCalculator`
 
