@@ -2,7 +2,7 @@
 
 `ActionInfo`
 
-Ezt az akciót használjuk akkor, ha gyorsan az ellenfél mögé próbálunk kerülni. Sikeres mögéperdülést követően az ellenfél képtelen lesz védekezni a karakter következő támadása ellen, így kénytelen lesz védekező dobását `1d100 + 0`-val dobni.
+Ezt az akciót használjuk akkor, ha gyorsan az ellenfél mögé próbálunk kerülni, és onnan támadni a védekezésre képtelen ellenfélre, mielőtt még meg tudna fordulni. Bár a manőver nagyon hatékony tud lenni, ugyanakkor igen rizikós is.
 
 ## Akciópontok
 
@@ -12,10 +12,14 @@ A támadás akciópont-költségét két tényező befolyásolja: a támadó feg
 
 ## Dobás
 
-A dobás minden esetben `d100` plusz a támadódobás módosítója, amit a támadó fegyver **támadás** értékéből, a képzettség nehézségéből, valamint szintjéből számolunk ki. Ehhez még hozzáadandó a fegyver **ütőtávja**, mert ennél a harci távolságnál a hosszabb fegyver előnyt jelent.
-
-`CombatRollCalculator`
+A támadó karakter [Cseles harc](skill:trick_fighting) [képzettségpróbát dob](rule:skill_check) a célpont [Reflex](skill:reactions) képzettsége ellen.
 
 ## Siker esetén
 
-Ha a támadás sikeres (a támadódobás értéke meghaladja a védekező dobásét), a támadó karakter [Cseles harc](skill:trick_fighting) [képzettségpróbát dob](rule:skill_check) a célpont [Reflex](skill:reactions) képzettsége ellen. Ennek sikere esetén az ellenfél mögé kerül, és ott is marad következő támadásáig.
+Sikere esetén a karakter az ellenfél mögé kerül, és az ellenfél a fegyver normál sebzését szenvedi el.
+
+`DamageCalculator`
+
+## Kudarc esetén
+
+Amennyiben a manőver sikertelen volt, a karakter védtelen helyzetben ragadt, és a következő támadás elleni védekező dobását a fegyverből vagy képzettségéből adódó pozitív módosítók nélkül, puszta `d100`-zal kénytelen dobni.

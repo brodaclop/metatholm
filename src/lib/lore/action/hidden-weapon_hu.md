@@ -6,16 +6,17 @@ Ezt az akciót használjuk akkor, ha az ellenfelet egy eleddig elrejtett fegyver
 
 ## Akciópontok
 
-A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a képzettség szintje.
+A támadás akciópont-költségét két tényező befolyásolja: a támadó fegyver **gyorsasága** és a fegyveres képzettség szintje.
 
 `ActionPointCalculator`
 
 ## Dobás
 
-A dobás minden esetben `d100` plusz a támadódobás módosítója, amit a támadó fegyver **támadás** értékéből, a képzettség nehézségéből, valamint szintjéből számolunk ki. Ehhez még hozzáadandó a fegyver **ütőtávja**, mert ennél a harci távolságnál a hosszabb fegyver előnyt jelent.
+A támadó karakter [Cseles harc](skill:trick_fighting) [képzettségpróbát dob](rule:skill_check) a célpont [Rejtett dolgok felfedezése](skill:spot_hidden) képzettsége ellen.
 
-`CombatRollCalculator`
 
 ## Siker esetén
 
-Ha a támadás sikeres (a támadódobás értéke meghaladja a védekező dobásét), a támadó karakter [Cseles harc](skill:trick_fighting) [képzettségpróbát dob](rule:skill_check) a célpont [Rejtett dolgok felfedezése](skill:spot_hidden) képzettsége ellen. Ennek sikere esetén meglepte ellenfelét, és az a fegyver normál sebzését szenvedi el. 
+Ha a támadás sikeres (a támadódobás értéke meghaladja a védekező dobásét), a karakter meglepte ellenfelét, és az a fegyver normál sebzését szenvedi el.
+
+`DamageCalculator`

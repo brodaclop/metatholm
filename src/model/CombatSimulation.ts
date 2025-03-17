@@ -1,6 +1,6 @@
 import { E } from "../logic/Expression";
 import { kockaDobas, parseKocka } from "../logic/Kocka";
-import { WEAPON_ATK, WEAPON_DEF, ATTACK_AP } from "./Rules";
+import { WEAPON_ATK, WEAPON_DEF, WEAPON_AP } from "./Rules";
 
 export interface Weapon {
     ap: number;
@@ -44,7 +44,7 @@ export const simulateCombat = (playerOne: SimulationCharacter, playerTwo: Simula
     };
     for (let i = 0; i < rounds; i++) {
         let aps = kockaDobas(parseKocka('1d10!+10')).osszeg;
-        const apPerHit = E.evaluate(ATTACK_AP, {
+        const apPerHit = E.evaluate(WEAPON_AP, {
             'weapon:speed': playerOne.weapon.ap,
             'weapon:skill': playerOne.skill,
             'weapon:difficulty': playerOne.difficulty

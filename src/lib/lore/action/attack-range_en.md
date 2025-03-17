@@ -13,7 +13,7 @@ How many action points this action costs depends on two factors: the **speed** o
 
 ## Roll
 
-Attack rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the **attack** property of the weapon, the difficulty of the combat skill used and the skill level of the user.
+Attack rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the type and **attack** property of the weapon and the skill level of the user.
 
 `CombatRollCalculator`
 

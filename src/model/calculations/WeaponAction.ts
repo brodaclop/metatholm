@@ -1,7 +1,7 @@
 import { E, type EvalExpression } from "../../logic/Expression";
 import { ACTION_VARIANT_PROPERTIES, type Action, type ActionRange, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
 import { keys } from "../InfoList";
-import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
+import { WEAPON_AP, WEAPON_ATK, WEAPON_DAMAGE, WEAPON_DEF } from "../Rules";
 import { Skill } from "../Skills";
 import { ENCHANTMENT_MAGNITUDE, type Weapon } from "../Weapon";
 
@@ -27,46 +27,47 @@ const calculateSkill = (characterSkill?: number, actionModifier = 0): number => 
 
 const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, number>>, weapon: Weapon): ActionVariantInfo => {
     const variantInfo = ACTION_VARIANT_PROPERTIES[name];
-    const ap = variantInfo.type === 'action' ? ATTACK_AP : undefined;
-    const roll = variantInfo.type === 'action' ? WEAPON_ATK : WEAPON_DEF;
-    const damage = name === 'action:attack' || name === 'action:attack-cq' || name === 'action:attack-range' || name === 'action:hidden-weapon' ? weapon.damage : 0;
-    const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
     const multipliers = Skill.get(weapon.skill).weaponMultipliers;
-
-    const weaponProp = variantInfo.type === 'action' ? 'attack' : 'defence';
+    const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
 
     const rolls: Array<Roll> = [];
-    const args = {
-        'weapon:speed': weapon.speed,
-        'weapon:attack': weapon.attack,
-        'weapon:defence': weapon.defence,
-        'weapon:skill': skill,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        'weapon:reach': ReachMultipliers[variantInfo.range!] * weapon.reach,
-    };
-    if (ap) {
-        rolls.push(apRoll(E.evaluate(ap,
+
+    if (variantInfo.type === 'action') {
+        rolls.push(apRoll(E.evaluate(WEAPON_AP,
             {
-                ...args,
+                'weapon:speed': weapon.speed,
+                'weapon:skill': skill,
                 'combat:multiplier': multipliers?.speed ?? 1,
                 'weapon:enchantment': weapon.enchantment.speed ?? 0
             })));
     }
-    rolls.push(d100roll(E.evaluate(roll, {
-        ...args,
-        'combat:multiplier': multipliers![weaponProp] ?? 1,
-        'weapon:enchantment': ENCHANTMENT_MAGNITUDE[weaponProp] * (weapon.enchantment[weaponProp] ?? 0)
-    })));
     if (variantInfo.trick) {
-        const trickSkill = skills["skill:trick_fighting"] ?? 0;
+        const trickSkill = calculateSkill(skills['skill:trick_fighting'], weapon.actions[name]);
         rolls.push({
             name: 'skill:trick_fighting',
-            roll: E.constant(trickSkill ? `${trickSkill}d10!` : '1d5!'),
+            roll: E.constant(trickSkill > 0 ? `${trickSkill + (weapon.enchantment.attack ?? 0)}d10!` : '1d5!'),
             rollString: trickSkill ? `${trickSkill}d10!` : '1d5!'
         });
+    } else {
+        const weaponProp = variantInfo.type === 'action' ? 'attack' : 'defence';
+        rolls.push(d100roll(E.evaluate(variantInfo.type === 'action' ? WEAPON_ATK : WEAPON_DEF, {
+            'weapon:speed': weapon.speed,
+            'weapon:attack': weapon.attack,
+            'weapon:defence': weapon.defence,
+            'weapon:skill': skill,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            'weapon:reach': ReachMultipliers[variantInfo.range!] * weapon.reach,
+            'combat:multiplier': multipliers![weaponProp] ?? 1,
+            'weapon:enchantment': ENCHANTMENT_MAGNITUDE[weaponProp] * (weapon.enchantment[weaponProp] ?? 0)
+        })));
     }
-    if (damage) {
-        rolls.push(damageRoll(damage, multipliers?.damage ?? 1));
+    if (name === 'action:attack' || name === 'action:attack-cq' || name === 'action:attack-range' || name === 'action:hidden-weapon' || name === 'action:spin-behind') {
+        rolls.push(damageRoll(E.evaluate(WEAPON_DAMAGE, {
+            'weapon:damage': weapon.damage,
+            'weapon:skill': skill,
+            'combat:multiplier': multipliers?.damage ?? 1,
+            'weapon:enchantment': weapon.enchantment.damage ?? 0
+        })));
     }
     return {
         name,
@@ -86,8 +87,8 @@ const apRoll = (roll: EvalExpression): Roll => ({
     rollString: `${roll.result}`
 });
 
-const damageRoll = (dice: number, multiplier: number): Roll => ({
+const damageRoll = (roll: EvalExpression): Roll => ({
     name: 'weapon:damage',
-    roll: E.constant(`${Math.floor(dice * multiplier)}d5!`),
-    rollString: `${Math.floor(dice * multiplier)}d5!`
+    roll: E.constant(`${roll.result}d5!`),
+    rollString: `${roll.result}d5!`
 })

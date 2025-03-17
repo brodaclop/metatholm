@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { ATTACK_AP } from '../../../model/Rules';
+	import { WEAPON_AP } from '../../../model/Rules';
 	import { E } from '../../../logic/Expression';
 	import type { Character } from '../../../model/Karakter';
 	import type { Weapon } from '../../../model/Weapon';
@@ -27,7 +27,7 @@
 
 	const calculate = (_speed: number, _skill: number, _multiplier: number): number =>
 		Math.round(
-			E.evaluate(ATTACK_AP, {
+			E.evaluate(WEAPON_AP, {
 				'weapon:speed': _speed,
 				'weapon:skill': _skill,
 				'combat:multiplier': _multiplier,

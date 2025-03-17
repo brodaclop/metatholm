@@ -13,7 +13,7 @@ How many action points this action costs depends on two factors: the **speed** o
 
 ## Roll
 
-Attack rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the **attack** property of the weapon, the difficulty of the combat skill used and the skill level of the user. The weapon's reach is then subtracted from this because in close quarters combat a longer reach is a disadvantage.
+Attack rolls are made with `d100`, plus the attack modifier, which is in turn calculated from the type and **attack** property of the weapon and the skill level of the user. Five times the weapon's **reach** is then subtracted from this because in close quarters combat a longer reach is a disadvantage.
 
 `CombatRollCalculator`
 

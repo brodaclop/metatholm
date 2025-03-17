@@ -12,7 +12,7 @@ A támadás akciópont-költségét két tényező befolyásolja: a támadó feg
 
 ## Dobás
 
-A dobás minden esetben `d100` plusz a támadódobás módosítója, amit a támadó fegyver **támadás** értékéből, a képzettség nehézségéből, valamint szintjéből számolunk ki. Ebből végül levonódik a fegyver **ütőtávja**, mert ennél a harci távolságnál a hosszabb fegyver hátrányt jelent.
+A dobás minden esetben `d100` plusz a támadódobás módosítója, amit a támadó fegyver típusából, **támadás** értékéből, valamint a képzettség szintjéből számolunk ki. Ebből végül levonódik a fegyver **ütőtávjának** ötszöröse, mert ennél a harci távolságnál a hosszabb fegyver hátrányt jelent.
 
 `CombatRollCalculator`
 

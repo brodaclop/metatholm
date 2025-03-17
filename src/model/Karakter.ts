@@ -11,7 +11,7 @@ import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
 import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
-import { Skill, type Personality, UnarmedSkill, UnarmedSkills } from "./Skills";
+import { Skill, type Personality, UnarmedSkills } from "./Skills";
 import type { Armour } from "./Armour";
 import { calculatePersonality } from "./calculations/Personality";
 import type { SpiritAnimal, SpiritManifestation } from "./Spirits";
