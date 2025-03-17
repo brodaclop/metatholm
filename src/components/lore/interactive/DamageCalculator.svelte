@@ -3,7 +3,7 @@
 	import Circles from '../../elements/Circles.svelte';
 	import FixedDiceRoller from '../FixedDiceRoller.svelte';
 	import type { Weapon } from '../../../model/Weapon';
-	import { Skill, WEAPON_MULTIPLIERS } from '../../../model/Skills';
+	import { Skill } from '../../../model/Skills';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 
 	let damage = 1;
@@ -16,7 +16,7 @@
 		damage = weapon.damage;
 	}
 
-	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.damage ?? 1;
+	const multiplier = (skill: Skill) => Skill.get(skill).weaponMultipliers?.damage ?? 1;
 </script>
 
 <table>

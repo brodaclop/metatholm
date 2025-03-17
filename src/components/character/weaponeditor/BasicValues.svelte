@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import { ENCHANTMENT_MAGNITUDE, type Weapon } from '../../../model/Weapon';
-	import { type Skill, WEAPON_MULTIPLIERS } from '../../../model/Skills';
+	import { type MultiplierRecord } from '../../../model/Skills';
 
 	export let editedWeapon: Weapon;
-	export let value: 'speed' | 'attack' | 'defence' | 'damage';
-	export let multipliers: (typeof WEAPON_MULTIPLIERS)[Skill];
+	export let value: keyof MultiplierRecord;
+	export let multipliers: MultiplierRecord;
 
 	const enchantmentMagnitude = ENCHANTMENT_MAGNITUDE[value];
 </script>
@@ -31,5 +31,9 @@
 	.header {
 		font-weight: bold;
 		padding-right: 0.5em;
+	}
+
+	span {
+		white-space: nowrap;
 	}
 </style>

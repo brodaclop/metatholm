@@ -2,7 +2,7 @@ import { E, type EvalExpression } from "../../logic/Expression";
 import { ACTION_VARIANT_PROPERTIES, type Action, type ActionRange, type ActionVariant, type ActionVariantInfo, type Roll } from "../Action";
 import { keys } from "../InfoList";
 import { ATTACK_AP, WEAPON_ATK, WEAPON_DEF } from "../Rules";
-import { Skill, WEAPON_MULTIPLIERS } from "../Skills";
+import { Skill } from "../Skills";
 import { ENCHANTMENT_MAGNITUDE, type Weapon } from "../Weapon";
 
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
@@ -31,7 +31,7 @@ const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, num
     const roll = variantInfo.type === 'action' ? WEAPON_ATK : WEAPON_DEF;
     const damage = name === 'action:attack' || name === 'action:attack-cq' || name === 'action:attack-range' || name === 'action:hidden-weapon' ? weapon.damage : 0;
     const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
-    const multipliers = WEAPON_MULTIPLIERS[weapon.skill];
+    const multipliers = Skill.get(weapon.skill).weaponMultipliers;
 
     const weaponProp = variantInfo.type === 'action' ? 'attack' : 'defence';
 

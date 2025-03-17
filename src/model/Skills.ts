@@ -14,6 +14,10 @@ export type Personality =
     | 'personality:selfish'
     | 'personality:resourceful';
 
+export type MultiplierValue = 1 | 1.5 | 2;
+
+export type MultiplierRecord = Record<'attack' | 'defence' | 'speed' | 'damage', MultiplierValue>;
+
 export type SkillInfo = {
     readonly name: Skill;
     readonly difficulty: 1 | 2 | 3;
@@ -22,14 +26,17 @@ export type SkillInfo = {
     readonly type: SkillType;
     readonly personality: Array<Personality>;
     readonly unarmedWeaponSkill?: Skill;
+    readonly weaponMultipliers?: MultiplierRecord;
 } | {
     readonly name: Skill;
-    difficulty: 2,
-    ability: 'skill_type:general',
-    positive: true,
+    readonly difficulty: 2,
+    readonly ability: 'skill_type:general',
+    readonly positive: true,
     readonly personality: Array<Personality>;
-    type: SkillType
-    unarmedWeaponSkill?: never;
+    readonly type: SkillType
+    readonly unarmedWeaponSkill?: never;
+    readonly weaponMultipliers?: never;
+
 };
 
 const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
@@ -52,7 +59,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:tricky']
+        personality: ['personality:tricky'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1.5,
+            damage: 1
+        }
     },
     'skill:brawling': {
         difficulty: 1,
@@ -60,7 +73,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: true,
         type: 'skill_type:combat',
         personality: ['personality:aggressive', 'personality:resourceful'],
-        unarmedWeaponSkill: 'skill:strength'
+        unarmedWeaponSkill: 'skill:strength',
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1.5,
+            damage: 1
+        }
     },
     'skill:strength': {
         difficulty: 2,
@@ -88,14 +107,26 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:build',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:aggressive', 'personality:disciplined']
+        personality: ['personality:aggressive', 'personality:disciplined'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1,
+            damage: 2
+        }
     },
     'skill:maces': {
         difficulty: 1,
         ability: 'ability:build',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:aggressive']
+        personality: ['personality:aggressive'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1,
+            damage: 1.5
+        }
     },
     'skill:stalking': {
         difficulty: 2,
@@ -123,7 +154,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:build',
         positive: false,
         type: 'skill_type:combat',
-        personality: ['personality:disciplined', 'personality:cautious']
+        personality: ['personality:disciplined', 'personality:cautious'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 2,
+            speed: 1,
+            damage: 1
+        }
     },
     'skill:fistfighting': {
         difficulty: 2,
@@ -131,7 +168,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: true,
         type: 'skill_type:combat',
         personality: ['personality:aggressive', 'personality:tricky'],
-        unarmedWeaponSkill: 'skill:reactions'
+        unarmedWeaponSkill: 'skill:reactions',
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1.5,
+            damage: 1.5
+        }
     },
     'skill:jumping': {
         difficulty: 2,
@@ -152,7 +195,13 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:tricky']
+        personality: ['personality:tricky'],
+        weaponMultipliers: {
+            attack: 2,
+            defence: 1,
+            speed: 2,
+            damage: 1
+        }
     },
     'skill:reactions': {
         difficulty: 1,
@@ -167,14 +216,26 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:combat',
         personality: ['personality:disciplined'],
-        unarmedWeaponSkill: 'skill:balance'
+        unarmedWeaponSkill: 'skill:balance',
+        weaponMultipliers: {
+            attack: 1.5,
+            defence: 1.5,
+            speed: 2,
+            damage: 1
+        }
     },
     'skill:swords': {
         difficulty: 3,
         ability: 'ability:activity',
         positive: false,
         type: 'skill_type:combat',
-        personality: ['personality:aggressive', 'personality:disciplined']
+        personality: ['personality:aggressive', 'personality:disciplined'],
+        weaponMultipliers: {
+            attack: 1.5,
+            defence: 1.5,
+            speed: 1.5,
+            damage: 1.5
+        }
     },
     'skill:alchemy': {
         difficulty: 3,
@@ -188,14 +249,26 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: false,
         type: 'skill_type:combat',
-        personality: ['personality:tenacious']
+        personality: ['personality:tenacious'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1.5,
+            damage: 1.5
+        }
     },
     'skill:crossbows': {
         difficulty: 1,
         ability: 'ability:activity',
         positive: false,
         type: 'skill_type:combat',
-        personality: ['personality:tricky']
+        personality: ['personality:tricky'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1,
+            damage: 1.5
+        }
     },
     'skill:balance': {
         difficulty: 1,
@@ -418,75 +491,8 @@ export type Skill = 'skill:endurance' |
     'skill:trick_fighting'
     ;
 
+export const UnarmedSkills = ['skill:brawling', 'skill:fistfighting', 'skill:martial_arts'] as const;
+
 export const Skill = createList(SkillInfos);
 
-export type MultiplierValue = 1 | 1.5 | 2;
 
-export const WEAPON_MULTIPLIERS: Partial<Record<Skill, Record<'attack' | 'defence' | 'speed' | 'damage', MultiplierValue>>> = {
-    'skill:bows': {
-        attack: 1,
-        defence: 1,
-        speed: 1.5,
-        damage: 1.5
-    },
-    'skill:brawling': {
-        attack: 1,
-        defence: 1,
-        speed: 1.5,
-        damage: 1
-    },
-    'skill:crossbows': {
-        attack: 1,
-        defence: 1,
-        speed: 1,
-        damage: 1.5
-    },
-    'skill:fistfighting': {
-        attack: 1,
-        defence: 1,
-        speed: 1.5,
-        damage: 1.5
-    },
-    'skill:knives': {
-        attack: 1,
-        defence: 1,
-        speed: 1.5,
-        damage: 1
-    },
-    'skill:maces': {
-        attack: 1,
-        defence: 1,
-        speed: 1,
-        damage: 1.5
-    },
-    'skill:martial_arts': {
-        attack: 1.5,
-        defence: 1.5,
-        speed: 2,
-        damage: 1
-    },
-    'skill:polearms': {
-        attack: 1,
-        defence: 1,
-        speed: 1,
-        damage: 2
-    },
-    'skill:shields': {
-        attack: 1,
-        defence: 2,
-        speed: 1,
-        damage: 1
-    },
-    'skill:swords': {
-        attack: 1.5,
-        defence: 1.5,
-        speed: 1.5,
-        damage: 1.5
-    },
-    'skill:throwing': {
-        attack: 2,
-        defence: 1,
-        speed: 2,
-        damage: 1
-    }
-}

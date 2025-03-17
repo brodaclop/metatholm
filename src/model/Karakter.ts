@@ -11,10 +11,11 @@ import { Spell, type SpellInfo } from "./Spell";
 import { entries } from "./InfoList";
 import { calculateWeaponAction } from "./calculations/WeaponAction";
 import { calculateSpellAction } from "./calculations/SpellAction";
-import { Skill, type Personality } from "./Skills";
+import { Skill, type Personality, UnarmedSkill, UnarmedSkills } from "./Skills";
 import type { Armour } from "./Armour";
 import { calculatePersonality } from "./calculations/Personality";
 import type { SpiritAnimal, SpiritManifestation } from "./Spirits";
+import { UNARMED_ACTIONS } from "./WeaponList";
 
 
 export interface Level {
@@ -83,94 +84,34 @@ export interface CalculatedCharacter {
 }
 
 
-// TODO: make this use unarmedWeaponSkill from SkillInfo
-export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
-    const ret: Array<Weapon> = [];
-
-    if (skills['skill:brawling']) {
-        const strength = skills['skill:strength'] ?? 0;
-        ret.push({
-            id: 'skill:brawling',
-            name: 'skill:brawling',
-            skill: 'skill:brawling',
-            speed: strength,
-            attack: strength,
-            defence: strength,
-            reach: 0,
-            damage: strength,
-            hands: 1,
-            actions: {
-                'action:attack-cq': 1,
-                'action:defend-cq': 0,
-                'action:close-in': -2,
-                'action:disengage': -2,
-                'action:keep-close': 1,
-                'action:trip': -3,
-                'action:spin-behind': -1,
-                'action:knockout': -5,
-            },
-            enchantment: {},
-            notes: ''
-        });
+export const calculateUnarmedSkill = (unarmedSkill: typeof UnarmedSkills[number], skills: Partial<Record<Skill, number>>): Weapon | null => {
+    const auxSkill = Skill.get(unarmedSkill).unarmedWeaponSkill;
+    if (!skills[unarmedSkill] || !auxSkill) {
+        return null;
     }
-    if (skills['skill:fistfighting']) {
-        const reactions = skills['skill:reactions'] ?? 0;
 
-        ret.push({
-            id: 'skill:fistfighting',
-            name: 'skill:fistfighting',
-            skill: 'skill:fistfighting',
-            speed: reactions,
-            attack: reactions,
-            defence: reactions,
-            reach: 0,
-            damage: reactions,
-            hands: 1,
-            actions: {
-                'action:attack-cq': 1,
-                'action:defend-cq': 0,
-                'action:close-in': -1,
-                'action:disengage': -1,
-                'action:keep-close': 0,
-                'action:trip': -5,
-                'action:spin-behind': -3,
-                'action:knockout': -1,
-            },
-            enchantment: {},
-            notes: ''
-        });
+    const auxSkillValue = skills[auxSkill] ?? 0;
+    return {
+        id: unarmedSkill,
+        name: unarmedSkill,
+        skill: unarmedSkill,
+        speed: auxSkillValue,
+        attack: auxSkillValue,
+        defence: auxSkillValue,
+        damage: auxSkillValue,
+        reach: 0,
+        hands: 1,
+        enchantment: {},
+        actions: UNARMED_ACTIONS[unarmedSkill],
+        notes: ''
     }
-    if (skills['skill:martial_arts']) {
-        const balance = skills['skill:balance'] ?? 0;
-
-        ret.push({
-            id: 'skill:martial_arts',
-            name: 'skill:martial_arts',
-            skill: 'skill:martial_arts',
-            speed: balance,
-            attack: balance,
-            defence: balance,
-            reach: 0,
-            damage: balance,
-            hands: 1,
-            actions: {
-                'action:attack-cq': 1,
-                'action:defend-cq': 0,
-                'action:defend': -1,
-                'action:defend-range': -2,
-                'action:close-in': 0,
-                'action:disengage': 2,
-                'action:keep-close': 0,
-                'action:trip': -1,
-                'action:spin-behind': -3,
-                'action:knockout': -5,
-            },
-            enchantment: {},
-            notes: ''
-        });
-    }
-    return ret;
 }
+
+export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> =>
+    UnarmedSkills
+        .map(s => calculateUnarmedSkill(s, skills))
+        .filter(weapon => weapon !== null) as Array<Weapon>;
+
 
 const calculateSkills = (character: Character): Partial<Record<Skill, number>> => {
     const hindrance = character.current.armourWorn !== undefined ? character.inventory.armours[character.current.armourWorn].hindrance : 0;

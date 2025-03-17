@@ -6,7 +6,7 @@
 	import type { Weapon } from '../../../model/Weapon';
 	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 	import PointsTable from '../../PointsTable.svelte';
-	import { Skill, WEAPON_MULTIPLIERS } from '../../../model/Skills';
+	import { Skill } from '../../../model/Skills';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 
 	let skill = 1;
@@ -35,7 +35,7 @@
 			}).result * (_skill === 0 ? 0 : 1)
 		);
 
-	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.speed ?? 1;
+	const multiplier = (skill: Skill) => Skill.get(skill).weaponMultipliers?.speed ?? 1;
 
 	$: unarmedWeaponSkill = weaponSkill ? Skill.get(weaponSkill).unarmedWeaponSkill : undefined;
 

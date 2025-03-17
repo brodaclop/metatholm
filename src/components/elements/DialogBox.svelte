@@ -111,6 +111,7 @@
 
 	article {
 		max-height: 80vh;
+		max-width: 80vw;
 		border-radius: 1em;
 		border-style: groove;
 		border-width: 3px;

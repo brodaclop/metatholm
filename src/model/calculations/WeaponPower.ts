@@ -1,7 +1,7 @@
 import { E, type Expression } from "../../logic/Expression";
 import type { ActionVariant } from "../Action";
 import { entries } from "../InfoList";
-import { Skill, WEAPON_MULTIPLIERS } from "../Skills";
+import { Skill } from "../Skills";
 import type { Weapon } from "../Weapon";
 
 const WEAPON_POWER: Expression = E.add(
@@ -27,7 +27,7 @@ const ACTION_MULTIPLIER: Partial<Record<ActionVariant, number>> = {
 
 export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id' | 'name'>): number => {
     const skill = Skill.get(weapon.skill);
-    const multipliers = WEAPON_MULTIPLIERS[weapon.skill];
+    const multipliers = skill.weaponMultipliers;
     const base = E.evaluate(WEAPON_POWER, {
         'weapon:attack': weapon.attack * (multipliers?.attack ?? 1),
         'weapon:defence': weapon.defence * (multipliers?.defence ?? 1),

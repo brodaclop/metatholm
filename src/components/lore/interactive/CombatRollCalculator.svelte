@@ -7,7 +7,7 @@
 	import { ReachMultipliers } from '../../../model/calculations/WeaponAction';
 	import type { Weapon } from '../../../model/Weapon';
 	import type { Character } from '../../../model/Karakter';
-	import { Skill, WEAPON_MULTIPLIERS } from '../../../model/Skills';
+	import { Skill } from '../../../model/Skills';
 	import PointsTable from '../../PointsTable.svelte';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 
@@ -55,7 +55,7 @@
 			)
 		);
 
-	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.[prop] ?? 1;
+	const multiplier = (skill: Skill) => Skill.get(skill).weaponMultipliers?.[prop] ?? 1;
 
 	$: unarmedWeaponSkill = weaponSkill ? Skill.get(weaponSkill).unarmedWeaponSkill : undefined;
 

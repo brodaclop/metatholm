@@ -1,6 +1,43 @@
+import type { UnarmedSkills } from './Skills';
 import type { Weapon } from './Weapon';
 
 export type WeaponListEntry = Pick<Weapon, 'actions' | 'skill' | 'hands' | 'reach'> & { name: { en: string, hu: string } };
+
+export const UNARMED_ACTIONS: Record<typeof UnarmedSkills[number], Weapon['actions']> = {
+    'skill:brawling': {
+        'action:attack-cq': 1,
+        'action:defend-cq': 0,
+        'action:close-in': -2,
+        'action:disengage': -2,
+        'action:keep-close': 1,
+        'action:trip': -3,
+        'action:spin-behind': -1,
+        'action:knockout': -5,
+    },
+    'skill:fistfighting': {
+        'action:attack-cq': 1,
+        'action:defend-cq': 0,
+        'action:close-in': -1,
+        'action:disengage': -1,
+        'action:keep-close': 0,
+        'action:trip': -5,
+        'action:spin-behind': -3,
+        'action:knockout': -1,
+    },
+    'skill:martial_arts': {
+        'action:attack-cq': 1,
+        'action:defend-cq': 0,
+        'action:defend': -1,
+        'action:defend-range': -2,
+        'action:close-in': 0,
+        'action:disengage': 2,
+        'action:keep-close': 0,
+        'action:trip': -1,
+        'action:spin-behind': -3,
+        'action:knockout': -5,
+    }
+
+}
 
 export const WEAPON_LIST: Array<
     WeaponListEntry

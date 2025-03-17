@@ -3,7 +3,7 @@
 	import Box from '../elements/Box.svelte';
 	import type { Weapon } from '../../model/Weapon';
 	import { v4 } from 'uuid';
-	import { Skill, WEAPON_MULTIPLIERS } from '../../model/Skills';
+	import { Skill } from '../../model/Skills';
 	import { createEventDispatcher } from 'svelte';
 	import { WEAPON_LIST, type WeaponListEntry } from '../../model/WeaponList';
 	import { entries } from '../../model/InfoList';
@@ -103,7 +103,7 @@
 
 	let openLore: string | undefined;
 
-	$: multipliers = WEAPON_MULTIPLIERS[editedWeapon.skill];
+	$: multipliers = Skill.get(editedWeapon.skill).weaponMultipliers;
 
 	$: power = calculateWeaponPower(editedWeapon);
 
