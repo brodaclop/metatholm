@@ -36,6 +36,14 @@
 		);
 
 	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.speed ?? 1;
+
+	$: unarmedWeaponSkill = weaponSkill ? Skill.get(weaponSkill).unarmedWeaponSkill : undefined;
+
+	$: rowName = (weaponSkill ? $_(weaponSkill) + '\n' : '') + $_('weapon:skill');
+	$: columnName =
+		weaponSkill && unarmedWeaponSkill
+			? $_(unarmedWeaponSkill) + ' ' + $_('weapon:skill')
+			: `weapon:speed`;
 </script>
 
 <table>
@@ -58,11 +66,11 @@
 </table>
 
 <PointsTable
-	columnName="weapon:speed"
+	{columnName}
 	columnMax={10}
 	bind:column={speed}
 	columnChangeable={!skills}
-	rowName="weapon:skill"
+	{rowName}
 	rowMax={10}
 	rowChangeable={!weapon}
 	bind:row={skill}

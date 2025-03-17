@@ -56,6 +56,14 @@
 		);
 
 	const multiplier = (skill: Skill) => WEAPON_MULTIPLIERS[skill]?.[prop] ?? 1;
+
+	$: unarmedWeaponSkill = weaponSkill ? Skill.get(weaponSkill).unarmedWeaponSkill : undefined;
+
+	$: rowName = (weaponSkill ? $_(weaponSkill) + '\n' : '') + $_('weapon:skill');
+	$: columnName =
+		weaponSkill && unarmedWeaponSkill
+			? $_(unarmedWeaponSkill) + ' ' + $_('weapon:skill')
+			: `weapon:${prop}`;
 </script>
 
 <table>
@@ -67,7 +75,7 @@
 			>
 			<td
 				><select bind:value={weaponSkill} disabled={!!weapon}>
-					<option value={undefined}>{$_('label:select_combat_skill')}</option>
+					<option disabled value={undefined}>{$_('label:select_combat_skill')}</option>
 					{#each Skill.list().filter((s) => s.type === 'skill_type:combat') as skill}
 						<option value={skill.name}>{$_(skill.name)} (x{multiplier(skill.name)})</option>
 					{/each}
@@ -85,11 +93,11 @@
 </table>
 
 <PointsTable
-	columnName={`weapon:${prop}`}
+	{columnName}
 	columnMax={10}
 	columnChangeable={!weapon}
 	bind:column={weaponProp}
-	rowName="weapon:skill"
+	{rowName}
 	rowChangeable={!skills}
 	rowMax={10}
 	bind:row={skill}

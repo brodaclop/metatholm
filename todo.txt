@@ -12,3 +12,9 @@ x Label for combat:multiplier
 - select skill label
 - document weapon skill multipliers
 - list weapon types
+x combat roll calculator labels for unarmed combat
+- refactor unarmed calculation to use iteration
+- fix weapon list actions
+- add more weapon templates
+- implement weapon list viewer
+- integrate multiplier list into skill list

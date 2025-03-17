@@ -83,9 +83,9 @@ export interface CalculatedCharacter {
 }
 
 
+// TODO: make this use unarmedWeaponSkill from SkillInfo
 export const calculateUnarmed = (skills: Partial<Record<Skill, number>>): Array<Weapon> => {
     const ret: Array<Weapon> = [];
-    //    const fraction = (skill: Skill, divisor: number) => Math.max(1, Math.floor((skills[skill] ?? 0) / divisor))
 
     if (skills['skill:brawling']) {
         const strength = skills['skill:strength'] ?? 0;

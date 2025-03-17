@@ -49,7 +49,7 @@
 		{#each Array(rowMax + 1) as _, _row}
 			<tr>
 				{#if _row === 0}
-					<th rowspan={rowMax + 1}>{i18n(rowName)}</th>
+					<th class="rowLabel" rowspan={rowMax + 1}>{i18n(rowName)}</th>
 				{/if}
 				{#if !hideRowCounter}
 					<th class:semi-highlighted={row === _row}>
@@ -83,6 +83,10 @@
 	td,
 	th {
 		transition: background-color 0.05s ease-in-out;
+	}
+
+	th.rowLabel {
+		white-space: pre-line;
 	}
 
 	.semi-highlighted {

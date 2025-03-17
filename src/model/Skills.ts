@@ -21,6 +21,7 @@ export type SkillInfo = {
     readonly positive: boolean;
     readonly type: SkillType;
     readonly personality: Array<Personality>;
+    readonly unarmedWeaponSkill?: Skill;
 } | {
     readonly name: Skill;
     difficulty: 2,
@@ -28,6 +29,7 @@ export type SkillInfo = {
     positive: true,
     readonly personality: Array<Personality>;
     type: SkillType
+    unarmedWeaponSkill?: never;
 };
 
 const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
@@ -57,7 +59,8 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:build',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:aggressive', 'personality:resourceful']
+        personality: ['personality:aggressive', 'personality:resourceful'],
+        unarmedWeaponSkill: 'skill:strength'
     },
     'skill:strength': {
         difficulty: 2,
@@ -127,7 +130,8 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: true,
         type: 'skill_type:combat',
-        personality: ['personality:aggressive', 'personality:tricky']
+        personality: ['personality:aggressive', 'personality:tricky'],
+        unarmedWeaponSkill: 'skill:reactions'
     },
     'skill:jumping': {
         difficulty: 2,
@@ -162,7 +166,8 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: false,
         type: 'skill_type:combat',
-        personality: ['personality:disciplined']
+        personality: ['personality:disciplined'],
+        unarmedWeaponSkill: 'skill:balance'
     },
     'skill:swords': {
         difficulty: 3,
@@ -415,12 +420,9 @@ export type Skill = 'skill:endurance' |
 
 export const Skill = createList(SkillInfos);
 
-export const WEAPON_MULTIPLIERS: Partial<Record<Skill, {
-    attack: 1 | 1.5 | 2;
-    defence: 1 | 1.5 | 2;
-    speed: 1 | 1.5 | 2;
-    damage: 1 | 1.5 | 2;
-}>> = {
+export type MultiplierValue = 1 | 1.5 | 2;
+
+export const WEAPON_MULTIPLIERS: Partial<Record<Skill, Record<'attack' | 'defence' | 'speed' | 'damage', MultiplierValue>>> = {
     'skill:bows': {
         attack: 1,
         defence: 1,
