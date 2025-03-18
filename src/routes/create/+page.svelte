@@ -57,7 +57,6 @@
 			ancestry && background
 				? createCharacter({ name, patron, ancestry, background, abilities })
 				: undefined;
-		console.log('skills', character?.skills);
 		updateHighlight();
 	};
 

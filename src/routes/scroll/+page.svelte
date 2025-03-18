@@ -93,13 +93,7 @@
 {/if}
 
 {#key $locale}
-	<article
-		class="lore"
-		bind:this={article}
-		on:scroll={(e) => {
-			console.log('scroll', e);
-		}}
-	>
+	<article class="lore" bind:this={article}>
 		<Lore id="book" />
 	</article>
 {/key}

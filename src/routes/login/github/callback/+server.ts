@@ -25,7 +25,6 @@ export async function GET(event: RequestEvent): Promise<Response> {
             }
         });
         const responseText = await githubUserResponse.text();
-        console.log('Github response: ', responseText);
         const githubUser: GitHubUser = JSON.parse(responseText);
         const existingUser: Record<string, string> | null = await db.prepare('select * from user where github_id = ?').bind(githubUser.id).first();
 

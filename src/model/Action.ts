@@ -25,6 +25,24 @@ export type ActionVariant =
     | 'action:spin-behind'
     ;
 
+export type WeaponTemplateVariant =
+    | 'action:attack'
+    | 'action:defend'
+    | 'action:attack-cq'
+    | 'action:defend-cq'
+    | 'action:keep-away'
+    | 'action:close-in'
+    | 'action:disengage'
+    | 'action:keep-close'
+    | 'action:attack-range'
+    | 'action:defend-range'
+    | 'action:knockout'
+    | 'action:trip'
+    | 'action:hidden-weapon'
+    | 'action:spin-behind'
+    ;
+
+
 export type ActionRoll = 'action:ap' | 'action:roll' | 'weapon:damage' | 'skill:trick_fighting';
 
 export type ActionRange = 'out-of-range' | 'in-range' | 'close-quarters';

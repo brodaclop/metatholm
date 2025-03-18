@@ -79,6 +79,7 @@
 			editedWeapon.hands = type.hands;
 			editedWeapon.reach = type.reach;
 			editedWeapon.skill = type.skill;
+			editedWeapon.notes = type.description[langKey];
 		}
 	};
 
@@ -103,7 +104,7 @@
 
 	let openLore: string | undefined;
 
-	$: multipliers = Skill.get(editedWeapon.skill).weaponMultipliers;
+	$: multipliers = Skill.get(editedWeapon.skill).weaponMultipliers!;
 
 	$: power = calculateWeaponPower(editedWeapon);
 

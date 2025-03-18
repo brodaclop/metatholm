@@ -89,6 +89,6 @@ const apRoll = (roll: EvalExpression): Roll => ({
 
 const damageRoll = (roll: EvalExpression): Roll => ({
     name: 'weapon:damage',
-    roll: E.constant(`${roll.result}d5!`),
-    rollString: `${roll.result}d5!`
+    roll: E.constant(`${Math.max(1, roll.result)}d5!`),
+    rollString: `${Math.max(1, roll.result)}d5!`
 })

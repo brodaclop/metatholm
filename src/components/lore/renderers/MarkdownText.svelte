@@ -18,7 +18,6 @@
 	<div class="markdown" class:inline={isInline}>
 		<SvelteMarkdown
 			{isInline}
-			on:parsed={(tokens) => console.log(tokens)}
 			source={text}
 			renderers={{
 				codespan: ActiveElementRenderer,

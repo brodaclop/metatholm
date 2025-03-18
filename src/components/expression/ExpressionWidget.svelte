@@ -53,14 +53,10 @@
 			{/each}
 			{#if expr.type === 'add' && (parentType === 'div' || parentType === 'mul')}){/if}
 		{:else if expr.type === 'max' || expr.type === 'min'}
-			{expr.type}(
-			{#each expr.args as arg, i}
-				<svelte:self parentType={expr.type} expr={arg} />
-				{#if i < expr.args.length - 1}
-					<span class="operator">,&nbsp;</span>
-				{/if}
-			{/each}
-			)
+			{expr.type}({#each expr.args as arg, i}<svelte:self
+					parentType={expr.type}
+					expr={arg}
+				/>{#if i < expr.args.length - 1}<span class="operator">,&nbsp;</span>{/if}{/each})
 		{:else if expr.type === 'floor'}
 			floor(<svelte:self parentType={expr.type} expr={expr.arg} />)
 		{/if}

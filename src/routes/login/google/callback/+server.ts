@@ -27,8 +27,6 @@ export async function GET(event: RequestEvent): Promise<Response> {
         });
         const user: GoogleUser = await response.json();
 
-        console.log('user', user);
-
         const existingUser: Record<string, string> | null = await db.prepare('select * from user where github_id =?1 or google_id=?1').bind(user.sub).first();
 
         if (existingUser) {
