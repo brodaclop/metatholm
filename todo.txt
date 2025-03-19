@@ -9,12 +9,12 @@ x Remove attack roll requirement from trick fightinng
 - Update weapon power calculation
 x Label for combat:multiplier
 - Tableplop export
-- select skill label
+x select skill label
 - document weapon skill multipliers
-- list weapon types
+x list weapon types
 x combat roll calculator labels for unarmed combat
 x refactor unarmed calculation to use iteration
 - fix weapon list actions
 - add more weapon templates
-- implement weapon list viewer
+x implement weapon list viewer
 x integrate multiplier list into skill list

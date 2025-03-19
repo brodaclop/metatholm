@@ -63,7 +63,7 @@ type GenericLabels = 'label:name' |
     'label:encounters' |
     'label:copy' |
     'label:paste' |
-    'label:weapon:select_template' |
+    'label:weapon:archetype' |
     'label:weapon:paste_here' |
     'label:logout' |
     'world:concept' |
@@ -239,7 +239,7 @@ export const Labels_en: Record<Labels, string> = {
     'label:encounters': 'Encounters',
     'label:copy': 'Copy',
     'label:paste': 'Paste',
-    'label:weapon:select_template': 'Custom weapon type',
+    'label:weapon:archetype': 'Weapon type',
     'label:weapon:paste_here': 'Paste copied weapon here...',
     'label:logout': 'Logout',
     'label:lightdark': 'Light/Dark Mode',
@@ -557,7 +557,7 @@ export const Labels_hu: Record<Labels, string> = {
     'label:encounters': 'Találkozások',
     'label:copy': 'Másolás',
     'label:paste': 'Beilleszt',
-    'label:weapon:select_template': 'Saját fegyvertípus',
+    'label:weapon:archetype': 'Fegyver típus',
     'label:weapon:paste_here': 'Másolt fegyver beillesztése...',
     'label:logout': 'Kilépés',
     'label:lightdark': 'Világos/Sötét üzemmód',

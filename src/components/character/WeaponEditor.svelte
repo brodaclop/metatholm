@@ -15,6 +15,7 @@
 	import Lore from '../lore/Lore.svelte';
 	import DialogBox from '../elements/DialogBox.svelte';
 	import BasicValues from './weaponeditor/BasicValues.svelte';
+	import ArchetypeList from './weaponeditor/ArchetypeList.svelte';
 
 	export let showModal: boolean; // boolean
 	const dispatch = createEventDispatcher();
@@ -115,12 +116,7 @@
 	{#if !openLore}
 		<div class="horizontal-group">
 			<div>
-				<select bind:value={type} on:change={templateSelected}>
-					<option value={null}>{$_('label:weapon:select_template')}</option>
-					{#each WEAPON_LIST as tw}
-						<option value={tw}>{tw.name[langKey]}</option>
-					{/each}
-				</select>
+				<ArchetypeList bind:archetype={type} on:change={templateSelected} />
 			</div>
 			<span>
 				<IconButton title="label:paste">

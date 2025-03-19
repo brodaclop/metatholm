@@ -3,9 +3,9 @@ import type { UnarmedSkills } from './Skills';
 import type { Weapon } from './Weapon';
 
 
-type Actions = Record<WeaponTemplateVariant, number | undefined>;
+export type WeaponListActions = Record<WeaponTemplateVariant, number | undefined>;
 
-export type WeaponListEntry = Pick<Weapon, 'skill' | 'hands' | 'reach'> & { actions: Actions, name: { en: string, hu: string }, description: { en: string, hu: string } };
+export type WeaponListEntry = Pick<Weapon, 'skill' | 'hands' | 'reach'> & { actions: WeaponListActions, name: { en: string, hu: string }, description: { en: string, hu: string } };
 
 
 
