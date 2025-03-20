@@ -17,3 +17,16 @@
 {:else if headingLevel === 6}
 	<h6><slot /></h6>
 {/if}
+
+<style>
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-shadow: 1px 1px 2px var(--title-shadow-c);
+		font-weight: var(--font-weight-bold);
+		color: var(--box-title-c);
+	}
+</style>

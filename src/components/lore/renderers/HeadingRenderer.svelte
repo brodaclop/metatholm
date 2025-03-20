@@ -23,3 +23,15 @@
 {:else}
 	{raw}
 {/if}
+
+<style>
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: hsl(from var(--box-title-c) h calc(s * 0.5) l);
+		font-weight: normal;
+	}
+</style>
