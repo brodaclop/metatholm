@@ -8,6 +8,8 @@
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 	import CircleRow from '../../elements/CircleRow.svelte';
 	import PointsTable from '../../PointsTable.svelte';
+	import PropertyList from '../PropertyList.svelte';
+	import SkillIcon from '../../character/SkillIcon.svelte';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
@@ -47,59 +49,73 @@
 		}).result;
 </script>
 
+{#if skillInfo}
+	<PropertyList
+		properties={[
+			{
+				type: 'text',
+				title: 'label:type',
+				value: skillInfo.type
+			},
+			{
+				type: 'text',
+				title: 'character:personality',
+				value: skillInfo.personality.map((p) => $_(p)).join(', ')
+			},
+			{
+				type: 'text',
+				title: 'label:difficulty',
+				value: `weapon:difficulty:${difficulty}`
+			}
+		]}
+	/>
+{/if}
+
 <table class="maintable">
 	<tbody>
-		{#if skillInfo}
+		{#if !skillInfo}
 			<tr>
-				<th><LoreInfoIcon />{$_('label:type')}</th>
-				<td>{$_(skillInfo.type)}</td>
+				<th
+					><LoreInfoIcon id="label:difficulty" />{$_('label:difficulty')}
+					({$_(`weapon:difficulty:${difficulty}`)})
+				</th>
+				<td>
+					<CircleRow
+						bind:value={difficulty}
+						max={3}
+						canMinus={difficulty > 1}
+						editable={!skillInfo}
+					/>
+				</td>
+				<td />
 			</tr>
 			<tr>
-				<th><LoreInfoIcon id="character:personality" />{$_('character:personality')}</th>
-				<td>{skillInfo.personality.map((p) => $_(p)).join(', ')}</td>
+				<th
+					><LoreInfoIcon />{$_(
+						(skillInfo?.ability !== 'skill_type:general' ? skillInfo?.ability : undefined) ??
+							'character:ability'
+					)}
+					{$_('label:skill_effect_direction')}</th
+				>
+				<td colspan={3}>
+					<button
+						disabled={!!skillInfo}
+						class:selected={effect === true}
+						on:click={() => (effect = true)}>{$_('label:skill_effect:positive')}</button
+					>
+					<button
+						disabled={!!skillInfo}
+						class:selected={effect === 'none'}
+						on:click={() => (effect = 'none')}>{$_('label:skill_effect:none')}</button
+					>
+					<button
+						disabled={!!skillInfo}
+						class:selected={effect === false}
+						on:click={() => (effect = false)}>{$_('label:skill_effect:negative')}</button
+					>
+				</td>
 			</tr>
 		{/if}
-		<tr>
-			<th
-				><LoreInfoIcon id="label:difficulty" />{$_('label:difficulty')}
-				({$_(`weapon:difficulty:${difficulty}`)})
-			</th>
-			<td>
-				<CircleRow
-					bind:value={difficulty}
-					max={3}
-					canMinus={difficulty > 1}
-					editable={!skillInfo}
-				/>
-			</td>
-			<td />
-		</tr>
-		<tr>
-			<th
-				><LoreInfoIcon />{$_(
-					(skillInfo?.ability !== 'skill_type:general' ? skillInfo?.ability : undefined) ??
-						'character:ability'
-				)}
-				{$_('label:skill_effect_direction')}</th
-			>
-			<td colspan={3}>
-				<button
-					disabled={!!skillInfo}
-					class:selected={effect === true}
-					on:click={() => (effect = true)}>{$_('label:skill_effect:positive')}</button
-				>
-				<button
-					disabled={!!skillInfo}
-					class:selected={effect === 'none'}
-					on:click={() => (effect = 'none')}>{$_('label:skill_effect:none')}</button
-				>
-				<button
-					disabled={!!skillInfo}
-					class:selected={effect === false}
-					on:click={() => (effect = false)}>{$_('label:skill_effect:negative')}</button
-				>
-			</td>
-		</tr>
 		<tr>
 			<td colspan={4}>
 				<div class="points-table-container">

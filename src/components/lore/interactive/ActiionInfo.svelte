@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { _ } from 'svelte-i18n';
 	import { ACTION_VARIANT_PROPERTIES, type ActionVariant } from '../../../model/Action';
 	import { entries } from '../../../model/InfoList';
-	import LoreLink from './LoreLink.svelte';
+	import PropertyList from '../PropertyList.svelte';
 
 	export let id: ActionVariant;
 	export let bookMode: boolean;
@@ -11,39 +10,39 @@
 	$: counteredBy = entries(ACTION_VARIANT_PROPERTIES)
 		.filter(([, value]) => value.reactionTo?.includes(id))
 		.map(([key]) => key);
+
+	$: properties = [
+		{
+			type: 'text' as 'text',
+			title: 'label:type',
+			value: info.type === 'action' ? 'label:action' : 'label:reaction'
+		},
+		{
+			type: 'text' as 'text',
+			title: 'label:range',
+			value: `label:${info.range ?? 'any-range'}`
+		},
+		...(info.reactionTo
+			? [
+					{
+						type: 'link' as 'link',
+						title: 'label:counters',
+						bookMode: bookMode,
+						targets: info.reactionTo
+					}
+			  ]
+			: []),
+		...(counteredBy.length > 0
+			? [
+					{
+						type: 'link' as 'link',
+						title: 'label:countered-by',
+						bookMode: bookMode,
+						targets: counteredBy
+					}
+			  ]
+			: [])
+	];
 </script>
 
-<ul>
-	<li>
-		<b>{$_('label:type')}:</b><span
-			>{info.type === 'action' ? $_('label:action') : $_('label:reaction')}</span
-		>
-	</li>
-	<li><b>{$_('label:range')}:</b><span>{$_(`label:${info.range ?? 'any-range'}`)}</span></li>
-	{#if info.reactionTo}
-		<li>
-			<b>{$_('label:counters')}:</b>{#each info.reactionTo as ra}
-				<span class="counter-item"><LoreLink target={ra} {bookMode} /></span>
-			{/each}
-		</li>
-	{/if}
-	{#if counteredBy.length > 0}
-		<li>
-			<b>{$_('label:countered-by')}:</b>{#each counteredBy as ra}
-				<span class="counter-item"><LoreLink target={ra} {bookMode} /></span>
-			{/each}
-		</li>
-	{/if}
-</ul>
-
-<style>
-	ul {
-		padding: 0;
-		list-style: none;
-	}
-
-	b,
-	.counter-item {
-		padding-right: 0.5em;
-	}
-</style>
+<PropertyList {properties} />
