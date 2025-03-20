@@ -1,6 +1,6 @@
 x Spell action point recalculation
 x Update spell casting timing descriptions
-- Update all lore with new combat system
+x Update all lore with new combat system
 x Update unarmed combat calculations
 x Update unarmed combat lore
 x Update enchanted weapon logic (+1/+10/+1d5!)

@@ -6,6 +6,7 @@ export type SpiritAnimal =
     | 'spirit:boar'
     | 'spirit:cat'
     | 'spirit:squirrel'
+    | 'spirit:wolf'
     // | 'spirit:snake'
     // | 'spirit:stag'
     // | 'spirit:bee'
@@ -14,7 +15,6 @@ export type SpiritAnimal =
     // | 'spirit:raven'
     // | 'spirit:goose'
     // | 'spirit:hare'
-    // | 'spirit:wolf';
     ;
 
 export type SpiritManifestation =
@@ -42,6 +42,12 @@ export type SpiritManifestation =
     | 'manifestation:boar:nerves'
     | 'manifestation:boar:courage'
     | 'manifestation:boar:luck'
+    | 'manifestation:wolf:nose'
+    | 'manifestation:wolf:hunger'
+    | 'manifestation:wolf:eyes'
+    | 'manifestation:wolf:heart'
+    | 'manifestation:wolf:howl'
+    | 'manifestation:wolf:feet'
     ;
 
 export type SpiritEffects =
@@ -66,6 +72,10 @@ export type SpiritEffects =
     | 'effect:poison_immune'
     | 'effect:pack_fighter'
     | 'effect:gambler'
+    | 'effect:sense_friends'
+    | 'effect:gorge'
+    | 'effect:mask_party_size'
+    | 'effect:sense_disturbance'
     ;
 export interface SpiritAnimalInfo {
     name: SpiritAnimal;
@@ -112,6 +122,16 @@ const Spirits: Record<SpiritAnimal, Omit<SpiritAnimalInfo, 'name'>> = {
             'manifestation:boar:courage': 'effect:pack_fighter',
             'manifestation:boar:luck': 'effect:gambler'
 
+        }
+    },
+    'spirit:wolf': {
+        manifestations: {
+            'manifestation:wolf:nose': 'effect:exceptional_smell',
+            'manifestation:wolf:howl': 'effect:sense_friends',
+            'manifestation:wolf:hunger': 'effect:gorge',
+            'manifestation:wolf:feet': 'effect:mask_party_size',
+            'manifestation:wolf:heart': 'effect:sense_disturbance',
+            'manifestation:wolf:eyes': 'effect:see_in_dark'
         }
     }
 }

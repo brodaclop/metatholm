@@ -2,7 +2,7 @@
 
 > “They say whom the gods would destroy, they first make mad. But what do the gods do to those they want to recruit?”
 
-**Vagabonds** are strange creatures, they're ordinary people but they're also something else. The spirit living in them has been chosen by a god of another world to one day represent them on their world. First though they want to test their spiritual strength.
+**Vagabonds** are strange creatures, they're ordinary people but they're also something else. The spirit living in them has been chosen by a god of another world to one day represent them on their world. First though they need to pass a test of their spiritual strength.
 
 **Without any divine help.**
 
