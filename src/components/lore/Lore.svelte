@@ -106,6 +106,27 @@
 		scroll-margin-top: 3em;
 	}
 
+	section.title :global(h1) {
+		font-size: 2em;
+	}
+
+	div.contents {
+		font-family: 'Montserrat';
+		font-optical-sizing: auto;
+		font-weight: var(--font-weight);
+	}
+
+	div.contents :global(h1),
+	div.contents :global(h2),
+	div.contents :global(h3),
+	div.contents :global(h4),
+	div.contents :global(h5),
+	div.contents :global(h6) {
+		font-weight: var(--font-weight-bold);
+		color: var(--box-title-c);
+		text-shadow: 1px 1px 2px var(--title-shadow-c);
+	}
+
 	.contents {
 		text-align: left;
 		white-space: initial;

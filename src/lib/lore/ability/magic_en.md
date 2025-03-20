@@ -6,12 +6,10 @@ A character with a high **Magic** ability is easy for magic to pass through. Con
 
 A character with low **Magic** on the other hand will usually struggle creating magical effects. But precisely because magic finds it difficult to affect them, they can develop superior resistance to harmful magic.
 
-## Associated skills
-
-### Positive effect
+## Has positive effect on skills
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negative effect
+## Has negative effect on skills
 
 `SkillListForAbilities|{"positive": false}`

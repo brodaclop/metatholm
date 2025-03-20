@@ -10,7 +10,6 @@
 			<th>{$_('label:spirit_animal')}</th>
 			<th>{$_('label:spirit_manifestation')}</th>
 			<th>{$_('label:spirit_effect')}</th>
-			<th />
 		</tr>
 	</thead>
 	<tbody>

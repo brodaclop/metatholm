@@ -225,8 +225,9 @@
 </div>
 
 <style>
-	@import url('https://fonts.cdnfonts.com/css/luminari');
+	@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 	:global(.reset-font),
 	:global(html),
@@ -246,7 +247,7 @@
 	}
 
 	:global(h1, h2, h3, h4, h5, h6) {
-		font-family: 'Luminari';
+		font-family: 'Eagle Lake', cursive;
 	}
 
 	:global(button:disabled) {

@@ -4,12 +4,10 @@ A magas **Aktivitás**ú karakter igazi örökmozgónak tűnik. Lehet gyors mozg
 
 Az alacsony **Aktivitás**ú karakter ennek pont az ellenkezője: bár elsőre lomhának tűnhet, de lehet, hogy csak óvatos és megfontolt. Ez a fajta tudatos precizitás különösen jól jön, ha a karakter savakkal dolgozik, sebeket kötöz vagy íjjal céloz.
 
-## Ezekre a képzettségekre van hatással
-
-### Pozítiv
+## Ezekre a képzettségekre van pozitív hatással
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negatív
+## Ezekre a képzettségekre van negatív hatással
 
 `SkillListForAbilities|{"positive": false}`

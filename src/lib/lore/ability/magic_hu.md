@@ -6,12 +6,10 @@ A magas **Mágia** tulajdonságú karakteren könnyen átáramlik a mágia. Ösz
 
 Az alacsony **Mágia** tulajdonságú ezzel szemben nehezen tud létrehozni működő mágikus hatásokat. De mivel a mágia nehezen talál utat felé, idővel mindenkinél jobban megtanulhatnak ellenállni az ártó mágiáknak.
 
-## Ezekre a képzettségekre van hatással
-
-### Pozítiv
+## Ezekre a képzettségekre van pozitív hatással
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negatív
+## Ezekre a képzettségekre van negatív hatással
 
 `SkillListForAbilities|{"positive": false}`

@@ -4,12 +4,10 @@ A character with a high **Activity** ability never seems to stop moving. They ca
 
 A character with low **Activity** may appear sluggish but maybe they're just being very careful and precise. They possess the kind of deliberate and controlled movement and even keel that will serve them well while mixing acids, dressing wounds or aim a bow.
 
-## Associated skills
-
-### Positive effect
+## Has positive effect on skills
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negative effect
+## Has negative effect on skills
 
 `SkillListForAbilities|{"positive": false}`

@@ -6,6 +6,7 @@
 	export let backgroundColor: string | undefined = undefined;
 	export let disabled: boolean | undefined = undefined;
 	export let plain: boolean = false;
+	export let square: boolean = false;
 	export let withText = false;
 	export let verticalCorrection: string | undefined = undefined;
 	export let popovertarget: string | undefined = undefined;
@@ -20,8 +21,9 @@
 	style:color
 	style:background-color={backgroundColor}
 	style:border-color={backgroundColor}
-	style:border-radius={!$$slots.text && !withText ? '50%' : undefined}
+	style:border-radius={!$$slots.text && !withText && !square ? '50%' : undefined}
 	class:plain
+	class:square
 >
 	{#if $$slots.default}
 		<span
@@ -50,6 +52,10 @@
 		outline: inherit;
 		background: none;
 		border: none;
+	}
+
+	.square {
+		border-radius: 0;
 	}
 
 	.icon {

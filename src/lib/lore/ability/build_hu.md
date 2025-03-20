@@ -4,12 +4,10 @@ A magas **Testalkat**ú karakter nem feltétlenül izompacsirta, de magasságáh
 
 Az alacsony **Testalkat**ú karakter ezzel szemben lehet magas és vézna, vagy alacsony és szálas, mindkét esetben a lassú izomzat dominál, ideális alapanyag tehát sziklamászónak vagy hosszútávfutónak.
 
-## Ezekre a képzettségekre van hatással
-
-### Pozítiv
+## Ezekre a képzettségekre van pozitív hatással
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negatív
+## Ezekre a képzettségekre van negatív hatással
 
 `SkillListForAbilities|{"positive": false}`

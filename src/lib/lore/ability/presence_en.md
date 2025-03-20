@@ -4,12 +4,10 @@ A character with a high **Presence** ability is always in the centre of attentio
 
 A character with low **Presence** is easy to miss and hard to remember. They rarely draw attention to themselves and never look out of place. Few will notice an assassin with low **Presence** arriving, and even fewer notice them leaving.
 
-## Associated skills
-
-### Positive effect
+## Has positive effect on skills
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negative effect
+## Has negative effect on skills
 
 `SkillListForAbilities|{"positive": false}`

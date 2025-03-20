@@ -10,6 +10,7 @@
 	export let params: Record<string, unknown> = {};
 	export let inline: boolean = false;
 	export let disablePlaceholder: boolean = false;
+	export let square: boolean = false;
 
 	const bookMode: boolean = getContext('bookMode') ?? false;
 
@@ -18,11 +19,11 @@
 
 {#if hasLore(id, $locale)}
 	{#if inline}
-		<IconButton title={id} verticalCorrection="-1px" on:click>
+		<IconButton title={id} verticalCorrection="-1px" on:click {square}>
 			<FaInfo />
 		</IconButton>
 	{:else if !bookMode}
-		<IconButton title={id} verticalCorrection="-1px" popovertarget="popover|{id}">
+		<IconButton title={id} verticalCorrection="-1px" popovertarget="popover|{id}" {square}>
 			<FaInfo />
 		</IconButton>
 		<div class="popover reset-font" popover="auto" id="popover|{id}">
@@ -33,6 +34,7 @@
 			title={id}
 			verticalCorrection="-1px"
 			on:click={() => document.getElementById(id)?.scrollIntoView()}
+			{square}
 		>
 			<FaInfo />
 		</IconButton>

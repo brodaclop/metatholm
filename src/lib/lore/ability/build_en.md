@@ -4,12 +4,10 @@ A character with a high **Build** ability isn't necessarily muscular but they're
 
 A character with low **Build** can be tall and gangly, or short and wiry, both will give them a good opportunity to develop the slow muscles necessary for rock climbers or elite endurance athletes.
 
-## Associated skills
-
-### Positive effect
+## Has positive effect on skills
 
 `SkillListForAbilities|{"positive": true}`
 
-### Negative effect
+## Has negative effect on skills
 
 `SkillListForAbilities|{"positive": false}`

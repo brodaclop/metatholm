@@ -43,7 +43,9 @@
 				<th>{$_('label:spirit_animal')}</th>
 				<th>{$_('label:spirit_manifestation')}</th>
 				<th>{$_('label:spirit_effect')}</th>
-				<th />
+				{#if editable}
+					<th />
+				{/if}
 			</tr>
 		</thead>
 		<tbody>
@@ -59,8 +61,8 @@
 					{/if}
 					<td>{$_(animal.manifestation)}</td>
 					<td>{$_(Spirit.get(animal.name).manifestations[animal.manifestation] ?? '')}</td>
-					<td class="right">
-						{#if editable}
+					{#if editable}
+						<td class="right">
 							<EditButton on:click={() => (editedManifestation = idx)} />
 							<DeleteButton
 								on:click={() => {
@@ -68,8 +70,8 @@
 									character.spiritAnimals = character.spiritAnimals;
 								}}
 							/>
-						{/if}
-					</td>
+						</td>
+					{/if}
 				</tr>
 			{/each}
 		</tbody>
