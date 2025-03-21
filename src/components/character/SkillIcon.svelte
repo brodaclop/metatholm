@@ -17,6 +17,7 @@
 	import GiCheckedShield from 'svelte-icons/gi/GiCheckedShield.svelte';
 	import GiBroadsword from 'svelte-icons/gi/GiBroadsword.svelte';
 	import GiStarShuriken from 'svelte-icons/gi/GiStarShuriken.svelte';
+	import GiFireAxe from 'svelte-icons/gi/GiFireAxe.svelte';
 	import type { Skill } from '../../model/Skills';
 	import { _ } from 'svelte-i18n';
 	import type { ComponentType, SvelteComponent } from 'svelte';
@@ -32,6 +33,7 @@
 		'skill:spacetime_focus': GiHourglass,
 		'skill:life_focus': GiTemplarShield,
 		'skill:maces': GiFlangedMace,
+		'skill:axes': GiFireAxe,
 		'skill:bows': GiHighShot,
 		'skill:martial_arts': GiHighKick,
 		'skill:brawling': GiStrong,

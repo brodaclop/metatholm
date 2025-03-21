@@ -78,11 +78,13 @@
 				{/if}
 			</div>
 			<div class="right">
-				{#if action}<LoreInfoIcon
-						id={action.weapon?.skill ?? action.spell ?? action.name}
-					/>{/if}<IconButton title="expand/collaps" on:click={() => (expanded = !expanded)}>
-					{#if expanded}<MdExpandLess />{:else}<MdExpandMore />{/if}
-				</IconButton>
+				<span class="lore-icon"
+					>{#if action}<LoreInfoIcon
+							id={action.weapon?.skill ?? action.spell ?? action.name}
+						/>{/if}<IconButton title="expand/collaps" on:click={() => (expanded = !expanded)}>
+						{#if expanded}<MdExpandLess />{:else}<MdExpandMore />{/if}
+					</IconButton></span
+				>
 			</div>
 		</div>
 	</slot>
@@ -116,10 +118,12 @@
 									}}
 								>
 									<div slot="title" class={ACTION_VARIANT_PROPERTIES[variant.name].type}>
-										<LoreInfoIcon
-											id={variant.name}
-											params={{ skills, weapon: action?.weapon, spell: action?.spell }}
-										/>
+										<span class="lore-icon">
+											<LoreInfoIcon
+												id={variant.name}
+												params={{ skills, weapon: action?.weapon, spell: action?.spell }}
+											/>
+										</span>
 										<span class="type-icon">
 											{#if ACTION_VARIANT_PROPERTIES[variant.name].type === 'action'}
 												<GiSpinningSword />
@@ -161,6 +165,7 @@
 
 	.titlerow .left {
 		text-align: left;
+		vertical-align: text-top;
 	}
 
 	.titlerow .centre {
@@ -209,7 +214,12 @@
 	.type-icon {
 		height: 1em;
 		display: inline-block;
-		vertical-align: text-bottom;
+		vertical-align: text-top;
+	}
+
+	.lore-icon,
+	.lore-icon :global(button) {
+		vertical-align: text-top;
 	}
 
 	.action {

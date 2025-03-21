@@ -437,6 +437,19 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         positive: false,
         type: 'skill_type:basic',
         personality: ['personality:aggressive', 'personality:tricky']
+    },
+    'skill:axes': {
+        difficulty: 2,
+        ability: 'ability:build',
+        positive: false,
+        type: 'skill_type:combat',
+        personality: ['personality:tenacious'],
+        weaponMultipliers: {
+            attack: 1,
+            defence: 1,
+            speed: 1,
+            damage: 2
+        }
     }
 };
 
@@ -488,7 +501,8 @@ export type Skill = 'skill:endurance' |
     'skill:etiquette' |
     'skill:swimming' |
     'skill:tinkering' |
-    'skill:trick_fighting'
+    'skill:trick_fighting' |
+    'skill:axes'
     ;
 
 export const UnarmedSkills = ['skill:brawling', 'skill:fistfighting', 'skill:martial_arts'] as const;

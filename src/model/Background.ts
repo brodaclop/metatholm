@@ -26,10 +26,11 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:camouflage': 2,
             'skill:throwing': 2,
             'skill:stalking': 2,
-            'skill:martial_arts': 1,
+            'skill:martial_arts': 2,
             'skill:shadow_focus': 3,
             'skill:balance': 2,
-            'skill:tinkering': 1,
+            'skill:endurance': 1,
+            'skill:climbing': 2
         },
         abilities: {
             'ability:presence': -1,
@@ -41,11 +42,12 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             "skill:strength": 3,
             'skill:brawling': 3,
             'skill:maces': 3,
-            'skill:body_focus': 1,
+            'skill:body_focus': 2,
             'skill:magic_force': 1,
             'skill:pain_threshold': 3,
             'skill:sprinting': 2,
-            'skill:jumping': 1
+            'skill:swimming': 1,
+            'skill:jumping': 2
         },
         abilities: {
             'ability:build': 1,
@@ -62,6 +64,9 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:crossbows': 3,
             'skill:swords': 1,
             'skill:etiquette': 3,
+            'skill:history': 1,
+            'skill:law': 1,
+            'skill:endurance': 1
         },
         abilities: {
             'ability:presence': 1,
@@ -74,11 +79,13 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:elemental_focus': 3,
             'skill:enchantment': 1,
             'skill:maces': 1,
+            'skill:knives': 1,
             'skill:spirit_focus': 3,
-            'skill:reasoning': 2,
+            'skill:reasoning': 3,
             'skill:spacetime_focus': 1,
             'skill:alchemy': 1,
             'skill:history': 2,
+            'skill:throwing': 1
         },
         abilities: {
             'ability:magic': 1,
@@ -89,13 +96,14 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
         skills: {
             'skill:knives': 2,
             'skill:swords': 1,
-            'skill:throwing': 2,
+            'skill:throwing': 3,
             'skill:hiding': 3,
             'skill:stalking': 2,
             'skill:spot_hidden': 2,
             'skill:bamboozling': 2,
             'skill:climbing': 2,
             'skill:tinkering': 1,
+            'skill:reactions': 2
         },
         abilities: {
             'ability:activity': 1,
@@ -107,11 +115,12 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
         skills: {
             "skill:magic_force": 2,
             'skill:life_focus': 2,
-            'skill:medicine': 1,
+            'skill:medicine': 2,
             'skill:alchemy': 3,
             'skill:enchantment': 3,
             'skill:spacetime_focus': 3,
-            'skill:tinkering': 3
+            'skill:tinkering': 3,
+            'skill:crossbows': 2
         },
         abilities: {
             'ability:activity': -1,
@@ -127,7 +136,9 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:camouflage': 1,
             'skill:spot_hidden': 2,
             'skill:hiding': 1,
-            'skill:pain_threshold': 2,
+            'skill:pain_threshold': 1,
+            'skill:axes': 2,
+            'skill:swimming': 2,
             'skill:tinkering': 1,
         },
         abilities: {
@@ -145,7 +156,8 @@ const Backgrounds: Record<Background, Omit<BackgroundInfo, 'name'>> = {
             'skill:personal_charm': 2,
             'skill:nature_focus': 1,
             'skill:spirit_focus': 2,
-            'skill:alchemy': 1
+            'skill:alchemy': 2,
+            'skill:endurance': 2
         },
         abilities: {
             'ability:magic': 1,
