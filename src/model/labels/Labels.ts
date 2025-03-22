@@ -1,5 +1,5 @@
 import type { Ability } from "../Abilities";
-import type { ActionRoll, ActionVariant } from "../Action";
+import type { ActionGroup, ActionRoll, ActionVariant } from "../Action";
 import type { Background } from "../Background";
 import type { ExpressionNames, RuleLabels } from "../Rules";
 import type { Personality, Skill, SkillType } from "../Skills";
@@ -121,6 +121,7 @@ export type Labels =
     | Skill | Ability | ExpressionNames
     | Background | ActionVariant | ActionRoll | Ancestry | Spell | SkillType | GenericLabels | RuleLabels | ArmourLabels | SpellTargets | SpellDurations | Personality
     | Values
+    | ActionGroup
     | typeof Abbreviations[number]
     | keyof typeof SpiritLabels[Language]
     | keyof typeof CharacterLabels[Language]
@@ -158,6 +159,11 @@ export const Labels_en: Record<Labels, string> = {
     'action:hidden-weapon': 'Hidden Weapon',
     'action:knockout': 'Knockout',
     'action:spin-behind': 'Spin Behind',
+
+    'actions:attacking': 'Attacking',
+    'actions:defending': 'Defending',
+    'actions:positioning': 'Positioning',
+    'actions:tricks': 'Tricks',
 
     'armour:dr': 'Damage Reduction',
     'armour:dr:abbr': 'DR',
@@ -469,6 +475,11 @@ export const Labels_hu: Record<Labels, string> = {
     'action:hidden-weapon': 'Rejtett fegyver',
     'action:knockout': 'Leütés',
     'action:spin-behind': 'Mögéperdülés',
+
+    'actions:attacking': 'Támadás',
+    'actions:defending': 'Védekezés',
+    'actions:positioning': 'Pozícióharc',
+    'actions:tricks': 'Trükkök',
 
     'ancestry:elven': 'Elf',
     'ancestry:orcish': 'Ork',

@@ -42,6 +42,11 @@ export type WeaponTemplateVariant =
     | 'action:spin-behind'
     ;
 
+export type ActionGroup = 'actions:attacking' |
+    'actions:defending' |
+    'actions:positioning' |
+    'actions:tricks';
+
 
 export type ActionRoll = 'action:ap' | 'action:roll' | 'weapon:damage' | 'skill:trick_fighting';
 
@@ -59,6 +64,7 @@ export interface ActionVariantProperties {
     trick?: boolean;
     noRoll?: boolean;
 }
+
 
 export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantProperties> = {
     'action:close-in': {

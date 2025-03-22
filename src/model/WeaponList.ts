@@ -195,14 +195,14 @@ export const WEAPON_LIST: Array<
                 'action:attack-range': -4,
 
                 'action:defend': -1,
-                'action:defend-cq': -2,
+                'action:defend-cq': -1,
                 'action:defend-range': -5,
 
                 'action:close-in': -2,
                 'action:disengage': -2,
 
                 'action:keep-close': -4,
-                'action:keep-away': -3,
+                'action:keep-away': -2,
 
                 'action:hidden-weapon': -3,
                 'action:knockout': 0,
@@ -323,14 +323,14 @@ export const WEAPON_LIST: Array<
             skill: 'skill:polearms',
             actions: {
                 'action:attack': 0,
-                'action:attack-cq': -5,
+                'action:attack-cq': -1,
                 'action:attack-range': -2,
 
                 'action:defend': -2,
                 'action:defend-cq': -5,
                 'action:defend-range': -5,
 
-                'action:close-in': 0,
+                'action:close-in': -2,
                 'action:disengage': -3,
 
                 'action:keep-close': -4,
@@ -344,6 +344,39 @@ export const WEAPON_LIST: Array<
             description: {
                 en: 'Probably one of the most ancient weapons: a pointy stick',
                 hu: 'Alighanem a legősibb fegyverek egyike: egy hegyes bot'
+            }
+        },
+        {
+            name: {
+                en: 'Battle axe',
+                hu: 'Csatabárd'
+            },
+            hands: 1,
+            reach: 3,
+            skill: 'skill:axes',
+            actions: {
+                'action:attack': 0,
+                'action:attack-cq': -1,
+                'action:attack-range': -4,
+
+                'action:defend': -2,
+                'action:defend-cq': -3,
+                'action:defend-range': -4,
+
+                'action:close-in': 1,
+                'action:disengage': -1,
+
+                'action:keep-close': 0,
+                'action:keep-away': -2,
+
+                'action:hidden-weapon': undefined,
+                'action:knockout': -1,
+                'action:spin-behind': -3,
+                'action:trip': -4
+            },
+            description: {
+                en: 'It\'s a standard axe. Can be used for chopping, hooking, smashing and in a pinch, thrusting',
+                hu: 'Standard balta. Lehet vele hasítani, akasztani, odacsapni és szorult helyzetben akár szúrni is'
             }
         },
     ];
