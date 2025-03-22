@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ActionGroup, type WeaponTemplateVariant } from '../../../model/Action';
+	import type { ActionGroup, WeaponTemplateVariant } from '../../../model/Action';
 	import { _, locale } from 'svelte-i18n';
 	import { WEAPON_LIST, type WeaponListEntry } from '../../../model/WeaponList';
 	import DialogBox from '../../elements/DialogBox.svelte';
