@@ -42,7 +42,6 @@ export const UNARMED_ACTIONS: Record<typeof UnarmedSkills[number], Weapon['actio
         'action:spin-behind': -3,
         'action:knockout': -5,
     }
-
 }
 
 export const WEAPON_LIST: Array<
@@ -79,7 +78,6 @@ export const WEAPON_LIST: Array<
             description: {
                 en: 'Nothing more than a long knife with a sharp point and one or two edges',
                 hu: 'Lényegében egy hosszú, hegyes kés egyik vagy mindkét oldalán élesre fenve.'
-
             }
         },
         {
@@ -377,6 +375,72 @@ export const WEAPON_LIST: Array<
             description: {
                 en: 'It\'s a standard axe. Can be used for chopping, hooking, smashing and in a pinch, thrusting',
                 hu: 'Standard balta. Lehet vele hasítani, akasztani, odacsapni és szorult helyzetben akár szúrni is'
+            }
+        },
+        {
+            name: {
+                en: 'Buckler',
+                hu: 'Kispajzs'
+            },
+            hands: 0.5,
+            reach: 0,
+            skill: 'skill:shields',
+            actions: {
+                'action:attack': undefined,
+                'action:attack-cq': -1,
+                'action:attack-range': undefined,
+
+                'action:defend': 0,
+                'action:defend-cq': 0,
+                'action:defend-range': -2,
+
+                'action:close-in': -2,
+                'action:disengage': 1,
+
+                'action:keep-close': -3,
+                'action:keep-away': -1,
+
+                'action:hidden-weapon': undefined,
+                'action:knockout': -2,
+                'action:spin-behind': undefined,
+                'action:trip': undefined
+            },
+            description: {
+                en: 'A small circular shield, usually made of metal for parrying and protecting the other hand',
+                hu: 'Kis kerek pajzs, általában fémből készül, hárításra és a másik kéz védelmére szolgál'
+            }
+        },
+        {
+            name: {
+                en: 'Round shield',
+                hu: 'Kerek pajzs'
+            },
+            hands: 1,
+            reach: 1,
+            skill: 'skill:shields',
+            actions: {
+                'action:attack': -2,
+                'action:attack-cq': -2,
+                'action:attack-range': undefined,
+
+                'action:defend': 0,
+                'action:defend-cq': 0,
+                'action:defend-range': 0,
+
+                'action:close-in': 0,
+                'action:disengage': -1,
+
+                'action:keep-close': -3,
+                'action:keep-away': 0,
+
+                'action:hidden-weapon': undefined,
+                'action:knockout': -3,
+                'action:spin-behind': -3,
+                'action:trip': undefined
+            },
+            description: {
+                en: 'Large shield, usually made of wood, protecting a fair bit of the body',
+                hu: 'Nagy pajzs, általában fából készül, a test számottevő részét képes megvédeni'
             }
         },
     ];
