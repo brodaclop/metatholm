@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { Skill, type SkillInfo } from '../../../model/Skills';
+	import { type MultiplierRecord, Skill, type SkillInfo } from '../../../model/Skills';
 	import { E } from '../../../logic/Expression';
 	import { SKILL_KP } from '../../../model/Rules';
-	import IconButton from '../../elements/IconButton.svelte';
 	import type { Character } from '../../../model/Karakter';
 	import LoreInfoIcon from '../../LoreInfoIcon.svelte';
 	import CircleRow from '../../elements/CircleRow.svelte';
 	import PointsTable from '../../PointsTable.svelte';
 	import PropertyList from '../PropertyList.svelte';
-	import SkillIcon from '../../character/SkillIcon.svelte';
+	import { entries } from '../../../model/InfoList';
+	import { ENCHANTMENT_MAGNITUDE } from '../../../model/Weapon';
 
 	export let difficulty: SkillInfo['difficulty'] = 2;
 
@@ -36,6 +36,11 @@
 	const effectiveAbility = (num: number, effect: boolean | 'none') =>
 		effect === 'none' ? 10 : effect ? num : 10 - num;
 
+	const multiplierString = (m: MultiplierRecord) =>
+		entries(m)
+			.map(([key, value]) => `${$_(`weapon:${key}`)}: x${value * ENCHANTMENT_MAGNITUDE[key]}`)
+			.join(', ');
+
 	const calculate = (
 		_level: number,
 		_difficulty: number,
@@ -47,6 +52,16 @@
 			'expr:skill_difficulty': _difficulty,
 			'expr:skill_ability': effectiveAbility(_ability, effect)
 		}).result;
+
+	$: combatMultipliers = skillInfo?.weaponMultipliers
+		? [
+				{
+					type: 'text' as 'text',
+					title: 'combat:multiplier',
+					value: multiplierString(skillInfo.weaponMultipliers)
+				}
+		  ]
+		: [];
 </script>
 
 {#if skillInfo}
@@ -66,7 +81,8 @@
 				type: 'text',
 				title: 'label:difficulty',
 				value: `weapon:difficulty:${difficulty}`
-			}
+			},
+			...combatMultipliers
 		]}
 	/>
 {/if}

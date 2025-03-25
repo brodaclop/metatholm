@@ -4,17 +4,18 @@ x Update all lore with new combat system
 x Update unarmed combat calculations
 x Update unarmed combat lore
 x Update enchanted weapon logic (+1/+10/+1d5!)
-- Combat situations
 x Remove attack roll requirement from trick fightinng
-- Update weapon power calculation
 x Label for combat:multiplier
-- Tableplop export
 x select skill label
-- document weapon skill multipliers
 x list weapon types
 x combat roll calculator labels for unarmed combat
 x refactor unarmed calculation to use iteration
-- fix weapon list actions
-- add more weapon templates
+x fix weapon list actions
 x implement weapon list viewer
 x integrate multiplier list into skill list
+- Combat situations
+- add more weapon templates
+x document weapon skill multipliers
+- Tableplop export
+- Update weapon power calculation
+- add actions for evading ranged attacks (running, hopping about)

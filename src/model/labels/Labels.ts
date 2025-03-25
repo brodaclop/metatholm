@@ -182,7 +182,7 @@ export const Labels_en: Record<Labels, string> = {
     'background:charmer': 'Charmer',
     'background:witch': 'Witch',
 
-    'combat:multiplier': 'Multiplier',
+    'combat:multiplier': 'Combat Value Multiplier',
 
     'expr:fp_base': 'Pain Tolerance Base',
     'expr:fp_per_level': 'Level Pain Tolerance',
@@ -504,7 +504,7 @@ export const Labels_hu: Record<Labels, string> = {
     'background:charmer': 'Bájgúnár',
     'background:witch': 'Vajákos',
 
-    'combat:multiplier': 'Szorzó',
+    'combat:multiplier': 'Harcérték szorzó',
 
     'expr:fp_base': 'Fájdalomtűrés Alap',
     'expr:fp_per_level': 'Szintenkénti Fájdalomtűrés',
