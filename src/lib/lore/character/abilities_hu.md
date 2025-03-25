@@ -4,6 +4,6 @@ Egy karakter **tulajdonságai** alapjaiban és hosszú távon határozzák meg a
 
 Mivel ezek a tulajdonságok eléggé általánosak és elvontak, ezért a játék során közvetlenül nem befolyásolnak semmilyen kockadobást. A hatásuk sokkal alapvetőbb: azt mutatják, milyen könnyen (vagy épp nehezen) tud a karakter megtanulni különböző [képzettségeket](character:skills). Például egy erőteljes testalkatú karakter sokkal gyorsabban tanul meg súlyokat emelgetni vagy buzogányokkal harcolni, többek között azért, mert tovább tud pihenés nélkül edzeni, ugyanakkor mondjuk egy cingár karakter könnyebben fejleszti a hosszú távú állóképességet, vagy tanul falat mászni.
 
-A karaktereknek összesen négy tulajdonsága van:
+A karaktereknek összesen négy tulajdonsága van.
 
 `LoreCategory|{"category": "ability", "title": "Tulajdonságok" }`

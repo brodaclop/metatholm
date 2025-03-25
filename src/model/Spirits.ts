@@ -7,6 +7,7 @@ export type SpiritAnimal =
     | 'spirit:cat'
     | 'spirit:squirrel'
     | 'spirit:wolf'
+    | 'spirit:parrot'
     // | 'spirit:snake'
     // | 'spirit:stag'
     // | 'spirit:bee'
@@ -48,6 +49,12 @@ export type SpiritManifestation =
     | 'manifestation:wolf:heart'
     | 'manifestation:wolf:howl'
     | 'manifestation:wolf:feet'
+    | 'manifestation:parrot:voice'
+    | 'manifestation:parrot:brain'
+    | 'manifestation:parrot:beak'
+    | 'manifestation:parrot:feather'
+    | 'manifestation:parrot:eye'
+    | 'manifestation:parrot:wing'
     ;
 
 export type SpiritEffects =
@@ -76,6 +83,12 @@ export type SpiritEffects =
     | 'effect:gorge'
     | 'effect:mask_party_size'
     | 'effect:sense_disturbance'
+    | 'effect:mimicry'
+    | 'effect:weapon_return'
+    | 'effect:sense_movement'
+    | 'effect:subitise'
+    | 'effect:resist_normal_heat'
+    | 'effect:powerful_bite'
     ;
 export interface SpiritAnimalInfo {
     name: SpiritAnimal;
@@ -132,6 +145,16 @@ const Spirits: Record<SpiritAnimal, Omit<SpiritAnimalInfo, 'name'>> = {
             'manifestation:wolf:feet': 'effect:mask_party_size',
             'manifestation:wolf:heart': 'effect:sense_disturbance',
             'manifestation:wolf:eyes': 'effect:see_in_dark'
+        }
+    },
+    'spirit:parrot': {
+        manifestations: {
+            'manifestation:parrot:beak': 'effect:powerful_bite',
+            'manifestation:parrot:brain': 'effect:subitise',
+            'manifestation:parrot:eye': 'effect:sense_movement',
+            'manifestation:parrot:feather': 'effect:resist_normal_heat',
+            'manifestation:parrot:voice': 'effect:mimicry',
+            'manifestation:parrot:wing': 'effect:weapon_return'
         }
     }
 }
