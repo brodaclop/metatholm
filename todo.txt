@@ -13,9 +13,10 @@ x refactor unarmed calculation to use iteration
 x fix weapon list actions
 x implement weapon list viewer
 x integrate multiplier list into skill list
-- Combat situations
-- add more weapon templates
+x Update weapon power calculation
 x document weapon skill multipliers
-- Tableplop export
-- Update weapon power calculation
-- add actions for evading ranged attacks (running, hopping about)
+- Combat situations??
+- add more weapon templates
+- check Tableplop export
+x add lore for actions for evading ranged attacks (running, hopping about)
+

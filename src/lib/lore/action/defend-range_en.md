@@ -2,7 +2,7 @@
 
 `ActionInfo`
 
-This is the reaction to be used to defend against ranged attacks, including thrown weapons.
+This is the reaction to be used to actively defend against ranged attacks, including thrown weapons.
 
 ## Roll
 

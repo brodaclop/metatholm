@@ -2,7 +2,7 @@
 
 `ActionInfo`
 
-Ezzel a reakcióval tudunk védekezni az ellenfél távoli támadásaival, pl. dobófegyverek ellen.
+Ezzel a reakcióval tudunk védekezni az ellenfél távoli támadásaival, pl. dobófegyverekkel szemben.
 
 ## Dobás
 

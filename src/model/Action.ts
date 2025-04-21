@@ -23,6 +23,8 @@ export type ActionVariant =
     | 'action:trip'
     | 'action:hidden-weapon'
     | 'action:spin-behind'
+    | 'action:straight-line-move'
+    | 'action:hop-about'
     ;
 
 export type WeaponTemplateVariant =
@@ -63,6 +65,7 @@ export interface ActionVariantProperties {
     range?: ActionRange;
     trick?: boolean;
     noRoll?: boolean;
+    defenceBonus?: number;
 }
 
 
@@ -173,7 +176,19 @@ export const ACTION_VARIANT_PROPERTIES: Record<ActionVariant, ActionVariantPrope
         range: 'close-quarters',
         trick: true,
         weapon: true,
-    }
+    },
+    'action:straight-line-move': {
+        type: 'reaction',
+        range: 'out-of-range',
+        weapon: false,
+        defenceBonus: 50,
+    },
+    'action:hop-about': {
+        type: 'reaction',
+        range: 'out-of-range',
+        weapon: false,
+        defenceBonus: 100,
+    },
 };
 
 export const MOVES_ACTION: Action = {

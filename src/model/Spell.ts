@@ -17,6 +17,7 @@ export type Spell =
     | 'spell:extinguish_magic'
     | 'spell:strike_from_afar'
     | 'spell:borrow_time'
+    | 'spell:steal_time'
     | 'spell:telekinesis'
     | 'spell:lantern'
     | 'spell:cleaning'
@@ -168,6 +169,13 @@ const Spells: Record<Spell, Omit<SpellInfo, 'name'>> = {
         speed: 9,
         level: 2,
         target: 'spell_target:touch',
+        duration: 'spell_duration:round',
+        skill: 'skill:spacetime_focus'
+    },
+    'spell:steal_time': {
+        speed: 8,
+        level: 3,
+        target: 'spell_target:point',
         duration: 'spell_duration:round',
         skill: 'skill:spacetime_focus'
     },

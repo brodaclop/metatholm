@@ -159,6 +159,8 @@ export const Labels_en: Record<Labels, string> = {
     'action:hidden-weapon': 'Hidden Weapon',
     'action:knockout': 'Knockout',
     'action:spin-behind': 'Spin Behind',
+    'action:straight-line-move': 'Move Predictably',
+    'action:hop-about': 'Hop About',
 
     'actions:attacking': 'Attacking',
     'actions:defending': 'Defending',
@@ -383,6 +385,7 @@ export const Labels_en: Record<Labels, string> = {
     'spell:farsight': 'Farsight',
     'spell:extinguish_magic': 'Extinguish Magic',
     'spell:borrow_time': 'Borrow Time',
+    'spell:steal_time': 'Steal Time',
     'spell:lantern': 'Lantern',
     'spell:cleaning': 'Cleaning',
     'spell:sense_poison': 'Sense Poison',
@@ -475,6 +478,8 @@ export const Labels_hu: Record<Labels, string> = {
     'action:hidden-weapon': 'Rejtett fegyver',
     'action:knockout': 'Leütés',
     'action:spin-behind': 'Mögéperdülés',
+    'action:straight-line-move': 'Kiszámítható mozgás',
+    'action:hop-about': 'Össze-vissza mozgás',
 
     'actions:attacking': 'Támadás',
     'actions:defending': 'Védekezés',
@@ -697,6 +702,7 @@ export const Labels_hu: Record<Labels, string> = {
     'spell:farsight': 'Távolbalátás',
     'spell:extinguish_magic': 'Mágia kioltása',
     'spell:borrow_time': 'Kölcsönzött idő',
+    'spell:steal_time': 'Ellopott idő',
     'spell:lantern': 'Lámpás',
     'spell:cleaning': 'Tisztítás',
     'spell:sense_poison': 'Méreg érzékelése',

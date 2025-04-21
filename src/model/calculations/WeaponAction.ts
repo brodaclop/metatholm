@@ -8,7 +8,7 @@ import { ENCHANTMENT_MAGNITUDE, type Weapon } from "../Weapon";
 export const calculateWeaponAction = (skills: Partial<Record<Skill, number>>, weapon: Weapon): Action => ({
     name: weapon.name,
     weapon,
-    variants: keys(weapon.actions).map(v => calculateVariant(v, skills, weapon))
+    variants: [...keys(weapon.actions), 'action:hop-about' as ActionVariant, 'action:straight-line-move' as ActionVariant].map(v => calculateVariant(v, skills, weapon))
 });
 
 export const ReachMultipliers: Record<ActionRange, number> = {
@@ -27,6 +27,15 @@ const calculateSkill = (characterSkill?: number, actionModifier = 0): number => 
 
 const calculateVariant = (name: ActionVariant, skills: Partial<Record<Skill, number>>, weapon: Weapon): ActionVariantInfo => {
     const variantInfo = ACTION_VARIANT_PROPERTIES[name];
+
+    if (variantInfo.defenceBonus) {
+        return {
+            name,
+            rolls: [d100roll(E.evaluate(E.constant(variantInfo.defenceBonus), {}))]
+        };
+    }
+
+
     const multipliers = Skill.get(weapon.skill).weaponMultipliers;
     const skill = calculateSkill(skills[weapon.skill], weapon.actions[name]);
 

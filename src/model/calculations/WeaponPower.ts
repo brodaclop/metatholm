@@ -9,13 +9,13 @@ const WEAPON_POWER: Expression = E.add(
     E.value('weapon:attack'),
     E.value('weapon:defence'),
     E.mul(E.value('weapon:damage'), 3),
-    E.div(2, E.value('weapon:hands'))
+    E.div(10, E.value('weapon:hands'))
 );
 
 const ACTION_MULTIPLIER: Partial<Record<ActionVariant, number>> = {
     'action:attack-cq': 0.5,
     'action:attack': 1,
-    'action:attack-range': 5,
+    'action:attack-range': 2,
     'action:defend-cq': 0.5,
     'action:defend': 1,
     'action:defend-range': 2,
@@ -40,6 +40,5 @@ export const calculateWeaponPower = (weapon: Omit<Weapon, 'notes' | 'id' | 'name
         return (ACTION_MULTIPLIER[action] ?? 0) * (10 + skill) * (10 + skill) / 10;
     }).reduce((acc, curr) => acc + curr, 0);
 
-    console.debug('raw', base.result * multiplier)
-    return Math.max(1, Math.round((base.result * multiplier - 500) / 100));
+    return Math.max(1, Math.round((base.result * multiplier - 0) / 250));
 }
