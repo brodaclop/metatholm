@@ -6,6 +6,7 @@
 	import IconButton from '../elements/IconButton.svelte';
 	import MdAdd from 'svelte-icons/md/MdAdd.svelte';
 	import LoreInfoIcon from '../LoreInfoIcon.svelte';
+	import { WEALTH_KEYS } from '../../model/Wealth';
 
 	export let character: Character;
 	export let editable: boolean;
@@ -61,6 +62,16 @@
 					on:click={() => (character.ip = character.ip + 1)}><MdAdd /></IconButton
 				></td
 			>
+		</tr>
+		<tr>
+			<th><LoreInfoIcon id="character:wealth" />{$_('character:wealth')}</th>
+			<td>
+				<select bind:value={character.wealth} disabled={!editable}>
+					{#each WEALTH_KEYS as key, wealth (wealth)}
+						<option value={wealth}>{$_(key)} ({wealth})</option>
+					{/each}
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<th><LoreInfoIcon id="character:public" />{$_('character:public')}</th>

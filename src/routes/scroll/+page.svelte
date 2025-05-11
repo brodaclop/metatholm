@@ -76,6 +76,10 @@
 					return !after && !before;
 				});
 				highlights = inView.map((elem) => elem.getAttribute('id') ?? '');
+				const last = highlights.at(-1);
+				if (last) {
+					history.pushState(null, '', `#${last}`);
+				}
 			}
 		};
 		document.addEventListener('scroll', handler);

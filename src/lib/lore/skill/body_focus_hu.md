@@ -6,7 +6,7 @@ A **Test fókusz** a varázsló saját teste fölötti uralmának mágikus tudom
 
 ## Aktív
 
-A karakter egy k0rig koncentrál egy **Mozgás típusú** képzettségpróbát igénylő feladatra, ezután Test fókusz képzettségpróbát tehet, és az eredmény minden 10 pontja után egy kockát (`d10!`) adhat az ezután következő mozgás képzettség dobásához.
+A karakter egy körig koncentrál egy **Mozgás típusú** képzettségpróbát igénylő feladatra, ezután Test fókusz képzettségpróbát tehet, és az eredmény minden 10 pontja után egy kockát (`d10!`) adhat az ezután következő mozgás képzettség dobásához.
 
 ## Passzív
 

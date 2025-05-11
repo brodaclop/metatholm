@@ -10,6 +10,7 @@ import { SpiritLabels } from "./SpiritLabels";
 import { CharacterLabels } from "./CharacterLabels";
 import { WeaponLabels } from "./WeaponLabels";
 import type { Values } from "../../logic/Values";
+import { WealthLabels, type WealthKeys } from "../Wealth";
 
 type GenericLabels = 'label:name' |
     'label:action' |
@@ -125,11 +126,13 @@ export type Labels =
     | typeof Abbreviations[number]
     | keyof typeof SpiritLabels[Language]
     | keyof typeof CharacterLabels[Language]
-    | keyof typeof WeaponLabels[Language];
+    | keyof typeof WeaponLabels[Language]
+    | WealthKeys;
 export const Labels_en: Record<Labels, string> = {
     ...SpiritLabels.en,
     ...CharacterLabels.en,
     ...WeaponLabels.en,
+    ...WealthLabels.en,
     'ability:build': 'Build',
     'ability:presence': 'Presence',
     'ability:activity': 'Activity',
@@ -448,6 +451,7 @@ export const Labels_hu: Record<Labels, string> = {
     ...SpiritLabels.hu,
     ...CharacterLabels.hu,
     ...WeaponLabels.hu,
+    ...WealthLabels.hu,
     'ability:build': 'Testalkat',
     'ability:presence': 'Jelenlét',
     'ability:activity': 'Aktivitás',

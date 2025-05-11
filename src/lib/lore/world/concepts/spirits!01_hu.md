@@ -4,9 +4,9 @@ Metatholm világa a szellemek világa.
 
 Legtöbbjük szabadon száll az univerzumban, csak nagyritkán lépve kölcsönhatásba az útjukba eső tárgyakkal és egyéb szellemekkel. Ezek a szellemek sokfélék lehetnek, egy ötlet, egy érzés, egy emlék, egy fogalom vagy akár egy komplexebb entitás, amelyik megfelelő gazdát keres, amit megszállhatna – élő testet, egy tárgyat vagy akár épp egy helyet.
 
-Amikor sikerrel járnak, a fizikai világhoz kötik magukat, így lesz belőlük **lélek**, **szellem a gépben** vagy **genius loci**. Innentől kezdve vehemensen védelmezik gazdájukat és minden tőlük telhetőt megtesznek, hogy pusztulásukat megakadályozzák. Ha kudarcot vallank, kötelékeik eloldódnak és újra a fizikai valóságra rávetített szellemvilág véget nem érő tengerén kezdenek úszkálni. Idővel talán újra hozzákötik magukat egy testhez, talán másféléhez, mint amilyenhez annakelőtte.
+Amikor sikerrel járnak, a fizikai világhoz kötik magukat, így lesz belőlük **lélek**, **szellem a gépben** vagy **genius loci**. Innentől kezdve vehemensen védelmezik gazdájukat és minden tőlük telhetőt megtesznek, hogy pusztulásukat megakadályozzák. Ha mégis kudarcot vallanak, kötelékeik eloldódnak és újra a fizikai valóságra rávetülő szellemvilág véget nem érő tengerén kezdenek úszkálni. Idővel talán újra hozzákötik magukat egy testhez, talán másféléhez, mint amilyenhez annakelőtte.
 
-Sok történet szól halott kovácsokról, akiknek a szerszámaik később "nem hajlandóak" dolgozni egyesek kezében, míg másokkal vígan együttműködnek, vagy olyan emberekről, akik úgy érzik, egy távoli helyre születtek, ahol még sosem jártak életükben, vagy finoman megmunkált ősi elf mellboglár, amely látomásokat és álmokat hoz viselőjére, végeláthatatlan és érintetlen erdőrengetegekről.
+Sok történet szól halott kovácsokról, akiknek a szerszámaik később "nem hajlandóak" dolgozni egyesek kezében, míg másokkal vígan együttműködnek, vagy olyan emberekről, akik úgy érzik, egy távoli helyre születtek, ahol még sosem jártak életükben, vagy finoman megmunkált ősi elf mellboglárról, amely látomásokat és álmokat hoz viselőjére végeláthatatlan és érintetlen erdőrengetegekről.
 
 ## Lelkek
 

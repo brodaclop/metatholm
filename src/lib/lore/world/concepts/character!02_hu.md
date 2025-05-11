@@ -10,7 +10,7 @@ Legyen akár oka, akár okozata annak, hogy a társadalom kivetette magából, a
 
 Minden játékos karakter 4 [(alap)tulajdonsággal](character:abilities) rendelkezik. Ezek veleszületett adottságok, amelyek a karakter élete során (szinte) soha nem változnak. Értékük 0 és 10 között mozog.
 
-A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség továbbá, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, illetve hogy pozitív vagy negatív hatással van-e rá, az az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
+A legtöbb hasonló játékkal ellentétben a tulajdonságok szerepe meglehetősen korlátozott: mindössze azt mutatják meg, mennyire könnyen vagy nehezen tanulhat meg a karakter egyes képzettségeket. További különbség, hogy bizonyos esetekben nem a magasabb, hanem az alacsonyabb tulajdonság az előnyös. Hogy melyik képzettséghez milyen tulajdonság társul, illetve hogy pozitív vagy negatív hatással van-e rá, az az egyes tulajdonságok leírásaiból ([Testalkat](ability:build), [Aktivitás](ability:activity), [Jelenlét](ability:presence), [Mágia](ability:magic)) derül ki.
 
 ## Képzettségek
 
@@ -18,7 +18,7 @@ Minden alkalommal, amikor a játékos olyan cselekedetet próbál végrehajtani,
 
 A képzettségeket többféle módon lehet használni: egyes esetekben [képzettségpróba](rule:skill_check) szükséges hozzá, más esetekben, pl. [harcban](rule:combat) vagy [varázsláskor](rule:magic) külön szabályok határozzák meg.
 
-A karakter természetesen rendelkezhet egyéb, a képzettségek által nem szabályozott ismeretekkel is, pl. szakma, ezeket a [Szellemkalauzzal](world:concepts:spirit_guide) való egyeztetés után egyszerűen fel lehet jegyezni a karakterlapra (a Jegyzetek rovatba). Az ilyen ismeretek színesítik a játékot, de viszonylag ritka az a kaland, ami azon múlna, hogy ki a jobb pék.
+A karakter természetesen rendelkezhet egyéb, a képzettségek által nem szabályozott ismeretekkel is, pl. szakma, ezeket a [Szellemkalauzzal](world:concepts:spirit_guide) való egyeztetés után egyszerűen fel lehet jegyezni a karakterlapra (a **Jegyzetek** rovatba). Az ilyen ismeretek színesítik a játékot, de viszonylag ritka az a kaland, ami azon múlna, hogy ki a jobb pék.
 
 > [note]: #
 Bár a játék szabályai szerint nem kötelező külön időt fordítani, vagy megfelelő tanítómestert ill. könyvet találni a képzettségek fejlesztéséhez, természetesen a [Szellemkalauz](world:concepts:spirit_guide) dönthet úgy, hogy ezzel is életszerűbbé tenné a játékot. Ilyenkor azonban érdemes figyelembe venni a képzettség kategóriáját (harci/tudás/mozgás/stb.), nehézségét és a karakter meglevő tudásszintjét is.

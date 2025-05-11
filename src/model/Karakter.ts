@@ -16,6 +16,7 @@ import type { Armour } from "./Armour";
 import { calculatePersonality } from "./calculations/Personality";
 import type { SpiritAnimal, SpiritManifestation } from "./Spirits";
 import { UNARMED_ACTIONS } from "./WeaponList";
+import type { Wealth } from "./Wealth";
 
 
 export interface Level {
@@ -36,7 +37,8 @@ export interface Character extends Entity {
     isPublic: boolean;
     patron: string;
     ip: number;
-    spiritAnimals: Array<SpiritManifestationRecord>,
+    spiritAnimals: Array<SpiritManifestationRecord>;
+    wealth: Wealth;
     inventory: {
         weapons: Array<Weapon>;
         armours: Array<Armour>;
@@ -179,6 +181,7 @@ export const createCharacter = (template: CharacterTemplate): Character => {
             armours: [],
         },
         levels: [],
+        wealth: 0,
         current: {
             ep: 0,
             fp: 0,

@@ -22,7 +22,8 @@ const CharacterKeys = [
     'character:ip',
     'character:skill',
     'character:spirit_animals',
-    'character:notes'
+    'character:notes',
+    'character:wealth'
 ] as const;
 
 export const CharacterLabels: Record<Language, Record<typeof CharacterKeys[number], string>> = {
@@ -48,7 +49,8 @@ export const CharacterLabels: Record<Language, Record<typeof CharacterKeys[numbe
         'character:skill': 'Skill',
         'character:ability': 'Ability',
         'character:spirit_animals': 'Spirit Animals',
-        'character:notes': 'Notes'
+        'character:notes': 'Notes',
+        'character:wealth': 'Wealth'
     },
     hu: {
         'character:abilities': 'Tulajdonságok',
@@ -72,6 +74,7 @@ export const CharacterLabels: Record<Language, Record<typeof CharacterKeys[numbe
         'character:patron': 'Patrónus',
         'character:ip': 'Ideál',
         'character:spirit_animals': 'Totemállatok',
-        'character:notes': 'Jegyzetek'
+        'character:notes': 'Jegyzetek',
+        'character:wealth': 'Vagyon'
     }
 };

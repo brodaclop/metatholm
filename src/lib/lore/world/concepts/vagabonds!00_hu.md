@@ -1,16 +1,16 @@
 # Csavargók
 
-> „Mondják, akit az istenek el akarnak veszejteni, annak először elveszik az eszét. De mit tesznek azokkal, akiket be akarnak sorozni?”
+> „Mondják, akit az istenek el akarnak veszejteni, annak először elveszik az eszét. De mit tesznek azokkal, akiket be akarnak szervezni?”
 
-**A csavargók** fura szerzetek, egyrészről hétköznapi emberek, másfelől pedig valami egészen mások. A bennük élő szellem kiválasztatott egy másik világ valamely istene által, hogy egy nap majd ott képviselje őt. De először e szellemek ereje próbára téttetik.
+**A csavargók** fura szerzetek: egyrészről hétköznapi emberek, másfelől pedig valami egészen mások. A bennük élő szellem kiválasztatott egy másik világ valamely istene által, hogy egy nap majd ott képviselje őt. De először e szellem ereje próbára téttetik.
 
 **Isteni segítség nélkül.**
 
-A csavargó nem része a társadalomnak. Sem az úri társadalomnak, aminek tagjai legjobb esetben is kerülik őt, de még a társadalom perifériájára szorultak se – bár elfogadják jelenlétét – fogják soha maguk közül valónak tekinteni. Még ha nagyon karizmatikusak is, jelenlétükben mindig kissé furán és feszülten érzik magukat az emberek.
+A csavargó nem része a társadalomnak. Az úri körök legjobb esetben is kerülik társaságát, de még a társadalom perifériájára szorultak se – bár elfogadják létezését – fogják soha maguk közül valónak tekinteni. A csavargó jelenlétében, legyen mégoly karizmatikus is, mindig kissé furán és feszülten érzik magukat az emberek.
 
 Egy csavargónak nem kell feltétlenül vándorolni egyik helyről a másikra, elég annyi, hogy csak úgy sodródik az életben, nála hatalmasabb, iránta azonban teljesen közömbös erők kénye-kedve szerint. Van, aki lázad ez ellen, van aki lemondóan elfogadja sorsát, és akad, aki megpróbálja a legjobbat kihozni belőle – a besorolás szempontjából oly mindegy.
 
-Mert van azért jó oldala is annak, ha az ember a gazdagok és hatalmasok számára mintegy láthatatlanul létezik, lehet ebből is megélhetést eszkábálni ott, ahol a becsületkódexekre és a tradíciókra mindenki fittyet hány. Vannak cselekedetek, amiket muszáj végrehajtani, de akik számára ez szükséges, nem engedhetik meg maguknak, hogy saját kezüleg tegyék ezt. De azt megengedhetik, hogy másnak fizessenek érte. Olyasvalakinek, akinek utazásai senkinek nem tűnnek fel, olyasvalaki, akit nem köt gúzsba a társadalmi elvárások és szívességek **Metatholm** világára oly jellemzően sűrű szövedéke, és olyasvalaki, akinek a vallomását – ha véletlenül fülöncsípik – senki nem fogja elhinni.
+Mert van azért jó oldala is annak, ha az ember a gazdagok és hatalmasok számára mintegy láthatatlanul létezik, lehet ebből is megélhetést kovácsolni ott, ahol a becsületkódexekre és a tradíciókra mindenki fittyet hány. Vannak cselekedetek, amiket muszáj végrehajtani, de akik számára ez szükséges, nem engedhetik meg maguknak, hogy saját kezüleg tegyék ezt. De azt megengedhetik, hogy másnak fizessenek érte. Olyasvalakinek, akinek utazásai senkinek nem tűnnek fel, olyasvalaki, akit nem köt gúzsba a társadalmi elvárások és szívességek **Metatholm** világára oly jellemzően sűrű szövedéke, és olyasvalaki, akinek a vallomását – ha véletlenül fülöncsípik – senki nem fogja elhinni.
 
 Ilyenkor van igazán elemében a csavargó.
 

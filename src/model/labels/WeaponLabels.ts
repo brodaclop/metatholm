@@ -27,7 +27,7 @@ export const WeaponKeys = [
 
     'weapon:base_values',
     'weapon:effective_skill'
-];
+] as const;
 
 export const WeaponLabels: Record<Language, Record<typeof WeaponKeys[number], string>> = {
     en: {

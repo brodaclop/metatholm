@@ -6,7 +6,7 @@ A játék során összesen hatféle kockadobást használunk, három **egyszerű
 
 Az egyszerű kockadobás, mint neve is mutatja, egyszerű. Dobunk egyetlen kockával és az eredmény annyi, amennyit dobtunk, plusz/minusz esetleges fix módosítók. Tehát pl. `d100+28` azt jelenti, hogy dobjunk egy százoldalú kockával és az eredményhez adjunk hozzá 28-at.
 
-**Egyszerű kockadobást** két esetben használunk:
+**Egyszerű kockadobást** három esetben használunk:
 
 - Karakteralkotáskor a karakter [tulajdonságait](character:abilities) `1d5+2`-vel határozzuk meg.
 - [Szintlépéskor](character:level) a karakter [fájdalomtűrése](character:fp) `2d10`-zel (plusz a képzettségekből adódó egyéb módosítók) nő.

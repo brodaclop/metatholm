@@ -32,6 +32,6 @@ Skills are split into one of the following categories: **Basic**, **Movement**, 
 
 Use of **Combat** skills is mainly governed by specific [rules of combat](rule:combat) although in certain situations they may also be used like **Knowledge** skills, for example when observing a fight and judging a participant's skill, or determining the value or origin of a weapon.
 
-Similarly, **Focus** skills' main purpose is to cast magic spells, according to the rules of magic, but they also reflect a character's general knowledge about a particular area of magic.
+Similarly, **Focus** skills' main purpose is to cast magic spells, according to the [rules of magic](rule:magic), but they also reflect a character's general knowledge about a particular area of magic.
 
 When using any other skill, the main way of utilising them is via [skill checks](rule:skill_check).

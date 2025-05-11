@@ -10,8 +10,8 @@ A képzettségek a karakter által [elsajátítható](rule:learning_skills) tud�
 | 1-2 | Kezdő/Tanonc | Ismered a szakterület alapjait, bár inkább csak ösztönösen, mint tudatosan. |
 | 3-4 | Képzett/Legény | A tudásodból már akár meg is élhetsz, már ha olyasmi tudásról van szó, amiért az emberek fizetni hajlandóak. Szót értesz a szakterület más tudóival és elég jól meg tudod ítélni mások tudásának szintjét. |
 | 5-6 | Szakértő/Mester | Már minden szempontból szakértőnek számítasz, olyannyira, hogy már másoknak is oktathatod tudásod. |
-| 7-8 | Nagymester | Tudásod széles körben elismert, a terület mesterei azonnal felismerik és elismerik a "munkádat". |
-| 9-10 | Élő legenda | A nevedet a képzettség minden komoly tanonca ismeri, és évszázadokig emlékezni fog rád a szakma. |
+| 7-8 | Nagymester | Tudásod széles körben elismert, a terület mesterei azonnal felismerik és elismerik "munkádat". |
+| 9-10 | Élő legenda | Nevedet a képzettség minden komoly tanonca ismeri, és évszázadokig emlékezni fog rád a szakma. |
 
 
 ## Milyen képzettségek vannak?
@@ -32,6 +32,6 @@ A képzettségeket az alábbi kategóriákba soroljuk: **Alap**, **Mozgás**, **
 
 A **harci képzettségek** használatát főképp a [harci szabályok](rule:combat) határozzák meg, bár némely szituációban a **tudás képzettségekhez** hasonlóképp is alkalmazhatók, pl. amikor a harcoló felek harci tudását vagy egy fegyver értékét, esetleg eredetét próbálja valaki felmérni.
 
-Hasonlóképp, míg a **fókusz képzettségek** fő célja a varázslatok létrehozása, a mágia szabályainak megfelelően, ezen képzettségek is együtt járnak egyfajta "általános műveltséggel" az adott mágiaterületen.
+Hasonlóképp, míg a **fókusz képzettségek** fő célja a varázslatok létrehozása, a [mágia szabályainak megfelelően](rule:magic), ezen képzettségek is együtt járnak egyfajta "általános műveltséggel" az adott mágiaterületen.
 
 A fenti kivételeket leszámítva a képzettségek használata a [képzettségpróbákon](rule:skill_check) keresztül történik.

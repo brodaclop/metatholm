@@ -126,5 +126,7 @@ const upgrade = (character: Character): Character => {
     character.patron = character.patron ?? '';
     character.ip = character.ip ?? 0;
     character.spiritAnimals = character.spiritAnimals ?? [];
+    // added wealth, should default to 0
+    character.wealth = character.wealth ?? 0;
     return character;
 }

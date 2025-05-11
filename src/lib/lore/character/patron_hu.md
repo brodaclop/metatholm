@@ -4,7 +4,7 @@ Az isteneknek nincs hatalmuk Metatholmon. Sem közvetlenül, sem közvetve nem t
 
 És éppen ez vonzza őket annyira ide.
 
-Mert hogy is lehetne alkalmasabb helyet találni arra, hogy kipróbáljanak egy [szellemet](world:concepts:spirits), aki egy nap prófétaként vagy küldöttként képviselheti őket egy másik világban? Ha hűek maradnak az istenség ideáljaihoz isteni segítség nélkül, talán sikerrel fognak ellenálni a megtestesült istenség megrontó hatásának.
+Mert hogy is lehetne alkalmasabb helyet találni arra, hogy kipróbáljanak egy [szellemet](world:concepts:spirits), aki egy nap prófétaként vagy küldöttként képviselheti őket egy másik világban? Ha hűek maradnak az istenség ideáljaihoz isteni segítség nélkül, talán sikerrel fognak ellenálni a megtestesült istenlét megrontó hatásának.
 
 A játék nyelvére lefordítva mindez azt jelenti, hogy minden játékosnak választania kell egy isteni lényt a karaktere "patrónusának". Ez a lény származhat egy másik fantasy világból, a mi bolygónk bármely kultúrájának ősi mítoszaiból, vagy akár lehet ott helyben kitalált istenség is. Minden alkalommal, amikor a karakter a [Szellemkalauz](world:concepts:spirit_guide) véleménye szerint a választott istenség ideáljainak megfelelően cselekedett, a karakter egy [Ideál ponttal](character:ip) gazdagodhat.
 

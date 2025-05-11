@@ -6,9 +6,9 @@ A **Cseles harc** képzettség segítségével olyan manővereket lehet megprób
 
 A képzettség használatához először is sikeres támadódobást kell dobni a megadott manőverre, és amennyiben ez sikeres, [képzettség ellenpróbát](rule:skill_check) kell dobni az ellenfél egyik képzettsége ellen. Hogy pontosan melyik ellen, az mindig az adott manővertől függ. Itt van pár példa:
 
-| Move | Opposing Skill | Effect on success |
+| Manőver | Ellenképzettség | Hatás siker esetén |
 | ---- | -------------- | ------ |
 | [Leütés](action:knockout) | [Állóképesség](skill:endurance) | Az ellenfél eszméletét veszti |
 | [Gáncsolás/Felborítás](action:trip) | [Egyensúly](skill:balance) | Az ellenfél a földre kerül, és nem tudja használni a [Távoltartás](action:keep-away) akcióját |
 | [Támadás rejtett fegyverrel](action:hidden-weapon) | [Rejtett dolgok felfedezése](skill:spot_hidden) | Az ellenfelet eltalálja és megsebzi a rejtett fegyver. |
-| [Mögéperdülés](action:spin-behind) | [Reflex](skill:reactions) | Az ellenfél nem tud védekezni a karakter következő támadása ellen |
+| [Mögéperdülés](action:spin-behind) | [Reflex](skill:reactions) | Az ellenfél nem tud védekezni a karakter támadása ellen |

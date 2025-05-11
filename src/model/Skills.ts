@@ -188,7 +188,7 @@ const SkillInfos: Record<Skill, Omit<SkillInfo, 'name'>> = {
         ability: 'ability:activity',
         positive: true,
         type: 'skill_type:movement',
-        personality: []
+        personality: ['personality:aggressive']
     },
     'skill:throwing': {
         difficulty: 3,
