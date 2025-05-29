@@ -18,7 +18,7 @@ Every time a player tries to perform an action that is important from the game's
 
 Skills can be used in multiple ways: in some cases a [skill check](rule:skill_check) is needed, other situations like [combat](rule:combat) or [magic](rule:magic) have their own dedicated rules.
 
-Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the [Spirit Guide](world:concepts:spirit_guide). This non-skill knowledge certainly adds to the colour of the game but there are very few adventures that rely on who's the better baker.
+Characters can of course possess other knowledge not covered by skills (e.g. various trades), these can simply be noted in the **Notes** section of the character sheet after discussion with the [Spirit Guide](world:concepts:spirit_guide). This non-skill knowledge certainly adds to the colour of the game and will affect skill checks (for example a shepherd may have to roll for a lower target on their [Medicine](skill:medicine) roll to cure a sheep) but there are very few adventures that rely purely on who's the better baker.
 
 > [note]: #
 Although the rules of the game don't require players to spend extra time or seek a tutor/source book to improve their skills, of course the [Spirit Guide](world:concepts:spirit_guide) can decide to make the game more lifelike by introducing these concepts. When doing so, it's worth however to take into account the category of the skill (combat/movement/knowledge/etc.), difficulty and the existing skill rank of the character.

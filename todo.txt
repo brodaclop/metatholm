@@ -19,4 +19,5 @@ x document weapon skill multipliers
 - add more weapon templates
 - check Tableplop export
 x add lore for actions for evading ranged attacks (running, hopping about)
+x add permission to use non-skill knowledge to affect rolls
 
